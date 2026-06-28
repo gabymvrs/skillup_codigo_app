@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillUp - Login iPhone 16</title>
+  
+  <style>
+    :root {
+      --FontFamily_1-FontFamily-FontFamily: Lexend;
+      --FontFamily_1-FontSizes-FontSize_1: 36px;
+      --FontFamily_1-FontWeights-Weight_1: 400;
+      --FontFamily_1-FontSizes-FontSize_7: 16px;
+      --FontFamily_1-FontSizes-FontSize_5: 20px;
+      --link: #154B8C;
+      --FontFamily_1-FontSizes-FontSize_8: 14px;
+      --500-primaria: #081998;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
+
+    /* Carcaça do iPhone 16 com bordas ultra finas */
+    .smartphone-container {
+      width: 284px; 
+      height: 606px; 
+      background: #111112;
+      border-radius: 42px;
+      padding: 3px; 
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Dynamic Island (Ilha Dinâmica) do iPhone 16 */
+    .dynamic-island {
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 78px;
+      height: 22px;
+      background-color: #000000;
+      border-radius: 20px;
+      z-index: 10;
+    }
+
+    /* Tela interna ajustada para o display do dispositivo */
+    .phone-screen {
+      width: 278px;
+      height: 600px;
+      background: #FFF;
+      overflow: hidden;
+      position: relative;
+      border-radius: 39px;
+    }
+
+    /* Ajuste de escala perfeito para o design de 393px do Figma */
+    .figma-content {
+      position: absolute;
+      width: 393px;
+      height: 852px;
+      top: 0;
+      left: 0;
+      transform: scale(0.707); 
+      transform-origin: top left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="smartphone-container">
+    <div class="dynamic-island"></div>
+    
+    <div class="phone-screen">
+      
+      <div class="figma-content">
+        <div layer-name="Bem-vindo!" style="color:#000;font-family:Lexend;font-size:36px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:97px;top:191px;width:199px;height:45px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:36px;color:rgba(0,0,0,1)">Bem-vindo!</span></div>
+        <div layer-name="Complete as informações para concluir o Login." style="width:281px;color:#000;text-align:center;font-family:Lexend;font-size:16px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:56px;top:244px;height:40px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,1)">Complete as informações para concluir o Login.</span></div>
+        
+        <div style="width:299px;height:190px;position:absolute;left:47px;top:340px">
+          <div layer-name="E-mail:" style="color:#000;font-family:Lexend;font-size:20px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:0px;top:0px;width:67px;height:25px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:20px;color:rgba(0,0,0,1)">E-mail:</span></div>
+          <div layer-name="Senha:" style="color:#000;font-family:Lexend;font-size:20px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:0px;top:108px;width:66px;height:25px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:20px;color:rgba(0,0,0,1)">Senha:</span></div>
+          <div style="width:299px;height:50px;position:absolute;left:0px;top:140px">
+            <div style="width:299px;height:50px;border-radius:25px;background:#F1F1F1;position:absolute;left:0px;top:0px"></div>
+            <div layer-name="Ex: Aluno_@123" style="color:#B4B4B4;text-align:center;font-family:Lexend;font-size:16px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:20px;top:15px;width:123px;height:20px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:16px;color:rgba(180,180,180,1)">Ex: Aluno_@123</span></div>
+          </div>
+          <div style="width:299px;height:50px;position:absolute;left:0px;top:32px">
+            <div style="width:299px;height:50px;border-radius:25px;background:#F1F1F1;position:absolute;left:0px;top:0px"></div>
+            <div layer-name="Ex: Aluno@gmail.com" style="width:168px;height:20px;color:#B4B4B4;text-align:center;font-family:Lexend;font-size:16px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:20px;top:15px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:16px;color:rgba(180,180,180,1)">Ex: Aluno@gmail.com</span></div>
+          </div>
+        </div>
+        
+        <div layer-name="Não tenho uma conta" style="color:#154B8C;text-align:center;font-family:Lexend;font-size:14px;font-style:normal;font-weight:400;line-height:normal;text-decoration-line:underline;text-decoration-style:solid;text-decoration-skip-ink:auto;text-decoration-thickness:auto;text-underline-offset:auto;text-underline-position:from-font;position:absolute;left:56px;top:547px;width:148px;height:18px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:14px;color:rgba(21,75,140,1);text-decoration:underline">Não tenho uma conta</span></div>
+        
+        <div style="width:266px;height:20px;position:absolute;left:63px;top:785px">
+          <div layer-name="Políticas" style="color:#000;text-align:center;font-family:Lexend;font-size:16px;font-style:normal;font-weight:400;line-height:normal;text-decoration-line:underline;text-decoration-style:solid;text-decoration-skip-ink:auto;text-decoration-thickness:auto;text-underline-offset:auto;text-underline-position:from-font;position:absolute;left:201px;top:0px;width:65px;height:20px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,1);text-decoration:underline">Políticas</span></div>
+          <div layer-name="Privacidade" style="color:#000;text-align:center;font-family:Lexend;font-size:16px;font-style:normal;font-weight:400;line-height:normal;text-decoration-line:underline;text-decoration-style:solid;text-decoration-skip-ink:auto;text-decoration-thickness:auto;text-underline-offset:auto;text-underline-position:from-font;position:absolute;left:82px;top:0px;width:93px;height:20px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,1);text-decoration:underline">Privacidade</span></div>
+          <div layer-name="Termos" style="color:#000;text-align:center;font-family:Lexend;font-size:16px;font-style:normal;font-weight:400;line-height:normal;text-decoration-line:underline;text-decoration-style:solid;text-decoration-skip-ink:auto;text-decoration-thickness:auto;text-underline-offset:auto;text-underline-position:from-font;position:absolute;left:0px;top:0px;width:56px;height:20px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,1);text-decoration:underline">Termos</span></div>
+        </div>
+        
+        <img layer-name="Screenshot 2026-04-13 10.57.36 (3) 1" style="width:121px;height:121px;aspect-ratio:1/1;border-radius:20px;position:absolute;left:136px;top:42px" src="https://api.builder.io/api/v1/image/assets/TEMP/0172e7dd37ba8858accae72af0a5f7013aafb5c9?width=242" alt="" />
+        
+        <div style="display:inline-flex;align-items:center;gap:32px;position:absolute;left:145px;top:701px;width:104px;height:36px">
+          <svg id="69:37" layer-name="logos:facebook" style="aspect-ratio:1/1;position:relative" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36 18C36 8.05894 27.9411 0 18 0C8.05894 0 0 8.05894 0 18C0 26.9842 6.58237 34.431 15.1875 35.7813V23.2031H10.6172V18H15.1875V14.0344C15.1875 9.52312 17.8748 7.03125 21.9864 7.03125C23.9558 7.03125 26.0156 7.38281 26.0156 7.38281V11.8125H23.7459C21.5099 11.8125 20.8125 13.2 20.8125 14.6236V18H25.8047L25.0066 23.2031H20.8125V35.7813C29.4176 34.431 36 26.9844 36 18Z" fill="#1877F2"/>
+            <path d="M24.3895 23.2031L25.1875 18H20.1953V14.6236C20.1953 13.1999 20.8927 11.8125 23.1287 11.8125H25.3984V7.38281C25.3984 7.38281 23.3386 7.03125 21.3691 7.03125C17.2577 7.03125 14.5703 9.52313 14.5703 14.0344V18H10V23.2031H14.5703V35.7813C15.5007 35.9271 16.4411 36.0002 17.3828 36C18.3246 36.0002 19.2649 35.9271 20.1953 35.7813V23.2031H24.3895Z" fill="white"/>
+          </svg>
+          <svg id="69:43" layer-name="logos:google-icon" style="aspect-ratio:1/1;position:relative" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M35.9828 18.3368C35.9828 16.8619 35.8604 15.7856 35.5953 14.6694H18.3586V21.3264H28.4761C28.2722 22.9808 27.1707 25.4722 24.7229 27.1463L24.6885 27.3692L30.1385 31.4945L30.5161 31.5313C33.9837 28.4021 35.9828 23.7979 35.9828 18.3368Z" fill="#4285F4"/>
+            <path d="M18.3586 35.8763C23.3153 35.8763 27.4766 34.2818 30.5161 31.5313L24.7229 27.1463C23.1726 28.2027 21.0919 28.9402 18.3586 28.9402C13.5038 28.9402 9.38335 25.811 7.91452 21.486L7.69922 21.5038L2.03232 25.7891L1.95821 25.9904C4.97714 31.8501 11.1783 35.8763 18.3586 35.8763Z" fill="#34A853"/>
+            <path d="M7.91452 21.4859C7.52695 20.3698 7.30266 19.1738 7.30266 17.9382C7.30266 16.7023 7.52695 15.5065 7.89412 14.3904L7.88386 14.1527L2.14594 9.79858L1.9582 9.88584C0.713953 12.3175 0 15.0481 0 17.9382C0 20.8282 0.713953 23.5587 1.9582 25.9903L7.91452 21.4859Z" fill="#FBBC05"/>
+            <path d="M18.3586 6.93605C21.8059 6.93605 24.1313 8.39102 25.4572 9.60692L30.6384 4.66392C27.4563 1.77389 23.3153 0 18.3586 0C11.1783 0 4.97714 4.02609 1.95821 9.88585L7.89413 14.3904C9.38335 10.0653 13.5038 6.93605 18.3586 6.93605Z" fill="#EB4335"/>
+          </svg>
+        </div>
+        
+        <div style="width:177px;height:56px;position:absolute;left:108px;top:597px">
+          <div style="width:177px;height:56px;border-radius:20px;background:#081998;position:absolute;left:0px;top:0px"></div>
+          <div layer-name="Fazer Login" style="width:115px;height:25px;color:#FFF;font-family:Lexend;font-size:20px;font-style:normal;font-weight:400;line-height:normal;position:absolute;left:31px;top:15px"><span style="font-family:Lexend, -apple-system, Roboto, Helvetica, sans-serif;font-weight:400;font-size:20px;color:rgba(255,255,255,1)">Fazer Login</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
