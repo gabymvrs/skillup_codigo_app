@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --texto: #64748B;
+      --FontFamily_1-FontFamily-FontFamily: Lexend;
+      --FontFamily_1-FontSizes-FontSize_5: 20px;
+      --FontFamily_1-FontWeights-Weight_1: 400;
+      --FontFamily_1-FontWeights-Weight_2: 600;
+      --FontFamily_2-FontFamily-FontFamily: Inter;
+      --FontFamily_2-FontSizes-FontSize_9: 16px;
+      --FontFamily_2-FontSizes-FontSize_10: 14px;
+      --FontFamily_2-FontSizes-FontSize_11: 12px;
+      --FontFamily_2-FontSizes-FontSize_13: 10px;
+      --500-terciaria: #C6DAFE;
+      --300-terciaria: #E0ECFF;
+      --500-secundaria: #0C1C5D;
+      --500-primaria: #081998;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #091E3A;
+      background: linear-gradient(to right, #2D9EE0, #2F80ED, #091E3A);
+      overflow: hidden;
+    }
+
+    .smartphone-container {
+      width: 288px;
+      height: 608px;
+      background: #000;
+      border-radius: 40px;
+      padding: 6px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 4px rgba(255, 255, 255, 0.2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .smartphone-notch {
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 82px;
+      height: 24px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 10;
+      box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #FFF;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .screen {
+      width: 393px;
+      height: 852px;
+      background: #FFF;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: scale(0.73);
+      transform-origin: top left;
+    }
+
+    .header {
+      width: 393px;
+      height: 58px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-bottom: 1px solid #64748B;
+    }
+
+    .icon-left, .icon-right {
+      position: absolute;
+      top: 14px;
+      width: 30px;
+      height: 30px;
+      z-index: 2;
+    }
+
+    .icon-left { left: 20px; }
+    .icon-right { left: 348px; }
+
+    .tabs {
+      display: flex;
+      gap: 0;
+      position: absolute;
+      left: 0;
+      top: 65px;
+      width: 393px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .tab {
+      font-family: Lexend, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #000;
+      position: relative;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tab.material { width: 95px; font-weight: 500; left: 0; }
+    .tab.trilhas { width: 94px; left: 0; }
+    .tab.pratica { width: 89px; left: 0; }
+    .tab.suporte { width: 93px; left: 0; }
+
+    .title-block {
+      position: absolute;
+      left: 10px;
+      top: 128px;
+      width: 393px;
+      text-align: left;
+    }
+
+    .title-block h1 {
+      margin: 0;
+      color: #081998;
+      font-family: Lexend, Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 32px;
+    }
+
+    .title-block p {
+      margin: 8px 0 0;
+      color: #454653;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .content {
+      position: absolute;
+      left: -1px;
+      top: 227px;
+      width: 393px;
+      height: 682px;
+    }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 393px;
+      height: 49px;
+      box-sizing: border-box;
+    }
+
+    .search-box {
+      flex: 1;
+      border: 1px solid #C6C5D6;
+      border-radius: 12px;
+      background: #FFF;
+      padding: 14px 16px 14px 40px;
+      color: #545964;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .search-icon {
+      position: relative;
+      left: 25px;
+      bottom: 15px;
+      z-index: 2;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      position: absolute;
+      left: 0;
+      top: 74px;
+      width: 393px;
+      padding: 0 8px;
+      box-sizing: border-box;
+    }
+
+    .filter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 40px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #C6C5D6;
+      background: #FFF;
+      color: #0B1C30;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .library {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: absolute;
+      left: 0;
+      top: 152px;
+      width: 393px;
+      height: 327px;
+    }
+
+    .library-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8px;
+    }
+
+    .library-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #051C37;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 12px;
+      column-gap: 12px;
+      padding: 0 8px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      border: 1px solid #C6C5D6;
+      border-radius: 12px;
+      background: #FFF;
+      padding: 12px;
+      box-sizing: border-box;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .card.big { height: 97px; align-items: center; }
+    .card.small { height: 74px; }
+
+    .icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #C6DAFE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      overflow: visible;
+    }
+
+    .card-title {
+      color: #0B1C30;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      margin: 0;
+    }
+
+    .card-subtitle {
+      color: #454653;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 10px;
+      line-height: 15px;
+      margin: 0;
+    }
+
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .recent {
+      display: flex;
+      gap: 16px;
+      position: absolute;
+      left: 0;
+      top: 526px;
+      width: 393px;
+      height: 121px;
+      overflow: hidden;
+    }
+
+    .recent-inner {
+      display: flex;
+      gap: 16px;
+      padding: 0 0 16px 0;
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    .recent-card {
+      width: 240px;
+      height: 105px;
+      border: 1px solid #C6C5D6;
+      border-radius: 12px;
+      background: #FFF;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .badge {
+      position: absolute;
+      left: 17px;
+      top: 17px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #E0ECFF;
+      color: #0C1C5D;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+
+    .recent-card h3 {
+      position: absolute;
+      left: 17px;
+      top: 44px;
+      margin: 0;
+      color: #0B1C30;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .recent-card p {
+      position: absolute;
+      left: 17px;
+      top: 72px;
+      margin: 0;
+      color: #454653;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+    }
+
+    .fab {
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background: #000966;
+      position: absolute;
+      right: 10px;
+      top: 470px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      color: #FFF;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
+      z-index: 5;
+    }
+
+    .fab span {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 400;
+      transform: translateY(-1px);
+    }
+
+    .bottom-nav {
+      display: flex;
+      width: 393px;
+      height: 81px;
+      padding: 8px 7px 0 8px;
+      align-items: flex-start;
+      gap: 7px;
+      border: 1px solid #9F9F9F;
+      background: #F9F9F9;
+      position: absolute;
+      left: 0;
+      top: 771px;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    .nav-item {
+      width: 70px;
+      height: 73px;
+      border-radius: 10px;
+      background: #F9F9F9;
+      position: relative;
+      flex-shrink: 0;
+      text-align: center;
+      color: #000;
+      font-family: Lexend, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .nav-item.active {
+      background: #D9D9D9;
+    }
+
+    .nav-item span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50px;
+    }
+
+    svg {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="smartphone-container">
+    <div class="smartphone-notch"></div>
+    <div class="phone-screen">
+      <div class="screen">
+        <div class="header">
+          <svg class="icon-left" width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.66667 25.7662C1.19445 25.7662 0.798895 25.56 0.480006 25.1478C0.161117 24.7355 0.00111686 24.2259 5.74712e-06 23.619C-0.00110536 23.012 0.158895 22.5024 0.480006 22.0902C0.801117 21.6779 1.19667 21.4718 1.66667 21.4718H28.3333C28.8056 21.4718 29.2017 21.6779 29.5217 22.0902C29.8417 22.5024 30.0011 23.012 30 23.619C29.9989 24.2259 29.8389 24.7362 29.52 25.1499C29.2011 25.5636 28.8056 25.769 28.3333 25.7662H1.66667ZM1.66667 15.0303C1.19445 15.0303 0.798895 14.8241 0.480006 14.4119C0.161117 13.9996 0.00111686 13.49 5.74712e-06 12.8831C-0.00110536 12.2761 0.158895 11.7665 0.480006 11.3543C0.801117 10.942 1.19667 10.7359 1.66667 10.7359H28.3333C28.8056 10.7359 29.2017 10.942 29.5217 11.3543C29.8417 11.7665 30.0011 12.2761 30 12.8831C29.9989 13.49 29.8389 14.0003 29.52 14.414C29.2011 14.8277 28.8056 15.0331 28.3333 15.0303H1.66667ZM1.66667 4.29436C1.19445 4.29436 0.798895 4.08823 0.480006 3.67597C0.161117 3.26371 0.00111686 2.75412 5.74712e-06 2.14718C-0.00110536 1.54024 0.158895 1.03065 0.480006 0.618388C0.801117 0.206129 1.19667 0 1.66667 0H28.3333C28.8056 0 29.2017 0.206129 29.5217 0.618388C29.8417 1.03065 30.0011 1.54024 30 2.14718C29.9989 2.75412 29.8389 3.26443 29.52 3.67812C29.2011 4.09181 28.8056 4.29722 28.3333 4.29436H1.66667Z" fill="black"/>
+          </svg>
+          <svg class="icon-right" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.3392 2.5C13.0186 2.5 10.793 3.42187 9.15202 5.06282C7.51108 6.70376 6.58921 8.92936 6.58921 11.25V15.66C6.58939 15.8539 6.54445 16.0452 6.45796 16.2188L4.31171 20.51C4.20687 20.7197 4.15736 20.9526 4.16789 21.1868C4.17843 21.421 4.24865 21.6485 4.37189 21.8479C4.49513 22.0473 4.6673 22.2119 4.87204 22.326C5.07678 22.4401 5.3073 22.5 5.54171 22.5H25.1367C25.3711 22.5 25.6016 22.4401 25.8064 22.326C26.0111 22.2119 26.1833 22.0473 26.3065 21.8479C26.4298 21.6485 26.5 21.421 26.5105 21.1868C26.5211 20.9526 26.4716 20.7197 26.3667 20.51L24.2217 16.2188C24.1348 16.0453 24.0894 15.854 24.0892 15.66V11.25C24.0892 8.92936 23.1673 6.70376 21.5264 5.06282C19.8854 3.42187 17.6599 2.5 15.3392 2.5ZM15.3392 26.25C14.5634 26.2504 13.8065 26.0102 13.173 25.5624C12.5394 25.1147 12.0603 24.4814 11.8017 23.75H18.8767C18.6181 24.4814 18.139 25.1147 17.5054 25.5624C16.8719 26.0102 16.115 26.2504 15.3392 26.25Z" fill="black"/>
+          </svg>
+        </div>
+
+        <div class="tabs">
+          <div class="tab material">Material</div>
+          <div class="tab trilhas">Trilhas</div>
+          <div class="tab pratica">Prática</div>
+          <div class="tab suporte">Suporte</div>
+        </div>
+
+        <div class="title-block">
+          <h1>Material de estudo</h1>
+          <p>Encontre aqui material para revisão</p>
+        </div>
+
+        <div class="content">
+          <div class="search-wrap">
+            <div class="search-box">Buscar materiais...</div>
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="#000966"/>
+            </svg>
+          </div>
+
+          <div class="filters">
+            <div class="filter">
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 12V10H11V12H7ZM3 7V5H15V7H3ZM0 2V0H18V2H0Z" fill="#000966"/></svg>
+              <span>Turmas</span>
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#454653"/></svg>
+            </div>
+            <div class="filter">
+              <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14V12H10V14H0ZM0 10V8H16V10H0ZM0 6V4H16V6H0ZM0 2V0H16V2H0Z" fill="#000966"/></svg>
+              <span>Matérias</span>
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#454653"/></svg>
+            </div>
+          </div>
+
+          <div class="library">
+            <div class="library-head">
+              <div class="library-title">
+                <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H8L10 2H18C18.55 2 19.0208 2.19583 19.4125 2.5875C19.8042 2.97917 20 3.45 20 4H9.175L7.175 2H2V14L4.4 6H21.5L18.925 14.575C18.7917 15.0083 18.5458 15.3542 18.1875 15.6125C17.8292 15.8708 17.4333 16 17 16H2ZM4.1 14H17L18.8 8H5.9L4.1 14ZM4.1 14L5.9 8L4.1 14ZM2 4V2V4Z" fill="#000966"/></svg>
+                <span>Biblioteca de Arquivos</span>
+              </div>
+            </div>
+
+            <div class="grid">
+              <div class="card big">
+                <div class="icon-box">
+                  <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H14C14.55 0 15.0208 0.195833 15.4125 0.5875C15.8042 0.979167 16 1.45 16 2V6.5L20 2.5V13.5L16 9.5V14C16 14.55 15.8042 15.0208 15.4125 15.4125C15.0208 15.8042 14.55 16 14 16H2ZM2 14H14V2H2V14ZM2 14V2V14Z" fill="#5271E9"/></svg>
+                </div>
+                <div class="card-text">
+                  <p class="card-title">Aulas Gravadas</p>
+                  <p class="card-subtitle">12 vídeos</p>
+                </div>
+              </div>
+
+              <div class="card big">
+                <div class="icon-box">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 14H11V12H4V14ZM4 10H14V8H4V10ZM4 6H14V4H4V6ZM2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H16C16.55 0 17.0208 0.195833 17.4125 0.5875C17.8042 0.979167 18 1.45 18 2V16C18 16.55 17.8042 17.0208 17.4125 17.4125C17.0208 17.8042 16.55 18 16 18H2ZM2 16H16V2H2V16ZM2 2V16V2Z" fill="#5271E9"/></svg>
+                </div>
+                <div class="card-text">
+                  <p class="card-title">Artigos</p>
+                  <p class="card-subtitle">24 arquivos</p>
+                </div>
+              </div>
+
+              <div class="card small">
+                <div class="icon-box">
+                  <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12H11V7.85L12.6 9.425L14.025 8L10 4L6 8L7.425 9.4L9 7.825V12ZM2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H2ZM2 14H18V2H2V14ZM2 14V2V14Z" fill="#5271E9"/></svg>
+                </div>
+                <div class="card-text">
+                  <p class="card-title">Slides</p>
+                  <p class="card-subtitle">15 arquivos</p>
+                </div>
+              </div>
+
+              <div class="card small">
+                <div class="icon-box">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 20V11.725C8.7 11.5417 8.45833 11.3042 8.275 11.0125C8.09167 10.7208 8 10.3833 8 10C8 9.45 8.19583 8.97917 8.5875 8.5875C8.97917 8.19583 9.45 8 10 8C10.55 8 11.0208 8.19583 11.4125 8.5875C11.8042 8.97917 12 9.45 12 10C12 10.3833 11.9083 10.725 11.725 11.025C11.5417 11.325 11.3 11.5583 11 11.725V20H9ZM3.1 17.25C2.15 16.3333 1.39583 15.2542 0.8375 14.0125C0.279167 12.7708 0 11.4333 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.4333 19.7208 12.775 19.1625 14.025C18.6042 15.275 17.85 16.35 16.9 17.25L15.5 15.85C16.2667 15.1167 16.875 14.2458 17.325 13.2375C17.775 12.2292 18 11.15 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 11.15 2.225 12.225 2.675 13.225C3.125 14.225 3.74167 15.0917 4.525 15.825L3.1 17.25ZM5.925 14.425C5.34167 13.875 4.875 13.2208 4.525 12.4625C4.175 11.7042 4 10.8833 4 10C4 8.33333 4.58333 6.91667 5.75 5.75C6.91667 4.58333 8.33333 4 10 4C11.6667 4 13.0833 4.58333 14.25 5.75C15.4167 6.91667 16 8.33333 16 10C16 10.8833 15.825 11.7083 15.475 12.475C15.125 13.2417 14.6583 13.8917 14.075 14.425L12.65 13C13.0667 12.6167 13.3958 12.1667 13.6375 11.65C13.8792 11.1333 14 10.5833 14 10C14 8.9 13.6083 7.95833 12.825 7.175C12.0417 6.39167 11.1 6 10 6C8.9 6 7.95833 6.39167 7.175 7.175C6.39167 7.95833 6 8.9 6 10C6 10.6 6.12083 11.1542 6.3625 11.6625C6.60417 12.1708 6.93333 12.6167 7.35 13L5.925 14.425Z" fill="#5271E9"/></svg>
+                </div>
+                <div class="card-text">
+                  <p class="card-title">Podcast</p>
+                  <p class="card-subtitle">6 episódios</p>
+                </div>
+              </div>
+
+              <div class="card small">
+                <div class="icon-box">
+                  <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.6 7.99556L5.55 8.82056C5.78333 8.3539 6.025 7.9039 6.275 7.47056C6.525 7.03723 6.8 6.6039 7.1 6.17056L5.7 5.89556L3.6 7.99556ZM7.15 10.0706L10 12.8956C10.7 12.6289 11.45 12.2206 12.25 11.6706C13.05 11.1206 13.8 10.4956 14.5 9.79556C15.6667 8.6289 16.5792 7.33306 17.2375 5.90806C17.8958 4.48306 18.1833 3.17056 18.1 1.97056C16.9 1.88723 15.5833 2.17473 14.15 2.83306C12.7167 3.4914 11.4167 4.4039 10.25 5.57056C9.55 6.27056 8.925 7.02056 8.375 7.82056C7.825 8.62056 7.41667 9.37056 7.15 10.0706ZM11.6 8.44556C11.2167 8.06223 11.025 7.5914 11.025 7.03306C11.025 6.47473 11.2167 6.0039 11.6 5.62056C11.9833 5.23723 12.4583 5.04556 13.025 5.04556C13.5917 5.04556 14.0667 5.23723 14.45 5.62056C14.8333 6.0039 15.025 6.47473 15.025 7.03306C15.025 7.5914 14.8333 8.06223 14.45 8.44556C14.0667 8.8289 13.5917 9.02056 13.025 9.02056C12.4583 9.02056 11.9833 8.8289 11.6 8.44556ZM12.075 16.4706L14.175 14.3706L13.9 12.9706C13.4667 13.2706 13.0333 13.5414 12.6 13.7831C12.1667 14.0247 11.7167 14.2622 11.25 14.4956L12.075 16.4706ZM19.9 0.145565C20.2167 2.16223 20.0208 4.12473 19.3125 6.03306C18.6042 7.9414 17.3833 9.76223 15.65 11.4956L16.15 13.9706C16.2167 14.3039 16.2 14.6289 16.1 14.9456C16 15.2622 15.8333 15.5372 15.6 15.7706L11.4 19.9706L9.3 15.0456L5.025 10.7706L0.1 8.67056L4.275 4.47056C4.50833 4.23723 4.7875 4.07056 5.1125 3.97056C5.4375 3.87056 5.76667 3.8539 6.1 3.92056L8.575 4.42056C10.3083 2.68723 12.125 1.46223 14.025 0.745565C15.925 0.0288979 17.8833 -0.171102 19.9 0.145565ZM1.875 13.9456C2.45833 13.3622 3.17083 13.0664 4.0125 13.0581C4.85417 13.0497 5.56667 13.3372 6.15 13.9206C6.73333 14.5039 7.02083 15.2164 7.0125 16.0581C7.00417 16.8997 6.70833 17.6122 6.125 18.1956C5.70833 18.6122 5.0125 18.9706 4.0375 19.2706C3.0625 19.5706 1.71667 19.8372 0 20.0706C0.233333 18.3539 0.5 17.0081 0.8 16.0331C1.1 15.0581 1.45833 14.3622 1.875 13.9456ZM3.3 15.3456C3.13333 15.5122 2.96667 15.8164 2.8 16.2581C2.63333 16.6997 2.51667 17.1456 2.45 17.5956C2.9 17.5289 3.34583 17.4164 3.7875 17.2581C4.22917 17.0997 4.53333 16.9372 4.7 16.7706C4.9 16.5706 5.00833 16.3289 5.025 16.0456C5.04167 15.7622 4.95 15.5206 4.75 15.3206C4.55 15.1206 4.30833 15.0247 4.025 15.0331C3.74167 15.0414 3.5 15.1456 3.3 15.3456Z" fill="#5271E9"/></svg>
+                </div>
+                <div class="card-text">
+                  <p class="card-title">Projetos</p>
+                  <p class="card-subtitle">8 arquivos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent">
+            <div class="recent-inner">
+              <div class="recent-card">
+                <div class="badge">ARTIGO</div>
+                <h3>Português</h3>
+                <p>Gramática ortográfica</p>
+              </div>
+              <div class="recent-card">
+                <div class="badge">VÍDEO-AULA</div>
+                <h3>Biologia</h3>
+                <p>Tipos de plantas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fab"><span>+</span></div>
+
+          <div class="bottom-nav">
+            <div class="nav-item"><span>Home</span></div>
+            <div class="nav-item active">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:15px;top:10px"><path d="M13.0552 30C15.3885 30 17.4218 31.365 18.3802 33.38C18.5702 33.7792 18.594 34.2375 18.4461 34.6541C18.2983 35.0708 17.991 35.4116 17.5918 35.6017C17.1927 35.7918 16.7344 35.8155 16.3177 35.6677C15.9011 35.5198 15.5602 35.2125 15.3702 34.8134C15.1642 34.3727 14.8373 33.9995 14.4274 33.7375C14.0175 33.4755 13.5416 33.3353 13.0552 33.3334H5.00016C4.55814 33.3334 4.13421 33.1578 3.82165 32.8452C3.50909 32.5327 3.3335 32.1087 3.3335 31.6667C3.3335 31.2247 3.50909 30.8007 3.82165 30.4882C4.13421 30.1756 4.55814 30 5.00016 30H13.0552ZM35.0002 30C35.4422 30 35.8661 30.1756 36.1787 30.4882C36.4912 30.8007 36.6668 31.2247 36.6668 31.6667C36.6668 32.1087 36.4912 32.5327 36.1787 32.8452C35.8661 33.1578 35.4422 33.3334 35.0002 33.3334H26.9452C26.0002 33.3334 25.0535 33.9284 24.6302 34.815C24.4401 35.2142 24.0992 35.5215 23.6826 35.6693C23.266 35.8172 22.8076 35.7934 22.4085 35.6034C22.0093 35.4133 21.7021 35.0724 21.5542 34.6558C21.4064 34.2392 21.4301 33.7808 21.6202 33.3817C22.1032 32.3768 22.8581 31.5273 23.7992 30.9296C24.7404 30.3319 25.8303 30.0099 26.9452 30H35.0002Z" fill="black"/><path fill-rule="evenodd" clip-rule="evenodd" d="M14.8148 5.01C15.8122 5.06219 16.7878 5.32081 17.68 5.7695C18.5722 6.21819 19.3616 6.84718 19.9982 7.61667C20.6749 6.79864 21.5238 6.13999 22.4842 5.68769C23.4447 5.23539 24.4932 5.00058 25.5548 5H36.6665C37.1085 5 37.5325 5.17559 37.845 5.48816C38.1576 5.80072 38.3332 6.22464 38.3332 6.66667V26.6684C38.3332 27.1104 38.1576 27.5343 37.845 27.8469C37.5325 28.1594 37.1085 28.335 36.6665 28.335L25.5548 28.3334C24.4582 28.3334 23.7465 28.6034 23.2682 28.9234C22.802 29.2431 22.4284 29.68 22.1848 30.19C21.8757 30.8232 21.6993 31.5129 21.6665 32.2167V32.2317L21.6582 32.3934C21.6169 32.8045 21.4244 33.1857 21.118 33.4629C20.8115 33.7401 20.4131 33.8936 19.9998 33.8936C19.5866 33.8936 19.1882 33.7401 18.8817 33.4629C18.5753 33.1857 18.3828 32.8045 18.3415 32.3934L18.3332 32.2234V32.215L18.3265 32.1017C18.2826 31.4354 18.11 30.7839 17.8182 30.1834C17.5813 29.674 17.2131 29.2368 16.7515 28.9167C16.2848 28.6 15.5882 28.3334 14.5132 28.3334H3.33317C2.89114 28.3334 2.46722 28.1578 2.15466 27.8452C1.8421 27.5326 1.6665 27.1087 1.6665 26.6667V6.66667C1.6665 6.22464 1.8421 5.80072 2.15466 5.48816C2.46722 5.17559 2.89114 5 3.33317 5H14.4448L14.8148 5.01ZM18.3332 8.33334V28.89H21.6665V8.33334H18.3332Z" fill="black"/></svg>
+              <span>Aprenda</span>
+            </div>
+            <div class="nav-item"><span>Social</span></div>
+            <div class="nav-item"><span>Emprego</span></div>
+            <div class="nav-item"><span>Config.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
