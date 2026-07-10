@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Estudante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --FontFamily_1-FontFamily-FontFamily: 'Lexend', sans-serif;
+      --FontFamily_1-FontSizes-FontSize_1: 36px;
+      --FontFamily_1-FontWeights-Weight_1: 400;
+      --FontFamily_1-FontSizes-FontSize_7: 16px;
+      --FontFamily_1-FontSizes-FontSize_5: 20px;
+      --placeholder: #A1A1A1;
+      --link: #154B8C;
+      --FontFamily_1-FontSizes-FontSize_9: 12px;
+      --500-primaria: #081998;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #091E3A;
+      background: -webkit-linear-gradient(to right, #2D9EE0, #2F80ED, #091E3A);
+      background: linear-gradient(to right, #2D9EE0, #2F80ED, #091E3A);
+      overflow: hidden;
+      font-family: var(--FontFamily_1-FontFamily-FontFamily);
+    }
+
+    .smartphone-container {
+      width: 288px;
+      height: 608px;
+      background: #1a1b1e;
+      border-radius: 36px;
+      padding: 4px;
+      box-shadow: 0 25px 50px rgba(0,0,0,.6);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .smartphone-notch {
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 18px;
+      background: #1a1b1e;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: 10;
+    }
+
+    .phone-screen {
+      width: 280px;
+      height: 600px;
+      background: #FFF;
+      overflow: hidden;
+      position: relative;
+      border-radius: 32px;
+    }
+
+    .figma-content {
+      position: absolute;
+      width: 393px;
+      height: 852px;
+      top: 0;
+      left: 0;
+      transform: scale(0.712);
+      transform-origin: top left;
+      box-sizing: border-box;
+      padding: 30px 24px 35px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .top-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 5px;
+      position: relative;
+    }
+
+    .btn-back {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 62px;
+      height: 59px;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      z-index: 5;
+    }
+
+    .brand-logo {
+      width: 121px;
+      height: 121px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin-top: -15px;
+    }
+
+    .header-text {
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+
+    .main-title {
+      font-size: var(--FontFamily_1-FontSizes-FontSize_1);
+      font-weight: 400;
+      color: #000;
+      margin: 0 0 8px 0;
+    }
+
+    .subtitle {
+      font-size: var(--FontFamily_1-FontSizes-FontSize_7);
+      font-weight: 400;
+      color: #000;
+      width: 281px;
+      margin: 0 auto;
+      line-height: 1.3;
+    }
+
+    .form-container {
+      width: 299px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .input-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-size: var(--FontFamily_1-FontSizes-FontSize_5);
+      color: #000;
+      font-weight: 400;
+      padding-left: 5px;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 50px;
+      border-radius: 25px;
+      background: #F1F1F1;
+      border: none;
+      box-sizing: border-box;
+      padding: 0 20px;
+      font-family: var(--FontFamily_1-FontFamily-FontFamily);
+      font-size: var(--FontFamily_1-FontSizes-FontSize_7);
+      color: #000;
+      outline: none;
+    }
+
+    .input-field::placeholder {
+      color: var(--placeholder);
+      text-align: left;
+    }
+
+    .login-link-container {
+      width: 299px;
+      margin-top: 14px;
+      margin-bottom: 25px;
+      padding-left: 12px;
+      align-self: flex-start;
+    }
+
+    .login-redirect {
+      font-size: var(--FontFamily_1-FontSizes-FontSize_9);
+      color: var(--link);
+      text-decoration: underline;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .upload-box {
+      width: 289px;
+      height: 156px;
+      border-radius: 10px;
+      background: #F1F1F1;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 24px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-bottom: 30px;
+    }
+
+    .upload-box:hover {
+      background: #e6e6e6;
+    }
+
+    .upload-text {
+      color: #212121;
+      text-align: center;
+      font-size: var(--FontFamily_1-FontSizes-FontSize_7);
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .btn-submit {
+      width: 224px;
+      height: 45px;
+      border-radius: 20px;
+      background: var(--500-primaria);
+      border: none;
+      color: #FFF;
+      font-family: var(--FontFamily_1-FontFamily-FontFamily);
+      font-size: var(--FontFamily_1-FontSizes-FontSize_5);
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="smartphone-container">
+    <div class="smartphone-notch"></div>
+    
+    <div class="phone-screen">
+      
+      <div class="figma-content">
+        
+        <div class="top-bar">
+          <button class="btn-back" onclick="window.history.back()" aria-label="Voltar">
+            <svg width="62" height="59" viewBox="0 0 62 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="31" cy="29.5" rx="31" ry="29.5" fill="white"/>
+              <path d="M21.6 29.5L29.3 37.2C29.7 37.6 29.7 38.2 29.3 38.6C28.9 39 28.3 39 27.9 38.6L18.7 29.4C18.5 29.2 18.5 28.8 18.7 28.6L27.9 19.4C28.3 19 28.9 19 29.3 19.4C29.7 19.8 29.7 20.4 29.3 20.8L21.6 28.5H39.3C39.9 28.5 40.3 28.9 40.3 29.5C40.3 30.1 39.9 30.5 39.3 30.5H21.6Z" fill="black"/>
+            </svg>
+          </button>
+        </div>
+
+        <img class="brand-logo" src="https://api.builder.io/api/v1/image/assets/TEMP/0172e7dd37ba8858accae72af0a5f7013aafb5c9?width=242" alt="Logo" />
+
+        <header class="header-text">
+          <h1 class="main-title">Bem-vindo!</h1>
+          <p class="subtitle">Complete as informações para concluir o cadastro.</p>
+        </header>
+
+        <form class="form-container" onsubmit="event.preventDefault();">
+          <div class="input-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" class="input-field" placeholder="Ex: Aluno@gmail.com" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" class="input-field" placeholder="Ex: Aluno_@123" required>
+          </div>
+
+          <div class="login-link-container">
+            <span class="login-redirect" onclick="window.location.href='login.html'">Já tenho uma conta</span>
+          </div>
+
+          <input type="file" id="arquivo-estudante" style="display: none;">
+          
+          <label for="arquivo-estudante" class="upload-box" role="button" aria-label="Upload da carteira de estudante">
+            <svg width="71" height="64" viewBox="0 0 71 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="pointer-events: none;">
+              <path d="M27.2857 43.1176H42.7143V28.2941H53L35 11L17 28.2941H27.2857V43.1176ZM17 48.0588H53V53H17V48.0588Z" fill="#A1A1A1"/>
+            </svg>
+            <p class="upload-text" style="pointer-events: none;">Faça Upload da sua Carteira de estudante aqui</p>
+          </label>
+
+          <button type="submit" class="btn-submit">Completar Cadastro</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
