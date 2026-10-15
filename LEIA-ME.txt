@@ -1,0 +1,5 @@
+SKILLUP — PROTÓTIPO WEB
+
+Abra index.html no Google Chrome. Todos os arquivos devem estar juntos na mesma pasta.
+O progresso e o perfil ficam guardados no navegador (localStorage).
+Esta é uma demonstração — não se conecta a empresas, não emite certificados oficiais e não oferece autenticação real.
