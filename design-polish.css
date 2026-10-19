@@ -114,3 +114,26 @@ h1,h2,h3,p{overflow-wrap:break-word}
 .quick-actions .skill-button{gap:9px}
 .quick-actions .ui-icon{width:18px;height:18px;margin:0}
 .access-actions .ui-icon{width:20px;height:20px;margin-right:8px}
+
+/* UX: acesso primeiro e estados de navegação */
+.access-mode{background:#f8faff}
+.access-mode #content{width:min(100%,510px)}
+.access{min-height:min(680px,90dvh);padding:20px 18px 0;background:#fff;border:1px solid #e3e8f1;border-radius:16px;box-shadow:0 12px 38px #10205409}
+.access .app-mark{margin-top:18px}
+.access-actions{width:min(100%,325px);margin:44px 0 30px}
+.access-form{margin:36px auto 20px}
+.access-form .skill-button{width:100%;min-height:46px}
+.demo-disclaimer{font-size:12px!important;color:#66738a!important;font-weight:400!important;line-height:1.5;max-width:33ch;text-align:center;margin:0 auto}
+.nav-link:active,.skill-button:active{transform:scale(.985)}
+.skill-subtabs button:focus-visible,.faq-question:focus-visible{outline:2px solid #4877d2;outline-offset:-2px}
+.skill-button:focus-visible{outline-offset:3px}
+.skill-card .skill-button{max-width:100%}
+.event:hover,.faq-question:hover{background:#f7f9fd}
+.settings-row:focus-visible,.path-lesson:focus-visible{outline-offset:-2px}
+#side-nav.mobile-open{z-index:100}
+@media(max-width:700px){
+.access-mode #content{padding:12px;width:100%;max-width:440px}
+.access{min-height:calc(100dvh - 24px);padding:20px 18px;border:0;border-radius:0;box-shadow:none}
+.access-actions{margin:42px 0 30px}
+#bottom-nav .nav-link{min-width:0}
+}
