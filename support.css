@@ -1,0 +1,44 @@
+
+/* FAQ e triagem — componentes de suporte SkillUp */
+.support-heading h2{margin:0 0 6px;font-size:21px;letter-spacing:-.5px}
+.support-heading p{color:var(--muted);font-size:13px;margin:0}
+.support-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.support-section-head h3{margin:0;font-size:16px}
+.support-section-head>span{font-size:11px;color:var(--muted)}
+.support-section-head p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.support-faq #faq-search{margin-bottom:14px}
+.support-filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.support-filters button,.support-quick button{border:1px solid #dbe1ed;background:#fff;color:#44526c;padding:8px 11px;border-radius:8px;font-size:12px;font-weight:650}
+.support-filters button.active{color:var(--navy);background:#ecf1fc;border-color:#adbfeb}
+.support-faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-question{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:66px;padding:13px 2px;gap:15px;text-align:left;border:0;background:transparent;color:var(--dark)}
+.faq-question>span{display:grid;gap:4px}
+.faq-question small{font-size:10px;color:#63708b}
+.faq-question strong{font-size:13px;font-weight:700;line-height:1.45}
+.faq-question>b{font-size:19px;font-weight:450;color:var(--navy)}
+.faq-answer{margin:0 18px 17px 2px!important;font-size:13px!important;color:#505e73!important;line-height:1.65!important}
+.support-empty{font-size:13px;color:var(--muted)}
+.support-reset{background:none;border:0;padding:7px;color:var(--navy);font-size:12px;font-weight:700}
+.support-history{display:flex;flex-direction:column;gap:12px;min-height:210px;max-height:330px;overflow-y:auto;background:#f8f9fc;border:1px solid var(--line);border-radius:10px;padding:16px;scrollbar-width:thin}
+.support-message{display:flex;width:100%}
+.support-message span{display:block;max-width:86%;padding:11px 13px;border-radius:12px;font-size:12px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.support-message.bot{justify-content:flex-start}
+.support-message.bot span{background:#fff;border:1px solid #e1e6f0;border-bottom-left-radius:3px}
+.support-message.user{justify-content:flex-end}
+.support-message.user span{background:#102465;color:#fff;border-bottom-right-radius:3px}
+.support-quick{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.support-quick button:hover{background:#edf2fa}
+.support-compose{display:flex;align-items:stretch;gap:9px}
+.support-compose .skill-input{flex:1;min-width:0}
+.support-compose .skill-button{margin:0;width:auto;min-width:85px}
+.support-privacy{font-size:11px!important;color:#68738a!important;margin:12px 0 0!important}
+.support-chat #triage-copy{margin-top:13px}
+@media(max-width:700px){
+ .support-section-head h3{font-size:15px}
+ .support-history{min-height:190px;max-height:310px;padding:12px}
+ .support-message span{max-width:92%}
+ .support-compose .skill-button{min-width:68px;padding:9px}
+ .support-filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:5px}
+ .support-filters button{white-space:nowrap}
+}
