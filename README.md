@@ -25,3 +25,6 @@ Abra `index.html` em um navegador; não precisa de instalação. Os arquivos **a
 - Login e cadastro são demonstrações locais sem validação de credenciais; nenhum backend, login real, integração com instituições ou envio de candidaturas.
 - Interações de suporte e vagas são simulações locais. A interface e os fluxos exigem testes manuais no navegador antes de uso em produção.
 - Alguns elementos visuais foram aproximados a partir dos PDFs exportados.
+
+## Experiência de entrada
+O SkillUp sempre apresenta uma tela de acesso antes de exibir o conteúdo, exceto durante a mesma sessão de navegação após entrar. O login é **apenas demonstrativo**: não valida usuários ou senhas, não protege dados e não concede acesso seguro. A sessão é mantida com `sessionStorage`, enquanto nome, perfil e progresso de demonstração ficam no `localStorage`. Para produção, será necessário autenticação real no servidor e proteção de rotas.
