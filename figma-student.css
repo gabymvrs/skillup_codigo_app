@@ -46,3 +46,11 @@ body{overflow-x:hidden}
 .quick-actions{gap:8px}
 .institution-stats{grid-template-columns:1fr}
 }
+
+/* Ícones SVG da tab bar de referência */
+.nav-icon{display:grid;place-items:center;width:26px;height:26px}
+.nav-icon svg{display:block;width:24px;height:24px}
+#bottom-nav .nav-link .nav-icon{height:27px}
+#side-nav .nav-icon{margin:0 3px}
+#bottom-nav .nav-link.selected{background:#d8d8d8}
+@media(max-width:700px){#bottom-nav .nav-link{border-radius:7px}#bottom-nav .nav-link .nav-icon{height:27px}}
