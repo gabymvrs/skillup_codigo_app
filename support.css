@@ -89,3 +89,14 @@ body:has(.access-mode) #help-fab{display:none}
 
 /* Oculta visualmente o rótulo do campo; mantém acessível para leitores de tela */
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+/* Seletor de visualização do painel flutuante: Bot / FAQ */
+#help-content .help-switch{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#eef1f7;border-radius:10px;padding:4px;margin-bottom:14px}
+#help-content .help-switch button{min-height:38px;border:0;background:transparent;color:#59657b;border-radius:8px;font-size:13px;font-weight:700}
+#help-content .help-switch button[aria-selected="true"]{background:#fff;color:#07165c;box-shadow:0 1px 4px #1423491a}
+#help-content .help-switch button:focus-visible{outline:2px solid #4778dd;outline-offset:1px}
+#help-content[data-active-tab="bot"] .support-faq,
+#help-content[data-active-tab="faq"] .support-chat{display:none!important}
+#help-content[data-active-tab="faq"] .support-faq{display:block}
+#help-content[data-active-tab="faq"] .support-faq .support-faq-list{max-height:none;overflow:visible}
+#help-content[data-active-tab="bot"] .support-history{max-height:360px;min-height:220px}
