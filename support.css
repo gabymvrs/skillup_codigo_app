@@ -71,3 +71,6 @@ body.help-open{overflow:hidden}
  #help-panel{right:0;bottom:calc(59px + env(safe-area-inset-bottom));height:min(78dvh,660px);width:100%;border-radius:16px 16px 0 0}
  #help-content{padding:12px}
 }
+
+/* A assistência geral fica disponível após entrar no aplicativo. */
+body:has(.access-mode) #help-fab{display:none}
