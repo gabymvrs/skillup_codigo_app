@@ -3,7 +3,7 @@
 Interface web responsiva baseada no arquivo enviado **SkillUp wireframe (19).zip**, que contém 78 telas exportadas em PDF.
 
 ## O que está implementado nesta etapa
-- Interface **Estudante**, com navegação **Home, Aprenda, Social, Emprego e Config.**
+- Interface **Estudante** e painéis iniciais de **Docente, Recrutador e Instituição**, com navegação **Home, Aprenda, Social, Emprego e Config.**
 - Aprenda: **Material, Prática, Trilhas e Suporte**
 - Social: **Início, Fóruns, Projetos e Feed**
 - Home: progresso, trilha atual, agenda, suporte, conquistas e dica de carreira
@@ -21,7 +21,7 @@ Abra `index.html` em um navegador; não precisa de instalação. Os arquivos **a
 `style.css` e `script.js` são os arquivos da versão experimental anterior e **não são carregados** pela interface atual.
 
 ## Limitações importantes
-- **Não é ainda a reprodução completa das 78 telas**. Telas de Docente, Recrutador e Instituição, além de todos os fluxos de acesso/cadastro, ainda não foram implementadas.
-- Nenhum backend, login real, integração com instituições ou envio de candidaturas.
+- **Não é ainda a reprodução completa das 78 telas**. Os quatro painéis iniciais e fluxos demonstrativos de entrada/cadastro por perfil já existem, mas várias telas específicas de Docente, Recrutador e Instituição ainda não têm conteúdo próprio e os fluxos completos das 78 telas não foram concluídos.
+- Login e cadastro são demonstrações locais sem validação de credenciais; nenhum backend, login real, integração com instituições ou envio de candidaturas.
 - Interações de suporte e vagas são simulações locais. A interface e os fluxos exigem testes manuais no navegador antes de uso em produção.
 - Alguns elementos visuais foram aproximados a partir dos PDFs exportados.
