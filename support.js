@@ -50,3 +50,44 @@ function refresh(){const container=document.getElementById('support-root');if(!c
 function bind(){const q=document.getElementById('faq-search');if(!q)return;q.oninput=e=>{search=e.target.value;updateFaq()};document.querySelectorAll('[data-faq-cat]').forEach(b=>b.onclick=()=>{category=b.dataset.faqCat;refresh()});updateFaq();document.querySelectorAll('[data-triage-topic]').forEach(b=>b.onclick=()=>{const i=intents.find(x=>x.key===b.dataset.triageTopic);say('user',i.label);ticket.topic=i.label;stage='detail';say('bot','Conte o que aconteceu, em qual tela e o que você tentou fazer.');save();refresh()});document.querySelectorAll('[data-triage-impact]').forEach(b=>b.onclick=()=>{say('user',b.dataset.triageImpact);finish(b.dataset.triageImpact)});document.getElementById('triage-form').onsubmit=e=>{e.preventDefault();receive(document.getElementById('triage-input').value)};document.getElementById('triage-reset').onclick=()=>{messages=[];stage='topic';ticket={topic:'',detail:'',impact:''};say('bot','Vamos iniciar novamente. Qual é o assunto da sua dúvida?');refresh()};const copy=document.getElementById('triage-copy');if(copy)copy.onclick=async()=>{const txt='Triagem SkillUp\nAssunto: '+ticket.topic+'\nImpacto: '+ticket.impact+'\nDescrição: '+ticket.detail+'\n(Resumo gerado localmente; nenhum chamado foi aberto)';try{await navigator.clipboard.writeText(txt);copy.textContent='Resumo copiado!'}catch{window.prompt('Copie o resumo:',txt)}}}
 window.SkillSupport={render,bind,open(){if(typeof go==='function'){go('aprenda');subA='Suporte';render()}},reset(){messages=[];stage='topic';ticket={topic:'',detail:'',impact:''};say('bot','Olá! Como posso ajudar?')}};
 })();
+
+/* Painel global: reutiliza a triagem sem remover a página Aprenda > Suporte. */
+(function(){
+ const fab=document.getElementById('help-fab');
+ const panel=document.getElementById('help-panel');
+ const backdrop=document.getElementById('help-backdrop');
+ const close=document.getElementById('help-close');
+ const body=document.getElementById('help-content');
+ if(!fab||!panel||!body)return;
+ let previousFocus=null;
+ function setOpen(open){
+   panel.hidden=!open;
+   backdrop.hidden=!open;
+   fab.setAttribute('aria-expanded',String(open));
+   document.body.classList.toggle('help-open',open);
+   if(open){
+     previousFocus=document.activeElement;
+     body.innerHTML='<div id="support-root">'+window.SkillSupport.render()+'</div>';
+     window.SkillSupport.bind();
+     (body.querySelector('#triage-input')||close).focus();
+     const log=body.querySelector('#triage-history');
+     if(log)log.scrollTop=log.scrollHeight;
+   }else{
+     body.innerHTML='';
+     if(previousFocus&&typeof previousFocus.focus==='function')previousFocus.focus();
+   }
+ }
+ fab.addEventListener('click',()=>setOpen(panel.hidden));
+ close.addEventListener('click',()=>setOpen(false));
+ backdrop.addEventListener('click',()=>setOpen(false));
+ document.addEventListener('keydown',e=>{
+   if(panel.hidden)return;
+   if(e.key==='Escape'){e.preventDefault();setOpen(false)}
+   if(e.key==='Tab'){
+     const els=Array.from(panel.querySelectorAll('button:not([disabled]),input:not([disabled]),[href],select,textarea')).filter(x=>x.getClientRects().length);
+     if(!els.length)return;
+     if(e.shiftKey&&document.activeElement===els[0]){e.preventDefault();els[els.length-1].focus()}
+     else if(!e.shiftKey&&document.activeElement===els[els.length-1]){e.preventDefault();els[0].focus()}
+   }
+ });
+})();
