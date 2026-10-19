@@ -68,8 +68,23 @@ window.SkillSupport={render,bind,open(){if(typeof go==='function'){go('aprenda')
    document.body.classList.toggle('help-open',open);
    if(open){
      previousFocus=document.activeElement;
-     body.innerHTML='<div id="support-root">'+window.SkillSupport.render()+'</div>';
+     body.innerHTML='<div class="help-switch" role="tablist" aria-label="Tipo de ajuda"><button type="button" id="help-tab-bot" role="tab" aria-selected="true" aria-controls="help-bot-section">Bot de triagem</button><button type="button" id="help-tab-faq" role="tab" aria-selected="false" aria-controls="help-faq-section">FAQ</button></div><div id="support-root">'+window.SkillSupport.render()+'</div>';
+     const switchTo=(tab,focus=true)=>{
+       body.dataset.activeTab=tab;
+       body.querySelector('#help-tab-bot').setAttribute('aria-selected',String(tab==='bot'));
+       body.querySelector('#help-tab-faq').setAttribute('aria-selected',String(tab==='faq'));
+       const chat=body.querySelector('.support-chat'),faq=body.querySelector('.support-faq');
+       if(chat){chat.id='help-bot-section';chat.setAttribute('role','tabpanel')}
+       if(faq){faq.id='help-faq-section';faq.setAttribute('role','tabpanel')}
+       if(focus)(tab==='bot'?body.querySelector('#triage-input'):body.querySelector('#faq-search'))?.focus();
+     };
+     body.querySelector('#help-tab-bot').onclick=()=>switchTo('bot');
+     body.querySelector('#help-tab-faq').onclick=()=>switchTo('faq');
+     body.querySelector('.help-switch').addEventListener('keydown',e=>{
+       if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();switchTo(body.dataset.activeTab==='bot'?'faq':'bot');}
+     });
      window.SkillSupport.bind();
+     switchTo('bot',false);
      (body.querySelector('#triage-input')||close).focus();
      const log=body.querySelector('#triage-history');
      if(log)log.scrollTop=log.scrollHeight;
