@@ -1,0 +1,89 @@
+{
+  "engine": "PostgreSQL via PGlite; auth and storage APIs mocked, real RLS executed",
+  "tests": [
+    {
+      "name": "Signup ignores forged administrative metadata",
+      "status": "pass"
+    },
+    {
+      "name": "No role self-promotion or approval from browser",
+      "status": "pass"
+    },
+    {
+      "name": "Student can update only their own editable profile",
+      "status": "pass"
+    },
+    {
+      "name": "Student and institution cannot read other tenant classes",
+      "status": "pass"
+    },
+    {
+      "name": "Only institution can enroll their affiliated students",
+      "status": "pass"
+    },
+    {
+      "name": "Student cannot publish jobs or mint XP rows",
+      "status": "pass"
+    },
+    {
+      "name": "Prerequisite enforced; module completion idempotent",
+      "status": "pass"
+    },
+    {
+      "name": "XP is server-graded and awarded once",
+      "status": "pass"
+    },
+    {
+      "name": "Submission rejects forged grade and other student identity",
+      "status": "pass"
+    },
+    {
+      "name": "Only responsible teacher/institution can grade",
+      "status": "pass"
+    },
+    {
+      "name": "Candidate profile stays private until application",
+      "status": "pass"
+    },
+    {
+      "name": "Experience ownership and candidate sharing are enforced",
+      "status": "pass"
+    },
+    {
+      "name": "Application status permissions and withdrawal enforced",
+      "status": "pass"
+    },
+    {
+      "name": "Post authors are stamped; users cannot forge another author",
+      "status": "pass"
+    },
+    {
+      "name": "Chat only allows related accounts",
+      "status": "pass"
+    },
+    {
+      "name": "Private storage denies other users documents",
+      "status": "pass"
+    },
+    {
+      "name": "Certificate requires all modules and supervising staff",
+      "status": "pass"
+    },
+    {
+      "name": "Anonymous cannot access private tables; verification is narrow",
+      "status": "pass"
+    },
+    {
+      "name": "Support is private until explicit sharing with an affiliated teacher",
+      "status": "pass"
+    },
+    {
+      "name": "MFA enforced by RLS and RPC, not only frontend",
+      "status": "pass"
+    },
+    {
+      "name": "Every exposed app table has RLS",
+      "status": "pass"
+    }
+  ]
+}

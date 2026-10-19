@@ -1,0 +1,58 @@
+/* Source: case study pages 20–23. Semantic colors: user's corrected values. */
+:root {
+  --primary-100: #bbd1fb;
+  --primary-200: #78a2f8;
+  --primary-300: #3474f4;
+  --primary-400: #0c50d9;
+  --primary-500: #081998;
+  --secondary-100: #8ba0f0;
+  --secondary-200: #5271e9;
+  --secondary-300: #1c44dd;
+  --secondary-400: #1532a3;
+  --secondary-500: #0c1c5d;
+  --tertiary-100: #f8fbff;
+  --tertiary-200: #eef5ff;
+  --tertiary-300: #e0ecff;
+  --tertiary-400: #d2e4ff;
+  --tertiary-500: #c6dafe;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --error: #f90001;
+  --success: #2cb76d;
+  --warning: #f3b701;
+  --primary: var(--primary-500);
+  --secondary: var(--secondary-500);
+  --surface: #fff;
+  --text: #000000;
+  --muted: var(--neutral-500);
+  --line: var(--neutral-200);
+  --font: "Lexend Variable", "Lexend", system-ui, sans-serif;
+  --headline-l: 2rem;
+  --headline-m: 1.5rem;
+  --title: 1.125rem;
+  --body: 0.875rem;
+  --label: 0.75rem;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --border: 1px solid var(--line);
+  --shadow: none;
+  --shadow-dialog: 0 16px 64px #0c1c5d26;
+  --focus: 2px solid var(--primary-400);
+  --nav-width: 216px;
+  --tabbar-height: 68px;
+  --content-width: 1160px;
+  /* Breakpoints: 768px tablet / 1024px desktop (implementation decisions). */
+}
