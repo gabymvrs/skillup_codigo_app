@@ -86,3 +86,6 @@ body:has(.access-mode) #help-fab{display:none}
  #help-fab span{display:inline!important}
  #help-content .support-compose .skill-button{min-width:70px;padding-inline:10px}
 }
+
+/* Oculta visualmente o rótulo do campo; mantém acessível para leitores de tela */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
