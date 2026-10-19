@@ -1,14 +1,27 @@
-# SkillUp — Protótipo web funcional
+# SkillUp — implementação do wireframe (em progresso)
 
-Abra `index.html` em um navegador moderno. Não exige instalação, API nem servidor. Também é possível publicar estes três arquivos estáticos na Vercel/Netlify/GitHub Pages.
+Interface web responsiva baseada no arquivo enviado **SkillUp wireframe (19).zip**, que contém 78 telas exportadas em PDF.
 
-## Fluxos disponíveis
-- Início com progresso atualizado
-- Trilhas com busca, filtros e módulos que podem ser marcados como concluídos
-- Progresso por trilha e emissão de certificado *demonstrativo* após 100%
-- Oportunidades com busca, filtros e registro local de interesse (*nenhum envio real a empresas*)
-- Perfil editável e dados salvos no `localStorage`
-- Navegação mobile com menu e layout adaptativo para desktop/tablet/celular
+## O que está implementado nesta etapa
+- Interface **Estudante**, com navegação **Home, Aprenda, Social, Emprego e Config.**
+- Aprenda: **Material, Prática, Trilhas e Suporte**
+- Social: **Início, Fóruns, Projetos e Feed**
+- Home: progresso, trilha atual, agenda, suporte, conquistas e dica de carreira
+- Emprego: selo de empregabilidade, vagas **ilustrativas** e depoimentos ilustrativos
+- Configurações: perfil editável
+- Experiência mobile com navegação inferior e web com menu lateral
+- Funcionalidades locais demonstrativas: concluir módulos, desafio diário, registrar interesse, editar nome, navegação e filtros básicos
 
-## Limites
-O arquivo Figma compartilhado não pôde ser lido no ambiente de execução. Por isso, esta é uma implementação **inspirada nas funcionalidades previamente descritas do SkillUp**, não uma reprodução pixel-perfect verificável do wireframe. Conteúdos, empresas, inscrições e certificados são demonstrativos. Para autenticação real, conteúdo didático e candidaturas reais será necessária uma API/backend e autorização dos serviços envolvidos.
+## Como executar
+Abra `index.html` em um navegador; não precisa de instalação. Os arquivos **ativos** são:
+- `index.html`
+- `figma-student.css`
+- `figma-student.js`
+
+`style.css` e `script.js` são os arquivos da versão experimental anterior e **não são carregados** pela interface atual.
+
+## Limitações importantes
+- **Não é ainda a reprodução completa das 78 telas**. Telas de Docente, Recrutador e Instituição, além de todos os fluxos de acesso/cadastro, ainda não foram implementadas.
+- Nenhum backend, login real, integração com instituições ou envio de candidaturas.
+- Interações de suporte e vagas são simulações locais. A interface e os fluxos exigem testes manuais no navegador antes de uso em produção.
+- Alguns elementos visuais foram aproximados a partir dos PDFs exportados.
