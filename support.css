@@ -74,3 +74,15 @@ body.help-open{overflow:hidden}
 
 /* A assistência geral fica disponível após entrar no aplicativo. */
 body:has(.access-mode) #help-fab{display:none}
+
+/* Bot flutuante com rótulo completo e campo de mensagem mais confortável */
+#help-fab{width:max-content;max-width:calc(100vw - 28px);min-height:48px;justify-content:center;white-space:nowrap}
+#help-fab span{display:inline!important;font-size:13px;white-space:nowrap}
+#help-content .support-compose{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;width:100%}
+#help-content .support-compose .skill-input{width:100%;min-width:0;flex:1}
+#help-content .support-compose .skill-button{width:auto;min-width:76px;white-space:nowrap;padding-inline:14px}
+@media(max-width:700px){
+ #help-fab{right:14px;max-width:calc(100vw - 28px);padding:12px 16px;gap:9px}
+ #help-fab span{display:inline!important}
+ #help-content .support-compose .skill-button{min-width:70px;padding-inline:10px}
+}
