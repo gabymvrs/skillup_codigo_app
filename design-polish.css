@@ -99,3 +99,18 @@ h1,h2,h3,p{overflow-wrap:break-word}
   .access-mode #content{padding:22px 20px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}button{transition:none}}
+
+/* Iconografia SVG consistente com os wireframes */
+.ui-icon{width:19px;height:19px;display:inline-block;vertical-align:-.23em;flex:none;stroke:currentColor}
+.skill-button .ui-icon{width:18px;height:18px;margin-right:5px}
+.skill-tag .ui-icon{width:13px;height:13px;vertical-align:-.2em;stroke-width:2.2}
+.event>span{width:35px;height:35px;background:#edf2fb;border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+.event>span .ui-icon{color:var(--navy);width:19px;height:19px}
+.subjects button>span{display:flex;justify-content:flex-end}
+.subjects button>span .ui-icon{width:29px;height:29px;stroke-width:1.65}
+.achievements>span{width:38px;height:38px;display:grid;place-items:center;background:#edf2ff;border:1px solid #e1e9fa;border-radius:9px}
+.achievements .ui-icon{width:21px;height:21px;stroke-width:1.8}
+.skill-card .card-heading>span .ui-icon{width:23px;height:23px}
+.quick-actions .skill-button{gap:9px}
+.quick-actions .ui-icon{width:18px;height:18px;margin:0}
+.access-actions .ui-icon{width:20px;height:20px;margin-right:8px}
