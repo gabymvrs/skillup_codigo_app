@@ -23,6 +23,7 @@ const mocks = vi.hoisted(() => ({
   },
   api: {
     signUp: vi.fn(),
+    signInWithOAuth: vi.fn(),
     resetPasswordForEmail: vi.fn(),
     updateUser: vi.fn(),
     resend: vi.fn(),
@@ -30,6 +31,9 @@ const mocks = vi.hoisted(() => ({
 }));
 vi.mock("../src/state/AuthContext", () => ({ useAuth: () => mocks.auth }));
 vi.mock("../src/services/supabase", () => ({
+  getOAuthProviders: vi
+    .fn()
+    .mockResolvedValue({ google: true, facebook: false }),
   configured: true,
   demoEnabled: true,
   requireSupabase: () => ({ auth: mocks.api }),
@@ -68,9 +72,12 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     mocks.auth.signIn.mockRejectedValue(new Error("Invalid login credentials"));
     const user = userEvent.setup();
     show("/login");
-    await user.type(screen.getByLabelText("E-mail"), "aluno@example.test");
-    await user.type(screen.getByLabelText("Senha"), "invalid-pass");
-    await user.click(screen.getByRole("button", { name: "Fazer login" }));
+    await user.type(
+      screen.getByLabelText(/^E-mail: ?$|^E-mail$/),
+      "aluno@example.test",
+    );
+    await user.type(screen.getByLabelText("Senha:"), "invalid-pass");
+    await user.click(screen.getByRole("button", { name: "Fazer Login" }));
     expect(await screen.findByRole("alert")).toHaveTextContent(
       /E-mail ou senha incorretos/,
     );
@@ -81,9 +88,12 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
   it("navigates only after signIn succeeds", async () => {
     const user = userEvent.setup();
     show("/login");
-    await user.type(screen.getByLabelText("E-mail"), "aluno@example.test");
-    await user.type(screen.getByLabelText("Senha"), "example-pass");
-    await user.click(screen.getByRole("button", { name: "Fazer login" }));
+    await user.type(
+      screen.getByLabelText(/^E-mail: ?$|^E-mail$/),
+      "aluno@example.test",
+    );
+    await user.type(screen.getByLabelText("Senha:"), "example-pass");
+    await user.click(screen.getByRole("button", { name: "Fazer Login" }));
     expect(
       await screen.findByRole("heading", {
         name: "Acesso autorizado pela sessão",
@@ -99,30 +109,13 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     async (role) => {
       const user = userEvent.setup();
       show(`/cadastro/${role}`);
-      await user.type(
-        screen.getByLabelText("Nome completo"),
-        "Pessoa de teste",
+      await user.type(screen.getByLabelText("E-mail:"), "pessoa@example.test");
+      await user.type(screen.getByLabelText("Senha:"), "example-pass");
+      await user.click(
+        screen.getByRole("button", {
+          name: role === "estudante" ? "Completar Cadastro" : "Criar acesso",
+        }),
       );
-      await user.type(screen.getByLabelText("E-mail"), "pessoa@example.test");
-      await user.type(screen.getByLabelText(/^Senha/), "example-pass");
-      await user.type(screen.getByLabelText("Confirmar senha"), "example-pass");
-      if (role !== "estudante")
-        await user.type(
-          screen.getByLabelText(
-            role === "instituicao"
-              ? "Razão social"
-              : "Instituição ou empresa vinculada",
-          ),
-          "Instituição de teste",
-        );
-      if (["recrutador", "instituicao"].includes(role))
-        await user.type(
-          screen.getByLabelText("CNPJ ou registro institucional"),
-          "registro exemplo",
-        );
-      if (role === "instituicao")
-        await user.type(screen.getByLabelText("CNAE"), "exemplo");
-      await user.click(screen.getByRole("button", { name: "Criar conta" }));
       expect(
         await screen.findByText(/Verifique sua caixa de entrada/),
       ).toBeInTheDocument();
@@ -132,18 +125,50 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       expect(request.options.emailRedirectTo).toContain("/auth/callback");
     },
   );
-  it("rejects different passwords before contacting the service", async () => {
+  it("keeps password visibility under the user's control without submitting", async () => {
     const user = userEvent.setup();
     show("/cadastro/estudante");
-    await user.type(screen.getByLabelText("Nome completo"), "Pessoa de teste");
-    await user.type(screen.getByLabelText("E-mail"), "pessoa@example.test");
-    await user.type(screen.getByLabelText(/^Senha/), "example-pass");
-    await user.type(screen.getByLabelText("Confirmar senha"), "different-pass");
-    await user.click(screen.getByRole("button", { name: "Criar conta" }));
-    expect(await screen.findByRole("alert")).toHaveTextContent(
-      "As senhas precisam ser iguais.",
-    );
+    const password = screen.getByLabelText("Senha:");
+    await user.type(password, "example-pass");
+    expect(password).toHaveAttribute("type", "password");
+    await user.click(screen.getByRole("button", { name: "Mostrar senha" }));
+    expect(password).toHaveAttribute("type", "text");
+    await user.click(screen.getByRole("button", { name: "Ocultar senha" }));
+    expect(password).toHaveAttribute("type", "password");
     expect(mocks.api.signUp).not.toHaveBeenCalled();
+  });
+  it("shows provider availability and calls real OAuth only for enabled providers", async () => {
+    const user = userEvent.setup();
+    show("/login");
+    await waitFor(() =>
+      expect(
+        screen.getByRole("button", { name: "Entrar com Google" }),
+      ).toBeEnabled(),
+    );
+    expect(
+      screen.getByRole("button", { name: "Entrar com Facebook" }),
+    ).toBeDisabled();
+    await user.click(screen.getByRole("button", { name: "Entrar com Google" }));
+    expect(mocks.api.signInWithOAuth).toHaveBeenCalledWith({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
+  });
+  it("does not mark a rejected signup as successful", async () => {
+    mocks.api.signUp.mockResolvedValue({
+      error: new Error("Falha de conexão"),
+    });
+    const user = userEvent.setup();
+    show("/cadastro/estudante");
+    await user.type(screen.getByLabelText("E-mail:"), "pessoa@example.test");
+    await user.type(screen.getByLabelText("Senha:"), "example-pass");
+    await user.click(
+      screen.getByRole("button", { name: "Completar Cadastro" }),
+    );
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "Falha de conexão",
+    );
+    expect(screen.queryByText(/Verifique sua caixa/)).not.toBeInTheDocument();
   });
   it("does not confirm recovery when the service fails", async () => {
     mocks.api.resetPasswordForEmail.mockResolvedValue({
@@ -151,7 +176,10 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     });
     const user = userEvent.setup();
     show("/recuperar-senha");
-    await user.type(screen.getByLabelText("E-mail"), "pessoa@example.test");
+    await user.type(
+      screen.getByLabelText(/^E-mail: ?$|^E-mail$/),
+      "pessoa@example.test",
+    );
     await user.click(
       screen.getByRole("button", { name: "Enviar link de recuperação" }),
     );
@@ -185,7 +213,10 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     const user = userEvent.setup();
     show("/auth/callback");
     expect(screen.getByText(/O link pode ter expirado/)).toBeInTheDocument();
-    await user.type(screen.getByLabelText("E-mail"), "pessoa@example.test");
+    await user.type(
+      screen.getByLabelText(/^E-mail: ?$|^E-mail$/),
+      "pessoa@example.test",
+    );
     await user.click(
       screen.getByRole("button", { name: "Reenviar confirmação" }),
     );

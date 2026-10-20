@@ -23,10 +23,21 @@ const nav = [
 ];
 export function AuthGate() {
   const auth = useAuth(),
-    action = useAction();
+    action = useAction(),
+    location = useLocation();
   if (auth.loading) return <Loading />;
   if (auth.recovery) return <Navigate to="/redefinir-senha" replace />;
-  if (!auth.id) return <Navigate to="/login" replace />;
+  if (!auth.id)
+    return (
+      <Navigate
+        to={
+          location.pathname === "/cadastro/documentos"
+            ? "/login?cadastro=1"
+            : "/login"
+        }
+        replace
+      />
+    );
   if (auth.mfaRequired) return <MfaChallenge />;
   if (auth.error || !auth.role)
     return (

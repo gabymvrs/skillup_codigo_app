@@ -7,6 +7,8 @@ Todas as rotas `/app/*` passam por sessão, MFA quando configurado e consulta de
 | `/` | Boas-vindas | Público; redireciona sessão ativa |
 | `/perfis` | Selecionar tipo de cadastro | Público |
 | `/cadastro/:role` | Cadastro dos quatro perfis | Público; privilégios dependem de aprovação |
+| `/cadastro/documentos` | Documentos por perfil; instituição em duas etapas | Sessão real, e-mail confirmado, MFA/RLS; demo não coleta arquivos |
+| `/login?cadastro=1` | Login com continuação do cadastro | Após sucesso, abre documentação |
 | `/login` | Login de e-mail e senha | Público |
 | `/demonstracao` | Entrada explícita nos quatro exemplos | Quando habilitada |
 | `/recuperar-senha` | Solicitar recuperação | Público |

@@ -20,6 +20,7 @@ import {
   AuthCallback,
 } from "./pages/Auth";
 import { Home } from "./pages/Home";
+import { RegistrationDocuments } from "./pages/Registration";
 import { Materials, MaterialReader, OfflineLibrary } from "./pages/Materials";
 import { Practice, Tracks, TrackDetail } from "./pages/Learning";
 import {
@@ -73,6 +74,12 @@ export function AppRoutes() {
       <Route path="/perfis" element={<RolePicker />} />
       <Route path="/demonstracao" element={<DemoPicker />} />
       <Route path="/cadastro/:role" element={<Signup />} />
+      <Route element={<AuthGate />}>
+        <Route
+          path="/cadastro/documentos"
+          element={<RegistrationDocuments />}
+        />
+      </Route>
       <Route path="/recuperar-senha" element={<Recover />} />
       <Route path="/redefinir-senha" element={<ResetPassword />} />
       <Route path="/auth/callback" element={<AuthCallback />} />

@@ -22,7 +22,7 @@ describe("Authenticated boundaries and role navigation", () => {
   it("redirects a direct app URL to login without silently creating a demo session", async () => {
     app("/app/home", null);
     expect(
-      await screen.findByRole("button", { name: "Fazer login" }),
+      await screen.findByRole("button", { name: "Fazer Login" }),
     ).toBeDisabled();
     expect(
       screen.queryByRole("heading", { name: /Olá/ }),

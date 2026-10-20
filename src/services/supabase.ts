@@ -32,3 +32,17 @@ export function requireSupabase() {
     );
   return supabase;
 }
+export async function getOAuthProviders() {
+  if (!configured) return { google: false, facebook: false };
+  const response = await fetch(`${url}/auth/v1/settings`, {
+    headers: { apikey: key! },
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!response.ok)
+    throw new Error("Não foi possível verificar os provedores.");
+  const settings = await response.json();
+  return {
+    google: settings.external?.google === true,
+    facebook: settings.external?.facebook === true,
+  };
+}

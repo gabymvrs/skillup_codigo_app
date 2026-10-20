@@ -11,6 +11,7 @@ import type { Role, UserRole } from "../lib/types";
 import { demoEnabled, requireSupabase, supabase } from "../services/supabase";
 import { demoUsers } from "../data/demo";
 import { errorMessage } from "../lib/utils";
+import { clearRegistrationDraft } from "../services/registration";
 const roles: Role[] = ["estudante", "docente", "recrutador", "instituicao"];
 function savedDemo(): Role | null {
   try {
@@ -192,6 +193,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { error } = await supabase.auth.signOut({ scope: "global" });
       if (error) throw error;
     }
+    clearRegistrationDraft();
     sessionStorage.removeItem("skillup.demo.role");
     setDemoRole(null);
     setSession(null);

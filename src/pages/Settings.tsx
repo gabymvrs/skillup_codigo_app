@@ -1,3 +1,4 @@
+import { registrationDocuments } from "../services/registration";
 import { Experiences } from "../components/Experiences";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -441,17 +442,7 @@ export function ProfileEditor() {
     </div>
   );
 }
-const documents: Record<Role, string[]> = {
-  estudante: ["Carteira de estudante (opcional)"],
-  docente: ["Declaração institucional", "Comprovante de vínculo profissional"],
-  recrutador: ["Declaração institucional", "Contrato social"],
-  instituicao: [
-    "Declaração institucional",
-    "Alvará de funcionamento",
-    "Contrato social",
-    "Credenciamento institucional",
-  ],
-};
+const documents = registrationDocuments;
 export function Verification() {
   const auth = useAuth(),
     repo = useData(),
@@ -466,6 +457,11 @@ export function Verification() {
         title="Verificação de perfil"
         description="A aprovação de um perfil profissional acontece no servidor, após análise do responsável."
       />
+      {!auth.demo && (
+        <ActionLink to="/cadastro/documentos" variant="outline">
+          Completar cadastro e documentos
+        </ActionLink>
+      )}
       {auth.demo && (
         <Notice>
           Não envie documentos pessoais na demonstração. A coleta de arquivos só

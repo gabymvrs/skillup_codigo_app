@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { configured, demoEnabled, requireSupabase } from "../services/supabase";
 import { roleLabels, type Role } from "../lib/types";
@@ -8,71 +8,13 @@ import {
   ActionFeedback,
   ActionLink,
   Button,
-  Icon,
-  Modal,
   Notice,
   useAction,
 } from "../components/ui";
-const allRoles = Object.keys(roleLabels) as Role[];
-function AuthFrame({
-  children,
-  description,
-  back = true,
-}: {
-  children: React.ReactNode;
-  description: string;
-  back?: boolean;
-}) {
-  const [policy, setPolicy] = useState("");
-  return (
-    <main className="auth-page">
-      <div className="auth-panel">
-        {back && (
-          <Link
-            to="/"
-            className="auth-back icon-button"
-            aria-label="Voltar ao início"
-          >
-            <Icon name="arrow" />
-          </Link>
-        )}
-        <img
-          className="app-logo"
-          src="/assets/skillup-logo.png"
-          alt="SkillUp"
-        />
-        <h1>Bem-vindo!</h1>
-        <p className="auth-description">{description}</p>
-        {children}
-        <footer>
-          {["Termos", "Privacidade", "Políticas"].map((x) => (
-            <button className="text-link" key={x} onClick={() => setPolicy(x)}>
-              {x}
-            </button>
-          ))}
-        </footer>
-      </div>
-      {policy && (
-        <Modal title={policy} onClose={() => setPolicy("")}>
-          <p>
-            Esta é uma versão de desenvolvimento do SkillUp. A demonstração
-            mantém dados de exemplo neste navegador. Contas reais usam o projeto
-            Supabase configurado pela instituição responsável.
-          </p>
-          <p>
-            Os documentos institucionais definitivos de {policy.toLowerCase()}{" "}
-            ainda precisam ser fornecidos pelo responsável pela implantação.
-            Este texto não declara conformidade ou reconhecimento institucional.
-          </p>
-          <p>
-            Materiais salvos no app podem ser removidos em Biblioteca offline.
-            Sair remove essas cópias da conta neste dispositivo.
-          </p>
-        </Modal>
-      )}
-    </main>
-  );
-}
+import { AuthFrame } from "../components/auth/AuthFrame";
+import { PasswordField } from "../components/auth/PasswordField";
+import { SocialSignIn } from "../components/auth/SocialSignIn";
+const allRoles: Role[] = ["estudante", "instituicao", "docente", "recrutador"];
 export function Welcome() {
   const auth = useAuth();
   if (auth.id && auth.role) return <Navigate to="/app/home" replace />;
@@ -80,6 +22,7 @@ export function Welcome() {
     <AuthFrame
       description="Selecione como deseja entrar no aplicativo."
       back={false}
+      variant="welcome"
     >
       <div className="auth-options">
         <ActionLink to="/perfis" variant="outline">
@@ -113,7 +56,11 @@ function BadgeDemo() {
 }
 export function RolePicker() {
   return (
-    <AuthFrame description="Selecione com qual tipo de conta você mais se identifica.">
+    <AuthFrame
+      description="Selecione com qual tipo de conta você mais se identifica."
+      back={false}
+      variant="roles"
+    >
       <div className="auth-options">
         {allRoles.map((role) => (
           <ActionLink
@@ -166,6 +113,7 @@ export function DemoPicker() {
   );
 }
 export function Login() {
+  const [search] = useSearchParams();
   const auth = useAuth(),
     navigate = useNavigate(),
     action = useAction();
@@ -177,11 +125,17 @@ export function Login() {
         String(form.get("email")).trim(),
         String(form.get("password")),
       );
-      navigate("/app/home");
+      navigate(
+        search.get("cadastro") === "1" ? "/cadastro/documentos" : "/app/home",
+      );
     });
   }
   return (
-    <AuthFrame description="Complete as informações para entrar na sua conta.">
+    <AuthFrame
+      description="Complete as informações para concluir o Login."
+      back={false}
+      variant="login"
+    >
       {!configured && (
         <Notice>
           O acesso real ainda não foi configurado. Você pode explorar a
@@ -190,179 +144,33 @@ export function Login() {
       )}
       <form className="auth-form" onSubmit={submit}>
         <label>
-          E-mail
+          E-mail:
           <input
             name="email"
             autoComplete="email"
             type="email"
-            placeholder="seu@email.com"
+            placeholder="Ex: Aluno@gmail.com"
             required
           />
         </label>
-        <label>
-          Senha
-          <input
-            name="password"
-            autoComplete="current-password"
-            type="password"
-            required
-          />
-        </label>
-        <Link className="text-link" to="/recuperar-senha">
-          Esqueci minha senha
+        <PasswordField />
+        <Link className="auth-account-link" to="/perfis">
+          Não tenho uma conta
         </Link>
         <Button type="submit" disabled={!configured || action.busy}>
-          {action.busy ? "Entrando…" : "Fazer login"}
+          {action.busy ? "Entrando…" : "Fazer Login"}
         </Button>
         <ActionFeedback action={action} />
       </form>
-      <Link to="/perfis">Não tenho uma conta</Link>
+      <Link className="auth-recovery-link" to="/recuperar-senha">
+        Esqueci minha senha
+      </Link>
+      <SocialSignIn />
       {demoEnabled && <Link to="/demonstracao">Entrar na demonstração</Link>}
     </AuthFrame>
   );
 }
-export function Signup() {
-  const { role: input } = useParams(),
-    role = allRoles.includes(input as Role) ? (input as Role) : "estudante",
-    action = useAction(),
-    [done, setDone] = useState(false),
-    [email, setEmail] = useState("");
-  async function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const f = new FormData(e.currentTarget),
-      password = String(f.get("password"));
-    if (password !== f.get("confirm")) {
-      action.setError("As senhas precisam ser iguais.");
-      return;
-    }
-    await action.run(async () => {
-      const { error } = await requireSupabase().auth.signUp({
-        email: email.trim(),
-        password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-          data: {
-            full_name: String(f.get("name")).trim(),
-            requested_role: role,
-            organization_name: String(f.get("organization") || ""),
-            registration_number: String(f.get("registration") || ""),
-            cnae: String(f.get("cnae") || ""),
-          },
-        },
-      });
-      if (error) throw error;
-      setDone(true);
-    });
-  }
-  return (
-    <AuthFrame description={`Cadastro de ${roleLabels[role].toLowerCase()}.`}>
-      {done ? (
-        <div className="stack">
-          <Notice tone="success">
-            Verifique sua caixa de entrada. Se o endereço puder receber um
-            cadastro, você receberá as instruções para confirmar o e-mail.
-          </Notice>
-          <p>
-            Depois da confirmação, entre para completar seu perfil
-            {role === "estudante"
-              ? "."
-              : " e anexar a documentação para análise."}
-          </p>
-          <ActionLink to="/login">Ir para login</ActionLink>
-        </div>
-      ) : (
-        <>
-          <Notice>
-            {role === "estudante"
-              ? "A conta será ativada após a confirmação de e-mail."
-              : "O acesso profissional depende de aprovação. A seleção deste perfil não libera permissões administrativas."}
-          </Notice>
-          <form className="auth-form" onSubmit={submit}>
-            <label>
-              Nome completo
-              <input
-                name="name"
-                autoComplete="name"
-                minLength={2}
-                maxLength={80}
-                required
-              />
-            </label>
-            <label>
-              E-mail
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-                required
-              />
-            </label>
-            <label>
-              Senha
-              <input
-                type="password"
-                name="password"
-                autoComplete="new-password"
-                minLength={8}
-                maxLength={128}
-                required
-              />
-              <small>Mínimo de 8 caracteres.</small>
-            </label>
-            <label>
-              Confirmar senha
-              <input
-                type="password"
-                name="confirm"
-                autoComplete="new-password"
-                minLength={8}
-                required
-              />
-            </label>
-            {role !== "estudante" && (
-              <>
-                <label>
-                  {role === "instituicao"
-                    ? "Razão social"
-                    : "Instituição ou empresa vinculada"}
-                  <input name="organization" maxLength={160} required />
-                </label>
-                {role !== "docente" && (
-                  <label>
-                    CNPJ ou registro institucional
-                    <input name="registration" maxLength={32} required />
-                  </label>
-                )}
-                {role === "instituicao" && (
-                  <label>
-                    CNAE
-                    <input name="cnae" maxLength={30} required />
-                  </label>
-                )}
-                <p className="small muted">
-                  Os documentos serão anexados na segunda etapa, após confirmar
-                  sua conta.
-                </p>
-              </>
-            )}
-            <Button type="submit" disabled={!configured || action.busy}>
-              {action.busy ? "Aguarde…" : "Criar conta"}
-            </Button>
-            <ActionFeedback action={action} />
-            {!configured && (
-              <Notice>
-                A autenticação real não está configurada nesta implantação.
-              </Notice>
-            )}
-          </form>
-          <Link to="/login">Já tenho uma conta</Link>
-        </>
-      )}
-    </AuthFrame>
-  );
-}
+export { Signup } from "./Registration";
 export function Recover() {
   const action = useAction();
   return (
@@ -480,7 +288,8 @@ export function AuthCallback() {
       ) : auth.id && !auth.demo ? (
         <>
           <Notice tone="success">Sessão confirmada.</Notice>
-          <ActionLink to="/app/home">Continuar</ActionLink>
+          <ActionLink to="/cadastro/documentos">Continuar cadastro</ActionLink>
+          <Link to="/app/home">Ir para o aplicativo</Link>
         </>
       ) : (
         <>

@@ -75,3 +75,12 @@ Não foram feitos teste de carga, auditoria externa de segurança, certificaçã
 ## Atualização de autenticação — 20/10/2026
 
 Após as correções de sessão: 52 testes do aplicativo e 29 verificações SQL passaram. Build aprovado; npm audit de produção sem vulnerabilidades conhecidas. Sondagens públicas no Supabase confirmaram bloqueio de tabelas privadas e confirmação de e-mail ativa. Fluxos autenticados no deployment ainda não foram homologados. Evidências e limitações: [SEGURANCA-AUTENTICACAO.md](SEGURANCA-AUTENTICACAO.md).
+
+## Atualização das telas de acesso — 20/10/2026
+
+- `npm test -- --reporter=default --reporter=json --outputFile=docs/ui-test-results.json`: **69/69 aprovados**, oito arquivos de testes.
+- `npm run test:rls`: **29/29 aprovados**, migrations 001–006; nenhuma migration adicional nesta alteração.
+- `npm run build`: aprovado (TypeScript, Vite e geração do Service Worker). Permanece aviso de bundle principal acima de 650 kB; não é erro de compilação.
+- `git diff --check`: aprovado.
+- As telas e diferenças em relação às 16 pranchas de autenticação estão documentadas em [AUTENTICACAO-TELAS.md](AUTENTICACAO-TELAS.md). Os dois novos arquivos de testes cobrem cadastro documental, retorno entre etapas, falhas e rollback de uploads privados. OAuth usa a disponibilidade real retornada pelo projeto.
+- Sem comparação visual em navegador nesta sessão: a skill Sites exige `control-browser` no ambiente gerenciado e essa capacidade não está disponível. Testes DOM não substituem essa etapa nem o teste de e-mail/Storage reais.

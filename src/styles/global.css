@@ -1495,114 +1495,6 @@ details summary {
   max-width: 100%;
   margin: auto;
 }
-.auth-page {
-  min-height: 100dvh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 32px 20px;
-}
-.auth-panel {
-  width: min(100%, 440px);
-  min-height: calc(100dvh - 64px);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  text-align: center;
-}
-.auth-panel h1 {
-  font-size: 32px;
-  color: #111;
-  font-weight: 500;
-}
-.app-logo {
-  width: 121px;
-  height: 97px;
-  object-fit: contain;
-  margin: 16px auto 0;
-}
-.auth-description {
-  max-width: 36ch;
-  color: var(--text);
-  line-height: 1.5;
-}
-.auth-back {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.auth-options {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  margin-block: 32px;
-}
-.auth-options .button {
-  min-height: 52px;
-  font-size: 16px;
-  border-radius: 20px;
-  background: #f3f3f3;
-  border-color: #aaa;
-  color: #3c414c;
-}
-.auth-options .button:hover {
-  background: var(--tertiary-200);
-}
-.auth-panel .notice {
-  text-align: left;
-  width: 100%;
-}
-.auth-panel footer {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 16px;
-  margin-top: auto;
-  padding-top: 32px;
-  font-size: var(--label);
-}
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  text-align: left;
-  margin-block: 12px;
-}
-.auth-form label {
-  font-size: var(--body);
-}
-.auth-form input {
-  border-radius: 18px;
-  background: var(--neutral-100);
-  border-color: var(--neutral-200);
-}
-.auth-form > .button {
-  align-self: center;
-  min-width: 180px;
-}
-.auth-form > .text-link {
-  align-self: flex-end;
-}
-.auth-panel > a {
-  font-size: var(--label);
-}
-.demo-entry {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  border: var(--border);
-  border-radius: 8px;
-  width: 100%;
-}
-.auth-panel .stack {
-  text-align: left;
-  width: 100%;
-}
 .class-members summary {
   font-size: var(--label);
 }
@@ -1649,21 +1541,6 @@ details summary {
   .subtabs a {
     min-width: 80px;
     font-size: var(--body);
-  }
-  .auth-page {
-    padding: 40px 24px;
-  }
-  .auth-panel {
-    min-height: 840px;
-  }
-  .auth-options {
-    margin-block: 48px;
-  }
-  .auth-form {
-    margin-top: 32px;
-  }
-  .auth-panel footer {
-    margin-top: 24px;
   }
   .help-fab {
     right: 24px;
@@ -1834,15 +1711,6 @@ details summary {
   }
   .level-bar .row-between {
     font-size: 10px;
-  }
-  .auth-page {
-    padding: 20px;
-  }
-  .auth-panel {
-    min-height: calc(100dvh - 40px);
-  }
-  .auth-options {
-    margin-block: 24px;
   }
   .list-row {
     flex-wrap: wrap;
