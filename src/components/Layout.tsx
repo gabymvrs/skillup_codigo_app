@@ -49,7 +49,7 @@ export function AuthGate() {
     );
   return <Outlet />;
 }
-function MfaChallenge() {
+export function MfaChallenge() {
   const auth = useAuth(),
     action = useAction(),
     [code, setCode] = useState("");

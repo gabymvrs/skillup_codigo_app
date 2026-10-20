@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { configured, demoEnabled, requireSupabase } from "../services/supabase";
 import { roleLabels, type Role } from "../lib/types";
+import { MfaChallenge } from "../components/Layout";
 import {
   ActionFeedback,
   ActionLink,
@@ -140,6 +141,7 @@ export function DemoPicker() {
   const auth = useAuth(),
     navigate = useNavigate();
   if (!demoEnabled) return <Navigate to="/login" replace />;
+  if (auth.id && !auth.demo) return <Navigate to="/app/home" replace />;
   return (
     <AuthFrame description="Conheça os quatro espaços com dados de exemplo.">
       <Notice>
@@ -396,9 +398,23 @@ export function ResetPassword() {
   const auth = useAuth(),
     action = useAction(),
     [done, setDone] = useState(false);
+  if (auth.loading)
+    return (
+      <AuthFrame description="Verificando sua sessão…">
+        <p>Aguarde…</p>
+      </AuthFrame>
+    );
+  if (!auth.demo && auth.mfaRequired) return <MfaChallenge />;
   return (
     <AuthFrame description="Escolha uma nova senha para sua conta.">
-      {!auth.id ? (
+      {done ? (
+        <div className="stack">
+          <Notice tone="success">
+            Senha atualizada. Entre novamente com a nova senha.
+          </Notice>
+          <ActionLink to="/login">Ir para login</ActionLink>
+        </div>
+      ) : !auth.id || auth.demo ? (
         <Notice>
           Abra o link enviado ao seu e-mail para iniciar a recuperação.
         </Notice>
@@ -417,6 +433,8 @@ export function ResetPassword() {
                 password: String(f.get("password")),
               });
               if (error) throw error;
+              // Explicit global sign-out revokes the recovery session too.
+              await auth.logout();
               auth.setRecovery(false);
               setDone(true);
             }, "Senha atualizada.");
@@ -446,7 +464,6 @@ export function ResetPassword() {
             Salvar nova senha
           </Button>
           <ActionFeedback action={action} />
-          {done && <ActionLink to="/app/home">Continuar para o app</ActionLink>}
         </form>
       )}
     </AuthFrame>
@@ -460,7 +477,7 @@ export function AuthCallback() {
         <p>Verificando sua sessão…</p>
       ) : auth.error ? (
         <Notice tone="error">{auth.error}</Notice>
-      ) : auth.id ? (
+      ) : auth.id && !auth.demo ? (
         <>
           <Notice tone="success">Sessão confirmada.</Notice>
           <ActionLink to="/app/home">Continuar</ActionLink>

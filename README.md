@@ -24,7 +24,7 @@ No Windows, copie `.env.example` para `.env.local` pelo explorador ou pelo edito
 ## Supabase
 
 1. Crie um projeto de desenvolvimento separado. As migrations iniciais pressupõem um banco novo para este aplicativo. Não execute sobre tabelas de produção homônimas sem uma migração específica e backup.
-2. Execute os arquivos em `supabase/migrations/`, na ordem numérica **001 → 005**, pelo SQL Editor ou por um fluxo de migrations da Supabase CLI.
+2. Execute os arquivos em `supabase/migrations/`, na ordem numérica **001 → 006**, pelo SQL Editor ou por um fluxo de migrations da Supabase CLI.
 3. Opcionalmente, execute `supabase/seed.sql`: oito matérias, 16 leituras, duas trilhas, dez módulos e quatro exercícios introdutórios. O seed não cria pessoas, vagas ou testemunhos como se fossem reais. Revise o conteúdo educacional antes de publicação institucional.
 4. Preencha `.env.local`:
 
@@ -35,6 +35,8 @@ VITE_ENABLE_DEMO=true
 ```
 
 Uma chave legada `anon` também é aceita. Nunca coloque `service_role`, `sb_secret`, senha do banco ou tokens administrativos em variáveis `VITE_`. Chaves administrativas conhecidas são rejeitadas pelo cliente; a segurança efetiva depende das políticas SQL.
+
+**Atualização de segurança (20/10/2026):** se os arquivos 001–005 já foram executados, rode apenas `supabase/migrations/202610200006_session_security.sql`. Ela verifica confirmação de e-mail, conta não anônima/não banida, sessão existente e não expirada, perfil provisionado e MFA nas políticas existentes. Não recrie o banco. Veja [a revisão de autenticação](docs/SEGURANCA-AUTENTICACAO.md).
 
 5. Em Authentication, habilite o provedor de e-mail e **confirmação de e-mail**. Configure SMTP e limites para seu ambiente; não conte com entrega real antes de testar.
 6. Configure Site URL e Redirect URLs para o domínio escolhido e, no desenvolvimento local, para `http://localhost:5173/auth/callback` e `http://localhost:5173/redefinir-senha`. No domínio publicado, use as mesmas duas rotas com HTTPS. Autorize cada domínio de preview usado. O cliente usa PKCE; conclua o link no navegador que iniciou o fluxo. Revise templates personalizados para preservar o redirecionamento da Supabase.
@@ -64,7 +66,7 @@ O bot salva resumos pessoais. Um estudante pode **confirmar** o compartilhamento
 2. Framework: **Vite**; diretório raiz: repositório; comando de build: `npm run build`; saída: `dist`; Node: 24.x ou outra versão compatível com `engines`.
 3. Defina as variáveis públicas do Supabase para o ambiente Preview. Configure as Redirect URLs com o domínio do deployment que será testado.
 4. Abra o preview e percorra o roteiro de [TESTES.md](docs/TESTES.md), inclusive reload de rotas internas, login de cada perfil e acesso offline.
-5. Após homologação, integre a branch à `main` e configure as variáveis e URLs específicas de Production. Use `VITE_ENABLE_DEMO=false` se não quiser a entrada de demonstração no ambiente real.
+5. Após homologação, integre a branch à `main` e configure as variáveis e URLs específicas de Production. Em uma implantação com Supabase configurado, a demonstração só aparece se `VITE_ENABLE_DEMO=true` for definido explicitamente. Use `false` para desabilitá-la.
 
 `vercel.json` contém o fallback das rotas SPA, cabeçalhos e política de conteúdo. A política permite o domínio padrão `*.supabase.co`; ajuste `connect-src` e `img-src` caso use um domínio próprio para o Supabase. O Service Worker exige HTTPS ou localhost.
 

@@ -82,6 +82,38 @@
       "status": "pass"
     },
     {
+      "name": "Unconfirmed email cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Banned account cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Anonymous account cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Revoked session cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Expired session cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Session belonging to another account cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Account without a provisioned role cannot use student RPCs",
+      "status": "pass"
+    },
+    {
+      "name": "JWT without a session identifier is refused",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

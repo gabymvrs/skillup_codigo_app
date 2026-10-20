@@ -8,7 +8,8 @@ await db.exec(`
  create role anon;create role authenticated;create role service_role bypassrls;
  create schema auth;create schema storage;
  grant usage on schema public,auth,storage to anon,authenticated,service_role;
- create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}');
+ create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}',email_confirmed_at timestamptz default now(),is_anonymous boolean default false,banned_until timestamptz);
+ create table auth.sessions(id uuid primary key,user_id uuid references auth.users(id),not_after timestamptz);
  create table auth.mfa_factors(id uuid primary key default gen_random_uuid(),user_id uuid,status text);
  create function auth.jwt() returns jsonb language sql stable as $$select coalesce(nullif(current_setting('request.jwt.claims',true),''),'{}')::jsonb$$;
  create function auth.uid() returns uuid language sql stable as $$select (auth.jwt()->>'sub')::uuid$$;
@@ -43,6 +44,9 @@ for (let i = 1; i <= 7; i++)
       }),
     ],
   );
+await db.exec(
+  `insert into auth.sessions(id,user_id) select id,id from auth.users;`,
+);
 await db.exec(`insert into public.organizations(id,name) values('${id(8)}','Escola A'),('${id(9)}','Escola B');
  update public.user_roles set organization_id='${id(8)}' where user_id in ('${id(1)}','${id(2)}','${id(3)}','${id(4)}');
  update public.user_roles set role='docente' where user_id in ('${id(2)}','${id(6)}');
@@ -56,7 +60,7 @@ await db.exec(`insert into public.organizations(id,name) values('${id(8)}','Esco
 async function actor(n, aal = "aal1") {
   await db.exec("reset role");
   await db.query("select set_config('request.jwt.claims',$1,false)", [
-    JSON.stringify(n ? { sub: id(n), aal } : {}),
+    JSON.stringify(n ? { sub: id(n), aal, session_id: id(n) } : {}),
   ]);
   await db.exec(`set role ${n ? "authenticated" : "anon"}`);
 }
@@ -375,6 +379,77 @@ await test("MFA enforced by RLS and RPC, not only frontend", async () => {
     1,
   );
 });
+
+// These cases retain an otherwise valid JWT. The database must fail closed.
+for (const [name, setup, restore] of [
+  [
+    "Unconfirmed email",
+    `update auth.users set email_confirmed_at=null where id='${id(1)}'`,
+    `update auth.users set email_confirmed_at=now() where id='${id(1)}'`,
+  ],
+  [
+    "Banned account",
+    `update auth.users set banned_until=now()+interval '1 day' where id='${id(1)}'`,
+    `update auth.users set banned_until=null where id='${id(1)}'`,
+  ],
+  [
+    "Anonymous account",
+    `update auth.users set is_anonymous=true where id='${id(1)}'`,
+    `update auth.users set is_anonymous=false where id='${id(1)}'`,
+  ],
+  [
+    "Revoked session",
+    `delete from auth.sessions where id='${id(1)}'`,
+    `insert into auth.sessions(id,user_id) values('${id(1)}','${id(1)}')`,
+  ],
+  [
+    "Expired session",
+    `update auth.sessions set not_after=now()-interval '1 minute' where id='${id(1)}'`,
+    `update auth.sessions set not_after=null where id='${id(1)}'`,
+  ],
+  [
+    "Session belonging to another account",
+    `update auth.sessions set user_id='${id(5)}' where id='${id(1)}'`,
+    `update auth.sessions set user_id='${id(1)}' where id='${id(1)}'`,
+  ],
+]) {
+  await test(`${name} cannot read, write, call RPC or access private storage`, async () => {
+    await admin();
+    await db.exec(setup);
+    try {
+      await actor(1, "aal2");
+      assert.equal(await scalar("select count(*) from public.profiles"), 0);
+      assert.equal(await scalar("select count(*) from public.user_roles"), 0);
+      assert.equal(await scalar("select count(*) from storage.objects"), 0);
+      await rejects(
+        `insert into public.posts(user_id,kind,category,title,body) values('${id(1)}','feed','Teste','Título bloqueado','Não deve aceitar uma sessão inválida.')`,
+      );
+      await rejects(`select public.complete_module('${id(300)}')`);
+      await rejects(
+        `insert into storage.objects(bucket_id,name) values('profile-documents','${id(1)}/bloqueado.pdf')`,
+      );
+    } finally {
+      await admin();
+      await db.exec(restore);
+    }
+  });
+}
+await test("Account without a provisioned role cannot use student RPCs", async () => {
+  await admin();
+  await db.exec(`delete from public.user_roles where user_id='${id(7)}'`);
+  await actor(7);
+  assert.equal(await scalar("select count(*) from public.profiles"), 0);
+  await rejects(`select public.complete_module('${id(300)}')`);
+});
+await test("JWT without a session identifier is refused", async () => {
+  await actor(1, "aal2");
+  await db.query("select set_config('request.jwt.claims',$1,false)", [
+    JSON.stringify({ sub: id(1), aal: "aal2" }),
+  ]);
+  assert.equal(await scalar("select count(*) from public.profiles"), 0);
+  await rejects(`select public.complete_module('${id(300)}')`);
+});
+
 await admin();
 await test("Every exposed app table has RLS", async () => {
   const rows = (

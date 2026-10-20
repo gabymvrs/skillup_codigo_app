@@ -18,6 +18,8 @@ const mocks = vi.hoisted(() => ({
     demo: false,
     signIn: vi.fn(),
     setRecovery: vi.fn(),
+    logout: vi.fn(),
+    mfaRequired: false,
   },
   api: {
     signUp: vi.fn(),
@@ -36,6 +38,10 @@ beforeEach(() => {
   vi.clearAllMocks();
   mocks.auth.id = null;
   mocks.auth.error = "";
+  mocks.auth.demo = false;
+  mocks.auth.loading = false;
+  mocks.auth.mfaRequired = false;
+  mocks.auth.logout.mockResolvedValue(undefined);
   mocks.auth.signIn.mockResolvedValue(undefined);
   for (const fn of Object.values(mocks.api))
     fn.mockResolvedValue({ error: null });
@@ -166,7 +172,10 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       "new-example-pass",
     );
     await user.click(screen.getByRole("button", { name: "Salvar nova senha" }));
-    expect(await screen.findByText("Senha atualizada.")).toBeInTheDocument();
+    expect(
+      await screen.findByText(/Senha atualizada. Entre novamente/),
+    ).toBeInTheDocument();
+    expect(mocks.auth.logout).toHaveBeenCalledOnce();
     expect(mocks.api.updateUser).toHaveBeenCalledWith({
       password: "new-example-pass",
     });
@@ -188,5 +197,29 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
         }),
       ),
     );
+  });
+});
+
+describe("Auth security boundaries", () => {
+  it("does not present a demo identity as confirmed authentication", () => {
+    mocks.auth.id = "demo-student";
+    mocks.auth.demo = true;
+    show("/auth/callback");
+    expect(screen.queryByText("Sessão confirmada.")).not.toBeInTheDocument();
+    expect(screen.getByText(/O link pode ter expirado/)).toBeInTheDocument();
+  });
+  it("does not offer password changes for demo identities", () => {
+    mocks.auth.id = "demo-student";
+    mocks.auth.demo = true;
+    show("/redefinir-senha");
+    expect(screen.queryByLabelText("Nova senha")).not.toBeInTheDocument();
+    expect(mocks.api.updateUser).not.toHaveBeenCalled();
+  });
+  it("requires MFA before offering a password update", () => {
+    mocks.auth.id = "real-student";
+    mocks.auth.mfaRequired = true;
+    show("/redefinir-senha");
+    expect(screen.getByLabelText("Código de verificação")).toBeInTheDocument();
+    expect(screen.queryByLabelText("Nova senha")).not.toBeInTheDocument();
   });
 });

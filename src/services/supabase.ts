@@ -11,7 +11,10 @@ function isPublicKey(value: string) {
   }
 }
 export const configured = Boolean(url && key && isPublicKey(key));
-export const demoEnabled = import.meta.env.VITE_ENABLE_DEMO !== "false";
+// Real deployments must explicitly opt in to the separate demo experience.
+export const demoEnabled =
+  import.meta.env.VITE_ENABLE_DEMO === "true" ||
+  (!configured && import.meta.env.VITE_ENABLE_DEMO !== "false");
 export const supabase = configured
   ? createClient(url!, key!, {
       auth: {

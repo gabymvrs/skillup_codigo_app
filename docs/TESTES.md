@@ -70,3 +70,8 @@ Os testes de Auth substituem chamadas do SDK por mocks. Não comprovam envio de 
 | 16. Deploy | Abrir deep link, atualizar página, versão nova do SW e falha de rede | Fallback correto, assets íntegros e sem erros reais de console/rede |
 
 Não foram feitos teste de carga, auditoria externa de segurança, certificação WCAG ou teste de usabilidade com participantes. Não há resultado inventado para essas etapas.
+
+
+## Atualização de autenticação — 20/10/2026
+
+Após as correções de sessão: 52 testes do aplicativo e 29 verificações SQL passaram. Build aprovado; npm audit de produção sem vulnerabilidades conhecidas. Sondagens públicas no Supabase confirmaram bloqueio de tabelas privadas e confirmação de e-mail ativa. Fluxos autenticados no deployment ainda não foram homologados. Evidências e limitações: [SEGURANCA-AUTENTICACAO.md](SEGURANCA-AUTENTICACAO.md).
