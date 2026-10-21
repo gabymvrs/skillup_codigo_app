@@ -1,3 +1,4 @@
+import enrichment from "./enrichment.json";
 import originalMaterials from "./legacy-materials.json";
 import type { Material, Module, Question, Subject, Track } from "../lib/types";
 export const id = (n: number) =>
@@ -194,3 +195,10 @@ export const demoAnswers: Record<string, number> = {
   [id(402)]: 2,
   [id(403)]: 1,
 };
+
+// Additional curriculum has stable IDs; existing modules/progress are preserved.
+materials.push(...(enrichment.materials as Material[]));
+tracks.push(...(enrichment.tracks as Track[]));
+modules.push(...(enrichment.modules as Module[]));
+questions.push(...(enrichment.questions as Question[]));
+export const exerciseAnswers = enrichment.answers;

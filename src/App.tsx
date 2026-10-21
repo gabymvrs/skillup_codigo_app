@@ -8,7 +8,8 @@ import {
   LearnLayout,
   SocialLayout,
 } from "./components/Layout";
-import { FAQ, SupportPage } from "./components/Support";
+import { AcademicSupport } from "./components/AcademicSupport";
+import { FAQ } from "./components/Support";
 import {
   Welcome,
   RolePicker,
@@ -110,7 +111,7 @@ export function AppRoutes() {
             <Route path="pratica" element={<PracticeRoute />} />
             <Route path="trilhas" element={<Tracks />} />
             <Route path="trilhas/:trackId" element={<TrackDetail />} />
-            <Route path="suporte" element={<SupportPage />} />
+            <Route path="suporte" element={<AcademicSupport />} />
           </Route>
           <Route path="social" element={<SocialLayout />}>
             <Route index element={<Navigate to="inicio" replace />} />

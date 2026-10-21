@@ -1,3 +1,4 @@
+import { testLearning } from "./test-learning-rls.mjs";
 import { PGlite } from "@electric-sql/pglite";
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
@@ -450,6 +451,7 @@ await test("JWT without a session identifier is refused", async () => {
   await rejects(`select public.complete_module('${id(300)}')`);
 });
 
+await testLearning({ db, id, test, actor, admin, rejects, scalar });
 await admin();
 await test("Every exposed app table has RLS", async () => {
   const rows = (

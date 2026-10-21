@@ -1,3 +1,11 @@
+import { learningStats } from "../services/learning";
+import { Avatar } from "../components/Avatar";
+import { LearningProgress } from "../components/LearningProgress";
+import {
+  validateAvatar,
+  uploadAvatar,
+  removeAvatar,
+} from "../services/avatars";
 import { registrationDocuments } from "../services/registration";
 import { Experiences } from "../components/Experiences";
 import { useEffect, useState } from "react";
@@ -6,7 +14,7 @@ import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { requireSupabase } from "../services/supabase";
 import { clearOffline } from "../services/offline";
-import { readDemo, writeDemo } from "../services/repository";
+import { readDemo, writeDemo, updateRow } from "../services/repository";
 import { roleLabels, type Role } from "../lib/types";
 import { downloadBlob, initials, safeUrl, uid } from "../lib/utils";
 import {
@@ -36,20 +44,20 @@ export function Settings() {
     [legacy, setLegacy] = useState(false);
   const p = repo.data.profiles.find((p) => p.id === auth.id);
   const progress = repo.data.progress.filter((p) => p.user_id === auth.id),
-    xp =
-      progress.reduce(
-        (sum, p) =>
-          sum + (repo.data.modules.find((m) => m.id === p.module_id)?.xp || 0),
-        0,
-      ) +
-      repo.data.attempts
-        .filter((a) => a.user_id === auth.id)
-        .reduce((s, a) => s + a.xp, 0);
+    xp = learningStats(repo.data, auth.id!).xp;
   async function exportData() {
     const data = {
       experiences: repo.data.experiences.filter((x) => x.user_id === auth.id),
       profile: p,
       progress,
+      rewards: repo.data.reward_events.filter((r) => r.user_id === auth.id),
+      study_days: repo.data.study_days.filter((r) => r.user_id === auth.id),
+      track_enrollments: repo.data.track_enrollments.filter(
+        (r) => r.user_id === auth.id,
+      ),
+      material_reads: repo.data.material_reads.filter(
+        (r) => r.user_id === auth.id,
+      ),
       attempts: repo.data.attempts.filter((x) => x.user_id === auth.id),
       publications: repo.data.posts.filter((x) => x.user_id === auth.id),
       comments: repo.data.comments.filter((x) => x.user_id === auth.id),
@@ -76,9 +84,12 @@ export function Settings() {
       />
       <div className="settings-grid">
         <Card className="profile-card">
-          <span className="avatar large">
-            {initials(p?.full_name || "SkillUp")}
-          </span>
+          <Avatar
+            name={p?.full_name || "SkillUp"}
+            path={p?.avatar_path}
+            demoImage={p?.avatar_demo}
+            size={72}
+          />
           <h2>{p?.full_name}</h2>
           <Badge>{roleLabels[auth.role!]}</Badge>
           <div className="stats-grid">
@@ -343,7 +354,20 @@ export function ProfileEditor() {
   const auth = useAuth(),
     repo = useData(),
     p = repo.data.profiles.find((p) => p.id === auth.id),
-    action = useAction();
+    action = useAction(),
+    [photo, setPhoto] = useState<File | null>(null),
+    [preview, setPreview] = useState(""),
+    [removed, setRemoved] = useState(false),
+    [confirmRemove, setConfirmRemove] = useState(false),
+    [formVersion, setFormVersion] = useState(0);
+  function cancel() {
+    setPhoto(null);
+    setPreview("");
+    setRemoved(false);
+    setFormVersion((v) => v + 1);
+    action.setError("");
+    action.setSuccess("");
+  }
   if (!p) return <Empty title="Perfil indisponível" />;
   return (
     <div className="stack narrow">
@@ -356,6 +380,7 @@ export function ProfileEditor() {
         description="Conte sua trajetória e as habilidades que você está desenvolvendo."
       />
       <form
+        key={formVersion}
         className="card stack"
         onSubmit={(e) => {
           e.preventDefault();
@@ -365,10 +390,23 @@ export function ProfileEditor() {
             action.setError("O portfólio deve usar um endereço HTTPS válido.");
             return;
           }
-          void action.run(
-            () =>
-              repo.update("profiles", p.id, {
-                full_name: String(f.get("name")).trim(),
+          void action.run(async () => {
+            const name = String(f.get("name")).trim();
+            if (name.length < 2)
+              throw new Error("Informe um nome com pelo menos 2 caracteres.");
+            let uploaded: string | null = null;
+            if (photo && !auth.demo)
+              uploaded = await uploadAvatar(auth.id!, photo);
+            try {
+              await updateRow(auth.demo, "profiles", p.id, {
+                full_name: name,
+                ...(auth.demo
+                  ? { avatar_demo: removed ? null : preview || p.avatar_demo }
+                  : {
+                      avatar_path: removed
+                        ? null
+                        : uploaded || p.avatar_path || null,
+                    }),
                 headline: String(f.get("headline")).trim(),
                 bio: String(f.get("bio")).trim(),
                 website,
@@ -377,11 +415,75 @@ export function ProfileEditor() {
                   .map((s) => s.trim())
                   .filter(Boolean)
                   .slice(0, 30),
-              }),
-            "Perfil atualizado.",
-          );
+              });
+            } catch (error) {
+              if (uploaded) await removeAvatar(uploaded).catch(() => {});
+              throw error;
+            }
+            if (!auth.demo && p.avatar_path && (uploaded || removed)) {
+              try {
+                await removeAvatar(p.avatar_path);
+              } catch {
+                action.setError(
+                  "Perfil salvo. A foto anterior não pôde ser removida do armazenamento; tente novamente mais tarde.",
+                );
+              }
+            }
+            setPhoto(null);
+            setPreview("");
+            setRemoved(false);
+            await repo.reload();
+          }, "Perfil atualizado.");
         }}
       >
+        <div className="photo-editor">
+          {preview && !removed ? (
+            <img
+              className="photo-preview"
+              src={preview}
+              alt="Prévia da nova foto"
+            />
+          ) : (
+            <Avatar
+              name={p.full_name}
+              path={removed ? null : p.avatar_path}
+              demoImage={removed ? null : p.avatar_demo}
+              size={88}
+            />
+          )}
+          <label>
+            Foto de perfil (JPEG, PNG ou WebP, até 2 MB)
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              disabled={action.busy}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file)
+                  void action.run(async () => {
+                    const result = await validateAvatar(file);
+                    setPhoto(file);
+                    setPreview(result);
+                    setRemoved(false);
+                  }, "Prévia pronta. Salve as alterações para confirmar.");
+              }}
+            />
+          </label>
+          {(p.avatar_path || p.avatar_demo || preview) && !removed && (
+            <Button
+              variant="ghost"
+              icon="trash"
+              onClick={() => setConfirmRemove(true)}
+            >
+              Remover foto
+            </Button>
+          )}
+          {removed && (
+            <p role="status">
+              A foto será removida ao salvar. Você pode cancelar.
+            </p>
+          )}
+        </div>
         <label>
           Nome
           <input
@@ -436,8 +538,25 @@ export function ProfileEditor() {
         <Button type="submit" disabled={action.busy}>
           Salvar alterações
         </Button>
+        <Button variant="outline" disabled={action.busy} onClick={cancel}>
+          Cancelar alterações
+        </Button>
         <ActionFeedback action={action} />
       </form>
+      {confirmRemove && (
+        <Confirm
+          title="Remover foto do perfil?"
+          onClose={() => setConfirmRemove(false)}
+          onConfirm={async () => {
+            setRemoved(true);
+            setPhoto(null);
+            setPreview("");
+          }}
+        >
+          A remoção será aplicada quando você salvar o perfil.
+        </Confirm>
+      )}
+      {auth.role === "estudante" && <LearningProgress />}
       <Experiences userId={auth.id!} editable />
     </div>
   );

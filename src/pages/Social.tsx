@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { WeeklyRanking } from "../components/WeeklyRanking";
+import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
-import { requireSupabase } from "../services/supabase";
 import type { Post, Project } from "../lib/types";
 import { dateLabel, initials, matches, uid } from "../lib/utils";
 import {
@@ -413,65 +413,7 @@ function PostEditor({
   );
 }
 function Leaderboard() {
-  const auth = useAuth(),
-    { data } = useData(),
-    [leaders, setLeaders] = useState<{ full_name: string; xp: number }[]>([]),
-    [error, setError] = useState(false);
-  useEffect(() => {
-    if (auth.demo) {
-      setLeaders(
-        data.profiles
-          .filter((p) => p.public_profile)
-          .map((p) => ({
-            full_name: p.full_name,
-            xp:
-              data.progress
-                .filter((r) => r.user_id === p.id)
-                .reduce(
-                  (s, r) =>
-                    s +
-                    (data.modules.find((m) => m.id === r.module_id)?.xp || 0),
-                  0,
-                ) +
-              data.attempts
-                .filter((a) => a.user_id === p.id)
-                .reduce((s, a) => s + a.xp, 0),
-          }))
-          .filter((p) => p.xp > 0)
-          .sort((a, b) => b.xp - a.xp)
-          .slice(0, 5),
-      );
-      return;
-    }
-    requireSupabase()
-      .rpc("community_leaderboard")
-      .then(({ data, error }) => {
-        if (error) setError(true);
-        else setLeaders(data || []);
-      });
-  }, [auth.demo, data.progress, data.attempts]);
-  return (
-    <Card>
-      <h3>Ranking da comunidade</h3>
-      <p className="small muted">
-        XP total de perfis que optaram por participar.
-      </p>
-      {leaders.map((p, i) => (
-        <div className="list-row" key={p.full_name + i}>
-          <span className="rank-number">{i + 1}</span>
-          <strong>{p.full_name}</strong>
-          <Badge>{p.xp} XP</Badge>
-        </div>
-      ))}
-      {!leaders.length && (
-        <p className="muted">
-          {error
-            ? "Não foi possível carregar o ranking."
-            : "Sem participantes com XP ainda."}
-        </p>
-      )}
-    </Card>
-  );
+  return <WeeklyRanking />;
 }
 export function Projects() {
   const auth = useAuth(),

@@ -1,3 +1,9 @@
+import {
+  ExerciseFields,
+  initialAnswer,
+  answerReady,
+} from "../components/ExerciseFields";
+import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
@@ -72,7 +78,8 @@ export function Tracks({ embedded = false }: { embedded?: boolean }) {
               <h2>{t.title}</h2>
               <p>{t.description}</p>
               <p className="small muted">
-                {t.duration_hours} horas · {modules.length} módulos
+                {t.difficulty || "Iniciante"} · {t.duration_hours} horas ·{" "}
+                {modules.length} módulos
               </p>
               <div className="chips">
                 {t.skills.map((s) => (
@@ -86,7 +93,12 @@ export function Tracks({ embedded = false }: { embedded?: boolean }) {
                 />
               )}
               <ActionLink to={`/app/aprenda/trilhas/${t.id}`} icon="play">
-                {count ? "Continuar" : "Ver trilha"}
+                {count ||
+                data.track_enrollments.some(
+                  (e) => e.user_id === auth.id && e.track_id === t.id,
+                )
+                  ? "Continuar"
+                  : "Ver trilha"}
               </ActionLink>
             </Card>
           );
@@ -103,6 +115,7 @@ export function TrackDetail() {
     repo = useData(),
     [open, setOpen] = useState<string | null>(null),
     [creating, setCreating] = useState(false),
+    [exercise, setExercise] = useState<string | null>(null),
     action = useAction();
   const track = repo.data.tracks.find((t) => t.id === trackId),
     modules = repo.data.modules
@@ -135,6 +148,23 @@ export function TrackDetail() {
           ) : undefined
         }
       />
+      {auth.role === "estudante" &&
+        !repo.data.track_enrollments.some(
+          (e) => e.user_id === auth.id && e.track_id === track.id,
+        ) && (
+          <Button
+            disabled={action.busy}
+            onClick={() =>
+              action.run(
+                () => repo.startTrack(track.id),
+                "Trilha iniciada. Você pode estudar outras áreas em paralelo.",
+              )
+            }
+          >
+            Iniciar trilha
+          </Button>
+        )}
+      {!module && <ActionFeedback action={action} />}
       <Card>
         <ProgressBar
           value={percent(count, modules.length)}
@@ -202,6 +232,17 @@ export function TrackDetail() {
               </p>
             ))}
           </article>
+          {module.question_id && (
+            <Button
+              variant="outline"
+              onClick={() => {
+                setExercise(module.question_id!);
+                setOpen(null);
+              }}
+            >
+              Abrir exercício da etapa
+            </Button>
+          )}
           {auth.role === "estudante" && (
             <Button
               icon="check"
@@ -223,6 +264,12 @@ export function TrackDetail() {
           <ActionFeedback action={action} />
         </Modal>
       )}
+      {exercise && (
+        <QuestionDialog
+          questionId={exercise}
+          onClose={() => setExercise(null)}
+        />
+      )}
       {creating && (
         <ModuleEditor trackId={track.id} onClose={() => setCreating(false)} />
       )}
@@ -235,6 +282,8 @@ export function Practice() {
   const attempts = data.attempts.filter((a) => a.user_id === auth.id),
     xp = attempts.reduce((sum, a) => sum + a.xp, 0),
     [type, setType] = useState(""),
+    [subject, setSubject] = useState(""),
+    [format, setFormat] = useState(""),
     [open, setOpen] = useState<string | null>(null);
   return (
     <div className="stack">
@@ -243,9 +292,64 @@ export function Practice() {
         description="Transforme o conteúdo em conhecimento com exercícios curtos."
       />
       <div className="practice-stats">
-        <span>{attempts.length} tentativa(s)</span>
+        <span>
+          {new Set(attempts.map((a) => a.question_id)).size} questões
+          respondidas · {attempts.length} tentativa(s)
+        </span>
+        <span>
+          {attempts.filter((a) => a.correct).length} acertos ·{" "}
+          {attempts.filter((a) => !a.correct).length} erros ·{" "}
+          {percent(attempts.filter((a) => a.correct).length, attempts.length)}%
+          nas tentativas
+        </span>
         <strong>{xp} XP em prática</strong>
       </div>
+      <div className="two-columns">
+        <label>
+          Disciplina
+          <select
+            value={subject}
+            onChange={(e) => {
+              setSubject(e.target.value);
+              setType("Prática guiada");
+            }}
+          >
+            <option value="">Todas as matérias</option>
+            {data.subjects.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Formato de exercício
+          <select
+            value={format}
+            onChange={(e) => {
+              setFormat(e.target.value);
+              setType("Prática guiada");
+            }}
+          >
+            <option value="">Todos os formatos</option>
+            {Object.entries({
+              choice: "Múltipla escolha",
+              true_false: "Verdadeiro ou falso",
+              blank: "Completar lacunas",
+              matching: "Relacionar colunas",
+              ordering: "Ordenação",
+              challenge: "Desafios práticos",
+            }).map(([v, l]) => (
+              <option key={v} value={v}>
+                {l}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <Button variant="outline" onClick={() => setType("Prática guiada")}>
+        Explorar exercícios das oito matérias
+      </Button>
       <SectionTitle>Ações rápidas</SectionTitle>
       <div className="practice-grid">
         {[
@@ -286,10 +390,20 @@ export function Practice() {
           </SectionTitle>
           {type === "Laboratório" && <SearchLab />}
           {data.questions
-            .filter((q) => q.category === type)
+            .filter(
+              (q) =>
+                q.category === type &&
+                (!subject || q.subject_id === subject) &&
+                (!format || (q.kind || "choice") === format),
+            )
             .map((q) => (
               <Card key={q.id}>
-                <Badge>{q.xp} XP na primeira resposta correta</Badge>
+                <Badge>
+                  {q.xp} XP{" "}
+                  {q.kind === "challenge"
+                    ? "na primeira conclusão autodeclarada"
+                    : "na primeira resposta correta"}
+                </Badge>
                 <h3>{q.title}</h3>
                 <Button onClick={() => setOpen(q.id)}>Praticar</Button>
               </Card>
@@ -344,7 +458,9 @@ export function QuestionDialog({
 }) {
   const repo = useData(),
     q = repo.data.questions.find((x) => x.id === questionId),
-    [selected, setSelected] = useState<number | null>(null),
+    [selected, setSelected] = useState<ExerciseAnswer>(
+      q ? initialAnswer(q) : -1,
+    ),
     [result, setResult] = useState<{
       correct: boolean;
       xp: number;
@@ -358,33 +474,28 @@ export function QuestionDialog({
         className="stack"
         onSubmit={(e) => {
           e.preventDefault();
-          if (selected !== null)
+          if (answerReady(q, selected))
             void action.run(async () =>
               setResult(await repo.answer(questionId, selected)),
             );
         }}
       >
-        <fieldset>
-          <legend>{q.prompt}</legend>
-          {q.options.map((option, i) => (
-            <label className="answer-option" key={i}>
-              <input
-                type="radio"
-                name="answer"
-                checked={selected === i}
-                onChange={() => setSelected(i)}
-                disabled={Boolean(result)}
-                required
-              />
-              {option}
-            </label>
-          ))}
-        </fieldset>
+        <p>{q.prompt}</p>
+        <ExerciseFields
+          q={q}
+          value={selected}
+          onChange={setSelected}
+          disabled={Boolean(result) || action.busy}
+        />
         {result ? (
           <>
             <Notice tone={result.correct ? "success" : "warning"}>
               <strong>
-                {result.correct ? "Resposta correta!" : "Vamos revisar."}
+                {result.correct
+                  ? q.kind === "challenge"
+                    ? "Relato registrado!"
+                    : "Resposta correta!"
+                  : "Vamos revisar."}
               </strong>{" "}
               {result.explanation} {result.xp > 0 && `+${result.xp} XP`}
             </Notice>
@@ -392,14 +503,17 @@ export function QuestionDialog({
               variant="outline"
               onClick={() => {
                 setResult(null);
-                setSelected(null);
+                setSelected(initialAnswer(q));
               }}
             >
               Praticar novamente
             </Button>
           </>
         ) : (
-          <Button type="submit" disabled={selected === null || action.busy}>
+          <Button
+            type="submit"
+            disabled={!answerReady(q, selected) || action.busy}
+          >
             Conferir resposta
           </Button>
         )}

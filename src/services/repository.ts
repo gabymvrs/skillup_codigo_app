@@ -1,3 +1,11 @@
+import { hydrateDemoLearning } from "./learning";
+import {
+  subjects,
+  materials,
+  tracks,
+  modules,
+  questions,
+} from "../data/catalog";
 import type { Dataset, TableMap, TableName } from "../lib/types";
 import { emptyDataset, tableNames } from "../lib/types";
 import { createDemo } from "../data/demo";
@@ -5,10 +13,23 @@ import { requireSupabase } from "./supabase";
 export const DEMO_KEY = "skillup.demo.v2";
 export function readDemo(): Dataset {
   const raw = localStorage.getItem(DEMO_KEY);
-  if (!raw) return createDemo();
+  if (!raw) return hydrateDemoLearning(createDemo());
   try {
     const d = JSON.parse(raw);
     d.experiences ??= [];
+    for (const [table, additions] of Object.entries({
+      subjects,
+      materials,
+      tracks,
+      modules,
+      questions,
+    })) {
+      d[table] ??= [];
+      for (const row of additions)
+        if (!d[table].some((old: { id: string }) => old.id === row.id))
+          d[table].push(structuredClone(row));
+    }
+    hydrateDemoLearning(d);
     d.support_tickets?.forEach((t: Record<string, unknown>) => {
       t.assigned_to ??= null;
       t.response ??= null;
@@ -17,7 +38,7 @@ export function readDemo(): Dataset {
   } catch {
     /* recover corrupt demo data only */
   }
-  return createDemo();
+  return hydrateDemoLearning(createDemo());
 }
 export function writeDemo(data: Dataset) {
   localStorage.setItem(DEMO_KEY, JSON.stringify(data));
@@ -37,7 +58,22 @@ export async function loadData(demo: boolean): Promise<Dataset> {
           .select("*", { count: "exact" })
           .order(table === "user_roles" ? "user_id" : "id")
           .range(rows.length, rows.length + 199);
-        if (error) throw error;
+        if (error) {
+          if (
+            ["42P01", "PGRST205"].includes(error.code) &&
+            [
+              "reward_events",
+              "study_days",
+              "learning_settings",
+              "track_enrollments",
+              "material_reads",
+            ].includes(table)
+          )
+            throw new Error(
+              "Atualização do banco pendente: aplique a migração 007 e o seed.sql no Supabase para habilitar os novos recursos.",
+            );
+          throw error;
+        }
         if (!data?.length) break;
         rows.push(...data);
         if (count !== null && rows.length >= count) break;

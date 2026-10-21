@@ -27,6 +27,7 @@ import {
   Notice,
   SearchField,
   SectionTitle,
+  ProgressBar,
   useAction,
 } from "../components/ui";
 const offlineOwner = (id: string | null, demo: boolean) =>
@@ -55,11 +56,24 @@ export function Materials() {
   let recent: string[] = [];
   try {
     recent = JSON.parse(
-      sessionStorage.getItem(`skillup.recent.${owner}`) || "[]",
+      localStorage.getItem(`skillup.recent.${owner}`) || "[]",
     );
   } catch {
     /* no recent history */
   }
+  const recorded = repo.data.material_reads
+    .filter((r) => r.user_id === auth.id)
+    .sort((a, b) => b.last_opened_at.localeCompare(a.last_opened_at))
+    .map((r) => r.material_id);
+  recent = [...new Set([...recorded, ...recent])];
+  const suggested = !recent.length;
+  const shownRecent = suggested
+    ? repo.data.materials
+        .filter((m) =>
+          ["Gramática ortográfica", "Tipos de plantas"].includes(m.title),
+        )
+        .map((m) => m.id)
+    : recent;
   return (
     <div className="stack">
       {subjectId && (
@@ -97,9 +111,15 @@ export function Materials() {
       {!subjectId && !query && (
         <>
           <SectionTitle>Vistos recentemente</SectionTitle>
-          {recent.length ? (
-            <div className="two-columns">
-              {recent
+          {suggested && (
+            <p className="small muted">
+              Sugestões para sua primeira leitura. Ao abrir um conteúdo, ele
+              passa a aparecer no histórico.
+            </p>
+          )}
+          {shownRecent.length ? (
+            <div className="recent-grid">
+              {shownRecent
                 .slice(0, 2)
                 .map((id) => repo.data.materials.find((m) => m.id === id))
                 .filter((x): x is Material => Boolean(x))
@@ -153,6 +173,28 @@ export function Materials() {
               </div>
               <h3>{m.title}</h3>
               <p>{m.summary}</p>
+              <ProgressBar
+                value={
+                  repo.data.material_reads.some(
+                    (r) =>
+                      r.user_id === auth.id &&
+                      r.material_id === m.id &&
+                      r.completed_at,
+                  )
+                    ? 100
+                    : 0
+                }
+                label={
+                  repo.data.material_reads.some(
+                    (r) =>
+                      r.user_id === auth.id &&
+                      r.material_id === m.id &&
+                      r.completed_at,
+                  )
+                    ? "Leitura concluída"
+                    : "Leitura ainda não concluída"
+                }
+              />
               <div className="actions">
                 <ActionLink
                   to={`/app/aprenda/material/item/${m.id}`}
@@ -193,7 +235,8 @@ export function Materials() {
 export function MaterialReader() {
   const { materialId } = useParams(),
     auth = useAuth(),
-    { data } = useData(),
+    repo = useData(),
+    { data } = repo,
     action = useAction(),
     [saved, setSaved] = useState<SavedMaterial>(),
     [loading, setLoading] = useState(true);
@@ -212,8 +255,8 @@ export function MaterialReader() {
       });
     try {
       const key = `skillup.recent.${owner}`,
-        old = JSON.parse(sessionStorage.getItem(key) || "[]");
-      sessionStorage.setItem(
+        old = JSON.parse(localStorage.getItem(key) || "[]");
+      localStorage.setItem(
         key,
         JSON.stringify(
           [materialId, ...old.filter((x: string) => x !== materialId)].slice(
@@ -229,6 +272,16 @@ export function MaterialReader() {
       active = false;
     };
   }, [owner, materialId]);
+  useEffect(() => {
+    if (material && (auth.demo || navigator.onLine))
+      void repo
+        .recordRead(material.id)
+        .catch(() =>
+          action.setError(
+            "O material abriu, mas não foi possível sincronizar o histórico de leitura.",
+          ),
+        );
+  }, [materialId, auth.id, auth.demo, Boolean(material)]);
   if (loading && !material) return <p>Carregando material…</p>;
   if (!material)
     return (
@@ -286,6 +339,40 @@ export function MaterialReader() {
           </Notice>
         )}
       </article>
+      <ProgressBar
+        value={
+          data.material_reads.some(
+            (r) =>
+              r.user_id === auth.id &&
+              r.material_id === material.id &&
+              r.completed_at,
+          )
+            ? 100
+            : 0
+        }
+        label="Progresso de leitura"
+      />
+      <Button
+        variant="outline"
+        icon="check"
+        disabled={
+          action.busy ||
+          data.material_reads.some(
+            (r) =>
+              r.user_id === auth.id &&
+              r.material_id === material.id &&
+              r.completed_at,
+          )
+        }
+        onClick={() =>
+          action.run(
+            () => repo.recordRead(material.id, true),
+            "Leitura concluída e registrada.",
+          )
+        }
+      >
+        Marcar leitura como concluída
+      </Button>
       <div className="actions">
         <Button
           disabled={action.busy || !material.allow_offline}

@@ -143,8 +143,11 @@ describe("Learning and support", () => {
       },
     });
     app("/app/aprenda/suporte");
+    await user.click(await screen.findByRole("button", { name: "Dúvidas?" }));
     await user.click(
-      await screen.findByRole("button", { name: "Esqueci minha senha" }),
+      await within(screen.getByRole("dialog")).findByRole("button", {
+        name: "Esqueci minha senha",
+      }),
     );
     await user.type(
       screen.getByRole("textbox", { name: "Mensagem para o bot" }),
@@ -257,7 +260,7 @@ describe("Social, career and assessment interactions", () => {
     );
     await user.click(screen.getByRole("button", { name: "Salvar avaliação" }));
     expect(
-      await screen.findByRole("button", { name: "Rever correção" }),
+      (await screen.findAllByRole("button", { name: "Rever correção" }))[0],
     ).toBeInTheDocument();
     expect(
       JSON.parse(localStorage.getItem(DEMO_KEY)!).submissions[0].grade,
@@ -379,7 +382,7 @@ describe("Final interaction regressions", () => {
       await screen.findByText("Sua agenda começa aqui"),
     ).toBeInTheDocument();
   });
-  it("keeps a floating triage conversation in sync with the support page using distinct input IDs", async () => {
+  it("keeps floating triage separate from academic support and preserves it on reopen", async () => {
     const user = userEvent.setup();
     app("/app/aprenda/suporte");
     await user.click(await screen.findByRole("button", { name: "Dúvidas?" }));
@@ -390,12 +393,17 @@ describe("Final interaction regressions", () => {
     const ids = screen
       .getAllByRole("textbox", { name: "Mensagem para o bot" })
       .map((e) => e.id);
-    expect(new Set(ids).size).toBe(2);
+    expect(new Set(ids).size).toBe(1);
+    expect(
+      screen.getByRole("textbox", { name: "Dúvida acadêmica" }),
+    ).toBeInTheDocument();
     await user.type(input, "Esqueci minha senha de acesso");
     await user.click(
       within(dialog).getByRole("button", { name: "Enviar mensagem" }),
     );
     await user.click(within(dialog).getByRole("button", { name: "Fechar" }));
+    expect(screen.queryByRole("log")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Dúvidas?" }));
     expect(
       within(screen.getByRole("log")).getByText(
         "Esqueci minha senha de acesso",

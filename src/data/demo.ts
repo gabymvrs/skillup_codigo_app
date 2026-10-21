@@ -41,6 +41,24 @@ export function createDemo(): Dataset {
     user_id,
     organization_id: id(8),
   }));
+  data.user_roles.push(
+    ...[5, 6].map((n) => ({
+      user_id: id(n),
+      role: "estudante" as const,
+      organization_id: id(8),
+    })),
+  );
+  data.profiles[1].preferences.office_hours =
+    "Segunda a sexta, 14h–16h (exemplo)";
+  data.profiles[1].avatar_demo = "/assets/story-4.svg";
+  data.reward_events = [5, 6].map((n, i) => ({
+    id: id(960 + n),
+    user_id: id(n),
+    source: "demo:example",
+    xp: 120 - i * 40,
+    label: "Atividade ilustrativa de demonstração",
+    created_at: new Date().toISOString(),
+  }));
   data.classes = [
     {
       id: id(500),
@@ -81,6 +99,26 @@ export function createDemo(): Dataset {
       created_at: "2026-10-18T12:00:00Z",
     },
   ];
+  data.assignments.push({
+    id: id(521),
+    class_id: id(500),
+    teacher_id: id(2),
+    title: "Módulo: Software Architecture",
+    instructions:
+      "Documente responsabilidades e a separação das camadas de um sistema.",
+    due_at: "2026-10-20T20:00:00Z",
+  });
+  data.submissions.push({
+    id: id(531),
+    assignment_id: id(521),
+    student_id: id(1),
+    body: "Separei apresentação, regras de negócio e persistência; cada camada possui responsabilidades descritas no projeto.",
+    grade: 9.5,
+    feedback:
+      "Excelente aplicação dos padrões de design. Notei uma ótima separação de preocupações na camada de serviços. Como próximo passo, documente os contratos e acrescente testes para falhas de conexão. Avaliação ilustrativa da demonstração.",
+    status: "reviewed",
+    created_at: "2026-10-20T18:00:00Z",
+  });
   data.progress = [
     {
       id: id(540),

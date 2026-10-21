@@ -83,15 +83,15 @@ Para testar a versão de produção localmente: `npm run build` e depois `npm ru
 
 ## Comandos
 
-| Comando | Resultado |
-|---|---|
-| `npm run dev` | Desenvolvimento local |
-| `npm run check` | Verificação TypeScript |
-| `npm test` | Fluxos DOM, contrato de autenticação simulado, armazenamento e lógica |
-| `npm run test:rls` | Migrations, seed e políticas executados em PostgreSQL via PGlite |
-| `npm run build` | TypeScript, bundle de produção e Service Worker versionado |
-| `npm run preview` | Servir o build para homologação local |
-| `npm run format` | Formatar código e testes com Prettier |
+| Comando            | Resultado                                                             |
+| ------------------ | --------------------------------------------------------------------- |
+| `npm run dev`      | Desenvolvimento local                                                 |
+| `npm run check`    | Verificação TypeScript                                                |
+| `npm test`         | Fluxos DOM, contrato de autenticação simulado, armazenamento e lógica |
+| `npm run test:rls` | Migrations, seed e políticas executados em PostgreSQL via PGlite      |
+| `npm run build`    | TypeScript, bundle de produção e Service Worker versionado            |
+| `npm run preview`  | Servir o build para homologação local                                 |
+| `npm run format`   | Formatar código e testes com Prettier                                 |
 
 ## Entrega e rastreabilidade
 
@@ -111,3 +111,8 @@ Referências técnicas usadas: [Vite na Vercel](https://vercel.com/docs/framewor
 As telas de acesso foram atualizadas com base nas 16 pranchas mobile/web do ZIP de referência. Veja o [inventário e as diferenças](docs/AUTENTICACAO-TELAS.md). Cadastro por e-mail e senha, confirmação, seleção dos quatro perfis e documentação privada estão integrados; a instituição tem duas etapas. Não há SQL adicional além das migrations 001–006.
 
 Google e Facebook são exibidos no login e habilitados apenas quando o endpoint público de configurações do Supabase confirma o provedor ativo. Configure os provedores no painel Supabase e mantenha o domínio atual da Vercel autorizado para `/auth/callback`. Nunca adicione segredos de provedores ao front-end. A Declaração de responsabilidades é provisória e precisa de revisão do responsável antes da produção.
+
+### Atualização de aprendizagem, suporte e perfil — outubro/2026
+
+Veja [o inventário, alterações, testes e instruções de atualização](docs/EVOLUCAO-OUTUBRO.md).
+Em projetos já configurados com migrations 001–006, aplique **somente a migration 007** e depois o `supabase/seed.sql` atualizado. Não recrie o banco. A atualização adiciona ranking semanal, XP/ofensivas, fotos privadas, leituras e trilhas independentes. A homologação visual e o teste com o Supabase hospedado ainda precisam ser concluídos antes de produção.

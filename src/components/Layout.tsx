@@ -1,3 +1,5 @@
+import { learningStats } from "../services/learning";
+import { Avatar } from "./Avatar";
 import { useEffect, useState } from "react";
 import { Link, NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
@@ -133,6 +135,7 @@ export function Layout() {
     [online, setOnline] = useState(navigator.onLine),
     [menu, setMenu] = useState(false),
     action = useAction();
+  const learning = learningStats(repo.data, auth.id!);
   const profile = repo.data.profiles.find((x) => x.id === auth.id),
     unread = repo.data.notifications.filter(
       (x) => x.user_id === auth.id && !x.read_at,
@@ -182,9 +185,11 @@ export function Layout() {
             <Navigation close={() => setMenu(false)} />
           </nav>
           <div className="side-footer">
-            <span className="avatar">
-              {profile?.full_name.slice(0, 1) || "S"}
-            </span>
+            <Avatar
+              name={profile?.full_name || "Sua conta"}
+              path={profile?.avatar_path}
+              demoImage={profile?.avatar_demo}
+            />
             <div>
               <strong>{profile?.full_name || "Sua conta"}</strong>
               <small>{roleLabels[auth.role!]}</small>
@@ -211,6 +216,15 @@ export function Layout() {
             <Link className="topbar-title" to="/app/home">
               SkillUp <span>{roleLabels[auth.role!]}</span>
             </Link>
+            {auth.role === "estudante" && (
+              <div className="header-learning" aria-label="Seu progresso">
+                <span>
+                  <Icon name="flame" size={14} />
+                  {learning.current}
+                </span>
+                <span>{learning.xp} XP</span>
+              </div>
+            )}
             <span
               className={`connection ${online ? "" : "is-offline"}`}
               role="status"

@@ -1,3 +1,6 @@
+import { LearningProgress } from "../components/LearningProgress";
+import { WeeklyRanking } from "../components/WeeklyRanking";
+import { Stories } from "../components/Stories";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
@@ -176,41 +179,13 @@ function StudentHome() {
       .sort((a, b) => a.position - b.position),
     done = modules.filter((m) => progress.some((p) => p.module_id === m.id)),
     next = modules.find((m) => !done.includes(m));
-  const xp =
-    progress.reduce(
-      (sum, p) =>
-        sum + (repo.data.modules.find((m) => m.id === p.module_id)?.xp || 0),
-      0,
-    ) +
-    repo.data.attempts
-      .filter((x) => x.user_id === auth.id)
-      .reduce((sum, a) => sum + a.xp, 0);
   return (
     <div className="stack">
       <Heading
         title={`Olá, ${profile?.full_name.split(" ")[0] || "estudante"}!`}
         description="Sua jornada técnica está em pleno vapor. Pronto para o próximo desafio?"
       />
-      <div className="level-bar">
-        <span className="icon-tile">
-          <Icon name="award" />
-        </span>
-        <div>
-          <div className="row-between">
-            <strong>
-              {xp >= 3000 ? "Ouro" : xp >= 1000 ? "Prata" : "Bronze"}
-            </strong>
-            <span>
-              {xp} XP · próximo nível: {(Math.floor(xp / 1000) + 1) * 1000} XP
-            </span>
-          </div>
-          <progress
-            value={xp % 1000}
-            max={1000}
-            aria-label="Experiência até o próximo nível"
-          />
-        </div>
-      </div>
+      <LearningProgress />
       <div className="home-grid">
         <div className="stack">
           {track ? (
@@ -278,7 +253,7 @@ function StudentHome() {
               variant="outline"
               icon="message"
             >
-              Falar com bot de triagem
+              Acessar suporte acadêmico
             </ActionLink>
           </Card>
           <Card>
@@ -314,6 +289,8 @@ function StudentHome() {
           </Card>
         </div>
       </div>
+      <WeeklyRanking />
+      <Stories />
     </div>
   );
 }

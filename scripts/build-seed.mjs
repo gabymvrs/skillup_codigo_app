@@ -7,38 +7,39 @@ const js = stripTypeScriptTypes(source)
     /import originalMaterials from [^;]+;/,
     "const originalMaterials=__data;",
   )
+  .replace(/import enrichment from [^;]+;/, "const enrichment=__extra;")
   .replaceAll("export const ", "const ");
-const sandbox = {
-  __data: JSON.parse(readFileSync("src/data/legacy-materials.json", "utf8")),
-};
 const catalog = vm.runInNewContext(
-  js + ";({subjects,materials,tracks,modules,questions,demoAnswers});",
-  sandbox,
+  js +
+    ";({subjects,materials,tracks,modules,questions,demoAnswers,exerciseAnswers});",
+  {
+    __data: JSON.parse(readFileSync("src/data/legacy-materials.json", "utf8")),
+    __extra: JSON.parse(readFileSync("src/data/enrichment.json", "utf8")),
+  },
 );
-const quote = (value) =>
-  value === null
+const quote = (v) =>
+  v === null
     ? "null"
-    : typeof value === "boolean"
-      ? String(value)
-      : typeof value === "number"
-        ? String(value)
-        : `'${String(value).replaceAll("'", "''")}'`;
+    : typeof v === "boolean" || typeof v === "number"
+      ? String(v)
+      : `'${String(v).replaceAll("'", "''")}'`;
 let sql =
-  "-- Original short study materials retained from the previous implementation.\n-- Optional sample curriculum; no personal profiles, fake companies or credentials.\nbegin;\n";
-for (const table of [
-  "subjects",
-  "materials",
-  "tracks",
-  "modules",
-  "questions",
-]) {
+  "-- Optional educational curriculum. Idempotent; preserves existing records and progress.\n-- Apply migration 007 before this seed. No personal profiles or simulated testimonials.\nbegin;\n";
+for (const table of ["subjects", "materials", "tracks", "questions", "modules"])
   for (const row of catalog[table]) {
     const entries = Object.entries(row);
-    sql += `insert into public.${table} (${entries.map(([k]) => k).join(",")}) values (${entries.map(([k, v]) => (Array.isArray(v) ? (k === "options" ? `${quote(JSON.stringify(v))}::jsonb` : `array[${v.map(quote).join(",")}]::text[]`) : quote(v))).join(",")}) on conflict (id) do nothing;\n`;
+    sql += `insert into public.${table} (${entries.map(([k]) => k).join(",")}) values (${entries.map(([k, v]) => (["options", "payload"].includes(k) ? `${quote(JSON.stringify(v))}::jsonb` : Array.isArray(v) ? `array[${v.map(quote).join(",")}]::text[]` : quote(v))).join(",")}) on conflict(id) do nothing;\n`;
   }
-}
 for (const [id, index] of Object.entries(catalog.demoAnswers))
   sql += `insert into private.question_answers(question_id,correct_index) values(${quote(id)},${index}) on conflict(question_id) do nothing;\n`;
+for (const [id, answer] of Object.entries(catalog.exerciseAnswers))
+  sql += `insert into private.question_answers(question_id,correct_index,expected) values(${quote(id)},${typeof answer === "number" ? answer : "null"},${quote(JSON.stringify(answer))}::jsonb) on conflict(question_id) do nothing;\n`;
 sql += "commit;\n";
 writeFileSync("supabase/seed.sql", sql);
-console.log("Seed generated from the retained curriculum.");
+console.log(
+  "Curriculum generated: " +
+    catalog.questions.length +
+    " questions, " +
+    catalog.tracks.length +
+    " tracks.",
+);

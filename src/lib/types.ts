@@ -8,6 +8,8 @@ export const roleLabels: Record<Role, string> = {
 export interface Profile {
   id: string;
   full_name: string;
+  avatar_path?: string | null;
+  avatar_demo?: string | null;
   headline: string;
   bio: string;
   skills: string[];
@@ -56,6 +58,7 @@ export interface Material {
   organization_id: string | null;
 }
 export interface Track {
+  difficulty?: string;
   id: string;
   title: string;
   description: string;
@@ -67,6 +70,7 @@ export interface Track {
   published: boolean;
 }
 export interface Module {
+  question_id?: string | null;
   id: string;
   track_id: string;
   title: string;
@@ -81,7 +85,19 @@ export interface Progress {
   module_id: string;
   completed_at: string;
 }
+export type ExerciseAnswer =
+  number | string | boolean[] | number[] | { text: string; checks: boolean[] };
+export type ExerciseKind =
+  "choice" | "true_false" | "blank" | "matching" | "ordering" | "challenge";
 export interface Question {
+  kind?: ExerciseKind;
+  subject_id?: string | null;
+  payload?: {
+    statements?: string[];
+    labels?: string[];
+    criteria?: string[];
+    minLength?: number;
+  };
   id: string;
   title: string;
   prompt: string;
@@ -91,6 +107,7 @@ export interface Question {
   xp: number;
 }
 export interface Attempt {
+  response?: ExerciseAnswer;
   id: string;
   user_id: string;
   question_id: string;
@@ -254,7 +271,42 @@ export interface Notification {
   read_at: string | null;
   created_at: string;
 }
+export interface RewardEvent {
+  id: string;
+  user_id: string;
+  source: string;
+  xp: number;
+  label: string;
+  created_at: string;
+}
+export interface StudyDay {
+  id: string;
+  user_id: string;
+  day: string;
+}
+export interface LearningSettings {
+  id: string;
+  timezone: string;
+}
+export interface TrackEnrollment {
+  id: string;
+  user_id: string;
+  track_id: string;
+  created_at: string;
+}
+export interface MaterialRead {
+  id: string;
+  user_id: string;
+  material_id: string;
+  last_opened_at: string;
+  completed_at: string | null;
+}
 export interface TableMap {
+  reward_events: RewardEvent;
+  study_days: StudyDay;
+  learning_settings: LearningSettings;
+  track_enrollments: TrackEnrollment;
+  material_reads: MaterialRead;
   profiles: Profile;
   user_roles: UserRole;
   organizations: Organization;
@@ -288,6 +340,11 @@ export interface TableMap {
 export type TableName = keyof TableMap;
 export type Dataset = { [K in TableName]: TableMap[K][] };
 export const tableNames: TableName[] = [
+  "reward_events",
+  "study_days",
+  "learning_settings",
+  "track_enrollments",
+  "material_reads",
   "profiles",
   "user_roles",
   "organizations",

@@ -23,7 +23,8 @@ import {
   writeDemo,
 } from "../services/repository";
 import { requireSupabase } from "../services/supabase";
-import { demoAnswers } from "../data/catalog";
+import { awardDemo, evaluateDemo, localTimezone } from "../services/learning";
+import type { ExerciseAnswer } from "../lib/types";
 import { uid } from "../lib/utils";
 import {
   pendingProgress,
@@ -49,8 +50,10 @@ interface DataValue {
   completeModule: (id: string) => Promise<"saved" | "queued">;
   answer: (
     id: string,
-    index: number,
+    index: ExerciseAnswer,
   ) => Promise<{ correct: boolean; xp: number; explanation: string }>;
+  startTrack: (id: string) => Promise<void>;
+  recordRead: (id: string, completed?: boolean) => Promise<void>;
   grade: (id: string, grade: number, feedback: string) => Promise<void>;
 }
 const DataContext = createContext<DataValue | null>(null);
@@ -101,8 +104,14 @@ export function DataProvider({ children }: { children: ReactNode }) {
       if (syncing || !navigator.onLine) return;
       syncing = true;
       try {
+        const setup = await requireSupabase().rpc(
+          "configure_learning_timezone",
+          { p_timezone: localTimezone() },
+        );
+        if (setup.error) throw setup.error;
         for (const item of await pendingProgress(auth.id!)) {
           if (!active) return;
+          await setupTimezone();
           const { error } = await requireSupabase().rpc("complete_module", {
             p_module_id: item.module_id,
           });
@@ -160,6 +169,16 @@ export function DataProvider({ children }: { children: ReactNode }) {
       )
         throw new Error("Conclua a etapa anterior.");
       if (
+        module.question_id &&
+        !d.attempts.some(
+          (a) =>
+            a.user_id === auth.id &&
+            a.question_id === module.question_id &&
+            a.correct,
+        )
+      )
+        throw new Error("Conclua o exercício desta etapa.");
+      if (
         !d.progress.some(
           (p) => p.user_id === auth.id && p.module_id === moduleId,
         )
@@ -170,6 +189,24 @@ export function DataProvider({ children }: { children: ReactNode }) {
           module_id: moduleId,
           completed_at: new Date().toISOString(),
         });
+        awardDemo(
+          d,
+          auth.id,
+          `module:${module.id}`,
+          module.xp,
+          `Módulo: ${module.title}`,
+        );
+        if (
+          !d.track_enrollments.some(
+            (e) => e.user_id === auth.id && e.track_id === module.track_id,
+          )
+        )
+          d.track_enrollments.push({
+            id: uid(),
+            user_id: auth.id,
+            track_id: module.track_id,
+            created_at: new Date().toISOString(),
+          });
         writeDemo(d);
       }
       await reload();
@@ -189,43 +226,131 @@ export function DataProvider({ children }: { children: ReactNode }) {
     await reload();
     return "saved";
   }
-  async function answer(questionId: string, index: number) {
+  async function setupTimezone() {
+    const { error } = await requireSupabase().rpc(
+      "configure_learning_timezone",
+      { p_timezone: localTimezone() },
+    );
+    if (error) throw error;
+  }
+  async function answer(questionId: string, response: ExerciseAnswer) {
     if (!auth.id) throw new Error("Entre na sua conta.");
     if (auth.demo) {
       const d = readDemo(),
         q = d.questions.find((q) => q.id === questionId);
-      if (!q || !q.options[index])
-        throw new Error("Escolha uma resposta válida.");
-      const correct = demoAnswers[questionId] === index;
-      const previous = d.attempts.some(
-          (a) =>
-            a.user_id === auth.id && a.question_id === questionId && a.correct,
-        ),
-        xp = correct && !previous ? q.xp : 0;
+      if (!q) throw new Error("Exercício indisponível.");
+      const correct = evaluateDemo(q, response);
+      const xp = correct
+        ? awardDemo(
+            d,
+            auth.id,
+            `question:${q.id}`,
+            q.xp,
+            `Exercício: ${q.title}`,
+          )
+        : 0;
       d.attempts.push({
         id: uid(),
         user_id: auth.id,
         question_id: questionId,
-        selected_index: index,
+        selected_index: typeof response === "number" ? response : -1,
+        response,
         correct,
         xp,
         created_at: new Date().toISOString(),
       });
       writeDemo(d);
       await reload();
-      return { correct, xp, explanation: q.explanation };
+      return {
+        correct,
+        xp,
+        explanation:
+          q.kind === "challenge"
+            ? "Conclusão autodeclarada: relato e critérios registrados. Não equivale a uma avaliação docente."
+            : q.explanation,
+      };
     }
-    const { data, error } = await requireSupabase().rpc("submit_answer", {
+    await setupTimezone();
+    const { data, error } = await requireSupabase().rpc("submit_exercise", {
       p_question_id: questionId,
-      p_selected_index: index,
+      p_response: response,
     });
     if (error) throw error;
     await reload();
     return data as { correct: boolean; xp: number; explanation: string };
   }
+  async function startTrack(trackId: string) {
+    if (!auth.id) throw new Error("Entre na sua conta.");
+    if (auth.demo) {
+      const d = readDemo();
+      if (
+        !d.track_enrollments.some(
+          (e) => e.user_id === auth.id && e.track_id === trackId,
+        )
+      ) {
+        d.track_enrollments.push({
+          id: uid(),
+          user_id: auth.id,
+          track_id: trackId,
+          created_at: new Date().toISOString(),
+        });
+        writeDemo(d);
+      }
+    } else {
+      const { error } = await requireSupabase().rpc("start_track", {
+        p_track_id: trackId,
+      });
+      if (error) throw error;
+    }
+    await reload();
+  }
+  async function recordRead(materialId: string, completed = false) {
+    if (!auth.id) return;
+    if (auth.demo) {
+      const d = readDemo(),
+        old = d.material_reads.find(
+          (r) => r.user_id === auth.id && r.material_id === materialId,
+        ),
+        now = new Date().toISOString();
+      if (old) {
+        old.last_opened_at = now;
+        if (completed) old.completed_at ||= now;
+      } else
+        d.material_reads.push({
+          id: uid(),
+          user_id: auth.id,
+          material_id: materialId,
+          last_opened_at: now,
+          completed_at: completed ? now : null,
+        });
+      writeDemo(d);
+    } else {
+      const { error } = await requireSupabase().rpc("record_material_read", {
+        p_material_id: materialId,
+        p_completed: completed,
+      });
+      if (error) throw error;
+    }
+    await reload();
+  }
   async function grade(id: string, grade: number, feedback: string) {
     if (auth.demo) {
-      await update("submissions", id, { grade, feedback, status: "reviewed" });
+      const d = readDemo(),
+        submission = d.submissions.find((s) => s.id === id);
+      if (!submission) throw new Error("Atividade não encontrada.");
+      Object.assign(submission, { grade, feedback, status: "reviewed" });
+      if (grade >= 7)
+        awardDemo(
+          d,
+          submission.student_id,
+          `assignment:${submission.assignment_id}`,
+          100,
+          "Atividade aprovada pelo docente",
+          new Date(),
+          false,
+        );
+      writeDemo(d);
+      await reload();
       return;
     }
     const { error } = await requireSupabase().rpc("grade_submission", {
@@ -248,6 +373,8 @@ export function DataProvider({ children }: { children: ReactNode }) {
         update,
         remove,
         completeModule,
+        startTrack,
+        recordRead,
         answer,
         grade,
       }}
