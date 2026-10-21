@@ -1,0 +1,153 @@
+{
+  "engine": "PostgreSQL via PGlite; auth and storage APIs mocked, real RLS executed",
+  "tests": [
+    {
+      "name": "Signup ignores forged administrative metadata",
+      "status": "pass"
+    },
+    {
+      "name": "No role self-promotion or approval from browser",
+      "status": "pass"
+    },
+    {
+      "name": "Student can update only their own editable profile",
+      "status": "pass"
+    },
+    {
+      "name": "Student and institution cannot read other tenant classes",
+      "status": "pass"
+    },
+    {
+      "name": "Only institution can enroll their affiliated students",
+      "status": "pass"
+    },
+    {
+      "name": "Student cannot publish jobs or mint XP rows",
+      "status": "pass"
+    },
+    {
+      "name": "Prerequisite enforced; module completion idempotent",
+      "status": "pass"
+    },
+    {
+      "name": "XP is server-graded and awarded once",
+      "status": "pass"
+    },
+    {
+      "name": "Submission rejects forged grade and other student identity",
+      "status": "pass"
+    },
+    {
+      "name": "Only responsible teacher/institution can grade",
+      "status": "pass"
+    },
+    {
+      "name": "Candidate profile stays private until application",
+      "status": "pass"
+    },
+    {
+      "name": "Experience ownership and candidate sharing are enforced",
+      "status": "pass"
+    },
+    {
+      "name": "Application status permissions and withdrawal enforced",
+      "status": "pass"
+    },
+    {
+      "name": "Post authors are stamped; users cannot forge another author",
+      "status": "pass"
+    },
+    {
+      "name": "Chat only allows related accounts",
+      "status": "pass"
+    },
+    {
+      "name": "Private storage denies other users documents",
+      "status": "pass"
+    },
+    {
+      "name": "Certificate requires all modules and supervising staff",
+      "status": "pass"
+    },
+    {
+      "name": "Anonymous cannot access private tables; verification is narrow",
+      "status": "pass"
+    },
+    {
+      "name": "Support is private until explicit sharing with an affiliated teacher",
+      "status": "pass"
+    },
+    {
+      "name": "MFA enforced by RLS and RPC, not only frontend",
+      "status": "pass"
+    },
+    {
+      "name": "Unconfirmed email cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Banned account cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Anonymous account cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Revoked session cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Expired session cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Session belonging to another account cannot read, write, call RPC or access private storage",
+      "status": "pass"
+    },
+    {
+      "name": "Account without a provisioned role cannot use student RPCs",
+      "status": "pass"
+    },
+    {
+      "name": "JWT without a session identifier is refused",
+      "status": "pass"
+    },
+    {
+      "name": "New learning tables deny manual points, dates, enrollment and forged timezone",
+      "status": "pass"
+    },
+    {
+      "name": "Server stores timezone once and awards one first-day bonus across repeated and different exercises",
+      "status": "pass"
+    },
+    {
+      "name": "Server grades all six formats and refuses legacy bypass, nulls and wrong answers",
+      "status": "pass"
+    },
+    {
+      "name": "Milestone bonus is unique in each consecutive sequence; a gap resets the sequence",
+      "status": "pass"
+    },
+    {
+      "name": "Parallel tracks require their own exercise and never complete a different track",
+      "status": "pass"
+    },
+    {
+      "name": "Material read history uses server timestamps and persists completion",
+      "status": "pass"
+    },
+    {
+      "name": "Avatar upload, profile reference and reads enforce ownership and profile visibility",
+      "status": "pass"
+    },
+    {
+      "name": "Weekly ranking includes only opt-in students and recorded current-week XP",
+      "status": "pass"
+    },
+    {
+      "name": "Every exposed app table has RLS",
+      "status": "pass"
+    }
+  ]
+}
