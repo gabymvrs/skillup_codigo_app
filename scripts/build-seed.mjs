@@ -8,12 +8,14 @@ const js = stripTypeScriptTypes(source)
     "const originalMaterials=__data;",
   )
   .replace(/import enrichment from [^;]+;/, "const enrichment=__extra;")
+  .replace(/import practicePacks from [^;]+;/, "const practicePacks=__packs;")
   .replaceAll("export const ", "const ");
 const catalog = vm.runInNewContext(
   js +
     ";({subjects,materials,tracks,modules,questions,demoAnswers,exerciseAnswers});",
   {
     __data: JSON.parse(readFileSync("src/data/legacy-materials.json", "utf8")),
+    __packs: JSON.parse(readFileSync("src/data/practice-packs.json", "utf8")),
     __extra: JSON.parse(readFileSync("src/data/enrichment.json", "utf8")),
   },
 );

@@ -199,6 +199,7 @@ function JobCard({ job }: { job: Job }) {
           <Button
             variant="ghost"
             icon={saved ? "check" : "plus"}
+            aria-pressed={Boolean(saved)}
             disabled={action.busy}
             onClick={() =>
               action.run(async () => {
@@ -212,7 +213,7 @@ function JobCard({ job }: { job: Job }) {
               })
             }
           >
-            {saved ? "Salva" : "Salvar vaga"}
+            {saved ? "Interesse marcado" : "Tenho interesse"}
           </Button>
         )}
       </div>

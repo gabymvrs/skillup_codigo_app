@@ -146,6 +146,10 @@
       "status": "pass"
     },
     {
+      "name": "Expanded practice catalogue is idempotent and advanced answers are graded privately without repeat XP",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

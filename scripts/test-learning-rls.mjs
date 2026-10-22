@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 export async function testLearning({
   db,
@@ -220,6 +221,35 @@ export async function testLearning({
     await actor(null);
     await rejects("select * from public.weekly_leaderboard()");
     await rejects(`select public.submit_exercise('${id(6000)}','1')`);
+  });
+  await test("Expanded practice catalogue is idempotent and advanced answers are graded privately without repeat XP", async () => {
+    const catalogue = JSON.parse(
+      await readFile("src/data/practice-packs.json", "utf8"),
+    );
+    await admin();
+    const before = await scalar("select count(*) from public.questions");
+    await db.exec(await readFile("supabase/seed.sql", "utf8"));
+    assert.equal(await scalar("select count(*) from public.questions"), before);
+    await actor(5);
+    await rejects("select * from private.question_answers");
+    for (const q of catalogue.questions) {
+      const expected = catalogue.answers[q.id];
+      const submit = async (answer) =>
+        (
+          await db.query("select public.submit_exercise($1,$2) result", [
+            q.id,
+            JSON.stringify(answer),
+          ])
+        ).rows[0].result;
+      const wrong = await submit((expected + 1) % q.options.length);
+      assert.equal(wrong.correct, false);
+      assert.equal(wrong.xp, 0);
+      const correct = await submit(expected);
+      assert.equal(correct.correct, true);
+      assert.equal(correct.xp, q.xp);
+      const repeated = await submit(expected);
+      assert.equal(repeated.xp, 0);
+    }
   });
   await admin();
 }

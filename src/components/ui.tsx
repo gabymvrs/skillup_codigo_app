@@ -200,9 +200,11 @@ export function SectionTitle({
 export function Notice({
   children,
   tone = "info",
+  onDismiss,
 }: {
   children: ReactNode;
   tone?: "info" | "error" | "success" | "warning";
+  onDismiss?: () => void;
 }) {
   return (
     <div
@@ -211,6 +213,16 @@ export function Notice({
     >
       <Icon name={tone === "success" ? "check" : "alert"} />
       <div>{children}</div>
+      {onDismiss && (
+        <button
+          type="button"
+          className="icon-button notice-close"
+          aria-label="Fechar aviso"
+          onClick={onDismiss}
+        >
+          <Icon name="x" />
+        </button>
+      )}
     </div>
   );
 }
@@ -394,7 +406,11 @@ export function Confirm({
   return (
     <Modal title={title} onClose={onClose}>
       <p>{children}</p>
-      {action.error && <Notice tone="error">{action.error}</Notice>}
+      {action.error && (
+        <Notice tone="error" onDismiss={() => action.setError("")}>
+          {action.error}
+        </Notice>
+      )}
       <div className="actions">
         <Button variant="outline" onClick={onClose}>
           Cancelar
@@ -445,8 +461,16 @@ export function ActionFeedback({
 }) {
   return (
     <>
-      {action.error && <Notice tone="error">{action.error}</Notice>}
-      {action.success && <Notice tone="success">{action.success}</Notice>}
+      {action.error && (
+        <Notice tone="error" onDismiss={() => action.setError("")}>
+          {action.error}
+        </Notice>
+      )}
+      {action.success && (
+        <Notice tone="success" onDismiss={() => action.setSuccess("")}>
+          {action.success}
+        </Notice>
+      )}
     </>
   );
 }

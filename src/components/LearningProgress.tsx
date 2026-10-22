@@ -21,7 +21,10 @@ export function LearningProgress() {
       />
       <div className="streak-stats">
         <span>
-          <Icon name="flame" />
+          <Icon
+            name="flame"
+            className={s.current > 0 ? "streak-flame active" : "streak-flame"}
+          />
           {s.current} dia(s) de ofensiva
         </span>
         <span>Melhor: {s.best} dia(s)</span>
@@ -42,8 +45,11 @@ export function LearningProgress() {
           </p>
           {[1, 3, 7, 14, 30].map((n) => (
             <p key={n}>
-              <Icon name={s.best >= n ? "award" : "lock"} /> {n} dia(s) ·{" "}
-              {s.best >= n ? "Conquistado" : "Em construção"}
+              <Icon
+                name={s.best >= n ? "flame" : "lock"}
+                className={s.best >= n ? "streak-flame active" : ""}
+              />{" "}
+              {n} dia(s) · {s.best >= n ? "Conquistado" : "Em construção"}
             </p>
           ))}
           <h3>Histórico de recompensas</h3>

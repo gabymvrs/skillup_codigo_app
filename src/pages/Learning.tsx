@@ -1,4 +1,9 @@
 import {
+  PracticeSession,
+  type PracticeSet,
+} from "../components/PracticeSession";
+import { practiceSets } from "../data/catalog";
+import {
   ExerciseFields,
   initialAnswer,
   answerReady,
@@ -284,26 +289,63 @@ export function Practice() {
     [type, setType] = useState(""),
     [subject, setSubject] = useState(""),
     [format, setFormat] = useState(""),
-    [open, setOpen] = useState<string | null>(null);
+    [open, setOpen] = useState<string | null>(null),
+    [session, setSession] = useState<PracticeSet | null>(null),
+    [showStats, setShowStats] = useState(true);
+  const sets: PracticeSet[] =
+    type === "Prática guiada"
+      ? data.subjects.map((s) => ({
+          id: s.id,
+          title: `Prática de ${s.name}`,
+          category: type,
+          questionIds: data.questions
+            .filter((q) => q.category === type && q.subject_id === s.id)
+            .map((q) => q.id),
+        }))
+      : practiceSets.filter((s) => s.category === type);
+  const visibleSets = sets.filter((s) =>
+    s.questionIds.some((id) =>
+      data.questions.some(
+        (q) =>
+          q.id === id &&
+          (!subject || q.subject_id === subject) &&
+          (!format || (q.kind || "choice") === format),
+      ),
+    ),
+  );
   return (
     <div className="stack">
       <Heading
         title="Prática"
         description="Transforme o conteúdo em conhecimento com exercícios curtos."
       />
-      <div className="practice-stats">
-        <span>
-          {new Set(attempts.map((a) => a.question_id)).size} questões
-          respondidas · {attempts.length} tentativa(s)
-        </span>
-        <span>
-          {attempts.filter((a) => a.correct).length} acertos ·{" "}
-          {attempts.filter((a) => !a.correct).length} erros ·{" "}
-          {percent(attempts.filter((a) => a.correct).length, attempts.length)}%
-          nas tentativas
-        </span>
-        <strong>{xp} XP em prática</strong>
-      </div>
+      {showStats ? (
+        <div className="practice-stats">
+          <span>
+            {new Set(attempts.map((a) => a.question_id)).size} questões
+            respondidas · {attempts.length} tentativa(s)
+          </span>
+          <span>
+            {attempts.filter((a) => a.correct).length} acertos ·{" "}
+            {attempts.filter((a) => !a.correct).length} erros ·{" "}
+            {percent(attempts.filter((a) => a.correct).length, attempts.length)}
+            % nas tentativas
+          </span>
+          <strong>{xp} XP em prática</strong>
+          <button
+            type="button"
+            className="icon-button"
+            aria-label="Fechar resumo de prática"
+            onClick={() => setShowStats(false)}
+          >
+            <Icon name="x" />
+          </button>
+        </div>
+      ) : (
+        <Button variant="ghost" onClick={() => setShowStats(true)}>
+          Mostrar resumo de prática
+        </Button>
+      )}
       <div className="two-columns">
         <label>
           Disciplina
@@ -372,7 +414,7 @@ export function Practice() {
         <Card className="challenge">
           <Badge>Desafio do dia</Badge>
           <h2>Refatoração de Algoritmo de Busca</h2>
-          <p>Até 150 XP · 15 min</p>
+          <p>5 questões e um simulador de busca</p>
           <Button variant="outline" onClick={() => setType("Laboratório")}>
             Iniciar
           </Button>
@@ -389,25 +431,54 @@ export function Practice() {
             {type}
           </SectionTitle>
           {type === "Laboratório" && <SearchLab />}
-          {data.questions
-            .filter(
-              (q) =>
-                q.category === type &&
-                (!subject || q.subject_id === subject) &&
-                (!format || (q.kind || "choice") === format),
-            )
-            .map((q) => (
-              <Card key={q.id}>
+          <div className="two-columns">
+            {visibleSets.map((set) => (
+              <Card key={set.id}>
                 <Badge>
-                  {q.xp} XP{" "}
-                  {q.kind === "challenge"
-                    ? "na primeira conclusão autodeclarada"
-                    : "na primeira resposta correta"}
+                  {set.questionIds.length} questões ·{" "}
+                  {type === "Exames" ? "Avançado" : "Prática"}
                 </Badge>
-                <h3>{q.title}</h3>
-                <Button onClick={() => setOpen(q.id)}>Praticar</Button>
+                <h3>{set.title}</h3>
+                <p>
+                  {type === "Exames"
+                    ? "Navegue livremente, revise as alternativas marcadas e finalize para receber a correção."
+                    : "Um bloco completo para praticar e revisar seu aprendizado."}
+                </p>
+                <Button onClick={() => setSession(set)}>
+                  {type === "Exames" ? "Iniciar exame" : "Iniciar prática"}
+                </Button>
               </Card>
             ))}
+          </div>
+          {!visibleSets.length && (
+            <Empty title="Nenhum bloco encontrado">
+              Altere os filtros para encontrar outros blocos de questões.
+            </Empty>
+          )}
+          {type === "Prática guiada" && (
+            <>
+              <SectionTitle>Questões avulsas para reforçar</SectionTitle>
+              {data.questions
+                .filter(
+                  (q) =>
+                    q.category === type &&
+                    (!subject || q.subject_id === subject) &&
+                    (!format || (q.kind || "choice") === format),
+                )
+                .map((q) => (
+                  <Card key={q.id}>
+                    <Badge>
+                      {q.xp} XP{" "}
+                      {q.kind === "challenge"
+                        ? "na primeira conclusão autodeclarada"
+                        : "na primeira resposta correta"}
+                    </Badge>
+                    <h3>{q.title}</h3>
+                    <Button onClick={() => setOpen(q.id)}>Praticar</Button>
+                  </Card>
+                ))}
+            </>
+          )}
         </>
       )}
       <SectionTitle
@@ -443,6 +514,13 @@ export function Practice() {
           </Empty>
         )}
       </Card>
+      {session && (
+        <PracticeSession
+          key={session.id}
+          set={session}
+          onClose={() => setSession(null)}
+        />
+      )}
       {open && (
         <QuestionDialog questionId={open} onClose={() => setOpen(null)} />
       )}

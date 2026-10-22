@@ -219,7 +219,15 @@ export function Layout() {
             {auth.role === "estudante" && (
               <div className="header-learning" aria-label="Seu progresso">
                 <span>
-                  <Icon name="flame" size={14} />
+                  <Icon
+                    name="flame"
+                    size={14}
+                    className={
+                      learning.current > 0
+                        ? "streak-flame active"
+                        : "streak-flame"
+                    }
+                  />
                   {learning.current}
                 </span>
                 <span>{learning.xp} XP</span>

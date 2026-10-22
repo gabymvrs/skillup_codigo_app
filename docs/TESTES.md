@@ -87,3 +87,7 @@ Após as correções de sessão: 52 testes do aplicativo e 29 verificações SQL
 ## Atualização de aprendizagem — 21/10/2026
 
 97 testes Vitest e 37 verificações de RLS/PostgreSQL passaram; TypeScript e build Vite aprovados. Casos novos incluem seis formatos de exercício, antifraude de XP, marcos de ofensiva e reinício, timezone, duas trilhas com exercícios exclusivos, foto/nome/cancelamento/remoção, suporte docente e material nas oito disciplinas. A tentativa de browser QA falhou por timeout na ferramenta; não declarar ausência de overflow ou fidelidade visual homologada. Detalhes: [EVOLUCAO-OUTUBRO.md](EVOLUCAO-OUTUBRO.md).
+
+## Práticas e exames — 22/10/2026
+
+**105/105 testes de interface/lógica aprovados** (12 arquivos) e **38/38 verificações PostgreSQL/PGlite aprovadas**. Os relatórios JSON nesta pasta foram atualizados. Esta contagem substitui os totais históricos acima. Para reproduzir no ambiente com CPU limitada, use `npx vitest run --maxWorkers=1 --testTimeout=20000`; não foram alterados critérios de acerto dos testes. Ver [escopo, testes e limites](PRATICAS-EXAMES.md).

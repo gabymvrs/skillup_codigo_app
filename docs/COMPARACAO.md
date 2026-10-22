@@ -99,3 +99,7 @@ Capturar as variantes em 393 px e 1440 px, confrontar com os PDFs de mesmo nome,
 ## Atualização de Material/Suporte — 21/10/2026
 
 As novas imagens de Material e Suporte foram inspecionadas. A seção de suporte agora usa `AcademicSupport.tsx` com assistente, docente, feedback detalhado e central de ajuda. O bot flutuante permanece separado. Materiais preservam cores/ordem e acrescentam os dois títulos de referência. Home ganhou histórias ilustrativas e ranking; perfil ganhou foto persistente. A análise atual e as diferenças estão em [EVOLUCAO-OUTUBRO.md](EVOLUCAO-OUTUBRO.md). A tentativa de abrir a prévia no navegador expirou; não há aprovação de geometria/overflow em diferentes resoluções.
+
+## Ajustes solicitados em 22/10/2026
+
+A captura da página Prática orientou a adição do X na faixa de estatísticas. Chama laranja, blocos de questões e revisão de exames são mudanças explicitamente solicitadas após os wireframes, detalhadas em [PRATICAS-EXAMES.md](PRATICAS-EXAMES.md). A estrutura da página foi preservada; a comparação visual em navegador continua pendente.

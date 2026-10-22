@@ -1,3 +1,4 @@
+import practicePacks from "./practice-packs.json";
 import enrichment from "./enrichment.json";
 import originalMaterials from "./legacy-materials.json";
 import type { Material, Module, Question, Subject, Track } from "../lib/types";
@@ -201,4 +202,9 @@ materials.push(...(enrichment.materials as Material[]));
 tracks.push(...(enrichment.tracks as Track[]));
 modules.push(...(enrichment.modules as Module[]));
 questions.push(...(enrichment.questions as Question[]));
-export const exerciseAnswers = enrichment.answers;
+questions.push(...(practicePacks.questions as Question[]));
+export const exerciseAnswers: Record<string, unknown> = {
+  ...enrichment.answers,
+  ...practicePacks.answers,
+};
+export const practiceSets = practicePacks.packs;

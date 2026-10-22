@@ -116,3 +116,7 @@ Google e Facebook são exibidos no login e habilitados apenas quando o endpoint 
 
 Veja [o inventário, alterações, testes e instruções de atualização](docs/EVOLUCAO-OUTUBRO.md).
 Em projetos já configurados com migrations 001–006, aplique **somente a migration 007** e depois o `supabase/seed.sql` atualizado. Não recrie o banco. A atualização adiciona ranking semanal, XP/ofensivas, fotos privadas, leituras e trilhas independentes. A homologação visual e o teste com o Supabase hospedado ainda precisam ser concluídos antes de produção.
+
+### Práticas, exames e interação — 22/10/2026
+
+[Alterações e validação](docs/PRATICAS-EXAMES.md): avisos fecháveis, chama laranja, blocos de 5–6 questões, dois exames avançados de 10 questões com navegação/revisão e interesse reversível. Se a migração 007 já foi aplicada, basta executar o **seed.sql atualizado**, sem reaplicar migrations.

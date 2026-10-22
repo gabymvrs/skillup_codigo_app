@@ -1,0 +1,527 @@
+{
+  "questions": [
+    {
+      "id": "00000000-0000-4000-8000-000000010000",
+      "title": "Condição de aprovação",
+      "prompt": "A aprovação exige nota ≥ 7 E frequência ≥ 75%. Qual estudante satisfaz a regra?",
+      "options": [
+        "Nota 8 e frequência 70%",
+        "Nota 6 e frequência 90%",
+        "Nota 7 e frequência 75%",
+        "Nota 6,9 e frequência 74%"
+      ],
+      "explanation": "As duas condições precisam ser verdadeiras; os limites 7 e 75 estão incluídos.",
+      "category": "Exercício",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010001",
+      "title": "Acumulador",
+      "prompt": "Um acumulador começa em 2. Para cada valor de [3, 1, 4], ele soma o dobro do valor. Qual o resultado?",
+      "options": ["10", "18", "20", "16"],
+      "explanation": "2 + 2×3 + 2×1 + 2×4 = 18.",
+      "category": "Exercício",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010002",
+      "title": "Limite de repetição",
+      "prompt": "Um laço começa com i=0 e repete enquanto i<5, incrementando i em 1 após cada execução. Quantas execuções ocorrem?",
+      "options": ["4", "6", "5", "0"],
+      "explanation": "O corpo executa para i igual a 0, 1, 2, 3 e 4: cinco vezes.",
+      "category": "Exercício",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010003",
+      "title": "Negação de regra",
+      "prompt": "O acesso é permitido quando cadastrado E ativo. Qual condição representa corretamente a recusa?",
+      "options": [
+        "Não cadastrado E não ativo",
+        "Cadastrado OU ativo",
+        "Não cadastrado OU não ativo",
+        "Cadastrado E não ativo"
+      ],
+      "explanation": "Pela negação da conjunção, basta não estar cadastrado ou não estar ativo para o acesso ser recusado.",
+      "category": "Exercício",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010004",
+      "title": "Busca sem resultado",
+      "prompt": "Na busca linear em [8, 3, 6, 1, 9], quantas comparações com elementos são necessárias para concluir que 7 não está presente?",
+      "options": ["1", "4", "5", "7"],
+      "explanation": "Sem ordenação e sem encontrar o alvo, todos os cinco elementos precisam ser comparados.",
+      "category": "Laboratório",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010005",
+      "title": "Primeira ocorrência",
+      "prompt": "Uma busca linear retorna assim que encontra o alvo. Para [4, 2, 4, 9] e alvo 4, qual índice, contando a partir de zero, será retornado?",
+      "options": ["0", "2", "4", "3"],
+      "explanation": "O alvo já está no primeiro elemento, índice zero; a busca termina antes da segunda ocorrência.",
+      "category": "Laboratório",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010006",
+      "title": "Teste de fronteira",
+      "prompt": "Uma função recebe uma lista e devolve seu primeiro item, mas falha quando não há itens. Qual teste identifica diretamente esse defeito?",
+      "options": [
+        "Lista com 100 números",
+        "Lista vazia",
+        "Lista ordenada com 2 números",
+        "Lista de 3 números repetidos"
+      ],
+      "explanation": "Na lista vazia não existe índice zero. A função precisa tratar esse caso antes de acessar o primeiro item.",
+      "category": "Laboratório",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010007",
+      "title": "Comparações desnecessárias",
+      "prompt": "Uma busca encontra o alvo no segundo item de uma lista de 100 itens, mas continua percorrendo todos. Se basta saber se o alvo existe, qual mudança mantém o resultado e reduz trabalho?",
+      "options": [
+        "Ordenar a lista a cada comparação",
+        "Remover itens até sobrar um",
+        "Retornar verdadeiro ao encontrar o alvo",
+        "Comparar apenas o último item"
+      ],
+      "explanation": "Encerrar no primeiro acerto é suficiente para verificar existência e evita as comparações restantes.",
+      "category": "Laboratório",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010008",
+      "title": "Conflito de integração",
+      "prompt": "Duas pessoas alteraram a mesma regra de negócio e produziram resultados incompatíveis. Qual ação permite integrar com critério?",
+      "options": [
+        "Escolher sempre a versão mais recente",
+        "Definir o resultado esperado com a equipe e executar testes sobre a versão integrada",
+        "Apagar todos os testes",
+        "Manter as duas regras contraditórias"
+      ],
+      "explanation": "O comportamento acordado e os testes permitem resolver o conflito com evidência, sem escolher uma versão arbitrariamente.",
+      "category": "Dinâmica",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010009",
+      "title": "Feedback útil",
+      "prompt": "Um colega entrega um formulário que não identifica o campo com erro. Qual feedback é mais acionável?",
+      "options": [
+        "Está ruim",
+        "Você não sabe fazer",
+        "Tudo precisa mudar",
+        "Ao enviar o e-mail vazio, não consigo localizar o erro; destaque esse campo e explique como preenchê-lo"
+      ],
+      "explanation": "Descrever a situação observada, o impacto e a melhoria torna o feedback específico e verificável.",
+      "category": "Dinâmica",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010010",
+      "title": "Prioridade da entrega",
+      "prompt": "Faltam duas horas para a entrega. O login falha e um ícone está desalinhado. Qual decisão reduz o maior impedimento de uso?",
+      "options": [
+        "Ajustar só o ícone",
+        "Corrigir e testar o login antes de polir o ícone",
+        "Adicionar três telas novas",
+        "Ocultar o botão de login"
+      ],
+      "explanation": "Uma falha de acesso bloqueia o fluxo principal. Corrigir e testar esse impedimento tem prioridade sobre um ajuste cosmético.",
+      "category": "Dinâmica",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010011",
+      "title": "Divisão de tarefas",
+      "prompt": "Uma tarefa depende de uma API que ainda não tem contrato definido. Qual combinação permite trabalho paralelo com menor risco de incompatibilidade?",
+      "options": [
+        "Cada pessoa inventa campos diferentes",
+        "Esperar sem conversar",
+        "Combinar campos, erros e exemplos; usar dados de teste compatíveis com o contrato",
+        "Remover a validação do cliente"
+      ],
+      "explanation": "Um contrato compartilhado permite construir as partes em paralelo e testar a integração com os mesmos formatos.",
+      "category": "Dinâmica",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 50
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010012",
+      "title": "Laços dependentes",
+      "prompt": "Para i de 1 até 8, um laço interno executa i vezes e incrementa total em 1. total começa em zero. Qual é o valor final?",
+      "options": ["16", "32", "36", "64"],
+      "explanation": "A soma é 1+2+3+4+5+6+7+8 = 8×9/2 = 36.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010013",
+      "title": "Busca binária e limite",
+      "prompt": "Em uma busca binária padrão, cada comparação com o elemento central elimina esse elemento e uma das metades. Para 127 elementos ordenados, qual o máximo de comparações até encontrar um alvo presente?",
+      "options": ["6", "7", "8", "127"],
+      "explanation": "As faixas máximas têm 127, 63, 31, 15, 7, 3 e 1 elemento. Isso produz no máximo sete comparações.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010014",
+      "title": "Atualização sequencial",
+      "prompt": "Inicialmente a=3 e b=5. Execute, nessa ordem: a=a+b; b=a-b; a=a-b. Quais são os valores finais?",
+      "options": ["a=3, b=5", "a=8, b=3", "a=5, b=3", "a=5, b=8"],
+      "explanation": "Depois das instruções: (8,5), (8,3), (5,3). Cada linha usa os valores atualizados pela anterior.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010015",
+      "title": "Tabela de junção",
+      "prompt": "Há dois pedidos do cliente A e um pedido do cliente B. A tabela de contatos possui três contatos de A e dois de B. Ao unir pedidos e contatos apenas por cliente, quantas linhas resultam?",
+      "options": ["3", "5", "6", "8"],
+      "explanation": "Cada pedido de A combina com três contatos: 2×3=6. O de B combina com dois: 1×2=2. Total: oito.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010016",
+      "title": "Condição composta",
+      "prompt": "Uma regra permite acesso quando (idade≥18 OU autorizado) E NÃO bloqueado. Qual caso é permitido?",
+      "options": [
+        "Idade 17, autorizado sim, bloqueado não",
+        "Idade 20, autorizado sim, bloqueado sim",
+        "Idade 17, autorizado não, bloqueado não",
+        "Idade 18, autorizado não, bloqueado sim"
+      ],
+      "explanation": "No primeiro caso a autorização satisfaz a primeira parte e não há bloqueio. Os demais falham em pelo menos uma condição.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010017",
+      "title": "Fronteiras de paginação",
+      "prompt": "Uma lista tem 53 itens. As páginas exibem 10 itens, com índices iniciados em zero. Qual faixa de índices pertence à sexta página?",
+      "options": ["50 a 59", "51 a 53", "50 a 52", "49 a 52"],
+      "explanation": "As cinco primeiras páginas cobrem 0–49. A sexta tem os três itens restantes, índices 50, 51 e 52.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010018",
+      "title": "Recorrência",
+      "prompt": "Considere f(0)=1 e, para n>0, f(n)=2×f(n−1)+1. Qual é f(4)?",
+      "options": ["16", "30", "31", "32"],
+      "explanation": "Os valores sucessivos são 1, 3, 7, 15 e 31.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010019",
+      "title": "Transferência consistente",
+      "prompt": "Um saldo A=100 deve transferir 30 para B=20. O débito de A é salvo, mas o crédito de B falha. Qual solução mantém a regra de que a soma dos saldos não muda?",
+      "options": [
+        "Repetir só o débito",
+        "Ignorar a falha e mostrar sucesso",
+        "Agrupar débito e crédito em uma transação que confirme ambos ou reverta ambos",
+        "Alterar apenas a tela para mostrar B=50"
+      ],
+      "explanation": "A transação garante que as duas alterações sejam confirmadas juntas ou que nenhuma permaneça. A soma continua sendo 120.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010020",
+      "title": "Custo acumulado",
+      "prompt": "Um algoritmo percorre n elementos uma vez e depois compara todos os pares distintos com i<j. Para n=20, quantas operações são feitas, contando cada visita e cada comparação como uma operação?",
+      "options": ["190", "200", "210", "400"],
+      "explanation": "São 20 visitas mais 20×19/2=190 pares: total de 210 operações.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010021",
+      "title": "Teste que distingue defeito",
+      "prompt": "A regra correta é nota≥7 E presença≥75. Um programa usa OU por engano. Qual entrada faz o programa aprovar enquanto a regra correta reprova?",
+      "options": [
+        "Nota 8, presença 80",
+        "Nota 6, presença 70",
+        "Nota 7, presença 75",
+        "Nota 8, presença 70"
+      ],
+      "explanation": "Com nota 8 e presença 70, apenas a nota passa. OU aprova, enquanto E reprova. As outras entradas não distinguem as duas regras.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010022",
+      "title": "Demanda no prazo de reposição",
+      "prompt": "O consumo é 18 unidades por dia. O fornecedor leva 6 dias e exige-se estoque de segurança de 30 unidades. Sem variação de demanda, qual é o ponto de reposição?",
+      "options": ["108", "138", "180", "48"],
+      "explanation": "Demanda no prazo: 18×6=108. Somando 30 unidades de segurança, o ponto de reposição é 138.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010023",
+      "title": "Capacidade e ocupação",
+      "prompt": "Um veículo comporta 1.200 kg. Cada caixa tem 18 kg. O limite operacional é 90% da capacidade, e só podem ser transportadas caixas inteiras. Qual o máximo de caixas?",
+      "options": ["54", "60", "66", "67"],
+      "explanation": "90% de 1.200 é 1.080 kg; 1.080/18=60 caixas.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010024",
+      "title": "Descontos sucessivos",
+      "prompt": "Um lote custa R$ 2.000. Aplica-se desconto de 10% e, sobre o valor reduzido, outro de 5%. O frete é R$ 100. Qual o custo final?",
+      "options": ["R$ 1.700", "R$ 1.800", "R$ 1.810", "R$ 1.900"],
+      "explanation": "2.000×0,90×0,95=1.710. Com frete de 100, o total é 1.810. Descontos sucessivos não são simplesmente somados.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010025",
+      "title": "Fluxo do estoque",
+      "prompt": "O estoque inicial é 120. Entram 80 unidades e saem 135. Das unidades restantes, 15 estão avariadas e 20 reservadas. Quantas estão disponíveis para novas vendas?",
+      "options": ["30", "50", "65", "85"],
+      "explanation": "O saldo físico é 120+80−135=65. Descontando 15 avariadas e 20 reservadas, ficam 30 disponíveis.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010026",
+      "title": "Gargalo de processo",
+      "prompt": "Três etapas em série têm capacidades de 80, 50 e 65 peças por hora. Sem estoques intermediários suficientes para alterar o regime estável, qual mudança aumenta a capacidade máxima da linha?",
+      "options": [
+        "Aumentar apenas a primeira para 100",
+        "Aumentar a segunda para 60",
+        "Aumentar apenas a terceira para 90",
+        "Reduzir a primeira para 70"
+      ],
+      "explanation": "A segunda etapa limita a linha a 50. Ao elevá-la a 60, ela ainda é o gargalo, mas o limite da linha aumenta para 60.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010027",
+      "title": "Roteiro com janelas",
+      "prompt": "Um veículo sai às 8h. Leva 35 min até A, descarrega por 20 min e leva 40 min até B. B só recebe a partir de 10h. Quanto tempo aguardará em B?",
+      "options": ["15 minutos", "25 minutos", "35 minutos", "45 minutos"],
+      "explanation": "Chega a A às 8h35, sai às 8h55 e chega a B às 9h35. Aguarda 25 minutos até as 10h.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010028",
+      "title": "Produtividade proporcional",
+      "prompt": "Quatro pessoas separam 240 pedidos em 3 horas, com produtividade igual e constante. Quantos pedidos seis pessoas separam em 5 horas, sem gargalos adicionais?",
+      "options": ["400", "480", "600", "720"],
+      "explanation": "Cada pessoa separa 240/(4×3)=20 pedidos por hora. Seis pessoas em cinco horas separam 6×5×20=600.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010029",
+      "title": "Média ponderada",
+      "prompt": "Foram compradas 40 unidades a R$ 12 e 60 a R$ 18, sem outros custos. Qual o custo médio ponderado por unidade?",
+      "options": ["R$ 15,00", "R$ 15,60", "R$ 16,00", "R$ 16,80"],
+      "explanation": "O custo total é 40×12+60×18=1.560 para 100 unidades; a média ponderada é 15,60.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010030",
+      "title": "Índice de atendimento",
+      "prompt": "De 250 pedidos, 225 chegaram no prazo. Entre esses 225, 15 estavam incompletos. Considerando sucesso apenas entrega no prazo E completa, qual o percentual de sucesso?",
+      "options": ["84%", "90%", "94%", "96%"],
+      "explanation": "Os pedidos que atendem aos dois critérios são 225−15=210. 210/250×100=84%.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000010031",
+      "title": "Comparação de fornecedores",
+      "prompt": "Para 120 unidades, A cobra R$ 25 por unidade e R$ 180 de frete. B cobra R$ 27 por unidade, desconto de 5% sobre os produtos e frete grátis. Qual proposta é mais barata e por quanto?",
+      "options": [
+        "A, por R$ 60",
+        "A, por R$ 102",
+        "B, por R$ 60",
+        "B, por R$ 102"
+      ],
+      "explanation": "A custa 120×25+180=3.180. B custa 120×27×0,95=3.078. B é mais barato em 102 reais.",
+      "category": "Exames",
+      "kind": "choice",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 80
+    }
+  ],
+  "answers": {
+    "00000000-0000-4000-8000-000000010000": 2,
+    "00000000-0000-4000-8000-000000010001": 1,
+    "00000000-0000-4000-8000-000000010002": 2,
+    "00000000-0000-4000-8000-000000010003": 2,
+    "00000000-0000-4000-8000-000000010004": 2,
+    "00000000-0000-4000-8000-000000010005": 0,
+    "00000000-0000-4000-8000-000000010006": 1,
+    "00000000-0000-4000-8000-000000010007": 2,
+    "00000000-0000-4000-8000-000000010008": 1,
+    "00000000-0000-4000-8000-000000010009": 3,
+    "00000000-0000-4000-8000-000000010010": 1,
+    "00000000-0000-4000-8000-000000010011": 2,
+    "00000000-0000-4000-8000-000000010012": 2,
+    "00000000-0000-4000-8000-000000010013": 1,
+    "00000000-0000-4000-8000-000000010014": 2,
+    "00000000-0000-4000-8000-000000010015": 3,
+    "00000000-0000-4000-8000-000000010016": 0,
+    "00000000-0000-4000-8000-000000010017": 2,
+    "00000000-0000-4000-8000-000000010018": 2,
+    "00000000-0000-4000-8000-000000010019": 2,
+    "00000000-0000-4000-8000-000000010020": 2,
+    "00000000-0000-4000-8000-000000010021": 3,
+    "00000000-0000-4000-8000-000000010022": 1,
+    "00000000-0000-4000-8000-000000010023": 1,
+    "00000000-0000-4000-8000-000000010024": 2,
+    "00000000-0000-4000-8000-000000010025": 0,
+    "00000000-0000-4000-8000-000000010026": 1,
+    "00000000-0000-4000-8000-000000010027": 1,
+    "00000000-0000-4000-8000-000000010028": 2,
+    "00000000-0000-4000-8000-000000010029": 1,
+    "00000000-0000-4000-8000-000000010030": 0,
+    "00000000-0000-4000-8000-000000010031": 3
+  },
+  "packs": [
+    {
+      "id": "logica",
+      "title": "Lógica e decisões",
+      "category": "Exercício",
+      "questionIds": [
+        "00000000-0000-4000-8000-000000000400",
+        "00000000-0000-4000-8000-000000010000",
+        "00000000-0000-4000-8000-000000010001",
+        "00000000-0000-4000-8000-000000010002",
+        "00000000-0000-4000-8000-000000010003"
+      ]
+    },
+    {
+      "id": "laboratorio",
+      "title": "Laboratório de busca e depuração",
+      "category": "Laboratório",
+      "questionIds": [
+        "00000000-0000-4000-8000-000000000402",
+        "00000000-0000-4000-8000-000000010004",
+        "00000000-0000-4000-8000-000000010005",
+        "00000000-0000-4000-8000-000000010006",
+        "00000000-0000-4000-8000-000000010007"
+      ]
+    },
+    {
+      "id": "equipe",
+      "title": "Dinâmica de colaboração",
+      "category": "Dinâmica",
+      "questionIds": [
+        "00000000-0000-4000-8000-000000000403",
+        "00000000-0000-4000-8000-000000010008",
+        "00000000-0000-4000-8000-000000010009",
+        "00000000-0000-4000-8000-000000010010",
+        "00000000-0000-4000-8000-000000010011"
+      ]
+    },
+    {
+      "id": "exame-algoritmos",
+      "title": "Exame avançado: algoritmos e dados",
+      "category": "Exames",
+      "questionIds": [
+        "00000000-0000-4000-8000-000000010012",
+        "00000000-0000-4000-8000-000000010013",
+        "00000000-0000-4000-8000-000000010014",
+        "00000000-0000-4000-8000-000000010015",
+        "00000000-0000-4000-8000-000000010016",
+        "00000000-0000-4000-8000-000000010017",
+        "00000000-0000-4000-8000-000000010018",
+        "00000000-0000-4000-8000-000000010019",
+        "00000000-0000-4000-8000-000000010020",
+        "00000000-0000-4000-8000-000000010021"
+      ]
+    },
+    {
+      "id": "exame-logistica",
+      "title": "Exame avançado: planejamento e logística",
+      "category": "Exames",
+      "questionIds": [
+        "00000000-0000-4000-8000-000000010022",
+        "00000000-0000-4000-8000-000000010023",
+        "00000000-0000-4000-8000-000000010024",
+        "00000000-0000-4000-8000-000000010025",
+        "00000000-0000-4000-8000-000000010026",
+        "00000000-0000-4000-8000-000000010027",
+        "00000000-0000-4000-8000-000000010028",
+        "00000000-0000-4000-8000-000000010029",
+        "00000000-0000-4000-8000-000000010030",
+        "00000000-0000-4000-8000-000000010031"
+      ]
+    }
+  ]
+}

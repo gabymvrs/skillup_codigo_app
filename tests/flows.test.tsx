@@ -100,16 +100,23 @@ describe("Learning and support", () => {
     const user = userEvent.setup();
     app("/app/aprenda/pratica");
     await user.click(await screen.findByRole("button", { name: "Exercício" }));
-    await user.click(screen.getByRole("button", { name: "Praticar" }));
-    await user.click(screen.getByRole("radio", { name: "double" }));
-    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
-    expect(await screen.findByText("Resposta correta!")).toBeInTheDocument();
-    await user.click(
-      screen.getByRole("button", { name: "Praticar novamente" }),
-    );
-    await user.click(screen.getByRole("radio", { name: "double" }));
-    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
-    await screen.findByText("Resposta correta!");
+    for (let i = 0; i < 2; i++) {
+      await user.click(screen.getByRole("button", { name: "Iniciar prática" }));
+      await user.click(screen.getByRole("radio", { name: "double" }));
+      await user.click(
+        screen.getByRole("button", { name: "Conferir questão" }),
+      );
+      await screen.findByText(/Resposta correta\./);
+      await user.click(
+        screen.getByRole("button", { name: "Revisar respostas" }),
+      );
+      await user.click(
+        screen.getByRole("button", { name: "Finalizar e corrigir" }),
+      );
+      await user.click(
+        await screen.findByRole("button", { name: "Concluir revisão" }),
+      );
+    }
     const data = JSON.parse(localStorage.getItem(DEMO_KEY)!);
     expect(
       data.attempts.reduce((s: number, a: { xp: number }) => s + a.xp, 0),

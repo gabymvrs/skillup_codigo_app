@@ -2033,3 +2033,68 @@ html[data-large-text="true"] {
     padding: 4px;
   }
 }
+
+/* Dismissible feedback and practice sessions */
+.notice > div {
+  flex: 1;
+  min-width: 0;
+}
+.notice-close {
+  flex: none;
+  margin-left: auto;
+}
+.practice-stats {
+  align-items: center;
+}
+.practice-stats .icon-button {
+  margin-left: auto;
+  flex: none;
+}
+.streak-flame {
+  color: var(--neutral-500);
+}
+.streak-flame.active {
+  color: var(--streak-orange);
+  fill: var(--streak-orange);
+}
+.practice-session {
+  width: min(760px, calc(100vw - 32px));
+}
+.question-navigation {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.question-navigation button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--secondary);
+}
+.question-navigation button.answered {
+  background: var(--tertiary-300);
+}
+.question-navigation button[aria-current="step"] {
+  border: 2px solid var(--primary);
+  font-weight: 700;
+}
+.review-question {
+  border: var(--border);
+  border-radius: var(--radius-sm);
+}
+.review-question summary {
+  padding: 16px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.review-question > div {
+  padding: 0 16px 16px;
+}
+.practice-session h3:focus {
+  outline: none;
+}
+.practice-session .actions {
+  flex-wrap: wrap;
+}

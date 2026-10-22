@@ -22,6 +22,7 @@
   --neutral-500: #64748b;
   --error: #f90001;
   --success: #2cb76d;
+  --streak-orange: #c2410c; /* Requested active streak indicator. */
   --warning: #f3b701;
   --primary: var(--primary-500);
   --secondary: var(--secondary-500);
