@@ -1,7 +1,8 @@
+import { ActivityRenderer } from "./ActivityRenderer";
 import { useEffect, useRef, useState } from "react";
 import type { ExerciseAnswer, Question } from "../lib/types";
 import { useData } from "../state/DataContext";
-import { ExerciseFields, answerReady, initialAnswer } from "./ExerciseFields";
+import { answerReady, initialAnswer } from "./ExerciseFields";
 import {
   ActionFeedback,
   Button,
@@ -144,7 +145,7 @@ export function PracticeSession({
                     Questão {index + 1} de {questions.length}: {q.title}
                   </h3>
                   <p className="pre-wrap">{q.prompt}</p>
-                  <ExerciseFields
+                  <ActivityRenderer
                     q={q}
                     value={answers[q.id] ?? initialAnswer(q)}
                     onChange={(value) =>
@@ -234,7 +235,7 @@ export function PracticeSession({
                         <p className="small">
                           Alternativas e sua resposta marcada:
                         </p>
-                        <ExerciseFields
+                        <ActivityRenderer
                           q={item}
                           value={answers[item.id] ?? initialAnswer(item)}
                           onChange={() => {}}

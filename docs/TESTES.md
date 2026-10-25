@@ -91,3 +91,7 @@ Após as correções de sessão: 52 testes do aplicativo e 29 verificações SQL
 ## Práticas e exames — 22/10/2026
 
 **105/105 testes de interface/lógica aprovados** (12 arquivos) e **38/38 verificações PostgreSQL/PGlite aprovadas**. Os relatórios JSON nesta pasta foram atualizados. Esta contagem substitui os totais históricos acima. Para reproduzir no ambiente com CPU limitada, use `npx vitest run --maxWorkers=1 --testTimeout=20000`; não foram alterados critérios de acerto dos testes. Ver [escopo, testes e limites](PRATICAS-EXAMES.md).
+
+## Atividades por trilha — 25/10/2026
+
+119/119 testes Vitest e 41/41 verificações PostgreSQL/RLS aprovados. Build aprovado, mantendo aviso de bundle principal. Há QA de navegador para o fluxo Python, ordenação/diagnóstico JavaScript e execução/prévia em fixture local. Supabase hospedado, Edge Function e Judge0 reais ainda não homologados. Veja [detalhes e limitações](ATIVIDADES-POR-TRILHA.md).

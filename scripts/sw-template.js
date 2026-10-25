@@ -25,6 +25,7 @@ self.addEventListener("fetch", (event) => {
   const request = event.request,
     url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== self.location.origin) return;
+  if (url.pathname.startsWith("/code-sandbox/")) return;
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request)

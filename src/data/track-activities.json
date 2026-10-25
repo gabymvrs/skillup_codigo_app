@@ -1,0 +1,650 @@
+{
+  "tracks": [
+    {
+      "id": "00000000-0000-4000-8000-000000002100",
+      "title": "Python: primeiros programas",
+      "description": "Aprenda conceitos, resolva questões e pratique código nas etapas indicadas.",
+      "category": "Programação",
+      "skills": ["Python", "Lógica", "Entrada e saída"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002101",
+      "title": "JavaScript: lógica e prática",
+      "description": "Aprenda conceitos, resolva questões e pratique código nas etapas indicadas.",
+      "category": "Programação",
+      "skills": ["JavaScript", "Lógica", "Depuração"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    }
+  ],
+  "modules": [
+    {
+      "id": "00000000-0000-4000-8000-000000004000",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "title": "Decisões em Python",
+      "body": "Use if para executar um bloco quando uma condição for verdadeira. Em Python, a indentação delimita o bloco e os dois-pontos encerram a linha da condição.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004001",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "title": "Completar uma repetição",
+      "body": "range(1, 4) produz 1, 2 e 3. Em um laço for, escrevemos a variável, a palavra in e a sequência que será percorrida.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004000",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012001"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004002",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "title": "Seu programa de soma",
+      "body": "input() lê uma linha de entrada como texto. int() converte o texto em inteiro. print() mostra o resultado. Leia dois números, um por linha, e imprima apenas a soma. Teste também números negativos e zero.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004001",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012002"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004003",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Organizar um programa",
+      "body": "Um programa costuma ler entradas, processar valores e apresentar uma saída. A ordem precisa respeitar a dependência entre as informações.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012003"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004004",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Identificar um erro",
+      "body": "Em JavaScript, input() deste ambiente devolve texto. Number() converte uma entrada numérica. Somar duas strings concatena seus caracteres.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004003",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012004"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004005",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Somar com JavaScript",
+      "body": "Neste ambiente, input() lê uma linha. Use Number(input()) para converter cada entrada e console.log() para mostrar a resposta. O editor executa JavaScript; não oferece APIs de página nem bibliotecas externas.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004004",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012005"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004006",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "title": "Construir uma página semântica",
+      "body": "Uma página pode ter um título h1, uma navegação nav e a área principal main. Um link href=\"#conteudo\" aponta para o elemento id=\"conteudo\". Escreva o documento completo e experimente CSS dentro de style. A prévia também aceita JavaScript dentro de script; a avaliação desta etapa verifica a estrutura HTML solicitada.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003002",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012006"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004007",
+      "track_id": "00000000-0000-4000-8000-000000002001",
+      "title": "Comparar dois formulários",
+      "body": "Uma interface precisa informar claramente quais dados são pedidos. Um rótulo permanente continua visível durante a digitação. Texto de exemplo sozinho não substitui um rótulo.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003012",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012007"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004008",
+      "track_id": "00000000-0000-4000-8000-000000002001",
+      "title": "Planejar uma avaliação",
+      "body": "Antes de alterar uma interface, investigue a dificuldade, proponha uma mudança e observe pessoas usando o protótipo.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004007",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012008"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004009",
+      "track_id": "00000000-0000-4000-8000-000000002002",
+      "title": "Interpretar uma topologia",
+      "body": "Em uma topologia em estrela, cada computador se conecta a um equipamento central. Uma interrupção no cabo de um computador afeta aquele enlace; a falha do equipamento central afeta toda a rede ligada a ele.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003022",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012009"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004010",
+      "track_id": "00000000-0000-4000-8000-000000002002",
+      "title": "Diagnóstico por evidências",
+      "body": "Separe os testes de conexão: enlace local, acesso ao roteador, acesso externo por endereço e resolução de nomes. Um problema de nomes não significa que todo o enlace caiu.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004009",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012010"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004011",
+      "track_id": "00000000-0000-4000-8000-000000002004",
+      "title": "Calcular estoque disponível",
+      "body": "Estoque disponível para novas vendas é o saldo físico menos as unidades já reservadas ou indisponíveis.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003042",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012011"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004012",
+      "track_id": "00000000-0000-4000-8000-000000002004",
+      "title": "Organizar a expedição",
+      "body": "A conferência precisa ocorrer antes de lacrar a embalagem. O registro da saída deve refletir o pedido efetivamente preparado.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004011",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012012"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004013",
+      "track_id": "00000000-0000-4000-8000-000000002005",
+      "title": "Completar uma frase",
+      "body": "A concordância verbal relaciona o verbo ao sujeito. Com sujeito no plural, use a forma verbal adequada ao plural no contexto solicitado.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003052",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012013"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004014",
+      "track_id": "00000000-0000-4000-8000-000000002005",
+      "title": "Revisar uma mensagem",
+      "body": "Uma mensagem de projeto deve deixar claros o pedido, o prazo e a informação necessária, mantendo um tom respeitoso.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004013",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012014"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004015",
+      "track_id": "00000000-0000-4000-8000-000000002006",
+      "title": "Identificar estruturas celulares",
+      "body": "Em um esquema simplificado de célula eucariótica, o núcleo abriga o material genético. A membrana delimita a célula e o citoplasma ocupa o espaço interno ao redor das estruturas.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003062",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012015"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004016",
+      "track_id": "00000000-0000-4000-8000-000000002006",
+      "title": "Classificar grupos de plantas",
+      "body": "Briófitas não possuem vasos condutores; gimnospermas têm sementes sem frutos; angiospermas produzem flores e frutos.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004015",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012016"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004017",
+      "track_id": "00000000-0000-4000-8000-000000002007",
+      "title": "Calcular velocidade média",
+      "body": "A rapidez média é a distância total percorrida dividida pelo tempo total. Use unidades compatíveis e inclua intervalos de parada quando eles fizerem parte do tempo observado.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003072",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012017"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004018",
+      "track_id": "00000000-0000-4000-8000-000000002007",
+      "title": "Interpretar uma medição",
+      "body": "Para comparar medições, registre as unidades e converta os valores para a mesma unidade antes de calcular.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004017",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000012018"
+    }
+  ],
+  "questions": [
+    {
+      "id": "00000000-0000-4000-8000-000000012000",
+      "title": "Decisões em Python",
+      "prompt": "Qual trecho imprime aprovado apenas se nota for pelo menos 7?",
+      "options": [
+        "if nota >= 7:\n    print(\"aprovado\")",
+        "if nota > 7\nprint(\"aprovado\")",
+        "if nota = 7:\n    print(\"aprovado\")"
+      ],
+      "explanation": "A comparação >= inclui 7; a condição termina com dois-pontos e o comando fica indentado.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012001",
+      "title": "Completar uma repetição",
+      "prompt": "Complete apenas a palavra: for numero ___ range(1, 4):",
+      "options": [],
+      "explanation": "A palavra in conecta a variável do laço à sequência percorrida.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "fill_blank",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012002",
+      "title": "Seu programa de soma",
+      "prompt": "Escreva um programa Python que leia dois inteiros com input() e imprima somente a soma.",
+      "options": [],
+      "explanation": "Converta as duas entradas para inteiro e use print(a + b). O programa deve funcionar também com zero e valores negativos.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "code_practice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {
+        "language": "python",
+        "starter": "a = int(input())\nb = int(input())\n# Imprima a soma\n",
+        "tests": [
+          {
+            "stdin": "3\n4",
+            "stdout": "7"
+          },
+          {
+            "stdin": "-2\n5",
+            "stdout": "3"
+          },
+          {
+            "stdin": "0\n0",
+            "stdout": "0"
+          }
+        ]
+      },
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012003",
+      "title": "Organizar um programa",
+      "prompt": "Ordene as etapas de um programa que calcula uma soma.",
+      "options": [
+        "Ler os dois valores",
+        "Converter os textos em números",
+        "Calcular a soma",
+        "Mostrar o resultado"
+      ],
+      "explanation": "A conversão depende das entradas; a soma depende dos números; a saída depende do resultado.",
+      "category": "Atividade de trilha",
+      "kind": "ordering",
+      "activity_type": "ordering",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012004",
+      "title": "Identificar um erro",
+      "prompt": "O código const total = \"3\" + \"4\" produz \"34\". Como obter o número 7?",
+      "options": [
+        "Usar Number(\"3\") + Number(\"4\")",
+        "Usar \"3\" + Number(\"4\")",
+        "Usar String(3) + String(4)"
+      ],
+      "explanation": "Converter as duas entradas com Number faz uma soma numérica. Se uma delas continuar sendo string, pode ocorrer concatenação.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012005",
+      "title": "Somar com JavaScript",
+      "prompt": "Leia dois inteiros com input() e escreva somente a soma usando console.log().",
+      "options": [],
+      "explanation": "Use console.log(a + b) após converter as duas entradas com Number.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "code_practice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {
+        "language": "javascript",
+        "starter": "const a = Number(input());\nconst b = Number(input());\n// Mostre a soma\n",
+        "tests": [
+          {
+            "stdin": "3\n4",
+            "stdout": "7"
+          },
+          {
+            "stdin": "-2\n5",
+            "stdout": "3"
+          },
+          {
+            "stdin": "0\n0",
+            "stdout": "0"
+          }
+        ]
+      },
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012006",
+      "title": "Construir uma página semântica",
+      "prompt": "Crie um h1 com o texto Meu curso, um link dentro de nav apontando para #conteudo e um main com id conteudo.",
+      "options": [],
+      "explanation": "O título h1 identifica a página, nav reúne a navegação e main delimita o conteúdo principal. O destino do link precisa existir.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "code_practice",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {
+        "language": "web",
+        "starter": "<!doctype html>\n<html lang=\"pt-BR\">\n<head><meta charset=\"UTF-8\"><style>body { font-family: sans-serif; padding: 16px; }</style></head>\n<body>\n<!-- Escreva o título, a navegação e o conteúdo principal -->\n</body>\n</html>",
+        "webRules": [
+          {
+            "selector": "h1",
+            "text": "Meu curso"
+          },
+          {
+            "selector": "nav a",
+            "attribute": "href",
+            "value": "#conteudo"
+          },
+          {
+            "selector": "main#conteudo"
+          }
+        ]
+      },
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012007",
+      "title": "Comparar dois formulários",
+      "prompt": "Qual formulário permite identificar o campo mesmo depois de começar a digitar?",
+      "options": ["Formulário A", "Formulário B"],
+      "explanation": "O formulário B mantém um rótulo externo, que continua indicando a finalidade do campo durante o preenchimento.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "image_identification",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {
+        "image": "/assets/activities/formularios.svg",
+        "imageAlt": "A: campo apenas com exemplo dentro. B: rótulo E-mail acima do campo, que permanece visível."
+      },
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012008",
+      "title": "Planejar uma avaliação",
+      "prompt": "Organize uma rodada de melhoria baseada em evidências.",
+      "options": [
+        "Observar a dificuldade de uso",
+        "Definir o problema",
+        "Criar uma alternativa",
+        "Testar a alternativa com pessoas"
+      ],
+      "explanation": "A observação informa o problema; a alternativa responde a ele e o teste verifica se a mudança ajudou.",
+      "category": "Atividade de trilha",
+      "kind": "ordering",
+      "activity_type": "ordering",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012009",
+      "title": "Interpretar uma topologia",
+      "prompt": "No desenho, se apenas o cabo marcado X for desconectado, quais computadores perdem o enlace com o switch?",
+      "options": [
+        "Apenas o computador A",
+        "Apenas o computador B",
+        "Todos os computadores"
+      ],
+      "explanation": "O X está no enlace de B. A e C continuam ligados ao switch por seus próprios cabos.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "image_identification",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "payload": {
+        "image": "/assets/activities/topologia.svg",
+        "imageAlt": "Switch central ligado separadamente aos computadores A, B e C. O cabo entre o switch e B está marcado com X."
+      },
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012010",
+      "title": "Diagnóstico por evidências",
+      "prompt": "Um computador alcança o roteador e um servidor externo por endereço IP, mas não resolve nomes de domínio. O que investigar primeiro?",
+      "options": [
+        "A configuração e a resposta do DNS",
+        "Trocar o monitor",
+        "Apagar todos os arquivos do computador"
+      ],
+      "explanation": "Os testes já indicam conectividade local e externa por IP. A falha específica de nomes aponta primeiro para resolução DNS.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "case_study",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012011",
+      "title": "Calcular estoque disponível",
+      "prompt": "Há 120 unidades. Chegam 80, saem 135, 15 estão avariadas e 20 reservadas. Quantas unidades estão disponíveis?",
+      "options": [],
+      "explanation": "Saldo físico: 120 + 80 − 135 = 65. Disponível: 65 − 15 − 20 = 30 unidades.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "calculation",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "payload": {
+        "unit": "unidades"
+      },
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012012",
+      "title": "Organizar a expedição",
+      "prompt": "Ordene uma sequência de preparação de pedido.",
+      "options": [
+        "Separar os produtos",
+        "Conferir itens e quantidades",
+        "Embalar e identificar",
+        "Registrar a saída"
+      ],
+      "explanation": "Separar e conferir antes de embalar reduz o risco de enviar itens incorretos.",
+      "category": "Atividade de trilha",
+      "kind": "ordering",
+      "activity_type": "ordering",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012013",
+      "title": "Completar uma frase",
+      "prompt": "Complete com o verbo estudar no presente: As estudantes ___ todos os dias.",
+      "options": [],
+      "explanation": "O sujeito As estudantes está no plural; a forma correspondente no presente é estudam.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "fill_blank",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012014",
+      "title": "Revisar uma mensagem",
+      "prompt": "Você precisa receber uma revisão até sexta. Qual mensagem comunica melhor o pedido?",
+      "options": [
+        "Revisa isso aí.",
+        "Você nunca ajuda com nada.",
+        "Você pode revisar o parágrafo de apresentação até sexta? Preciso verificar se a ideia principal está clara."
+      ],
+      "explanation": "A terceira mensagem especifica a tarefa, o prazo e o objetivo da revisão, sem julgamento pessoal.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "case_study",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "payload": {},
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012015",
+      "title": "Identificar estruturas celulares",
+      "prompt": "Qual número indica o núcleo no esquema?",
+      "options": ["1", "2", "3"],
+      "explanation": "O número 2 aponta para o núcleo. O 1 indica a membrana e o 3, o citoplasma.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "image_identification",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "payload": {
+        "image": "/assets/activities/celula.svg",
+        "imageAlt": "Esquema simplificado: 1 aponta para o contorno externo; 2 aponta para a estrutura arredondada central; 3 aponta para a região interna ao redor dela."
+      },
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012016",
+      "title": "Classificar grupos de plantas",
+      "prompt": "Relacione os grupos às características.",
+      "options": [
+        "Não possuem vasos condutores",
+        "Têm sementes sem frutos",
+        "Produzem flores e frutos"
+      ],
+      "explanation": "As características de vasos, sementes e frutos ajudam a distinguir esses grupos de plantas.",
+      "category": "Atividade de trilha",
+      "kind": "matching",
+      "activity_type": "matching",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "payload": {
+        "labels": ["Briófitas", "Gimnospermas", "Angiospermas"]
+      },
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012017",
+      "title": "Calcular velocidade média",
+      "prompt": "Uma pessoa percorre 120 metros em 60 segundos e depois 60 metros em 30 segundos. Qual é a rapidez média de todo o trajeto?",
+      "options": [],
+      "explanation": "A distância total é 180 m e o tempo total é 90 s. Logo, 180/90 = 2 m/s.",
+      "category": "Atividade de trilha",
+      "kind": "blank",
+      "activity_type": "calculation",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "payload": {
+        "unit": "m/s"
+      },
+      "xp": 60
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012018",
+      "title": "Interpretar uma medição",
+      "prompt": "Dois registros descrevem a mesma distância: 1,5 km e 1500 m. Qual conclusão é correta?",
+      "options": [
+        "São distâncias diferentes porque os números diferem",
+        "São equivalentes após converter quilômetros para metros",
+        "O segundo registro é sempre mais preciso"
+      ],
+      "explanation": "1 km corresponde a 1000 m, então 1,5 km = 1500 m. A escrita, sozinha, não permite concluir a precisão da medição.",
+      "category": "Atividade de trilha",
+      "kind": "choice",
+      "activity_type": "case_study",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "payload": {},
+      "xp": 60
+    }
+  ],
+  "answers": {
+    "00000000-0000-4000-8000-000000012000": 0,
+    "00000000-0000-4000-8000-000000012001": "in",
+    "00000000-0000-4000-8000-000000012002": {
+      "tests": [
+        {
+          "stdin": "3\n4",
+          "stdout": "7"
+        },
+        {
+          "stdin": "-2\n5",
+          "stdout": "3"
+        },
+        {
+          "stdin": "0\n0",
+          "stdout": "0"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000012003": [0, 1, 2, 3],
+    "00000000-0000-4000-8000-000000012004": 0,
+    "00000000-0000-4000-8000-000000012005": {
+      "tests": [
+        {
+          "stdin": "3\n4",
+          "stdout": "7"
+        },
+        {
+          "stdin": "-2\n5",
+          "stdout": "3"
+        },
+        {
+          "stdin": "0\n0",
+          "stdout": "0"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000012006": {
+      "webRules": [
+        {
+          "selector": "h1",
+          "text": "Meu curso"
+        },
+        {
+          "selector": "nav a",
+          "attribute": "href",
+          "value": "#conteudo"
+        },
+        {
+          "selector": "main#conteudo"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000012007": 1,
+    "00000000-0000-4000-8000-000000012008": [0, 1, 2, 3],
+    "00000000-0000-4000-8000-000000012009": 1,
+    "00000000-0000-4000-8000-000000012010": 0,
+    "00000000-0000-4000-8000-000000012011": {
+      "value": 30,
+      "tolerance": 0
+    },
+    "00000000-0000-4000-8000-000000012012": [0, 1, 2, 3],
+    "00000000-0000-4000-8000-000000012013": "estudam",
+    "00000000-0000-4000-8000-000000012014": 2,
+    "00000000-0000-4000-8000-000000012015": 1,
+    "00000000-0000-4000-8000-000000012016": [0, 1, 2],
+    "00000000-0000-4000-8000-000000012017": {
+      "value": 2,
+      "tolerance": 0.01
+    },
+    "00000000-0000-4000-8000-000000012018": 1
+  }
+}

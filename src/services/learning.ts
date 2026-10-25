@@ -1,3 +1,4 @@
+import { activityType, activityKind, numericAnswer } from "./activities";
 import type { Dataset, ExerciseAnswer, Question } from "../lib/types";
 import { demoAnswers, exerciseAnswers } from "../data/catalog";
 import { uid } from "../lib/utils";
@@ -98,6 +99,21 @@ export function awardDemo(
   return xp;
 }
 export function evaluateDemo(q: Question, response: ExerciseAnswer) {
+  if (activityType(q) === "code_practice")
+    throw new Error("Valide o código no ambiente de execução.");
+  if (activityType(q) === "calculation") {
+    const expected = exerciseAnswers[q.id] as {
+      value: number;
+      tolerance: number;
+    };
+    const value = typeof response === "string" ? numericAnswer(response) : NaN;
+    return (
+      !!expected &&
+      Number.isFinite(value) &&
+      Math.abs(value - expected.value) <= expected.tolerance + Number.EPSILON
+    );
+  }
+  q = { ...q, kind: activityKind(q) };
   if ((q.kind || "choice") === "choice")
     return (
       typeof response === "number" &&

@@ -1,7 +1,14 @@
+import {
+  activityType,
+  activityKind,
+  numericAnswer,
+} from "../services/activities";
 import type { ExerciseAnswer, Question } from "../lib/types";
 import { Button, Notice } from "./ui";
 export function initialAnswer(q: Question): ExerciseAnswer {
-  if (q.kind === "blank") return "";
+  q = { ...q, kind: activityKind(q) };
+  if (activityType(q) === "code_practice") return q.payload?.starter || "";
+  if (activityType(q) === "calculation" || q.kind === "blank") return "";
   if (q.kind === "challenge")
     return { text: "", checks: (q.payload?.criteria || []).map(() => false) };
   if (q.kind === "matching" || q.kind === "true_false") return [];
@@ -9,6 +16,11 @@ export function initialAnswer(q: Question): ExerciseAnswer {
   return -1;
 }
 export function answerReady(q: Question, a: ExerciseAnswer) {
+  q = { ...q, kind: activityKind(q) };
+  if (activityType(q) === "calculation")
+    return typeof a === "string" && Number.isFinite(numericAnswer(a));
+  if (activityType(q) === "code_practice")
+    return typeof a === "string" && a.trim().length > 0 && a.length <= 10000;
   if (q.kind === "blank") return typeof a === "string" && !!a.trim();
   if (q.kind === "challenge")
     return (

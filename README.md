@@ -24,8 +24,8 @@ No Windows, copie `.env.example` para `.env.local` pelo explorador ou pelo edito
 ## Supabase
 
 1. Crie um projeto de desenvolvimento separado. As migrations iniciais pressupõem um banco novo para este aplicativo. Não execute sobre tabelas de produção homônimas sem uma migração específica e backup.
-2. Execute os arquivos em `supabase/migrations/`, na ordem numérica **001 → 006**, pelo SQL Editor ou por um fluxo de migrations da Supabase CLI.
-3. Opcionalmente, execute `supabase/seed.sql`: oito matérias, 16 leituras, duas trilhas, dez módulos e quatro exercícios introdutórios. O seed não cria pessoas, vagas ou testemunhos como se fossem reais. Revise o conteúdo educacional antes de publicação institucional.
+2. Execute os arquivos em `supabase/migrations/`, na ordem numérica **001 → 008**, pelo SQL Editor ou por um fluxo de migrations da Supabase CLI.
+3. Opcionalmente, execute `supabase/seed.sql`: oito matérias, 13 trilhas, 56 etapas e 130 exercícios. O seed não cria pessoas, vagas ou testemunhos como se fossem reais. Revise o conteúdo educacional antes de publicação institucional.
 4. Preencha `.env.local`:
 
 ```dotenv
@@ -120,3 +120,7 @@ Em projetos já configurados com migrations 001–006, aplique **somente a migra
 ### Práticas, exames e interação — 22/10/2026
 
 [Alterações e validação](docs/PRATICAS-EXAMES.md): avisos fecháveis, chama laranja, blocos de 5–6 questões, dois exames avançados de 10 questões com navegação/revisão e interesse reversível. Se a migração 007 já foi aplicada, basta executar o **seed.sql atualizado**, sem reaplicar migrations.
+
+### Atividades adaptadas por trilha — 25/10/2026
+
+[Implementação, testes e ativação](docs/ATIVIDADES-POR-TRILHA.md): nove tipos de atividades, editor somente para código, Python/JavaScript/HTML com execução ou prévia isolada, cálculos, imagens e estudos de caso por disciplina. Para quem já aplicou 001–007: execute **008 e depois o seed atualizado**. A correção de código em contas reais exige publicar/configurar a Edge Function `grade-code`; executar localmente não concede XP real. Esta orientação substitui as instruções históricas de atualização anteriores.

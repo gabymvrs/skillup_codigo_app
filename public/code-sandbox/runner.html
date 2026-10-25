@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net/pyodide/v0.27.7/full/; worker-src blob:; connect-src https://cdn.jsdelivr.net/pyodide/v0.27.7/full/; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Execução isolada</title>
+  </head>
+  <body>
+    <script>
+      /* Runs only in a sandboxed opaque-origin frame, never in the app window. */
+      (() => {
+        let worker;
+        const workerMain = async (event) => {
+          const { code, language, stdin } = event.data;
+          const send = self.postMessage.bind(self);
+          let output = "";
+          const lines = stdin.replace(/\r/g, "").split("\n");
+          const write = (...values) => {
+            const line =
+              values
+                .map((value) =>
+                  typeof value === "string" ? value : JSON.stringify(value),
+                )
+                .join(" ") + "\n";
+            if (output.length + line.length > 8000)
+              throw new Error("Limite de saída atingido (8.000 caracteres).");
+            output += line;
+          };
+          try {
+            if (language === "python") {
+              importScripts(
+                "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js",
+              );
+              const py = await self.loadPyodide({
+                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/",
+                stdout: write,
+                stderr: write,
+              });
+              py.setStdin({
+                stdin: () => (lines.length ? lines.shift() : null),
+              });
+              send({ kind: "running" });
+              await py.runPythonAsync(code);
+            } else {
+              send({ kind: "running" });
+              const AsyncFunction = Object.getPrototypeOf(
+                async function () {},
+              ).constructor;
+              await new AsyncFunction(
+                "input",
+                "console",
+                '"use strict";\n' + code,
+              )(() => lines.shift() ?? "", {
+                log: write,
+                info: write,
+                warn: write,
+                error: write,
+              });
+            }
+            send({ kind: "result", output });
+          } catch (error) {
+            send({
+              kind: "error",
+              output,
+              message: String(error?.message || error).slice(0, 2000),
+            });
+          }
+        };
+        window.addEventListener("message", (event) => {
+          if (
+            event.source !== parent ||
+            !event.data ||
+            event.data.kind !== "run"
+          )
+            return;
+          const { id, code, language, stdin } = event.data;
+          if (
+            typeof id !== "string" ||
+            typeof code !== "string" ||
+            code.length > 10000 ||
+            typeof stdin !== "string" ||
+            stdin.length > 2000 ||
+            !["python", "javascript"].includes(language)
+          )
+            return;
+          worker?.terminate();
+          const url = URL.createObjectURL(
+            new Blob([`self.onmessage = ${workerMain.toString()};`], {
+              type: "text/javascript",
+            }),
+          );
+          try {
+            worker = new Worker(url);
+          } catch (error) {
+            URL.revokeObjectURL(url);
+            parent.postMessage(
+              { id, kind: "error", message: String(error.message || error) },
+              "*",
+            );
+            return;
+          }
+          URL.revokeObjectURL(url);
+          worker.onmessage = (e) => {
+            if (!["running", "result", "error"].includes(e.data?.kind)) return;
+            parent.postMessage(
+              {
+                id,
+                kind: e.data.kind,
+                output: String(e.data.output || "").slice(0, 8000),
+                message: String(e.data.message || "").slice(0, 2000),
+              },
+              "*",
+            );
+            if (e.data.kind !== "running") worker.terminate();
+          };
+          worker.onerror = (e) => {
+            parent.postMessage(
+              {
+                id,
+                kind: "error",
+                message:
+                  e.message ||
+                  "Não foi possível carregar o ambiente de execução.",
+              },
+              "*",
+            );
+            worker.terminate();
+          };
+          worker.postMessage({ code, language, stdin });
+        });
+        window.addEventListener("pagehide", () => worker?.terminate());
+      })();
+    </script>
+  </body>
+</html>

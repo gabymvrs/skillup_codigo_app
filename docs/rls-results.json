@@ -150,6 +150,18 @@
       "status": "pass"
     },
     {
+      "name": "Activity type dispatch grades numeric answers with comma decimals and preserves unique XP",
+      "status": "pass"
+    },
+    {
+      "name": "Code activities cannot be completed through client verdicts or legacy answer endpoints",
+      "status": "pass"
+    },
+    {
+      "name": "Trusted code grading uses the same reward, streak and module prerequisites with duplicate protection",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

@@ -29,6 +29,10 @@ export function readDemo(): Dataset {
         if (!d[table].some((old: { id: string }) => old.id === row.id))
           d[table].push(structuredClone(row));
     }
+    for (const q of d.questions)
+      q.activity_type ??= questions.find(
+        (item) => item.id === q.id,
+      )?.activity_type;
     hydrateDemoLearning(d);
     d.support_tickets?.forEach((t: Record<string, unknown>) => {
       t.assigned_to ??= null;

@@ -89,10 +89,39 @@ export type ExerciseAnswer =
   number | string | boolean[] | number[] | { text: string; checks: boolean[] };
 export type ExerciseKind =
   "choice" | "true_false" | "blank" | "matching" | "ordering" | "challenge";
+export type ActivityType =
+  | "multiple_choice"
+  | "true_false"
+  | "fill_blank"
+  | "matching"
+  | "ordering"
+  | "image_identification"
+  | "calculation"
+  | "case_study"
+  | "code_practice";
+export type CodeLanguage = "python" | "javascript" | "web";
+export interface CodeTest {
+  stdin: string;
+  stdout: string;
+}
+export interface WebRule {
+  selector: string;
+  text?: string;
+  attribute?: string;
+  value?: string;
+}
 export interface Question {
+  activity_type?: ActivityType;
   kind?: ExerciseKind;
   subject_id?: string | null;
   payload?: {
+    language?: CodeLanguage;
+    starter?: string;
+    tests?: CodeTest[];
+    webRules?: WebRule[];
+    image?: string;
+    imageAlt?: string;
+    unit?: string;
     statements?: string[];
     labels?: string[];
     criteria?: string[];

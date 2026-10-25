@@ -103,3 +103,7 @@ As novas imagens de Material e Suporte foram inspecionadas. A seção de suporte
 ## Ajustes solicitados em 22/10/2026
 
 A captura da página Prática orientou a adição do X na faixa de estatísticas. Chama laranja, blocos de questões e revisão de exames são mudanças explicitamente solicitadas após os wireframes, detalhadas em [PRATICAS-EXAMES.md](PRATICAS-EXAMES.md). A estrutura da página foi preservada; a comparação visual em navegador continua pendente.
+
+## Atividades por trilha — 25/10/2026
+
+O caminho de lições, tokens e navegação existentes foram preservados. Os novos controles de cálculo, ilustração e código são decisões de implementação do pedido de práticas adaptadas, não componentes identificados nas pranchas originais. Não há seção independente de Laboratório. A homologação pixel a pixel e em todos os breakpoints permanece pendente; [escopo e QA](ATIVIDADES-POR-TRILHA.md).

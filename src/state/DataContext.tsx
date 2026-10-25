@@ -1,3 +1,4 @@
+import { activityType } from "../services/activities";
 import {
   createContext,
   useCallback,
@@ -239,7 +240,15 @@ export function DataProvider({ children }: { children: ReactNode }) {
       const d = readDemo(),
         q = d.questions.find((q) => q.id === questionId);
       if (!q) throw new Error("Exercício indisponível.");
-      const correct = evaluateDemo(q, response);
+      const codeVerdict =
+        activityType(q) === "code_practice"
+          ? await (
+              await import("../services/codeRunner")
+            ).gradeDemoCode(q, String(response))
+          : null;
+      const correct = codeVerdict
+        ? codeVerdict.correct
+        : evaluateDemo(q, response);
       const xp = correct
         ? awardDemo(
             d,
@@ -264,20 +273,49 @@ export function DataProvider({ children }: { children: ReactNode }) {
       return {
         correct,
         xp,
-        explanation:
-          q.kind === "challenge"
+        explanation: codeVerdict
+          ? codeVerdict.explanation
+          : q.kind === "challenge"
             ? "Conclusão autodeclarada: relato e critérios registrados. Não equivale a uma avaliação docente."
             : q.explanation,
       };
     }
     await setupTimezone();
-    const { data, error } = await requireSupabase().rpc("submit_exercise", {
-      p_question_id: questionId,
-      p_response: response,
-    });
+    const q = data.questions.find((q) => q.id === questionId);
+    if (q && activityType(q) === "code_practice") {
+      const result = await requireSupabase().functions.invoke("grade-code", {
+        body: { question_id: questionId, source: response },
+      });
+      if (result.error) {
+        const detail =
+          result.error.context instanceof Response
+            ? await result.error.context
+                .clone()
+                .json()
+                .catch(() => null)
+            : null;
+        throw new Error(
+          detail?.error ||
+            "A validação de código no servidor ainda não está disponível. Você pode executar localmente; o progresso será registrado quando a integração estiver ativa.",
+        );
+      }
+      await reload();
+      return result.data as {
+        correct: boolean;
+        xp: number;
+        explanation: string;
+      };
+    }
+    const { data: result, error } = await requireSupabase().rpc(
+      "submit_exercise",
+      {
+        p_question_id: questionId,
+        p_response: response,
+      },
+    );
     if (error) throw error;
     await reload();
-    return data as { correct: boolean; xp: number; explanation: string };
+    return result as { correct: boolean; xp: number; explanation: string };
   }
   async function startTrack(trackId: string) {
     if (!auth.id) throw new Error("Entre na sua conta.");

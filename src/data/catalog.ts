@@ -1,3 +1,4 @@
+import trackActivities from "./track-activities.json";
 import practicePacks from "./practice-packs.json";
 import enrichment from "./enrichment.json";
 import originalMaterials from "./legacy-materials.json";
@@ -206,5 +207,21 @@ questions.push(...(practicePacks.questions as Question[]));
 export const exerciseAnswers: Record<string, unknown> = {
   ...enrichment.answers,
   ...practicePacks.answers,
+  ...trackActivities.answers,
 };
 export const practiceSets = practicePacks.packs;
+
+tracks.push(...(trackActivities.tracks as Track[]));
+modules.push(...(trackActivities.modules as Module[]));
+questions.push(...(trackActivities.questions as Question[]));
+for (const q of questions)
+  q.activity_type ??= (
+    {
+      choice: "multiple_choice",
+      true_false: "true_false",
+      blank: "fill_blank",
+      matching: "matching",
+      ordering: "ordering",
+      challenge: "case_study",
+    } as const
+  )[q.kind || "choice"];

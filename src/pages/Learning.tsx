@@ -1,13 +1,11 @@
+import { activityType, activityLabels } from "../services/activities";
+import { ActivityRenderer } from "../components/ActivityRenderer";
 import {
   PracticeSession,
   type PracticeSet,
 } from "../components/PracticeSession";
 import { practiceSets } from "../data/catalog";
-import {
-  ExerciseFields,
-  initialAnswer,
-  answerReady,
-} from "../components/ExerciseFields";
+import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -272,6 +270,9 @@ export function TrackDetail() {
       {exercise && (
         <QuestionDialog
           questionId={exercise}
+          moduleId={
+            repo.data.modules.find((m) => m.question_id === exercise)?.id
+          }
           onClose={() => setExercise(null)}
         />
       )}
@@ -397,7 +398,6 @@ export function Practice() {
         {[
           ["Exames", "file"],
           ["Exercício", "clipboard"],
-          ["Laboratório", "cpu"],
           ["Dinâmica", "zap"],
         ].map(([label, icon]) => (
           <button
@@ -413,11 +413,13 @@ export function Practice() {
       {!type ? (
         <Card className="challenge">
           <Badge>Desafio do dia</Badge>
-          <h2>Refatoração de Algoritmo de Busca</h2>
-          <p>5 questões e um simulador de busca</p>
-          <Button variant="outline" onClick={() => setType("Laboratório")}>
-            Iniciar
-          </Button>
+          <h2>Aprenda com atividades da sua área</h2>
+          <p>
+            As práticas de código ficam dentro das lições que precisam delas.
+          </p>
+          <ActionLink variant="outline" to="/app/aprenda/trilhas">
+            Escolher uma trilha
+          </ActionLink>
         </Card>
       ) : (
         <>
@@ -430,7 +432,6 @@ export function Practice() {
           >
             {type}
           </SectionTitle>
-          {type === "Laboratório" && <SearchLab />}
           <div className="two-columns">
             {visibleSets.map((set) => (
               <Card key={set.id}>
@@ -529,9 +530,11 @@ export function Practice() {
 }
 export function QuestionDialog({
   questionId,
+  moduleId,
   onClose,
 }: {
   questionId: string;
+  moduleId?: string;
   onClose: () => void;
 }) {
   const repo = useData(),
@@ -547,7 +550,12 @@ export function QuestionDialog({
     action = useAction();
   if (!q) return null;
   return (
-    <Modal title={q.title} onClose={onClose}>
+    <Modal
+      title={q.title}
+      onClose={() => {
+        if (!action.busy) onClose();
+      }}
+    >
       <form
         className="stack"
         onSubmit={(e) => {
@@ -558,8 +566,15 @@ export function QuestionDialog({
             );
         }}
       >
+        <Badge>{activityLabels[activityType(q)]}</Badge>
+        {moduleId && (
+          <ProgressBar
+            value={result?.correct ? 100 : 0}
+            label="Atividade da etapa"
+          />
+        )}
         <p>{q.prompt}</p>
-        <ExerciseFields
+        <ActivityRenderer
           q={q}
           value={selected}
           onChange={setSelected}
@@ -577,6 +592,19 @@ export function QuestionDialog({
               </strong>{" "}
               {result.explanation} {result.xp > 0 && `+${result.xp} XP`}
             </Notice>
+            {result.correct && moduleId && (
+              <Button
+                disabled={action.busy}
+                onClick={() =>
+                  action.run(async () => {
+                    await repo.completeModule(moduleId);
+                    onClose();
+                  })
+                }
+              >
+                Concluir etapa
+              </Button>
+            )}
             <Button
               variant="outline"
               onClick={() => {
@@ -592,69 +620,14 @@ export function QuestionDialog({
             type="submit"
             disabled={!answerReady(q, selected) || action.busy}
           >
-            Conferir resposta
+            {activityType(q) === "code_practice"
+              ? "Validar atividade"
+              : "Conferir resposta"}
           </Button>
         )}
         <ActionFeedback action={action} />
       </form>
     </Modal>
-  );
-}
-export function SearchLab() {
-  const [list, setList] = useState("12, 7, 25, 3, 18"),
-    [target, setTarget] = useState("3"),
-    [result, setResult] = useState("");
-  return (
-    <Card>
-      <h3>Laboratório: busca linear</h3>
-      <p>
-        Altere a lista e observe quantas comparações são necessárias. Compare a
-        busca por um item no início, no fim e ausente.
-      </p>
-      <form
-        className="stack"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const values = list.split(",").map((x) => Number(x.trim()));
-          if (
-            values.length > 100 ||
-            values.some((n) => !Number.isFinite(n)) ||
-            !Number.isFinite(Number(target))
-          ) {
-            setResult("Use até 100 números válidos separados por vírgula.");
-            return;
-          }
-          const i = values.indexOf(Number(target));
-          setResult(
-            i === -1
-              ? `Não encontrado. Foram necessárias ${values.length} comparações.`
-              : `Encontrado no índice ${i} após ${i + 1} comparação(ões).`,
-          );
-        }}
-      >
-        <label>
-          Lista de números
-          <input
-            value={list}
-            onChange={(e) => setList(e.target.value)}
-            maxLength={500}
-          />
-        </label>
-        <label>
-          Valor procurado
-          <input
-            type="number"
-            value={target}
-            onChange={(e) => setTarget(e.target.value)}
-            required
-          />
-        </label>
-        <Button type="submit" variant="outline" icon="play">
-          Executar simulação
-        </Button>
-        {result && <Notice>{result}</Notice>}
-      </form>
-    </Card>
   );
 }
 function TrackEditor({ onClose }: { onClose: () => void }) {

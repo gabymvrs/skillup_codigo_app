@@ -16,7 +16,13 @@ for (const path of paths) {
   hash.update(await readFile(path));
 }
 const version = hash.digest("hex").slice(0, 12);
-const urls = paths.map((p) => "/" + p.replace(/^dist\//, ""));
+// Code runners and editor chunks are fetched only when a code activity is opened.
+const urls = paths
+  .filter(
+    (p) =>
+      !p.includes("/code-sandbox/") && !/\/(CodePractice|codeRunner)-/.test(p),
+  )
+  .map((p) => "/" + p.replace(/^dist\//, ""));
 const template = await readFile("scripts/sw-template.js", "utf8");
 await writeFile(
   "dist/sw.js",

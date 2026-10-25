@@ -9,12 +9,19 @@ const js = stripTypeScriptTypes(source)
   )
   .replace(/import enrichment from [^;]+;/, "const enrichment=__extra;")
   .replace(/import practicePacks from [^;]+;/, "const practicePacks=__packs;")
+  .replace(
+    /import trackActivities from [^;]+;/,
+    "const trackActivities=__activities;",
+  )
   .replaceAll("export const ", "const ");
 const catalog = vm.runInNewContext(
   js +
     ";({subjects,materials,tracks,modules,questions,demoAnswers,exerciseAnswers});",
   {
     __data: JSON.parse(readFileSync("src/data/legacy-materials.json", "utf8")),
+    __activities: JSON.parse(
+      readFileSync("src/data/track-activities.json", "utf8"),
+    ),
     __packs: JSON.parse(readFileSync("src/data/practice-packs.json", "utf8")),
     __extra: JSON.parse(readFileSync("src/data/enrichment.json", "utf8")),
   },
@@ -26,7 +33,7 @@ const quote = (v) =>
       ? String(v)
       : `'${String(v).replaceAll("'", "''")}'`;
 let sql =
-  "-- Optional educational curriculum. Idempotent; preserves existing records and progress.\n-- Apply migration 007 before this seed. No personal profiles or simulated testimonials.\nbegin;\n";
+  "-- Optional educational curriculum. Idempotent; preserves existing records and progress.\n-- Apply migration 008 before this seed. No personal profiles or simulated testimonials.\nbegin;\n";
 for (const table of ["subjects", "materials", "tracks", "questions", "modules"])
   for (const row of catalog[table]) {
     const entries = Object.entries(row);

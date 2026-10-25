@@ -109,7 +109,7 @@ describe("Curriculum", () => {
       ).toBe(6);
       expect(materials.some((m) => m.subject_id === s.id)).toBe(true);
     }
-    expect(tracks.length).toBe(11);
+    expect(tracks.length).toBe(13);
     expect(new Set(modules.map((m) => m.id)).size).toBe(modules.length);
     const linked = modules
       .filter((m) => m.question_id)
