@@ -286,13 +286,17 @@ export function Practice() {
   const auth = useAuth(),
     { data } = useData();
   const attempts = data.attempts.filter((a) => a.user_id === auth.id),
+    answeredQuestions = new Set(attempts.map((a) => a.question_id)).size,
+    correctAttempts = attempts.filter((a) => a.correct).length,
+    incorrectAttempts = attempts.length - correctAttempts,
+    accuracy = percent(correctAttempts, attempts.length),
     xp = attempts.reduce((sum, a) => sum + a.xp, 0),
     [type, setType] = useState(""),
     [subject, setSubject] = useState(""),
     [format, setFormat] = useState(""),
     [open, setOpen] = useState<string | null>(null),
     [session, setSession] = useState<PracticeSet | null>(null),
-    [showStats, setShowStats] = useState(true);
+    [showStats, setShowStats] = useState(false);
   const sets: PracticeSet[] =
     type === "Prática guiada"
       ? data.subjects.map((s) => ({
@@ -320,32 +324,62 @@ export function Practice() {
         title="Prática"
         description="Transforme o conteúdo em conhecimento com exercícios curtos."
       />
-      {showStats ? (
-        <div className="practice-stats">
-          <span>
-            {new Set(attempts.map((a) => a.question_id)).size} questões
-            respondidas · {attempts.length} tentativa(s)
-          </span>
-          <span>
-            {attempts.filter((a) => a.correct).length} acertos ·{" "}
-            {attempts.filter((a) => !a.correct).length} erros ·{" "}
-            {percent(attempts.filter((a) => a.correct).length, attempts.length)}
-            % nas tentativas
-          </span>
-          <strong>{xp} XP em prática</strong>
-          <button
-            type="button"
-            className="icon-button"
-            aria-label="Fechar resumo de prática"
-            onClick={() => setShowStats(false)}
+      {auth.role === "estudante" && (
+        <section
+          className="card practice-dashboard"
+          aria-label="Painel de prática do aluno"
+        >
+          <div className="practice-dashboard-header">
+            <div className="practice-dashboard-title">
+              <Badge>Painel do aluno</Badge>
+              <h2>Seu progresso na prática</h2>
+              <p>Acompanhe suas questões, acertos e XP conquistados.</p>
+            </div>
+            <Button
+              variant="outline"
+              aria-expanded={showStats}
+              aria-controls="practice-dashboard-details"
+              onClick={() => setShowStats((shown) => !shown)}
+            >
+              {showStats ? "Ver menos" : "Ver mais"}
+            </Button>
+          </div>
+          <div
+            id="practice-dashboard-details"
+            className="practice-dashboard-details"
+            hidden={!showStats}
           >
-            <Icon name="x" />
-          </button>
-        </div>
-      ) : (
-        <Button variant="ghost" onClick={() => setShowStats(true)}>
-          Mostrar resumo de prática
-        </Button>
+            <dl className="practice-stats">
+              <div>
+                <dt>Questões respondidas</dt>
+                <dd>{answeredQuestions}</dd>
+              </div>
+              <div>
+                <dt>Tentativas</dt>
+                <dd>{attempts.length}</dd>
+              </div>
+              <div>
+                <dt>Acertos</dt>
+                <dd>
+                  {correctAttempts} <small>{accuracy}% de aproveitamento</small>
+                </dd>
+              </div>
+              <div>
+                <dt>Erros</dt>
+                <dd>{incorrectAttempts}</dd>
+              </div>
+              <div>
+                <dt>XP em prática</dt>
+                <dd>{xp} XP</dd>
+              </div>
+            </dl>
+            {!attempts.length && (
+              <p className="muted practice-dashboard-empty">
+                Responda a uma questão para começar a acompanhar seu progresso.
+              </p>
+            )}
+          </div>
+        </section>
       )}
       <div className="two-columns">
         <label>

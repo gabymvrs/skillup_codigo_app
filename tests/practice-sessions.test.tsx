@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { AuthProvider } from "../src/state/AuthContext";
 import { AppRoutes } from "../src/App";
+import { demoUsers } from "../src/data/demo";
 import {
   practiceSets,
   questions,
@@ -11,10 +12,10 @@ import {
   subjects,
 } from "../src/data/catalog";
 import { evaluateDemo } from "../src/services/learning";
-import { DEMO_KEY } from "../src/services/repository";
+import { DEMO_KEY, readDemo } from "../src/services/repository";
 import { ActionFeedback, Button, useAction } from "../src/components/ui";
-function app(path = "/app/aprenda/pratica") {
-  sessionStorage.setItem("skillup.demo.role", "estudante");
+function app(path = "/app/aprenda/pratica", role = "estudante") {
+  sessionStorage.setItem("skillup.demo.role", role);
   return render(
     <MemoryRouter initialEntries={[path]}>
       <AuthProvider>
@@ -24,6 +25,39 @@ function app(path = "/app/aprenda/pratica") {
   );
 }
 const stored = () => JSON.parse(localStorage.getItem(DEMO_KEY)!);
+function seedPracticeAttempts() {
+  const data = readDemo();
+  data.attempts = [
+    {
+      id: "practice-attempt-1",
+      user_id: demoUsers.estudante,
+      question_id: questions[0].id,
+      selected_index: 0,
+      correct: true,
+      xp: 20,
+      created_at: "2026-10-24T12:00:00.000Z",
+    },
+    {
+      id: "practice-attempt-2",
+      user_id: demoUsers.estudante,
+      question_id: questions[0].id,
+      selected_index: 1,
+      correct: false,
+      xp: 0,
+      created_at: "2026-10-24T12:01:00.000Z",
+    },
+    {
+      id: "practice-attempt-3",
+      user_id: demoUsers.estudante,
+      question_id: questions[1].id,
+      selected_index: 0,
+      correct: true,
+      xp: 30,
+      created_at: "2026-10-24T12:02:00.000Z",
+    },
+  ];
+  localStorage.setItem(DEMO_KEY, JSON.stringify(data));
+}
 describe("Complete practice blocks", () => {
   it("contains at least five distinct questions per practice and ten per advanced exam, with valid answers", () => {
     for (const set of practiceSets) {
@@ -52,17 +86,41 @@ describe("Complete practice blocks", () => {
         ).length,
       ).toBeGreaterThanOrEqual(5);
   });
-  it("hides the stats without deleting attempts and can restore them", async () => {
+  it("shows the optional student dashboard collapsed and reveals real metrics with Ver mais", async () => {
+    seedPracticeAttempts();
     const user = userEvent.setup();
     app();
+    const dashboard = await screen.findByRole("region", {
+      name: "Painel de prática do aluno",
+    });
+    const toggle = within(dashboard).getByRole("button", { name: "Ver mais" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(
+      dashboard.querySelector("#practice-dashboard-details"),
+    ).toHaveAttribute("hidden");
+    await user.click(toggle);
+    expect(
+      within(dashboard).getByRole("button", { name: "Ver menos" }),
+    ).toHaveAttribute("aria-expanded", "true");
+    expect(
+      within(dashboard)
+        .getAllByRole("definition")
+        .map((item) => item.textContent?.trim()),
+    ).toEqual(["2", "3", "2 67% de aproveitamento", "1", "50 XP"]);
     await user.click(
-      await screen.findByRole("button", { name: "Fechar resumo de prática" }),
+      within(dashboard).getByRole("button", { name: "Ver menos" }),
     );
-    expect(screen.queryByText(/XP em prática/)).not.toBeInTheDocument();
-    await user.click(
-      screen.getByRole("button", { name: "Mostrar resumo de prática" }),
-    );
-    expect(screen.getByText(/XP em prática/)).toBeInTheDocument();
+    expect(
+      dashboard.querySelector("#practice-dashboard-details"),
+    ).toHaveAttribute("hidden");
+    expect(stored().attempts).toHaveLength(3);
+  });
+  it("does not show the student dashboard for a recruiter", async () => {
+    app("/app/aprenda/pratica", "recrutador");
+    await screen.findByRole("heading", { name: "Prática" });
+    expect(
+      screen.queryByRole("region", { name: "Painel de prática do aluno" }),
+    ).not.toBeInTheDocument();
   });
   it("allows skipping, revisiting and editing exam responses, then grades only at the end", async () => {
     const user = userEvent.setup();

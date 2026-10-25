@@ -1268,13 +1268,67 @@ details summary {
   background: var(--neutral-100);
   color: var(--neutral-500);
 }
-.practice-stats {
+.practice-dashboard {
+  gap: 16px;
+}
+.practice-dashboard-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  background: var(--tertiary-200);
-  padding: 16px;
-  border-radius: 8px;
+  gap: 16px;
+}
+.practice-dashboard-title {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.practice-dashboard-title h2 {
   color: var(--secondary);
+}
+.practice-dashboard-title p,
+.practice-dashboard-empty {
+  color: var(--muted);
+  font-size: var(--label);
+}
+.practice-dashboard-details {
+  display: grid;
+  gap: 12px;
+}
+.practice-dashboard-details[hidden] {
+  display: none;
+}
+.practice-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  color: var(--secondary);
+}
+.practice-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--tertiary-200);
+}
+.practice-stats dt {
+  color: var(--muted);
+  font-size: var(--label);
+}
+.practice-stats dd {
+  margin: 0;
+  color: var(--secondary);
+  font-size: var(--headline-m);
+  font-weight: 600;
+}
+.practice-stats dd small {
+  display: block;
+  color: var(--muted);
+  font-size: var(--label);
+  font-weight: 400;
 }
 .practice-grid {
   display: grid;
@@ -1949,11 +2003,14 @@ html[data-large-text="true"] {
 .ordering-list .actions {
   margin-top: 8px;
 }
-.practice-stats {
-  flex-wrap: wrap;
-  gap: 8px 16px;
-}
 @media (max-width: 767px) {
+  .practice-dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .practice-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .stories-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2042,13 +2099,6 @@ html[data-large-text="true"] {
 .notice-close {
   flex: none;
   margin-left: auto;
-}
-.practice-stats {
-  align-items: center;
-}
-.practice-stats .icon-button {
-  margin-left: auto;
-  flex: none;
 }
 .streak-flame {
   color: var(--neutral-500);
