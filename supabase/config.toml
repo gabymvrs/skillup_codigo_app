@@ -1,4 +1,4 @@
-# grade-code verifies the bearer token with Auth.getUser and session-aware RPCs.
+# grading-code verifies the bearer token with Auth.getUser and session-aware RPCs.
 # This supports current Supabase signing keys without relying on the legacy gateway verifier.
-[functions.grade-code]
+[functions.grading-code]
 verify_jwt = false

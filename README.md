@@ -123,4 +123,4 @@ Em projetos já configurados com migrations 001–006, aplique **somente a migra
 
 ### Atividades adaptadas por trilha — 25/10/2026
 
-[Implementação, testes e ativação](docs/ATIVIDADES-POR-TRILHA.md): nove tipos de atividades, editor somente para código, Python/JavaScript/HTML com execução ou prévia isolada, cálculos, imagens e estudos de caso por disciplina. Para quem já aplicou 001–007: execute **008 e depois o seed atualizado**. A correção de código em contas reais exige publicar/configurar a Edge Function `grade-code`; executar localmente não concede XP real. Esta orientação substitui as instruções históricas de atualização anteriores.
+[Implementação, testes e ativação](docs/ATIVIDADES-POR-TRILHA.md): nove tipos de atividades, editor somente para código, Python/JavaScript/HTML com execução ou prévia isolada, cálculos, imagens e estudos de caso por disciplina. Para quem já aplicou 001–007: execute **008 e depois o seed atualizado**. A correção de código em contas reais exige publicar/configurar a Edge Function `grading-code`; executar localmente não concede XP real. Esta orientação substitui as instruções históricas de atualização anteriores.

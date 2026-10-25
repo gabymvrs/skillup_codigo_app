@@ -3,7 +3,7 @@ import {
   gradeProgram,
   gradeWeb,
   base64,
-} from "../supabase/functions/grade-code/grading";
+} from "../supabase/functions/grading-code/grading";
 import { runCode } from "../src/services/codeRunner";
 
 const args = {

@@ -35,7 +35,7 @@ Não reaplique migrations antigas nem recrie tabelas. Projetos novos precisam ap
 
 ## Correção de código em contas reais
 
-**Executar código** testa o programa no navegador; não concede XP. **Validar atividade** chama a Edge Function `grade-code`. Sem a função publicada/configurada, o aplicativo informa a indisponibilidade e não conclui a etapa como se tivesse sido validada.
+**Executar código** testa o programa no navegador; não concede XP. **Validar atividade** chama a Edge Function `grading-code`. Sem a função publicada/configurada, o aplicativo informa a indisponibilidade e não conclui a etapa como se tivesse sido validada.
 
 A função verifica o usuário pelo Supabase Auth, checa a sessão no banco, aplica intervalo mínimo entre solicitações, lê critérios privados e registra o resultado por RPC reservado ao backend. Não aceita um resultado de acerto enviado pelo cliente. A configuração `verify_jwt = false` em `supabase/config.toml` transfere a verificação do gateway para `Auth.getUser` dentro da função; não torna a correção anônima. O registro final verifica novamente a sessão e o perfil estudante.
 
@@ -45,7 +45,7 @@ Para publicar, use a Supabase CLI em um ambiente de desenvolvimento com terminal
 supabase login
 supabase link --project-ref SEU_PROJECT_REF
 supabase secrets set --env-file supabase-functions.env
-supabase functions deploy grade-code
+supabase functions deploy grading-code
 ```
 
 Crie `supabase-functions.env` **fora do repositório**, com os valores reais:

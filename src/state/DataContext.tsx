@@ -283,7 +283,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
     await setupTimezone();
     const q = data.questions.find((q) => q.id === questionId);
     if (q && activityType(q) === "code_practice") {
-      const result = await requireSupabase().functions.invoke("grade-code", {
+      const result = await requireSupabase().functions.invoke("grading-code", {
         body: { question_id: questionId, source: response },
       });
       if (result.error) {
