@@ -54,3 +54,28 @@ body{overflow-x:hidden}
 #side-nav .nav-icon{margin:0 3px}
 #bottom-nav .nav-link.selected{background:#d8d8d8}
 @media(max-width:700px){#bottom-nav .nav-link{border-radius:7px}#bottom-nav .nav-link .nav-icon{height:27px}}
+
+
+/* Painel opcional de prática do aluno */
+.practice-dashboard-card{border-color:#dce4f6;background:linear-gradient(145deg,#fff 0%,#f8faff 100%)}
+.practice-dashboard-header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.practice-eyebrow{display:inline-flex;align-items:center;gap:6px;color:#4564be;font-size:10px;font-weight:800;letter-spacing:.08em}
+.practice-eyebrow .ui-icon{width:15px;height:15px}
+.practice-dashboard-header h3{margin:8px 0 5px}
+.practice-dashboard-header p{margin:0;color:#606977;font-size:12px;line-height:1.45}
+.practice-toggle{flex-shrink:0;display:inline-flex;align-items:center;gap:7px;border:1px solid #cbd5ee;border-radius:999px;background:#fff;color:#000963;padding:8px 12px;font-size:12px;font-weight:800}
+.practice-toggle span{font-size:16px;line-height:1}
+.practice-toggle:hover{background:#eef2ff}
+.practice-toggle:focus-visible,.practice-dashboard-card button:focus-visible{outline:3px solid #8da5f4;outline-offset:2px}
+#practice-dashboard-details[hidden]{display:none}
+#practice-dashboard-details{margin-top:16px}
+.practice-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.practice-stat{display:grid;gap:7px;padding:13px;border:1px solid #e5eafb;border-radius:10px;background:#fff}
+.practice-stat small{color:#606977;font-size:11px;font-weight:700}
+.practice-stat strong{color:#000963;font-size:23px;line-height:1.1}
+.practice-progress{margin-top:15px}
+.practice-progress .labels{margin-bottom:8px}
+.practice-note{margin:14px 0 0;color:#35435a;font-size:12px;line-height:1.5}
+.practice-dashboard-card .skill-button{margin-top:12px}
+.practice-disclaimer{margin:11px 0 0;color:#737d8d;font-size:10px;line-height:1.45}
+@media(max-width:700px){.practice-dashboard-header{gap:8px}.practice-toggle{padding:7px 10px}.practice-dashboard-header h3{font-size:15px}.practice-stat{padding:11px}.practice-stat strong{font-size:20px}}
