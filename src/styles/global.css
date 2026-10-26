@@ -2187,3 +2187,47 @@ html[data-large-text="true"] {
 .code-practice {
   min-width: 0;
 }
+
+.demo-toolbar {
+  flex-wrap: wrap;
+  align-items: center;
+}
+.demo-toolbar p {
+  margin: 4px 0 0;
+}
+.demo-toolbar-controls {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 100%;
+}
+.demo-toolbar-controls label {
+  display: grid;
+  gap: 4px;
+  min-width: 160px;
+}
+.demo-toolbar-controls select {
+  min-height: 44px;
+  font-size: 14px;
+}
+.demo-profile-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.demo-profile-option .button {
+  width: 100%;
+}
+.demo-profile-option p {
+  margin: 8px 0 0;
+}
+@media (max-width: 479px) {
+  .demo-toolbar-controls {
+    width: 100%;
+  }
+  .demo-toolbar-controls label {
+    flex: 1;
+    min-width: 0;
+  }
+}

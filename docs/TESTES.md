@@ -95,3 +95,10 @@ Após as correções de sessão: 52 testes do aplicativo e 29 verificações SQL
 ## Atividades por trilha — 25/10/2026
 
 119/119 testes Vitest e 41/41 verificações PostgreSQL/RLS aprovados. Build aprovado, mantendo aviso de bundle principal. Há QA de navegador para o fluxo Python, ordenação/diagnóstico JavaScript e execução/prévia em fixture local. Supabase hospedado, Edge Function e Judge0 reais ainda não homologados. Veja [detalhes e limitações](ATIVIDADES-POR-TRILHA.md).
+
+## Navegação de teste — 26/10/2026
+
+- `npx vitest run tests/demo-navigation.test.tsx tests/auth-session.test.tsx tests/flows.test.tsx --maxWorkers=1 --testTimeout=20000`: **32/32 aprovados**. Entrada pelos quatro perfis, cinco abas de cada perfil, troca a partir de uma rota interna, saída do teste, acesso inicial e regressões de sessão.
+- `npm run build` e `npm run check`: aprovados; permanece o aviso de tamanho do bundle principal.
+- QA no navegador local: seleção de Docente e troca para Recrutador confirmadas; faixa e menu inspecionados visualmente em desktop. Sem nova homologação em dispositivos móveis nesta alteração.
+- Nenhuma mudança nas políticas RLS, migrations ou concessão de perfis reais. Habilitação da demonstração restrita à variável de build do preview da branch de desenvolvimento.

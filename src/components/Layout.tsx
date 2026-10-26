@@ -1,5 +1,6 @@
 import { learningStats } from "../services/learning";
 import { Avatar } from "./Avatar";
+import { DemoToolbar } from "./DemoToolbar";
 import { useEffect, useState } from "react";
 import { Link, NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
@@ -249,15 +250,7 @@ export function Layout() {
               {unread > 0 && <span>{unread}</span>}
             </Link>
           </header>
-          {auth.demo && (
-            <div className="demo-banner">
-              <span>
-                <strong>Demonstração</strong> · dados de exemplo, salvos neste
-                navegador
-              </span>
-              <Link to="/demonstracao">Trocar perfil</Link>
-            </div>
-          )}
+          {auth.demo && <DemoToolbar />}
           {!online && (
             <div className="offline-banner">
               Você está offline.{" "}

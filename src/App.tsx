@@ -43,8 +43,9 @@ import { Settings, ProfileEditor, Verification } from "./pages/Settings";
 import { Messages, Notifications } from "./pages/Messages";
 import { Empty, Notice } from "./components/ui";
 function ConnectedLayout() {
+  const auth = useAuth();
   return (
-    <DataProvider>
+    <DataProvider key={`${auth.demo ? "demo" : "real"}:${auth.id}`}>
       <Layout />
     </DataProvider>
   );
@@ -74,6 +75,7 @@ export function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/perfis" element={<RolePicker />} />
       <Route path="/demonstracao" element={<DemoPicker />} />
+      <Route path="/teste" element={<DemoPicker />} />
       <Route path="/cadastro/:role" element={<Signup />} />
       <Route element={<AuthGate />}>
         <Route

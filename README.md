@@ -17,9 +17,15 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Abra o endereço que o Vite imprimir. Sem credenciais, use **Explorar a demonstração** na tela inicial. Selecione Estudante, Docente, Recrutador ou Instituição. A demonstração não exige senha, não cria contas e não envia dados a empresas ou docentes reais. Os dados de exemplo ficam no navegador. Login real permanece indisponível até a configuração.
+Abra o endereço que o Vite imprimir. Sem credenciais, use **Testar tipos de conta** na tela inicial. Selecione Estudante, Docente, Recrutador ou Instituição. A demonstração não exige senha, não cria contas e não envia dados a empresas ou docentes reais. Os dados de exemplo ficam no navegador. Login real permanece indisponível até a configuração.
 
 No Windows, copie `.env.example` para `.env.local` pelo explorador ou pelo editor. No Chromebook sem terminal, use o repositório na Vercel para abrir um Preview Deployment; o passo a passo está abaixo.
+
+## Navegação de teste
+
+Abra `/teste` ou clique em **Testar tipos de conta** na tela inicial ou no login. Selecione Estudante, Docente, Recrutador ou Instituição sem e-mail nem senha. A faixa **Demonstração** permite alternar em **Testar como** e encerrar com **Sair do teste**. A troca retorna à Home e recarrega os dados do perfil escolhido.
+
+Com Supabase configurado, habilite `VITE_ENABLE_DEMO=true` no ambiente desejado e faça um novo build. No preview da branch `dev/skillup-modular-20261019`, essa flag está habilitada. A rota anterior `/demonstracao` continua funcionando. Uma sessão real exige saída explícita antes de iniciar o teste. Selecionar um perfil demonstrativo não concede permissões reais nem modifica perfis no Supabase.
 
 ## Supabase
 

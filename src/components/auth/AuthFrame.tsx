@@ -4,6 +4,7 @@ import { Icon, Modal } from "../ui";
 export function AuthFrame({
   children,
   description,
+  title = "Bem-vindo!",
   back = true,
   backTo = "/",
   onBack,
@@ -13,6 +14,7 @@ export function AuthFrame({
 }: {
   children: ReactNode;
   description: string;
+  title?: string;
   back?: boolean;
   backTo?: string;
   onBack?: () => void;
@@ -56,7 +58,7 @@ export function AuthFrame({
             src="/assets/skillup-auth-logo.png"
             alt="SkillUp"
           />
-          <h1>Bem-vindo!</h1>
+          <h1>{title}</h1>
           <p className="auth-description">{description}</p>
         </header>
         {children}

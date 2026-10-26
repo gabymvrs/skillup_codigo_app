@@ -35,7 +35,9 @@ export function Welcome() {
       {demoEnabled && (
         <div className="demo-entry">
           <BadgeDemo />
-          <Link to="/demonstracao">Explorar a demonstração</Link>
+          <ActionLink to="/teste" variant="outline">
+            Testar tipos de conta
+          </ActionLink>
         </div>
       )}
       <Link className="text-link" to="/ajuda">
@@ -86,29 +88,60 @@ export function RolePicker() {
 }
 export function DemoPicker() {
   const auth = useAuth(),
-    navigate = useNavigate();
+    navigate = useNavigate(),
+    action = useAction();
   if (!demoEnabled) return <Navigate to="/login" replace />;
-  if (auth.id && !auth.demo) return <Navigate to="/app/home" replace />;
+  if (auth.loading) return <p role="status">Preparando versão de teste…</p>;
+  const signedIn = Boolean(auth.id && !auth.demo);
+  const descriptions: Record<Role, string> = {
+    estudante: "Aprendizagem, trilhas, práticas, comunidade e oportunidades.",
+    docente: "Turmas, atividades e acompanhamento dos estudantes.",
+    recrutador: "Vagas, candidatos e mensagens profissionais.",
+    instituicao: "Gestão de turmas, docentes, estudantes e indicadores.",
+  };
   return (
-    <AuthFrame description="Conheça os quatro espaços com dados de exemplo.">
+    <AuthFrame
+      title="Versão de teste"
+      description="Escolha um perfil para explorar a navegação. Não precisa criar uma conta."
+    >
       <Notice>
-        Todos os registros e alterações deste modo ficam neste navegador. Não há
-        autenticação, candidatura ou atendimento real.
+        Dados demonstrativos. As alterações ficam neste navegador e não afetam
+        contas reais. Você pode trocar de perfil durante o teste.
       </Notice>
-      <div className="auth-options">
-        {allRoles.map((role) => (
+      {signedIn ? (
+        <div className="stack">
+          <Notice tone="warning">
+            Você está em uma conta real. Para testar outros perfis, saia dessa
+            conta primeiro. Isso encerra suas sessões reais.
+          </Notice>
           <Button
-            variant="outline"
-            key={role}
-            onClick={() => {
-              auth.startDemo(role);
-              navigate("/app/home");
-            }}
+            disabled={action.busy}
+            onClick={() => action.run(auth.logout)}
           >
-            {roleLabels[role]}
+            Sair da conta e liberar teste
           </Button>
-        ))}
-      </div>
+          <Link to="/app/home">Voltar à minha conta</Link>
+          <ActionFeedback action={action} />
+        </div>
+      ) : (
+        <div className="demo-profile-list">
+          {allRoles.map((role) => (
+            <div className="demo-profile-option" key={role}>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  auth.startDemo(role);
+                  navigate("/app/home", { replace: true });
+                }}
+              >
+                {roleLabels[role]}
+              </Button>
+              <p className="small muted">{descriptions[role]}</p>
+            </div>
+          ))}
+          <Link to="/login">Entrar com uma conta real</Link>
+        </div>
+      )}
     </AuthFrame>
   );
 }
@@ -166,7 +199,7 @@ export function Login() {
         Esqueci minha senha
       </Link>
       <SocialSignIn />
-      {demoEnabled && <Link to="/demonstracao">Entrar na demonstração</Link>}
+      {demoEnabled && <Link to="/teste">Testar tipos de conta</Link>}
     </AuthFrame>
   );
 }
