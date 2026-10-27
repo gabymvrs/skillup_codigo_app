@@ -69,7 +69,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
     if (!auth.id || !auth.role) return;
     const current = ++epoch.current;
     try {
-      const next = await loadData(auth.demo);
+      const next = await loadData(auth.demo, auth.id);
       if (current === epoch.current) {
         setData(next);
         setError("");

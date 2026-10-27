@@ -47,8 +47,30 @@ export function readDemo(): Dataset {
 export function writeDemo(data: Dataset) {
   localStorage.setItem(DEMO_KEY, JSON.stringify(data));
 }
-export async function loadData(demo: boolean): Promise<Dataset> {
-  if (demo) return readDemo();
+export async function loadData(
+  demo: boolean,
+  userId?: string,
+): Promise<Dataset> {
+  if (demo) {
+    const d = readDemo();
+    if (userId) {
+      d.projects = d.projects.filter(
+        (p) =>
+          p.owner_id === userId ||
+          (p.visibility !== "private" && p.status !== "archived"),
+      );
+      d.posts = d.posts.filter(
+        (p) => !p.project_id || d.projects.some((j) => j.id === p.project_id),
+      );
+      d.comments = d.comments.filter((c) =>
+        d.posts.some((p) => p.id === c.post_id),
+      );
+      d.reactions = d.reactions.filter((c) =>
+        d.posts.some((p) => p.id === c.post_id),
+      );
+    }
+    return d;
+  }
   const client = requireSupabase(),
     result = emptyDataset();
   await Promise.all(

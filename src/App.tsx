@@ -1,3 +1,7 @@
+import { PortfolioProvider } from "./features/portfolio/usePortfolio";
+import { StudentProfile } from "./features/portfolio/StudentProfile";
+import { PublicPortfolio } from "./features/portfolio/PublicPortfolio";
+import { CommunityHighlight } from "./features/portfolio/Highlights";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "./state/AuthContext";
@@ -46,7 +50,9 @@ function ConnectedLayout() {
   const auth = useAuth();
   return (
     <DataProvider key={`${auth.demo ? "demo" : "real"}:${auth.id}`}>
-      <Layout />
+      <PortfolioProvider>
+        <Layout />
+      </PortfolioProvider>
     </DataProvider>
   );
 }
@@ -96,6 +102,15 @@ export function AppRoutes() {
           </main>
         }
       />
+      <Route
+        path="/projetos/:id"
+        element={<PublicPortfolio kind="project" />}
+      />
+      <Route path="/perfil/:id" element={<PublicPortfolio kind="profile" />} />
+      <Route
+        path="/destaques/:id"
+        element={<PublicPortfolio kind="highlight" />}
+      />
       <Route path="/offline" element={<OfflineLibrary />} />
       <Route path="/verificar/:code" element={<VerifyCertificate />} />
       <Route path="/app" element={<AuthGate />}>
@@ -128,6 +143,9 @@ export function AppRoutes() {
           <Route path="emprego/:jobId" element={<JobDetail />} />
           <Route path="candidaturas" element={<Applications />} />
           <Route path="candidatos" element={<Candidates />} />
+          <Route path="perfil" element={<StudentProfile />} />
+          <Route path="perfil/:userId" element={<StudentProfile />} />
+          <Route path="destaques/:id" element={<CommunityHighlight />} />
           <Route path="config" element={<Settings />} />
           <Route path="config/perfil" element={<ProfileEditor />} />
           <Route path="config/verificacao" element={<Verification />} />

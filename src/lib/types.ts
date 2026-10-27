@@ -177,6 +177,7 @@ export interface Submission {
   created_at: string;
 }
 export interface Post {
+  project_id?: string | null;
   id: string;
   user_id: string;
   author_name: string;
@@ -201,6 +202,10 @@ export interface Reaction {
   user_id: string;
 }
 export interface Project {
+  visibility?: "public" | "community" | "private";
+  knowledge_level?: string;
+  cover_path?: string | null;
+  external_url?: string;
   id: string;
   owner_id: string;
   title: string;
@@ -229,6 +234,7 @@ export interface Job {
   created_at: string;
 }
 export interface Application {
+  resume_id?: string | null;
   id: string;
   job_id: string;
   student_id: string;

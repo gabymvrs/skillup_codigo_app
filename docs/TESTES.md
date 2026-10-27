@@ -102,3 +102,7 @@ Após as correções de sessão: 52 testes do aplicativo e 29 verificações SQL
 - `npm run build` e `npm run check`: aprovados; permanece o aviso de tamanho do bundle principal.
 - QA no navegador local: seleção de Docente e troca para Recrutador confirmadas; faixa e menu inspecionados visualmente em desktop. Sem nova homologação em dispositivos móveis nesta alteração.
 - Nenhuma mudança nas políticas RLS, migrations ou concessão de perfis reais. Habilitação da demonstração restrita à variável de build do preview da branch de desenvolvimento.
+
+## Perfil profissional e interações do estudante — 27/10/2026
+
+**142/142 testes Vitest** e **51/51 verificações PostgreSQL/RLS** aprovados. Build e `git diff --check` aprovados. Navegador local: perfil, criação de destaque e larguras mobile/tablet/desktop; sem overflow horizontal nas medições de 320/393/768 px. Relatórios: `portfolio-test-results.json` e `rls-results.json`. Ativação, diferenças e limites: [PERFIL-PROFISSIONAL.md](PERFIL-PROFISSIONAL.md). Migração 009 ainda precisa ser aplicada no Supabase hospedado; uploads e compartilhamentos reais não foram declarados homologados.

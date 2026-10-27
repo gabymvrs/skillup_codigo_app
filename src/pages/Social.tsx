@@ -1,3 +1,17 @@
+import { CommentReport } from "../features/portfolio/Comments";
+import {
+  ProjectShare,
+  ProjectSave,
+  ProjectViewed,
+  ProjectRecommendations,
+  PortfolioImage,
+} from "../features/portfolio/ProjectTools";
+import { VisibilityField } from "../features/portfolio/Fields";
+import {
+  uploadPortfolioFile,
+  removePortfolioFile,
+} from "../features/portfolio/service";
+import { safeUrl } from "../lib/utils";
 import { WeeklyRanking } from "../components/WeeklyRanking";
 import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
@@ -95,6 +109,9 @@ export function SocialPage({
           </ActionLink>
         </Card>
       )}
+      {section === "inicio" && auth.role === "estudante" && (
+        <ProjectRecommendations />
+      )}
       <SearchField
         value={query}
         onChange={setQuery}
@@ -181,7 +198,9 @@ export function PostCard({
       <div className="post-author">
         <span className="avatar">{initials(post.author_name)}</span>
         <div>
-          <strong>{post.author_name}</strong>
+          <Link to={`/app/perfil/${post.user_id}`}>
+            <strong>{post.author_name}</strong>
+          </Link>
           <small>
             {dateLabel(post.created_at)} · {post.category}
           </small>
@@ -204,6 +223,37 @@ export function PostCard({
         </Link>
       )}
       <p className="pre-wrap">{post.body}</p>
+      {post.project_id &&
+        (() => {
+          const p = repo.data.projects.find((p) => p.id === post.project_id);
+          return p ? (
+            <div className="shared-project">
+              <PortfolioImage
+                path={p.cover_path}
+                fallback={p.image}
+                alt={p.title}
+              />
+              <h3>{p.title}</h3>
+              <p>{p.description.slice(0, 180)}</p>
+              <p>
+                Por{" "}
+                {repo.data.profiles.find((a) => a.id === p.owner_id)
+                  ?.full_name || "Estudante da comunidade"}
+              </p>
+              <div className="chips">
+                {p.skills.map((s) => (
+                  <Badge key={s}>{s}</Badge>
+                ))}
+              </div>
+              <ActionLink to={`/app/social/projetos/${p.id}`} variant="outline">
+                Visualizar projeto
+              </ActionLink>
+            </div>
+          ) : (
+            <p>Projeto indisponível.</p>
+          );
+        })()}
+
       {post.image && (
         <img
           className="post-image"
@@ -288,7 +338,10 @@ export function PostDetail() {
         .filter((c) => c.post_id === postId)
         .map((c) => (
           <Card key={c.id}>
-            <strong>{c.author_name}</strong>
+            <div className="row-between">
+              <strong>{c.author_name}</strong>
+              <CommentReport comment={c} />
+            </div>
             <p className="pre-wrap">{c.body}</p>
             <small className="muted">{dateLabel(c.created_at)}</small>
           </Card>
@@ -481,9 +534,14 @@ export function Projects() {
               {data.project_members.filter((m) => m.project_id === p.id).length}{" "}
               participante(s)
             </p>
+            {p.cover_path && (
+              <PortfolioImage path={p.cover_path} alt={p.title} />
+            )}
             <ActionLink to={`/app/social/projetos/${p.id}`}>
               Ver detalhes
             </ActionLink>
+            <ProjectShare project={p} />
+            <ProjectSave project={p} />
           </Card>
         ))}
       </div>
@@ -510,6 +568,23 @@ export function ProjectDetail() {
         Todos os projetos
       </Link>
       <Heading title={project.title} description={project.category} />
+      <ProjectViewed project={project} />
+      <div className="actions">
+        <ProjectShare project={project} />
+        <ProjectSave project={project} />
+      </div>
+      {project.cover_path && (
+        <PortfolioImage path={project.cover_path} alt={project.title} />
+      )}
+      {safeUrl(project.external_url || "") && (
+        <a
+          href={safeUrl(project.external_url || "")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visualizar projeto externo
+        </a>
+      )}
       {project.image && (
         <img
           className="project-hero"
@@ -576,8 +651,28 @@ export function ProjectDetail() {
             </select>
           </label>
         )}
+        {project.owner_id === auth.id && auth.role === "estudante" && (
+          <VisibilityField
+            value={project.visibility || "community"}
+            onChange={(visibility) =>
+              void action.run(
+                () => repo.update("projects", project.id, { visibility }),
+                "Visibilidade atualizada.",
+              )
+            }
+          />
+        )}
         <ActionFeedback action={action} />
       </Card>
+      <SectionTitle>Publicações e comentários sobre este projeto</SectionTitle>
+      {repo.data.posts
+        .filter((p) => p.project_id === project.id)
+        .map((p) => (
+          <PostCard key={p.id} post={p} />
+        ))}
+      {!repo.data.posts.some((p) => p.project_id === project.id) && (
+        <p>Compartilhe o projeto no feed para iniciar uma conversa.</p>
+      )}
       {leaving && (
         <Confirm
           title="Sair do projeto?"
@@ -603,19 +698,49 @@ function ProjectEditor({ onClose }: { onClose: () => void }) {
           e.preventDefault();
           const f = new FormData(e.currentTarget);
           void action.run(async () => {
-            await repo.add("projects", {
-              id: uid(),
-              owner_id: auth.id!,
-              title: String(f.get("title")).trim(),
-              description: String(f.get("description")).trim(),
-              category: String(f.get("category")),
-              skills: String(f.get("skills"))
-                .split(",")
-                .map((s) => s.trim())
-                .filter(Boolean),
-              status: "open",
-              image: null,
-            });
+            const file = f.get("cover") as File | null;
+            const external_url = String(f.get("external_url") || "").trim();
+            if (external_url && !safeUrl(external_url))
+              throw Error("Use um link HTTPS válido.");
+            let cover_path: string | null = null;
+            if (auth.role === "estudante" && file?.size)
+              cover_path = await uploadPortfolioFile(
+                auth.demo,
+                auth.id!,
+                "portfolio-files",
+                file,
+              );
+            try {
+              await repo.add("projects", {
+                id: uid(),
+                owner_id: auth.id!,
+                title: String(f.get("title")).trim(),
+                description: String(f.get("description")).trim(),
+                category: String(f.get("category")),
+                skills: String(f.get("skills"))
+                  .split(",")
+                  .map((s) => s.trim())
+                  .filter(Boolean),
+                status: "open",
+                image: null,
+                ...(auth.role === "estudante"
+                  ? {
+                      visibility: String(
+                        f.get("visibility"),
+                      ) as Project["visibility"],
+                      knowledge_level: String(f.get("knowledge_level")),
+                      external_url,
+                      cover_path,
+                    }
+                  : {}),
+              });
+            } catch (error) {
+              if (cover_path)
+                await removePortfolioFile("portfolio-files", cover_path).catch(
+                  () => {},
+                );
+              throw error;
+            }
             onClose();
           });
         }}
@@ -646,6 +771,37 @@ function ProjectEditor({ onClose }: { onClose: () => void }) {
           Habilidades (separadas por vírgula)
           <input name="skills" maxLength={300} />
         </label>
+        {auth.role === "estudante" && (
+          <>
+            <VisibilityField value="community" />
+            <label>
+              Nível do projeto
+              <select name="knowledge_level">
+                <option value="iniciante">Iniciante</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="avancado">Avançado</option>
+              </select>
+            </label>
+            <label>
+              Link para visualização
+              <input name="external_url" type="url" maxLength={2000} />
+            </label>
+            <label>
+              Capa do projeto (imagem até 5 MB)
+              <input
+                type="file"
+                name="cover"
+                accept="image/jpeg,image/png,image/webp"
+                disabled={auth.demo}
+              />
+            </label>
+            {auth.demo && (
+              <p className="small muted">
+                Envio de capa disponível em uma conta real.
+              </p>
+            )}
+          </>
+        )}
         <Button type="submit" disabled={action.busy}>
           Criar projeto
         </Button>

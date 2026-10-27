@@ -1,3 +1,7 @@
+import {
+  ResumeApplicationField,
+  CandidateResume,
+} from "../features/portfolio/Resume";
 import { Experiences } from "../components/Experiences";
 import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
@@ -369,6 +373,9 @@ function ApplicationForm({ job, onClose }: { job: Job; onClose: () => void }) {
                 job_id: job.id,
                 student_id: auth.id!,
                 cover_letter: String(f.get("letter")).trim(),
+                ...(f.get("resume_id")
+                  ? { resume_id: String(f.get("resume_id")) }
+                  : {}),
                 status: "submitted",
                 created_at: new Date().toISOString(),
               });
@@ -391,6 +398,7 @@ function ApplicationForm({ job, onClose }: { job: Job; onClose: () => void }) {
               required
             />
           </label>
+          <ResumeApplicationField />
           <label className="check-label">
             <input type="checkbox" required />
             Concordo em compartilhar meu perfil com o responsável por esta vaga.
@@ -587,6 +595,9 @@ export function Candidates() {
           {candidate && <Experiences userId={candidate.id} />}
           <h3>Apresentação</h3>
           <p className="pre-wrap">{selected.cover_letter}</p>
+          {selected.resume_id && (
+            <CandidateResume resumeId={selected.resume_id} />
+          )}
           <label>
             Status
             <select

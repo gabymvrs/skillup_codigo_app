@@ -27,10 +27,14 @@ Abra `/teste` ou clique em **Testar tipos de conta** na tela inicial ou no login
 
 Com Supabase configurado, habilite `VITE_ENABLE_DEMO=true` no ambiente desejado e faça um novo build. No preview da branch `dev/skillup-modular-20261019`, essa flag está habilitada. A rota anterior `/demonstracao` continua funcionando. Uma sessão real exige saída explícita antes de iniciar o teste. Selecionar um perfil demonstrativo não concede permissões reais nem modifica perfis no Supabase.
 
+## Perfil profissional do aluno
+
+Config. → **Meu perfil profissional** reúne habilidades, conquistas, projetos, certificados, experiências e currículo. Social recebe denúncias de comentários, compartilhamento e recomendações de projetos. Em contas reais, aplique a nova migração **009**, após 001–008. A demonstração permite testar as interações sem armazenar documentos pessoais. Veja [funcionalidades, ativação e testes](docs/PERFIL-PROFISSIONAL.md).
+
 ## Supabase
 
 1. Crie um projeto de desenvolvimento separado. As migrations iniciais pressupõem um banco novo para este aplicativo. Não execute sobre tabelas de produção homônimas sem uma migração específica e backup.
-2. Execute os arquivos em `supabase/migrations/`, na ordem numérica **001 → 008**, pelo SQL Editor ou por um fluxo de migrations da Supabase CLI.
+2. Execute os arquivos em `supabase/migrations/`, na ordem numérica **001 → 009**, pelo SQL Editor ou por um fluxo de migrations da Supabase CLI.
 3. Opcionalmente, execute `supabase/seed.sql`: oito matérias, 13 trilhas, 56 etapas e 130 exercícios. O seed não cria pessoas, vagas ou testemunhos como se fossem reais. Revise o conteúdo educacional antes de publicação institucional.
 4. Preencha `.env.local`:
 

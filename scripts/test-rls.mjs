@@ -1,3 +1,4 @@
+import { testPortfolio } from "./test-portfolio-rls.mjs";
 import { testActivities } from "./test-activities-rls.mjs";
 import { testLearning } from "./test-learning-rls.mjs";
 import { PGlite } from "@electric-sql/pglite";
@@ -455,6 +456,7 @@ await test("JWT without a session identifier is refused", async () => {
 await testLearning({ db, id, test, actor, admin, rejects, scalar });
 await admin();
 await testActivities({ db, id, test, actor, admin, rejects, scalar });
+await testPortfolio({ db, id, test, actor, admin, rejects, scalar });
 await test("Every exposed app table has RLS", async () => {
   const rows = (
     await db.query(

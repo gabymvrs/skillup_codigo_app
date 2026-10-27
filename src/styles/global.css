@@ -2231,3 +2231,142 @@ html[data-large-text="true"] {
     min-width: 0;
   }
 }
+
+/* Student portfolio: uses existing SkillUp tokens and components. */
+.portfolio-page {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.portfolio-identity {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.portfolio-identity h2 {
+  margin-bottom: 4px;
+}
+.portfolio-grid,
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+}
+.portfolio-grid > *,
+.achievement-grid > * {
+  min-width: 0;
+}
+.portfolio-cover {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.portfolio-cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  background: var(--neutral-100);
+  color: var(--muted);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.skill-picker {
+  min-width: 0;
+  border: var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+.skill-picker legend {
+  font-weight: 600;
+  padding-inline: 8px;
+}
+.skill-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  max-height: 200px;
+  overflow-y: auto;
+  gap: 8px;
+}
+.chip-remove {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  min-width: 32px;
+  min-height: 32px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.achievement {
+  padding: 16px;
+  border: var(--border);
+  border-radius: 8px;
+}
+.achievement h3 {
+  margin-block: 12px 8px;
+}
+.achievement.locked {
+  color: var(--muted);
+}
+.achievement.earned > svg {
+  color: var(--primary);
+}
+.portfolio-page details > summary {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  padding-block: 8px;
+}
+.portfolio-page details[open] > summary {
+  margin-bottom: 16px;
+}
+.comment-menu {
+  position: relative;
+  margin-left: auto;
+}
+.comment-menu summary {
+  cursor: pointer;
+  padding: 8px;
+  list-style: none;
+  min-width: 40px;
+}
+.comment-menu[open] {
+  border: var(--border);
+  border-radius: 8px;
+  padding: 4px;
+}
+.resume-preview {
+  border: var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.resume-preview p,
+.portfolio-page p,
+.shared-project p {
+  overflow-wrap: anywhere;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+@media (max-width: 479px) {
+  .portfolio-identity {
+    gap: 16px;
+  }
+  .resume-preview {
+    padding: 16px;
+  }
+  .skill-options {
+    grid-template-columns: 1fr;
+  }
+}

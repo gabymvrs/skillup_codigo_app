@@ -1,3 +1,4 @@
+import { HeadlineField, SkillsField } from "../features/portfolio/Fields";
 import { learningStats } from "../services/learning";
 import { Avatar } from "../components/Avatar";
 import { LearningProgress } from "../components/LearningProgress";
@@ -102,6 +103,11 @@ export function Settings() {
               <span>Etapas concluídas</span>
             </div>
           </div>
+          {auth.role === "estudante" && (
+            <ActionLink to="/app/perfil" icon="briefcase">
+              Meu perfil profissional
+            </ActionLink>
+          )}
           <ActionLink to="/app/config/perfil" icon="users">
             Editar perfil
           </ActionLink>
@@ -495,27 +501,30 @@ export function ProfileEditor() {
             required
           />
         </label>
-        <label>
-          Apresentação profissional
-          <input
-            name="headline"
-            defaultValue={p.headline}
-            maxLength={160}
-            placeholder="Estudante de desenvolvimento de sistemas"
-          />
-        </label>
+        {auth.role === "estudante" ? (
+          <HeadlineField value={p.headline} />
+        ) : (
+          <label>
+            Apresentação profissional
+            <input name="headline" defaultValue={p.headline} maxLength={160} />
+          </label>
+        )}
         <label>
           Sobre você
           <textarea name="bio" rows={5} defaultValue={p.bio} maxLength={3000} />
         </label>
-        <label>
-          Habilidades (separadas por vírgula)
-          <input
-            name="skills"
-            defaultValue={p.skills.join(", ")}
-            maxLength={500}
-          />
-        </label>
+        {auth.role === "estudante" ? (
+          <SkillsField initial={p.skills} />
+        ) : (
+          <label>
+            Habilidades (separadas por vírgula)
+            <input
+              name="skills"
+              defaultValue={p.skills.join(", ")}
+              maxLength={500}
+            />
+          </label>
+        )}
         <label>
           Portfólio ou site
           <input

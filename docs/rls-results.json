@@ -162,6 +162,46 @@
       "status": "pass"
     },
     {
+      "name": "Portfolio edits and skills validation enforce identity and unique skills",
+      "status": "pass"
+    },
+    {
+      "name": "Public project projections exclude private and community projects and account fields",
+      "status": "pass"
+    },
+    {
+      "name": "Shared projects, comments and reactions become inaccessible after privacy changes",
+      "status": "pass"
+    },
+    {
+      "name": "Reports are persisted privately; duplicates, spoofing and excess submissions are rejected",
+      "status": "pass"
+    },
+    {
+      "name": "Highlights support CRUD, privacy and a server-enforced three-pin limit",
+      "status": "pass"
+    },
+    {
+      "name": "Badges derive from server records and cannot be manually awarded or featured while locked",
+      "status": "pass"
+    },
+    {
+      "name": "Resume files require confirmed owner upload and remain private until attached to a specific application",
+      "status": "pass"
+    },
+    {
+      "name": "Resume replacement and removal retain ownership and detach deleted documents",
+      "status": "pass"
+    },
+    {
+      "name": "Portfolio file visibility follows the linked record and anonymous reads exclude private files",
+      "status": "pass"
+    },
+    {
+      "name": "Non-students cannot modify student portfolio records or award badges",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

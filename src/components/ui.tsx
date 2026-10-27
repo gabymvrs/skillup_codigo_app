@@ -8,6 +8,8 @@ import {
 } from "react";
 import { Link, type To } from "react-router-dom";
 import {
+  Compass,
+  Trophy,
   AlertCircle,
   ArrowLeft,
   Award,
@@ -56,6 +58,8 @@ import {
 } from "lucide-react";
 import { errorMessage } from "../lib/utils";
 const icons = {
+  compass: Compass,
+  trophy: Trophy,
   alert: AlertCircle,
   arrow: ArrowLeft,
   award: Award,
