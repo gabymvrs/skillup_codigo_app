@@ -35,8 +35,8 @@ export function Welcome() {
       {demoEnabled && (
         <div className="demo-entry">
           <BadgeDemo />
-          <ActionLink to="/teste" variant="outline">
-            Testar tipos de conta
+          <ActionLink to="/demonstracao" variant="outline">
+            Explorar sem login
           </ActionLink>
         </div>
       )}
@@ -52,7 +52,7 @@ export function Welcome() {
 function BadgeDemo() {
   return (
     <p className="small muted">
-      Ambiente de demonstração disponível. Não cria uma conta real.
+      Demonstração com dados de exemplo. Não precisa criar uma conta.
     </p>
   );
 }
@@ -199,7 +199,7 @@ export function Login() {
         Esqueci minha senha
       </Link>
       <SocialSignIn />
-      {demoEnabled && <Link to="/teste">Testar tipos de conta</Link>}
+      {demoEnabled && <Link to="/demonstracao">Explorar sem login</Link>}
     </AuthFrame>
   );
 }

@@ -84,10 +84,13 @@ describe("Test navigation for all account types", () => {
       screen.queryByRole("region", { name: "Navegação de teste" }),
     ).not.toBeInTheDocument();
   });
-  it("shows the testing entry on the welcome page", async () => {
-    app("/");
-    expect(
-      await screen.findByRole("link", { name: "Testar tipos de conta" }),
-    ).toHaveAttribute("href", "/teste");
-  });
+  it.each(["/", "/login"])(
+    "shows the demonstration entry on %s",
+    async (path) => {
+      app(path);
+      expect(
+        await screen.findByRole("link", { name: "Explorar sem login" }),
+      ).toHaveAttribute("href", "/demonstracao");
+    },
+  );
 });
