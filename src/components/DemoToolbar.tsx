@@ -16,6 +16,7 @@ export function DemoToolbar() {
       <div>
         <strong>Demonstração</strong>
         <p>Versão de teste · dados de exemplo neste navegador.</p>
+        <small>Perfis fictícios · fotos ilustrativas de pessoas reais.</small>
       </div>
       <div className="demo-toolbar-controls">
         <label>

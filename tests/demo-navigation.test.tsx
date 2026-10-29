@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitFor,
+  within,
+  fireEvent,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { AuthProvider } from "../src/state/AuthContext";
@@ -20,6 +26,30 @@ function app(path = "/teste") {
   );
 }
 describe("Test navigation for all account types", () => {
+  it("dismisses the drawer with a left swipe but not a vertical or short gesture", async () => {
+    sessionStorage.setItem("skillup.demo.role", "estudante");
+    const user = userEvent.setup();
+    app("/app/home");
+    const button = await screen.findByRole("button", { name: "Abrir menu" });
+    await user.click(button);
+    const menu = screen.getByLabelText("Menu lateral");
+    const swipe = (x: number, y: number) => {
+      fireEvent.touchStart(menu, { touches: [{ clientX: 200, clientY: 200 }] });
+      fireEvent.touchMove(menu, { touches: [{ clientX: x, clientY: y }] });
+      fireEvent.touchEnd(menu);
+    };
+    swipe(190, 100);
+    expect(menu).toHaveClass("open");
+    swipe(170, 200);
+    expect(menu).toHaveClass("open");
+    swipe(80, 205);
+    expect(menu).not.toHaveClass("open");
+    expect(button).toHaveAttribute("aria-expanded", "false");
+    await user.click(button);
+    await user.keyboard("{Escape}");
+    expect(menu).not.toHaveClass("open");
+    expect(button).toHaveFocus();
+  });
   it.each(roles)(
     "enters %s without real authentication and navigates every tab",
     async (label, role) => {

@@ -6,6 +6,13 @@ export const demoUsers: Record<Role, string> = {
   recrutador: id(3),
   instituicao: id(4),
 };
+export const demoPortraits: Record<string, string> = {
+  [id(1)]: "/assets/portraits/student.jpg",
+  [id(2)]: "/assets/portraits/teacher.jpg",
+  [id(3)]: "/assets/portraits/recruiter.jpg",
+  [id(5)]: "/assets/portraits/student-beatriz.jpg",
+  [id(6)]: "/assets/portraits/student-marcos.jpg",
+};
 export function createDemo(): Dataset {
   const data = emptyDataset();
   Object.assign(data, { subjects, materials, tracks, modules, questions });
@@ -19,6 +26,7 @@ export function createDemo(): Dataset {
   ].map((full_name, i) => ({
     id: id(i + 1),
     full_name,
+    avatar_demo: demoPortraits[id(i + 1)],
     headline: [
       "Estudante de desenvolvimento",
       "Docente de programação",
@@ -50,7 +58,6 @@ export function createDemo(): Dataset {
   );
   data.profiles[1].preferences.office_hours =
     "Segunda a sexta, 14h–16h (exemplo)";
-  data.profiles[1].avatar_demo = "/assets/story-4.svg";
   data.reward_events = [5, 6].map((n, i) => ({
     id: id(960 + n),
     user_id: id(n),

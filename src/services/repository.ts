@@ -8,7 +8,7 @@ import {
 } from "../data/catalog";
 import type { Dataset, TableMap, TableName } from "../lib/types";
 import { emptyDataset, tableNames } from "../lib/types";
-import { createDemo } from "../data/demo";
+import { createDemo, demoPortraits } from "../data/demo";
 import { requireSupabase } from "./supabase";
 export const DEMO_KEY = "skillup.demo.v2";
 export function readDemo(): Dataset {
@@ -17,6 +17,10 @@ export function readDemo(): Dataset {
   try {
     const d = JSON.parse(raw);
     d.experiences ??= [];
+    for (const profile of d.profiles || []) {
+      if (!profile.avatar_demo || profile.avatar_demo === "/assets/story-4.svg")
+        profile.avatar_demo = demoPortraits[profile.id];
+    }
     for (const [table, additions] of Object.entries({
       subjects,
       materials,

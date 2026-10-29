@@ -14,7 +14,8 @@ export function Avatar({
   size?: number;
 }) {
   const { demo } = useAuth(),
-    [url, setUrl] = useState("");
+    [url, setUrl] = useState(""),
+    [failed, setFailed] = useState("");
   useEffect(() => {
     let active = true;
     setUrl("");
@@ -35,8 +36,16 @@ export function Avatar({
       className="avatar profile-avatar"
       style={{ width: size, height: size }}
     >
-      {src ? (
-        <img src={src} alt={`Foto de ${name}`} onError={() => setUrl("")} />
+      {src && src !== failed ? (
+        <img
+          src={src}
+          alt={
+            demo
+              ? `Retrato ilustrativo do perfil de demonstração ${name}`
+              : `Foto de ${name}`
+          }
+          onError={() => setFailed(src)}
+        />
       ) : (
         <span aria-label={name}>{initials(name)}</span>
       )}

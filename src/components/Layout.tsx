@@ -1,7 +1,7 @@
 import { learningStats } from "../services/learning";
 import { Avatar } from "./Avatar";
 import { DemoToolbar } from "./DemoToolbar";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
@@ -136,6 +136,24 @@ export function Layout() {
     [online, setOnline] = useState(navigator.onLine),
     [menu, setMenu] = useState(false),
     action = useAction();
+  const swipe = useRef<{ x: number; y: number } | null>(null);
+  const [dragX, setDragX] = useState(0);
+  const closeMenu = () => {
+    swipe.current = null;
+    setDragX(0);
+    setMenu(false);
+  };
+  useEffect(() => {
+    if (!menu) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        document.querySelector<HTMLButtonElement>(".mobile-menu")?.focus();
+      }
+    };
+    window.addEventListener("keydown", escape);
+    return () => window.removeEventListener("keydown", escape);
+  }, [menu]);
   const learning = learningStats(repo.data, auth.id!);
   const profile = repo.data.profiles.find((x) => x.id === auth.id),
     unread = repo.data.notifications.filter(
@@ -164,7 +182,7 @@ export function Layout() {
     };
   }, []);
   useEffect(() => {
-    setMenu(false);
+    closeMenu();
     window.scrollTo({ top: 0, behavior: "instant" });
     document.getElementById("page-content")?.focus();
   }, [location.pathname]);
@@ -175,7 +193,38 @@ export function Layout() {
       </a>
       <div className="app-layout">
         <aside
-          className={`side-nav ${menu ? "open" : ""}`}
+          className={`side-nav ${menu ? "open" : ""} ${dragX < 0 ? "dragging" : ""}`}
+          style={
+            dragX < 0 ? { transform: `translateX(${dragX}px)` } : undefined
+          }
+          onTouchStart={(event) => {
+            if (!menu || event.touches.length !== 1) return;
+            swipe.current = {
+              x: event.touches[0].clientX,
+              y: event.touches[0].clientY,
+            };
+          }}
+          onTouchMove={(event) => {
+            if (!swipe.current || event.touches.length !== 1) return;
+            const dx = event.touches[0].clientX - swipe.current.x;
+            const dy = event.touches[0].clientY - swipe.current.y;
+            if (Math.abs(dy) > Math.abs(dx) && dragX === 0) {
+              swipe.current = null;
+              return;
+            }
+            if (dx < -10) setDragX(dx);
+          }}
+          onTouchEnd={() => {
+            if (dragX <= -64) closeMenu();
+            else {
+              setDragX(0);
+              swipe.current = null;
+            }
+          }}
+          onTouchCancel={() => {
+            setDragX(0);
+            swipe.current = null;
+          }}
           aria-label="Menu lateral"
         >
           <Link to="/app/home" className="wordmark">
@@ -183,7 +232,7 @@ export function Layout() {
             <span>SkillUp</span>
           </Link>
           <nav aria-label="Navegação principal">
-            <Navigation close={() => setMenu(false)} />
+            <Navigation close={closeMenu} />
           </nav>
           <div className="side-footer">
             <Avatar
@@ -197,13 +246,13 @@ export function Layout() {
             </div>
           </div>
         </aside>
-        {menu && (
-          <button
-            className="nav-backdrop"
-            aria-label="Fechar menu"
-            onClick={() => setMenu(false)}
-          />
-        )}
+        <button
+          className={`nav-backdrop ${menu ? "open" : ""}`}
+          aria-label="Fechar menu"
+          tabIndex={menu ? 0 : -1}
+          aria-hidden={!menu}
+          onClick={closeMenu}
+        />
         <div className="app-main">
           <header className="topbar">
             <button
@@ -288,7 +337,7 @@ export function Layout() {
         </div>
       </div>
       <nav className="bottom-nav" aria-label="Navegação principal mobile">
-        <Navigation close={() => setMenu(false)} />
+        <Navigation close={closeMenu} />
       </nav>
       {!repo.loading && !repo.error && <GlobalSupport />}
     </>
