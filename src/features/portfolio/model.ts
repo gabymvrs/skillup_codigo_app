@@ -184,9 +184,12 @@ export const defaultPortfolio = (id: string): Portfolio => ({
 });
 export function uniqueSkills(values: string[], limit = 30) {
   const clean = values.map((s) => s.trim()).filter(Boolean);
-  if (clean.some((s) => s.length > 60) || clean.length > limit)
+  const unique = [
+    ...new Map(clean.map((s) => [s.toLocaleLowerCase(), s])).values(),
+  ];
+  if (clean.some((s) => s.length > 60) || unique.length > limit)
     throw Error(`Use até ${limit} habilidades, com até 60 caracteres cada.`);
-  return [...new Map(clean.map((s) => [s.toLocaleLowerCase(), s])).values()];
+  return unique;
 }
 const norm = (s: string) =>
   s

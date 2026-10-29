@@ -64,10 +64,14 @@ export function SkillsField({
   const options = skillSuggestions.filter((s) =>
     s.toLowerCase().includes(query.toLowerCase()),
   );
+  const isSelected = (s: string) =>
+    selected.some(
+      (value) => value.toLocaleLowerCase() === s.toLocaleLowerCase(),
+    );
   function toggle(s: string) {
     setSelected((old) =>
-      old.includes(s)
-        ? old.filter((x) => x !== s)
+      old.some((value) => value.toLocaleLowerCase() === s.toLocaleLowerCase())
+        ? old.filter((x) => x.toLocaleLowerCase() !== s.toLocaleLowerCase())
         : old.length < limit
           ? uniqueSkills([...old, s], limit)
           : old,
@@ -106,8 +110,8 @@ export function SkillsField({
             <input
               id={`${id}-${i}`}
               type="checkbox"
-              checked={selected.includes(s)}
-              disabled={!selected.includes(s) && selected.length >= limit}
+              checked={isSelected(s)}
+              disabled={!isSelected(s) && selected.length >= limit}
               onChange={() => toggle(s)}
             />
             {s}

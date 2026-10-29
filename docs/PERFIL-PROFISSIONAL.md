@@ -32,6 +32,9 @@ Config. → **Meu perfil profissional**. No modo de teste, selecione Estudante e
 
 ## Ativação no Supabase
 
+**Estado confirmado em 29/10/2026:** migração 009 já aplicada no projeto SkillUp. As sete tabelas estão com RLS ativo; os dois buckets são privados, limitados a 5 MB e aos formatos documentados. Não execute novamente essa migração nesse projeto. As instruções abaixo são para ambientes novos.
+
+
 1. As migrações **001 a 008** devem já estar aplicadas.
 2. Abra **SQL Editor → New query** no projeto SkillUp.
 3. Copie **todo** o arquivo `supabase/migrations/202610260009_student_portfolio.sql`, começando em `begin;` e terminando em `commit;`, e execute uma única vez. Não execute apenas trechos de funções.
@@ -40,7 +43,7 @@ Config. → **Meu perfil profissional**. No modo de teste, selecione Estudante e
 
 A migração adiciona sete tabelas, campos em projetos/publicações/candidaturas, funções e políticas. Reutiliza perfis, habilidades, experiências, certificados, projetos, comentários e registros de aprendizagem existentes. Cria os buckets privados `student-resumes` e `portfolio-files`, com limite de 5 MB e tipos MIME permitidos. O banco rejeita referências a objetos inexistentes ou caminhos de outro proprietário. O cliente também confere assinaturas de PDF/imagens antes de enviar.
 
-A nova área mantém mensagens de erro e não bloqueia o restante do aplicativo se a migração ainda estiver pendente. Não foi executada uma migração no Supabase hospedado nesta entrega: não há conexão administrativa disponível no ambiente. Não enviar chaves `service_role` pelo chat ou para o frontend.
+A nova área mantém mensagens de erro e não bloqueia o restante do aplicativo se a migração ainda estiver pendente. A migração foi aplicada manualmente pelo proprietário e a estrutura hospedada foi conferida posteriormente. Não enviar chaves `service_role` pelo chat ou para o frontend.
 
 ## Decisões e limites
 
@@ -60,3 +63,12 @@ A nova área mantém mensagens de erro e não bloqueia o restante do aplicativo 
 - Navegador local: entrada como aluno, acesso por Config., criação de destaque privado e persistência após navegação. Layout de perfil inspecionado em desktop e iframe de 320, 393 e 768 px; nenhuma rolagem horizontal do documento nas medições. Fixture: `tests/browser-portfolio.html`, somente desenvolvimento.
 - Ainda requer homologação no Supabase hospedado: upload/download real no Storage, links temporários com duas contas e acesso público fora da demonstração. Os testes de SQL usam PostgreSQL/PGlite com Auth e Storage simulados; não equivalem a testar o serviço hospedado.
 - Não foi feita auditoria WCAG completa, teste em aparelhos físicos ou revisão externa de segurança.
+
+## Revisão de 29/10/2026
+
+- As oito funcionalidades já estavam implementadas no commit `4d17196`; foram preservadas.
+- Corrigida a seleção de habilidades existentes com caixa diferente (por exemplo, `figma`/`Figma`): seleção, remoção e bloqueio no limite agora usam a mesma comparação sem distinção de maiúsculas. O limite conta habilidades únicas.
+- Antes da correção: suíte completa com 143 testes aprovados em 16 arquivos. Após a correção: suíte específica de portfólio com 18 testes, incluindo duas regressões; resultado confirmado no registro desta revisão.
+- Reexecutadas 51 verificações PostgreSQL/PGlite de permissões com sucesso. São testes locais de SQL, não sessões de usuários no serviço hospedado.
+- Nenhuma nova migração é necessária para esta correção de interface.
+- Permanecem pendentes os testes de upload/substituição/exclusão no Storage hospedado e compartilhamento com duas contas reais. Não foram criadas contas nem enviados arquivos pessoais para simular essa homologação.

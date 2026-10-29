@@ -22,6 +22,7 @@ import {
   validatePortfolioFile,
   loadPortfolio,
 } from "../src/features/portfolio/service";
+import { SkillsField } from "../src/features/portfolio/Fields";
 import { resumePdf } from "../src/features/portfolio/resumePdf";
 function app(path = "/app/perfil") {
   sessionStorage.setItem("skillup.demo.role", "estudante");
@@ -61,6 +62,25 @@ describe("Student portfolio logic and privacy", () => {
       uniqueSkills(Array.from({ length: 31 }, (_, i) => `Skill ${i}`)),
     ).toThrow(/30/);
     expect(() => uniqueSkills(["x".repeat(61)])).toThrow();
+  });
+  it("counts unique skills before applying the configured limit", () => {
+    expect(uniqueSkills(["Figma", "figma"], 1)).toEqual(["figma"]);
+  });
+  it("recognizes and removes previously saved skills regardless of casing", async () => {
+    const user = userEvent.setup();
+    render(<SkillsField initial={["figma"]} limit={1} />);
+    const option = screen.getByRole("checkbox", { name: "Figma" });
+    expect(option).toBeChecked();
+    expect(option).toBeEnabled();
+    await user.click(option);
+    expect(option).not.toBeChecked();
+    expect(
+      screen.queryByRole("button", { name: "Remover figma" }),
+    ).not.toBeInTheDocument();
+    await user.click(option);
+    expect(
+      screen.getByRole("button", { name: "Remover Figma" }),
+    ).toBeInTheDocument();
   });
   it("ranks real eligible projects by skills and explains the match", () => {
     const d = createDemo(),
