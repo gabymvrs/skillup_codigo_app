@@ -234,7 +234,14 @@ export function Layout() {
           <nav aria-label="Navegação principal">
             <Navigation close={closeMenu} />
           </nav>
-          <div className="side-footer">
+          <Link
+            className="side-footer"
+            to={
+              auth.role === "estudante" ? "/app/perfil" : "/app/config/perfil"
+            }
+            onClick={closeMenu}
+            aria-label={`Ver perfil de ${profile?.full_name || "sua conta"}`}
+          >
             <Avatar
               name={profile?.full_name || "Sua conta"}
               path={profile?.avatar_path}
@@ -244,7 +251,7 @@ export function Layout() {
               <strong>{profile?.full_name || "Sua conta"}</strong>
               <small>{roleLabels[auth.role!]}</small>
             </div>
-          </div>
+          </Link>
         </aside>
         <button
           className={`nav-backdrop ${menu ? "open" : ""}`}

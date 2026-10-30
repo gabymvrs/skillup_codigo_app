@@ -26,6 +26,19 @@ function app(path = "/teste") {
   );
 }
 describe("Test navigation for all account types", () => {
+  it("opens the student profile from the account area and closes the drawer", async () => {
+    sessionStorage.setItem("skillup.demo.role", "estudante");
+    const user = userEvent.setup();
+    app("/app/home");
+    await user.click(await screen.findByRole("button", { name: "Abrir menu" }));
+    const link = await screen.findByRole("link", {
+      name: "Ver perfil de Alex Silva",
+    });
+    expect(link).toHaveAttribute("href", "/app/perfil");
+    await user.click(link);
+    await screen.findByRole("heading", { name: "Meu perfil profissional" });
+    expect(screen.getByLabelText("Menu lateral")).not.toHaveClass("open");
+  });
   it("dismisses the drawer with a left swipe but not a vertical or short gesture", async () => {
     sessionStorage.setItem("skillup.demo.role", "estudante");
     const user = userEvent.setup();
