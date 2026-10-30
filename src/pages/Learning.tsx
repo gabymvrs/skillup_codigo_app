@@ -586,6 +586,7 @@ export function QuestionDialog({
   return (
     <Modal
       title={q.title}
+      fullScreen
       onClose={() => {
         if (!action.busy) onClose();
       }}

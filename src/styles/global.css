@@ -2162,6 +2162,48 @@ html[data-large-text="true"] {
 .practice-session {
   width: min(760px, calc(100vw - 32px));
 }
+.modal.modal-fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+.modal.modal-fullscreen[open] {
+  display: flex;
+  flex-direction: column;
+}
+.modal-fullscreen > header {
+  flex: none;
+  margin: 0;
+  padding: max(16px, env(safe-area-inset-top))
+    max(24px, env(safe-area-inset-right)) 16px
+    max(24px, env(safe-area-inset-left));
+  border-bottom: var(--border);
+}
+.modal-fullscreen > header h2 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.modal-fullscreen > header .icon-button {
+  flex: none;
+}
+.modal-fullscreen-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 24px max(24px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  overflow-wrap: anywhere;
+}
 .question-navigation {
   display: flex;
   gap: 8px;

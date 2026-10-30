@@ -354,11 +354,13 @@ export function Modal({
   children,
   onClose,
   className = "",
+  fullScreen = false,
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   className?: string;
+  fullScreen?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null),
     id = useId(),
@@ -366,23 +368,26 @@ export function Modal({
   useEffect(() => {
     last.current = document.activeElement as HTMLElement;
     const dialog = ref.current;
+    const previousOverflow = document.body.style.overflow;
+    if (fullScreen) document.body.style.overflow = "hidden";
     if (dialog && !dialog.open) dialog.showModal();
     return () => {
       dialog?.close();
+      if (fullScreen) document.body.style.overflow = previousOverflow;
       last.current?.focus();
     };
-  }, []);
+  }, [fullScreen]);
   return (
     <dialog
       ref={ref}
       aria-labelledby={id}
-      className={`modal ${className}`}
+      className={`modal ${fullScreen ? "modal-fullscreen" : ""} ${className}`}
       onCancel={(e) => {
         e.preventDefault();
         onClose();
       }}
       onClick={(e) => {
-        if (e.target === ref.current) onClose();
+        if (!fullScreen && e.target === ref.current) onClose();
       }}
     >
       <header>
@@ -391,7 +396,11 @@ export function Modal({
           <Icon name="x" />
         </button>
       </header>
-      {children}
+      {fullScreen ? (
+        <div className="modal-fullscreen-body">{children}</div>
+      ) : (
+        children
+      )}
     </dialog>
   );
 }

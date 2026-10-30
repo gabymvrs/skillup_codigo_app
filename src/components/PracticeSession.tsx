@@ -77,6 +77,7 @@ export function PracticeSession({
       title={set.title}
       onClose={requestClose}
       className="practice-session"
+      fullScreen
     >
       {!complete ? (
         <Notice tone="warning">
