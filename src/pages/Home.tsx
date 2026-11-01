@@ -183,7 +183,7 @@ function StudentHome() {
     <div className="stack">
       <Heading
         title={`Olá, ${profile?.full_name.split(" ")[0] || "estudante"}!`}
-        description="Sua jornada técnica está em pleno vapor. Pronto para o próximo desafio?"
+        description="Continue seus estudos ou escolha uma atividade para hoje."
       />
       <LearningProgress />
       <div className="home-grid">
@@ -213,8 +213,8 @@ function StudentHome() {
           <Card className="dark">
             <h2>Sugestão de plano</h2>
             <p>
-              Quer estudar em blocos curtos? Reserve 15 minutos para exercícios
-              e laboratórios nos dias mais ocupados.
+              Nos dias mais ocupados, reserve 15 minutos para exercícios e
+              laboratórios.
             </p>
             <Button
               variant="outline"
@@ -234,7 +234,7 @@ function StudentHome() {
             >
               {profile?.preferences.study_minutes === 15
                 ? "Plano de 15 min selecionado"
-                : "Aplicar ajuste"}
+                : "Usar plano de 15 min"}
             </Button>
             <ActionFeedback action={action} />
           </Card>

@@ -89,7 +89,7 @@ export function AcademicSupport() {
       <div className="support-grid">
         <Card className="academic-assistant">
           <h2>Assistente IA</h2>
-          <p>Orientações rápidas para sua jornada de estudos.</p>
+          <p>Tire dúvidas sobre o aplicativo e a organização dos estudos.</p>
           <p className="small">
             Versão demonstrativa com respostas locais por assunto. IA generativa
             e atendimento humano não estão conectados a este assistente.

@@ -53,13 +53,13 @@ export function Tracks({ embedded = false }: { embedded?: boolean }) {
         level={embedded ? 2 : 1}
         title={
           auth.role === "recrutador"
-            ? "Explore as trilhas"
+            ? "Consultar trilhas"
             : "Trilhas de aprendizagem"
         }
         description={
           auth.role === "recrutador"
             ? "Conheça os conteúdos e as competências trabalhadas."
-            : "Uma etapa de cada vez, no seu ritmo."
+            : "Escolha uma trilha para estudar com teoria, prática e dinâmica."
         }
         action={
           ["docente", "instituicao"].includes(auth.role!) ? (
@@ -387,7 +387,7 @@ export function Practice() {
     <div className="stack">
       <Heading
         title="Prática"
-        description="Transforme o conteúdo em conhecimento com exercícios curtos."
+        description="Faça exercícios curtos e acompanhe seus acertos e erros."
       />
       {auth.role === "estudante" && (
         <PracticeDashboard

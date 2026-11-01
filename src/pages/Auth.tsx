@@ -41,7 +41,7 @@ export function Welcome() {
         </div>
       )}
       <Link className="text-link" to="/ajuda">
-        Precisa de ajuda? Clique aqui!
+        Precisa de ajuda?
       </Link>
       <Link className="text-link" to="/offline">
         Abrir biblioteca offline
@@ -59,7 +59,7 @@ function BadgeDemo() {
 export function RolePicker() {
   return (
     <AuthFrame
-      description="Selecione com qual tipo de conta você mais se identifica."
+      description="Escolha o tipo de conta que você vai usar."
       back={false}
       variant="roles"
     >

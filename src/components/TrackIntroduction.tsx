@@ -115,7 +115,7 @@ export function TrackIntroduction({
               void action.run(begin);
             }}
           >
-            Começar minha jornada
+            Começar trilha
           </Button>
         )}
         <ActionFeedback action={action} />

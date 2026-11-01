@@ -33,9 +33,7 @@ it("shows an introduction before the path and lets the student revisit it withou
   expect(
     screen.getByRole("heading", { name: "O que preciso saber antes?" }),
   ).toBeVisible();
-  await user.click(
-    screen.getByRole("button", { name: "Começar minha jornada" }),
-  );
+  await user.click(screen.getByRole("button", { name: "Começar trilha" }));
   expect(begin).toHaveBeenCalledOnce();
   await user.click(
     screen.getByRole("button", { name: "Rever apresentação da trilha" }),
@@ -58,9 +56,7 @@ it("keeps the presentation open after a failed start", async () => {
       }}
     />,
   );
-  await user.click(
-    screen.getByRole("button", { name: "Começar minha jornada" }),
-  );
+  await user.click(screen.getByRole("button", { name: "Começar trilha" }));
   expect(await screen.findByText("Sem conexão")).toBeVisible();
   expect(
     screen.getByRole("heading", { name: "O que você vai aprender" }),

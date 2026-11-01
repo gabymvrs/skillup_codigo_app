@@ -74,12 +74,12 @@ export function Careers() {
               ? "Gestão de empregabilidade"
               : auth.role === "docente"
                 ? "Portal de empregabilidade"
-                : "Seu próximo passo profissional"
+                : "Oportunidades de trabalho"
         }
         description={
           management
             ? "Publique vagas e acompanhe as candidaturas recebidas."
-            : "Explore oportunidades e prepare sua trajetória profissional."
+            : "Consulte as vagas e prepare seu perfil para se candidatar."
         }
         action={
           management ? (
