@@ -2492,3 +2492,33 @@ html[data-large-text="true"] {
 .lesson-steps button { font: inherit; color: inherit; cursor: pointer; padding: 8px 14px; background: var(--surface, #f4f6fc); border: 1px solid #d7def1; border-radius: 999px; }
 .lesson-steps button:focus-visible { outline: 3px solid #5c86e3; outline-offset: 3px; }
 .lesson-steps button:disabled { cursor: wait; opacity: .6; }
+
+/* Materials share the same full-width content grid as recent reading. */
+.subject-grid { width: 100%; max-width: none; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
+.subject-grid > * { min-width: 0; height: 100%; overflow-wrap: anywhere; }
+@media(max-width:900px) { .subject-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:380px) { .subject-grid { grid-template-columns: minmax(0,1fr); } }
+
+.practice-metric-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:0; }
+.practice-metric-grid > .card { min-width:0; padding:20px; }
+.practice-metric-grid dt { margin-top:12px; font-size:14px; }
+.practice-metric-grid dd { margin:8px 0; font-size:32px; font-weight:700; }
+.performance-chart-grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:16px; }
+.performance-chart-grid > * { min-width:0; }
+.performance-line { width:100%; height:auto; overflow:visible; color:inherit; }
+.performance-line text { font:12px sans-serif; fill:currentColor; }
+.performance-line circle:focus { outline:3px solid #e5a400; }
+.performance-bar { height:16px; background:#e9edf4; border-radius:8px; overflow:hidden; }
+.performance-bar span { display:block; height:100%; }
+.practice-filters { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; align-items:end; }
+.practice-filters > * { min-width:0; }
+.practice-filters select { width:100%; }
+.chart-table { overflow:auto; max-width:100%; }
+.chart-table table { width:100%; border-collapse:collapse; }
+.chart-table td,.chart-table th { padding:8px; text-align:left; border-bottom:1px solid #d7deed; }
+@media(max-width:900px) { .practice-metric-grid,.practice-filters { grid-template-columns:repeat(2,minmax(0,1fr)); } .performance-chart-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:380px) { .practice-metric-grid > .card { padding:12px; } .practice-metric-grid dd { font-size:26px; } .practice-filters { grid-template-columns:minmax(0,1fr); } }
+.performance-plot { position:relative; padding-left:32px; }
+.performance-plot .performance-line text { display:none; }
+.performance-axis { position:absolute; left:0; top:15%; bottom:15%; display:flex; flex-direction:column; justify-content:space-between; font-size:12px; line-height:1; }
+.performance-dates { display:flex; justify-content:space-between; gap:8px; font-size:12px; padding-left:32px; }

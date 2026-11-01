@@ -1,3 +1,6 @@
+vi.mock("../src/state/AuthContext", () => ({
+  useAuth: () => ({ demo: true, id: "00000000-0000-4000-8000-000000000001" }),
+}));
 import { it, expect, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

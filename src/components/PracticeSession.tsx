@@ -1,3 +1,5 @@
+import { useAuth } from "../state/AuthContext";
+import { recordPracticeCompletion } from "../services/practiceProgress";
 import { ActivityRenderer } from "./ActivityRenderer";
 import { useEffect, useRef, useState } from "react";
 import type { ExerciseAnswer, Question } from "../lib/types";
@@ -26,7 +28,8 @@ export function PracticeSession({
   set: PracticeSet;
   onClose: () => void;
 }) {
-  const repo = useData();
+  const repo = useData(),
+    auth = useAuth();
   // Snapshot the set: a background data refresh must not reorder a running exam.
   const [questions] = useState(() =>
     set.questionIds
@@ -64,6 +67,13 @@ export function PracticeSession({
       setLocked(true);
       // Keep confirmed results after a connection failure; retry only remaining answers.
       for (const item of questions) await submitQuestion(item);
+      if (questions.every(ready))
+        await recordPracticeCompletion(
+          auth.demo,
+          auth.id!,
+          set.id,
+          questions.map((q) => q.id),
+        );
       setStage("result");
     });
   }

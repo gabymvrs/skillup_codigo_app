@@ -1,4 +1,8 @@
 import {
+  PracticeDashboard,
+  usePracticeCompletions,
+} from "../components/PracticeDashboard";
+import {
   TrackIntroduction,
   trackIntroductions,
 } from "../components/TrackIntroduction";
@@ -340,19 +344,16 @@ export function TrackDetail() {
 }
 export function Practice() {
   const auth = useAuth(),
-    { data } = useData();
+    { data, loading, error, reload } = useData(),
+    completion = usePracticeCompletions(auth.demo, auth.id!);
   const attempts = data.attempts.filter((a) => a.user_id === auth.id),
-    answeredQuestions = new Set(attempts.map((a) => a.question_id)).size,
-    correctAttempts = attempts.filter((a) => a.correct).length,
-    incorrectAttempts = attempts.length - correctAttempts,
-    accuracy = percent(correctAttempts, attempts.length),
-    xp = attempts.reduce((sum, a) => sum + a.xp, 0),
     [type, setType] = useState(""),
     [subject, setSubject] = useState(""),
     [format, setFormat] = useState(""),
+    [difficulty, setDifficulty] = useState(""),
+    [status, setStatus] = useState(""),
     [open, setOpen] = useState<string | null>(null),
-    [session, setSession] = useState<PracticeSet | null>(null),
-    [showStats, setShowStats] = useState(false);
+    [session, setSession] = useState<PracticeSet | null>(null);
   const sets: PracticeSet[] =
     type === "Prática guiada"
       ? data.subjects.map((s) => ({
@@ -364,16 +365,24 @@ export function Practice() {
             .map((q) => q.id),
         }))
       : practiceSets.filter((s) => s.category === type);
-  const visibleSets = sets.filter((s) =>
-    s.questionIds.some((id) =>
-      data.questions.some(
-        (q) =>
-          q.id === id &&
-          (!subject || q.subject_id === subject) &&
-          (!format || (q.kind || "choice") === format),
-      ),
-    ),
-  );
+  const visibleSets = sets.filter((s) => {
+    const done = completion.rows.some((r) => r.set_id === s.id);
+    return (
+      (!status || (status === "done" ? done : !done)) &&
+      (!difficulty ||
+        (difficulty === "advanced"
+          ? s.category === "Exames"
+          : s.category !== "Exames")) &&
+      s.questionIds.some((id) =>
+        data.questions.some(
+          (q) =>
+            q.id === id &&
+            (!subject || q.subject_id === subject) &&
+            (!format || (q.kind || "choice") === format),
+        ),
+      )
+    );
+  });
   return (
     <div className="stack">
       <Heading
@@ -381,108 +390,19 @@ export function Practice() {
         description="Transforme o conteúdo em conhecimento com exercícios curtos."
       />
       {auth.role === "estudante" && (
-        <section
-          className="card practice-dashboard"
-          aria-label="Painel de prática do aluno"
-        >
-          <div className="practice-dashboard-header">
-            <div className="practice-dashboard-title">
-              <Badge>Painel do aluno</Badge>
-              <h2>Seu progresso na prática</h2>
-              <p>Acompanhe suas questões, acertos e XP conquistados.</p>
-            </div>
-            <Button
-              variant="outline"
-              aria-expanded={showStats}
-              aria-controls="practice-dashboard-details"
-              onClick={() => setShowStats((shown) => !shown)}
-            >
-              {showStats ? "Ver menos" : "Ver mais"}
-            </Button>
-          </div>
-          <div
-            id="practice-dashboard-details"
-            className="practice-dashboard-details"
-            hidden={!showStats}
-          >
-            <dl className="practice-stats">
-              <div>
-                <dt>Questões respondidas</dt>
-                <dd>{answeredQuestions}</dd>
-              </div>
-              <div>
-                <dt>Tentativas</dt>
-                <dd>{attempts.length}</dd>
-              </div>
-              <div>
-                <dt>Acertos</dt>
-                <dd>
-                  {correctAttempts} <small>{accuracy}% de aproveitamento</small>
-                </dd>
-              </div>
-              <div>
-                <dt>Erros</dt>
-                <dd>{incorrectAttempts}</dd>
-              </div>
-              <div>
-                <dt>XP em prática</dt>
-                <dd>{xp} XP</dd>
-              </div>
-            </dl>
-            {!attempts.length && (
-              <p className="muted practice-dashboard-empty">
-                Responda a uma questão para começar a acompanhar seu progresso.
-              </p>
-            )}
-          </div>
-        </section>
+        <PracticeDashboard
+          data={data}
+          user={auth.id!}
+          demo={auth.demo}
+          completions={completion.rows}
+          loading={loading || completion.loading}
+          error={error || completion.error}
+          onRetry={() => {
+            completion.retry();
+            void reload().catch(() => {});
+          }}
+        />
       )}
-      <div className="two-columns">
-        <label>
-          Disciplina
-          <select
-            value={subject}
-            onChange={(e) => {
-              setSubject(e.target.value);
-              setType("Prática guiada");
-            }}
-          >
-            <option value="">Todas as matérias</option>
-            {data.subjects.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Formato de exercício
-          <select
-            value={format}
-            onChange={(e) => {
-              setFormat(e.target.value);
-              setType("Prática guiada");
-            }}
-          >
-            <option value="">Todos os formatos</option>
-            {Object.entries({
-              choice: "Múltipla escolha",
-              true_false: "Verdadeiro ou falso",
-              blank: "Completar lacunas",
-              matching: "Relacionar colunas",
-              ordering: "Ordenação",
-              challenge: "Desafios práticos",
-            }).map(([v, l]) => (
-              <option key={v} value={v}>
-                {l}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <Button variant="outline" onClick={() => setType("Prática guiada")}>
-        Explorar exercícios das oito matérias
-      </Button>
       <SectionTitle>Ações rápidas</SectionTitle>
       <div className="practice-grid">
         {[
@@ -500,6 +420,95 @@ export function Practice() {
           </button>
         ))}
       </div>
+      <Button variant="outline" onClick={() => setType("Prática guiada")}>
+        Explorar exercícios das oito matérias
+      </Button>
+      <section className="stack" aria-label="Filtros da prática">
+        <h2>Filtros da prática</h2>
+        <div className="practice-filters">
+          <label>
+            Disciplina
+            <select
+              value={subject}
+              onChange={(e) => {
+                setSubject(e.target.value);
+                setType((t) => t || "Prática guiada");
+              }}
+            >
+              <option value="">Todas as matérias</option>
+              {data.subjects.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Formato de exercício
+            <select
+              value={format}
+              onChange={(e) => {
+                setFormat(e.target.value);
+                setType((t) => t || "Prática guiada");
+              }}
+            >
+              <option value="">Todos os formatos</option>
+              {Object.entries({
+                choice: "Múltipla escolha",
+                true_false: "Verdadeiro ou falso",
+                blank: "Completar lacunas",
+                matching: "Relacionar colunas",
+                ordering: "Ordenação",
+                challenge: "Desafios práticos",
+              }).map(([v, l]) => (
+                <option key={v} value={v}>
+                  {l}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Dificuldade
+            <select
+              value={difficulty}
+              onChange={(e) => {
+                setDifficulty(e.target.value);
+                setType((t) => t || "Prática guiada");
+              }}
+            >
+              <option value="">Todas</option>
+              <option value="advanced">Avançado (exames)</option>
+              <option value="unknown">Não informada</option>
+            </select>
+          </label>
+          <label>
+            Status do bloco
+            <select
+              value={status}
+              onChange={(e) => {
+                setStatus(e.target.value);
+                setType((t) => t || "Prática guiada");
+              }}
+            >
+              <option value="">Todos</option>
+              <option value="done">Concluído</option>
+              <option value="pending">Não concluído</option>
+            </select>
+          </label>
+          <Button
+            variant="outline"
+            onClick={() => {
+              setSubject("");
+              setFormat("");
+              setDifficulty("");
+              setStatus("");
+              setType("Prática guiada");
+            }}
+          >
+            Limpar filtros
+          </Button>
+        </div>
+      </section>
       {!type ? (
         <Card className="challenge">
           <Badge>Desafio do dia</Badge>
@@ -553,6 +562,15 @@ export function Practice() {
                 .filter(
                   (q) =>
                     q.category === type &&
+                    difficulty !== "advanced" &&
+                    (!status ||
+                      (status === "done"
+                        ? attempts.some(
+                            (a) => a.question_id === q.id && a.correct,
+                          )
+                        : !attempts.some(
+                            (a) => a.question_id === q.id && a.correct,
+                          ))) &&
                     (!subject || q.subject_id === subject) &&
                     (!format || (q.kind || "choice") === format),
                 )

@@ -234,6 +234,10 @@
       "status": "pass"
     },
     {
+      "name": "Practice completion is unique, requires every question and remains private without minting XP",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

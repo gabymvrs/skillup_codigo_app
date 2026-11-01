@@ -358,5 +358,44 @@ export async function testLesson({
     assert.equal(done.session.stage, "completed");
     assert.equal(done.session.dynamic_response.interaction.first, "0");
   });
+  await test("Practice completion is unique, requires every question and remains private without minting XP", async () => {
+    await actor(40);
+    await rejects(
+      "select public.complete_practice_set('logica',array[]::uuid[])",
+    );
+    const ids = [id(400), id(10000), id(10001), id(10002), id(10003)];
+    await assert.rejects(() =>
+      db.query("select public.complete_practice_set($1,$2)", ["logica", ids]),
+    );
+    for (const [i, q] of ids.entries())
+      await db.query("select public.submit_exercise($1,$2)", [
+        q,
+        JSON.stringify([1, 2, 1, 2, 2][i]),
+      ]);
+    const xp = await scalar("select sum(xp) from public.reward_events");
+    await db.query("select public.complete_practice_set($1,$2)", [
+      "logica",
+      ids,
+    ]);
+    await db.query("select public.complete_practice_set($1,$2)", [
+      "logica",
+      ids,
+    ]);
+    assert.equal(
+      await scalar("select count(*) from public.practice_completions"),
+      1,
+    );
+    assert.equal(await scalar("select sum(xp) from public.reward_events"), xp);
+    await actor(5);
+    assert.equal(
+      await scalar("select count(*) from public.practice_completions"),
+      0,
+    );
+    await rejects(
+      "insert into public.practice_completions(user_id,set_id) values('" +
+        id(5) +
+        "','fake')",
+    );
+  });
   await admin();
 }

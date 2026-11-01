@@ -86,33 +86,14 @@ describe("Complete practice blocks", () => {
         ).length,
       ).toBeGreaterThanOrEqual(5);
   });
-  it("shows the optional student dashboard collapsed and reveals real metrics with Ver mais", async () => {
+  it("shows evaluated metrics immediately and keeps the stored attempt history", async () => {
     seedPracticeAttempts();
-    const user = userEvent.setup();
     app();
     const dashboard = await screen.findByRole("region", {
       name: "Painel de prática do aluno",
     });
-    const toggle = within(dashboard).getByRole("button", { name: "Ver mais" });
-    expect(toggle).toHaveAttribute("aria-expanded", "false");
-    expect(
-      dashboard.querySelector("#practice-dashboard-details"),
-    ).toHaveAttribute("hidden");
-    await user.click(toggle);
-    expect(
-      within(dashboard).getByRole("button", { name: "Ver menos" }),
-    ).toHaveAttribute("aria-expanded", "true");
-    expect(
-      within(dashboard)
-        .getAllByRole("definition")
-        .map((item) => item.textContent?.trim()),
-    ).toEqual(["2", "3", "2 67% de aproveitamento", "1", "50 XP"]);
-    await user.click(
-      within(dashboard).getByRole("button", { name: "Ver menos" }),
-    );
-    expect(
-      dashboard.querySelector("#practice-dashboard-details"),
-    ).toHaveAttribute("hidden");
+    await within(dashboard).findByText("67%");
+    expect(within(dashboard).getByText("Questões corretas")).toBeVisible();
     expect(stored().attempts).toHaveLength(3);
   });
   it("does not show the student dashboard for a recruiter", async () => {
