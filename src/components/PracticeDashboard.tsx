@@ -59,7 +59,7 @@ export function PracticeDashboard({
   onRetry: () => void;
 }) {
   const [days, setDays] = useState(7),
-    [chartsExpanded, setChartsExpanded] = useState(true),
+    [chartsExpanded, setChartsExpanded] = useState(false),
     chartsId = useId(),
     [point, setPoint] = useState<number | null>(null),
     s = practiceMetrics(data, user, completions, days),
@@ -83,7 +83,19 @@ export function PracticeDashboard({
       aria-label="Painel de prática do aluno"
     >
       <div>
-        <h2>Seu progresso na prática</h2>
+        <div className="row-between">
+          <h2>Seu progresso na prática</h2>
+          {!loading && !error && s.total > 0 && (
+            <Button
+              variant="outline"
+              aria-expanded={chartsExpanded}
+              aria-controls={chartsId}
+              onClick={() => setChartsExpanded((expanded) => !expanded)}
+            >
+              {chartsExpanded ? "Recolher" : "Expandir"}
+            </Button>
+          )}
+        </div>
         <p>
           {demo
             ? "Dados da demonstração neste navegador. "
@@ -151,16 +163,6 @@ export function PracticeDashboard({
             </Notice>
           ) : (
             <>
-              <div>
-                <Button
-                  variant="outline"
-                  aria-expanded={chartsExpanded}
-                  aria-controls={chartsId}
-                  onClick={() => setChartsExpanded((expanded) => !expanded)}
-                >
-                  {chartsExpanded ? "Recolher gráficos" : "Mostrar gráficos"}
-                </Button>
-              </div>
               <div id={chartsId} hidden={!chartsExpanded}>
                 <div className="performance-chart-grid">
                   <section className="card stack">
