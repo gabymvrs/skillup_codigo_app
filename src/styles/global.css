@@ -2488,3 +2488,7 @@ html[data-large-text="true"] {
 .guided-experiment li { margin-block: 12px; }
 .guided-experiment li .actions { margin-top: 8px; flex-wrap: wrap; }
 @media(max-width:600px) { .guided-experiment { padding: 14px; } .guided-code { padding: 14px; } }
+
+.lesson-steps button { font: inherit; color: inherit; cursor: pointer; padding: 8px 14px; background: var(--surface, #f4f6fc); border: 1px solid #d7def1; border-radius: 999px; }
+.lesson-steps button:focus-visible { outline: 3px solid #5c86e3; outline-offset: 3px; }
+.lesson-steps button:disabled { cursor: wait; opacity: .6; }

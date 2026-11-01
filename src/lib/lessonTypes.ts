@@ -48,6 +48,7 @@ export interface LessonState {
     checks?: boolean[];
     index?: number;
     savedAt?: number;
+    view?: string;
     theoryStep?: number;
     theoryInputs?: LearningInputs;
     interaction?: LearningInputs;

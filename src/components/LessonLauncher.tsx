@@ -48,8 +48,8 @@ export function LessonLauncher({
           </p>
         )}
         <p>
-          Estude o conceito, aplique na prática e registre sua entrega. O XP da
-          atividade é concedido após as três partes.
+          Consulte a teoria quando precisar. Conclua a prática e a dinâmica para
+          registrar a atividade e receber XP.
         </p>
         {error ? (
           <Notice tone="warning">{error}</Notice>
@@ -61,7 +61,7 @@ export function LessonLauncher({
               {stage === "completed"
                 ? "Atividade já concluída. Consulte o resultado."
                 : stage === "theory"
-                  ? "Comece pela teoria."
+                  ? "Escolha por onde começar. Você pode pular a teoria."
                   : "Seu progresso está salvo. Continue de onde parou."}
             </p>
             <Button onClick={onStart}>

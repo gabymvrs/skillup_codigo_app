@@ -46,6 +46,7 @@ export function LessonSession({
     [answers, setAnswers] = useState<Record<string, ExerciseAnswer>>({}),
     [text, setText] = useState(""),
     [checks, setChecks] = useState<boolean[]>([]),
+    [view, setView] = useState(""),
     [theoryStep, setTheoryStep] = useState(0),
     [theoryInputs, setTheoryInputs] = useState<LearningInputs>({
       first: "6",
@@ -60,6 +61,10 @@ export function LessonSession({
   const heading = useRef<HTMLHeadingElement>(null);
   const draftKey = `skillup.lesson.draft.${auth.demo ? "demo" : "real"}.${auth.id}.${module.id}`;
   const stage = state?.session.stage;
+  const currentView = view || stage;
+  const practiceReady =
+    !!state &&
+    state.plan.question_ids.every((id) => state.session.results[id]?.correct);
   useEffect(() => {
     let active = true;
     void action
@@ -76,6 +81,8 @@ export function LessonSession({
               : d;
           if (chosen) {
             const d = chosen;
+            if (["theory", "practice", "dynamic", "completed"].includes(d.view))
+              setView(d.view);
             setTheoryStep(d.theoryStep || 0);
             if (d.theoryInputs) setTheoryInputs(d.theoryInputs);
             if (d.interaction) setInteraction(d.interaction);
@@ -119,6 +126,7 @@ export function LessonSession({
       text,
       checks,
       index,
+      view,
       theoryStep,
       theoryInputs,
       interaction,
@@ -144,6 +152,7 @@ export function LessonSession({
     text,
     checks,
     index,
+    view,
     theoryStep,
     theoryInputs,
     interaction,
@@ -152,7 +161,7 @@ export function LessonSession({
   ]);
   useEffect(() => {
     heading.current?.focus();
-  }, [stage, index]);
+  }, [currentView, index]);
   async function closeLesson() {
     if (action.busy) return;
     try {
@@ -161,6 +170,7 @@ export function LessonSession({
         text,
         checks,
         index,
+        view,
         theoryStep,
         theoryInputs,
         interaction,
@@ -171,10 +181,24 @@ export function LessonSession({
     }
     onClose();
   }
+  async function navigate(target: string) {
+    if (stage === "theory" && target !== "theory") {
+      setState(await lessonAction(auth.demo, auth.id!, module.id, "theory"));
+    }
+    setView(target);
+  }
   async function advance(actionName: string, payload: unknown = null) {
+    if (actionName === "finish" && stage === "practice")
+      setState(await lessonAction(auth.demo, auth.id!, module.id, "practice"));
+    if (actionName === "finish" && stage === "completed") {
+      setView("completed");
+      return;
+    }
     setState(
       await lessonAction(auth.demo, auth.id!, module.id, actionName, payload),
     );
+    if (actionName === "practice") setView("dynamic");
+    if (actionName === "finish") setView("completed");
     if (actionName === "finish") await repo.reload();
   }
   const qid = state?.plan.question_ids[index],
@@ -197,16 +221,23 @@ export function LessonSession({
             <>
               <div className="lesson-steps" aria-label="Partes da atividade">
                 {["Teoria", "Prática", "Dinâmica"].map((label, i) => (
-                  <span
+                  <button
+                    type="button"
+                    disabled={action.busy}
+                    onClick={() =>
+                      action.run(() =>
+                        navigate(["theory", "practice", "dynamic"][i]),
+                      )
+                    }
                     key={label}
                     aria-current={
-                      ["theory", "practice", "dynamic"][i] === stage
+                      ["theory", "practice", "dynamic"][i] === currentView
                         ? "step"
                         : undefined
                     }
                   >
                     {i + 1}/3 · {label}
-                  </span>
+                  </button>
                 ))}
               </div>
               <ProgressBar
@@ -222,7 +253,23 @@ export function LessonSession({
                 label="Progresso desta atividade"
               />
               <Badge>Nível {state.plan.level}</Badge>
-              {stage === "theory" && guidedTheories[module.id] ? (
+              {currentView === "theory" && (
+                <Button
+                  variant="outline"
+                  disabled={action.busy}
+                  onClick={() => action.run(() => navigate("practice"))}
+                >
+                  {stage === "theory"
+                    ? "Pular teoria e ir para prática"
+                    : "Ir para a prática"}
+                </Button>
+              )}
+              {stage === "completed" && currentView !== "completed" && (
+                <Button variant="outline" onClick={() => setView("completed")}>
+                  Ver feedback final
+                </Button>
+              )}
+              {currentView === "theory" && guidedTheories[module.id] ? (
                 <GuidedTheory
                   moduleId={module.id}
                   step={theoryStep}
@@ -231,10 +278,10 @@ export function LessonSession({
                   onInputs={setTheoryInputs}
                   resourceIds={state.plan.resource_ids}
                   disabled={action.busy}
-                  onComplete={() => action.run(() => advance("theory"))}
+                  onComplete={() => action.run(() => navigate("practice"))}
                 />
               ) : (
-                stage === "theory" && (
+                currentView === "theory" && (
                   <>
                     <h3 ref={heading} tabIndex={-1}>
                       1/3 · Entenda o conceito
@@ -249,14 +296,14 @@ export function LessonSession({
                     <LearningResources ids={state.plan.resource_ids} />
                     <Button
                       disabled={action.busy}
-                      onClick={() => action.run(() => advance("theory"))}
+                      onClick={() => action.run(() => navigate("practice"))}
                     >
                       Continuar para a prática
                     </Button>
                   </>
                 )
               )}
-              {stage === "practice" && (
+              {currentView === "practice" && (
                 <>
                   <h3 ref={heading} tabIndex={-1}>
                     2/3 · Pratique · Questão {index + 1} de{" "}
@@ -336,7 +383,12 @@ export function LessonSession({
                             (id) => state.session.results[id]?.correct,
                           )
                         }
-                        onClick={() => action.run(() => advance("practice"))}
+                        onClick={() =>
+                          action.run(async () => {
+                            if (stage === "practice") await advance("practice");
+                            else setView("dynamic");
+                          })
+                        }
                       >
                         Continuar para a dinâmica
                       </Button>
@@ -344,12 +396,19 @@ export function LessonSession({
                   </div>
                 </>
               )}
-              {stage === "dynamic" && (
+              {currentView === "dynamic" && (
                 <>
                   <h3 ref={heading} tabIndex={-1}>
                     3/3 · {state.plan.dynamic.title}
                   </h3>
                   <p>{state.plan.dynamic.prompt}</p>
+                  {!practiceReady && (
+                    <Notice tone="warning">
+                      Você pode explorar a dinâmica agora. Para finalizar e
+                      receber XP, confira e corrija todas as questões da
+                      prática.
+                    </Notice>
+                  )}
                   {state.plan.dynamic.kind === "trace" && (
                     <AverageExperiment
                       value={interaction}
@@ -408,6 +467,7 @@ export function LessonSession({
                   <Button
                     disabled={
                       action.busy ||
+                      !practiceReady ||
                       (state.plan.dynamic.kind === "trace" &&
                         !missionReady(interaction)) ||
                       text.trim().length < state.plan.dynamic.minLength ||
@@ -429,7 +489,7 @@ export function LessonSession({
                   </Button>
                 </>
               )}
-              {stage === "completed" && (
+              {currentView === "completed" && (
                 <LessonFeedback
                   module={module}
                   plan={state.plan}

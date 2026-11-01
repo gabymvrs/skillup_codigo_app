@@ -157,3 +157,32 @@ it("completes nine theory steps, five taught exercises and the mission before un
     ),
   ).toHaveLength(1);
 });
+
+it("allows skipping theory and switching all three views without awarding completion", async () => {
+  const user = userEvent.setup();
+  app();
+  await user.click(await screen.findByRole("button", { name: /^Fundamentos/ }));
+  await user.click(await screen.findByRole("button", { name: "Começar" }));
+  await user.click(
+    screen.getByRole("button", { name: "Pular teoria e ir para prática" }),
+  );
+  await screen.findByRole("heading", { name: /Questão 1 de 5/ });
+  await user.click(screen.getByRole("button", { name: /3\/3.*Dinâmica/ }));
+  await screen.findByRole("button", { name: "Testar minha sequência" });
+  expect(
+    screen.getByRole("button", { name: "Finalizar atividade" }),
+  ).toBeDisabled();
+  await user.click(screen.getByRole("button", { name: /1\/3.*Teoria/ }));
+  await screen.findByRole("heading", {
+    name: "Como o boletim encontra sua média?",
+  });
+  await user.click(screen.getByRole("button", { name: /2\/3.*Prática/ }));
+  await screen.findByRole("heading", { name: /Questão 1 de 5/ });
+  await user.click(screen.getByRole("button", { name: "Fechar" }));
+  await screen.findByRole("button", { name: /^Fundamentos/ });
+  await user.click(screen.getByRole("button", { name: /^Fundamentos/ }));
+  await user.click(
+    await screen.findByRole("button", { name: "Continuar atividade" }),
+  );
+  await screen.findByRole("heading", { name: /Questão 1 de 5/ });
+});

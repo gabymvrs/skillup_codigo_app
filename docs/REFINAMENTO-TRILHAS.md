@@ -26,3 +26,9 @@ O feedback consolida total objetivo, acertos e erros na primeira tentativa, porc
 A auditoria e o plano de sequência por pré-requisitos estão em `AUDITORIA-PEDAGOGICA.md`. A primeira bolinha de Fundamentos recebeu nove passos contextualizados, pseudocódigo explicado, um experimento editável e uma missão de organização com validação no servidor. O passo atual e as entradas são retomados. As outras bolinhas ainda usam o formato anterior. O modelo foi validado por testes, sem alegar uma sessão de teste humano com iniciantes. A expansão para as unidades e a reestruturação de HTML continuam pendentes.
 
 Validação acumulada: 159 testes da aplicação e 59 verificações PostgreSQL/RLS; build passou com o aviso de bundle já existente.
+
+## Navegação livre entre as partes
+
+Por solicitação posterior, a teoria passou a ser opcional. Os três controles no topo permitem alternar livremente entre Teoria, Prática e Dinâmica. O botão de pular teoria abre a prática diretamente, e a parte aberta é salva no rascunho. A visualização é independente da etapa validada pelo servidor: visitar a dinâmica antes de corrigir a prática não conclui a atividade. O XP permanece condicionado à prática corrigida e à entrega válida da dinâmica. Rever as partes após a conclusão não gera nova recompensa.
+
+Validação: 160 testes da aplicação e build de produção aprovados; nenhuma alteração de schema ou das regras de correção do servidor foi necessária.
