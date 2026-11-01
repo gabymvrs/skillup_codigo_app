@@ -1,0 +1,1027 @@
+{
+  "modules": [
+    {
+      "id": "00000000-0000-4000-8000-000000000300",
+      "question_id": "00000000-0000-4000-8000-000000013000",
+      "body": "Um algoritmo precisa indicar entradas, transformações e saídas sem depender de adivinhação. Antes de codificar, acompanhe um caso manualmente: para notas 6 e 8, some 6 + 8 e divida por 2; a média é 7. A ordem importa porque uma operação depende dos valores produzidos antes dela.\n\nDefina também quais entradas são válidas e como tratar uma entrada ausente. Testar inclui comparar o resultado com um valor esperado, não apenas observar se o programa abriu."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000301",
+      "question_id": "00000000-0000-4000-8000-000000013005",
+      "body": "Escolha nomes e tipos que expressem o dado: String nome = \"Caderno\"; double preco = 12.5; int quantidade = 3; bool disponivel = true. Neste exemplo, preco * quantidade produz 37.5. Texto como \"12.5\" precisa de conversão e validação antes de um cálculo.\n\nAtribuir substitui o valor associado à variável: depois de int estoque = 10; estoque = estoque - 3; o valor de estoque é 7. Em Dart, uma variável final só pode ser inicializada uma vez. Evite confundir atribuição (=) com comparação (==)."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000302",
+      "question_id": "00000000-0000-4000-8000-000000013010",
+      "body": "Uma regra composta deve ser testada como um todo. A expressão nota >= 7 && frequencia >= 75 só é verdadeira quando as duas comparações são verdadeiras. Com nota 7 e frequência 75 o resultado é verdadeiro; com nota 8 e frequência 74 é falso.\n\nO operador || exige pelo menos uma condição verdadeira; ! inverte um booleano. Negar A && B equivale a !A || !B: basta uma condição falhar para a aprovação ser recusada. Faça uma tabela de casos e inclua valores exatamente no limite."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000303",
+      "question_id": "00000000-0000-4000-8000-000000013015",
+      "body": "Para três produtos, o valor de estoque é a soma de preco * quantidade de cada produto. Exemplo: produto A custa 10 e tem 2 unidades, B custa 5 e tem 3, C custa 8 e tem 1. Os subtotais são 20, 15 e 8; o total é 43.\n\nInicialize um acumulador em zero antes de percorrer os produtos. Some cada subtotal ao acumulador, sem zerá-lo dentro da repetição. Antes do cálculo, rejeite preço ou quantidade negativos e solicite correção. Zero unidades é um caso válido e contribui com zero para o total."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000304",
+      "question_id": "00000000-0000-4000-8000-000000013020",
+      "body": "Em uma cadeia if / else if / else, a primeira condição verdadeira define o bloco executado. Para uma classificação sem faixas sobrepostas, teste os limites na ordem certa. Exemplo: nota >= 7 significa aprovação; caso contrário, nota >= 5 significa recuperação; os demais valores válidos significam revisão.\n\nValide primeiro se a nota está entre 0 e 10. Teste 4.9, 5, 6.9, 7 e 10 para conferir as fronteiras. Se testar nota >= 5 antes de nota >= 7, notas altas serão classificadas como recuperação. Em Dart, = atribui e == compara."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000305",
+      "question_id": "00000000-0000-4000-8000-000000013025",
+      "body": "Em for (int i = 0; i < 5; i++), i começa em 0; a condição é conferida antes de cada execução; i++ atualiza o contador. O corpo executa cinco vezes, com i igual a 0, 1, 2, 3 e 4. Com i <= 5, seriam seis execuções.\n\nSe a condição inicial for falsa, um for pode executar zero vezes. Um while precisa de uma atualização que permita terminar; esquecer essa atualização pode criar um laço infinito. Para somar valores, inicialize o acumulador fora do laço e atualize-o dentro dele. Faça um rastreamento com colunas para contador e soma."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000306",
+      "question_id": "00000000-0000-4000-8000-000000013030",
+      "body": "Em Dart, List mantém elementos em sequência e começa no índice zero. Para List<int> notas = [7, 8, 9], notas[0] vale 7 e notas.length vale 3. O último índice válido é length - 1; não acesse um índice sem garantir que ele existe.\n\nSome os elementos com um acumulador. Se a lista não estiver vazia, a média é soma / notas.length: neste exemplo, 24 / 3 = 8. Se estiver vazia, não existe primeiro elemento nem uma média definida por essa divisão. Trate o caso antes de acessar o índice zero ou dividir pelo tamanho. Teste listas vazias, com um item e com vários itens."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000320",
+      "question_id": "00000000-0000-4000-8000-000000013035",
+      "body": "Uma requisição HTTP descreve a operação com método, caminho, cabeçalhos e, quando necessário, corpo. GET /produtos solicita uma representação do recurso; POST /produtos pode enviar dados para criar um produto. O método por si só não garante segurança: autenticação e autorização são verificadas no servidor.\n\nA resposta contém status, cabeçalhos e conteúdo. 200 indica sucesso; 404 indica que o recurso solicitado não foi encontrado; 500 indica um erro interno. Content-Type informa o formato do corpo. Evite senhas e tokens em endereços, pois URLs podem aparecer no histórico e em logs. HTTPS protege o transporte, mas não substitui permissões."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000321",
+      "question_id": "00000000-0000-4000-8000-000000013040",
+      "body": "Uma API precisa de um contrato de entrada e saída. Para criar um produto, POST /produtos pode receber {\"nome\":\"Caderno\",\"preco\":12.5}. Valide no servidor que nome está preenchido e preço está no domínio permitido. Uma criação bem-sucedida pode devolver 201 com o recurso criado e seu identificador. Uma entrada inválida deve produzir um erro de validação, como 400, com informação útil, sem expor detalhes internos.\n\nAutenticar identifica quem chamou; autorizar verifica se essa pessoa pode atuar sobre aquele recurso. Não confie em um user_id enviado pelo navegador como prova de propriedade. Respostas de erro precisam de um formato consistente. Uma consulta não deve criar um cadastro como efeito intencional."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000322",
+      "question_id": "00000000-0000-4000-8000-000000013045",
+      "body": "Separar serviços introduz falhas parciais: um pedido pode existir enquanto a confirmação de pagamento ainda não chegou. Um timeout informa que a resposta não chegou a tempo; ele não prova que o pagamento falhou. Consulte o estado antes de repetir uma operação que possa cobrar novamente.\n\nUma chave de idempotência identifica a mesma operação para que uma repetição não produza outra cobrança. Retries devem ter limite, espera entre tentativas e ser usados apenas para falhas apropriadas, com operações seguras para repetição. Um circuit breaker pode interromper temporariamente chamadas a um serviço com falhas recorrentes. Contratos versionados e observabilidade ajudam a investigar mudanças e fluxos distribuídos. A compensação exige regras de negócio explícitas; não é um desfazer automático de qualquer ação."
+    }
+  ],
+  "questions": [
+    {
+      "title": "Entrada, processamento e saída",
+      "prompt": "Para calcular a média de duas notas, qual conjunto descreve corretamente o algoritmo?",
+      "options": [
+        "Entrada: média; processamento: ler notas; saída: soma",
+        "Entrada: duas notas; processamento: somar e dividir por 2; saída: média",
+        "Entrada: duas notas; processamento: apenas somar; saída: média"
+      ],
+      "explanation": "As notas são entradas; a média exige somar e dividir pela quantidade de notas.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013000",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Executar manualmente",
+      "prompt": "Duas notas são 6 e 8. Qual é a média aritmética? Digite apenas o número.",
+      "options": [],
+      "explanation": "(6 + 8) / 2 = 7.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013001",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Dependências do algoritmo",
+      "prompt": "Ordene as etapas para calcular a média.",
+      "options": [
+        "Somar as duas notas",
+        "Mostrar a média",
+        "Ler as duas notas",
+        "Dividir a soma por 2"
+      ],
+      "explanation": "É preciso ler os valores antes de somá-los e calcular a média antes de mostrá-la.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013002",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Verificar o resultado",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Comparar o resultado com um valor esperado ajuda a detectar erros.",
+        "Um algoritmo pode usar uma entrada que nunca foi definida."
+      ],
+      "explanation": "O teste precisa de um resultado esperado. Uma entrada não definida impede executar a regra de maneira inequívoca.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Comparar o resultado com um valor esperado ajuda a detectar erros.",
+          "Um algoritmo pode usar uma entrada que nunca foi definida."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013003",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Entrada ausente",
+      "prompt": "O sistema recebeu apenas uma das duas notas obrigatórias. Qual decisão evita uma média enganosa?",
+      "options": [
+        "Tratar a nota ausente como 10 sem avisar",
+        "Mostrar qualquer valor para continuar",
+        "Informar que falta uma nota e solicitar o preenchimento"
+      ],
+      "explanation": "Quando duas notas são obrigatórias, deve-se validar a presença das duas antes do cálculo.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013004",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Tipos adequados",
+      "prompt": "Qual combinação representa corretamente preço, quantidade e nome de um produto em Dart?",
+      "options": [
+        "int, String, bool",
+        "double, int, String",
+        "bool, double, int"
+      ],
+      "explanation": "Preço pode ter casas decimais, quantidade inteira usa int e nome usa String.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013005",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Atualizar o estoque",
+      "prompt": "Após int estoque = 10; estoque = estoque - 3; qual é o valor de estoque?",
+      "options": [],
+      "explanation": "A nova atribuição substitui 10 pelo resultado 10 − 3 = 7.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013006",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Calcular com variáveis",
+      "prompt": "Ordene as ações para calcular o total de um produto.",
+      "options": [
+        "Calcular preco * quantidade",
+        "Mostrar o total calculado",
+        "Obter e validar preço e quantidade"
+      ],
+      "explanation": "As entradas devem estar disponíveis e ser válidas antes da multiplicação.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013007",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Valor e tipo",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "String pode representar o nome de um produto.",
+        "O texto \"12.5\" já é um número pronto para qualquer cálculo.",
+        "Uma variável final pode ser reatribuída depois de inicializada."
+      ],
+      "explanation": "String é texto; valores numéricos em texto precisam de conversão. final impede uma nova atribuição.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "String pode representar o nome de um produto.",
+          "O texto \"12.5\" já é um número pronto para qualquer cálculo.",
+          "Uma variável final pode ser reatribuída depois de inicializada."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013008",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Total de uma compra",
+      "prompt": "Com double preco = 12.5; int quantidade = 3;, qual total é esperado de preco * quantidade?",
+      "options": [
+        "15.5",
+        "1253",
+        "37.5"
+      ],
+      "explanation": "Multiplicamos 12.5 por 3, obtendo 37.5.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013009",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Regra composta",
+      "prompt": "Qual expressão exige nota mínima 7 e frequência mínima 75?",
+      "options": [
+        "nota >= 7 || frequencia >= 75",
+        "nota > 7 && frequencia > 75",
+        "nota >= 7 && frequencia >= 75"
+      ],
+      "explanation": "&& exige as duas condições; >= inclui os limites 7 e 75.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013010",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Caso de fronteira",
+      "prompt": "Com nota 7 e frequência 75, nota >= 7 && frequencia >= 75 resulta em true ou false?",
+      "options": [],
+      "explanation": "Os dois limites são inclusivos, portanto ambas as condições são verdadeiras.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013011",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Avaliar uma regra",
+      "prompt": "Ordene uma avaliação manual da aprovação.",
+      "options": [
+        "Combinar os resultados com &&",
+        "Comparar a nota e a frequência com seus limites",
+        "Obter nota e frequência",
+        "Decidir com o resultado combinado"
+      ],
+      "explanation": "As comparações produzem booleanos que depois são combinados antes da decisão.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013012",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Combinar condições",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "true || false resulta em true.",
+        "true && false resulta em true.",
+        "!true resulta em false."
+      ],
+      "explanation": "OU precisa de uma condição verdadeira. E precisa das duas. A negação inverte o valor.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "true || false resulta em true.",
+          "true && false resulta em true.",
+          "!true resulta em false."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013013",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Recusa de acesso",
+      "prompt": "Um acesso é permitido apenas quando cadastrado && ativo. Qual expressão representa a recusa?",
+      "options": [
+        "!cadastrado || !ativo",
+        "!cadastrado && !ativo",
+        "cadastrado || ativo"
+      ],
+      "explanation": "A negação de uma conjunção é a disjunção das negações: qualquer requisito ausente recusa o acesso.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013014",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Subtotais de estoque",
+      "prompt": "A: preço 10, quantidade 2. B: preço 5, quantidade 3. C: preço 8, quantidade 1. Qual é o total?",
+      "options": [
+        "23",
+        "43",
+        "58"
+      ],
+      "explanation": "10×2 + 5×3 + 8×1 = 20 + 15 + 8 = 43.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013015",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Quantidade zero",
+      "prompt": "Um produto custa 12 e tem quantidade 0. Quanto ele acrescenta ao total do estoque?",
+      "options": [],
+      "explanation": "Preço multiplicado por zero unidades resulta em zero.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013016",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Acumular subtotais",
+      "prompt": "Ordene o processamento após validar os produtos.",
+      "options": [
+        "Mostrar o total",
+        "Para cada produto, somar preco * quantidade ao total",
+        "Inicializar total em zero"
+      ],
+      "explanation": "Inicialize uma vez, acumule todos os produtos e só então apresente o total.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013017",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Conferência do cadastro",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Quantidade negativa deve ser tratada antes do cálculo.",
+        "Zerar o acumulador a cada produto preserva a soma de todos os produtos.",
+        "Calcular manualmente um exemplo ajuda a verificar o programa."
+      ],
+      "explanation": "A validação evita resultados sem sentido; zerar dentro do laço perde os subtotais anteriores.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Quantidade negativa deve ser tratada antes do cálculo.",
+          "Zerar o acumulador a cada produto preserva a soma de todos os produtos.",
+          "Calcular manualmente um exemplo ajuda a verificar o programa."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013018",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Erro no acumulador",
+      "prompt": "O programa retorna somente o subtotal do último produto. Qual trecho deve ser investigado primeiro?",
+      "options": [
+        "A cor do botão de cadastro",
+        "O tamanho do nome do produto",
+        "Uma atribuição que substitui total pelo subtotal em vez de somá-lo"
+      ],
+      "explanation": "Se o total é substituído em cada passo, os valores anteriores são perdidos. Use acumulação.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013019",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Faixas sem erro",
+      "prompt": "Aprovação começa em 7; recuperação em 5. Em uma cadeia if/else if, qual condição deve vir primeiro?",
+      "options": [
+        "nota >= 5",
+        "nota >= 7",
+        "nota >= 0"
+      ],
+      "explanation": "Testar >= 7 primeiro impede que notas de aprovação sejam capturadas pela faixa >= 5.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013020",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Fronteira de recuperação",
+      "prompt": "Usando aprovação para nota >= 7 e recuperação para nota >= 5, em qual faixa fica a nota 5? Digite aprovação ou recuperação.",
+      "options": [],
+      "explanation": "5 satisfaz >= 5, mas não satisfaz >= 7.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013021",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Classificar com validação",
+      "prompt": "Ordene as decisões para uma nota.",
+      "options": [
+        "Classificar como aprovação, recuperação ou revisão",
+        "Receber a nota",
+        "Conferir se está entre 0 e 10",
+        "Apresentar a classificação"
+      ],
+      "explanation": "A validação deve anteceder a classificação; uma nota fora do intervalo precisa de correção.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013022",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Condições e limites",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Em if/else if, só o primeiro ramo verdadeiro dessa cadeia é executado.",
+        "O operador = testa igualdade.",
+        "A nota 7 deve ser testada quando a regra usa nota >= 7."
+      ],
+      "explanation": "= atribui; == compara. Os testes de fronteira verificam se o limite foi implementado corretamente.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Em if/else if, só o primeiro ramo verdadeiro dessa cadeia é executado.",
+          "O operador = testa igualdade.",
+          "A nota 7 deve ser testada quando a regra usa nota >= 7."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013023",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Entrada fora do domínio",
+      "prompt": "Um usuário informou nota 12 em uma escala de 0 a 10. Qual comportamento é adequado?",
+      "options": [
+        "Informar que a nota é inválida e solicitar correção",
+        "Aprovar porque 12 >= 7",
+        "Mudar silenciosamente a nota para zero"
+      ],
+      "explanation": "Uma entrada fora do domínio deve ser validada antes de aplicar as faixas de classificação.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013024",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Contar execuções",
+      "prompt": "Quantas vezes executa for (int i = 0; i < 5; i++)?",
+      "options": [
+        "4",
+        "6",
+        "5"
+      ],
+      "explanation": "O corpo executa para i = 0, 1, 2, 3 e 4: cinco vezes.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013025",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Soma em um laço",
+      "prompt": "soma começa em 0. Um laço soma 1, depois 2 e depois 3. Qual é o valor final de soma?",
+      "options": [],
+      "explanation": "O acumulador evolui de 0 para 1, depois 3 e finalmente 6.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013026",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Ciclo de um for",
+      "prompt": "Ordene um ciclo começando pela inicialização.",
+      "options": [
+        "Executar o corpo se a condição for verdadeira",
+        "Atualizar o contador e retornar à condição",
+        "Inicializar o contador",
+        "Verificar a condição"
+      ],
+      "explanation": "O fluxo é inicialização, condição, corpo e atualização; depois a condição é verificada novamente.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013027",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Encerrar uma repetição",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Se a condição inicial de um for for falsa, o corpo pode não executar.",
+        "Trocar i < 5 por i <= 5 mantém a mesma quantidade de execuções começando em zero.",
+        "Um while pode não terminar se nada alterar sua condição."
+      ],
+      "explanation": "<= inclui um valor a mais; uma repetição precisa de uma condição que possa se tornar falsa ou de uma saída explícita.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Se a condição inicial de um for for falsa, o corpo pode não executar.",
+          "Trocar i < 5 por i <= 5 mantém a mesma quantidade de execuções começando em zero.",
+          "Um while pode não terminar se nada alterar sua condição."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013028",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Investigar repetição infinita",
+      "prompt": "int i = 0; while (i < 3) { print(i); } não termina. Qual alteração atende à intenção de imprimir 0, 1 e 2?",
+      "options": [
+        "Remover a condição",
+        "Acrescentar i++ dentro do corpo após print(i)",
+        "Zerar i no final de cada execução"
+      ],
+      "explanation": "Incrementar i permite que a condição se torne falsa quando ele chega a 3.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013029",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Índice e tamanho",
+      "prompt": "Para notas = [7, 8, 9], qual é o valor de notas[0] e o tamanho da lista?",
+      "options": [
+        "7 e 3",
+        "8 e 2",
+        "9 e 3"
+      ],
+      "explanation": "O primeiro índice é zero e existem três elementos.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013030",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Média da lista",
+      "prompt": "Qual é a média de [7, 8, 9]? Digite apenas o número.",
+      "options": [],
+      "explanation": "A soma é 24; dividindo pelos três elementos, obtemos 8.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013031",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Calcular uma média com segurança",
+      "prompt": "Ordene as etapas.",
+      "options": [
+        "Somar os elementos",
+        "Obter a lista",
+        "Verificar se há elementos; tratar o vazio antes de continuar",
+        "Dividir a soma pelo tamanho e mostrar a média"
+      ],
+      "explanation": "O caso vazio precisa ser tratado antes de uma divisão pelo tamanho da lista.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013032",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Acessos seguros",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "O último índice de uma lista não vazia é length - 1.",
+        "Uma lista vazia sempre tem um elemento no índice zero.",
+        "Uma lista com um único valor 6 tem média 6."
+      ],
+      "explanation": "Uma lista vazia não possui índice zero. Com um elemento, a média coincide com esse elemento.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "O último índice de uma lista não vazia é length - 1.",
+          "Uma lista vazia sempre tem um elemento no índice zero.",
+          "Uma lista com um único valor 6 tem média 6."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013033",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Teste que revela uma falha",
+      "prompt": "Uma função acessa notas[0] sem validação. Qual teste revela diretamente o defeito?",
+      "options": [
+        "Lista [5, 6]",
+        "Lista [0]",
+        "Lista vazia []"
+      ],
+      "explanation": "A lista vazia não tem primeiro elemento e expõe o acesso indevido ao índice zero.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013034",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Consultar um recurso",
+      "prompt": "Qual requisição é apropriada para consultar a lista de produtos sem solicitar uma criação?",
+      "options": [
+        "POST /produtos com uma senha na URL",
+        "GET /produtos",
+        "DELETE /produtos"
+      ],
+      "explanation": "GET solicita uma representação do recurso, sem a intenção de criá-lo ou removê-lo.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013035",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Recurso não encontrado",
+      "prompt": "Qual código HTTP indica que o recurso solicitado não foi encontrado? Digite os três algarismos.",
+      "options": [],
+      "explanation": "404 indica que o recurso solicitado não foi encontrado.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013036",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Caminho da requisição",
+      "prompt": "Ordene um fluxo simplificado de consulta.",
+      "options": [
+        "Servidor verifica a requisição e as permissões",
+        "Cliente envia método e caminho",
+        "Cliente trata status e conteúdo recebido",
+        "Servidor devolve status, cabeçalhos e conteúdo"
+      ],
+      "explanation": "A resposta só é interpretada depois de o servidor processar a requisição e enviá-la.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013037",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Transporte e identidade",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Content-Type informa o formato do corpo.",
+        "Usar HTTPS elimina a necessidade de autorização no servidor.",
+        "Senhas em URLs podem aparecer no histórico ou em logs."
+      ],
+      "explanation": "HTTPS protege o transporte; a autorização ainda controla o acesso. Credenciais não devem ser colocadas em URLs.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Content-Type informa o formato do corpo.",
+          "Usar HTTPS elimina a necessidade de autorização no servidor.",
+          "Senhas em URLs podem aparecer no histórico ou em logs."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013038",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Tratar uma falha de consulta",
+      "prompt": "GET /produtos/999 retorna 404. Qual resposta da interface é coerente?",
+      "options": [
+        "Informar que o produto não foi encontrado e permitir voltar à lista",
+        "Mostrar Produto cadastrado com sucesso",
+        "Repetir a consulta infinitamente sem informar nada"
+      ],
+      "explanation": "O cliente deve interpretar o status e oferecer um próximo passo adequado ao erro.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013039",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Contrato de criação",
+      "prompt": "Qual contrato representa a criação de um produto com nome e preço?",
+      "options": [
+        "GET /produtos?criar=1 sem validação",
+        "POST /produtos com nome e preço validados no servidor",
+        "POST /produtos que aceita qualquer corpo e retorna sempre sucesso"
+      ],
+      "explanation": "A criação precisa de um método e contrato claros, com validação no servidor.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013040",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Resposta de criação",
+      "prompt": "Qual status HTTP costuma representar um recurso criado com sucesso? Digite os três algarismos.",
+      "options": [],
+      "explanation": "201 Created indica criação bem-sucedida de um recurso.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013041",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Processar uma criação",
+      "prompt": "Após autenticar e autorizar a requisição, ordene as etapas.",
+      "options": [
+        "Persistir o produto válido",
+        "Validar os campos do corpo",
+        "Devolver o recurso criado com seu identificador"
+      ],
+      "explanation": "Os campos precisam passar pela validação antes da persistência e da resposta de sucesso.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013042",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Limites de confiança",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "A validação do formulário no navegador substitui a validação no servidor.",
+        "O servidor deve conferir se a pessoa pode alterar o produto solicitado.",
+        "Um erro de validação pode indicar qual campo precisa de correção sem revelar dados internos."
+      ],
+      "explanation": "Dados do navegador podem ser alterados. Validação e autorização precisam ocorrer no servidor.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "A validação do formulário no navegador substitui a validação no servidor.",
+          "O servidor deve conferir se a pessoa pode alterar o produto solicitado.",
+          "Um erro de validação pode indicar qual campo precisa de correção sem revelar dados internos."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013043",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Propriedade de recurso",
+      "prompt": "Uma pessoa autenticada envia um user_id de outra pessoa para alterar um produto. O que o servidor deve fazer?",
+      "options": [
+        "Confiar no campo porque a chamada está autenticada",
+        "Alterar qualquer produto que exista",
+        "Verificar a propriedade e as permissões com a identidade autenticada e recusar o acesso indevido"
+      ],
+      "explanation": "Autenticação não autoriza acesso a todos os recursos; a propriedade precisa ser conferida no servidor.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013044",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    },
+    {
+      "title": "Falha parcial",
+      "prompt": "O pedido foi criado, mas a chamada ao pagamento sofreu timeout. O que pode ser concluído?",
+      "options": [
+        "A cobrança certamente falhou",
+        "O resultado do pagamento ainda precisa ser confirmado",
+        "É seguro cobrar novamente com uma nova operação sem verificar nada"
+      ],
+      "explanation": "Um timeout não informa se a operação remota terminou; uma repetição sem controle pode duplicar a cobrança.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013045",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "multiple_choice"
+    },
+    {
+      "title": "Nome do controle",
+      "prompt": "A propriedade que permite repetir a mesma operação sem duplicar seu efeito se chama ____.",
+      "options": [],
+      "explanation": "Idempotência evita duplicar o efeito de repetições da mesma operação, quando implementada corretamente.",
+      "kind": "blank",
+      "id": "00000000-0000-4000-8000-000000013046",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "fill_blank"
+    },
+    {
+      "title": "Recuperar um pagamento incerto",
+      "prompt": "Ordene uma recuperação segura após o timeout.",
+      "options": [
+        "Atualizar o pedido com o estado confirmado ou mantê-lo pendente",
+        "Consultar o estado da operação pelo identificador",
+        "Se a política permitir retry, reutilizar a mesma chave de idempotência e respeitar limites"
+      ],
+      "explanation": "Primeiro investigue o estado; retries controlados mantêm a identidade da operação; o pedido reflete apenas o estado confirmado.",
+      "kind": "ordering",
+      "id": "00000000-0000-4000-8000-000000013047",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "ordering"
+    },
+    {
+      "title": "Resiliência com critérios",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Todo erro deve ser repetido infinitamente.",
+        "Um circuit breaker pode suspender temporariamente chamadas a um serviço com falhas recorrentes.",
+        "Uma compensação depende das regras do negócio."
+      ],
+      "explanation": "Retries indiscriminados ampliam falhas e carga. Circuit breaker e compensações precisam de critérios explícitos.",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Todo erro deve ser repetido infinitamente.",
+          "Um circuit breaker pode suspender temporariamente chamadas a um serviço com falhas recorrentes.",
+          "Uma compensação depende das regras do negócio."
+        ]
+      },
+      "id": "00000000-0000-4000-8000-000000013048",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "true_false"
+    },
+    {
+      "title": "Diagnóstico distribuído",
+      "prompt": "Qual conjunto ajuda a investigar por que um pedido ficou pendente entre serviços?",
+      "options": [
+        "Somente a cor do botão da interface",
+        "Logs sem identificador e repetição infinita",
+        "Identificador de correlação, estados registrados, contratos e tempos das chamadas"
+      ],
+      "explanation": "Rastrear a mesma operação entre serviços permite localizar a etapa com falha e decidir a recuperação.",
+      "kind": "choice",
+      "id": "00000000-0000-4000-8000-000000013049",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40,
+      "activity_type": "case_study"
+    }
+  ],
+  "answers": {
+    "00000000-0000-4000-8000-000000013000": 1,
+    "00000000-0000-4000-8000-000000013001": "7",
+    "00000000-0000-4000-8000-000000013002": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "00000000-0000-4000-8000-000000013003": [
+      true,
+      false
+    ],
+    "00000000-0000-4000-8000-000000013004": 2,
+    "00000000-0000-4000-8000-000000013005": 1,
+    "00000000-0000-4000-8000-000000013006": "7",
+    "00000000-0000-4000-8000-000000013007": [
+      2,
+      0,
+      1
+    ],
+    "00000000-0000-4000-8000-000000013008": [
+      true,
+      false,
+      false
+    ],
+    "00000000-0000-4000-8000-000000013009": 2,
+    "00000000-0000-4000-8000-000000013010": 2,
+    "00000000-0000-4000-8000-000000013011": "true",
+    "00000000-0000-4000-8000-000000013012": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "00000000-0000-4000-8000-000000013013": [
+      true,
+      false,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013014": 0,
+    "00000000-0000-4000-8000-000000013015": 1,
+    "00000000-0000-4000-8000-000000013016": "0",
+    "00000000-0000-4000-8000-000000013017": [
+      2,
+      1,
+      0
+    ],
+    "00000000-0000-4000-8000-000000013018": [
+      true,
+      false,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013019": 2,
+    "00000000-0000-4000-8000-000000013020": 1,
+    "00000000-0000-4000-8000-000000013021": "recuperação",
+    "00000000-0000-4000-8000-000000013022": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "00000000-0000-4000-8000-000000013023": [
+      true,
+      false,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013024": 0,
+    "00000000-0000-4000-8000-000000013025": 2,
+    "00000000-0000-4000-8000-000000013026": "6",
+    "00000000-0000-4000-8000-000000013027": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "00000000-0000-4000-8000-000000013028": [
+      true,
+      false,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013029": 1,
+    "00000000-0000-4000-8000-000000013030": 0,
+    "00000000-0000-4000-8000-000000013031": "8",
+    "00000000-0000-4000-8000-000000013032": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "00000000-0000-4000-8000-000000013033": [
+      true,
+      false,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013034": 2,
+    "00000000-0000-4000-8000-000000013035": 1,
+    "00000000-0000-4000-8000-000000013036": "404",
+    "00000000-0000-4000-8000-000000013037": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "00000000-0000-4000-8000-000000013038": [
+      true,
+      false,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013039": 0,
+    "00000000-0000-4000-8000-000000013040": 1,
+    "00000000-0000-4000-8000-000000013041": "201",
+    "00000000-0000-4000-8000-000000013042": [
+      1,
+      0,
+      2
+    ],
+    "00000000-0000-4000-8000-000000013043": [
+      false,
+      true,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013044": 2,
+    "00000000-0000-4000-8000-000000013045": 1,
+    "00000000-0000-4000-8000-000000013046": "idempotência",
+    "00000000-0000-4000-8000-000000013047": [
+      1,
+      2,
+      0
+    ],
+    "00000000-0000-4000-8000-000000013048": [
+      false,
+      true,
+      true
+    ],
+    "00000000-0000-4000-8000-000000013049": 2
+  }
+}

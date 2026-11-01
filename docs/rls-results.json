@@ -218,6 +218,14 @@
       "status": "pass"
     },
     {
+      "name": "All 56 modules have plans; legacy seed is idempotent and preserves recorded progress",
+      "status": "pass"
+    },
+    {
+      "name": "All ten legacy lessons grade five formats, block partial practice and reward only after the dynamic",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

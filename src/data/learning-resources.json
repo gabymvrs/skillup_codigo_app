@@ -33,5 +33,33 @@
     "publisher": "W3C WAI · inglês",
     "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
     "kind": "artigo"
+  },
+  {
+    "id": "dart-variables",
+    "title": "Variáveis em Dart",
+    "publisher": "Documentação Dart · inglês",
+    "url": "https://dart.dev/language/variables",
+    "kind": "artigo"
+  },
+  {
+    "id": "dart-loops",
+    "title": "Repetições em Dart",
+    "publisher": "Documentação Dart · inglês",
+    "url": "https://dart.dev/language/loops",
+    "kind": "artigo"
+  },
+  {
+    "id": "http-methods",
+    "title": "Métodos de requisição HTTP",
+    "publisher": "MDN Web Docs · inglês",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+    "kind": "artigo"
+  },
+  {
+    "id": "retry-pattern",
+    "title": "Padrão Retry e falhas transitórias",
+    "publisher": "Microsoft Learn · inglês",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
+    "kind": "artigo"
   }
 ]

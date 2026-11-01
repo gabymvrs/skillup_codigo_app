@@ -86,12 +86,62 @@ describe("Learning and support", () => {
     expect(screen.getByRole("button", { name: /Maratona 1/ })).toBeDisabled();
     await user.click(logic);
     await user.click(
-      screen.getByRole("button", { name: "Li e concluí esta etapa" }),
+      await screen.findByRole("button", { name: "Continuar para a prática" }),
     );
     expect(
-      await screen.findByText("Etapa concluída. Progresso atualizado."),
-    ).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Fechar" }));
+      screen.queryByRole("button", { name: "Li e concluí esta etapa" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Próxima questão" }),
+    ).toBeDisabled();
+    await user.click(
+      screen.getByRole("radio", { name: "nota >= 7 && frequencia >= 75" }),
+    );
+    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Próxima questão" }),
+    );
+    await user.type(screen.getByRole("textbox"), "true");
+    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Próxima questão" }),
+    );
+    for (const name of [
+      "Obter nota e frequência",
+      "Comparar a nota e a frequência com seus limites",
+      "Combinar os resultados com &&",
+    ]) {
+      await user.click(screen.getByRole("button", { name: `Subir ${name}` }));
+    }
+    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Próxima questão" }),
+    );
+    const radios = screen.getAllByRole("radio");
+    await user.click(radios[0]);
+    await user.click(radios[3]);
+    await user.click(radios[4]);
+    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Próxima questão" }),
+    );
+    await user.click(
+      screen.getByRole("radio", { name: "!cadastrado || !ativo" }),
+    );
+    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    await user.click(
+      await screen.findByRole("button", { name: "Continuar para a dinâmica" }),
+    );
+    await user.type(
+      screen.getByRole("textbox", { name: "Sua entrega" }),
+      "A regra exige cadastro confirmado E matrícula ativa. O acesso é recusado se faltar qualquer requisito. Nos quatro casos: ambos verdadeiros permitem; verdadeiro e falso recusam; falso e verdadeiro recusam; ambos falsos recusam. Vou conferir cada uma dessas combinações.",
+    );
+    for (const box of screen.getAllByRole("checkbox")) await user.click(box);
+    await user.click(
+      screen.getByRole("button", { name: "Finalizar atividade" }),
+    );
+    await screen.findByText("Atividade concluída!");
+    await user.click(screen.getByRole("button", { name: "Voltar à trilha" }));
     expect(
       screen.getByRole("button", { name: /Maratona 1/ }),
     ).not.toBeDisabled();

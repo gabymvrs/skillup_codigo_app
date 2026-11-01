@@ -884,5 +884,257 @@
       "minLength": 180
     },
     "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000300",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013000",
+      "00000000-0000-4000-8000-000000013001",
+      "00000000-0000-4000-8000-000000013002",
+      "00000000-0000-4000-8000-000000013003",
+      "00000000-0000-4000-8000-000000013004"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Planeje um cálculo verificável",
+      "prompt": "Descreva um algoritmo para calcular o valor de uma compra com dois produtos. Informe preços e quantidades, a ordem dos passos e o total esperado para um exemplo escolhido por você.",
+      "criteria": [
+        "Defini todas as entradas",
+        "Descrevi os passos na ordem de execução",
+        "Conferi o total do exemplo manualmente"
+      ],
+      "minLength": 120
+    },
+    "resource_ids": [
+      "dart-variables"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000301",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013005",
+      "00000000-0000-4000-8000-000000013006",
+      "00000000-0000-4000-8000-000000013007",
+      "00000000-0000-4000-8000-000000013008",
+      "00000000-0000-4000-8000-000000013009"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Modele um pequeno cadastro",
+      "prompt": "Defina nome, preço, quantidade e disponibilidade de um produto usando tipos adequados. Mostre como calcular o total e explique como validaria um preço digitado como texto.",
+      "criteria": [
+        "Escolhi tipos e nomes coerentes",
+        "Apresentei os valores e o total esperado",
+        "Expliquei a conversão e a validação da entrada"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "dart-variables"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000302",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013010",
+      "00000000-0000-4000-8000-000000013011",
+      "00000000-0000-4000-8000-000000013012",
+      "00000000-0000-4000-8000-000000013013",
+      "00000000-0000-4000-8000-000000013014"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Teste uma regra de acesso",
+      "prompt": "Uma área exige cadastro confirmado e matrícula ativa. Escreva a regra de acesso e a de recusa. Monte quatro casos cobrindo todas as combinações e explique o resultado de cada caso.",
+      "criteria": [
+        "Usei E para exigir ambos os requisitos",
+        "Neguei corretamente a regra de acesso",
+        "Cobri as quatro combinações com resultados esperados"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": [
+      "dart-variables"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000303",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013015",
+      "00000000-0000-4000-8000-000000013016",
+      "00000000-0000-4000-8000-000000013017",
+      "00000000-0000-4000-8000-000000013018",
+      "00000000-0000-4000-8000-000000013019"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Entregue um plano de estoque",
+      "prompt": "Monte um cadastro de três produtos com tipos e valores. Escreva o pseudocódigo que valida os dados e acumula os subtotais. Calcule o total esperado e acrescente um teste com quantidade zero e outro com entrada inválida.",
+      "criteria": [
+        "Apresentei três produtos e seus subtotais",
+        "Inicializei e atualizei o acumulador corretamente",
+        "Incluí testes de quantidade zero e entrada inválida"
+      ],
+      "minLength": 200
+    },
+    "resource_ids": [
+      "dart-variables",
+      "dart-loops"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000304",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013020",
+      "00000000-0000-4000-8000-000000013021",
+      "00000000-0000-4000-8000-000000013022",
+      "00000000-0000-4000-8000-000000013023",
+      "00000000-0000-4000-8000-000000013024"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Revise uma classificação",
+      "prompt": "Um sistema testa nota >= 5 antes de nota >= 7 e classifica nota 9 como recuperação. Explique a causa, proponha uma cadeia corrigida com validação de 0 a 10 e apresente resultados para 4.9, 5, 6.9, 7 e 12.",
+      "criteria": [
+        "Expliquei o efeito da ordem dos ramos",
+        "Validei o domínio antes de classificar",
+        "Defini o resultado esperado dos cinco casos"
+      ],
+      "minLength": 220
+    },
+    "resource_ids": [
+      "dart-variables"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000305",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013025",
+      "00000000-0000-4000-8000-000000013026",
+      "00000000-0000-4000-8000-000000013027",
+      "00000000-0000-4000-8000-000000013028",
+      "00000000-0000-4000-8000-000000013029"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Faça um rastreamento",
+      "prompt": "Planeje um laço que soma os inteiros de 1 a 4. Mostre contador e soma após cada execução, explique como o laço termina e compare o resultado usando < e <= no limite escolhido.",
+      "criteria": [
+        "Mostrei o estado em cada execução",
+        "Expliquei a atualização e o término",
+        "Comparei as fronteiras e os totais esperados"
+      ],
+      "minLength": 240
+    },
+    "resource_ids": [
+      "dart-loops"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000306",
+    "level": 4,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013030",
+      "00000000-0000-4000-8000-000000013031",
+      "00000000-0000-4000-8000-000000013032",
+      "00000000-0000-4000-8000-000000013033",
+      "00000000-0000-4000-8000-000000013034"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Projete uma função de resumo",
+      "prompt": "Descreva uma função que recebe uma lista de notas e devolve quantidade, soma e média. Defina explicitamente o retorno para lista vazia e teste [], [6] e [7, 8, 9], sem inventar uma média para o caso vazio.",
+      "criteria": [
+        "Tratei o vazio antes de acessar ou dividir",
+        "Defini os três campos de saída",
+        "Calculei os resultados dos três testes"
+      ],
+      "minLength": 260
+    },
+    "resource_ids": [
+      "dart-loops"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000320",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013035",
+      "00000000-0000-4000-8000-000000013036",
+      "00000000-0000-4000-8000-000000013037",
+      "00000000-0000-4000-8000-000000013038",
+      "00000000-0000-4000-8000-000000013039"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Inspecione uma troca HTTP",
+      "prompt": "Descreva uma consulta a um produto com método, caminho, cabeçalhos necessários e uma resposta JSON de sucesso. Depois descreva a resposta e a mensagem da interface quando o produto não existe. Explique onde ocorre a autorização.",
+      "criteria": [
+        "Diferenciei requisição e resposta",
+        "Incluí status e corpo coerentes para sucesso e ausência",
+        "Mantive credenciais fora da URL e autorização no servidor"
+      ],
+      "minLength": 160
+    },
+    "resource_ids": [
+      "http-methods"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000321",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013040",
+      "00000000-0000-4000-8000-000000013041",
+      "00000000-0000-4000-8000-000000013042",
+      "00000000-0000-4000-8000-000000013043",
+      "00000000-0000-4000-8000-000000013044"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Especifique um contrato de produto",
+      "prompt": "Escreva o contrato de POST /produtos: campos, tipos e regras de validação; um exemplo válido e outro inválido; status e JSON de resposta para os dois. Inclua a regra de autorização e diferencie erro de entrada de falha interna.",
+      "criteria": [
+        "Defini campos, tipos e limites",
+        "Mostrei requisições e respostas coerentes para os dois casos",
+        "Expliquei a autorização sem confiar na identidade enviada no corpo"
+      ],
+      "minLength": 220
+    },
+    "resource_ids": [
+      "http-methods"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000000322",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000013045",
+      "00000000-0000-4000-8000-000000013046",
+      "00000000-0000-4000-8000-000000013047",
+      "00000000-0000-4000-8000-000000013048",
+      "00000000-0000-4000-8000-000000013049"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Planeje uma recuperação sem cobrança duplicada",
+      "prompt": "Um pedido foi salvo e a confirmação do pagamento não chegou antes do timeout. Descreva os estados do pedido, como consultar o resultado, quando repetir usando a mesma chave de idempotência e o que mostrar ao usuário. Inclua limite de tentativas e um caso que exige intervenção.",
+      "criteria": [
+        "Tratei o pagamento como incerto após timeout",
+        "Preservei a identidade da operação nas repetições",
+        "Defini estados, limites e comunicação ao usuário",
+        "Separei recuperação automática de intervenção necessária"
+      ],
+      "minLength": 280
+    },
+    "resource_ids": [
+      "retry-pattern"
+    ]
   }
 ]

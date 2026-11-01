@@ -1,3 +1,4 @@
+import foundationLessons from "./foundation-lessons.json";
 import trackActivities from "./track-activities.json";
 import practicePacks from "./practice-packs.json";
 import enrichment from "./enrichment.json";
@@ -204,7 +205,13 @@ tracks.push(...(enrichment.tracks as Track[]));
 modules.push(...(enrichment.modules as Module[]));
 questions.push(...(enrichment.questions as Question[]));
 questions.push(...(practicePacks.questions as Question[]));
+questions.push(...(foundationLessons.questions as Question[]));
+for (const upgrade of foundationLessons.modules) {
+  const module = modules.find((m) => m.id === upgrade.id);
+  if (module) Object.assign(module, upgrade);
+}
 export const exerciseAnswers: Record<string, unknown> = {
+  ...foundationLessons.answers,
   ...enrichment.answers,
   ...practicePacks.answers,
   ...trackActivities.answers,

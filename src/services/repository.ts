@@ -29,9 +29,22 @@ export function readDemo(): Dataset {
       questions,
     })) {
       d[table] ??= [];
-      for (const row of additions)
-        if (!d[table].some((old: { id: string }) => old.id === row.id))
-          d[table].push(structuredClone(row));
+      for (const row of additions) {
+        const existing = d[table].find(
+          (old: { id: string }) => old.id === row.id,
+        );
+        if (!existing) d[table].push(structuredClone(row));
+        else if (
+          table === "modules" &&
+          "question_id" in row &&
+          !existing.question_id &&
+          row.question_id
+        ) {
+          // Upgrade the legacy catalogue in saved demos without changing recorded progress.
+          existing.question_id = row.question_id;
+          existing.body = "body" in row ? row.body : existing.body;
+        }
+      }
     }
     for (const q of d.questions)
       q.activity_type ??= questions.find(
