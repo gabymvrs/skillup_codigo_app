@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type { Dataset } from "../lib/types";
 import {
   loadPracticeCompletions,
@@ -59,6 +59,8 @@ export function PracticeDashboard({
   onRetry: () => void;
 }) {
   const [days, setDays] = useState(7),
+    [chartsExpanded, setChartsExpanded] = useState(true),
+    chartsId = useId(),
     [point, setPoint] = useState<number | null>(null),
     s = practiceMetrics(data, user, completions, days),
     w = 640,
@@ -148,164 +150,178 @@ export function PracticeDashboard({
               seu desempenho. Comece uma atividade para acompanhar sua evolução.
             </Notice>
           ) : (
-            <div className="performance-chart-grid">
-              <section className="card stack">
-                <div className="row-between">
-                  <h3>Evolução de desempenho</h3>
-                  <label>
-                    Período
-                    <select
-                      value={days}
-                      onChange={(e) => {
-                        setDays(Number(e.target.value));
-                        setPoint(null);
-                      }}
-                    >
-                      <option value={7}>7 dias</option>
-                      <option value={30}>30 dias</option>
-                    </select>
-                  </label>
-                </div>
-                {s.points.some((p) => p.total) ? (
-                  <>
-                    <div className="performance-plot">
-                      <div className="performance-axis" aria-hidden="true">
-                        <span>100%</span>
-                        <span>50%</span>
-                        <span>0%</span>
-                      </div>
-                      <svg
-                        className="performance-line"
-                        viewBox={`0 0 ${w} ${h}`}
-                        role="img"
-                        aria-label={`Taxa diária de acertos nos últimos ${days} dias, de 0 a 100 por cento`}
-                      >
-                        {[0, 50, 100].map((n) => (
-                          <g key={n}>
-                            <line
-                              x1="44"
-                              x2="620"
-                              y1={170 - n * 1.4}
-                              y2={170 - n * 1.4}
-                              stroke="currentColor"
-                              opacity=".15"
+            <>
+              <div>
+                <Button
+                  variant="outline"
+                  aria-expanded={chartsExpanded}
+                  aria-controls={chartsId}
+                  onClick={() => setChartsExpanded((expanded) => !expanded)}
+                >
+                  {chartsExpanded ? "Recolher gráficos" : "Mostrar gráficos"}
+                </Button>
+              </div>
+              <div id={chartsId} hidden={!chartsExpanded}>
+                <div className="performance-chart-grid">
+                  <section className="card stack">
+                    <div className="row-between">
+                      <h3>Evolução de desempenho</h3>
+                      <label>
+                        Período
+                        <select
+                          value={days}
+                          onChange={(e) => {
+                            setDays(Number(e.target.value));
+                            setPoint(null);
+                          }}
+                        >
+                          <option value={7}>7 dias</option>
+                          <option value={30}>30 dias</option>
+                        </select>
+                      </label>
+                    </div>
+                    {s.points.some((p) => p.total) ? (
+                      <>
+                        <div className="performance-plot">
+                          <div className="performance-axis" aria-hidden="true">
+                            <span>100%</span>
+                            <span>50%</span>
+                            <span>0%</span>
+                          </div>
+                          <svg
+                            className="performance-line"
+                            viewBox={`0 0 ${w} ${h}`}
+                            role="img"
+                            aria-label={`Taxa diária de acertos nos últimos ${days} dias, de 0 a 100 por cento`}
+                          >
+                            {[0, 50, 100].map((n) => (
+                              <g key={n}>
+                                <line
+                                  x1="44"
+                                  x2="620"
+                                  y1={170 - n * 1.4}
+                                  y2={170 - n * 1.4}
+                                  stroke="currentColor"
+                                  opacity=".15"
+                                />
+                                <text x="3" y={174 - n * 1.4}>
+                                  {n}%
+                                </text>
+                              </g>
+                            ))}
+                            <path
+                              d={path}
+                              fill="none"
+                              stroke="#193f9f"
+                              strokeWidth="3"
                             />
-                            <text x="3" y={174 - n * 1.4}>
-                              {n}%
+                            {s.points.map((p, i) =>
+                              p.rate === null ? null : (
+                                <circle
+                                  key={p.day}
+                                  cx={44 + (i * (w - 64)) / (days - 1)}
+                                  cy={170 - p.rate * 1.4}
+                                  r="5"
+                                  fill="#193f9f"
+                                  tabIndex={0}
+                                  aria-label={`${p.day}: ${p.rate}%, ${p.correct} acertos em ${p.total} tentativas`}
+                                  onFocus={() => setPoint(i)}
+                                  onMouseEnter={() => setPoint(i)}
+                                >
+                                  <title>
+                                    {p.day}: {p.rate}% · {p.correct}/{p.total}{" "}
+                                    acertos
+                                  </title>
+                                </circle>
+                              ),
+                            )}
+                            <text x="44" y="195">
+                              {s.points[0].day.slice(5)}
                             </text>
-                          </g>
-                        ))}
-                        <path
-                          d={path}
-                          fill="none"
-                          stroke="#193f9f"
-                          strokeWidth="3"
-                        />
-                        {s.points.map((p, i) =>
-                          p.rate === null ? null : (
-                            <circle
-                              key={p.day}
-                              cx={44 + (i * (w - 64)) / (days - 1)}
-                              cy={170 - p.rate * 1.4}
-                              r="5"
-                              fill="#193f9f"
-                              tabIndex={0}
-                              aria-label={`${p.day}: ${p.rate}%, ${p.correct} acertos em ${p.total} tentativas`}
-                              onFocus={() => setPoint(i)}
-                              onMouseEnter={() => setPoint(i)}
-                            >
-                              <title>
-                                {p.day}: {p.rate}% · {p.correct}/{p.total}{" "}
-                                acertos
-                              </title>
-                            </circle>
-                          ),
-                        )}
-                        <text x="44" y="195">
-                          {s.points[0].day.slice(5)}
-                        </text>
-                        <text x="555" y="195">
-                          {s.points.at(-1)?.day.slice(5)}
-                        </text>
-                      </svg>
-                    </div>
-                    <div className="performance-dates">
-                      <span>{s.points[0].day}</span>
-                      <span>{s.points.at(-1)?.day}</span>
-                    </div>
-                    <p role="status">
-                      {point !== null
-                        ? `${s.points[point].day}: ${s.points[point].rate}% · ${s.points[point].correct} acertos e ${s.points[point].wrong} erros em ${s.points[point].total} tentativas.`
-                        : "Selecione um ponto com o mouse ou teclado para ver os detalhes. Dias sem respostas não recebem uma taxa."}
-                    </p>
-                  </>
-                ) : (
-                  <p>
-                    Não há tentativas nesse período. Seu histórico geral foi
-                    preservado.
-                  </p>
-                )}
-                <details>
-                  <summary>Ver dados do gráfico em tabela</summary>
-                  <div className="chart-table">
-                    <table>
-                      <caption>Desempenho por dia</caption>
-                      <thead>
-                        <tr>
-                          <th>Dia</th>
-                          <th>Acertos</th>
-                          <th>Erros</th>
-                          <th>Taxa</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {s.points.map((p) => (
-                          <tr key={p.day}>
-                            <th>{p.day}</th>
-                            <td>{p.correct}</td>
-                            <td>{p.wrong}</td>
-                            <td>
-                              {p.rate === null
-                                ? "Sem tentativas"
-                                : p.rate + "%"}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </details>
-              </section>
-              <section className="card stack">
-                <h3>Acertos e erros</h3>
-                <p>Histórico completo de tentativas objetivas</p>
-                {[
-                  ["Acertos", s.correct, "#187948"],
-                  ["Erros", s.wrong, "#b42332"],
-                ].map(([label, count, color]) => (
-                  <div key={label}>
-                    <p>
-                      <strong>
-                        {label}: {count}
-                      </strong>{" "}
-                      · {Math.round((Number(count) / s.total) * 100)}%
-                    </p>
-                    <div
-                      className="performance-bar"
-                      role="img"
-                      aria-label={`${label}: ${count} de ${s.total}`}
-                    >
-                      <span
-                        style={{
-                          width: `${(Number(count) / s.total) * 100}%`,
-                          background: String(color),
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </section>
-            </div>
+                            <text x="555" y="195">
+                              {s.points.at(-1)?.day.slice(5)}
+                            </text>
+                          </svg>
+                        </div>
+                        <div className="performance-dates">
+                          <span>{s.points[0].day}</span>
+                          <span>{s.points.at(-1)?.day}</span>
+                        </div>
+                        <p role="status">
+                          {point !== null
+                            ? `${s.points[point].day}: ${s.points[point].rate}% · ${s.points[point].correct} acertos e ${s.points[point].wrong} erros em ${s.points[point].total} tentativas.`
+                            : "Selecione um ponto com o mouse ou teclado para ver os detalhes. Dias sem respostas não recebem uma taxa."}
+                        </p>
+                      </>
+                    ) : (
+                      <p>
+                        Não há tentativas nesse período. Seu histórico geral foi
+                        preservado.
+                      </p>
+                    )}
+                    <details>
+                      <summary>Ver dados do gráfico em tabela</summary>
+                      <div className="chart-table">
+                        <table>
+                          <caption>Desempenho por dia</caption>
+                          <thead>
+                            <tr>
+                              <th>Dia</th>
+                              <th>Acertos</th>
+                              <th>Erros</th>
+                              <th>Taxa</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {s.points.map((p) => (
+                              <tr key={p.day}>
+                                <th>{p.day}</th>
+                                <td>{p.correct}</td>
+                                <td>{p.wrong}</td>
+                                <td>
+                                  {p.rate === null
+                                    ? "Sem tentativas"
+                                    : p.rate + "%"}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </details>
+                  </section>
+                  <section className="card stack">
+                    <h3>Acertos e erros</h3>
+                    <p>Histórico completo de tentativas objetivas</p>
+                    {[
+                      ["Acertos", s.correct, "#187948"],
+                      ["Erros", s.wrong, "#b42332"],
+                    ].map(([label, count, color]) => (
+                      <div key={label}>
+                        <p>
+                          <strong>
+                            {label}: {count}
+                          </strong>{" "}
+                          · {Math.round((Number(count) / s.total) * 100)}%
+                        </p>
+                        <div
+                          className="performance-bar"
+                          role="img"
+                          aria-label={`${label}: ${count} de ${s.total}`}
+                        >
+                          <span
+                            style={{
+                              width: `${(Number(count) / s.total) * 100}%`,
+                              background: String(color),
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </section>
+                </div>
+              </div>
+            </>
           )}
         </>
       )}
