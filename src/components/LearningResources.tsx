@@ -48,7 +48,7 @@ export function LearningResources({
     ) : null;
   return (
     <section className="stack" aria-label="Recursos para aprender mais">
-      <h3>{savedOnly ? "Recursos salvos" : "Para aprender mais"}</h3>
+      <h3>{savedOnly ? "Recursos salvos" : "Aprofunde seu conhecimento"}</h3>
       {visible.map((r) => {
         const url = safeResourceUrl(r.url);
         if (!url) return null;
@@ -58,7 +58,13 @@ export function LearningResources({
               <summary>
                 <strong>{r.title}</strong> · {r.kind}
               </summary>
-              <p>{r.publisher}</p>
+              <p>
+                {r.publisher} ·{" "}
+                {new URL(r.url).hostname === "docs.python.org" ||
+                r.url.includes("/pt-BR/")
+                  ? "Português brasileiro"
+                  : "Inglês"}
+              </p>
               <a href={url} target="_blank" rel="noopener noreferrer">
                 Abrir recurso externo ↗
               </a>

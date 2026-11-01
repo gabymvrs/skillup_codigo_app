@@ -250,6 +250,11 @@ describe("Interactive exercise formats", () => {
     await screen.findByText(/Trilha iniciada/);
     await user.click(screen.getByRole("button", { name: /HTML semântico/ }));
     await user.click(
+      await screen.findByRole("button", {
+        name: /^(Começar|Continuar atividade|Ver resultado)$/,
+      }),
+    );
+    await user.click(
       await screen.findByRole("button", { name: "Continuar para a prática" }),
     );
     await user.click(screen.getByRole("radio", { name: "nav" }));
@@ -266,7 +271,7 @@ describe("Interactive exercise formats", () => {
       screen.getByRole("button", { name: "Finalizar atividade" }),
     );
     await screen.findByText("Atividade concluída!");
-    await user.click(screen.getByRole("button", { name: "Voltar à trilha" }));
+    await user.click(screen.getByRole("button", { name: "Continuar trilha" }));
     await user.click(screen.getByRole("link", { name: "Todas as trilhas" }));
     const heading = await screen.findByRole("heading", {
         name: "UI/UX Design",

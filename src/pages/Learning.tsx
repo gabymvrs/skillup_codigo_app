@@ -1,3 +1,4 @@
+import { LessonLauncher } from "../components/LessonLauncher";
 import { LessonSession } from "../components/LessonSession";
 import { demoPlans } from "../services/lessonJourney";
 import { activityType, activityLabels } from "../services/activities";
@@ -119,6 +120,7 @@ export function TrackDetail() {
     auth = useAuth(),
     repo = useData(),
     [open, setOpen] = useState<string | null>(null),
+    [preview, setPreview] = useState<string | null>(null),
     [creating, setCreating] = useState(false),
     [exercise, setExercise] = useState<string | null>(null),
     action = useAction();
@@ -187,7 +189,12 @@ export function TrackDetail() {
               className={`trail-node ${done(m.id) ? "complete" : ""} ${locked ? "locked" : ""}`}
               disabled={locked}
               onClick={() => {
-                setOpen(m.id);
+                if (
+                  auth.role === "estudante" &&
+                  demoPlans.some((p) => p.module_id === m.id)
+                )
+                  setPreview(m.id);
+                else setOpen(m.id);
                 action.setSuccess("");
                 action.setError("");
               }}
@@ -228,6 +235,17 @@ export function TrackDetail() {
           Ver conquistas e comprovantes
         </ActionLink>
       </Card>
+      {preview && modules.find((m) => m.id === preview) && (
+        <LessonLauncher
+          key={preview}
+          module={modules.find((m) => m.id === preview)!}
+          onClose={() => setPreview(null)}
+          onStart={() => {
+            setOpen(preview);
+            setPreview(null);
+          }}
+        />
+      )}
       {module &&
       auth.role === "estudante" &&
       demoPlans.some((p) => p.module_id === module.id) ? (

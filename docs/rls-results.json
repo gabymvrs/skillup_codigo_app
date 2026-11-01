@@ -226,6 +226,10 @@
       "status": "pass"
     },
     {
+      "name": "Lesson drafts cannot forge completion and answer feedback retains the first response",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

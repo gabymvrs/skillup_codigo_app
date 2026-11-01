@@ -1,7 +1,12 @@
+import { LessonFeedback } from "./LessonFeedback";
 import { useEffect, useRef, useState } from "react";
 import type { Module, ExerciseAnswer } from "../lib/types";
 import type { LessonPlan, LessonState } from "../lib/lessonTypes";
-import { lessonAction, answerLesson } from "../services/lessonJourney";
+import {
+  lessonAction,
+  answerLesson,
+  saveLessonDraft,
+} from "../services/lessonJourney";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { ActivityRenderer } from "./ActivityRenderer";
@@ -47,9 +52,28 @@ export function LessonSession({
         if (!active) return;
         setState(next);
         try {
-          const d = JSON.parse(sessionStorage.getItem(draftKey) || "null");
-          if (d) {
-            setAnswers(d.answers || {});
+          const d = JSON.parse(localStorage.getItem(draftKey) || "null");
+          const saved = next.session.draft;
+          const chosen =
+            saved && (!d || (saved.savedAt || 0) > (d.savedAt || 0))
+              ? saved
+              : d;
+          if (chosen) {
+            const d = chosen;
+            setIndex(
+              Math.min(
+                Math.max(d.index || 0, 0),
+                next.plan.question_ids.length - 1,
+              ),
+            );
+            setAnswers({
+              ...d.answers,
+              ...Object.fromEntries(
+                Object.entries(next.session.results)
+                  .filter(([, r]) => r.correct && r.response !== undefined)
+                  .map(([id, r]) => [id, r.response!]),
+              ),
+            });
             setText(d.text || "");
             setChecks(d.checks || []);
           } else if (next.session.dynamic_response) {
@@ -70,21 +94,42 @@ export function LessonSession({
     };
   }, [module.id, auth.id, auth.demo, draftKey]);
   useEffect(() => {
-    if (loading) return;
+    if (loading || !state) return;
+    const draft = { answers, text, checks, index, savedAt: Date.now() };
     try {
-      sessionStorage.setItem(
-        draftKey,
-        JSON.stringify({ answers, text, checks }),
-      );
+      localStorage.setItem(draftKey, JSON.stringify(draft));
     } catch {
-      setDraftError(
-        "O navegador não permitiu guardar o rascunho. Mantenha esta atividade aberta até concluir.",
-      );
+      setDraftError("Não foi possível guardar o rascunho neste navegador.");
     }
-  }, [answers, text, checks, loading, draftKey]);
+    const timer = setTimeout(() => {
+      void saveLessonDraft(auth.demo, auth.id!, module.id, draft)
+        .then(() => setDraftError(""))
+        .catch(() =>
+          setDraftError(
+            "Rascunho salvo neste navegador. A cópia da conta será tentada após a próxima alteração.",
+          ),
+        );
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [answers, text, checks, index, loading, draftKey]);
   useEffect(() => {
     heading.current?.focus();
   }, [stage, index]);
+  async function closeLesson() {
+    if (action.busy) return;
+    try {
+      await saveLessonDraft(auth.demo, auth.id!, module.id, {
+        answers,
+        text,
+        checks,
+        index,
+        savedAt: Date.now(),
+      });
+    } catch {
+      /* The local draft remains available. */
+    }
+    onClose();
+  }
   async function advance(actionName: string, payload: unknown = null) {
     setState(
       await lessonAction(auth.demo, auth.id!, module.id, actionName, payload),
@@ -94,13 +139,11 @@ export function LessonSession({
   const qid = state?.plan.question_ids[index],
     q = repo.data.questions.find((q) => q.id === qid),
     result = qid ? state?.session.results[qid] : undefined;
-  const first = Object.values(state?.session.results || {}),
-    right = first.filter((r) => r.firstCorrect).length;
   return (
     <Modal
       title={module.title}
       onClose={() => {
-        if (!action.busy) onClose();
+        void closeLesson();
       }}
       fullScreen
       className="lesson-session"
@@ -315,47 +358,15 @@ export function LessonSession({
                 </>
               )}
               {stage === "completed" && (
-                <>
-                  <h3 ref={heading} tabIndex={-1}>
-                    Atividade concluída!
-                  </h3>
-                  <Notice tone="success">
-                    Teoria, prática e dinâmica concluídas. {state.session.xp} XP
-                    pela atividade
-                    {state.session.xp === 0
-                      ? " (já registrada anteriormente)"
-                      : ""}
-                    .
-                  </Notice>
-                  <p>
-                    {right} de {state.plan.question_ids.length} acertos na
-                    primeira tentativa · {first.length - right} questão(ões)
-                    para reforçar.
-                  </p>
-                  <p>
-                    {right === state.plan.question_ids.length
-                      ? "Boa compreensão dos exercícios. Agora experimente aplicar o conceito em outro contexto."
-                      : "Você corrigiu as respostas durante a prática. Releia a teoria dos itens abaixo e tente explicar a solução com suas palavras."}
-                  </p>
-                  {state.plan.question_ids.map((id, i) => {
-                    const r = state.session.results[id];
-                    return (
-                      <details key={id}>
-                        <summary>
-                          {i + 1}.{" "}
-                          {repo.data.questions.find((q) => q.id === id)?.title}{" "}
-                          —{" "}
-                          {r?.firstCorrect ? "Acertou de primeira" : "Revisar"}{" "}
-                          · {r?.tries || 0} tentativa(s)
-                        </summary>
-                        <p>{r?.explanation}</p>
-                      </details>
-                    );
-                  })}
-                  <p>Dinâmica registrada por autoavaliação.</p>
-                  <LearningResources ids={state.plan.resource_ids} />
-                  <Button onClick={onClose}>Voltar à trilha</Button>
-                </>
+                <LessonFeedback
+                  module={module}
+                  plan={state.plan}
+                  session={state.session}
+                  questions={repo.data.questions}
+                  onClose={() => {
+                    void closeLesson();
+                  }}
+                />
               )}
             </>
           )

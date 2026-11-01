@@ -134,6 +134,11 @@ describe("Activities selected by pedagogical type", () => {
       }),
     );
     await user.click(
+      await screen.findByRole("button", {
+        name: /^(Começar|Continuar atividade|Ver resultado)$/,
+      }),
+    );
+    await user.click(
       await screen.findByRole("button", { name: "Continuar para a prática" }),
     );
     await user.type(

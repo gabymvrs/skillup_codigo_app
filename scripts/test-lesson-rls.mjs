@@ -57,12 +57,20 @@ export async function testLesson({
       question_id: question,
       response: 0,
     });
-    assert.deepEqual(correct.session.results[question], {
-      correct: true,
-      firstCorrect: false,
-      tries: 2,
-      explanation: correct.session.results[question].explanation,
-    });
+    assert.deepEqual(
+      {
+        correct: correct.session.results[question].correct,
+        firstCorrect: correct.session.results[question].firstCorrect,
+        tries: correct.session.results[question].tries,
+        explanation: correct.session.results[question].explanation,
+      },
+      {
+        correct: true,
+        firstCorrect: false,
+        tries: 2,
+        explanation: correct.session.results[question].explanation,
+      },
+    );
     assert.equal(
       Number(
         await scalar(
@@ -247,6 +255,45 @@ export async function testLesson({
       ),
       50,
     );
+  });
+  await test("Lesson drafts cannot forge completion and answer feedback retains the first response", async () => {
+    await actor(40);
+    await db.query("select public.save_lesson_draft($1,$2)", [
+      module,
+      JSON.stringify({
+        index: 0,
+        text: "Retomar aqui",
+        stage: "completed",
+        results: { fake: true },
+      }),
+    ]);
+    const r = await call("get");
+    assert.equal(r.session.stage, "completed");
+    assert.equal(r.session.draft.text, "Retomar aqui");
+    assert.equal(r.session.results[question].firstResponse, 1);
+    assert.equal(r.session.results[question].response, 0);
+    assert.equal(r.session.results[question].expected, 0);
+    assert.equal(r.session.results[question].objective, true);
+    await db.query("select public.lesson_action($1,'get')", [id(320)]);
+    await db.query("select public.save_lesson_draft($1,$2)", [
+      id(320),
+      JSON.stringify({
+        stage: "completed",
+        results: { fake: true },
+        xp: 99999,
+      }),
+    ]);
+    const pending = (
+      await db.query("select public.lesson_action($1,'get') result", [id(320)])
+    ).rows[0].result;
+    assert.equal(pending.session.stage, "theory");
+    assert.equal(pending.session.xp, 0);
+    await rejects(`select public.complete_module('${id(320)}')`);
+
+    await actor(5);
+    await rejects(`select public.save_lesson_draft('${id(300)}','{}')`);
+    await actor(null);
+    await rejects(`select public.save_lesson_draft('${module}','{}')`);
   });
   await admin();
 }

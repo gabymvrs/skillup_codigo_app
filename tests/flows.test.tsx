@@ -86,6 +86,11 @@ describe("Learning and support", () => {
     expect(screen.getByRole("button", { name: /Maratona 1/ })).toBeDisabled();
     await user.click(logic);
     await user.click(
+      await screen.findByRole("button", {
+        name: /^(Começar|Continuar atividade|Ver resultado)$/,
+      }),
+    );
+    await user.click(
       await screen.findByRole("button", { name: "Continuar para a prática" }),
     );
     expect(
@@ -141,7 +146,7 @@ describe("Learning and support", () => {
       screen.getByRole("button", { name: "Finalizar atividade" }),
     );
     await screen.findByText("Atividade concluída!");
-    await user.click(screen.getByRole("button", { name: "Voltar à trilha" }));
+    await user.click(screen.getByRole("button", { name: "Continuar trilha" }));
     expect(
       screen.getByRole("button", { name: /Maratona 1/ }),
     ).not.toBeDisabled();

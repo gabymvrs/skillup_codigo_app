@@ -10,6 +10,7 @@ import { requireSupabase } from "./supabase";
 import { readDemo, writeDemo } from "./repository";
 import { awardDemo, evaluateDemo } from "./learning";
 import { activityType } from "./activities";
+import { exerciseAnswers, demoAnswers } from "../data/catalog";
 import { uid } from "../lib/utils";
 export const demoPlans = plans as LessonPlan[];
 export const learningResources = resources as LearningResource[];
@@ -79,6 +80,13 @@ export async function lessonAction(
     const old = s.results[q.id];
     s.results[q.id] = {
       ...verdict,
+      firstResponse: old ? old.firstResponse : response,
+      response,
+      expected:
+        activityType(q) === "code_practice"
+          ? undefined
+          : (exerciseAnswers[q.id] ?? demoAnswers[q.id]),
+      objective: q.kind !== "challenge",
       firstCorrect: old?.firstCorrect ?? verdict.correct,
       tries: (old?.tries || 0) + 1,
     };
@@ -226,5 +234,26 @@ export async function saveResource(
         { onConflict: "user_id,resource_id" },
       )
     : table.delete().eq("user_id", user).eq("resource_id", id));
+  if (error) throw error;
+}
+
+export async function saveLessonDraft(
+  demo: boolean,
+  user: string,
+  module: string,
+  draft: NonNullable<LessonState["draft"]>,
+) {
+  if (demo) {
+    const raw = localStorage.getItem(key(user, module));
+    if (!raw) return;
+    const s = JSON.parse(raw);
+    s.draft = draft;
+    localStorage.setItem(key(user, module), JSON.stringify(s));
+    return;
+  }
+  const { error } = await requireSupabase().rpc("save_lesson_draft", {
+    p_module_id: module,
+    p_draft: draft,
+  });
   if (error) throw error;
 }

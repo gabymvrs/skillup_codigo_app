@@ -1,3 +1,4 @@
+import type { ExerciseAnswer } from "./types";
 export interface LessonDynamic {
   kind: "applied" | "case" | "creation" | "visual" | "podcast" | "simulation";
   title: string;
@@ -15,6 +16,10 @@ export interface LessonPlan {
   resource_ids: string[];
 }
 export interface LessonResult {
+  firstResponse?: ExerciseAnswer;
+  response?: ExerciseAnswer;
+  expected?: unknown;
+  objective?: boolean;
   correct: boolean;
   firstCorrect: boolean;
   tries: number;
@@ -25,6 +30,13 @@ export interface LessonState {
   stage: "theory" | "practice" | "dynamic" | "completed";
   results: Record<string, LessonResult>;
   dynamic_response?: { text: string; checks: boolean[] };
+  draft?: {
+    answers?: Record<string, ExerciseAnswer>;
+    text?: string;
+    checks?: boolean[];
+    index?: number;
+    savedAt?: number;
+  };
   xp: number;
 }
 export interface LearningResource {
