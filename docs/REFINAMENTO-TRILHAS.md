@@ -32,3 +32,11 @@ Validação acumulada: 159 testes da aplicação e 59 verificações PostgreSQL/
 Por solicitação posterior, a teoria passou a ser opcional. Os três controles no topo permitem alternar livremente entre Teoria, Prática e Dinâmica. O botão de pular teoria abre a prática diretamente, e a parte aberta é salva no rascunho. A visualização é independente da etapa validada pelo servidor: visitar a dinâmica antes de corrigir a prática não conclui a atividade. O XP permanece condicionado à prática corrigida e à entrega válida da dinâmica. Rever as partes após a conclusão não gera nova recompensa.
 
 Validação: 160 testes da aplicação e build de produção aprovados; nenhuma alteração de schema ou das regras de correção do servidor foi necessária.
+
+## Parte 3: apresentações das trilhas
+
+As 13 trilhas do catálogo receberam introduções próprias antes do caminho de atividades. Cada apresentação contextualiza a área, aplicações, objetivos, resultados compatíveis com o percurso atual, pré-requisitos e dificuldade inicial. O percurso exibido é derivado dos módulos reais. Começar minha jornada inicia a trilha sem conceder XP; a apresentação pode ser recolhida e revisitada. A preferência visual fica por perfil e trilha neste navegador. Não houve mudança de schema nem apagamento de progresso.
+
+Python e JavaScript declaram os pré-requisitos exigidos pelas atividades atuais, sem afirmar que a reorganização para iniciantes absolutos já está pronta. A apresentação não substitui essa reorganização. O texto sobre atividades preserva a teoria opcional e a navegação livre.
+
+Validação: 163 testes da aplicação e build aprovados. Permanecem pendentes a revisão de pré-requisitos por atividade, as fases de dificuldade validadas pedagogicamente e a expansão da teoria guiada para as outras bolinhas.

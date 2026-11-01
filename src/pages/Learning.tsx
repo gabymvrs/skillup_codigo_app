@@ -1,3 +1,7 @@
+import {
+  TrackIntroduction,
+  trackIntroductions,
+} from "../components/TrackIntroduction";
 import { LessonLauncher } from "../components/LessonLauncher";
 import { LessonSession } from "../components/LessonSession";
 import { demoPlans } from "../services/lessonJourney";
@@ -155,7 +159,27 @@ export function TrackDetail() {
           ) : undefined
         }
       />
-      {auth.role === "estudante" &&
+      <TrackIntroduction
+        key={track.id}
+        track={track}
+        modules={modules}
+        owner={`${auth.demo ? "demo" : "real"}:${auth.id}`}
+        student={auth.role === "estudante"}
+        busy={action.busy}
+        onBegin={async () => {
+          {
+            await repo.startTrack(track.id);
+            action.setSuccess(
+              "Trilha iniciada. Você pode estudar outras áreas em paralelo.",
+            );
+          }
+          document
+            .querySelector(".trail-path")
+            ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+        }}
+      />
+      {!trackIntroductions[track.id] &&
+        auth.role === "estudante" &&
         !repo.data.track_enrollments.some(
           (e) => e.user_id === auth.id && e.track_id === track.id,
         ) && (

@@ -245,7 +245,7 @@ describe("Interactive exercise formats", () => {
     const user = userEvent.setup();
     app(`/app/aprenda/trilhas/${id(2000)}`);
     await user.click(
-      await screen.findByRole("button", { name: "Iniciar trilha" }),
+      await screen.findByRole("button", { name: "Começar minha jornada" }),
     );
     await screen.findByText(/Trilha iniciada/);
     await user.click(screen.getByRole("button", { name: /HTML semântico/ }));
@@ -278,7 +278,7 @@ describe("Interactive exercise formats", () => {
       }),
       card = heading.closest("section")!;
     await user.click(within(card).getByRole("link", { name: "Ver trilha" }));
-    await user.click(screen.getByRole("button", { name: "Iniciar trilha" }));
+    await user.click(screen.getByRole("button", { name: "Começar minha jornada" }));
     await screen.findByText(/Trilha iniciada/);
     const d = JSON.parse(localStorage.getItem(DEMO_KEY)!);
     expect(
