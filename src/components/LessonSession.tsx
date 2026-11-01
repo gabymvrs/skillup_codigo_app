@@ -1,3 +1,9 @@
+import { GuidedTheory, AverageExperiment } from "./GuidedTheory";
+import {
+  guidedTheories,
+  missionReady,
+  type LearningInputs,
+} from "../lib/guidedLearning";
 import { LessonFeedback } from "./LessonFeedback";
 import { useEffect, useRef, useState } from "react";
 import type { Module, ExerciseAnswer } from "../lib/types";
@@ -40,6 +46,16 @@ export function LessonSession({
     [answers, setAnswers] = useState<Record<string, ExerciseAnswer>>({}),
     [text, setText] = useState(""),
     [checks, setChecks] = useState<boolean[]>([]),
+    [theoryStep, setTheoryStep] = useState(0),
+    [theoryInputs, setTheoryInputs] = useState<LearningInputs>({
+      first: "6",
+      second: "8",
+    }),
+    [interaction, setInteraction] = useState<LearningInputs>({
+      first: "4",
+      second: "10",
+      order: ["show", "mean", "sum", "read"],
+    }),
     [draftError, setDraftError] = useState("");
   const heading = useRef<HTMLHeadingElement>(null);
   const draftKey = `skillup.lesson.draft.${auth.demo ? "demo" : "real"}.${auth.id}.${module.id}`;
@@ -60,6 +76,9 @@ export function LessonSession({
               : d;
           if (chosen) {
             const d = chosen;
+            setTheoryStep(d.theoryStep || 0);
+            if (d.theoryInputs) setTheoryInputs(d.theoryInputs);
+            if (d.interaction) setInteraction(d.interaction);
             setIndex(
               Math.min(
                 Math.max(d.index || 0, 0),
@@ -95,7 +114,16 @@ export function LessonSession({
   }, [module.id, auth.id, auth.demo, draftKey]);
   useEffect(() => {
     if (loading || !state) return;
-    const draft = { answers, text, checks, index, savedAt: Date.now() };
+    const draft = {
+      answers,
+      text,
+      checks,
+      index,
+      theoryStep,
+      theoryInputs,
+      interaction,
+      savedAt: Date.now(),
+    };
     try {
       localStorage.setItem(draftKey, JSON.stringify(draft));
     } catch {
@@ -111,7 +139,17 @@ export function LessonSession({
         );
     }, 600);
     return () => clearTimeout(timer);
-  }, [answers, text, checks, index, loading, draftKey]);
+  }, [
+    answers,
+    text,
+    checks,
+    index,
+    theoryStep,
+    theoryInputs,
+    interaction,
+    loading,
+    draftKey,
+  ]);
   useEffect(() => {
     heading.current?.focus();
   }, [stage, index]);
@@ -123,6 +161,9 @@ export function LessonSession({
         text,
         checks,
         index,
+        theoryStep,
+        theoryInputs,
+        interaction,
         savedAt: Date.now(),
       });
     } catch {
@@ -181,26 +222,39 @@ export function LessonSession({
                 label="Progresso desta atividade"
               />
               <Badge>Nível {state.plan.level}</Badge>
-              {stage === "theory" && (
-                <>
-                  <h3 ref={heading} tabIndex={-1}>
-                    1/3 · Entenda o conceito
-                  </h3>
-                  <article className="reading-content">
-                    {module.body.split("\n\n").map((p, i) => (
-                      <p key={i} className="pre-wrap">
-                        {p}
-                      </p>
-                    ))}
-                  </article>
-                  <LearningResources ids={state.plan.resource_ids} />
-                  <Button
-                    disabled={action.busy}
-                    onClick={() => action.run(() => advance("theory"))}
-                  >
-                    Continuar para a prática
-                  </Button>
-                </>
+              {stage === "theory" && guidedTheories[module.id] ? (
+                <GuidedTheory
+                  moduleId={module.id}
+                  step={theoryStep}
+                  onStep={setTheoryStep}
+                  inputs={theoryInputs}
+                  onInputs={setTheoryInputs}
+                  resourceIds={state.plan.resource_ids}
+                  disabled={action.busy}
+                  onComplete={() => action.run(() => advance("theory"))}
+                />
+              ) : (
+                stage === "theory" && (
+                  <>
+                    <h3 ref={heading} tabIndex={-1}>
+                      1/3 · Entenda o conceito
+                    </h3>
+                    <article className="reading-content">
+                      {module.body.split("\n\n").map((p, i) => (
+                        <p key={i} className="pre-wrap">
+                          {p}
+                        </p>
+                      ))}
+                    </article>
+                    <LearningResources ids={state.plan.resource_ids} />
+                    <Button
+                      disabled={action.busy}
+                      onClick={() => action.run(() => advance("theory"))}
+                    >
+                      Continuar para a prática
+                    </Button>
+                  </>
+                )
               )}
               {stage === "practice" && (
                 <>
@@ -296,6 +350,14 @@ export function LessonSession({
                     3/3 · {state.plan.dynamic.title}
                   </h3>
                   <p>{state.plan.dynamic.prompt}</p>
+                  {state.plan.dynamic.kind === "trace" && (
+                    <AverageExperiment
+                      value={interaction}
+                      onChange={setInteraction}
+                      mission
+                      disabled={action.busy}
+                    />
+                  )}
                   {state.plan.dynamic.kind === "podcast" &&
                     state.plan.dynamic.transcript && (
                       <details>
@@ -346,11 +408,21 @@ export function LessonSession({
                   <Button
                     disabled={
                       action.busy ||
+                      (state.plan.dynamic.kind === "trace" &&
+                        !missionReady(interaction)) ||
                       text.trim().length < state.plan.dynamic.minLength ||
                       !state.plan.dynamic.criteria.every((_, i) => checks[i])
                     }
                     onClick={() =>
-                      action.run(() => advance("finish", { text, checks }))
+                      action.run(() =>
+                        advance("finish", {
+                          text,
+                          checks,
+                          ...(state.plan.dynamic.kind === "trace"
+                            ? { interaction }
+                            : {}),
+                        }),
+                      )
                     }
                   >
                     {action.busy ? "Registrando…" : "Finalizar atividade"}

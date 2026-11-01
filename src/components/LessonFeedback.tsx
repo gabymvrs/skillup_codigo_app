@@ -1,3 +1,4 @@
+import { guidedTheories, traceAverage } from "../lib/guidedLearning";
 import { useState } from "react";
 import type { Module, Question, ExerciseAnswer } from "../lib/types";
 import type { LessonPlan, LessonState } from "../lib/lessonTypes";
@@ -114,7 +115,11 @@ export function LessonFeedback({
       {theory && (
         <article className="reading-content">
           <h4>Revisão da teoria</h4>
-          {module.body.split("\n\n").map((p, i) => (
+          {(
+            guidedTheories[module.id]?.steps.map(
+              (s) => s.title + "\n" + s.text + (s.code ? "\n" + s.code : ""),
+            ) || module.body.split("\n\n")
+          ).map((p, i) => (
             <p key={i} className="pre-wrap">
               {p}
             </p>
@@ -161,7 +166,11 @@ export function LessonFeedback({
           );
         })}
       <h4>Resultado da dinâmica</h4>
-      <p>Conclusão registrada por autoavaliação dos critérios.</p>
+      <p>
+        {plan.dynamic.kind === "trace" && session.dynamic_response?.interaction
+          ? `Sequência validada com as notas ${session.dynamic_response.interaction.first} e ${session.dynamic_response.interaction.second}. Média: ${traceAverage(session.dynamic_response.interaction).mean}. O relato foi registrado por autoavaliação dos critérios.`
+          : "Conclusão registrada por autoavaliação dos critérios."}
+      </p>
       {session.dynamic_response && (
         <details>
           <summary>Consultar minha entrega e os critérios</summary>

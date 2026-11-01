@@ -1,3 +1,4 @@
+import { guidedTheories } from "../lib/guidedLearning";
 import { useEffect, useState } from "react";
 import type { Module } from "../lib/types";
 import { useAuth } from "../state/AuthContext";
@@ -19,7 +20,13 @@ export function LessonLauncher({
     let active = true;
     lessonAction(auth.demo, auth.id!, module.id, "get")
       .then((r) => {
-        if (active) setStage(r.session.stage);
+        if (active)
+          setStage(
+            r.session.stage === "theory" &&
+              (r.session.draft?.theoryStep || 0) > 0
+              ? "theory_started"
+              : r.session.stage,
+          );
       })
       .catch((e) => {
         if (active)
@@ -35,6 +42,11 @@ export function LessonLauncher({
         <p>
           Uma atividade completa com três partes: teoria, prática e dinâmica.
         </p>
+        {guidedTheories[module.id] && (
+          <p>
+            <strong>Objetivo:</strong> {guidedTheories[module.id].objective}
+          </p>
+        )}
         <p>
           Estude o conceito, aplique na prática e registre sua entrega. O XP da
           atividade é concedido após as três partes.

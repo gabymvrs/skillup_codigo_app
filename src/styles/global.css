@@ -2481,3 +2481,10 @@ html[data-large-text="true"] {
 .lesson-session details { border-bottom: 1px solid #d7def1; padding-block: 12px; overflow-wrap: anywhere; }
 .lesson-session summary { cursor: pointer; padding-block: 8px; }
 @media (max-width: 600px) { .lesson-steps { gap: 6px; } .lesson-steps span { font-size: 12px; padding: 7px 10px; } .lesson-session .actions { flex-wrap: wrap; } }
+
+.guided-code { white-space: pre-wrap; overflow-wrap: anywhere; background: #eef3ff; border-left: 4px solid #223d9b; border-radius: 12px; padding: 20px; line-height: 1.7; color: #142451; }
+.guided-experiment { border: 1px solid #cbd7f1; background: #f8faff; border-radius: 16px; padding: 20px; }
+.guided-experiment ol { padding-left: 24px; }
+.guided-experiment li { margin-block: 12px; }
+.guided-experiment li .actions { margin-top: 8px; flex-wrap: wrap; }
+@media(max-width:600px) { .guided-experiment { padding: 14px; } .guided-code { padding: 14px; } }

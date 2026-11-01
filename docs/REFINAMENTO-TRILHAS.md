@@ -19,3 +19,10 @@ O feedback consolida total objetivo, acertos e erros na primeira tentativa, porc
 ## Validação da parte 1
 
 156 testes de aplicação e 58 verificações PostgreSQL/RLS. As verificações incluem primeira resposta preservada, gabarito do servidor, rascunho sem poder de forjar conclusão, privacidade de rascunhos e bloqueio de acesso anônimo. Build de produção com o aviso de tamanho do bundle já existente.
+
+
+## Parte 2: piloto de teoria guiada
+
+A auditoria e o plano de sequência por pré-requisitos estão em `AUDITORIA-PEDAGOGICA.md`. A primeira bolinha de Fundamentos recebeu nove passos contextualizados, pseudocódigo explicado, um experimento editável e uma missão de organização com validação no servidor. O passo atual e as entradas são retomados. As outras bolinhas ainda usam o formato anterior. O modelo foi validado por testes, sem alegar uma sessão de teste humano com iniciantes. A expansão para as unidades e a reestruturação de HTML continuam pendentes.
+
+Validação acumulada: 159 testes da aplicação e 59 verificações PostgreSQL/RLS; build passou com o aviso de bundle já existente.

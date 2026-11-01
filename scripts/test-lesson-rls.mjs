@@ -238,6 +238,16 @@ export async function testLesson({
       await action("finish", {
         text: "Exemplo com entradas, passos, resultados e testes: ".repeat(9),
         checks: plan.dynamic.criteria.map(() => true),
+        ...(module.id === id(300)
+          ? {
+              interaction: {
+                first: "6",
+                second: "8",
+                order: ["read", "sum", "mean", "show"],
+                ran: true,
+              },
+            }
+          : {}),
       });
       const xpAfter = await scalar(
         "select coalesce(sum(xp),0) from public.reward_events",
@@ -294,6 +304,59 @@ export async function testLesson({
     await rejects(`select public.save_lesson_draft('${id(300)}','{}')`);
     await actor(null);
     await rejects(`select public.save_lesson_draft('${module}','{}')`);
+  });
+  await test("Guided mission rejects reordered instructions, missing notes, out-of-range values and an untested sequence", async () => {
+    await admin();
+    await db.exec(
+      `insert into auth.users(id,raw_user_meta_data) values('${id(42)}','{"full_name":"Guided Mission Test"}');insert into auth.sessions(id,user_id) values('${id(42)}','${id(42)}');`,
+    );
+    await actor(42);
+    const action = async (name, payload = null) =>
+      (
+        await db.query("select public.lesson_action($1,$2,$3) result", [
+          id(300),
+          name,
+          JSON.stringify(payload),
+        ])
+      ).rows[0].result;
+    const upgrades = JSON.parse(
+      await readFile("src/data/foundation-lessons.json", "utf8"),
+    );
+    const plans = JSON.parse(
+      await readFile("src/data/lesson-plans.json", "utf8"),
+    );
+    const plan = plans.find((p) => p.module_id === id(300));
+    await action("get");
+    await action("theory");
+    for (const question_id of plan.question_ids)
+      await action("answer", {
+        question_id,
+        response: upgrades.answers[question_id],
+      });
+    await action("practice");
+    const valid = {
+      first: "0",
+      second: "0",
+      order: ["read", "sum", "mean", "show"],
+      ran: true,
+    };
+    const payload = {
+      text: "Entradas, processamento, saída e resultado esperado: ".repeat(6),
+      checks: plan.dynamic.criteria.map(() => true),
+    };
+    for (const patch of [
+      { order: ["show", "read", "sum", "mean"] },
+      { first: "" },
+      { second: "12" },
+      { ran: false },
+    ])
+      await assert.rejects(() =>
+        action("finish", { ...payload, interaction: { ...valid, ...patch } }),
+      );
+    assert.equal((await action("get")).session.stage, "dynamic");
+    const done = await action("finish", { ...payload, interaction: valid });
+    assert.equal(done.session.stage, "completed");
+    assert.equal(done.session.dynamic_response.interaction.first, "0");
   });
   await admin();
 }

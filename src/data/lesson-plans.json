@@ -896,13 +896,13 @@
       "00000000-0000-4000-8000-000000013004"
     ],
     "dynamic": {
-      "kind": "applied",
-      "title": "Planeje um cálculo verificável",
-      "prompt": "Descreva um algoritmo para calcular o valor de uma compra com dois produtos. Informe preços e quantidades, a ordem dos passos e o total esperado para um exemplo escolhido por você.",
+      "kind": "trace",
+      "title": "Monte um boletim que explica a conta",
+      "prompt": "Uma escola quer mostrar como encontrou a média de duas atividades de mesmo peso. Organize as quatro instruções, informe duas notas e teste sua sequência. Se aparecer um erro, observe qual valor ainda não existe, reorganize e teste novamente. Depois explique suas entradas, a soma, a média obtida e o que a ordem das instruções mudou.",
       "criteria": [
-        "Defini todas as entradas",
-        "Descrevi os passos na ordem de execução",
-        "Conferi o total do exemplo manualmente"
+        "Organizei e testei as quatro instruções",
+        "Registrei as duas notas, a soma e a média",
+        "Expliquei por que a saída depende dos cálculos anteriores"
       ],
       "minLength": 120
     },

@@ -230,6 +230,10 @@
       "status": "pass"
     },
     {
+      "name": "Guided mission rejects reordered instructions, missing notes, out-of-range values and an untested sequence",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

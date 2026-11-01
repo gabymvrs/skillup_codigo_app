@@ -1,3 +1,4 @@
+import { missionReady } from "../lib/guidedLearning";
 import plans from "../data/lesson-plans.json";
 import resources from "../data/learning-resources.json";
 import type {
@@ -120,6 +121,17 @@ export async function lessonAction(
       !response.checks.every((x) => x === true)
     )
       throw new Error("Complete o relato e revise todos os critérios.");
+    if (
+      plan.dynamic.kind === "trace" &&
+      !missionReady(
+        (
+          payload as {
+            interaction?: import("../lib/guidedLearning").LearningInputs;
+          }
+        ).interaction,
+      )
+    )
+      throw new Error("Organize e teste a sequência com duas notas válidas.");
     s.dynamic_response = response;
     s.stage = "completed";
     if (!d.progress.some((p) => p.user_id === user && p.module_id === module)) {
