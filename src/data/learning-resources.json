@@ -1,0 +1,37 @@
+[
+  {
+    "id": "python-control",
+    "title": "Controle de fluxo em Python",
+    "publisher": "Documentação Python",
+    "url": "https://docs.python.org/pt-br/3/tutorial/controlflow.html",
+    "kind": "artigo"
+  },
+  {
+    "id": "js-control",
+    "title": "Controle de fluxo e tratamento de erros",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Control_flow_and_error_handling",
+    "kind": "artigo"
+  },
+  {
+    "id": "html-structure",
+    "title": "Estrutura de documentos e sites",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents",
+    "kind": "artigo"
+  },
+  {
+    "id": "css-responsive",
+    "title": "Design responsivo",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design",
+    "kind": "artigo"
+  },
+  {
+    "id": "forms-labels",
+    "title": "Rótulos em formulários acessíveis",
+    "publisher": "W3C WAI · inglês",
+    "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+    "kind": "artigo"
+  }
+]

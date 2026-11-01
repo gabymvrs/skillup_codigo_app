@@ -202,6 +202,22 @@
       "status": "pass"
     },
     {
+      "name": "Lesson server refuses stage skipping and direct writes even after an external correct answer",
+      "status": "pass"
+    },
+    {
+      "name": "Lesson results preserve first-answer accuracy and defer rewards until all three parts",
+      "status": "pass"
+    },
+    {
+      "name": "Lesson sessions and saved resources enforce ownership; client code verdicts remain forbidden",
+      "status": "pass"
+    },
+    {
+      "name": "Trusted lesson code grading respects the lesson stage and does not mint early XP",
+      "status": "pass"
+    },
+    {
       "name": "Every exposed app table has RLS",
       "status": "pass"
     }

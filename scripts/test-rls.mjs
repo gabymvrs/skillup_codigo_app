@@ -1,3 +1,4 @@
+import { testLesson } from "./test-lesson-rls.mjs";
 import { testPortfolio } from "./test-portfolio-rls.mjs";
 import { testActivities } from "./test-activities-rls.mjs";
 import { testLearning } from "./test-learning-rls.mjs";
@@ -457,6 +458,7 @@ await testLearning({ db, id, test, actor, admin, rejects, scalar });
 await admin();
 await testActivities({ db, id, test, actor, admin, rejects, scalar });
 await testPortfolio({ db, id, test, actor, admin, rejects, scalar });
+await testLesson({ db, id, test, actor, admin, rejects, scalar });
 await test("Every exposed app table has RLS", async () => {
   const rows = (
     await db.query(

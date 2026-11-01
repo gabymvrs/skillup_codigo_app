@@ -39,8 +39,9 @@ Deno.serve(async (request) => {
     const raw = await request.text();
     if (raw.length > 30000)
       return reply({ error: "Código acima do limite." }, 413);
-    const { question_id, source } = JSON.parse(raw);
+    const { question_id, source, module_id } = JSON.parse(raw);
     if (
+      (module_id !== undefined && (typeof module_id !== "string" || !/^[0-9a-f-]{36}$/i.test(module_id))) ||
       typeof question_id !== "string" ||
       !/^[0-9a-f-]{36}$/i.test(question_id) ||
       typeof source !== "string" ||
@@ -118,7 +119,8 @@ Deno.serve(async (request) => {
     const claims = JSON.parse(
       atob(encoded.padEnd(Math.ceil(encoded.length / 4) * 4, "=")),
     );
-    const { data: result, error } = await admin.rpc("record_code_result", {
+    const { data: result, error } = await admin.rpc(module_id ? "record_lesson_code_result" : "record_code_result", {
+      ...(module_id ? {p_module_id: module_id} : {}),
       p_user_id: user.user.id,
       p_session_id: claims.session_id,
       p_aal: claims.aal || "aal1",

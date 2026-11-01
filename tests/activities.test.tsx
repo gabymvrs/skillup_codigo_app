@@ -134,16 +134,16 @@ describe("Activities selected by pedagogical type", () => {
       }),
     );
     await user.click(
-      screen.getByRole("button", { name: "Abrir exercício da etapa" }),
+      await screen.findByRole("button", { name: "Continuar para a prática" }),
     );
     await user.type(
       screen.getByRole("textbox", { name: "Resultado (unidades)" }),
       "31",
     );
     await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
-    await screen.findByText("Vamos revisar.");
-    await user.click(
-      screen.getByRole("button", { name: "Praticar novamente" }),
+    await screen.findByText(/Vamos revisar e tentar novamente/);
+    await user.clear(
+      screen.getByRole("textbox", { name: "Resultado (unidades)" }),
     );
     await user.type(
       screen.getByRole("textbox", { name: "Resultado (unidades)" }),
@@ -151,7 +151,15 @@ describe("Activities selected by pedagogical type", () => {
     );
     await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
     await user.click(
-      await screen.findByRole("button", { name: "Concluir etapa" }),
+      await screen.findByRole("button", { name: "Continuar para a dinâmica" }),
+    );
+    await user.type(
+      screen.getByRole("textbox", { name: "Sua entrega" }),
+      "O saldo considera as entradas e saídas registradas. Vou verificar as unidades recebidas, os pedidos separados e o estoque final para conferir se o resultado está consistente.",
+    );
+    for (const box of screen.getAllByRole("checkbox")) await user.click(box);
+    await user.click(
+      screen.getByRole("button", { name: "Finalizar atividade" }),
     );
     await waitFor(() =>
       expect(

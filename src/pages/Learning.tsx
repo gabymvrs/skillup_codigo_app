@@ -1,3 +1,5 @@
+import { LessonSession } from "../components/LessonSession";
+import { demoPlans } from "../services/lessonJourney";
 import { activityType, activityLabels } from "../services/activities";
 import { ActivityRenderer } from "../components/ActivityRenderer";
 import {
@@ -203,7 +205,7 @@ export function TrackDetail() {
                     ? "Concluído"
                     : locked
                       ? "Conclua a etapa anterior"
-                      : `${i + 1}ª etapa · ${m.xp} XP`}
+                      : `${i + 1}ª etapa · ${m.xp} XP${demoPlans.some((p) => p.module_id === m.id) ? " · Teoria + prática + dinâmica" : ""}`}
                 </small>
               </span>
             </button>
@@ -226,46 +228,58 @@ export function TrackDetail() {
           Ver conquistas e comprovantes
         </ActionLink>
       </Card>
-      {module && (
-        <Modal title={module.title} onClose={() => setOpen(null)}>
-          <article className="reading-content">
-            {module.body.split("\n\n").map((p, i) => (
-              <p className="pre-wrap" key={i}>
-                {p}
-              </p>
-            ))}
-          </article>
-          {module.question_id && (
-            <Button
-              variant="outline"
-              onClick={() => {
-                setExercise(module.question_id!);
-                setOpen(null);
-              }}
-            >
-              Abrir exercício da etapa
-            </Button>
-          )}
-          {auth.role === "estudante" && (
-            <Button
-              icon="check"
-              disabled={action.busy || done(module.id)}
-              onClick={() =>
-                action.run(async () => {
-                  const status = await repo.completeModule(module.id);
-                  action.setSuccess(
-                    status === "saved"
-                      ? "Etapa concluída. Progresso atualizado."
-                      : "Conclusão na fila. Aguardando validação do servidor.",
-                  );
-                })
-              }
-            >
-              {done(module.id) ? "Etapa concluída" : "Li e concluí esta etapa"}
-            </Button>
-          )}
-          <ActionFeedback action={action} />
-        </Modal>
+      {module &&
+      auth.role === "estudante" &&
+      demoPlans.some((p) => p.module_id === module.id) ? (
+        <LessonSession
+          key={module.id}
+          module={module}
+          onClose={() => setOpen(null)}
+        />
+      ) : (
+        module && (
+          <Modal title={module.title} onClose={() => setOpen(null)}>
+            <article className="reading-content">
+              {module.body.split("\n\n").map((p, i) => (
+                <p className="pre-wrap" key={i}>
+                  {p}
+                </p>
+              ))}
+            </article>
+            {module.question_id && (
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setExercise(module.question_id!);
+                  setOpen(null);
+                }}
+              >
+                Abrir exercício da etapa
+              </Button>
+            )}
+            {auth.role === "estudante" && (
+              <Button
+                icon="check"
+                disabled={action.busy || done(module.id)}
+                onClick={() =>
+                  action.run(async () => {
+                    const status = await repo.completeModule(module.id);
+                    action.setSuccess(
+                      status === "saved"
+                        ? "Etapa concluída. Progresso atualizado."
+                        : "Conclusão na fila. Aguardando validação do servidor.",
+                    );
+                  })
+                }
+              >
+                {done(module.id)
+                  ? "Etapa concluída"
+                  : "Li e concluí esta etapa"}
+              </Button>
+            )}
+            <ActionFeedback action={action} />
+          </Modal>
+        )
       )}
       {exercise && (
         <QuestionDialog

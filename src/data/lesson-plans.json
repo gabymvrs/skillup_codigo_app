@@ -1,0 +1,888 @@
+[
+  {
+    "module_id": "00000000-0000-4000-8000-000000003000",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008000"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “HTML semântico”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "html-structure",
+      "css-responsive"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003001",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008001"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “CSS responsivo” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "html-structure",
+      "css-responsive"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003002",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008002"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Publicação acessível”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "html-structure",
+      "css-responsive"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003010",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008003"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Entender o problema”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "forms-labels"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003011",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008004"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Estruturar a interface” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "forms-labels"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003012",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008005"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Testar com pessoas”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "forms-labels"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003020",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008006"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Rede local”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003021",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008007"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Endereçamento e DNS” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003022",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008008"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Diagnóstico de conexão”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003030",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008009"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Grandezas elétricas”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003031",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008010"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Circuito com resistor” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003032",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008011"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Simulação de LED”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003040",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008012"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Fluxo de materiais”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003041",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008013"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Controle de estoque” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003042",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008014"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Preparação de pedidos”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003050",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008015"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Leitura ativa”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003051",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008016"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Ortografia e revisão” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003052",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008017"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Comunicação de projetos”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003060",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008018"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Células e organelas”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003061",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008019"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Grupos de plantas” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003062",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008020"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Observação científica”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003070",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008021"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Grandezas e unidades”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003071",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008022"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Movimento” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003072",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008023"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Medição e análise”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003080",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008024"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Reconhecer habilidades”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003081",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008025"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Documentar projetos” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000003082",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000008026"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Preparar uma candidatura”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004000",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012000"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Decisões em Python”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "python-control"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004001",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012001"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Completar uma repetição” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "python-control"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004002",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012002"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Seu programa de soma”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "python-control"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004003",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012003"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Organizar um programa”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "js-control"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004004",
+    "level": 1,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012004"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Identificar um erro” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado"
+      ],
+      "minLength": 100
+    },
+    "resource_ids": [
+      "js-control"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004005",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012005"
+    ],
+    "dynamic": {
+      "kind": "creation",
+      "title": "Crie e explique",
+      "prompt": "Prepare uma pequena entrega sobre “Somar com JavaScript”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "js-control"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004006",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012006"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Construir uma página semântica”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "html-structure",
+      "css-responsive"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004007",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012007"
+    ],
+    "dynamic": {
+      "kind": "visual",
+      "title": "Analise e melhore",
+      "prompt": "Observe a imagem da prática de “Comparar dois formulários”. Descreva uma melhoria, quem ela beneficia e como você verificaria seu efeito.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": [
+      "forms-labels"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004008",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012008"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Planejar uma avaliação” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": [
+      "forms-labels"
+    ]
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004009",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012009"
+    ],
+    "dynamic": {
+      "kind": "visual",
+      "title": "Analise e melhore",
+      "prompt": "Observe a imagem da prática de “Interpretar uma topologia”. Descreva uma melhoria, quem ela beneficia e como você verificaria seu efeito.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004010",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012010"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Diagnóstico por evidências” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004011",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012011"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Calcular estoque disponível”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004012",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012012"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Organizar a expedição” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004013",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012013"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Completar uma frase”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004014",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012014"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Revisar uma mensagem” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004015",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012015"
+    ],
+    "dynamic": {
+      "kind": "visual",
+      "title": "Analise e melhore",
+      "prompt": "Observe a imagem da prática de “Identificar estruturas celulares”. Descreva uma melhoria, quem ela beneficia e como você verificaria seu efeito.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004016",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012016"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Classificar grupos de plantas” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004017",
+    "level": 2,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012017"
+    ],
+    "dynamic": {
+      "kind": "applied",
+      "title": "Experimente outro cenário",
+      "prompt": "Crie um exemplo diferente para aplicar “Calcular velocidade média”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 140
+    },
+    "resource_ids": []
+  },
+  {
+    "module_id": "00000000-0000-4000-8000-000000004018",
+    "level": 3,
+    "question_ids": [
+      "00000000-0000-4000-8000-000000012018"
+    ],
+    "dynamic": {
+      "kind": "case",
+      "title": "Investigue um caso",
+      "prompt": "Uma pessoa da equipe aplicou “Interpretar uma medição” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+      "criteria": [
+        "Expliquei a decisão usando o conceito da teoria",
+        "Incluí um exemplo concreto e o resultado esperado",
+        "Analisei um caso em que a solução pode falhar e como tratá-lo"
+      ],
+      "minLength": 180
+    },
+    "resource_ids": []
+  }
+]

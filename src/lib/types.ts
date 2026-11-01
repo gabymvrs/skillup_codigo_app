@@ -136,6 +136,7 @@ export interface Question {
   xp: number;
 }
 export interface Attempt {
+  lesson_module_id?: string | null;
   response?: ExerciseAnswer;
   id: string;
   user_id: string;

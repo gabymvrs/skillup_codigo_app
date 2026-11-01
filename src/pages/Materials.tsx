@@ -1,3 +1,4 @@
+import { LearningResources } from "../components/LearningResources";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
@@ -76,6 +77,7 @@ export function Materials() {
     : recent;
   return (
     <div className="stack">
+      <LearningResources savedOnly />
       {subjectId && (
         <Link className="back-link" to="/app/aprenda/material">
           <Icon name="arrow" />

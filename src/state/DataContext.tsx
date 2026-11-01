@@ -1,3 +1,4 @@
+import { demoPlans } from "../services/lessonJourney";
 import { activityType } from "../services/activities";
 import {
   createContext,
@@ -161,6 +162,13 @@ export function DataProvider({ children }: { children: ReactNode }) {
       const d = readDemo(),
         module = d.modules.find((x) => x.id === moduleId);
       if (!module) throw new Error("Módulo não encontrado.");
+      if (
+        demoPlans.some((p) => p.module_id === moduleId) &&
+        !d.progress.some(
+          (p) => p.user_id === auth.id && p.module_id === moduleId,
+        )
+      )
+        throw new Error("Conclua teoria, prática e dinâmica nesta atividade.");
       if (
         module.prerequisite_id &&
         !d.progress.some(

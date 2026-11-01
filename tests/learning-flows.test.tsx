@@ -250,18 +250,23 @@ describe("Interactive exercise formats", () => {
     await screen.findByText(/Trilha iniciada/);
     await user.click(screen.getByRole("button", { name: /HTML semântico/ }));
     await user.click(
-      screen.getByRole("button", { name: "Abrir exercício da etapa" }),
+      await screen.findByRole("button", { name: "Continuar para a prática" }),
     );
     await user.click(screen.getByRole("radio", { name: "nav" }));
     await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
-    await screen.findByText("Resposta correta!");
-    await user.click(screen.getByRole("button", { name: "Fechar" }));
-    await user.click(screen.getByRole("button", { name: /HTML semântico/ }));
     await user.click(
-      screen.getByRole("button", { name: "Li e concluí esta etapa" }),
+      await screen.findByRole("button", { name: "Continuar para a dinâmica" }),
     );
-    await screen.findByText("Etapa concluída. Progresso atualizado.");
-    await user.click(screen.getByRole("button", { name: "Fechar" }));
+    await user.type(
+      screen.getByRole("textbox", { name: "Sua entrega" }),
+      "Vou usar nav para agrupar os links principais e main para o conteúdo central. Vou verificar a estrutura e navegar por teclado para testar se os links levam às seções esperadas.",
+    );
+    for (const box of screen.getAllByRole("checkbox")) await user.click(box);
+    await user.click(
+      screen.getByRole("button", { name: "Finalizar atividade" }),
+    );
+    await screen.findByText("Atividade concluída!");
+    await user.click(screen.getByRole("button", { name: "Voltar à trilha" }));
     await user.click(screen.getByRole("link", { name: "Todas as trilhas" }));
     const heading = await screen.findByRole("heading", {
         name: "UI/UX Design",

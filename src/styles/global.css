@@ -2470,3 +2470,14 @@ html[data-large-text="true"] {
     grid-template-columns: 1fr;
   }
 }
+
+.lesson-session .modal-fullscreen-body > .stack { max-width: 880px; margin-inline: auto; padding-bottom: 32px; }
+.lesson-steps { display: flex; flex-wrap: wrap; gap: 8px; }
+.lesson-steps span { padding: 8px 14px; background: var(--surface, #f4f6fc); border: 1px solid #d7def1; border-radius: 999px; }
+.lesson-steps [aria-current="step"] { background: #e5edff; color: #133d95; font-weight: 700; border-color: #7195e5; }
+.lesson-session fieldset { display: grid; gap: 14px; border: 1px solid #d7def1; padding: 20px; border-radius: 16px; }
+.lesson-session .lesson-check { display: flex; align-items: flex-start; gap: 12px; }
+.lesson-check input { width: 20px; height: 20px; flex: 0 0 20px; }
+.lesson-session details { border-bottom: 1px solid #d7def1; padding-block: 12px; overflow-wrap: anywhere; }
+.lesson-session summary { cursor: pointer; padding-block: 8px; }
+@media (max-width: 600px) { .lesson-steps { gap: 6px; } .lesson-steps span { font-size: 12px; padding: 7px 10px; } .lesson-session .actions { flex-wrap: wrap; } }
