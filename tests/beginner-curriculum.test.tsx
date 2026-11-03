@@ -182,3 +182,26 @@ it("isolates the HTML teaching preview without allowing scripts", () => {
     expect.stringContaining("<h1>Meu curso</h1>"),
   );
 });
+
+it("introduces JavaScript input and conversion before debugging and the final code challenge", () => {
+  const js = modules
+    .filter((m) => m.track_id === id(2101))
+    .sort((a, b) => a.position - b.position);
+  expect(js.map((m) => m.id)).toEqual(
+    [4300, 4301, 4003, 4004, 4305, 4302, 4303, 4304, 4005].map(id),
+  );
+  for (const [index, module] of js.entries()) {
+    expect(module.prerequisite_id).toBe(index ? js[index - 1].id : null);
+    const plan = demoPlans.find((p) => p.module_id === module.id)!;
+    expect(plan.question_ids).toHaveLength(5);
+    for (const qid of plan.question_ids) {
+      const question = questions.find((q) => q.id === qid)!;
+      if (question.activity_type !== "code_practice")
+        expect(evaluateDemo(question, exerciseAnswers[qid] as never)).toBe(true);
+    }
+    expect(curriculum.guides[module.id as keyof typeof curriculum.guides].steps.length).toBeGreaterThanOrEqual(5);
+  }
+  const final = demoPlans.find((p) => p.module_id === id(4005))!;
+  expect(final.question_ids.at(-1)).toBe(id(12005));
+  expect(curriculum.guides[id(4003) as keyof typeof curriculum.guides].steps.map((s) => s.text).join(" ")).toContain("não é uma função padrão");
+});

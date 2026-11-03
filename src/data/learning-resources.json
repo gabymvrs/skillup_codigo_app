@@ -133,5 +133,32 @@
     "kind": "artigo",
     "language": "Português brasileiro",
     "level": "Consulta após a aula"
+  },
+  {
+    "id": "js-intro",
+    "title": "Introdução ao JavaScript",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Introduction",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "js-number",
+    "title": "Números e conversão",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "js-functions",
+    "title": "Funções em JavaScript",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
   }
 ]

@@ -344,6 +344,90 @@
       "question_id": "00000000-0000-4000-8000-000000017042",
       "position": 9,
       "prerequisite_id": "00000000-0000-4000-8000-000000003002"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004300",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Mostrar uma saída",
+      "body": "Saída é a informação que o programa apresenta. Neste laboratório, console.log(valor) escreve um valor no painel de saída. Os parênteses contêm o valor a mostrar; o ponto liga console à função log.\n\nconsole.log(\"Olá\") mostra Olá. As aspas indicam um texto (string) e não fazem parte da saída. O ponto e vírgula encerra a instrução.\n\nconsole.log(3) mostra 3 como número. Já console.log(\"3\") mostra um texto que parece o mesmo número. O tipo muda o que pode ser calculado.\n\nconsole.log(3 + 4) mostra 7: o sinal + soma os números antes da saída. console.log(\"3\" + \"4\") mostra 34, pois une os textos.\n\nLeia a instrução, preveja a saída e compare com o painel. Para uma soma, use números sem aspas; para uma mensagem, use texto entre aspas.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000018000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004301",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Guardar valores em variáveis",
+      "body": "Uma variável associa um nome a um valor. Em const idade = 16;, idade é o nome e 16 é o número guardado.\n\nO sinal = atribui o valor à esquerda; ele não pergunta se os lados são iguais. const cria uma referência que não será reatribuída.\n\nconst nota = 8; console.log(nota); mostra 8. Sem aspas, nota se refere ao valor guardado. Com aspas, \"nota\" é apenas texto.\n\nconst a = 3; const b = 4; console.log(a + b); mostra 7. O + recebe os valores que os nomes representam.\n\nAo ler um programa, anote cada nome e seu valor. Antes de prever a saída, substitua os nomes pelos valores guardados.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004300",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000018005"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004003",
+      "title": "Organizar um programa",
+      "body": "Para calcular uma soma, o programa precisa de dois valores de entrada. Primeiro é preciso obtê-los; só depois é possível calcular.\n\nNeste laboratório, input() lê uma linha digitada e devolve texto. Essa função é oferecida pelo laboratório; não é uma função padrão das páginas do navegador.\n\nNumber(texto) tenta transformar um texto numérico em número. Number(\"3\") vale 3; texto \"3\" + \"4\" junta caracteres e produz \"34\".\n\nDepois de ler a e b como números, a + b calcula a soma. console.log(a + b) mostra o resultado no painel.\n\nLeia os dois valores, converta cada um, calcule e mostre. Confira se nenhum cálculo usa um valor que ainda não foi definido.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004301",
+      "question_id": "00000000-0000-4000-8000-000000018010"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004004",
+      "title": "Identificar um erro",
+      "body": "Se as entradas são os textos \"3\" e \"4\", a expressão a + b produz \"34\". O programa executou, mas não calculou a soma pedida.\n\nCom textos, + concatena: junta os caracteres na ordem dada. Esse comportamento é útil para formar mensagens, mas não resolve uma soma numérica.\n\nVerifique os tipos das entradas e o ponto em que a soma ocorre. input() deste laboratório devolve texto, mesmo quando a pessoa digita algarismos.\n\nNumber(\"3\") + Number(\"4\") produz 7. Converta cada entrada antes de somar; converter \"34\" depois da concatenação preservaria o resultado errado.\n\nConfira também -2 e 5 (resultado 3) e 0 e 0 (resultado 0). Compare as saídas esperadas com as observadas antes de encerrar a correção.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004003",
+      "question_id": "00000000-0000-4000-8000-000000018014"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004305",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Comparar valores",
+      "body": "Uma comparação responde verdadeiro ou falso. 7 >= 7 pergunta se sete é maior ou igual a sete e resulta true.\n\n> é maior que, < é menor que, >= é maior ou igual, <= é menor ou igual. Os dois caracteres de >= formam um operador.\n\n=== compara valores e tipos: 7 === 7 resulta true; 7 === \"7\" resulta false porque um é número e o outro texto.\n\nPara uma nota mínima de 7, nota >= 7 inclui exatamente 7. nota > 7 excluiria esse valor; teste 6, 7 e 8.\n\nUma condição pode ser guardada: const passou = nota >= 7;. console.log(passou) mostra true ou false.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004004",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000018018"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004302",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Escolher com if",
+      "body": "if verifica uma condição verdadeira ou falsa. Em if (nota >= 7) { console.log(\"Aprovado\"); }, o bloco entre chaves só executa se a nota atingir 7.\n\nOs parênteses de if envolvem a condição. As chaves delimitam as instruções sujeitas à decisão.\n\nelse { console.log(\"Revisar\"); } trata o caso em que a condição de if é falsa. Apenas um dos caminhos é executado.\n\nCom nota 7, >= 7 é true e sai Aprovado. Com nota 6, a condição é false e sai Revisar.\n\nTeste valores abaixo, iguais e acima do limite. Localize a condição, decida seu resultado e só então leia o bloco executado.",
+      "position": 5,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004305",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000018023"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004303",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Repetir com for",
+      "body": "Um laço executa instruções mais de uma vez. for pode controlar a repetição com um contador, isto é, um número que muda a cada volta.\n\nEm for (let i = 0; i < 3; i++) { console.log(i); }, let i = 0 cria o contador inicial. Os pontos e vírgulas separam as três partes do controle.\n\ni < 3 permite continuar enquanto i for menor que 3. Com i igual a 3, a condição fica falsa e o laço termina.\n\ni++ aumenta i em 1 após cada volta. As saídas são 0, 1 e 2, nessa ordem; o limite 3 não aparece.\n\nAnote i, resultado da condição e saída a cada volta. Uma condição que nunca se torna falsa pode fazer o programa não terminar.",
+      "position": 6,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004302",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000018028"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004304",
+      "track_id": "00000000-0000-4000-8000-000000002101",
+      "title": "Criar uma função",
+      "body": "Uma função reúne instruções sob um nome. function somar(a, b) { return a + b; } define uma função; a e b são parâmetros, nomes para os valores recebidos.\n\nAs chaves delimitam o corpo. return devolve o resultado à chamada e encerra a função naquele ponto.\n\nsomar(2, 5) envia os argumentos 2 e 5 para a e b. O resultado devolvido é 7. Definir a função não a executa automaticamente.\n\nconsole.log(somar(2, 5)) mostra 7 no painel. Sem console.log, a função ainda retorna 7, mas o programa não o mostra.\n\nTeste também somar(-2, 5) e somar(0, 0). Acompanhe os valores recebidos, a expressão após return e a saída.",
+      "position": 7,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004303",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000018033"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004005",
+      "title": "Somar com JavaScript",
+      "body": "Leia dois números, um por linha, e mostre somente a soma. Neste laboratório, input() fornece cada linha como texto; ele não é uma API padrão de páginas do navegador.\n\nconst a = Number(input()); guarda a primeira entrada como número. const b = Number(input()); faz o mesmo com a segunda. Os parênteses internos chamam input antes de Number converter.\n\nconsole.log(a + b); soma os números e mostra o resultado. Evite outras mensagens no painel, pois a avaliação compara a saída pedida.\n\nDigite 3 e 4 em linhas separadas: a saída deve ser 7. Tente -2 e 5: a saída deve ser 3. Tente 0 e 0: a saída deve ser 0.\n\nSe aparecer 34, você juntou textos sem converter cada entrada. Se houver saída extra, confira todos os console.log. Depois de conferir a resposta, a área de entrada e execução permite repetir seus testes.",
+      "position": 8,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004304",
+      "question_id": "00000000-0000-4000-8000-000000018038"
     }
   ],
   "plans": [
@@ -433,7 +517,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["dart-operators"]
+      "resource_ids": [
+        "dart-operators"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000000333",
@@ -566,7 +652,9 @@
         ],
         "minLength": 140
       },
-      "resource_ids": ["dart-variables"]
+      "resource_ids": [
+        "dart-variables"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000000304",
@@ -589,7 +677,9 @@
         ],
         "minLength": 220
       },
-      "resource_ids": ["dart-conditions"]
+      "resource_ids": [
+        "dart-conditions"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000000305",
@@ -612,7 +702,9 @@
         ],
         "minLength": 240
       },
-      "resource_ids": ["dart-loops"]
+      "resource_ids": [
+        "dart-loops"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000000306",
@@ -635,7 +727,9 @@
         ],
         "minLength": 260
       },
-      "resource_ids": ["dart-collections"]
+      "resource_ids": [
+        "dart-collections"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000000338",
@@ -725,7 +819,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-intro"]
+      "resource_ids": [
+        "python-intro"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004101",
@@ -747,7 +843,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-intro"]
+      "resource_ids": [
+        "python-intro"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004102",
@@ -769,7 +867,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-input"]
+      "resource_ids": [
+        "python-input"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004103",
@@ -791,7 +891,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004000",
@@ -813,7 +915,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004001",
@@ -835,7 +939,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004104",
@@ -857,7 +963,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-intro"]
+      "resource_ids": [
+        "python-intro"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004105",
@@ -879,7 +987,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004002",
@@ -901,7 +1011,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-input"]
+      "resource_ids": [
+        "python-input"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004106",
@@ -917,10 +1029,15 @@
         "kind": "applied",
         "title": "Explique um boletim",
         "prompt": "Preveja cada comparação e o resultado com and para (7,75), (8,74) e (6,80). Explique por que a nota alta não resolve uma presença insuficiente.",
-        "criteria": ["Comparei cada requisito", "Expliquei o resultado do and"],
+        "criteria": [
+          "Comparei cada requisito",
+          "Expliquei o resultado do and"
+        ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004107",
@@ -942,7 +1059,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004108",
@@ -964,7 +1083,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["python-control"]
+      "resource_ids": [
+        "python-control"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004200",
@@ -986,7 +1107,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["html-basics"]
+      "resource_ids": [
+        "html-basics"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004201",
@@ -1008,7 +1131,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["html-basics"]
+      "resource_ids": [
+        "html-basics"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004202",
@@ -1030,7 +1155,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["html-structure"]
+      "resource_ids": [
+        "html-structure"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004203",
@@ -1052,7 +1179,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["html-basics"]
+      "resource_ids": [
+        "html-basics"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000003000",
@@ -1074,7 +1203,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["html-structure"]
+      "resource_ids": [
+        "html-structure"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004204",
@@ -1096,7 +1227,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["css-basics"]
+      "resource_ids": [
+        "css-basics"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004205",
@@ -1118,7 +1251,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["css-layout"]
+      "resource_ids": [
+        "css-layout"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000003001",
@@ -1140,7 +1275,9 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["css-responsive"]
+      "resource_ids": [
+        "css-responsive"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000003002",
@@ -1163,7 +1300,9 @@
         ],
         "minLength": 140
       },
-      "resource_ids": ["forms-labels"]
+      "resource_ids": [
+        "forms-labels"
+      ]
     },
     {
       "module_id": "00000000-0000-4000-8000-000000004006",
@@ -1185,7 +1324,225 @@
         ],
         "minLength": 100
       },
-      "resource_ids": ["html-structure"]
+      "resource_ids": [
+        "html-structure"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004300",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018000",
+        "00000000-0000-4000-8000-000000018001",
+        "00000000-0000-4000-8000-000000018002",
+        "00000000-0000-4000-8000-000000018003",
+        "00000000-0000-4000-8000-000000018004"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Mostre uma mensagem e o resultado de uma conta pequena; anote as duas saídas e explique a diferença entre texto e número.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-intro"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004301",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018005",
+        "00000000-0000-4000-8000-000000018006",
+        "00000000-0000-4000-8000-000000018007",
+        "00000000-0000-4000-8000-000000018008",
+        "00000000-0000-4000-8000-000000018009"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Guarde dois números em const, mostre a soma e registre nome, valor e saída de cada teste.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-intro"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004003",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018010",
+        "00000000-0000-4000-8000-000000018011",
+        "00000000-0000-4000-8000-000000018012",
+        "00000000-0000-4000-8000-000000018013",
+        "00000000-0000-4000-8000-000000012003"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Escreva a sequência para somar duas entradas; teste com 3 e 4 e explique por que a conversão vem antes da soma.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-number"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004004",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018014",
+        "00000000-0000-4000-8000-000000018015",
+        "00000000-0000-4000-8000-000000018016",
+        "00000000-0000-4000-8000-000000018017",
+        "00000000-0000-4000-8000-000000012004"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Reproduza o resultado 34 com textos, corrija para 7 com Number e registre a causa e mais um caso de teste.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-number"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004305",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018018",
+        "00000000-0000-4000-8000-000000018019",
+        "00000000-0000-4000-8000-000000018020",
+        "00000000-0000-4000-8000-000000018021",
+        "00000000-0000-4000-8000-000000018022"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Teste uma regra de nota mínima 7 com 6, 7 e 8; registre os resultados e explique a fronteira.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-number"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004302",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018023",
+        "00000000-0000-4000-8000-000000018024",
+        "00000000-0000-4000-8000-000000018025",
+        "00000000-0000-4000-8000-000000018026",
+        "00000000-0000-4000-8000-000000018027"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Desenhe os dois caminhos de uma regra de nota mínima 7 e teste notas 6 e 7; informe a saída de cada caminho.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-functions"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004303",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018028",
+        "00000000-0000-4000-8000-000000018029",
+        "00000000-0000-4000-8000-000000018030",
+        "00000000-0000-4000-8000-000000018031",
+        "00000000-0000-4000-8000-000000018032"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Rastreie um for com i de 0 até antes de 4; registre contador, condição e saída em cada volta.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-functions"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004304",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018033",
+        "00000000-0000-4000-8000-000000018034",
+        "00000000-0000-4000-8000-000000018035",
+        "00000000-0000-4000-8000-000000018036",
+        "00000000-0000-4000-8000-000000018037"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Defina somar(a,b), chame com dois pares diferentes e anote argumento, retorno e saída mostrada.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-functions"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004005",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000018038",
+        "00000000-0000-4000-8000-000000018039",
+        "00000000-0000-4000-8000-000000018040",
+        "00000000-0000-4000-8000-000000018041",
+        "00000000-0000-4000-8000-000000012005"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste e explique",
+        "prompt": "Execute ao menos dois pares de entradas, compare as saídas esperadas e explique a conversão e o formato da saída.",
+        "criteria": [
+          "Comparei entradas com saídas esperadas",
+          "Expliquei o conceito aplicado e a saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "js-functions"
+      ]
     }
   ],
   "questions": [
@@ -1193,7 +1550,11 @@
       "id": "00000000-0000-4000-8000-000000015000",
       "title": "Reconhecer condição",
       "prompt": "Qual frase é uma condição?",
-      "options": ["Abra a janela", "A janela está aberta", "Feche a porta"],
+      "options": [
+        "Abra a janela",
+        "A janela está aberta",
+        "Feche a porta"
+      ],
       "explanation": "A janela está aberta descreve uma situação verificável. As outras frases pedem ações.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1205,7 +1566,11 @@
       "id": "00000000-0000-4000-8000-000000015001",
       "title": "Verdadeiro",
       "prompt": "A luz está acesa. A condição “a luz está acesa” é:",
-      "options": ["Verdadeira", "Falsa", "Uma ordem"],
+      "options": [
+        "Verdadeira",
+        "Falsa",
+        "Uma ordem"
+      ],
       "explanation": "A afirmação corresponde à situação.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1249,7 +1614,11 @@
       "id": "00000000-0000-4000-8000-000000015004",
       "title": "Palavra em Dart",
       "prompt": "Qual palavra significa verdadeiro em Dart?",
-      "options": ["true", "false", "String"],
+      "options": [
+        "true",
+        "false",
+        "String"
+      ],
       "explanation": "true é verdadeiro; false é falso. String é o tipo texto.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1261,7 +1630,11 @@
       "id": "00000000-0000-4000-8000-000000015005",
       "title": "Igualdade",
       "prompt": "Qual operador compara igualdade em Dart?",
-      "options": ["=", "==", ">"],
+      "options": [
+        "=",
+        "==",
+        ">"
+      ],
       "explanation": "== compara; = atribui.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1273,7 +1646,11 @@
       "id": "00000000-0000-4000-8000-000000015006",
       "title": "Diferença",
       "prompt": "Com quantidade 4, quantidade != 3 é:",
-      "options": ["Verdadeira", "Falsa", "Uma atribuição"],
+      "options": [
+        "Verdadeira",
+        "Falsa",
+        "Uma atribuição"
+      ],
       "explanation": "4 é diferente de 3.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1285,7 +1662,11 @@
       "id": "00000000-0000-4000-8000-000000015007",
       "title": "Maior",
       "prompt": "7 > 7 é:",
-      "options": ["Verdadeira", "Falsa", "Impossível comparar"],
+      "options": [
+        "Verdadeira",
+        "Falsa",
+        "Impossível comparar"
+      ],
       "explanation": "Os valores são iguais, não maiores.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1313,7 +1694,11 @@
       "id": "00000000-0000-4000-8000-000000015009",
       "title": "Estoque",
       "prompt": "Estoque 2 e pedido 3. estoque < pedido é:",
-      "options": ["Falsa", "Verdadeira", "Indefinida"],
+      "options": [
+        "Falsa",
+        "Verdadeira",
+        "Indefinida"
+      ],
       "explanation": "2 é menor que 3.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1325,7 +1710,11 @@
       "id": "00000000-0000-4000-8000-000000015010",
       "title": "Significado",
       "prompt": "Como ler >=?",
-      "options": ["Maior ou igual a", "Menor que", "Somar e guardar"],
+      "options": [
+        "Maior ou igual a",
+        "Menor que",
+        "Somar e guardar"
+      ],
       "explanation": "Os dois caracteres formam maior ou igual.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1337,7 +1726,11 @@
       "id": "00000000-0000-4000-8000-000000015011",
       "title": "No limite",
       "prompt": "Com nota 7, qual condição é verdadeira?",
-      "options": ["nota > 7", "nota >= 7", "nota < 7"],
+      "options": [
+        "nota > 7",
+        "nota >= 7",
+        "nota < 7"
+      ],
       "explanation": ">= inclui a nota 7.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1349,7 +1742,11 @@
       "id": "00000000-0000-4000-8000-000000015012",
       "title": "Presença",
       "prompt": "frequencia 70 atende a frequencia >= 75?",
-      "options": ["Sim", "Não", "Só com nota alta"],
+      "options": [
+        "Sim",
+        "Não",
+        "Só com nota alta"
+      ],
       "explanation": "70 é menor que 75.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1361,7 +1758,11 @@
       "id": "00000000-0000-4000-8000-000000015013",
       "title": "Corrigir limite",
       "prompt": "Qual condição inclui idade até 17?",
-      "options": ["idade <= 17", "idade > 17", "idade == 18"],
+      "options": [
+        "idade <= 17",
+        "idade > 17",
+        "idade == 18"
+      ],
       "explanation": "<= inclui valores menores e o limite.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1373,7 +1774,11 @@
       "id": "00000000-0000-4000-8000-000000015014",
       "title": "Notas aceitas",
       "prompt": "Quais notas atendem a nota >= 7?",
-      "options": ["Somente 7", "6, 7 e 8", "7, 8 e 9"],
+      "options": [
+        "Somente 7",
+        "6, 7 e 8",
+        "7, 8 e 9"
+      ],
       "explanation": "Todos os valores iguais ou maiores que 7 atendem.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1433,7 +1838,11 @@
       "id": "00000000-0000-4000-8000-000000015018",
       "title": "Encontrar erro",
       "prompt": "Nota 8 e frequência 74: qual requisito falhou?",
-      "options": ["Nota", "Frequência", "Nenhum"],
+      "options": [
+        "Nota",
+        "Frequência",
+        "Nenhum"
+      ],
       "explanation": "8 >= 7 é verdadeira; 74 >= 75 é falsa.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1477,7 +1886,11 @@
       "id": "00000000-0000-4000-8000-000000015021",
       "title": "Uma verdadeira",
       "prompt": "true || false vale:",
-      "options": ["true", "false", "Erro"],
+      "options": [
+        "true",
+        "false",
+        "Erro"
+      ],
       "explanation": "Uma verdadeira satisfaz OU.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1489,7 +1902,11 @@
       "id": "00000000-0000-4000-8000-000000015022",
       "title": "Ambas verdadeiras",
       "prompt": "true || true vale:",
-      "options": ["false", "true", "Exige exatamente uma"],
+      "options": [
+        "false",
+        "true",
+        "Exige exatamente uma"
+      ],
       "explanation": "OU inclusivo aceita ambas.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1501,7 +1918,11 @@
       "id": "00000000-0000-4000-8000-000000015023",
       "title": "Nenhuma",
       "prompt": "false || false vale:",
-      "options": ["true", "false", "Zero numérico"],
+      "options": [
+        "true",
+        "false",
+        "Zero numérico"
+      ],
       "explanation": "Nenhuma alternativa foi cumprida.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1513,7 +1934,11 @@
       "id": "00000000-0000-4000-8000-000000015024",
       "title": "Símbolo",
       "prompt": "Qual é o OU lógico em Dart?",
-      "options": ["||", "&&", "=="],
+      "options": [
+        "||",
+        "&&",
+        "=="
+      ],
       "explanation": "|| é OU; && é E; == compara igualdade.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1525,7 +1950,11 @@
       "id": "00000000-0000-4000-8000-000000015025",
       "title": "Reconhecer",
       "prompt": "Qual operação inverte verdadeiro e falso?",
-      "options": ["NÃO", "E", "Maior que"],
+      "options": [
+        "NÃO",
+        "E",
+        "Maior que"
+      ],
       "explanation": "A negação troca o resultado lógico.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1537,7 +1966,11 @@
       "id": "00000000-0000-4000-8000-000000015026",
       "title": "Negar verdadeiro",
       "prompt": "!true vale:",
-      "options": ["true", "false", "7"],
+      "options": [
+        "true",
+        "false",
+        "7"
+      ],
       "explanation": "NÃO verdadeiro é falso.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1549,7 +1982,11 @@
       "id": "00000000-0000-4000-8000-000000015027",
       "title": "Negar falso",
       "prompt": "!false vale:",
-      "options": ["true", "false", "Texto vazio"],
+      "options": [
+        "true",
+        "false",
+        "Texto vazio"
+      ],
       "explanation": "NÃO falso é verdadeiro.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1577,7 +2014,11 @@
       "id": "00000000-0000-4000-8000-000000015029",
       "title": "Aplicar",
       "prompt": "temPendencia é false. !temPendencia vale:",
-      "options": ["false", "true", "Indefinido"],
+      "options": [
+        "false",
+        "true",
+        "Indefinido"
+      ],
       "explanation": "A negação indica que não há pendência.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1605,7 +2046,11 @@
       "id": "00000000-0000-4000-8000-000000015031",
       "title": "Prioridade",
       "prompt": "Em Dart, qual tem maior prioridade entre estes?",
-      "options": ["||", "&&", "!"],
+      "options": [
+        "||",
+        "&&",
+        "!"
+      ],
       "explanation": "! tem prioridade sobre && e ||.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1617,7 +2062,11 @@
       "id": "00000000-0000-4000-8000-000000015032",
       "title": "Aplicar",
       "prompt": "false || (true && true) vale:",
-      "options": ["true", "false", "Erro"],
+      "options": [
+        "true",
+        "false",
+        "Erro"
+      ],
       "explanation": "O grupo dá true, satisfazendo OU.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1629,7 +2078,11 @@
       "id": "00000000-0000-4000-8000-000000015033",
       "title": "Outro grupo",
       "prompt": "(docente || estudante) && autorizacao exige autorização para docentes?",
-      "options": ["Sim", "Não", "Só se estudante for false"],
+      "options": [
+        "Sim",
+        "Não",
+        "Só se estudante for false"
+      ],
       "explanation": "O resultado do grupo ainda precisa cumprir autorização.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1641,7 +2094,11 @@
       "id": "00000000-0000-4000-8000-000000015034",
       "title": "Docente",
       "prompt": "docente true e autorizacao false. docente || (estudante && autorizacao) vale:",
-      "options": ["false", "true", "Indefinido"],
+      "options": [
+        "false",
+        "true",
+        "Indefinido"
+      ],
       "explanation": "A alternativa docente já satisfaz OU.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1669,7 +2126,11 @@
       "id": "00000000-0000-4000-8000-000000015036",
       "title": "Contar",
       "prompt": "Duas condições bool têm quantas combinações?",
-      "options": ["2", "3", "4"],
+      "options": [
+        "2",
+        "3",
+        "4"
+      ],
       "explanation": "Cada uma tem dois valores: 2 vezes 2 = 4.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1681,7 +2142,11 @@
       "id": "00000000-0000-4000-8000-000000015037",
       "title": "E",
       "prompt": "true && false vale:",
-      "options": ["true", "false", "Depende dos nomes"],
+      "options": [
+        "true",
+        "false",
+        "Depende dos nomes"
+      ],
       "explanation": "E exige ambas verdadeiras.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1725,7 +2190,11 @@
       "id": "00000000-0000-4000-8000-000000015040",
       "title": "Negar grupo",
       "prompt": "Qual nega A && B inteiro?",
-      "options": ["!A && B", "!(A && B)", "A && !B"],
+      "options": [
+        "!A && B",
+        "!(A && B)",
+        "A && !B"
+      ],
       "explanation": "Os parênteses põem a regra inteira sob a negação.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1737,7 +2206,11 @@
       "id": "00000000-0000-4000-8000-000000015041",
       "title": "Equivalência",
       "prompt": "!(A && B) equivale a:",
-      "options": ["!A || !B", "!A && !B", "A || B"],
+      "options": [
+        "!A || !B",
+        "!A && !B",
+        "A || B"
+      ],
       "explanation": "Negar E troca para OU e nega cada condição.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1749,7 +2222,11 @@
       "id": "00000000-0000-4000-8000-000000015042",
       "title": "Uma falha",
       "prompt": "cadastrado true e ativo false. A recusa vale:",
-      "options": ["true", "false", "Só se os dois forem false"],
+      "options": [
+        "true",
+        "false",
+        "Só se os dois forem false"
+      ],
       "explanation": "O E dá false e a negação dá true.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1777,7 +2254,11 @@
       "id": "00000000-0000-4000-8000-000000015044",
       "title": "Negar OU",
       "prompt": "!(A || B) equivale a:",
-      "options": ["!A || !B", "A && B", "!A && !B"],
+      "options": [
+        "!A || !B",
+        "A && B",
+        "!A && !B"
+      ],
       "explanation": "Negar OU exige a ausência das duas alternativas.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1805,7 +2286,11 @@
       "id": "00000000-0000-4000-8000-000000015046",
       "title": "Parâmetro",
       "prompt": "a e b na declaração são:",
-      "options": ["Mensagens", "Parâmetros", "Resultados prontos"],
+      "options": [
+        "Mensagens",
+        "Parâmetros",
+        "Resultados prontos"
+      ],
       "explanation": "Eles nomeiam as entradas dentro da função.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1817,7 +2302,11 @@
       "id": "00000000-0000-4000-8000-000000015047",
       "title": "Aplicar",
       "prompt": "media(6,8) devolve:",
-      "options": ["14", "2", "7"],
+      "options": [
+        "14",
+        "2",
+        "7"
+      ],
       "explanation": "Soma 6 e 8 e divide por 2.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1829,7 +2318,11 @@
       "id": "00000000-0000-4000-8000-000000015048",
       "title": "Retorno",
       "prompt": "Qual devolve o resultado a quem chamou?",
-      "options": ["return", "print", "List"],
+      "options": [
+        "return",
+        "print",
+        "List"
+      ],
       "explanation": "return devolve; print exibe.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1841,7 +2334,11 @@
       "id": "00000000-0000-4000-8000-000000015049",
       "title": "Dados",
       "prompt": "Falta uma nota do formulário. O que fazer antes da chamada?",
-      "options": ["Usar 10", "Solicitar preenchimento", "Ignorar validação"],
+      "options": [
+        "Usar 10",
+        "Solicitar preenchimento",
+        "Ignorar validação"
+      ],
       "explanation": "A função supõe duas notas válidas.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1869,7 +2366,11 @@
       "id": "00000000-0000-4000-8000-000000016001",
       "title": "Exibir",
       "prompt": "O que print(\"Olá\") mostra?",
-      "options": ["\"print\"", "Olá", "Nada"],
+      "options": [
+        "\"print\"",
+        "Olá",
+        "Nada"
+      ],
       "explanation": "print exibe o texto passado entre parênteses.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1881,7 +2382,11 @@
       "id": "00000000-0000-4000-8000-000000016002",
       "title": "Conta",
       "prompt": "O que print(2 + 3) mostra?",
-      "options": ["2 + 3", "23", "5"],
+      "options": [
+        "2 + 3",
+        "23",
+        "5"
+      ],
       "explanation": "Sem aspas, + soma os números.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1893,7 +2398,11 @@
       "id": "00000000-0000-4000-8000-000000016003",
       "title": "Sintaxe",
       "prompt": "Qual chamada está completa?",
-      "options": ["print(\"Oi\"", "print(\"Oi\")", "Print[Oi]"],
+      "options": [
+        "print(\"Oi\"",
+        "print(\"Oi\")",
+        "Print[Oi]"
+      ],
       "explanation": "A chamada fecha aspas e parênteses, com o nome print em minúsculas.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1905,7 +2414,11 @@
       "id": "00000000-0000-4000-8000-000000016004",
       "title": "Texto",
       "prompt": "O que print(\"2 + 3\") mostra?",
-      "options": ["5", "2 + 3", "Erro de soma"],
+      "options": [
+        "5",
+        "2 + 3",
+        "Erro de soma"
+      ],
       "explanation": "As aspas indicam texto; a conta não é feita.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1917,7 +2430,11 @@
       "id": "00000000-0000-4000-8000-000000016005",
       "title": "Guardar",
       "prompt": "Em idade = 16, qual parte é o nome?",
-      "options": ["idade", "=", "16"],
+      "options": [
+        "idade",
+        "=",
+        "16"
+      ],
       "explanation": "idade identifica o valor guardado.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1929,7 +2446,11 @@
       "id": "00000000-0000-4000-8000-000000016006",
       "title": "Consultar",
       "prompt": "nome guarda \"Ana\". print(nome) mostra:",
-      "options": ["nome", "Ana", "\"print\""],
+      "options": [
+        "nome",
+        "Ana",
+        "\"print\""
+      ],
       "explanation": "Sem aspas, Python consulta a variável.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1941,7 +2462,11 @@
       "id": "00000000-0000-4000-8000-000000016007",
       "title": "Tipo",
       "prompt": "Qual valor é texto?",
-      "options": ["3", "2.5", "\"3\""],
+      "options": [
+        "3",
+        "2.5",
+        "\"3\""
+      ],
       "explanation": "As aspas delimitam o texto.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1953,7 +2478,11 @@
       "id": "00000000-0000-4000-8000-000000016008",
       "title": "Atualizar",
       "prompt": "quantidade começa em 3 e recebe quantidade + 1. O novo valor é:",
-      "options": ["3", "4", "31"],
+      "options": [
+        "3",
+        "4",
+        "31"
+      ],
       "explanation": "A soma numérica produz 4 e a atribuição guarda esse resultado.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1965,7 +2494,11 @@
       "id": "00000000-0000-4000-8000-000000016009",
       "title": "Aplicar",
       "prompt": "Com preco 2.5 e quantidade 3, preco * quantidade vale:",
-      "options": ["7.5", "5.5", "2.53"],
+      "options": [
+        "7.5",
+        "5.5",
+        "2.53"
+      ],
       "explanation": "* multiplica os números.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1977,7 +2510,11 @@
       "id": "00000000-0000-4000-8000-000000016010",
       "title": "Ler",
       "prompt": "Qual é o tipo retornado por input()?",
-      "options": ["Texto str", "Sempre int", "Sempre float"],
+      "options": [
+        "Texto str",
+        "Sempre int",
+        "Sempre float"
+      ],
       "explanation": "input retorna a linha como texto.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -1989,7 +2526,11 @@
       "id": "00000000-0000-4000-8000-000000016011",
       "title": "Converter",
       "prompt": "Qual interpreta \"12\" como inteiro?",
-      "options": ["print(\"12\")", "int(\"12\")", "input(\"12\")"],
+      "options": [
+        "print(\"12\")",
+        "int(\"12\")",
+        "input(\"12\")"
+      ],
       "explanation": "int interpreta o texto numérico como inteiro.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2017,7 +2558,11 @@
       "id": "00000000-0000-4000-8000-000000016013",
       "title": "Erro",
       "prompt": "Qual entrada não é um inteiro válido para int()?",
-      "options": ["\"-2\"", "\"0\"", "\"abc\""],
+      "options": [
+        "\"-2\"",
+        "\"0\"",
+        "\"abc\""
+      ],
       "explanation": "Não é possível interpretar abc como inteiro.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2029,7 +2574,11 @@
       "id": "00000000-0000-4000-8000-000000016014",
       "title": "Aplicar",
       "prompt": "Entradas 2 e 3 convertidas por int e somadas produzem:",
-      "options": ["23", "5", "\"2 + 3\""],
+      "options": [
+        "23",
+        "5",
+        "\"2 + 3\""
+      ],
       "explanation": "A soma de inteiros produz 5.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2041,7 +2590,11 @@
       "id": "00000000-0000-4000-8000-000000016015",
       "title": "Comparar",
       "prompt": "Qual inclui a nota mínima 7?",
-      "options": ["nota > 7", "nota >= 7", "nota = 7"],
+      "options": [
+        "nota > 7",
+        "nota >= 7",
+        "nota = 7"
+      ],
       "explanation": ">= inclui o limite; = atribui.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2053,7 +2606,11 @@
       "id": "00000000-0000-4000-8000-000000016016",
       "title": "Igualdade",
       "prompt": "Como comparar se quantidade vale 3?",
-      "options": ["quantidade = 3", "quantidade == 3", "quantidade + 3"],
+      "options": [
+        "quantidade = 3",
+        "quantidade == 3",
+        "quantidade + 3"
+      ],
       "explanation": "== verifica igualdade.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2065,7 +2622,11 @@
       "id": "00000000-0000-4000-8000-000000016017",
       "title": "Limite",
       "prompt": "7 >= 7 resulta em:",
-      "options": ["False", "True", "7"],
+      "options": [
+        "False",
+        "True",
+        "7"
+      ],
       "explanation": "O limite está incluído.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2077,7 +2638,11 @@
       "id": "00000000-0000-4000-8000-000000016018",
       "title": "Diferença",
       "prompt": "4 != 3 resulta em:",
-      "options": ["True", "False", "4"],
+      "options": [
+        "True",
+        "False",
+        "4"
+      ],
       "explanation": "4 é diferente de 3.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2089,7 +2654,11 @@
       "id": "00000000-0000-4000-8000-000000016019",
       "title": "Aplicar",
       "prompt": "Qual regra inclui idade até 17?",
-      "options": ["idade < 17", "idade > 17", "idade <= 17"],
+      "options": [
+        "idade < 17",
+        "idade > 17",
+        "idade <= 17"
+      ],
       "explanation": "<= inclui o valor máximo permitido.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2101,7 +2670,11 @@
       "id": "00000000-0000-4000-8000-000000016020",
       "title": "Bloco",
       "prompt": "O que delimita o bloco em Python?",
-      "options": ["Chaves", "Indentação", "Aspas"],
+      "options": [
+        "Chaves",
+        "Indentação",
+        "Aspas"
+      ],
       "explanation": "Os espaços no início das linhas delimitam o bloco.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2113,7 +2686,11 @@
       "id": "00000000-0000-4000-8000-000000016021",
       "title": "Cabeçalho",
       "prompt": "O que encerra o cabeçalho de if?",
-      "options": [":", ";", "&&"],
+      "options": [
+        ":",
+        ";",
+        "&&"
+      ],
       "explanation": "Os dois-pontos indicam o começo do bloco.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2125,7 +2702,11 @@
       "id": "00000000-0000-4000-8000-000000016022",
       "title": "Caminho",
       "prompt": "Qual parte cobre o caso falso neste exemplo?",
-      "options": ["print", "else", "int"],
+      "options": [
+        "print",
+        "else",
+        "int"
+      ],
       "explanation": "else executa quando a condição do if é falsa.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2137,7 +2718,11 @@
       "id": "00000000-0000-4000-8000-000000016023",
       "title": "Aplicar",
       "prompt": "Com nota 7, if nota >= 7 escolhe:",
-      "options": ["O bloco de aprovação", "O else", "Ambos os blocos"],
+      "options": [
+        "O bloco de aprovação",
+        "O else",
+        "Ambos os blocos"
+      ],
       "explanation": "7 atende ao limite inclusivo.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2149,7 +2734,11 @@
       "id": "00000000-0000-4000-8000-000000016024",
       "title": "Intervalo",
       "prompt": "range(1,4) fornece:",
-      "options": ["1,2,3", "1,2,3,4", "0,1,2,3"],
+      "options": [
+        "1,2,3",
+        "1,2,3,4",
+        "0,1,2,3"
+      ],
       "explanation": "O começo é incluído e a parada é excluída.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2161,7 +2750,11 @@
       "id": "00000000-0000-4000-8000-000000016025",
       "title": "Contagem",
       "prompt": "Quantas voltas para range(4)?",
-      "options": ["3", "4", "5"],
+      "options": [
+        "3",
+        "4",
+        "5"
+      ],
       "explanation": "Os valores são 0,1,2,3.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2173,7 +2766,11 @@
       "id": "00000000-0000-4000-8000-000000016026",
       "title": "Erro de limite",
       "prompt": "Para mostrar de 1 até 4 inclusive, use:",
-      "options": ["range(1,4)", "range(1,5)", "range(4,4)"],
+      "options": [
+        "range(1,4)",
+        "range(1,5)",
+        "range(4,4)"
+      ],
       "explanation": "A parada precisa ficar depois do último valor desejado.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2201,7 +2798,11 @@
       "id": "00000000-0000-4000-8000-000000016028",
       "title": "Lista",
       "prompt": "Qual representa uma lista?",
-      "options": ["[7,8,9]", "\"notas\"", "print"],
+      "options": [
+        "[7,8,9]",
+        "\"notas\"",
+        "print"
+      ],
       "explanation": "Colchetes delimitam os elementos.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2213,7 +2814,11 @@
       "id": "00000000-0000-4000-8000-000000016029",
       "title": "Índice",
       "prompt": "Em [7,8,9], o índice 0 contém:",
-      "options": ["9", "7", "0"],
+      "options": [
+        "9",
+        "7",
+        "0"
+      ],
       "explanation": "A primeira posição tem índice 0.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2225,7 +2830,11 @@
       "id": "00000000-0000-4000-8000-000000016030",
       "title": "Quantidade",
       "prompt": "len([7,8,9]) vale:",
-      "options": ["2", "3", "9"],
+      "options": [
+        "2",
+        "3",
+        "9"
+      ],
       "explanation": "Há três elementos.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2237,7 +2846,11 @@
       "id": "00000000-0000-4000-8000-000000016031",
       "title": "Vazia",
       "prompt": "Uma lista [] possui elemento no índice 0?",
-      "options": ["Sim, sempre zero", "Não", "Sim, texto vazio"],
+      "options": [
+        "Sim, sempre zero",
+        "Não",
+        "Sim, texto vazio"
+      ],
       "explanation": "Uma lista vazia não tem elementos.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2249,7 +2862,11 @@
       "id": "00000000-0000-4000-8000-000000016032",
       "title": "Aplicar",
       "prompt": "Qual média de [6]?",
-      "options": ["0", "3", "6"],
+      "options": [
+        "0",
+        "3",
+        "6"
+      ],
       "explanation": "A soma 6 é dividida pela quantidade 1.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2261,7 +2878,11 @@
       "id": "00000000-0000-4000-8000-000000016033",
       "title": "Definir",
       "prompt": "Qual palavra inicia uma função em Python?",
-      "options": ["def", "function", "int"],
+      "options": [
+        "def",
+        "function",
+        "int"
+      ],
       "explanation": "Python usa def para definir uma função.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2273,7 +2894,11 @@
       "id": "00000000-0000-4000-8000-000000016034",
       "title": "Parâmetro",
       "prompt": "Na definição, a e b são:",
-      "options": ["Resultados fixos", "Parâmetros", "Mensagens"],
+      "options": [
+        "Resultados fixos",
+        "Parâmetros",
+        "Mensagens"
+      ],
       "explanation": "Eles nomeiam entradas internas.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2285,7 +2910,11 @@
       "id": "00000000-0000-4000-8000-000000016035",
       "title": "Chamada",
       "prompt": "somar(2,3) devolve:",
-      "options": ["23", "5", "2"],
+      "options": [
+        "23",
+        "5",
+        "2"
+      ],
       "explanation": "A função soma os dois números.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2313,7 +2942,11 @@
       "id": "00000000-0000-4000-8000-000000016037",
       "title": "Aplicar",
       "prompt": "somar(-2,5) devolve:",
-      "options": ["-7", "7", "3"],
+      "options": [
+        "-7",
+        "7",
+        "3"
+      ],
       "explanation": "-2 + 5 = 3.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2373,7 +3006,11 @@
       "id": "00000000-0000-4000-8000-000000016041",
       "title": "Saída",
       "prompt": "Para entradas -2 e 5, qual saída pedida?",
-      "options": ["Resultado: 3", "3", "-7"],
+      "options": [
+        "Resultado: 3",
+        "3",
+        "-7"
+      ],
       "explanation": "A tarefa pede só a soma, sem mensagem extra.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2401,7 +3038,11 @@
       "id": "00000000-0000-4000-8000-000000016301",
       "title": "Palavra",
       "prompt": "Qual é o E lógico em Python?",
-      "options": ["&&", "and", "E"],
+      "options": [
+        "&&",
+        "and",
+        "E"
+      ],
       "explanation": "Python usa a palavra and.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2413,7 +3054,11 @@
       "id": "00000000-0000-4000-8000-000000016302",
       "title": "No limite",
       "prompt": "Nota 7 e presença 75 atendem às duas regras?",
-      "options": ["Sim", "Não", "Só com nota maior que 7"],
+      "options": [
+        "Sim",
+        "Não",
+        "Só com nota maior que 7"
+      ],
       "explanation": ">= inclui ambos os limites.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2425,7 +3070,11 @@
       "id": "00000000-0000-4000-8000-000000016303",
       "title": "Erro",
       "prompt": "Nota 8 e presença 74: qual regra falhou?",
-      "options": ["Nota", "Frequência", "Nenhuma"],
+      "options": [
+        "Nota",
+        "Frequência",
+        "Nenhuma"
+      ],
       "explanation": "74 é menor que 75.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2437,7 +3086,11 @@
       "id": "00000000-0000-4000-8000-000000016304",
       "title": "Aplicar",
       "prompt": "Qual conjunto atende nota >= 7 and frequencia >= 75?",
-      "options": ["9 e 70", "6 e 90", "8 e 80"],
+      "options": [
+        "9 e 70",
+        "6 e 90",
+        "8 e 80"
+      ],
       "explanation": "Ambas as comparações são verdadeiras.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2465,7 +3118,11 @@
       "id": "00000000-0000-4000-8000-000000016306",
       "title": "Uma verdadeira",
       "prompt": "True or False vale:",
-      "options": ["True", "False", "Erro"],
+      "options": [
+        "True",
+        "False",
+        "Erro"
+      ],
       "explanation": "Uma condição verdadeira satisfaz or.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2477,7 +3134,11 @@
       "id": "00000000-0000-4000-8000-000000016307",
       "title": "Ambas",
       "prompt": "True or True vale:",
-      "options": ["False", "True", "Indefinido"],
+      "options": [
+        "False",
+        "True",
+        "Indefinido"
+      ],
       "explanation": "or aceita ambas verdadeiras.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2489,7 +3150,11 @@
       "id": "00000000-0000-4000-8000-000000016308",
       "title": "Nenhuma",
       "prompt": "False or False vale:",
-      "options": ["True", "False", "0 numérico"],
+      "options": [
+        "True",
+        "False",
+        "0 numérico"
+      ],
       "explanation": "Nenhuma alternativa foi cumprida.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2501,7 +3166,11 @@
       "id": "00000000-0000-4000-8000-000000016309",
       "title": "Aplicar",
       "prompt": "Para exigir os dois documentos, qual palavra substituiria or?",
-      "options": ["not", "and", "print"],
+      "options": [
+        "not",
+        "and",
+        "print"
+      ],
       "explanation": "and exige ambas verdadeiras.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2513,7 +3182,11 @@
       "id": "00000000-0000-4000-8000-000000016310",
       "title": "Reconhecer",
       "prompt": "Qual palavra nega uma condição em Python?",
-      "options": ["not", "!", "||"],
+      "options": [
+        "not",
+        "!",
+        "||"
+      ],
       "explanation": "Python usa not.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2525,7 +3198,11 @@
       "id": "00000000-0000-4000-8000-000000016311",
       "title": "Negar",
       "prompt": "not True vale:",
-      "options": ["True", "False", "1"],
+      "options": [
+        "True",
+        "False",
+        "1"
+      ],
       "explanation": "A negação inverte para False.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2537,7 +3214,11 @@
       "id": "00000000-0000-4000-8000-000000016312",
       "title": "Inverter",
       "prompt": "not False vale:",
-      "options": ["True", "False", "0"],
+      "options": [
+        "True",
+        "False",
+        "0"
+      ],
       "explanation": "A negação de False é True.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2549,7 +3230,11 @@
       "id": "00000000-0000-4000-8000-000000016313",
       "title": "Erro",
       "prompt": "not tem_pendencia altera o valor guardado?",
-      "options": ["Sim, sempre", "Não, calcula outra condição", "Apaga o nome"],
+      "options": [
+        "Sim, sempre",
+        "Não, calcula outra condição",
+        "Apaga o nome"
+      ],
       "explanation": "Não há atribuição à variável.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2561,7 +3246,11 @@
       "id": "00000000-0000-4000-8000-000000016314",
       "title": "Aplicar",
       "prompt": "tem_pendencia é False. not tem_pendencia vale:",
-      "options": ["False", "True", "Não se pode saber"],
+      "options": [
+        "False",
+        "True",
+        "Não se pode saber"
+      ],
       "explanation": "A pessoa não tem pendência.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2605,7 +3294,11 @@
       "id": "00000000-0000-4000-8000-000000017002",
       "title": "CSS",
       "prompt": "Qual linguagem cuida da apresentação?",
-      "options": ["CSS", "HTML como único papel", "O endereço da página"],
+      "options": [
+        "CSS",
+        "HTML como único papel",
+        "O endereço da página"
+      ],
       "explanation": "CSS descreve cores, espaços e layout.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2617,7 +3310,11 @@
       "id": "00000000-0000-4000-8000-000000017003",
       "title": "Erro",
       "prompt": "É necessário JavaScript para mostrar um parágrafo simples?",
-      "options": ["Sim, sempre", "Não", "Só em computadores"],
+      "options": [
+        "Sim, sempre",
+        "Não",
+        "Só em computadores"
+      ],
       "explanation": "HTML pode representar o parágrafo sem programação.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2629,7 +3326,11 @@
       "id": "00000000-0000-4000-8000-000000017004",
       "title": "Aplicar",
       "prompt": "Uma ação precisa responder a um clique. Qual linguagem pode cuidar desse comportamento?",
-      "options": ["CSS", "JavaScript", "O nome da imagem"],
+      "options": [
+        "CSS",
+        "JavaScript",
+        "O nome da imagem"
+      ],
       "explanation": "JavaScript permite programar comportamentos no navegador.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2641,7 +3342,11 @@
       "id": "00000000-0000-4000-8000-000000017005",
       "title": "Abertura",
       "prompt": "Qual tag abre o título principal?",
-      "options": ["<h1>", "</h1>", "<p>"],
+      "options": [
+        "<h1>",
+        "</h1>",
+        "<p>"
+      ],
       "explanation": "<h1> inicia o título de nível 1.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2653,7 +3358,11 @@
       "id": "00000000-0000-4000-8000-000000017006",
       "title": "Fechamento",
       "prompt": "O que a barra em </h1> indica?",
-      "options": ["Soma", "Fechamento da tag", "Cor do texto"],
+      "options": [
+        "Soma",
+        "Fechamento da tag",
+        "Cor do texto"
+      ],
       "explanation": "A barra depois de < identifica o fechamento.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2665,7 +3374,11 @@
       "id": "00000000-0000-4000-8000-000000017007",
       "title": "Conteúdo",
       "prompt": "Em <p>Olá</p>, qual parte é o conteúdo?",
-      "options": ["p", "Olá", "</p>"],
+      "options": [
+        "p",
+        "Olá",
+        "</p>"
+      ],
       "explanation": "O conteúdo está entre as tags.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2677,7 +3390,11 @@
       "id": "00000000-0000-4000-8000-000000017008",
       "title": "Erro",
       "prompt": "Qual marcação fecha corretamente um parágrafo?",
-      "options": ["<p>Texto</h1>", "<p>Texto</p>", "</p>Texto<p>"],
+      "options": [
+        "<p>Texto</h1>",
+        "<p>Texto</p>",
+        "</p>Texto<p>"
+      ],
       "explanation": "O nome do fechamento corresponde ao da abertura.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2689,7 +3406,11 @@
       "id": "00000000-0000-4000-8000-000000017009",
       "title": "Aplicar",
       "prompt": "Para uma explicação abaixo do título, use:",
-      "options": ["p", "h1 para cada frase", "CSS no lugar do texto"],
+      "options": [
+        "p",
+        "h1 para cada frase",
+        "CSS no lugar do texto"
+      ],
       "explanation": "p marca um parágrafo de explicação.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2701,7 +3422,11 @@
       "id": "00000000-0000-4000-8000-000000017010",
       "title": "Documento",
       "prompt": "O que <!doctype html> informa?",
-      "options": ["Uma cor", "O modo HTML moderno", "O conteúdo de um botão"],
+      "options": [
+        "Uma cor",
+        "O modo HTML moderno",
+        "O conteúdo de um botão"
+      ],
       "explanation": "A declaração identifica o modo do documento.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2713,7 +3438,11 @@
       "id": "00000000-0000-4000-8000-000000017011",
       "title": "Idioma",
       "prompt": "Qual atributo indica português do Brasil?",
-      "options": ["lang=\"pt-BR\"", "title=\"h1\"", "charset=\"p\""],
+      "options": [
+        "lang=\"pt-BR\"",
+        "title=\"h1\"",
+        "charset=\"p\""
+      ],
       "explanation": "lang informa o idioma.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2725,7 +3454,11 @@
       "id": "00000000-0000-4000-8000-000000017012",
       "title": "Aba",
       "prompt": "Qual elemento define o título da aba?",
-      "options": ["h1", "title", "p"],
+      "options": [
+        "h1",
+        "title",
+        "p"
+      ],
       "explanation": "title fica no head e identifica a aba.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2737,7 +3470,11 @@
       "id": "00000000-0000-4000-8000-000000017013",
       "title": "Erro",
       "prompt": "O h1 do conteúdo deve ficar em qual parte?",
-      "options": ["body", "Somente title", "Fora de html"],
+      "options": [
+        "body",
+        "Somente title",
+        "Fora de html"
+      ],
       "explanation": "O conteúdo apresentado fica no body.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2765,7 +3502,11 @@
       "id": "00000000-0000-4000-8000-000000017015",
       "title": "Link",
       "prompt": "Qual elemento representa um link?",
-      "options": ["a", "p", "h1"],
+      "options": [
+        "a",
+        "p",
+        "h1"
+      ],
       "explanation": "O elemento a com href cria um link.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2777,7 +3518,11 @@
       "id": "00000000-0000-4000-8000-000000017016",
       "title": "Destino",
       "prompt": "Qual atributo define para onde o link vai?",
-      "options": ["lang", "href", "charset"],
+      "options": [
+        "lang",
+        "href",
+        "charset"
+      ],
       "explanation": "href contém o destino.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2821,7 +3566,11 @@
       "id": "00000000-0000-4000-8000-000000017019",
       "title": "Aplicar",
       "prompt": "Uma ação abre um painel sem navegar. Qual elemento é adequado?",
-      "options": ["button", "a sem destino para fingir botão", "title"],
+      "options": [
+        "button",
+        "a sem destino para fingir botão",
+        "title"
+      ],
       "explanation": "button representa uma ação.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2833,7 +3582,11 @@
       "id": "00000000-0000-4000-8000-000000017020",
       "title": "Principal",
       "prompt": "Qual elemento delimita o conteúdo principal?",
-      "options": ["main", "title", "span"],
+      "options": [
+        "main",
+        "title",
+        "span"
+      ],
       "explanation": "main representa o conteúdo central do documento.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2845,7 +3598,11 @@
       "id": "00000000-0000-4000-8000-000000017021",
       "title": "Títulos",
       "prompt": "Depois do h1, qual nível pode identificar uma seção principal?",
-      "options": ["h2", "h6 por ser menor", "Outro title"],
+      "options": [
+        "h2",
+        "h6 por ser menor",
+        "Outro title"
+      ],
       "explanation": "h2 identifica uma seção dentro da hierarquia.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2857,7 +3614,11 @@
       "id": "00000000-0000-4000-8000-000000017022",
       "title": "Ação",
       "prompt": "Qual elemento serve para abrir um painel por uma ação?",
-      "options": ["button", "h1", "meta"],
+      "options": [
+        "button",
+        "h1",
+        "meta"
+      ],
       "explanation": "button representa a ação.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2885,7 +3646,11 @@
       "id": "00000000-0000-4000-8000-000000017024",
       "title": "Seletor",
       "prompt": "Em p { color: blue; }, qual é o seletor?",
-      "options": ["p", "color", "blue"],
+      "options": [
+        "p",
+        "color",
+        "blue"
+      ],
       "explanation": "p seleciona os parágrafos.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2897,7 +3662,11 @@
       "id": "00000000-0000-4000-8000-000000017025",
       "title": "Propriedade",
       "prompt": "Qual parte indica a característica a mudar?",
-      "options": ["p", "color", ";"],
+      "options": [
+        "p",
+        "color",
+        ";"
+      ],
       "explanation": "color é a propriedade.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2909,7 +3678,11 @@
       "id": "00000000-0000-4000-8000-000000017026",
       "title": "Valor",
       "prompt": "Qual parte indica a cor escolhida?",
-      "options": ["blue", "color", "p"],
+      "options": [
+        "blue",
+        "color",
+        "p"
+      ],
       "explanation": "blue é o valor da propriedade.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2921,7 +3694,11 @@
       "id": "00000000-0000-4000-8000-000000017027",
       "title": "Erro",
       "prompt": "Qual declaração está escrita na ordem correta?",
-      "options": ["blue: color;", "color: blue;", "color = blue"],
+      "options": [
+        "blue: color;",
+        "color: blue;",
+        "color = blue"
+      ],
       "explanation": "CSS usa propriedade: valor;.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2933,7 +3710,11 @@
       "id": "00000000-0000-4000-8000-000000017028",
       "title": "Aplicar",
       "prompt": "Uma regra com seletor p alcança diretamente qual elemento?",
-      "options": ["Todos os h1", "Os parágrafos p", "A aba do navegador"],
+      "options": [
+        "Todos os h1",
+        "Os parágrafos p",
+        "A aba do navegador"
+      ],
       "explanation": "O seletor corresponde aos parágrafos.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2945,7 +3726,11 @@
       "id": "00000000-0000-4000-8000-000000017029",
       "title": "Interno",
       "prompt": "Qual cria espaço entre texto e borda?",
-      "options": ["padding", "margin", "title"],
+      "options": [
+        "padding",
+        "margin",
+        "title"
+      ],
       "explanation": "padding é o espaço interno.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2957,7 +3742,11 @@
       "id": "00000000-0000-4000-8000-000000017030",
       "title": "Externo",
       "prompt": "Qual cria espaço fora da borda?",
-      "options": ["color", "margin", "h1"],
+      "options": [
+        "color",
+        "margin",
+        "h1"
+      ],
       "explanation": "margin é o espaço externo.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2969,7 +3758,11 @@
       "id": "00000000-0000-4000-8000-000000017031",
       "title": "Distribuição",
       "prompt": "Qual declaração ativa uma organização flexível dos filhos?",
-      "options": ["display: flex", "href: flex", "lang: flex"],
+      "options": [
+        "display: flex",
+        "href: flex",
+        "lang: flex"
+      ],
       "explanation": "display determina o modelo de distribuição.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -2981,7 +3774,11 @@
       "id": "00000000-0000-4000-8000-000000017032",
       "title": "Erro",
       "prompt": "O texto encosta na borda, mas só aumentaram margin. O que ajustar?",
-      "options": ["padding", "Apenas o title", "O destino do link"],
+      "options": [
+        "padding",
+        "Apenas o title",
+        "O destino do link"
+      ],
       "explanation": "A distância interna é controlada por padding.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -3089,7 +3886,11 @@
       "id": "00000000-0000-4000-8000-000000017039",
       "title": "Teclado",
       "prompt": "Qual tecla costuma mover o foco para o próximo controle?",
-      "options": ["Tab", "Caps Lock", "Esc em qualquer situação"],
+      "options": [
+        "Tab",
+        "Caps Lock",
+        "Esc em qualquer situação"
+      ],
       "explanation": "Tab percorre controles focáveis.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -3133,7 +3934,11 @@
       "id": "00000000-0000-4000-8000-000000017042",
       "title": "Requisito",
       "prompt": "Qual texto o h1 precisa conter?",
-      "options": ["Meu curso", "Qualquer endereço", "Somente h1"],
+      "options": [
+        "Meu curso",
+        "Qualquer endereço",
+        "Somente h1"
+      ],
       "explanation": "O enunciado pede Meu curso.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -3145,7 +3950,11 @@
       "id": "00000000-0000-4000-8000-000000017043",
       "title": "Destino",
       "prompt": "O link interno precisa corresponder a:",
-      "options": ["Um id existente", "Uma cor de fundo", "Uma variável Python"],
+      "options": [
+        "Um id existente",
+        "Uma cor de fundo",
+        "Uma variável Python"
+      ],
       "explanation": "href e id precisam usar o mesmo identificador.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -3157,7 +3966,11 @@
       "id": "00000000-0000-4000-8000-000000017044",
       "title": "Erro",
       "prompt": "href=\"#conteudo\" e id=\"material\" atendem ao destino pedido?",
-      "options": ["Sim", "Não", "Só com fonte maior"],
+      "options": [
+        "Sim",
+        "Não",
+        "Só com fonte maior"
+      ],
       "explanation": "Os identificadores não correspondem.",
       "kind": "choice",
       "activity_type": "multiple_choice",
@@ -3169,8 +3982,684 @@
       "id": "00000000-0000-4000-8000-000000017045",
       "title": "Aplicar",
       "prompt": "Qual parte reúne os links principais?",
-      "options": ["nav", "meta", "title"],
+      "options": [
+        "nav",
+        "meta",
+        "title"
+      ],
       "explanation": "nav representa navegação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018000",
+      "title": "Verifique o conceito",
+      "prompt": "Qual comando mostra uma mensagem?",
+      "options": [
+        "console.log(\"Oi\")",
+        "console.log(Oi)",
+        "log.console(\"Oi\")"
+      ],
+      "explanation": "console.log recebe o texto entre parênteses; as aspas indicam texto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018001",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é a saída de console.log(2 + 3)?",
+      "options": [
+        "5",
+        "23",
+        "2 + 3"
+      ],
+      "explanation": "Dois números são somados antes de mostrar a saída.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018002",
+      "title": "Verifique o conceito",
+      "prompt": "As aspas em \"7\" indicam:",
+      "options": [
+        "Texto",
+        "Número calculado",
+        "Variável"
+      ],
+      "explanation": "Aspas delimitam texto em JavaScript.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018003",
+      "title": "Verifique o conceito",
+      "prompt": "Qual saída produz console.log(\"2\" + \"3\")?",
+      "options": [
+        "23",
+        "5",
+        "Erro"
+      ],
+      "explanation": "Com dois textos, + concatena, isto é, junta os caracteres.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018004",
+      "title": "Verifique o conceito",
+      "prompt": "O que fica dentro de console.log(...)?",
+      "options": [
+        "O valor a mostrar",
+        "O nome de uma página",
+        "Uma senha"
+      ],
+      "explanation": "O argumento é o valor dentro dos parênteses.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018005",
+      "title": "Verifique o conceito",
+      "prompt": "Em const idade = 16;, qual é o valor?",
+      "options": [
+        "16",
+        "idade",
+        "const"
+      ],
+      "explanation": "O número 16 foi atribuído ao nome idade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018006",
+      "title": "Verifique o conceito",
+      "prompt": "Qual saída resulta de const n = 4; console.log(n)?",
+      "options": [
+        "4",
+        "n",
+        "0"
+      ],
+      "explanation": "Sem aspas, n representa o valor guardado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018007",
+      "title": "Verifique o conceito",
+      "prompt": "Qual símbolo atribui um valor?",
+      "options": [
+        "=",
+        "===",
+        "+"
+      ],
+      "explanation": "= atribui; === compara igualdade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018008",
+      "title": "Verifique o conceito",
+      "prompt": "O que mostra console.log(\"n\")?",
+      "options": [
+        "n",
+        "O valor da variável n",
+        "Nada"
+      ],
+      "explanation": "Com aspas, o argumento é texto literal.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018009",
+      "title": "Verifique o conceito",
+      "prompt": "Com a = 2 e b = 5, quanto vale a + b?",
+      "options": [
+        "7",
+        "25",
+        "3"
+      ],
+      "explanation": "Os nomes representam os números 2 e 5.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018010",
+      "title": "Verifique o conceito",
+      "prompt": "O que input() devolve neste laboratório?",
+      "options": [
+        "Texto",
+        "Sempre um número",
+        "Um elemento HTML"
+      ],
+      "explanation": "A entrada é texto antes de Number converter.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018011",
+      "title": "Verifique o conceito",
+      "prompt": "Qual deve vir antes da soma?",
+      "options": [
+        "Ler e converter os valores",
+        "Mostrar o resultado",
+        "Encerrar o programa"
+      ],
+      "explanation": "Os valores precisam existir antes do cálculo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018012",
+      "title": "Verifique o conceito",
+      "prompt": "O que faz Number(\"4\")?",
+      "options": [
+        "Converte para o número 4",
+        "Mostra 4 no painel",
+        "Junta dois textos"
+      ],
+      "explanation": "Number converte texto numérico para número.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018013",
+      "title": "Verifique o conceito",
+      "prompt": "Qual comando mostra o resultado?",
+      "options": [
+        "console.log(a + b)",
+        "input()",
+        "Number(a)"
+      ],
+      "explanation": "console.log apresenta o valor calculado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018014",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é o resultado de \"3\" + \"4\"?",
+      "options": [
+        "\"34\"",
+        "7",
+        "Erro"
+      ],
+      "explanation": "O operador + junta dois textos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018015",
+      "title": "Verifique o conceito",
+      "prompt": "Por que input() + input() não soma números?",
+      "options": [
+        "As entradas são textos",
+        "Faltam chaves",
+        "O painel está vazio"
+      ],
+      "explanation": "input() deste laboratório retorna texto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018016",
+      "title": "Verifique o conceito",
+      "prompt": "Em que momento converter?",
+      "options": [
+        "Antes da soma",
+        "Depois de juntar os textos",
+        "Apenas depois de mostrar"
+      ],
+      "explanation": "Converter cada entrada evita concatenação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018017",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é o resultado de Number(\"-2\") + Number(\"5\")?",
+      "options": [
+        "3",
+        "-25",
+        "7"
+      ],
+      "explanation": "Os textos são convertidos para -2 e 5 antes da soma.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018018",
+      "title": "Verifique o conceito",
+      "prompt": "Quanto vale 7 >= 7?",
+      "options": [
+        "true",
+        "false",
+        "7"
+      ],
+      "explanation": "O limite 7 está incluído por >=.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018019",
+      "title": "Verifique o conceito",
+      "prompt": "Quanto vale 6 > 7?",
+      "options": [
+        "false",
+        "true",
+        "6"
+      ],
+      "explanation": "6 não é maior que 7.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018020",
+      "title": "Verifique o conceito",
+      "prompt": "Qual operador compara igualdade de valor e tipo?",
+      "options": [
+        "===",
+        "=",
+        "+"
+      ],
+      "explanation": "=== compara; = atribui.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018021",
+      "title": "Verifique o conceito",
+      "prompt": "Quanto vale 7 === \"7\"?",
+      "options": [
+        "false",
+        "true",
+        "7"
+      ],
+      "explanation": "Número e texto são tipos diferentes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018022",
+      "title": "Verifique o conceito",
+      "prompt": "Para incluir o valor mínimo 7, qual condição usar?",
+      "options": [
+        "nota >= 7",
+        "nota > 7",
+        "nota < 7"
+      ],
+      "explanation": "Maior ou igual inclui a fronteira.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018023",
+      "title": "Verifique o conceito",
+      "prompt": "Com nota 7, if (nota >= 7) executa?",
+      "options": [
+        "Sim",
+        "Não",
+        "Duas vezes"
+      ],
+      "explanation": "7 atende ao mínimo inclusivo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018024",
+      "title": "Verifique o conceito",
+      "prompt": "O que envolve a condição de if?",
+      "options": [
+        "Parênteses",
+        "Aspas",
+        "Colchetes"
+      ],
+      "explanation": "if (condição) usa parênteses.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018025",
+      "title": "Verifique o conceito",
+      "prompt": "O que delimita o bloco executado?",
+      "options": [
+        "Chaves { }",
+        "Aspas",
+        "O operador +"
+      ],
+      "explanation": "As chaves contêm as instruções do bloco.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018026",
+      "title": "Verifique o conceito",
+      "prompt": "Quando else executa?",
+      "options": [
+        "Quando a condição de if é falsa",
+        "Sempre após if",
+        "Quando a condição é verdadeira"
+      ],
+      "explanation": "else fornece o outro caminho.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018027",
+      "title": "Verifique o conceito",
+      "prompt": "Qual saída para nota 6 no exemplo?",
+      "options": [
+        "Revisar",
+        "Aprovado",
+        "6"
+      ],
+      "explanation": "6 não atinge o limite de 7.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018028",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é o primeiro valor de i no exemplo?",
+      "options": [
+        "0",
+        "1",
+        "3"
+      ],
+      "explanation": "let i = 0 inicia o contador.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018029",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é a última saída quando i < 3?",
+      "options": [
+        "2",
+        "3",
+        "4"
+      ],
+      "explanation": "O laço executa com i=0,1,2.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018030",
+      "title": "Verifique o conceito",
+      "prompt": "O que faz i++?",
+      "options": [
+        "Aumenta i em 1",
+        "Zera i",
+        "Mostra i"
+      ],
+      "explanation": "i++ incrementa o contador.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018031",
+      "title": "Verifique o conceito",
+      "prompt": "Quando o laço para?",
+      "options": [
+        "Quando i < 3 fica falso",
+        "Quando i vale 2",
+        "Quando console.log executa"
+      ],
+      "explanation": "A condição é reavaliada a cada volta.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018032",
+      "title": "Verifique o conceito",
+      "prompt": "Quantas saídas há para i=0; i<3; i++?",
+      "options": [
+        "3",
+        "2",
+        "4"
+      ],
+      "explanation": "Há uma saída para cada valor 0, 1 e 2.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018033",
+      "title": "Verifique o conceito",
+      "prompt": "O que são a e b na definição?",
+      "options": [
+        "Parâmetros",
+        "Saídas impressas",
+        "Arquivos"
+      ],
+      "explanation": "Parâmetros recebem os argumentos de cada chamada.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018034",
+      "title": "Verifique o conceito",
+      "prompt": "Qual valor somar(2, 5) retorna?",
+      "options": [
+        "7",
+        "25",
+        "Nada"
+      ],
+      "explanation": "return a + b devolve a soma.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018035",
+      "title": "Verifique o conceito",
+      "prompt": "Definir uma função já a executa?",
+      "options": [
+        "Não",
+        "Sim",
+        "Somente com return"
+      ],
+      "explanation": "A execução acontece ao chamar a função.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018036",
+      "title": "Verifique o conceito",
+      "prompt": "Como mostrar o retorno?",
+      "options": [
+        "console.log(somar(2, 5))",
+        "return console.log",
+        "function(2, 5)"
+      ],
+      "explanation": "console.log recebe o resultado da chamada.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018037",
+      "title": "Verifique o conceito",
+      "prompt": "Quanto retorna somar(0, 0)?",
+      "options": [
+        "0",
+        "undefined",
+        "2"
+      ],
+      "explanation": "A soma de zero e zero é zero.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018038",
+      "title": "Verifique o conceito",
+      "prompt": "Qual função lê uma linha neste laboratório?",
+      "options": [
+        "input()",
+        "console.log()",
+        "Number()"
+      ],
+      "explanation": "input() lê uma linha de texto no laboratório.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018039",
+      "title": "Verifique o conceito",
+      "prompt": "Qual expressão converte a entrada?",
+      "options": [
+        "Number(input())",
+        "console.log(input())",
+        "String(Number)"
+      ],
+      "explanation": "Number converte o texto devolvido por input.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018040",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é a saída para -2 e 5?",
+      "options": [
+        "3",
+        "-25",
+        "7"
+      ],
+      "explanation": "Os dois números convertidos são somados.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000018041",
+      "title": "Verifique o conceito",
+      "prompt": "Qual comando mostra apenas a soma?",
+      "options": [
+        "console.log(a + b)",
+        "console.log(\"a + b\")",
+        "input(a + b)"
+      ],
+      "explanation": "Sem aspas, a expressão é calculada antes da saída.",
       "kind": "choice",
       "activity_type": "multiple_choice",
       "category": "Prática guiada",
@@ -3331,7 +4820,49 @@
     "00000000-0000-4000-8000-000000017042": 0,
     "00000000-0000-4000-8000-000000017043": 0,
     "00000000-0000-4000-8000-000000017044": 1,
-    "00000000-0000-4000-8000-000000017045": 0
+    "00000000-0000-4000-8000-000000017045": 0,
+    "00000000-0000-4000-8000-000000018000": 0,
+    "00000000-0000-4000-8000-000000018001": 0,
+    "00000000-0000-4000-8000-000000018002": 0,
+    "00000000-0000-4000-8000-000000018003": 0,
+    "00000000-0000-4000-8000-000000018004": 0,
+    "00000000-0000-4000-8000-000000018005": 0,
+    "00000000-0000-4000-8000-000000018006": 0,
+    "00000000-0000-4000-8000-000000018007": 0,
+    "00000000-0000-4000-8000-000000018008": 0,
+    "00000000-0000-4000-8000-000000018009": 0,
+    "00000000-0000-4000-8000-000000018010": 0,
+    "00000000-0000-4000-8000-000000018011": 0,
+    "00000000-0000-4000-8000-000000018012": 0,
+    "00000000-0000-4000-8000-000000018013": 0,
+    "00000000-0000-4000-8000-000000018014": 0,
+    "00000000-0000-4000-8000-000000018015": 0,
+    "00000000-0000-4000-8000-000000018016": 0,
+    "00000000-0000-4000-8000-000000018017": 0,
+    "00000000-0000-4000-8000-000000018018": 0,
+    "00000000-0000-4000-8000-000000018019": 0,
+    "00000000-0000-4000-8000-000000018020": 0,
+    "00000000-0000-4000-8000-000000018021": 0,
+    "00000000-0000-4000-8000-000000018022": 0,
+    "00000000-0000-4000-8000-000000018023": 0,
+    "00000000-0000-4000-8000-000000018024": 0,
+    "00000000-0000-4000-8000-000000018025": 0,
+    "00000000-0000-4000-8000-000000018026": 0,
+    "00000000-0000-4000-8000-000000018027": 0,
+    "00000000-0000-4000-8000-000000018028": 0,
+    "00000000-0000-4000-8000-000000018029": 0,
+    "00000000-0000-4000-8000-000000018030": 0,
+    "00000000-0000-4000-8000-000000018031": 0,
+    "00000000-0000-4000-8000-000000018032": 0,
+    "00000000-0000-4000-8000-000000018033": 0,
+    "00000000-0000-4000-8000-000000018034": 0,
+    "00000000-0000-4000-8000-000000018035": 0,
+    "00000000-0000-4000-8000-000000018036": 0,
+    "00000000-0000-4000-8000-000000018037": 0,
+    "00000000-0000-4000-8000-000000018038": 0,
+    "00000000-0000-4000-8000-000000018039": 0,
+    "00000000-0000-4000-8000-000000018040": 0,
+    "00000000-0000-4000-8000-000000018041": 0
   },
   "guides": {
     "00000000-0000-4000-8000-000000000302": {
@@ -4565,273 +6096,875 @@
           "text": "Confira as tags, a correspondência entre href e id e a navegação por teclado. Você pode experimentar CSS dentro de style usando as regras já ensinadas. Depois de validar, a dinâmica pede que explique a estrutura e um caso de link quebrado."
         }
       ]
+    },
+    "00000000-0000-4000-8000-000000004300": {
+      "objective": "Mostrar um valor e distinguir texto de número.",
+      "prerequisites": "Nenhum conceito anterior de JavaScript é necessário.",
+      "competency": "Mostrar um valor e distinguir texto de número.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "O que é a saída",
+          "text": "Saída é a informação que o programa apresenta. Neste laboratório, console.log(valor) escreve um valor no painel de saída. Os parênteses contêm o valor a mostrar; o ponto liga console à função log."
+        },
+        {
+          "title": "Texto entre aspas",
+          "text": "console.log(\"Olá\") mostra Olá. As aspas indicam um texto (string) e não fazem parte da saída. O ponto e vírgula encerra a instrução."
+        },
+        {
+          "title": "Número sem aspas",
+          "text": "console.log(3) mostra 3 como número. Já console.log(\"3\") mostra um texto que parece o mesmo número. O tipo muda o que pode ser calculado."
+        },
+        {
+          "title": "Uma conta",
+          "text": "console.log(3 + 4) mostra 7: o sinal + soma os números antes da saída. console.log(\"3\" + \"4\") mostra 34, pois une os textos."
+        },
+        {
+          "title": "Conferir",
+          "text": "Leia a instrução, preveja a saída e compare com o painel. Para uma soma, use números sem aspas; para uma mensagem, use texto entre aspas."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004301": {
+      "objective": "Guardar e usar um valor com nome.",
+      "prerequisites": "Rever antes: console.log e texto.",
+      "competency": "Guardar e usar um valor com nome.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "Nome e valor",
+          "text": "Uma variável associa um nome a um valor. Em const idade = 16;, idade é o nome e 16 é o número guardado."
+        },
+        {
+          "title": "Atribuição",
+          "text": "O sinal = atribui o valor à esquerda; ele não pergunta se os lados são iguais. const cria uma referência que não será reatribuída."
+        },
+        {
+          "title": "Usar o nome",
+          "text": "const nota = 8; console.log(nota); mostra 8. Sem aspas, nota se refere ao valor guardado. Com aspas, \"nota\" é apenas texto."
+        },
+        {
+          "title": "Somar valores",
+          "text": "const a = 3; const b = 4; console.log(a + b); mostra 7. O + recebe os valores que os nomes representam."
+        },
+        {
+          "title": "Conferir",
+          "text": "Ao ler um programa, anote cada nome e seu valor. Antes de prever a saída, substitua os nomes pelos valores guardados."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004003": {
+      "objective": "Ordenar leitura, conversão, cálculo e saída.",
+      "prerequisites": "Rever antes: const e variável.",
+      "competency": "Ordenar leitura, conversão, cálculo e saída.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "O objetivo",
+          "text": "Para calcular uma soma, o programa precisa de dois valores de entrada. Primeiro é preciso obtê-los; só depois é possível calcular."
+        },
+        {
+          "title": "Entrada de texto",
+          "text": "Neste laboratório, input() lê uma linha digitada e devolve texto. Essa função é oferecida pelo laboratório; não é uma função padrão das páginas do navegador."
+        },
+        {
+          "title": "Conversão",
+          "text": "Number(texto) tenta transformar um texto numérico em número. Number(\"3\") vale 3; texto \"3\" + \"4\" junta caracteres e produz \"34\"."
+        },
+        {
+          "title": "Cálculo e saída",
+          "text": "Depois de ler a e b como números, a + b calcula a soma. console.log(a + b) mostra o resultado no painel."
+        },
+        {
+          "title": "Ordem completa",
+          "text": "Leia os dois valores, converta cada um, calcule e mostre. Confira se nenhum cálculo usa um valor que ainda não foi definido."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004004": {
+      "objective": "Localizar e corrigir uma soma de textos.",
+      "prerequisites": "Rever antes: entrada, processamento e saída.",
+      "competency": "Localizar e corrigir uma soma de textos.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "Resultado inesperado",
+          "text": "Se as entradas são os textos \"3\" e \"4\", a expressão a + b produz \"34\". O programa executou, mas não calculou a soma pedida."
+        },
+        {
+          "title": "Concatenar",
+          "text": "Com textos, + concatena: junta os caracteres na ordem dada. Esse comportamento é útil para formar mensagens, mas não resolve uma soma numérica."
+        },
+        {
+          "title": "Encontrar a causa",
+          "text": "Verifique os tipos das entradas e o ponto em que a soma ocorre. input() deste laboratório devolve texto, mesmo quando a pessoa digita algarismos."
+        },
+        {
+          "title": "Corrigir",
+          "text": "Number(\"3\") + Number(\"4\") produz 7. Converta cada entrada antes de somar; converter \"34\" depois da concatenação preservaria o resultado errado."
+        },
+        {
+          "title": "Testar limites",
+          "text": "Confira também -2 e 5 (resultado 3) e 0 e 0 (resultado 0). Compare as saídas esperadas com as observadas antes de encerrar a correção."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004305": {
+      "objective": "Prever o resultado de comparações entre números.",
+      "prerequisites": "Rever antes: concatenação e depuração.",
+      "competency": "Prever o resultado de comparações entre números.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "Pergunta verificável",
+          "text": "Uma comparação responde verdadeiro ou falso. 7 >= 7 pergunta se sete é maior ou igual a sete e resulta true."
+        },
+        {
+          "title": "Símbolos",
+          "text": "> é maior que, < é menor que, >= é maior ou igual, <= é menor ou igual. Os dois caracteres de >= formam um operador."
+        },
+        {
+          "title": "Igualdade",
+          "text": "=== compara valores e tipos: 7 === 7 resulta true; 7 === \"7\" resulta false porque um é número e o outro texto."
+        },
+        {
+          "title": "Fronteira",
+          "text": "Para uma nota mínima de 7, nota >= 7 inclui exatamente 7. nota > 7 excluiria esse valor; teste 6, 7 e 8."
+        },
+        {
+          "title": "Resultado usado",
+          "text": "Uma condição pode ser guardada: const passou = nota >= 7;. console.log(passou) mostra true ou false."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004302": {
+      "objective": "Executar um bloco conforme uma condição.",
+      "prerequisites": "Rever antes: comparações booleanas.",
+      "competency": "Executar um bloco conforme uma condição.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "Decisão",
+          "text": "if verifica uma condição verdadeira ou falsa. Em if (nota >= 7) { console.log(\"Aprovado\"); }, o bloco entre chaves só executa se a nota atingir 7."
+        },
+        {
+          "title": "Parênteses e chaves",
+          "text": "Os parênteses de if envolvem a condição. As chaves delimitam as instruções sujeitas à decisão."
+        },
+        {
+          "title": "Outro caminho",
+          "text": "else { console.log(\"Revisar\"); } trata o caso em que a condição de if é falsa. Apenas um dos caminhos é executado."
+        },
+        {
+          "title": "Simular",
+          "text": "Com nota 7, >= 7 é true e sai Aprovado. Com nota 6, a condição é false e sai Revisar."
+        },
+        {
+          "title": "Conferir",
+          "text": "Teste valores abaixo, iguais e acima do limite. Localize a condição, decida seu resultado e só então leia o bloco executado."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004303": {
+      "objective": "Prever quantas vezes um bloco se repete.",
+      "prerequisites": "Rever antes: condicional if e else.",
+      "competency": "Prever quantas vezes um bloco se repete.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "Por que repetir",
+          "text": "Um laço executa instruções mais de uma vez. for pode controlar a repetição com um contador, isto é, um número que muda a cada volta."
+        },
+        {
+          "title": "Início",
+          "text": "Em for (let i = 0; i < 3; i++) { console.log(i); }, let i = 0 cria o contador inicial. Os pontos e vírgulas separam as três partes do controle."
+        },
+        {
+          "title": "Condição",
+          "text": "i < 3 permite continuar enquanto i for menor que 3. Com i igual a 3, a condição fica falsa e o laço termina."
+        },
+        {
+          "title": "Atualização",
+          "text": "i++ aumenta i em 1 após cada volta. As saídas são 0, 1 e 2, nessa ordem; o limite 3 não aparece."
+        },
+        {
+          "title": "Rastrear",
+          "text": "Anote i, resultado da condição e saída a cada volta. Uma condição que nunca se torna falsa pode fazer o programa não terminar."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004304": {
+      "objective": "Definir e chamar uma função que soma dois valores.",
+      "prerequisites": "Rever antes: laço e contador.",
+      "competency": "Definir e chamar uma função que soma dois valores.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "Reutilizar uma ação",
+          "text": "Uma função reúne instruções sob um nome. function somar(a, b) { return a + b; } define uma função; a e b são parâmetros, nomes para os valores recebidos."
+        },
+        {
+          "title": "Corpo e retorno",
+          "text": "As chaves delimitam o corpo. return devolve o resultado à chamada e encerra a função naquele ponto."
+        },
+        {
+          "title": "Chamada",
+          "text": "somar(2, 5) envia os argumentos 2 e 5 para a e b. O resultado devolvido é 7. Definir a função não a executa automaticamente."
+        },
+        {
+          "title": "Mostrar resultado",
+          "text": "console.log(somar(2, 5)) mostra 7 no painel. Sem console.log, a função ainda retorna 7, mas o programa não o mostra."
+        },
+        {
+          "title": "Conferir",
+          "text": "Teste também somar(-2, 5) e somar(0, 0). Acompanhe os valores recebidos, a expressão após return e a saída."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004005": {
+      "objective": "Ler, converter, somar e testar entradas numéricas.",
+      "prerequisites": "Rever antes: função e retorno.",
+      "competency": "Ler, converter, somar e testar entradas numéricas.",
+      "next": "Resolva a prática e aplique a ideia na dinâmica. Você pode voltar à teoria para revisar.",
+      "steps": [
+        {
+          "title": "O pedido",
+          "text": "Leia dois números, um por linha, e mostre somente a soma. Neste laboratório, input() fornece cada linha como texto; ele não é uma API padrão de páginas do navegador."
+        },
+        {
+          "title": "Converter cada linha",
+          "text": "const a = Number(input()); guarda a primeira entrada como número. const b = Number(input()); faz o mesmo com a segunda. Os parênteses internos chamam input antes de Number converter."
+        },
+        {
+          "title": "Calcular e mostrar",
+          "text": "console.log(a + b); soma os números e mostra o resultado. Evite outras mensagens no painel, pois a avaliação compara a saída pedida."
+        },
+        {
+          "title": "Testar",
+          "text": "Digite 3 e 4 em linhas separadas: a saída deve ser 7. Tente -2 e 5: a saída deve ser 3. Tente 0 e 0: a saída deve ser 0."
+        },
+        {
+          "title": "Investigar erro",
+          "text": "Se aparecer 34, você juntou textos sem converter cada entrada. Se houver saída extra, confira todos os console.log. Depois de conferir a resposta, a área de entrada e execução permite repetir seus testes."
+        }
+      ]
     }
   },
   "pedagogy": {
     "00000000-0000-4000-8000-000000000302": {
-      "concepts": ["condição", "verdadeiro e falso"],
-      "requires": ["variáveis"],
+      "concepts": [
+        "condição",
+        "verdadeiro e falso"
+      ],
+      "requires": [
+        "variáveis"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000301"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000301"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000330": {
-      "concepts": ["comparação"],
-      "requires": ["condição"],
+      "concepts": [
+        "comparação"
+      ],
+      "requires": [
+        "condição"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000302"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000302"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000331": {
-      "concepts": ["limites"],
-      "requires": ["comparação"],
+      "concepts": [
+        "limites"
+      ],
+      "requires": [
+        "comparação"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000330"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000330"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000332": {
-      "concepts": ["E lógico"],
-      "requires": ["limites"],
+      "concepts": [
+        "E lógico"
+      ],
+      "requires": [
+        "limites"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000331"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000331"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000333": {
-      "concepts": ["OU lógico"],
-      "requires": ["E lógico"],
+      "concepts": [
+        "OU lógico"
+      ],
+      "requires": [
+        "E lógico"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000332"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000332"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000334": {
-      "concepts": ["NÃO lógico"],
-      "requires": ["OU lógico"],
+      "concepts": [
+        "NÃO lógico"
+      ],
+      "requires": [
+        "OU lógico"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000333"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000333"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000335": {
-      "concepts": ["expressões compostas"],
-      "requires": ["NÃO lógico"],
+      "concepts": [
+        "expressões compostas"
+      ],
+      "requires": [
+        "NÃO lógico"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000334"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000334"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000336": {
-      "concepts": ["tabela-verdade"],
-      "requires": ["expressões compostas"],
+      "concepts": [
+        "tabela-verdade"
+      ],
+      "requires": [
+        "expressões compostas"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000335"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000335"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000337": {
-      "concepts": ["negação composta"],
-      "requires": ["tabela-verdade"],
+      "concepts": [
+        "negação composta"
+      ],
+      "requires": [
+        "tabela-verdade"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000336"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000336"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000301": {
-      "concepts": ["variáveis", "tipos Dart", "atribuição", "conversão básica"],
-      "requires": ["algoritmo"],
+      "concepts": [
+        "variáveis",
+        "tipos Dart",
+        "atribuição",
+        "conversão básica"
+      ],
+      "requires": [
+        "algoritmo"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000300"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000300"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000304": {
-      "concepts": ["condicionais", "faixas"],
-      "requires": ["negação composta"],
+      "concepts": [
+        "condicionais",
+        "faixas"
+      ],
+      "requires": [
+        "negação composta"
+      ],
       "competency": "Aplicação guiada",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000337"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000337"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000305": {
-      "concepts": ["repetição", "contador", "acumulador"],
-      "requires": ["condicionais", "variáveis"],
+      "concepts": [
+        "repetição",
+        "contador",
+        "acumulador"
+      ],
+      "requires": [
+        "condicionais",
+        "variáveis"
+      ],
       "competency": "Aplicação guiada",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000304"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000304"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000306": {
-      "concepts": ["listas", "índice", "lista vazia"],
-      "requires": ["repetição", "acumulador"],
+      "concepts": [
+        "listas",
+        "índice",
+        "lista vazia"
+      ],
+      "requires": [
+        "repetição",
+        "acumulador"
+      ],
       "competency": "Aplicação guiada",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000305"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000305"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000338": {
-      "concepts": ["funções"],
-      "requires": ["listas", "variáveis"],
+      "concepts": [
+        "funções"
+      ],
+      "requires": [
+        "listas",
+        "variáveis"
+      ],
       "competency": "Aplicação guiada",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000306"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000306"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000303": {
-      "concepts": ["estoque aplicado"],
-      "requires": ["funções", "acumulador"],
+      "concepts": [
+        "estoque aplicado"
+      ],
+      "requires": [
+        "funções",
+        "acumulador"
+      ],
       "competency": "Aplicação independente",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000000338"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000338"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000000300": {
-      "concepts": ["algoritmo"],
+      "concepts": [
+        "algoritmo"
+      ],
       "requires": [],
       "competency": "Primeiro contato",
       "prerequisite_ids": [],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004100": {
-      "concepts": ["Python", "print"],
+      "concepts": [
+        "Python",
+        "print"
+      ],
       "requires": [],
       "competency": "Primeiro contato",
       "prerequisite_ids": [],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004101": {
-      "concepts": ["variáveis Python", "tipos Python"],
-      "requires": ["print"],
+      "concepts": [
+        "variáveis Python",
+        "tipos Python"
+      ],
+      "requires": [
+        "print"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004100"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004100"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004102": {
-      "concepts": ["input Python", "conversão Python"],
-      "requires": ["tipos Python"],
+      "concepts": [
+        "input Python",
+        "conversão Python"
+      ],
+      "requires": [
+        "tipos Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004101"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004101"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004103": {
-      "concepts": ["comparações Python"],
-      "requires": ["conversão Python"],
+      "concepts": [
+        "comparações Python"
+      ],
+      "requires": [
+        "conversão Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004102"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004102"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004000": {
-      "concepts": ["if Python"],
-      "requires": ["comparações Python"],
+      "concepts": [
+        "if Python"
+      ],
+      "requires": [
+        "comparações Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004108"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004108"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004001": {
-      "concepts": ["for Python", "range Python"],
-      "requires": ["if Python"],
+      "concepts": [
+        "for Python",
+        "range Python"
+      ],
+      "requires": [
+        "if Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004000"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004000"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004104": {
-      "concepts": ["listas Python"],
-      "requires": ["for Python"],
+      "concepts": [
+        "listas Python"
+      ],
+      "requires": [
+        "for Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004001"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004001"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004105": {
-      "concepts": ["funções Python"],
-      "requires": ["listas Python"],
+      "concepts": [
+        "funções Python"
+      ],
+      "requires": [
+        "listas Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004104"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004104"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004002": {
-      "concepts": ["projeto Python"],
-      "requires": ["funções Python"],
+      "concepts": [
+        "projeto Python"
+      ],
+      "requires": [
+        "funções Python"
+      ],
       "competency": "Aplicação independente",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004105"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004105"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004106": {
-      "concepts": ["E Python"],
-      "requires": ["comparações Python"],
+      "concepts": [
+        "E Python"
+      ],
+      "requires": [
+        "comparações Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004103"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004103"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004107": {
-      "concepts": ["OU Python"],
-      "requires": ["E Python"],
+      "concepts": [
+        "OU Python"
+      ],
+      "requires": [
+        "E Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004106"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004106"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004108": {
-      "concepts": ["NÃO Python"],
-      "requires": ["OU Python"],
+      "concepts": [
+        "NÃO Python"
+      ],
+      "requires": [
+        "OU Python"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004107"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004107"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004200": {
-      "concepts": ["página Web", "navegador"],
+      "concepts": [
+        "página Web",
+        "navegador"
+      ],
       "requires": [],
       "competency": "Primeiro contato",
       "prerequisite_ids": [],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004201": {
-      "concepts": ["elementos HTML", "tags HTML"],
-      "requires": ["página Web"],
+      "concepts": [
+        "elementos HTML",
+        "tags HTML"
+      ],
+      "requires": [
+        "página Web"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004200"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004200"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004202": {
-      "concepts": ["documento HTML"],
-      "requires": ["tags HTML"],
+      "concepts": [
+        "documento HTML"
+      ],
+      "requires": [
+        "tags HTML"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004201"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004201"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004203": {
-      "concepts": ["links HTML", "atributos HTML"],
-      "requires": ["documento HTML"],
+      "concepts": [
+        "links HTML",
+        "atributos HTML"
+      ],
+      "requires": [
+        "documento HTML"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004202"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004202"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000003000": {
-      "concepts": ["semântica HTML"],
-      "requires": ["links HTML"],
+      "concepts": [
+        "semântica HTML"
+      ],
+      "requires": [
+        "links HTML"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004203"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004203"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004204": {
-      "concepts": ["regras CSS"],
-      "requires": ["semântica HTML"],
+      "concepts": [
+        "regras CSS"
+      ],
+      "requires": [
+        "semântica HTML"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000003000"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003000"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004205": {
-      "concepts": ["caixas CSS", "layout CSS"],
-      "requires": ["regras CSS"],
+      "concepts": [
+        "caixas CSS",
+        "layout CSS"
+      ],
+      "requires": [
+        "regras CSS"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004204"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004204"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000003001": {
-      "concepts": ["responsividade"],
-      "requires": ["layout CSS"],
+      "concepts": [
+        "responsividade"
+      ],
+      "requires": [
+        "layout CSS"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000004205"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004205"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000003002": {
-      "concepts": ["verificação Web"],
-      "requires": ["responsividade"],
+      "concepts": [
+        "verificação Web"
+      ],
+      "requires": [
+        "responsividade"
+      ],
       "competency": "Compreensão",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000003001"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003001"
+      ],
       "version": 2
     },
     "00000000-0000-4000-8000-000000004006": {
-      "concepts": ["projeto Web"],
-      "requires": ["verificação Web"],
+      "concepts": [
+        "projeto Web"
+      ],
+      "requires": [
+        "verificação Web"
+      ],
       "competency": "Aplicação independente",
-      "prerequisite_ids": ["00000000-0000-4000-8000-000000003002"],
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003002"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004300": {
+      "concepts": [
+        "console.log e texto"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004301": {
+      "concepts": [
+        "const e variável"
+      ],
+      "requires": [
+        "console.log e texto"
+      ],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004300"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004003": {
+      "concepts": [
+        "entrada, processamento e saída"
+      ],
+      "requires": [
+        "const e variável"
+      ],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004301"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004004": {
+      "concepts": [
+        "concatenação e depuração"
+      ],
+      "requires": [
+        "entrada, processamento e saída"
+      ],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004003"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004305": {
+      "concepts": [
+        "comparações booleanas"
+      ],
+      "requires": [
+        "concatenação e depuração"
+      ],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004004"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004302": {
+      "concepts": [
+        "condicional if e else"
+      ],
+      "requires": [
+        "comparações booleanas"
+      ],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004305"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004303": {
+      "concepts": [
+        "laço e contador"
+      ],
+      "requires": [
+        "condicional if e else"
+      ],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004302"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004304": {
+      "concepts": [
+        "função e retorno"
+      ],
+      "requires": [
+        "laço e contador"
+      ],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004303"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004005": {
+      "concepts": [
+        "programa completo de soma"
+      ],
+      "requires": [
+        "função e retorno"
+      ],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004304"
+      ],
       "version": 2
     }
   }
