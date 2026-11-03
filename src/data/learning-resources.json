@@ -106,5 +106,32 @@
     "kind": "artigo",
     "language": "Português brasileiro",
     "level": "Consulta após a aula"
+  },
+  {
+    "id": "html-basics",
+    "title": "Primeiros elementos e atributos HTML",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "css-basics",
+    "title": "O papel das regras CSS",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/What_is_CSS",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "css-layout",
+    "title": "Introdução à distribuição com CSS",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/CSS_layout/Introduction",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
   }
 ]

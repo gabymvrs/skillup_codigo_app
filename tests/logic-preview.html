@@ -1,11 +1,58 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>SkillUp · piloto de Lógica</title><meta name="viewport" content="width=device-width, initial-scale=1"><div id="root"></div><script type="module">
-import React from 'react';import {createRoot} from 'react-dom/client';import {MemoryRouter} from 'react-router-dom';
-import {AuthProvider} from '/src/state/AuthContext.tsx';import {DataProvider} from '/src/state/DataContext.tsx';import {LessonSession} from '/src/components/LessonSession.tsx';import {createDemo} from '/src/data/demo.ts';import {modules,id} from '/src/data/catalog.ts';
-import '/src/styles/tokens.css';import '/src/styles/global.css';
-const selected=[302,332,337,4002,4100].includes(Number(new URLSearchParams(location.search).get('module')))?Number(new URLSearchParams(location.search).get('module')):332;
-const module=modules.find(m=>m.id===id(selected));
-sessionStorage.setItem('skillup.demo.role','estudante');
-const d=createDemo();d.progress=modules.filter(m=>m.track_id===module.track_id&&m.position<module.position).map((m,i)=>({id:'qa-'+i,user_id:id(1),module_id:m.id,completed_at:new Date().toISOString()}));
-localStorage.setItem('skillup.demo.v2',JSON.stringify(d));
-createRoot(document.getElementById('root')).render(React.createElement(MemoryRouter,null,React.createElement(AuthProvider,null,React.createElement(DataProvider,null,React.createElement(LessonSession,{module,onClose:()=>{document.querySelector('#root').textContent='Atividade fechada; rascunho preservado.'}})))));
-</script></html>
+<!doctype html>
+<html lang="pt-BR">
+  <meta charset="utf-8" /><title>SkillUp · piloto de Lógica</title
+  ><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <div id="root"></div>
+  <script type="module">
+    import React from "react";
+    import { createRoot } from "react-dom/client";
+    import { MemoryRouter } from "react-router-dom";
+    import { AuthProvider } from "/src/state/AuthContext.tsx";
+    import { DataProvider } from "/src/state/DataContext.tsx";
+    import { LessonSession } from "/src/components/LessonSession.tsx";
+    import { createDemo } from "/src/data/demo.ts";
+    import { modules, id } from "/src/data/catalog.ts";
+    import "/src/styles/tokens.css";
+    import "/src/styles/global.css";
+    const selected = [302, 332, 337, 4002, 4100, 4006, 4201].includes(
+      Number(new URLSearchParams(location.search).get("module")),
+    )
+      ? Number(new URLSearchParams(location.search).get("module"))
+      : 332;
+    const module = modules.find((m) => m.id === id(selected));
+    sessionStorage.setItem("skillup.demo.role", "estudante");
+    const d = createDemo();
+    d.progress = modules
+      .filter(
+        (m) => m.track_id === module.track_id && m.position < module.position,
+      )
+      .map((m, i) => ({
+        id: "qa-" + i,
+        user_id: id(1),
+        module_id: m.id,
+        completed_at: new Date().toISOString(),
+      }));
+    localStorage.setItem("skillup.demo.v2", JSON.stringify(d));
+    createRoot(document.getElementById("root")).render(
+      React.createElement(
+        MemoryRouter,
+        null,
+        React.createElement(
+          AuthProvider,
+          null,
+          React.createElement(
+            DataProvider,
+            null,
+            React.createElement(LessonSession, {
+              module,
+              onClose: () => {
+                document.querySelector("#root").textContent =
+                  "Atividade fechada; rascunho preservado.";
+              },
+            }),
+          ),
+        ),
+      ),
+    );
+  </script>
+</html>

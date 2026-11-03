@@ -39,12 +39,12 @@
       "Um catálogo de produtos ou uma página de estudos"
     ],
     "objectives": [
-      "Distinguir estrutura, apresentação e comportamento",
-      "Reconhecer elementos semânticos e decisões de responsividade",
-      "Construir e verificar a estrutura de uma página simples"
+      "Entender navegador, página, elementos, tags e atributos",
+      "Montar um documento com navegação e conteúdo principal",
+      "Aplicar regras CSS, adaptar o layout e conferir acessibilidade"
     ],
-    "outcome": "Você poderá planejar a estrutura de uma página e escrever um documento HTML no exercício de criação. Esta trilha atual não cobre um projeto Web completo com servidor.",
-    "prerequisites": "Saber usar um navegador. As atividades atuais pedem reconhecer elementos HTML; consulte a teoria antes dos exercícios se ainda não conhece tags.",
+    "outcome": "Você poderá construir uma página simples, explicar sua estrutura e conferir links, leitura e teclado no laboratório.",
+    "prerequisites": "Nenhum conhecimento de HTML ou CSS. Começamos pelo papel do navegador e explicamos cada parte dos exemplos.",
     "difficulty": "Iniciante"
   },
   "00000000-0000-4000-8000-000000002001": {

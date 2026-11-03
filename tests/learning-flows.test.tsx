@@ -248,17 +248,37 @@ describe("Interactive exercise formats", () => {
       await screen.findByRole("button", { name: "Começar trilha" }),
     );
     await screen.findByText(/Trilha iniciada/);
-    await user.click(screen.getByRole("button", { name: /HTML semântico/ }));
+    await user.click(
+      screen.getByRole("button", { name: /Como uma página funciona/ }),
+    );
     await user.click(
       await screen.findByRole("button", {
         name: /^(Começar|Continuar atividade|Ver resultado)$/,
       }),
     );
+    for (let i = 0; i < 4; i++)
+      await user.click(
+        await screen.findByRole("button", { name: "Continuar teoria" }),
+      );
     await user.click(
-      await screen.findByRole("button", { name: "Continuar para a prática" }),
+      screen.getByRole("button", { name: "Continuar para a prática" }),
     );
-    await user.click(screen.getByRole("radio", { name: "nav" }));
-    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    for (const [i, answer] of [
+      "Interpretar e apresentar páginas",
+      "Marcar a estrutura e a função do conteúdo",
+      "CSS",
+      "Não",
+      "JavaScript",
+    ].entries()) {
+      await user.click(screen.getByRole("radio", { name: answer }));
+      await user.click(
+        screen.getByRole("button", { name: "Conferir resposta" }),
+      );
+      if (i < 4)
+        await user.click(
+          await screen.findByRole("button", { name: "Próxima questão" }),
+        );
+    }
     await user.click(
       await screen.findByRole("button", { name: "Continuar para a dinâmica" }),
     );
@@ -287,7 +307,7 @@ describe("Interactive exercise formats", () => {
       ),
     ).toHaveLength(2);
     expect(
-      d.progress.some((p: { module_id: string }) => p.module_id === id(3000)),
+      d.progress.some((p: { module_id: string }) => p.module_id === id(4200)),
     ).toBe(true);
     expect(
       d.progress.some((p: { module_id: string }) => p.module_id === id(3010)),

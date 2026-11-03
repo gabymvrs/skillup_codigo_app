@@ -1,7 +1,44 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>SkillUp · responsividade da teoria</title><h1>Teoria de Lógica em quatro larguras</h1><pre id="results">Carregando…</pre><script type="module">
-const rows=[];
-for(const width of [360,768,1024,1440]){
- const frame=document.createElement('iframe');frame.title=`Teoria ${width}px`;frame.style.cssText=`width:${width}px;height:1000px;display:block;margin:20px 0`;frame.src='/tests/logic-preview.html';document.body.append(frame);
- frame.onload=()=>{let tries=0;const check=()=>{const d=frame.contentDocument,dialog=d.querySelector('dialog,[role="dialog"]'),theory=d.querySelector('[aria-label="Teoria passo a passo"]');if(!theory){if(++tries<60)setTimeout(check,150);return}const result={width,noOverflow:d.documentElement.scrollWidth<=width,dialogFits:dialog.getBoundingClientRect().width<=width,theoryFits:theory.scrollWidth<=theory.clientWidth,inputs:[...d.querySelectorAll('input')].every(x=>x.getBoundingClientRect().width<=width)};rows.push(result);document.querySelector('#results').textContent=JSON.stringify(rows.sort((a,b)=>a.width-b.width),null,2)};check()};
-}
-</script></html>
+<!doctype html>
+<html lang="pt-BR">
+  <meta charset="utf-8" /><title>SkillUp · responsividade da teoria</title>
+  <h1>Teoria de Lógica em quatro larguras</h1>
+  <pre id="results">Carregando…</pre>
+  <script type="module">
+    const rows = [];
+    for (const width of [360, 768, 1024, 1440]) {
+      const frame = document.createElement("iframe");
+      frame.title = `Teoria ${width}px`;
+      frame.style.cssText = `width:${width}px;height:1000px;display:block;margin:20px 0`;
+      frame.src = "/tests/logic-preview.html";
+      document.body.append(frame);
+      frame.onload = () => {
+        let tries = 0;
+        const check = () => {
+          const d = frame.contentDocument,
+            dialog = d.querySelector('dialog,[role="dialog"]'),
+            theory = d.querySelector('[aria-label="Teoria passo a passo"]');
+          if (!theory) {
+            if (++tries < 60) setTimeout(check, 150);
+            return;
+          }
+          const result = {
+            width,
+            noOverflow: d.documentElement.scrollWidth <= width,
+            dialogFits: dialog.getBoundingClientRect().width <= width,
+            theoryFits: theory.scrollWidth <= theory.clientWidth,
+            inputs: [...d.querySelectorAll("input")].every(
+              (x) => x.getBoundingClientRect().width <= width,
+            ),
+          };
+          rows.push(result);
+          document.querySelector("#results").textContent = JSON.stringify(
+            rows.sort((a, b) => a.width - b.width),
+            null,
+            2,
+          );
+        };
+        check();
+      };
+    }
+  </script>
+</html>

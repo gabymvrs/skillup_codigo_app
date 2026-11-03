@@ -189,6 +189,18 @@ export function GuidedTheory({
         <p key={i}>{p}</p>
       ))}
       {current.code && <TeachingCode source={current.code} />}
+      {current.preview && (
+        <figure>
+          <figcaption>Prévia do exemplo HTML desta etapa</figcaption>
+          <iframe
+            className="teaching-preview"
+            title={`Exemplo: ${current.title}`}
+            sandbox=""
+            referrerPolicy="no-referrer"
+            srcDoc={current.preview}
+          />
+        </figure>
+      )}
       {current.annotations && (
         <ul>
           {current.annotations.map((a) => (

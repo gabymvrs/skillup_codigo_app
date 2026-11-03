@@ -252,6 +252,98 @@
       "prerequisite_id": "00000000-0000-4000-8000-000000004107",
       "track_id": "00000000-0000-4000-8000-000000002100",
       "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004200",
+      "title": "Como uma página funciona",
+      "body": "Ao abrir o SkillUp, o navegador mostra títulos, textos, links e campos. Navegador é o programa usado para acessar e apresentar páginas, como Chrome ou Firefox. Uma página é um documento que ele interpreta para mostrar esse conteúdo.\n\nAo acessar um endereço, o navegador pode pedir arquivos a um servidor, um computador que atende essas solicitações. O navegador interpreta os arquivos recebidos. Nesta trilha começaremos com uma página pequena no próprio laboratório, sem precisar contratar hospedagem.\n\nHTML é uma linguagem de marcação. Ela identifica partes do documento, como título, parágrafo e link. Marcar uma parte informa sua função. O conteúdo de uma página não precisa de efeitos ou de programação para ser compreensível.\n\nCSS descreve apresentação: cores, espaço e distribuição. JavaScript é uma linguagem de programação que pode responder a ações, como um clique. Nesta trilha, aprenderemos HTML antes de CSS. Não é preciso escrever JavaScript para montar a primeira página.\n\nObserve uma página de estudos: qual é o título? Quais trechos são parágrafos? Quais itens levam a outro endereço? Na próxima bolinha, vamos marcar título e parágrafo e entender os sinais que aparecem no HTML.",
+      "question_id": "00000000-0000-4000-8000-000000017000",
+      "position": 0,
+      "prerequisite_id": null,
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004201",
+      "title": "Elementos e tags HTML",
+      "body": "O texto Meu curso pode ser o título principal de uma página. Em HTML, usamos um elemento para indicar essa função. Um elemento reúne a marca de abertura, seu conteúdo e, quando necessário, a marca de fechamento.\n\n<h1> é a tag de abertura do título principal. < marca o início da tag, h1 é seu nome e > termina a tag. O número 1 indica o nível do título. Esses sinais fazem parte da marcação; não são comparações numéricas neste contexto.\n\n</h1> é a tag de fechamento: a barra / depois de < indica encerramento. Meu curso fica entre a abertura e o fechamento. Ao apresentar a página, o navegador mostra o texto com o papel de título; ele não mostra as tags como texto comum.\n\n<p> começa um parágrafo; </p> o termina. Coloque o texto entre as duas tags. Um parágrafo explica o assunto; um título identifica uma seção. Não escolha h1 só para deixar um texto grande: sua função é identificar o título principal.\n\nAbra e feche o mesmo nome: <p>Texto</p>. Fechar com </h1> não corresponde à abertura p. Na dinâmica, escreva um título e um parágrafo e explique cada delimitador. A prévia mostra apenas o exemplo desta aula e não executa scripts.",
+      "question_id": "00000000-0000-4000-8000-000000017005",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004200",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004202",
+      "title": "O documento HTML",
+      "body": "Os elementos que o visitante lê fazem parte de um documento. Uma estrutura comum informa ao navegador a versão de marcação, o idioma, os dados da página e o conteúdo apresentado. Vamos separar essas funções antes de juntar tudo.\n\n<!doctype html> indica o modo HTML moderno. Não é uma tag comum com conteúdo e fechamento. O elemento html envolve o documento. Em <html lang=\"pt-BR\">, lang é um atributo, uma informação adicional; = associa o valor \"pt-BR\", que identifica português do Brasil.\n\nhead reúne informações sobre o documento. title define o título da aba do navegador, não substitui o h1 do conteúdo. <meta charset=\"UTF-8\"> indica uma codificação que permite representar os caracteres usados no texto, como acentos. meta não recebe tag de fechamento.\n\nbody contém o que compõe a página apresentada, como h1 e p. Dentro dele, podemos colocar os elementos já aprendidos. As tags ficam aninhadas, uma dentro da outra: feche o elemento interno antes de encerrar o que o contém.\n\nAcompanhe a ordem: declaração, html, head, body e fechamento de html. Os espaços e quebras de linha ajudam a leitura do código. Alterar o title muda a aba; alterar o h1 muda o título do conteúdo.",
+      "question_id": "00000000-0000-4000-8000-000000017010",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004201",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004203",
+      "title": "Links e destinos",
+      "body": "Um link leva a outro endereço ou a uma parte de um documento. O visitante precisa de um texto que descreva o destino. “Ver material de HTML” é mais claro que “clique aqui” isolado.\n\nEm <a href=\"https://example.org\">Visitar exemplo</a>, a é o elemento do link. href é o atributo que informa o destino. = associa o valor entre aspas. O texto Visitar exemplo é a parte que a pessoa lê e pode ativar.\n\nid dá um identificador a um elemento. Em <p id=\"conteudo\">, conteudo identifica aquele parágrafo. Um link href=\"#conteudo\" procura esse id no mesmo documento. # indica esse destino interno. O id precisa existir e ser único na página.\n\nUm link navega; um button executa uma ação, como abrir um painel. Parecer com um botão não muda a função de um link. Use o elemento pelo comportamento esperado e mantenha o texto compreensível para quem navega por teclado.\n\nAtive o link e confira se o destino corresponde ao texto. Se href aponta a #conteudo mas o id escrito foi material, o destino esperado não existe. Na dinâmica, registre texto, href e id correspondente.",
+      "question_id": "00000000-0000-4000-8000-000000017015",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004202",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003000",
+      "title": "HTML semântico",
+      "body": "Semântica é o significado das partes. Em HTML, alguns elementos informam o papel do conteúdo, além de permitir sua apresentação visual. Isso ajuda a organizar a página e pode apoiar ferramentas de acessibilidade.\n\nnav identifica uma região com links de navegação. Os links continuam sendo elementos a, com seus próprios destinos. Colocar uma navegação em nav informa sua função; não faz os destinos funcionarem automaticamente.\n\nmain delimita o conteúdo principal da página. Dentro dele, podemos usar h1 para o título principal e p para a explicação. Um id pode servir de destino ao link de pular para o conteúdo, como aprendemos antes.\n\nUse h1 para o título principal e h2 para seções dentro da página, como Materiais e Exercícios. h3 pode identificar uma subseção de h2. Não pule níveis apenas para conseguir outro tamanho de letra: a aparência será tratada com CSS.\n\nUm link leva a um destino; um button pode executar uma ação. div e span são agrupamentos genéricos e não substituem automaticamente o significado de nav ou button. Na dinâmica, desenhe um esqueleto com regiões e explique o papel de cada uma.",
+      "question_id": "00000000-0000-4000-8000-000000008000",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004203"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004204",
+      "title": "Primeiras regras CSS",
+      "body": "Já temos título e parágrafo em HTML. Agora queremos escolher sua aparência. CSS é a linguagem de estilos. Alterar uma cor não muda a função do título: h1 continua sendo o título principal.\n\nEm p { color: blue; }, p é o seletor: indica os parágrafos que receberão a regra. As chaves { e } delimitam as declarações de estilo. Esta sintaxe é CSS, diferente das tags HTML.\n\ncolor é a propriedade que altera a cor do texto. : separa a propriedade do valor. blue é o valor, a cor escolhida. ; encerra a declaração. background-color altera a cor de fundo, e font-size indica o tamanho da fonte. Cada propriedade tem uma função.\n\nPara o exemplo inicial, coloque as regras em um elemento style no head. O navegador lê o HTML e aplica a apresentação indicada. O parágrafo abaixo aparece azul; o h1 não corresponde ao seletor p e mantém outro estilo.\n\nAo investigar uma regra, confira se o seletor corresponde ao elemento, se há dois-pontos e se o valor pertence à propriedade. Escreva color: blue, não blue: color. Na dinâmica, explique o resultado esperado de duas propriedades diferentes.",
+      "question_id": "00000000-0000-4000-8000-000000017024",
+      "position": 5,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003000",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004205",
+      "title": "Caixas e distribuição",
+      "body": "Um card de estudos contém texto e ocupa um espaço na página. O modelo de caixa do CSS descreve conteúdo, espaço interno, borda e espaço externo. Saber onde fica cada parte ajuda a corrigir elementos encostados.\n\npadding cria espaço entre conteúdo e borda. margin cria espaço fora da borda, em relação a outras caixas. border desenha a borda. px é uma unidade usada nestes exemplos; 16px representa dezesseis pixels CSS.\n\nEm border: 1px solid black, 1px é a espessura, solid indica linha contínua e black é a cor. Esta propriedade aceita esses valores juntos. Para entender o efeito, imagine o texto no centro, padding ao redor dele, borda em volta e margin por fora.\n\ndisplay: flex organiza os filhos de um elemento em uma direção, inicialmente uma linha. gap: 12px cria espaço entre eles. flex-wrap: wrap permite passar para outra linha quando falta largura. Os itens continuam tendo seu conteúdo e significado HTML.\n\ndisplay: grid permite organizar linhas e colunas. grid-template-columns: 1fr 1fr cria duas colunas com partes iguais do espaço disponível neste exemplo; fr representa uma fração desse espaço. Em uma tela estreita, uma única coluna pode ser mais legível. Na próxima bolinha, veremos como adaptar isso ao tamanho da tela.",
+      "question_id": "00000000-0000-4000-8000-000000017029",
+      "position": 6,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004204",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003001",
+      "title": "CSS responsivo",
+      "body": "Uma página de estudos deve continuar legível no celular e no computador. Design responsivo adapta a apresentação ao espaço disponível, preservando o conteúdo e as ações. Comece conferindo a tela menor, onde os elementos precisam caber sem apertar demais.\n\nwidth: 100% usa a largura disponível do contêiner, o elemento que contém o bloco. max-width limita até onde esse bloco pode crescer. Com box-sizing: border-box, a largura inclui padding e borda, ajudando a evitar que o total ultrapasse o espaço.\n\nUma media query aplica regras quando uma condição sobre o ambiente é atendida. @media (min-width: 768px) significa que as regras internas valem a partir dessa largura. Comece com uma coluna e use duas quando houver espaço; 768px é apenas o limite escolhido para este exemplo.\n\nConfira texto, rótulos e foco do teclado nas duas larguras. Uma interface que cabe mas deixa o botão ilegível ainda tem problema. Um rótulo explica o campo e deve continuar visível durante o preenchimento.\n\nHTML estrutura o conteúdo, CSS controla a apresentação e JavaScript pode programar comportamento. Não troque um link por texto apenas para fazer a página caber: preserve a ação. Na dinâmica, descreva uma reorganização de cards e como testaria em duas telas.",
+      "question_id": "00000000-0000-4000-8000-000000008001",
+      "position": 7,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004205"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003002",
+      "title": "Publicação acessível",
+      "body": "Uma página publicada pode ser acessada por outras pessoas em um endereço. Antes disso, teste seu conteúdo e suas ações. Uma imagem bonita da página não prova que links, teclado e formulários funcionam.\n\nO h1 identifica o assunto principal; h2 organiza seções; h3 pode organizar partes de uma seção. Leia só os títulos: eles devem permitir entender a organização. Não use o nível apenas para escolher tamanho.\n\nTab move o foco entre controles e links; Shift+Tab retorna. O foco precisa estar visível para mostrar onde você está. Ative links e botões com o teclado e confira os destinos ou ações. Nenhuma região deve prender o foco sem uma saída clara.\n\nalt pode oferecer uma alternativa textual para a função de uma imagem no contexto; uma imagem puramente decorativa pode usar alt vazio. Contraste é a diferença de luminosidade entre texto e fundo: ele precisa permitir leitura. Cor sozinha não deve ser a única forma de comunicar acerto ou erro.\n\nConfira títulos em ordem, links reais, rótulos dos campos, foco por teclado e leitura em celular e computador. Registre o problema encontrado e como confirmar a correção. A questão aberta desta atividade registra seu plano, não uma certificação automática de acessibilidade.",
+      "question_id": "00000000-0000-4000-8000-000000017038",
+      "position": 8,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003001"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004006",
+      "title": "Construir uma página semântica",
+      "body": "Você vai criar um h1 com o texto Meu curso, uma navegação com link para o conteúdo e a área principal correspondente. As partes já foram apresentadas; agora serão reunidas e testadas em uma página.\n\nO h1 apresenta o nome Meu curso. nav reúne os links. Dentro dele, um a com href=\"#conteudo\" deve apontar para o destino interno. Escolha um texto de link que explique para onde ele leva.\n\nmain com id=\"conteudo\" é a área central e o destino do link. O texto de href após # deve corresponder ao id. O documento inicial já fornece doctype, html, head e body; você pode completar o conteúdo dentro do body.\n\nAtualizar prévia mostra o documento em um quadro isolado. Confira o título visível, ative o link e observe a área principal. A avaliação verifica os requisitos HTML informados; efeitos JavaScript não são necessários para resolver esta atividade.\n\nConfira as tags, a correspondência entre href e id e a navegação por teclado. Você pode experimentar CSS dentro de style usando as regras já ensinadas. Depois de validar, a dinâmica pede que explique a estrutura e um caso de link quebrado.",
+      "question_id": "00000000-0000-4000-8000-000000017042",
+      "position": 9,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003002"
     }
   ],
   "plans": [
@@ -873,6 +965,227 @@
         "minLength": 100
       },
       "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004200",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017000",
+        "00000000-0000-4000-8000-000000017001",
+        "00000000-0000-4000-8000-000000017002",
+        "00000000-0000-4000-8000-000000017003",
+        "00000000-0000-4000-8000-000000017004"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Leia uma página de estudos",
+        "prompt": "Escolha uma página conhecida e identifique um título, um parágrafo e um link. Explique separadamente o que é conteúdo, apresentação e uma ação interativa, sem escrever código ainda.",
+        "criteria": [
+          "Identifiquei partes concretas",
+          "Distingui conteúdo, estilo e comportamento"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["html-basics"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004201",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017005",
+        "00000000-0000-4000-8000-000000017006",
+        "00000000-0000-4000-8000-000000017007",
+        "00000000-0000-4000-8000-000000017008",
+        "00000000-0000-4000-8000-000000017009"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Marque seu conteúdo",
+        "prompt": "Escreva um h1 para uma página da escola e um p explicando o assunto. Identifique abertura, conteúdo e fechamento em cada elemento.",
+        "criteria": [
+          "Marquei título e parágrafo",
+          "Expliquei as tags e seu fechamento"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["html-basics"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004202",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017010",
+        "00000000-0000-4000-8000-000000017011",
+        "00000000-0000-4000-8000-000000017012",
+        "00000000-0000-4000-8000-000000017013",
+        "00000000-0000-4000-8000-000000017014"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Organize um documento",
+        "prompt": "Monte a estrutura de uma página de estudos e explique a diferença entre title e h1. Identifique onde informou idioma e codificação.",
+        "criteria": [
+          "Separei head e body",
+          "Expliquei idioma, codificação e títulos"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["html-structure"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004203",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017015",
+        "00000000-0000-4000-8000-000000017016",
+        "00000000-0000-4000-8000-000000017017",
+        "00000000-0000-4000-8000-000000017018",
+        "00000000-0000-4000-8000-000000017019"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Planeje uma navegação",
+        "prompt": "Crie um link para uma seção de estudos e o elemento que recebe seu id. Explique a correspondência e descreva como testaria o link por teclado.",
+        "criteria": [
+          "Texto e destino são coerentes",
+          "O href corresponde a um id existente"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["html-basics"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003000",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000008000",
+        "00000000-0000-4000-8000-000000017020",
+        "00000000-0000-4000-8000-000000017021",
+        "00000000-0000-4000-8000-000000017022",
+        "00000000-0000-4000-8000-000000017023"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Experimente outro cenário",
+        "prompt": "Crie um exemplo diferente para aplicar “HTML semântico”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+        "criteria": [
+          "Expliquei a decisão usando o conceito da teoria",
+          "Incluí um exemplo concreto e o resultado esperado"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["html-structure"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004204",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017024",
+        "00000000-0000-4000-8000-000000017025",
+        "00000000-0000-4000-8000-000000017026",
+        "00000000-0000-4000-8000-000000017027",
+        "00000000-0000-4000-8000-000000017028"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Explique duas regras",
+        "prompt": "Escreva regras para a cor de um parágrafo e o tamanho de um título. Aponte seletor, propriedade e valor e preveja quais elementos mudam.",
+        "criteria": [
+          "Identifiquei as partes da regra",
+          "Expliquei quais elementos recebem cada estilo"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["css-basics"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004205",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017029",
+        "00000000-0000-4000-8000-000000017030",
+        "00000000-0000-4000-8000-000000017031",
+        "00000000-0000-4000-8000-000000017032",
+        "00000000-0000-4000-8000-000000017033"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Desenhe as caixas de dois cards",
+        "prompt": "Represente dois cards com conteúdo, espaço interno, borda e espaço externo. Depois escolha flex ou grid para distribuí-los e explique o que cada propriedade fará.",
+        "criteria": [
+          "Distingui padding e margin",
+          "Expliquei a distribuição dos cards"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["css-layout"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003001",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000008001",
+        "00000000-0000-4000-8000-000000017034",
+        "00000000-0000-4000-8000-000000017035",
+        "00000000-0000-4000-8000-000000017036",
+        "00000000-0000-4000-8000-000000017037"
+      ],
+      "dynamic": {
+        "kind": "case",
+        "title": "Investigue um caso",
+        "prompt": "Uma pessoa da equipe aplicou “CSS responsivo” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+        "criteria": [
+          "Expliquei a decisão usando o conceito da teoria",
+          "Incluí um exemplo concreto e o resultado esperado"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["css-responsive"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003002",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017038",
+        "00000000-0000-4000-8000-000000017039",
+        "00000000-0000-4000-8000-000000017040",
+        "00000000-0000-4000-8000-000000017041",
+        "00000000-0000-4000-8000-000000008002"
+      ],
+      "dynamic": {
+        "kind": "creation",
+        "title": "Crie e explique",
+        "prompt": "Prepare uma pequena entrega sobre “Publicação acessível”: um trecho de código, esboço, procedimento ou explicação para um colega. Justifique suas escolhas e descreva como testaria a entrega.",
+        "criteria": [
+          "Expliquei a decisão usando o conceito da teoria",
+          "Incluí um exemplo concreto e o resultado esperado",
+          "Analisei um caso em que a solução pode falhar e como tratá-lo"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": ["forms-labels"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004006",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000017042",
+        "00000000-0000-4000-8000-000000017043",
+        "00000000-0000-4000-8000-000000017044",
+        "00000000-0000-4000-8000-000000017045",
+        "00000000-0000-4000-8000-000000012006"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Explique e teste a página",
+        "prompt": "Depois de validar sua página, explique o papel de h1, nav, a e main. Descreva como testou o link e o que falharia se o id do destino fosse diferente.",
+        "criteria": [
+          "Expliquei as partes da estrutura",
+          "Relacionei o link ao destino e ao teste"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["html-structure"]
     }
   ],
   "questions": [
@@ -2255,6 +2568,614 @@
       "category": "Prática guiada",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017000",
+      "title": "Navegador",
+      "prompt": "Qual é o papel do navegador?",
+      "options": [
+        "Interpretar e apresentar páginas",
+        "Ser sempre a linguagem da página",
+        "Ser o texto do título"
+      ],
+      "explanation": "O navegador interpreta o documento e apresenta a página.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017001",
+      "title": "HTML",
+      "prompt": "HTML serve principalmente para:",
+      "options": [
+        "Calcular notas",
+        "Marcar a estrutura e a função do conteúdo",
+        "Comprar hospedagem"
+      ],
+      "explanation": "HTML identifica partes como títulos e parágrafos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017002",
+      "title": "CSS",
+      "prompt": "Qual linguagem cuida da apresentação?",
+      "options": ["CSS", "HTML como único papel", "O endereço da página"],
+      "explanation": "CSS descreve cores, espaços e layout.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017003",
+      "title": "Erro",
+      "prompt": "É necessário JavaScript para mostrar um parágrafo simples?",
+      "options": ["Sim, sempre", "Não", "Só em computadores"],
+      "explanation": "HTML pode representar o parágrafo sem programação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017004",
+      "title": "Aplicar",
+      "prompt": "Uma ação precisa responder a um clique. Qual linguagem pode cuidar desse comportamento?",
+      "options": ["CSS", "JavaScript", "O nome da imagem"],
+      "explanation": "JavaScript permite programar comportamentos no navegador.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017005",
+      "title": "Abertura",
+      "prompt": "Qual tag abre o título principal?",
+      "options": ["<h1>", "</h1>", "<p>"],
+      "explanation": "<h1> inicia o título de nível 1.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017006",
+      "title": "Fechamento",
+      "prompt": "O que a barra em </h1> indica?",
+      "options": ["Soma", "Fechamento da tag", "Cor do texto"],
+      "explanation": "A barra depois de < identifica o fechamento.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017007",
+      "title": "Conteúdo",
+      "prompt": "Em <p>Olá</p>, qual parte é o conteúdo?",
+      "options": ["p", "Olá", "</p>"],
+      "explanation": "O conteúdo está entre as tags.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017008",
+      "title": "Erro",
+      "prompt": "Qual marcação fecha corretamente um parágrafo?",
+      "options": ["<p>Texto</h1>", "<p>Texto</p>", "</p>Texto<p>"],
+      "explanation": "O nome do fechamento corresponde ao da abertura.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017009",
+      "title": "Aplicar",
+      "prompt": "Para uma explicação abaixo do título, use:",
+      "options": ["p", "h1 para cada frase", "CSS no lugar do texto"],
+      "explanation": "p marca um parágrafo de explicação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017010",
+      "title": "Documento",
+      "prompt": "O que <!doctype html> informa?",
+      "options": ["Uma cor", "O modo HTML moderno", "O conteúdo de um botão"],
+      "explanation": "A declaração identifica o modo do documento.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017011",
+      "title": "Idioma",
+      "prompt": "Qual atributo indica português do Brasil?",
+      "options": ["lang=\"pt-BR\"", "title=\"h1\"", "charset=\"p\""],
+      "explanation": "lang informa o idioma.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017012",
+      "title": "Aba",
+      "prompt": "Qual elemento define o título da aba?",
+      "options": ["h1", "title", "p"],
+      "explanation": "title fica no head e identifica a aba.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017013",
+      "title": "Erro",
+      "prompt": "O h1 do conteúdo deve ficar em qual parte?",
+      "options": ["body", "Somente title", "Fora de html"],
+      "explanation": "O conteúdo apresentado fica no body.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017014",
+      "title": "Aplicar",
+      "prompt": "Qual indica uma codificação que representa acentos?",
+      "options": [
+        "meta charset=\"UTF-8\"",
+        "p lang=\"css\"",
+        "title charset=\"nav\""
+      ],
+      "explanation": "charset informa a codificação do documento.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017015",
+      "title": "Link",
+      "prompt": "Qual elemento representa um link?",
+      "options": ["a", "p", "h1"],
+      "explanation": "O elemento a com href cria um link.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017016",
+      "title": "Destino",
+      "prompt": "Qual atributo define para onde o link vai?",
+      "options": ["lang", "href", "charset"],
+      "explanation": "href contém o destino.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017017",
+      "title": "Interno",
+      "prompt": "href=\"#conteudo\" aponta para:",
+      "options": [
+        "O elemento com id conteudo",
+        "Qualquer imagem",
+        "Uma variável Python"
+      ],
+      "explanation": "# identifica um destino interno pelo id.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017018",
+      "title": "Erro",
+      "prompt": "href=\"#material\" não encontra destino esperado porque só existe id=\"conteudo\". O que corrigir?",
+      "options": [
+        "O nome do destino ou do id para corresponderem",
+        "A cor do navegador",
+        "O tamanho da letra apenas"
+      ],
+      "explanation": "O nome do id precisa coincidir.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017019",
+      "title": "Aplicar",
+      "prompt": "Uma ação abre um painel sem navegar. Qual elemento é adequado?",
+      "options": ["button", "a sem destino para fingir botão", "title"],
+      "explanation": "button representa uma ação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017020",
+      "title": "Principal",
+      "prompt": "Qual elemento delimita o conteúdo principal?",
+      "options": ["main", "title", "span"],
+      "explanation": "main representa o conteúdo central do documento.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017021",
+      "title": "Títulos",
+      "prompt": "Depois do h1, qual nível pode identificar uma seção principal?",
+      "options": ["h2", "h6 por ser menor", "Outro title"],
+      "explanation": "h2 identifica uma seção dentro da hierarquia.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017022",
+      "title": "Ação",
+      "prompt": "Qual elemento serve para abrir um painel por uma ação?",
+      "options": ["button", "h1", "meta"],
+      "explanation": "button representa a ação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017023",
+      "title": "Aplicar",
+      "prompt": "Como organizar links principais com significado de navegação?",
+      "options": [
+        "Dentro de nav",
+        "Só trocar a cor de uma div",
+        "Colocar tudo no title"
+      ],
+      "explanation": "nav identifica a região de navegação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017024",
+      "title": "Seletor",
+      "prompt": "Em p { color: blue; }, qual é o seletor?",
+      "options": ["p", "color", "blue"],
+      "explanation": "p seleciona os parágrafos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017025",
+      "title": "Propriedade",
+      "prompt": "Qual parte indica a característica a mudar?",
+      "options": ["p", "color", ";"],
+      "explanation": "color é a propriedade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017026",
+      "title": "Valor",
+      "prompt": "Qual parte indica a cor escolhida?",
+      "options": ["blue", "color", "p"],
+      "explanation": "blue é o valor da propriedade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017027",
+      "title": "Erro",
+      "prompt": "Qual declaração está escrita na ordem correta?",
+      "options": ["blue: color;", "color: blue;", "color = blue"],
+      "explanation": "CSS usa propriedade: valor;.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017028",
+      "title": "Aplicar",
+      "prompt": "Uma regra com seletor p alcança diretamente qual elemento?",
+      "options": ["Todos os h1", "Os parágrafos p", "A aba do navegador"],
+      "explanation": "O seletor corresponde aos parágrafos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017029",
+      "title": "Interno",
+      "prompt": "Qual cria espaço entre texto e borda?",
+      "options": ["padding", "margin", "title"],
+      "explanation": "padding é o espaço interno.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017030",
+      "title": "Externo",
+      "prompt": "Qual cria espaço fora da borda?",
+      "options": ["color", "margin", "h1"],
+      "explanation": "margin é o espaço externo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017031",
+      "title": "Distribuição",
+      "prompt": "Qual declaração ativa uma organização flexível dos filhos?",
+      "options": ["display: flex", "href: flex", "lang: flex"],
+      "explanation": "display determina o modelo de distribuição.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017032",
+      "title": "Erro",
+      "prompt": "O texto encosta na borda, mas só aumentaram margin. O que ajustar?",
+      "options": ["padding", "Apenas o title", "O destino do link"],
+      "explanation": "A distância interna é controlada por padding.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017033",
+      "title": "Aplicar",
+      "prompt": "grid-template-columns: 1fr 1fr representa, neste exemplo:",
+      "options": [
+        "Uma coluna",
+        "Duas colunas com partes iguais",
+        "Duas páginas diferentes"
+      ],
+      "explanation": "São duas frações iguais do espaço disponível.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017034",
+      "title": "Responsivo",
+      "prompt": "Uma página responsiva deve:",
+      "options": [
+        "Adaptar a apresentação ao espaço",
+        "Remover o conteúdo do celular",
+        "Ter largura fixa em qualquer tela"
+      ],
+      "explanation": "Ela preserva conteúdo e ações enquanto adapta o layout.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017035",
+      "title": "Largura",
+      "prompt": "max-width limita:",
+      "options": [
+        "A largura máxima de um bloco",
+        "O número de links",
+        "A quantidade de textos"
+      ],
+      "explanation": "Ela impede crescer além do limite definido.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017036",
+      "title": "Regra",
+      "prompt": "@media (min-width: 768px) vale quando:",
+      "options": [
+        "A largura é pelo menos 768px",
+        "Só a tela tem exatamente 768px",
+        "A fonte tem 768px"
+      ],
+      "explanation": "min-width inclui o limite e larguras maiores.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017037",
+      "title": "Aplicar",
+      "prompt": "Em tela estreita, qual decisão tende a ajudar dois cards a caber?",
+      "options": [
+        "Uma coluna e texto legível",
+        "Largura fixa maior que a tela",
+        "Remover os rótulos"
+      ],
+      "explanation": "Uma coluna pode evitar compressão e overflow.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017038",
+      "title": "Títulos",
+      "prompt": "Por que conferir a hierarquia dos títulos?",
+      "options": [
+        "Para organizar o conteúdo",
+        "Só para mudar cores",
+        "Para impedir teclado"
+      ],
+      "explanation": "Os níveis indicam a estrutura das seções.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017039",
+      "title": "Teclado",
+      "prompt": "Qual tecla costuma mover o foco para o próximo controle?",
+      "options": ["Tab", "Caps Lock", "Esc em qualquer situação"],
+      "explanation": "Tab percorre controles focáveis.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017040",
+      "title": "Imagem",
+      "prompt": "alt descreve principalmente:",
+      "options": [
+        "A função ou o conteúdo relevante da imagem no contexto",
+        "A senha do usuário",
+        "Uma propriedade de margem"
+      ],
+      "explanation": "A alternativa textual depende do papel da imagem.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017041",
+      "title": "Erro",
+      "prompt": "Só usar vermelho para indicar erro pode dificultar:",
+      "options": [
+        "Entender o estado sem perceber a cor",
+        "Navegar para o link certo por href",
+        "Armazenar um número"
+      ],
+      "explanation": "Texto ou outro indicador deve comunicar o estado além da cor.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017042",
+      "title": "Requisito",
+      "prompt": "Qual texto o h1 precisa conter?",
+      "options": ["Meu curso", "Qualquer endereço", "Somente h1"],
+      "explanation": "O enunciado pede Meu curso.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017043",
+      "title": "Destino",
+      "prompt": "O link interno precisa corresponder a:",
+      "options": ["Um id existente", "Uma cor de fundo", "Uma variável Python"],
+      "explanation": "href e id precisam usar o mesmo identificador.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017044",
+      "title": "Erro",
+      "prompt": "href=\"#conteudo\" e id=\"material\" atendem ao destino pedido?",
+      "options": ["Sim", "Não", "Só com fonte maior"],
+      "explanation": "Os identificadores não correspondem.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000017045",
+      "title": "Aplicar",
+      "prompt": "Qual parte reúne os links principais?",
+      "options": ["nav", "meta", "title"],
+      "explanation": "nav representa navegação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
     }
   ],
   "answers": {
@@ -2364,7 +3285,53 @@
     "00000000-0000-4000-8000-000000016311": 1,
     "00000000-0000-4000-8000-000000016312": 0,
     "00000000-0000-4000-8000-000000016313": 1,
-    "00000000-0000-4000-8000-000000016314": 1
+    "00000000-0000-4000-8000-000000016314": 1,
+    "00000000-0000-4000-8000-000000017000": 0,
+    "00000000-0000-4000-8000-000000017001": 1,
+    "00000000-0000-4000-8000-000000017002": 0,
+    "00000000-0000-4000-8000-000000017003": 1,
+    "00000000-0000-4000-8000-000000017004": 1,
+    "00000000-0000-4000-8000-000000017005": 0,
+    "00000000-0000-4000-8000-000000017006": 1,
+    "00000000-0000-4000-8000-000000017007": 1,
+    "00000000-0000-4000-8000-000000017008": 1,
+    "00000000-0000-4000-8000-000000017009": 0,
+    "00000000-0000-4000-8000-000000017010": 1,
+    "00000000-0000-4000-8000-000000017011": 0,
+    "00000000-0000-4000-8000-000000017012": 1,
+    "00000000-0000-4000-8000-000000017013": 0,
+    "00000000-0000-4000-8000-000000017014": 0,
+    "00000000-0000-4000-8000-000000017015": 0,
+    "00000000-0000-4000-8000-000000017016": 1,
+    "00000000-0000-4000-8000-000000017017": 0,
+    "00000000-0000-4000-8000-000000017018": 0,
+    "00000000-0000-4000-8000-000000017019": 0,
+    "00000000-0000-4000-8000-000000017020": 0,
+    "00000000-0000-4000-8000-000000017021": 0,
+    "00000000-0000-4000-8000-000000017022": 0,
+    "00000000-0000-4000-8000-000000017023": 0,
+    "00000000-0000-4000-8000-000000017024": 0,
+    "00000000-0000-4000-8000-000000017025": 1,
+    "00000000-0000-4000-8000-000000017026": 0,
+    "00000000-0000-4000-8000-000000017027": 1,
+    "00000000-0000-4000-8000-000000017028": 1,
+    "00000000-0000-4000-8000-000000017029": 0,
+    "00000000-0000-4000-8000-000000017030": 1,
+    "00000000-0000-4000-8000-000000017031": 0,
+    "00000000-0000-4000-8000-000000017032": 0,
+    "00000000-0000-4000-8000-000000017033": 1,
+    "00000000-0000-4000-8000-000000017034": 0,
+    "00000000-0000-4000-8000-000000017035": 0,
+    "00000000-0000-4000-8000-000000017036": 0,
+    "00000000-0000-4000-8000-000000017037": 0,
+    "00000000-0000-4000-8000-000000017038": 0,
+    "00000000-0000-4000-8000-000000017039": 0,
+    "00000000-0000-4000-8000-000000017040": 0,
+    "00000000-0000-4000-8000-000000017041": 0,
+    "00000000-0000-4000-8000-000000017042": 0,
+    "00000000-0000-4000-8000-000000017043": 0,
+    "00000000-0000-4000-8000-000000017044": 1,
+    "00000000-0000-4000-8000-000000017045": 0
   },
   "guides": {
     "00000000-0000-4000-8000-000000000302": {
@@ -3301,6 +4268,303 @@
           "text": "Se tem_pendencia é True, not tem_pendencia é False. Se ela é False, a negação é True. Na próxima bolinha, usaremos condições para escolher um bloco com if. Ainda não precisamos negar expressões compostas para compreender a escolha."
         }
       ]
+    },
+    "00000000-0000-4000-8000-000000004200": {
+      "objective": "Distinguir página, navegador e o papel das linguagens da Web.",
+      "prerequisites": "Nenhum conhecimento prévio.",
+      "competency": "Distinguir página, navegador e o papel das linguagens da Web.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Você já usa páginas",
+          "text": "Ao abrir o SkillUp, o navegador mostra títulos, textos, links e campos. Navegador é o programa usado para acessar e apresentar páginas, como Chrome ou Firefox. Uma página é um documento que ele interpreta para mostrar esse conteúdo."
+        },
+        {
+          "title": "O que chega ao navegador",
+          "text": "Ao acessar um endereço, o navegador pode pedir arquivos a um servidor, um computador que atende essas solicitações. O navegador interpreta os arquivos recebidos. Nesta trilha começaremos com uma página pequena no próprio laboratório, sem precisar contratar hospedagem."
+        },
+        {
+          "title": "HTML descreve o conteúdo",
+          "text": "HTML é uma linguagem de marcação. Ela identifica partes do documento, como título, parágrafo e link. Marcar uma parte informa sua função. O conteúdo de uma página não precisa de efeitos ou de programação para ser compreensível."
+        },
+        {
+          "title": "Estilo e comportamento têm outros papéis",
+          "text": "CSS descreve apresentação: cores, espaço e distribuição. JavaScript é uma linguagem de programação que pode responder a ações, como um clique. Nesta trilha, aprenderemos HTML antes de CSS. Não é preciso escrever JavaScript para montar a primeira página."
+        },
+        {
+          "title": "Leia uma página por suas partes",
+          "text": "Observe uma página de estudos: qual é o título? Quais trechos são parágrafos? Quais itens levam a outro endereço? Na próxima bolinha, vamos marcar título e parágrafo e entender os sinais que aparecem no HTML."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004201": {
+      "objective": "Ler as partes de um título e de um parágrafo.",
+      "prerequisites": "Rever antes: página Web.",
+      "competency": "Ler as partes de um título e de um parágrafo.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Dê uma função ao texto",
+          "text": "O texto Meu curso pode ser o título principal de uma página. Em HTML, usamos um elemento para indicar essa função. Um elemento reúne a marca de abertura, seu conteúdo e, quando necessário, a marca de fechamento."
+        },
+        {
+          "title": "Abra o título",
+          "text": "<h1> é a tag de abertura do título principal. < marca o início da tag, h1 é seu nome e > termina a tag. O número 1 indica o nível do título. Esses sinais fazem parte da marcação; não são comparações numéricas neste contexto.",
+          "code": "<h1>Meu curso</h1>"
+        },
+        {
+          "title": "Feche no lugar certo",
+          "text": "</h1> é a tag de fechamento: a barra / depois de < indica encerramento. Meu curso fica entre a abertura e o fechamento. Ao apresentar a página, o navegador mostra o texto com o papel de título; ele não mostra as tags como texto comum."
+        },
+        {
+          "title": "Agora um parágrafo",
+          "text": "<p> começa um parágrafo; </p> o termina. Coloque o texto entre as duas tags. Um parágrafo explica o assunto; um título identifica uma seção. Não escolha h1 só para deixar um texto grande: sua função é identificar o título principal.",
+          "preview": "<h1>Meu curso</h1><p>Hoje vamos estudar HTML.</p>",
+          "code": "<h1>Meu curso</h1>\n<p>Hoje vamos estudar HTML.</p>"
+        },
+        {
+          "title": "Confira a estrutura",
+          "text": "Abra e feche o mesmo nome: <p>Texto</p>. Fechar com </h1> não corresponde à abertura p. Na dinâmica, escreva um título e um parágrafo e explique cada delimitador. A prévia mostra apenas o exemplo desta aula e não executa scripts."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004202": {
+      "objective": "Organizar as partes de um documento completo.",
+      "prerequisites": "Rever antes: tags HTML.",
+      "competency": "Organizar as partes de um documento completo.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Uma página também tem informações de organização",
+          "text": "Os elementos que o visitante lê fazem parte de um documento. Uma estrutura comum informa ao navegador a versão de marcação, o idioma, os dados da página e o conteúdo apresentado. Vamos separar essas funções antes de juntar tudo."
+        },
+        {
+          "title": "Tipo de documento e idioma",
+          "text": "<!doctype html> indica o modo HTML moderno. Não é uma tag comum com conteúdo e fechamento. O elemento html envolve o documento. Em <html lang=\"pt-BR\">, lang é um atributo, uma informação adicional; = associa o valor \"pt-BR\", que identifica português do Brasil.",
+          "code": "<!doctype html>\n<html lang=\"pt-BR\">\n</html>"
+        },
+        {
+          "title": "Informações da página ficam no head",
+          "text": "head reúne informações sobre o documento. title define o título da aba do navegador, não substitui o h1 do conteúdo. <meta charset=\"UTF-8\"> indica uma codificação que permite representar os caracteres usados no texto, como acentos. meta não recebe tag de fechamento.",
+          "code": "<head>\n  <meta charset=\"UTF-8\">\n  <title>Minha página de estudos</title>\n</head>"
+        },
+        {
+          "title": "Conteúdo apresentado fica no body",
+          "text": "body contém o que compõe a página apresentada, como h1 e p. Dentro dele, podemos colocar os elementos já aprendidos. As tags ficam aninhadas, uma dentro da outra: feche o elemento interno antes de encerrar o que o contém."
+        },
+        {
+          "title": "Leia o documento completo",
+          "text": "Acompanhe a ordem: declaração, html, head, body e fechamento de html. Os espaços e quebras de linha ajudam a leitura do código. Alterar o title muda a aba; alterar o h1 muda o título do conteúdo.",
+          "code": "<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Estudos</title>\n</head>\n<body>\n  <h1>Meu curso</h1>\n  <p>Uma página para organizar os estudos.</p>\n</body>\n</html>"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004203": {
+      "objective": "Criar um link para outro endereço ou uma parte da página.",
+      "prerequisites": "Rever antes: documento HTML.",
+      "competency": "Criar um link para outro endereço ou uma parte da página.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "O que um link faz",
+          "text": "Um link leva a outro endereço ou a uma parte de um documento. O visitante precisa de um texto que descreva o destino. “Ver material de HTML” é mais claro que “clique aqui” isolado."
+        },
+        {
+          "title": "Leia o elemento a",
+          "text": "Em <a href=\"https://example.org\">Visitar exemplo</a>, a é o elemento do link. href é o atributo que informa o destino. = associa o valor entre aspas. O texto Visitar exemplo é a parte que a pessoa lê e pode ativar.",
+          "code": "<a href=\"https://example.org\">Visitar exemplo</a>"
+        },
+        {
+          "title": "Um destino dentro da página",
+          "text": "id dá um identificador a um elemento. Em <p id=\"conteudo\">, conteudo identifica aquele parágrafo. Um link href=\"#conteudo\" procura esse id no mesmo documento. # indica esse destino interno. O id precisa existir e ser único na página.",
+          "code": "<a href=\"#conteudo\">Ir ao conteúdo</a>\n<p id=\"conteudo\">Aqui começa a explicação.</p>"
+        },
+        {
+          "title": "Links não são botões",
+          "text": "Um link navega; um button executa uma ação, como abrir um painel. Parecer com um botão não muda a função de um link. Use o elemento pelo comportamento esperado e mantenha o texto compreensível para quem navega por teclado."
+        },
+        {
+          "title": "Teste o percurso",
+          "text": "Ative o link e confira se o destino corresponde ao texto. Se href aponta a #conteudo mas o id escrito foi material, o destino esperado não existe. Na dinâmica, registre texto, href e id correspondente."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003000": {
+      "objective": "Escolher elementos pela função no documento.",
+      "prerequisites": "Rever antes: links HTML.",
+      "competency": "Escolher elementos pela função no documento.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "A estrutura também informa significado",
+          "text": "Semântica é o significado das partes. Em HTML, alguns elementos informam o papel do conteúdo, além de permitir sua apresentação visual. Isso ajuda a organizar a página e pode apoiar ferramentas de acessibilidade."
+        },
+        {
+          "title": "A navegação principal",
+          "text": "nav identifica uma região com links de navegação. Os links continuam sendo elementos a, com seus próprios destinos. Colocar uma navegação em nav informa sua função; não faz os destinos funcionarem automaticamente.",
+          "code": "<nav>\n  <a href=\"#conteudo\">Ver conteúdo</a>\n</nav>"
+        },
+        {
+          "title": "O assunto central",
+          "text": "main delimita o conteúdo principal da página. Dentro dele, podemos usar h1 para o título principal e p para a explicação. Um id pode servir de destino ao link de pular para o conteúdo, como aprendemos antes.",
+          "code": "<main id=\"conteudo\">\n  <h1>Meu curso</h1>\n  <p>Material de estudo.</p>\n</main>"
+        },
+        {
+          "title": "Títulos organizam seções",
+          "text": "Use h1 para o título principal e h2 para seções dentro da página, como Materiais e Exercícios. h3 pode identificar uma subseção de h2. Não pule níveis apenas para conseguir outro tamanho de letra: a aparência será tratada com CSS."
+        },
+        {
+          "title": "Ação ou navegação?",
+          "text": "Um link leva a um destino; um button pode executar uma ação. div e span são agrupamentos genéricos e não substituem automaticamente o significado de nav ou button. Na dinâmica, desenhe um esqueleto com regiões e explique o papel de cada uma."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004204": {
+      "objective": "Ler seletor, propriedade e valor de uma regra CSS.",
+      "prerequisites": "Rever antes: semântica HTML.",
+      "competency": "Ler seletor, propriedade e valor de uma regra CSS.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Do conteúdo para a aparência",
+          "text": "Já temos título e parágrafo em HTML. Agora queremos escolher sua aparência. CSS é a linguagem de estilos. Alterar uma cor não muda a função do título: h1 continua sendo o título principal."
+        },
+        {
+          "title": "Escolha o elemento",
+          "text": "Em p { color: blue; }, p é o seletor: indica os parágrafos que receberão a regra. As chaves { e } delimitam as declarações de estilo. Esta sintaxe é CSS, diferente das tags HTML.",
+          "code": "p { color: blue; }"
+        },
+        {
+          "title": "Propriedade e valor",
+          "text": "color é a propriedade que altera a cor do texto. : separa a propriedade do valor. blue é o valor, a cor escolhida. ; encerra a declaração. background-color altera a cor de fundo, e font-size indica o tamanho da fonte. Cada propriedade tem uma função."
+        },
+        {
+          "title": "Aplique dentro de style",
+          "text": "Para o exemplo inicial, coloque as regras em um elemento style no head. O navegador lê o HTML e aplica a apresentação indicada. O parágrafo abaixo aparece azul; o h1 não corresponde ao seletor p e mantém outro estilo.",
+          "preview": "<style>p { color: blue; }</style><h1>Meu curso</h1><p>Parágrafo azul.</p>",
+          "code": "<style>\n  p { color: blue; }\n</style>"
+        },
+        {
+          "title": "Mude uma coisa por vez",
+          "text": "Ao investigar uma regra, confira se o seletor corresponde ao elemento, se há dois-pontos e se o valor pertence à propriedade. Escreva color: blue, não blue: color. Na dinâmica, explique o resultado esperado de duas propriedades diferentes."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004205": {
+      "objective": "Distinguir conteúdo, padding, borda e margin e distribuir elementos.",
+      "prerequisites": "Rever antes: regras CSS.",
+      "competency": "Distinguir conteúdo, padding, borda e margin e distribuir elementos.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Cada elemento ocupa uma caixa",
+          "text": "Um card de estudos contém texto e ocupa um espaço na página. O modelo de caixa do CSS descreve conteúdo, espaço interno, borda e espaço externo. Saber onde fica cada parte ajuda a corrigir elementos encostados."
+        },
+        {
+          "title": "Espaço interno e externo",
+          "text": "padding cria espaço entre conteúdo e borda. margin cria espaço fora da borda, em relação a outras caixas. border desenha a borda. px é uma unidade usada nestes exemplos; 16px representa dezesseis pixels CSS.",
+          "code": "p { padding: 16px; border: 1px solid black; margin: 8px; }"
+        },
+        {
+          "title": "Entenda uma borda",
+          "text": "Em border: 1px solid black, 1px é a espessura, solid indica linha contínua e black é a cor. Esta propriedade aceita esses valores juntos. Para entender o efeito, imagine o texto no centro, padding ao redor dele, borda em volta e margin por fora."
+        },
+        {
+          "title": "Distribuir itens com flex",
+          "text": "display: flex organiza os filhos de um elemento em uma direção, inicialmente uma linha. gap: 12px cria espaço entre eles. flex-wrap: wrap permite passar para outra linha quando falta largura. Os itens continuam tendo seu conteúdo e significado HTML."
+        },
+        {
+          "title": "Organizar colunas com grid",
+          "text": "display: grid permite organizar linhas e colunas. grid-template-columns: 1fr 1fr cria duas colunas com partes iguais do espaço disponível neste exemplo; fr representa uma fração desse espaço. Em uma tela estreita, uma única coluna pode ser mais legível. Na próxima bolinha, veremos como adaptar isso ao tamanho da tela.",
+          "code": ".cards {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003001": {
+      "objective": "Adaptar uma página à largura disponível.",
+      "prerequisites": "Rever antes: layout CSS.",
+      "competency": "Adaptar uma página à largura disponível.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "O mesmo conteúdo em telas diferentes",
+          "text": "Uma página de estudos deve continuar legível no celular e no computador. Design responsivo adapta a apresentação ao espaço disponível, preservando o conteúdo e as ações. Comece conferindo a tela menor, onde os elementos precisam caber sem apertar demais."
+        },
+        {
+          "title": "Limite a largura sem fixar tudo",
+          "text": "width: 100% usa a largura disponível do contêiner, o elemento que contém o bloco. max-width limita até onde esse bloco pode crescer. Com box-sizing: border-box, a largura inclui padding e borda, ajudando a evitar que o total ultrapasse o espaço.",
+          "code": ".pagina { width: 100%; max-width: 960px; box-sizing: border-box; }"
+        },
+        {
+          "title": "Mude a regra conforme o espaço",
+          "text": "Uma media query aplica regras quando uma condição sobre o ambiente é atendida. @media (min-width: 768px) significa que as regras internas valem a partir dessa largura. Comece com uma coluna e use duas quando houver espaço; 768px é apenas o limite escolhido para este exemplo.",
+          "code": ".cards { display: grid; grid-template-columns: 1fr; }\n@media (min-width: 768px) {\n  .cards { grid-template-columns: 1fr 1fr; }\n}"
+        },
+        {
+          "title": "Teste ações e leitura",
+          "text": "Confira texto, rótulos e foco do teclado nas duas larguras. Uma interface que cabe mas deixa o botão ilegível ainda tem problema. Um rótulo explica o campo e deve continuar visível durante o preenchimento."
+        },
+        {
+          "title": "Lembre os papéis",
+          "text": "HTML estrutura o conteúdo, CSS controla a apresentação e JavaScript pode programar comportamento. Não troque um link por texto apenas para fazer a página caber: preserve a ação. Na dinâmica, descreva uma reorganização de cards e como testaria em duas telas."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003002": {
+      "objective": "Conferir títulos, leitura e navegação antes de publicar.",
+      "prerequisites": "Rever antes: responsividade.",
+      "competency": "Conferir títulos, leitura e navegação antes de publicar.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Publicar é disponibilizar uma versão",
+          "text": "Uma página publicada pode ser acessada por outras pessoas em um endereço. Antes disso, teste seu conteúdo e suas ações. Uma imagem bonita da página não prova que links, teclado e formulários funcionam."
+        },
+        {
+          "title": "Confira a hierarquia",
+          "text": "O h1 identifica o assunto principal; h2 organiza seções; h3 pode organizar partes de uma seção. Leia só os títulos: eles devem permitir entender a organização. Não use o nível apenas para escolher tamanho."
+        },
+        {
+          "title": "Percorra sem mouse",
+          "text": "Tab move o foco entre controles e links; Shift+Tab retorna. O foco precisa estar visível para mostrar onde você está. Ative links e botões com o teclado e confira os destinos ou ações. Nenhuma região deve prender o foco sem uma saída clara."
+        },
+        {
+          "title": "Imagens e contraste",
+          "text": "alt pode oferecer uma alternativa textual para a função de uma imagem no contexto; uma imagem puramente decorativa pode usar alt vazio. Contraste é a diferença de luminosidade entre texto e fundo: ele precisa permitir leitura. Cor sozinha não deve ser a única forma de comunicar acerto ou erro."
+        },
+        {
+          "title": "Prepare uma lista de verificação",
+          "text": "Confira títulos em ordem, links reais, rótulos dos campos, foco por teclado e leitura em celular e computador. Registre o problema encontrado e como confirmar a correção. A questão aberta desta atividade registra seu plano, não uma certificação automática de acessibilidade."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004006": {
+      "objective": "Aplicar estrutura HTML e conferir a página no laboratório.",
+      "prerequisites": "Rever antes: verificação Web.",
+      "competency": "Aplicar estrutura HTML e conferir a página no laboratório.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "O pedido da página",
+          "text": "Você vai criar um h1 com o texto Meu curso, uma navegação com link para o conteúdo e a área principal correspondente. As partes já foram apresentadas; agora serão reunidas e testadas em uma página."
+        },
+        {
+          "title": "Confira o título e a navegação",
+          "text": "O h1 apresenta o nome Meu curso. nav reúne os links. Dentro dele, um a com href=\"#conteudo\" deve apontar para o destino interno. Escolha um texto de link que explique para onde ele leva."
+        },
+        {
+          "title": "Faça o destino existir",
+          "text": "main com id=\"conteudo\" é a área central e o destino do link. O texto de href após # deve corresponder ao id. O documento inicial já fornece doctype, html, head e body; você pode completar o conteúdo dentro do body."
+        },
+        {
+          "title": "Use a prévia para investigar",
+          "text": "Atualizar prévia mostra o documento em um quadro isolado. Confira o título visível, ative o link e observe a área principal. A avaliação verifica os requisitos HTML informados; efeitos JavaScript não são necessários para resolver esta atividade."
+        },
+        {
+          "title": "Teste além da aparência",
+          "text": "Confira as tags, a correspondência entre href e id e a navegação por teclado. Você pode experimentar CSS dentro de style usando as regras já ensinadas. Depois de validar, a dinâmica pede que explique a estrutura e um caso de link quebrado."
+        }
+      ]
     }
   },
   "pedagogy": {
@@ -3498,6 +4762,76 @@
       "requires": ["OU Python"],
       "competency": "Compreensão",
       "prerequisite_ids": ["00000000-0000-4000-8000-000000004107"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004200": {
+      "concepts": ["página Web", "navegador"],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004201": {
+      "concepts": ["elementos HTML", "tags HTML"],
+      "requires": ["página Web"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004200"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004202": {
+      "concepts": ["documento HTML"],
+      "requires": ["tags HTML"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004201"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004203": {
+      "concepts": ["links HTML", "atributos HTML"],
+      "requires": ["documento HTML"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004202"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003000": {
+      "concepts": ["semântica HTML"],
+      "requires": ["links HTML"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004203"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004204": {
+      "concepts": ["regras CSS"],
+      "requires": ["semântica HTML"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000003000"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004205": {
+      "concepts": ["caixas CSS", "layout CSS"],
+      "requires": ["regras CSS"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004204"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003001": {
+      "concepts": ["responsividade"],
+      "requires": ["layout CSS"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004205"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003002": {
+      "concepts": ["verificação Web"],
+      "requires": ["responsividade"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000003001"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004006": {
+      "concepts": ["projeto Web"],
+      "requires": ["verificação Web"],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000003002"],
       "version": 2
     }
   }

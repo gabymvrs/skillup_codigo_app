@@ -1,3 +1,4 @@
+import { GuidedTheory } from "../src/components/GuidedTheory";
 import { expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -141,4 +142,43 @@ it("starts Python with output and input before conditions and keeps five valid e
         expect(evaluateDemo(q, exerciseAnswers[qid] as never)).toBe(true);
     }
   }
+});
+
+it("prepares HTML before semantic structure and CSS before responsive layout", () => {
+  const web = modules
+    .filter((m) => m.track_id === id(2000))
+    .sort((a, b) => a.position - b.position);
+  expect(web.map((m) => m.id)).toEqual(
+    [4200, 4201, 4202, 4203, 3000, 4204, 4205, 3001, 3002, 4006].map(id),
+  );
+  for (const m of web) {
+    const plan = demoPlans.find((p) => p.module_id === m.id)!;
+    expect(plan.question_ids).toHaveLength(5);
+    for (const qid of plan.question_ids) {
+      const q = questions.find((q) => q.id === qid)!;
+      if (q.kind !== "challenge" && q.activity_type !== "code_practice")
+        expect(evaluateDemo(q, exerciseAnswers[qid] as never)).toBe(true);
+    }
+  }
+});
+
+it("isolates the HTML teaching preview without allowing scripts", () => {
+  render(
+    <GuidedTheory
+      moduleId={id(4201)}
+      step={3}
+      onStep={() => {}}
+      inputs={{ first: "6", second: "8" }}
+      onInputs={() => {}}
+      onComplete={() => {}}
+      resourceIds={[]}
+      disabled={false}
+    />,
+  );
+  const preview = screen.getByTitle("Exemplo: Agora um parágrafo");
+  expect(preview).toHaveAttribute("sandbox", "");
+  expect(preview).toHaveAttribute(
+    "srcdoc",
+    expect.stringContaining("<h1>Meu curso</h1>"),
+  );
 });
