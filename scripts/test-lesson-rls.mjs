@@ -15,6 +15,14 @@ export async function testLesson({
   );
   await db.exec(await readFile("supabase/lesson-seed.sql", "utf8"));
   await db.exec(await readFile("supabase/beginner-seed.sql", "utf8"));
+  const updated = JSON.parse(
+    await readFile("src/data/beginner-curriculum.json", "utf8"),
+  );
+  for (const previous of [4100, 4101, 4102, 4103, 4106, 4107, 4108, 4104, 4105])
+    await db.query(
+      "insert into public.progress(user_id,module_id) values($1,$2)",
+      [id(40), id(previous)],
+    );
   const module = id(4000),
     question = id(12000);
   const call = async (action, payload = null) =>
@@ -86,6 +94,13 @@ export async function testLesson({
       ),
       0,
     );
+    for (const other of updated.plans
+      .find((p) => p.module_id === module)
+      .question_ids.filter((q) => q !== question))
+      await call("answer", {
+        question_id: other,
+        response: updated.answers[other],
+      });
     await call("practice");
     await assert.rejects(() =>
       call("finish", { text: "short", checks: [true, true] }),
@@ -169,7 +184,10 @@ export async function testLesson({
       ),
       0,
     );
-    assert.equal(await scalar("select count(*) from public.lesson_plans"), 65);
+    assert.equal(
+      await scalar("select count(*) from public.lesson_plans"),
+      56 + updated.modules.filter((m) => m.track_id).length,
+    );
     assert.equal(
       await scalar(
         "select count(*) from public.lesson_plans where module_id in (select id from public.modules where track_id in ('" +

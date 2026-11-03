@@ -7,11 +7,13 @@ export default function CodePractice({
   value,
   onChange,
   disabled,
+  readOnly = false,
 }: {
   q: Question;
   value: string;
   onChange: (value: string) => void;
   disabled: boolean;
+  readOnly?: boolean;
 }) {
   const language = q.payload?.language;
   const [stdin, setStdin] = useState(q.payload?.tests?.[0]?.stdin || "");
@@ -82,8 +84,15 @@ export default function CodePractice({
           autoCapitalize="off"
           autoCorrect="off"
           disabled={disabled || running}
+          readOnly={readOnly}
         />
       </label>
+      {readOnly && (
+        <p className="small">
+          Código validado. Você pode testar novas entradas e consultar a saída
+          sem alterar a resposta registrada.
+        </p>
+      )}
       {language !== "web" && (
         <label>
           Entrada do programa (uma linha por valor)

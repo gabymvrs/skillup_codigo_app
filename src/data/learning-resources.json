@@ -88,5 +88,23 @@
     "kind": "artigo",
     "language": "Inglês",
     "level": "Consulta após a aula"
+  },
+  {
+    "id": "python-intro",
+    "title": "Primeiros valores e textos em Python",
+    "publisher": "Documentação Python",
+    "url": "https://docs.python.org/pt-br/3/tutorial/introduction.html",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "python-input",
+    "title": "Entrada, conversão e saída em Python",
+    "publisher": "Documentação Python",
+    "url": "https://docs.python.org/pt-br/3/library/functions.html#input",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
   }
 ]

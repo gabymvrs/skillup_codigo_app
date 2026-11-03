@@ -98,10 +98,7 @@
   "00000000-0000-4000-8000-000000002004": {
     "about": "Logística organiza o fluxo de materiais e informações entre origem, armazenamento e destino. A área procura atender necessidades com controle e previsibilidade.",
     "context": "Em um pequeno estoque, uma venda altera o saldo e um pedido precisa ser separado e enviado. Registrar cada movimento ajuda a evitar promessas de produtos indisponíveis.",
-    "applications": [
-      "Controle de estoque",
-      "Separação e expedição de pedidos"
-    ],
+    "applications": ["Controle de estoque", "Separação e expedição de pedidos"],
     "objectives": [
       "Identificar etapas do fluxo de materiais",
       "Calcular entradas, saídas e saldo disponível",
@@ -183,12 +180,12 @@
       "Automação de tarefas repetitivas, em estudos posteriores"
     ],
     "objectives": [
-      "Interpretar uma decisão com condição",
-      "Completar uma repetição",
-      "Ler duas entradas numéricas e escrever um programa de soma"
+      "Ler e explicar print, variáveis e input antes de escrever o primeiro desafio",
+      "Converter entradas, interpretar condições e rastrear repetições",
+      "Usar listas e funções e testar um programa completo de soma"
     ],
-    "outcome": "No percurso atual, você poderá interpretar condições e laços e verificar um programa que soma duas entradas. Bibliotecas e automações completas não fazem parte destas três atividades.",
-    "prerequisites": "Conhecer algoritmos, variáveis e cálculos simples. Comece por Fundamentos se essas ideias forem novas para você.",
+    "outcome": "Você poderá escrever pequenos programas com entrada, cálculo e saída e explicar os testes usados para conferir o resultado.",
+    "prerequisites": "Nenhum conhecimento de Python. A primeira bolinha explica linguagem, interpretador, chamadas e saída.",
     "difficulty": "Iniciante com pré-requisitos"
   },
   "00000000-0000-4000-8000-000000002101": {

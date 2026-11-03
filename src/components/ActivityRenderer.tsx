@@ -9,11 +9,13 @@ export function ActivityRenderer({
   value,
   onChange,
   disabled,
+  codeReadOnly = false,
 }: {
   q: Question;
   value: ExerciseAnswer;
   onChange: (a: ExerciseAnswer) => void;
   disabled: boolean;
+  codeReadOnly?: boolean;
 }) {
   const type = activityType(q);
   const hintId = useId();
@@ -25,6 +27,7 @@ export function ActivityRenderer({
           value={String(value)}
           onChange={onChange}
           disabled={disabled}
+          readOnly={codeReadOnly}
         />
       </Suspense>
     );

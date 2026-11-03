@@ -11,6 +11,7 @@ import { ActivityRenderer } from "../src/components/ActivityRenderer";
 import { initialAnswer } from "../src/components/ExerciseFields";
 import { createDemo } from "../src/data/demo";
 import { DEMO_KEY } from "../src/services/repository";
+import { demoPlans } from "../src/services/lessonJourney";
 function app(path: string) {
   sessionStorage.setItem("skillup.demo.role", "estudante");
   return render(
@@ -26,7 +27,13 @@ describe("Activities selected by pedagogical type", () => {
     for (const track of tracks) {
       const qs = modules
         .filter((m) => m.track_id === track.id)
-        .map((m) => questions.find((q) => q.id === m.question_id))
+        .flatMap((m) =>
+          (
+            demoPlans.find((p) => p.module_id === m.id)?.question_ids || [
+              m.question_id,
+            ]
+          ).map((qid) => questions.find((q) => q.id === qid)),
+        )
         .filter((q) => q !== undefined);
       if (
         ![

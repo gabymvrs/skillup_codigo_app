@@ -2,7 +2,7 @@
 import React from 'react';import {createRoot} from 'react-dom/client';import {MemoryRouter} from 'react-router-dom';
 import {AuthProvider} from '/src/state/AuthContext.tsx';import {DataProvider} from '/src/state/DataContext.tsx';import {LessonSession} from '/src/components/LessonSession.tsx';import {createDemo} from '/src/data/demo.ts';import {modules,id} from '/src/data/catalog.ts';
 import '/src/styles/tokens.css';import '/src/styles/global.css';
-const selected=[302,332,337].includes(Number(new URLSearchParams(location.search).get('module')))?Number(new URLSearchParams(location.search).get('module')):332;
+const selected=[302,332,337,4002,4100].includes(Number(new URLSearchParams(location.search).get('module')))?Number(new URLSearchParams(location.search).get('module')):332;
 const module=modules.find(m=>m.id===id(selected));
 sessionStorage.setItem('skillup.demo.role','estudante');
 const d=createDemo();d.progress=modules.filter(m=>m.track_id===module.track_id&&m.position<module.position).map((m,i)=>({id:'qa-'+i,user_id:id(1),module_id:m.id,completed_at:new Date().toISOString()}));

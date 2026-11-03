@@ -138,6 +138,120 @@
       "question_id": "00000000-0000-4000-8000-000000013015",
       "position": 15,
       "prerequisite_id": "00000000-0000-4000-8000-000000000338"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004100",
+      "title": "O primeiro programa Python",
+      "body": "Python é uma linguagem de programação. Ela permite escrever instruções para tarefas como fazer cálculos e organizar informações. Um programa é um conjunto dessas instruções. O interpretador é o software que lê e executa o código Python. Nesta trilha começamos por uma instrução pequena, sem exigir outra linguagem.\n\nprint é uma função que já vem com Python: uma operação pronta que podemos chamar pelo nome. Em print(\"Olá\"), os parênteses indicam a chamada; o que está dentro é a informação a mostrar. As aspas delimitam o texto. Ao executar, aparece Olá, sem aspas.\n\nprint(2 + 3) mostra 5. + soma os números. print(\"2 + 3\") mostra os caracteres 2 + 3, porque as aspas tornam esse conteúdo um texto. Os parênteses dizem o que entregar a print; as aspas mudam o tipo de informação.\n\nNeste começo, escreva cada chamada em uma linha. print(\"Oi\") seguido de print(\"Turma\") mostra duas linhas, nessa ordem. Python diferencia maiúsculas de minúsculas: Print não é o mesmo nome que print. Não copie os sinais >>> dos exemplos de terminal: eles indicam onde digitar, não fazem parte deste programa.\n\nLeia as duas linhas e escreva a saída esperada. Uma aspa ou parêntese sem fechamento impede Python de entender a instrução. Compare print(\"Oi\") com print(\"Oi\": no segundo falta fechar o parêntese. Na dinâmica, encontre e explique esse tipo de erro antes de tentar programas maiores.",
+      "question_id": "00000000-0000-4000-8000-000000016000",
+      "position": 0,
+      "prerequisite_id": null,
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004101",
+      "title": "Valores e nomes em Python",
+      "body": "Um programa que atende uma pessoa pode guardar seu nome para usar depois. Uma variável associa um nome a um valor. Em nome = \"Ana\", nome é a identificação escolhida, = atribui o valor, e \"Ana\" é um texto.\n\nprint(nome) consulta o valor guardado e mostra Ana. print(\"nome\") mostra a palavra nome. As aspas indicam texto literal; sem aspas, Python procura o nome da variável. Se ela ainda não tiver sido criada, ocorre um erro.\n\nint representa inteiros como 3, 0 e -2. float representa números com parte decimal, como 2.5. str representa texto, como \"3\". Python identifica o tipo pelo valor: não escrevemos int antes do nome ao fazer quantidade = 3. Os exemplos anteriores em outras linguagens não devem ser copiados sem adaptação.\n\n* multiplica: 3 * 2.5 dá 7.5. Depois de quantidade = 3, quantidade = quantidade + 1 calcula 4 e guarda o novo valor. A parte da direita é calculada antes da atribuição. Para nomes novos, use letras e nomes descritivos, sem espaços; por exemplo, total_compra.\n\nCom números, 2 + 3 dá 5. Com textos, \"2\" + \"3\" forma \"23\", uma junção chamada concatenação. Esse resultado não é a soma dos números. Na próxima bolinha, aprenderemos a converter uma entrada antes de calcular.",
+      "question_id": "00000000-0000-4000-8000-000000016005",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004100",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004102",
+      "title": "Entrada e conversão",
+      "body": "Em vez de escrever um nome fixo no código, um programa pode receber uma entrada. input() lê uma linha e entrega texto. Os parênteses vazios indicam que a função foi chamada sem uma mensagem de pergunta. nome = input() guarda a linha lida.\n\nSe a pessoa digita 2 e pressiona Enter, input() retorna \"2\", do tipo str. Outra entrada 3 retorna \"3\". Somar esses textos forma \"23\". Para fazer a conta 2 + 3, precisamos interpretar as entradas como números.\n\nint(\"2\") produz o inteiro 2. Em a = int(input()), a parte interna input() é executada primeiro; depois int interpreta o texto, e = guarda o inteiro em a. Para decimais escritos com ponto, float(\"2.5\") produz 2.5.\n\nint(\"abc\") e int(\"\") não representam inteiros e causam erro de conversão. Esse erro recebe o nome ValueError. int(\"2.5\") também não é a forma de ler um decimal: use float nesse caso. Antes de aceitar dados de um formulário, planeje como informar que a entrada é inválida.\n\nNo editor desta trilha, escreva uma entrada por linha no campo de dados. Para somar 2 e 3, o campo tem duas linhas: 2 e 3. A avaliação pode comparar a saída exatamente; se pede apenas o número, não acrescente mensagens como “Resultado:”. O programa deste exemplo supõe duas entradas inteiras válidas.",
+      "question_id": "00000000-0000-4000-8000-000000016010",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004101",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004103",
+      "title": "Comparações em Python",
+      "body": "Uma escola precisa saber se a nota atende ao mínimo. Uma comparação verifica dois valores e produz True ou False, verdadeiro ou falso. Em Python, esses nomes começam com letra maiúscula. Uma condição falsa pode ser um resultado válido, não um erro.\n\n> significa maior que. 8 > 7 produz True; 7 > 7 produz False, porque os valores são iguais. nota > 7 usa o valor guardado na variável nota para fazer essa verificação. A comparação não muda o valor de nota.\n\n< significa menor que. 6 < 7 produz True; 7 < 7 produz False. Os dois operadores que estudamos até aqui não incluem o caso de igualdade.\n\n>= é um único operador escrito com dois caracteres. Significa maior ou igual a. Em nota >= 7, nota é o nome da informação guardada; 7 é o mínimo; >= pergunta se o valor alcança esse limite. 6 dá False; 7 e 8 dão True.\n\n<= inclui os valores menores e o próprio limite. idade <= 17 é True para 16 e 17 e False para 18. Não separe < de = com espaço: os dois caracteres formam o operador.\n\n== pergunta se dois valores são iguais: 3 == 3 dá True. != pergunta se são diferentes: 4 != 3 dá True. Um = sozinho atribui valor; não compara. Escreva primeiro o significado em português para distinguir a atribuição da pergunta.\n\nTeste nota 6, 7 e 8 com nota >= 7. Espere False, True e True. Essas comparações serão usadas dentro de if mais adiante. Na próxima bolinha, vamos aprender a exigir duas comparações verdadeiras ao mesmo tempo.",
+      "question_id": "00000000-0000-4000-8000-000000016015",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004102",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004000",
+      "title": "Decisões em Python",
+      "body": "Agora que sabemos comparar a nota, queremos mostrar mensagens diferentes. if significa “se”. A condição que vem depois dele determina se o bloco será executado. Vamos supor que nota já contém um número válido.\n\nEm if nota >= 7:, a palavra if inicia a decisão, nota >= 7 é a condição e : termina o cabeçalho indicando que o bloco virá nas próximas linhas. Não coloque ponto e vírgula para encerrar essa linha.\n\nEm Python, a indentação, os espaços no início da linha, define o bloco. Use quatro espaços para as instruções dentro deste if. print sem essa indentação ficaria fora do bloco. Diferentemente dos exemplos Dart, não usamos chaves para delimitar o bloco Python.\n\nelse: apresenta o caso em que a condição do if é falsa. Ele fica alinhado ao if; seu print recebe quatro espaços. Com nota 6 aparece Revisar; com 7 aparece Aprovado.\n\nCompare os resultados para nota 6, 7 e 8. O caso igual a 7 verifica se o operador correto foi usado. Na dinâmica, escreva a condição, a ação quando verdadeira e a ação quando falsa. A regra deve ter sido definida antes de escrever o if.",
+      "question_id": "00000000-0000-4000-8000-000000012000",
+      "position": 7,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004108"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004001",
+      "title": "Completar uma repetição",
+      "body": "Para mostrar os números 1, 2 e 3, podemos repetir print para cada número. O for permite percorrer uma sequência, executando o bloco para cada item. Nesta bolinha, usamos uma sequência numérica curta para acompanhar todas as voltas.\n\nrange(1, 4) fornece 1, 2 e 3. O primeiro argumento é o começo incluído; o segundo é a parada excluída. A vírgula separa os argumentos. range(4) começa em 0 e fornece 0, 1, 2 e 3.\n\nEm for numero in range(1, 4):, numero é o nome que recebe um valor por volta; in indica de onde vêm os valores. : anuncia o bloco e os quatro espaços o delimitam. print(numero) mostra o valor atual.\n\nSe queria mostrar até 4, range(1, 4) não basta. Use range(1, 5). Se o começo é igual à parada com o passo positivo padrão, range(4,4) não fornece valores e o bloco não executa. Compare o esperado com a sequência antes de tentar um laço maior.\n\nPara somar os valores, crie total = 0 antes do for e atualize total = total + numero dentro do bloco. Os totais para 1, 2 e 3 são 1, 3 e 6. Se zerar total em cada volta, perderá as somas anteriores.",
+      "question_id": "00000000-0000-4000-8000-000000012001",
+      "position": 8,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004104",
+      "title": "Listas em Python",
+      "body": "Uma lista guarda itens em ordem. notas = [7, 8, 9] usa colchetes para delimitar a lista e vírgulas para separar os elementos. = associa essa lista ao nome notas. Cada valor pode ser consultado por sua posição.\n\nnotas[0] vale 7; notas[1] vale 8; notas[2] vale 9. O número entre colchetes é o índice. len(notas) informa a quantidade: 3. Nesta lista, índice 3 não existe.\n\nfor nota in notas: entrega um elemento por volta à variável nota. Podemos somar cada um a total, iniciado antes. Para [7,8,9], o total fica 7, 15 e 24. Essa repetição usa a lista, não range.\n\n[] é uma lista sem itens. len([]) vale 0 e não há índice 0 para acessar. Antes de calcular média, confira a quantidade. Sem itens, mostre um aviso em vez de acessar a primeira posição ou dividir por zero.\n\nPara [7,8,9], a média é 24 / 3 = 8. Para [6], é 6 / 1 = 6. Para [], espere o aviso Sem notas. Uma solução que só funciona com três elementos fixos ainda não trata os outros casos.",
+      "question_id": "00000000-0000-4000-8000-000000016028",
+      "position": 9,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004001",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004105",
+      "title": "Funções em Python",
+      "body": "Uma função reúne instruções para realizar uma operação. Já usamos print e input, prontas na linguagem. Agora vamos criar uma função própria para somar duas entradas, sem repetir a mesma conta em vários lugares.\n\ndef inicia a definição. somar é o nome escolhido. Os parênteses contêm os parâmetros a e b, os nomes das entradas dentro da função. A vírgula os separa. : indica o bloco, e a indentação mantém return dentro dele.\n\nreturn entrega o resultado a quem chamou. a + b soma as entradas e produz o valor devolvido. Definir uma função não executa a conta imediatamente: é preciso chamá-la com argumentos, que são valores concretos.\n\nresultado = somar(2,3) chama a função com 2 e 3. Eles passam a ser a e b dentro dela; o retorno 5 é guardado em resultado. print(resultado) mostra 5. Retornar um valor e mostrar na tela são ações diferentes.\n\nsomar(-2,5) devolve 3; somar(0,0) devolve 0. Nesta atividade supomos entradas numéricas válidas. Se vierem de input, converta antes. No projeto final, você poderá usar uma função, mas o principal será receber, calcular e mostrar corretamente.",
+      "question_id": "00000000-0000-4000-8000-000000016033",
+      "position": 10,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004104",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004002",
+      "title": "Seu programa de soma",
+      "body": "Você vai receber dois números inteiros, um em cada linha, e mostrar somente a soma. Agora já estudamos saída, variáveis, input, conversão e operações. Planeje o caminho antes de abrir o editor.\n\nEntrada: duas linhas contendo inteiros. Processamento: converter cada linha e somar os números. Saída: um único número, sem mensagens adicionais. Para entradas 2 e 3, a saída esperada é 5; para -2 e 5, é 3.\n\nLeia a primeira linha com input, converta com int e guarde em a. Faça o mesmo para b. Some os dois valores e entregue o resultado a print. Se usar uma função própria, chame-a depois de obter as entradas; definir a função sozinho não executa a soma.\n\nNo campo de entrada, escreva 2, uma quebra de linha e 3. Execute seu programa e compare a saída com 5. Depois teste -2 e 5, e 0 e 0. Se aparecer 23, investigue a conversão; se houver uma mensagem extra, confira o formato pedido.\n\nO desafio fornece duas entradas inteiras válidas. Outros formulários podem exigir tratamento de texto vazio e não numérico, como vimos antes. Python precisa carregar o interpretador ao executar no navegador; se o ambiente não carregar, a tela deve avisar em vez de dizer que seu raciocínio está errado.",
+      "question_id": "00000000-0000-4000-8000-000000016038",
+      "position": 11,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004105"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004106",
+      "title": "Duas regras com and",
+      "body": "Neste exemplo, a escola exige nota pelo menos 7 e presença de pelo menos 75%. Uma nota alta sozinha não basta. A frequência é o percentual de aulas consideradas em que o estudante esteve presente.\n\nnota guarda o número da nota, de 0 a 10. >= compara com um limite inclusivo. 7 é o mínimo. nota >= 7 é False para 6 e True para 7 e 8.\n\nfrequencia guarda o percentual como número de 0 a 100. frequencia >= 75 é False para 70 e True para 75 e 80. O código usa apenas o número; não acrescentamos % ao valor desta variável.\n\nEm Python, and é o operador lógico E. Ele combina os resultados das duas comparações e só dá True quando ambas são verdadeiras. Leia a expressão: nota pelo menos 7 E frequência pelo menos 75%. Esta bolinha usa apenas a sintaxe de Python.\n\nCom 7 e 75, True and True dá True. Com 8 e 74, True and False dá False. Com 6 e 80, False and True dá False. Registre cada comparação antes de escrever o resultado combinado; assim é possível localizar qual requisito falhou.",
+      "question_id": "00000000-0000-4000-8000-000000016300",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004103",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004107",
+      "title": "Uma alternativa com or",
+      "body": "Uma biblioteca permite entrada com carteira ou comprovante. Basta um documento; quem tem os dois também entra. Aqui procuramos uma alternativa válida, em vez de exigir dois requisitos juntos.\n\ntem_carteira e tem_comprovante são nomes de informações lógicas. Use True quando há o documento e False quando não há. Uma variável lógica guarda um resultado que pode ser usado na próxima condição.\n\nEm Python, or é OU lógico. tem_carteira or tem_comprovante dá True se pelo menos uma informação é True. Só False or False dá False. Não confunda “pelo menos uma” com “exatamente uma”.\n\nSem documentos: False. Só carteira: True. Só comprovante: True. Ambos: True. Se a regra mudasse para exigir os dois documentos juntos, seria necessário and, que aprendemos na bolinha anterior.",
+      "question_id": "00000000-0000-4000-8000-000000016305",
+      "position": 5,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004106",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004108",
+      "title": "Inverter com not",
+      "body": "Se tem_pendencia é False, a pessoa não tem pendência. Podemos perguntar pela ausência dela invertendo o resultado lógico. Isso não altera a informação guardada; apenas calcula outra condição.\n\nnot é a palavra de Python para NÃO lógico. not True é False; not False é True. Em not tem_pendencia, o operador vem antes da condição que será negada.\n\n!= compara dois valores, como nota != 7. not nega uma condição, como not tem_pendencia. Escreva a frase completa: “não tem pendência”. Isso ajuda a evitar uma inversão acidental da regra.\n\nSe tem_pendencia é True, not tem_pendencia é False. Se ela é False, a negação é True. Na próxima bolinha, usaremos condições para escolher um bloco com if. Ainda não precisamos negar expressões compostas para compreender a escolha.",
+      "question_id": "00000000-0000-4000-8000-000000016310",
+      "position": 6,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004107",
+      "track_id": "00000000-0000-4000-8000-000000002100",
+      "xp": 100
     }
   ],
   "plans": [
@@ -498,6 +612,267 @@
         "minLength": 120
       },
       "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004100",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016000",
+        "00000000-0000-4000-8000-000000016001",
+        "00000000-0000-4000-8000-000000016002",
+        "00000000-0000-4000-8000-000000016003",
+        "00000000-0000-4000-8000-000000016004"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Explique duas saídas",
+        "prompt": "Prepare duas instruções print: uma para mostrar uma mensagem e outra para mostrar uma soma. Registre a saída esperada de cada uma e explique por que aspas mudariam o resultado da soma.",
+        "criteria": [
+          "Diferenciei texto de conta",
+          "Expliquei parênteses e aspas"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-intro"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004101",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016005",
+        "00000000-0000-4000-8000-000000016006",
+        "00000000-0000-4000-8000-000000016007",
+        "00000000-0000-4000-8000-000000016008",
+        "00000000-0000-4000-8000-000000016009"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Modele um produto",
+        "prompt": "Dê nome, preço e quantidade a um produto. Escreva as atribuições em Python e o resultado da multiplicação. Explique por que o nome fica entre aspas e os números usados no cálculo não.",
+        "criteria": [
+          "Escolhi nomes e valores adequados",
+          "Diferenciei texto e números"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-intro"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004102",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016010",
+        "00000000-0000-4000-8000-000000016011",
+        "00000000-0000-4000-8000-000000016012",
+        "00000000-0000-4000-8000-000000016013",
+        "00000000-0000-4000-8000-000000016014"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue a soma 23",
+        "prompt": "Uma pessoa recebeu 23 em vez de 5 ao ler duas entradas e somá-las. Explique o tipo retornado por input, mostre onde converter e preveja o que acontece com entrada abc.",
+        "criteria": [
+          "Expliquei concatenação e conversão",
+          "Descrevi uma entrada inválida"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-input"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004103",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016015",
+        "00000000-0000-4000-8000-000000016016",
+        "00000000-0000-4000-8000-000000016017",
+        "00000000-0000-4000-8000-000000016018",
+        "00000000-0000-4000-8000-000000016019"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue o limite",
+        "prompt": "Compare nota 6, 7 e 8 usando > e >=. Registre os resultados e explique por que uma regra “pelo menos 7” precisa incluir a igualdade.",
+        "criteria": [
+          "Testei abaixo, igual e acima",
+          "Expliquei a diferença dos operadores"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004000",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000012000",
+        "00000000-0000-4000-8000-000000016020",
+        "00000000-0000-4000-8000-000000016021",
+        "00000000-0000-4000-8000-000000016022",
+        "00000000-0000-4000-8000-000000016023"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Experimente outro cenário",
+        "prompt": "Crie um exemplo diferente para aplicar “Decisões em Python”. Descreva a entrada ou situação inicial, os passos e o resultado. Use o exercício como referência, sem copiar a resposta.",
+        "criteria": [
+          "Expliquei a decisão usando o conceito da teoria",
+          "Incluí um exemplo concreto e o resultado esperado"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004001",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000012001",
+        "00000000-0000-4000-8000-000000016024",
+        "00000000-0000-4000-8000-000000016025",
+        "00000000-0000-4000-8000-000000016026",
+        "00000000-0000-4000-8000-000000016027"
+      ],
+      "dynamic": {
+        "kind": "case",
+        "title": "Investigue um caso",
+        "prompt": "Uma pessoa da equipe aplicou “Completar uma repetição” e obteve um resultado inesperado. Construa um caso concreto: o que ocorreu, qual regra pode ter sido ignorada e como você verificaria a correção?",
+        "criteria": [
+          "Expliquei a decisão usando o conceito da teoria",
+          "Incluí um exemplo concreto e o resultado esperado"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004104",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016028",
+        "00000000-0000-4000-8000-000000016029",
+        "00000000-0000-4000-8000-000000016030",
+        "00000000-0000-4000-8000-000000016031",
+        "00000000-0000-4000-8000-000000016032"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Rastreie listas diferentes",
+        "prompt": "Faça uma tabela com lista, quantidade, soma e média para [], [6] e [7,8,9]. Explique por que o caso vazio precisa de um caminho próprio.",
+        "criteria": [
+          "Distingui índice de quantidade",
+          "Tratei a lista vazia antes da média"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-intro"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004105",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016033",
+        "00000000-0000-4000-8000-000000016034",
+        "00000000-0000-4000-8000-000000016035",
+        "00000000-0000-4000-8000-000000016036",
+        "00000000-0000-4000-8000-000000016037"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Explique duas chamadas",
+        "prompt": "Rastreie somar(2,3) e somar(-2,5): argumentos, parâmetros, cálculo e retorno. Explique onde usar print para mostrar os resultados.",
+        "criteria": [
+          "Expliquei o papel dos parâmetros",
+          "Diferenciei retornar de mostrar"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004002",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016038",
+        "00000000-0000-4000-8000-000000016039",
+        "00000000-0000-4000-8000-000000016040",
+        "00000000-0000-4000-8000-000000016041",
+        "00000000-0000-4000-8000-000000012002"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um teste da soma",
+        "prompt": "Prepare duas entradas inteiras diferentes das do exemplo, registre a saída esperada e execute seu programa no laboratório. Descreva como investigaria uma saída concatenada e explique o formato sem mensagem extra.",
+        "criteria": [
+          "Registrei entradas e resultado esperado",
+          "Expliquei conversão e formato de saída"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-input"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004106",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016300",
+        "00000000-0000-4000-8000-000000016301",
+        "00000000-0000-4000-8000-000000016302",
+        "00000000-0000-4000-8000-000000016303",
+        "00000000-0000-4000-8000-000000016304"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Explique um boletim",
+        "prompt": "Preveja cada comparação e o resultado com and para (7,75), (8,74) e (6,80). Explique por que a nota alta não resolve uma presença insuficiente.",
+        "criteria": ["Comparei cada requisito", "Expliquei o resultado do and"],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004107",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016305",
+        "00000000-0000-4000-8000-000000016306",
+        "00000000-0000-4000-8000-000000016307",
+        "00000000-0000-4000-8000-000000016308",
+        "00000000-0000-4000-8000-000000016309"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Quatro entradas na biblioteca",
+        "prompt": "Monte uma tabela com presença ou ausência de cada documento e o resultado do or. Explique o caso com os dois documentos.",
+        "criteria": [
+          "Registrei quatro combinações",
+          "Expliquei que or inclui o caso com ambos"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004108",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000016310",
+        "00000000-0000-4000-8000-000000016311",
+        "00000000-0000-4000-8000-000000016312",
+        "00000000-0000-4000-8000-000000016313",
+        "00000000-0000-4000-8000-000000016314"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Explique a inversão",
+        "prompt": "Escolha uma condição sobre uma pendência. Descreva True e False e o resultado de not em cada caso. Diferencie verificar a ausência de mudar o dado.",
+        "criteria": [
+          "Expliquei os dois estados",
+          "Diferenciei negação de atribuição"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["python-control"]
     }
   ],
   "questions": [
@@ -1160,6 +1535,726 @@
       "category": "Prática guiada",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016000",
+      "title": "Linguagem",
+      "prompt": "O que é Python?",
+      "options": [
+        "Uma linguagem para escrever programas",
+        "Um resultado numérico",
+        "Uma marca de monitor"
+      ],
+      "explanation": "Python é uma linguagem de programação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016001",
+      "title": "Exibir",
+      "prompt": "O que print(\"Olá\") mostra?",
+      "options": ["\"print\"", "Olá", "Nada"],
+      "explanation": "print exibe o texto passado entre parênteses.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016002",
+      "title": "Conta",
+      "prompt": "O que print(2 + 3) mostra?",
+      "options": ["2 + 3", "23", "5"],
+      "explanation": "Sem aspas, + soma os números.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016003",
+      "title": "Sintaxe",
+      "prompt": "Qual chamada está completa?",
+      "options": ["print(\"Oi\"", "print(\"Oi\")", "Print[Oi]"],
+      "explanation": "A chamada fecha aspas e parênteses, com o nome print em minúsculas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016004",
+      "title": "Texto",
+      "prompt": "O que print(\"2 + 3\") mostra?",
+      "options": ["5", "2 + 3", "Erro de soma"],
+      "explanation": "As aspas indicam texto; a conta não é feita.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016005",
+      "title": "Guardar",
+      "prompt": "Em idade = 16, qual parte é o nome?",
+      "options": ["idade", "=", "16"],
+      "explanation": "idade identifica o valor guardado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016006",
+      "title": "Consultar",
+      "prompt": "nome guarda \"Ana\". print(nome) mostra:",
+      "options": ["nome", "Ana", "\"print\""],
+      "explanation": "Sem aspas, Python consulta a variável.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016007",
+      "title": "Tipo",
+      "prompt": "Qual valor é texto?",
+      "options": ["3", "2.5", "\"3\""],
+      "explanation": "As aspas delimitam o texto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016008",
+      "title": "Atualizar",
+      "prompt": "quantidade começa em 3 e recebe quantidade + 1. O novo valor é:",
+      "options": ["3", "4", "31"],
+      "explanation": "A soma numérica produz 4 e a atribuição guarda esse resultado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016009",
+      "title": "Aplicar",
+      "prompt": "Com preco 2.5 e quantidade 3, preco * quantidade vale:",
+      "options": ["7.5", "5.5", "2.53"],
+      "explanation": "* multiplica os números.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016010",
+      "title": "Ler",
+      "prompt": "Qual é o tipo retornado por input()?",
+      "options": ["Texto str", "Sempre int", "Sempre float"],
+      "explanation": "input retorna a linha como texto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016011",
+      "title": "Converter",
+      "prompt": "Qual interpreta \"12\" como inteiro?",
+      "options": ["print(\"12\")", "int(\"12\")", "input(\"12\")"],
+      "explanation": "int interpreta o texto numérico como inteiro.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016012",
+      "title": "Ordem",
+      "prompt": "Em int(input()), o que ocorre primeiro?",
+      "options": [
+        "int converte algo ainda inexistente",
+        "input lê a linha",
+        "A soma é mostrada"
+      ],
+      "explanation": "A chamada interna fornece o valor à externa.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016013",
+      "title": "Erro",
+      "prompt": "Qual entrada não é um inteiro válido para int()?",
+      "options": ["\"-2\"", "\"0\"", "\"abc\""],
+      "explanation": "Não é possível interpretar abc como inteiro.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016014",
+      "title": "Aplicar",
+      "prompt": "Entradas 2 e 3 convertidas por int e somadas produzem:",
+      "options": ["23", "5", "\"2 + 3\""],
+      "explanation": "A soma de inteiros produz 5.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016015",
+      "title": "Comparar",
+      "prompt": "Qual inclui a nota mínima 7?",
+      "options": ["nota > 7", "nota >= 7", "nota = 7"],
+      "explanation": ">= inclui o limite; = atribui.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016016",
+      "title": "Igualdade",
+      "prompt": "Como comparar se quantidade vale 3?",
+      "options": ["quantidade = 3", "quantidade == 3", "quantidade + 3"],
+      "explanation": "== verifica igualdade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016017",
+      "title": "Limite",
+      "prompt": "7 >= 7 resulta em:",
+      "options": ["False", "True", "7"],
+      "explanation": "O limite está incluído.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016018",
+      "title": "Diferença",
+      "prompt": "4 != 3 resulta em:",
+      "options": ["True", "False", "4"],
+      "explanation": "4 é diferente de 3.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016019",
+      "title": "Aplicar",
+      "prompt": "Qual regra inclui idade até 17?",
+      "options": ["idade < 17", "idade > 17", "idade <= 17"],
+      "explanation": "<= inclui o valor máximo permitido.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016020",
+      "title": "Bloco",
+      "prompt": "O que delimita o bloco em Python?",
+      "options": ["Chaves", "Indentação", "Aspas"],
+      "explanation": "Os espaços no início das linhas delimitam o bloco.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016021",
+      "title": "Cabeçalho",
+      "prompt": "O que encerra o cabeçalho de if?",
+      "options": [":", ";", "&&"],
+      "explanation": "Os dois-pontos indicam o começo do bloco.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016022",
+      "title": "Caminho",
+      "prompt": "Qual parte cobre o caso falso neste exemplo?",
+      "options": ["print", "else", "int"],
+      "explanation": "else executa quando a condição do if é falsa.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016023",
+      "title": "Aplicar",
+      "prompt": "Com nota 7, if nota >= 7 escolhe:",
+      "options": ["O bloco de aprovação", "O else", "Ambos os blocos"],
+      "explanation": "7 atende ao limite inclusivo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016024",
+      "title": "Intervalo",
+      "prompt": "range(1,4) fornece:",
+      "options": ["1,2,3", "1,2,3,4", "0,1,2,3"],
+      "explanation": "O começo é incluído e a parada é excluída.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016025",
+      "title": "Contagem",
+      "prompt": "Quantas voltas para range(4)?",
+      "options": ["3", "4", "5"],
+      "explanation": "Os valores são 0,1,2,3.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016026",
+      "title": "Erro de limite",
+      "prompt": "Para mostrar de 1 até 4 inclusive, use:",
+      "options": ["range(1,4)", "range(1,5)", "range(4,4)"],
+      "explanation": "A parada precisa ficar depois do último valor desejado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016027",
+      "title": "Acumular",
+      "prompt": "Onde total deve começar em zero para somar todas as voltas?",
+      "options": [
+        "Antes do for",
+        "Dentro de cada volta",
+        "Depois de mostrar a resposta"
+      ],
+      "explanation": "Zerar dentro de cada volta apaga o total anterior.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016028",
+      "title": "Lista",
+      "prompt": "Qual representa uma lista?",
+      "options": ["[7,8,9]", "\"notas\"", "print"],
+      "explanation": "Colchetes delimitam os elementos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016029",
+      "title": "Índice",
+      "prompt": "Em [7,8,9], o índice 0 contém:",
+      "options": ["9", "7", "0"],
+      "explanation": "A primeira posição tem índice 0.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016030",
+      "title": "Quantidade",
+      "prompt": "len([7,8,9]) vale:",
+      "options": ["2", "3", "9"],
+      "explanation": "Há três elementos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016031",
+      "title": "Vazia",
+      "prompt": "Uma lista [] possui elemento no índice 0?",
+      "options": ["Sim, sempre zero", "Não", "Sim, texto vazio"],
+      "explanation": "Uma lista vazia não tem elementos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016032",
+      "title": "Aplicar",
+      "prompt": "Qual média de [6]?",
+      "options": ["0", "3", "6"],
+      "explanation": "A soma 6 é dividida pela quantidade 1.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016033",
+      "title": "Definir",
+      "prompt": "Qual palavra inicia uma função em Python?",
+      "options": ["def", "function", "int"],
+      "explanation": "Python usa def para definir uma função.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016034",
+      "title": "Parâmetro",
+      "prompt": "Na definição, a e b são:",
+      "options": ["Resultados fixos", "Parâmetros", "Mensagens"],
+      "explanation": "Eles nomeiam entradas internas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016035",
+      "title": "Chamada",
+      "prompt": "somar(2,3) devolve:",
+      "options": ["23", "5", "2"],
+      "explanation": "A função soma os dois números.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016036",
+      "title": "Retornar",
+      "prompt": "return serve para:",
+      "options": [
+        "Mostrar sempre na tela",
+        "Devolver um valor a quem chamou",
+        "Criar um laço"
+      ],
+      "explanation": "O valor retornado pode ser guardado e usado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016037",
+      "title": "Aplicar",
+      "prompt": "somar(-2,5) devolve:",
+      "options": ["-7", "7", "3"],
+      "explanation": "-2 + 5 = 3.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016038",
+      "title": "Entrada",
+      "prompt": "Quantas linhas de entrada são esperadas?",
+      "options": [
+        "Uma linha de texto livre",
+        "Duas, uma por inteiro",
+        "Nenhuma"
+      ],
+      "explanation": "O problema recebe dois inteiros em linhas separadas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016039",
+      "title": "Conversão",
+      "prompt": "Por que usar int antes de somar?",
+      "options": [
+        "Para transformar texto numérico em inteiro",
+        "Para mostrar na tela",
+        "Para criar uma lista"
+      ],
+      "explanation": "input fornece texto; int interpreta o inteiro.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016040",
+      "title": "Erro",
+      "prompt": "A saída para 2 e 3 foi 23. O provável problema é:",
+      "options": [
+        "A multiplicação",
+        "Somar textos sem converter",
+        "Usar número negativo"
+      ],
+      "explanation": "Concatenar os textos produz 23.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016041",
+      "title": "Saída",
+      "prompt": "Para entradas -2 e 5, qual saída pedida?",
+      "options": ["Resultado: 3", "3", "-7"],
+      "explanation": "A tarefa pede só a soma, sem mensagem extra.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016300",
+      "title": "E",
+      "prompt": "Quando and dá True?",
+      "options": [
+        "Quando ambas são verdadeiras",
+        "Quando basta uma",
+        "Quando ambas são falsas"
+      ],
+      "explanation": "and exige as duas condições.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016301",
+      "title": "Palavra",
+      "prompt": "Qual é o E lógico em Python?",
+      "options": ["&&", "and", "E"],
+      "explanation": "Python usa a palavra and.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016302",
+      "title": "No limite",
+      "prompt": "Nota 7 e presença 75 atendem às duas regras?",
+      "options": ["Sim", "Não", "Só com nota maior que 7"],
+      "explanation": ">= inclui ambos os limites.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016303",
+      "title": "Erro",
+      "prompt": "Nota 8 e presença 74: qual regra falhou?",
+      "options": ["Nota", "Frequência", "Nenhuma"],
+      "explanation": "74 é menor que 75.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016304",
+      "title": "Aplicar",
+      "prompt": "Qual conjunto atende nota >= 7 and frequencia >= 75?",
+      "options": ["9 e 70", "6 e 90", "8 e 80"],
+      "explanation": "Ambas as comparações são verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016305",
+      "title": "Alternativa",
+      "prompt": "Qual regra combina com or?",
+      "options": [
+        "Exigir os dois documentos",
+        "Aceitar carteira ou comprovante",
+        "Exigir nota e presença"
+      ],
+      "explanation": "Uma alternativa basta.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016306",
+      "title": "Uma verdadeira",
+      "prompt": "True or False vale:",
+      "options": ["True", "False", "Erro"],
+      "explanation": "Uma condição verdadeira satisfaz or.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016307",
+      "title": "Ambas",
+      "prompt": "True or True vale:",
+      "options": ["False", "True", "Indefinido"],
+      "explanation": "or aceita ambas verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016308",
+      "title": "Nenhuma",
+      "prompt": "False or False vale:",
+      "options": ["True", "False", "0 numérico"],
+      "explanation": "Nenhuma alternativa foi cumprida.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016309",
+      "title": "Aplicar",
+      "prompt": "Para exigir os dois documentos, qual palavra substituiria or?",
+      "options": ["not", "and", "print"],
+      "explanation": "and exige ambas verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016310",
+      "title": "Reconhecer",
+      "prompt": "Qual palavra nega uma condição em Python?",
+      "options": ["not", "!", "||"],
+      "explanation": "Python usa not.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016311",
+      "title": "Negar",
+      "prompt": "not True vale:",
+      "options": ["True", "False", "1"],
+      "explanation": "A negação inverte para False.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016312",
+      "title": "Inverter",
+      "prompt": "not False vale:",
+      "options": ["True", "False", "0"],
+      "explanation": "A negação de False é True.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016313",
+      "title": "Erro",
+      "prompt": "not tem_pendencia altera o valor guardado?",
+      "options": ["Sim, sempre", "Não, calcula outra condição", "Apaga o nome"],
+      "explanation": "Não há atribuição à variável.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000016314",
+      "title": "Aplicar",
+      "prompt": "tem_pendencia é False. not tem_pendencia vale:",
+      "options": ["False", "True", "Não se pode saber"],
+      "explanation": "A pessoa não tem pendência.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
     }
   ],
   "answers": {
@@ -1212,7 +2307,64 @@
     "00000000-0000-4000-8000-000000015046": 1,
     "00000000-0000-4000-8000-000000015047": 2,
     "00000000-0000-4000-8000-000000015048": 0,
-    "00000000-0000-4000-8000-000000015049": 1
+    "00000000-0000-4000-8000-000000015049": 1,
+    "00000000-0000-4000-8000-000000016000": 0,
+    "00000000-0000-4000-8000-000000016001": 1,
+    "00000000-0000-4000-8000-000000016002": 2,
+    "00000000-0000-4000-8000-000000016003": 1,
+    "00000000-0000-4000-8000-000000016004": 1,
+    "00000000-0000-4000-8000-000000016005": 0,
+    "00000000-0000-4000-8000-000000016006": 1,
+    "00000000-0000-4000-8000-000000016007": 2,
+    "00000000-0000-4000-8000-000000016008": 1,
+    "00000000-0000-4000-8000-000000016009": 0,
+    "00000000-0000-4000-8000-000000016010": 0,
+    "00000000-0000-4000-8000-000000016011": 1,
+    "00000000-0000-4000-8000-000000016012": 1,
+    "00000000-0000-4000-8000-000000016013": 2,
+    "00000000-0000-4000-8000-000000016014": 1,
+    "00000000-0000-4000-8000-000000016015": 1,
+    "00000000-0000-4000-8000-000000016016": 1,
+    "00000000-0000-4000-8000-000000016017": 1,
+    "00000000-0000-4000-8000-000000016018": 0,
+    "00000000-0000-4000-8000-000000016019": 2,
+    "00000000-0000-4000-8000-000000016020": 1,
+    "00000000-0000-4000-8000-000000016021": 0,
+    "00000000-0000-4000-8000-000000016022": 1,
+    "00000000-0000-4000-8000-000000016023": 0,
+    "00000000-0000-4000-8000-000000016024": 0,
+    "00000000-0000-4000-8000-000000016025": 1,
+    "00000000-0000-4000-8000-000000016026": 1,
+    "00000000-0000-4000-8000-000000016027": 0,
+    "00000000-0000-4000-8000-000000016028": 0,
+    "00000000-0000-4000-8000-000000016029": 1,
+    "00000000-0000-4000-8000-000000016030": 1,
+    "00000000-0000-4000-8000-000000016031": 1,
+    "00000000-0000-4000-8000-000000016032": 2,
+    "00000000-0000-4000-8000-000000016033": 0,
+    "00000000-0000-4000-8000-000000016034": 1,
+    "00000000-0000-4000-8000-000000016035": 1,
+    "00000000-0000-4000-8000-000000016036": 1,
+    "00000000-0000-4000-8000-000000016037": 2,
+    "00000000-0000-4000-8000-000000016038": 1,
+    "00000000-0000-4000-8000-000000016039": 0,
+    "00000000-0000-4000-8000-000000016040": 1,
+    "00000000-0000-4000-8000-000000016041": 1,
+    "00000000-0000-4000-8000-000000016300": 0,
+    "00000000-0000-4000-8000-000000016301": 1,
+    "00000000-0000-4000-8000-000000016302": 0,
+    "00000000-0000-4000-8000-000000016303": 1,
+    "00000000-0000-4000-8000-000000016304": 2,
+    "00000000-0000-4000-8000-000000016305": 1,
+    "00000000-0000-4000-8000-000000016306": 0,
+    "00000000-0000-4000-8000-000000016307": 1,
+    "00000000-0000-4000-8000-000000016308": 1,
+    "00000000-0000-4000-8000-000000016309": 1,
+    "00000000-0000-4000-8000-000000016310": 0,
+    "00000000-0000-4000-8000-000000016311": 1,
+    "00000000-0000-4000-8000-000000016312": 0,
+    "00000000-0000-4000-8000-000000016313": 1,
+    "00000000-0000-4000-8000-000000016314": 1
   },
   "guides": {
     "00000000-0000-4000-8000-000000000302": {
@@ -1758,6 +2910,397 @@
           "text": "Preço ou quantidade negativos são inválidos neste cadastro: peça correção antes de calcular. Quantidade zero é válida e contribui com subtotal zero. Confira o total 43 manualmente. Na dinâmica, monte uma tabela com produto, preço, quantidade, subtotal e total parcial."
         }
       ]
+    },
+    "00000000-0000-4000-8000-000000004100": {
+      "objective": "Explicar o que é Python e reconhecer uma saída com print.",
+      "prerequisites": "Nenhum conhecimento prévio.",
+      "competency": "Explicar o que é Python e reconhecer uma saída com print.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "De uma ideia para instruções",
+          "text": "Python é uma linguagem de programação. Ela permite escrever instruções para tarefas como fazer cálculos e organizar informações. Um programa é um conjunto dessas instruções. O interpretador é o software que lê e executa o código Python. Nesta trilha começamos por uma instrução pequena, sem exigir outra linguagem."
+        },
+        {
+          "title": "Mostrar uma mensagem",
+          "text": "print é uma função que já vem com Python: uma operação pronta que podemos chamar pelo nome. Em print(\"Olá\"), os parênteses indicam a chamada; o que está dentro é a informação a mostrar. As aspas delimitam o texto. Ao executar, aparece Olá, sem aspas.",
+          "code": "print(\"Olá\")"
+        },
+        {
+          "title": "Texto e resultado de uma conta",
+          "text": "print(2 + 3) mostra 5. + soma os números. print(\"2 + 3\") mostra os caracteres 2 + 3, porque as aspas tornam esse conteúdo um texto. Os parênteses dizem o que entregar a print; as aspas mudam o tipo de informação.",
+          "trace": [
+            "Primeira linha: calcular 2 + 3 e mostrar 5",
+            "Segunda linha: mostrar o texto 2 + 3"
+          ],
+          "code": "print(2 + 3)\nprint(\"2 + 3\")"
+        },
+        {
+          "title": "Uma instrução por linha",
+          "text": "Neste começo, escreva cada chamada em uma linha. print(\"Oi\") seguido de print(\"Turma\") mostra duas linhas, nessa ordem. Python diferencia maiúsculas de minúsculas: Print não é o mesmo nome que print. Não copie os sinais >>> dos exemplos de terminal: eles indicam onde digitar, não fazem parte deste programa."
+        },
+        {
+          "title": "Preveja antes de executar",
+          "text": "Leia as duas linhas e escreva a saída esperada. Uma aspa ou parêntese sem fechamento impede Python de entender a instrução. Compare print(\"Oi\") com print(\"Oi\": no segundo falta fechar o parêntese. Na dinâmica, encontre e explique esse tipo de erro antes de tentar programas maiores."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004101": {
+      "objective": "Guardar valores em variáveis e distinguir texto de número.",
+      "prerequisites": "Rever antes: print.",
+      "competency": "Guardar valores em variáveis e distinguir texto de número.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Lembrar uma informação",
+          "text": "Um programa que atende uma pessoa pode guardar seu nome para usar depois. Uma variável associa um nome a um valor. Em nome = \"Ana\", nome é a identificação escolhida, = atribui o valor, e \"Ana\" é um texto.",
+          "code": "nome = \"Ana\"\nprint(nome)"
+        },
+        {
+          "title": "Usar o nome ou escrever a palavra",
+          "text": "print(nome) consulta o valor guardado e mostra Ana. print(\"nome\") mostra a palavra nome. As aspas indicam texto literal; sem aspas, Python procura o nome da variável. Se ela ainda não tiver sido criada, ocorre um erro.",
+          "variables": [
+            {
+              "name": "nome",
+              "value": "Ana",
+              "type": "str · texto"
+            }
+          ]
+        },
+        {
+          "title": "Números de tipos diferentes",
+          "text": "int representa inteiros como 3, 0 e -2. float representa números com parte decimal, como 2.5. str representa texto, como \"3\". Python identifica o tipo pelo valor: não escrevemos int antes do nome ao fazer quantidade = 3. Os exemplos anteriores em outras linguagens não devem ser copiados sem adaptação.",
+          "code": "quantidade = 3\npreco = 2.5\ntotal = quantidade * preco"
+        },
+        {
+          "title": "Atualizar e calcular",
+          "text": "* multiplica: 3 * 2.5 dá 7.5. Depois de quantidade = 3, quantidade = quantidade + 1 calcula 4 e guarda o novo valor. A parte da direita é calculada antes da atribuição. Para nomes novos, use letras e nomes descritivos, sem espaços; por exemplo, total_compra."
+        },
+        {
+          "title": "O sinal depende do tipo",
+          "text": "Com números, 2 + 3 dá 5. Com textos, \"2\" + \"3\" forma \"23\", uma junção chamada concatenação. Esse resultado não é a soma dos números. Na próxima bolinha, aprenderemos a converter uma entrada antes de calcular."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004102": {
+      "objective": "Ler uma entrada como texto e convertê-la antes de somar.",
+      "prerequisites": "Rever antes: tipos Python.",
+      "competency": "Ler uma entrada como texto e convertê-la antes de somar.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Receber o que muda",
+          "text": "Em vez de escrever um nome fixo no código, um programa pode receber uma entrada. input() lê uma linha e entrega texto. Os parênteses vazios indicam que a função foi chamada sem uma mensagem de pergunta. nome = input() guarda a linha lida.",
+          "code": "nome = input()\nprint(nome)"
+        },
+        {
+          "title": "Um número digitado ainda é texto",
+          "text": "Se a pessoa digita 2 e pressiona Enter, input() retorna \"2\", do tipo str. Outra entrada 3 retorna \"3\". Somar esses textos forma \"23\". Para fazer a conta 2 + 3, precisamos interpretar as entradas como números."
+        },
+        {
+          "title": "Converter um inteiro",
+          "text": "int(\"2\") produz o inteiro 2. Em a = int(input()), a parte interna input() é executada primeiro; depois int interpreta o texto, e = guarda o inteiro em a. Para decimais escritos com ponto, float(\"2.5\") produz 2.5.",
+          "trace": [
+            "Ler a primeira linha como texto",
+            "Converter esse texto em inteiro e guardar em a",
+            "Repetir para b",
+            "Somar os inteiros e mostrar"
+          ],
+          "code": "a = int(input())\nb = int(input())\nprint(a + b)"
+        },
+        {
+          "title": "Conversão não aceita qualquer texto",
+          "text": "int(\"abc\") e int(\"\") não representam inteiros e causam erro de conversão. Esse erro recebe o nome ValueError. int(\"2.5\") também não é a forma de ler um decimal: use float nesse caso. Antes de aceitar dados de um formulário, planeje como informar que a entrada é inválida."
+        },
+        {
+          "title": "Entenda a entrada do laboratório",
+          "text": "No editor desta trilha, escreva uma entrada por linha no campo de dados. Para somar 2 e 3, o campo tem duas linhas: 2 e 3. A avaliação pode comparar a saída exatamente; se pede apenas o número, não acrescente mensagens como “Resultado:”. O programa deste exemplo supõe duas entradas inteiras válidas."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004103": {
+      "objective": "Interpretar comparações simples em Python.",
+      "prerequisites": "Rever antes: conversão Python.",
+      "competency": "Ler condições e os operadores lógicos da linguagem Python.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Uma pergunta sobre um número",
+          "text": "Uma escola precisa saber se a nota atende ao mínimo. Uma comparação verifica dois valores e produz True ou False, verdadeiro ou falso. Em Python, esses nomes começam com letra maiúscula. Uma condição falsa pode ser um resultado válido, não um erro."
+        },
+        {
+          "title": "Maior que",
+          "text": "> significa maior que. 8 > 7 produz True; 7 > 7 produz False, porque os valores são iguais. nota > 7 usa o valor guardado na variável nota para fazer essa verificação. A comparação não muda o valor de nota."
+        },
+        {
+          "title": "Menor que",
+          "text": "< significa menor que. 6 < 7 produz True; 7 < 7 produz False. Os dois operadores que estudamos até aqui não incluem o caso de igualdade."
+        },
+        {
+          "title": "Maior ou igual",
+          "text": ">= é um único operador escrito com dois caracteres. Significa maior ou igual a. Em nota >= 7, nota é o nome da informação guardada; 7 é o mínimo; >= pergunta se o valor alcança esse limite. 6 dá False; 7 e 8 dão True.",
+          "code": "nota = 7\nprint(nota >= 7)"
+        },
+        {
+          "title": "Menor ou igual",
+          "text": "<= inclui os valores menores e o próprio limite. idade <= 17 é True para 16 e 17 e False para 18. Não separe < de = com espaço: os dois caracteres formam o operador."
+        },
+        {
+          "title": "Igualdade e diferença",
+          "text": "== pergunta se dois valores são iguais: 3 == 3 dá True. != pergunta se são diferentes: 4 != 3 dá True. Um = sozinho atribui valor; não compara. Escreva primeiro o significado em português para distinguir a atribuição da pergunta."
+        },
+        {
+          "title": "Confira os limites",
+          "text": "Teste nota 6, 7 e 8 com nota >= 7. Espere False, True e True. Essas comparações serão usadas dentro de if mais adiante. Na próxima bolinha, vamos aprender a exigir duas comparações verdadeiras ao mesmo tempo."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004000": {
+      "objective": "Escolher um bloco conforme uma condição.",
+      "prerequisites": "Rever antes: condições Python.",
+      "competency": "Escolher um bloco conforme uma condição.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Escolher a mensagem",
+          "text": "Agora que sabemos comparar a nota, queremos mostrar mensagens diferentes. if significa “se”. A condição que vem depois dele determina se o bloco será executado. Vamos supor que nota já contém um número válido."
+        },
+        {
+          "title": "O papel dos dois-pontos",
+          "text": "Em if nota >= 7:, a palavra if inicia a decisão, nota >= 7 é a condição e : termina o cabeçalho indicando que o bloco virá nas próximas linhas. Não coloque ponto e vírgula para encerrar essa linha.",
+          "code": "if nota >= 7:\n    print(\"Aprovado\")"
+        },
+        {
+          "title": "Os espaços fazem parte da estrutura",
+          "text": "Em Python, a indentação, os espaços no início da linha, define o bloco. Use quatro espaços para as instruções dentro deste if. print sem essa indentação ficaria fora do bloco. Diferentemente dos exemplos Dart, não usamos chaves para delimitar o bloco Python."
+        },
+        {
+          "title": "O caminho contrário",
+          "text": "else: apresenta o caso em que a condição do if é falsa. Ele fica alinhado ao if; seu print recebe quatro espaços. Com nota 6 aparece Revisar; com 7 aparece Aprovado.",
+          "code": "if nota >= 7:\n    print(\"Aprovado\")\nelse:\n    print(\"Revisar\")"
+        },
+        {
+          "title": "Teste os limites",
+          "text": "Compare os resultados para nota 6, 7 e 8. O caso igual a 7 verifica se o operador correto foi usado. Na dinâmica, escreva a condição, a ação quando verdadeira e a ação quando falsa. A regra deve ter sido definida antes de escrever o if."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004001": {
+      "objective": "Rastrear for e range em Python.",
+      "prerequisites": "Rever antes: if Python.",
+      "competency": "Rastrear for e range em Python.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Repetir uma ação",
+          "text": "Para mostrar os números 1, 2 e 3, podemos repetir print para cada número. O for permite percorrer uma sequência, executando o bloco para cada item. Nesta bolinha, usamos uma sequência numérica curta para acompanhar todas as voltas."
+        },
+        {
+          "title": "O intervalo tem começo e fim",
+          "text": "range(1, 4) fornece 1, 2 e 3. O primeiro argumento é o começo incluído; o segundo é a parada excluída. A vírgula separa os argumentos. range(4) começa em 0 e fornece 0, 1, 2 e 3."
+        },
+        {
+          "title": "Leia o for",
+          "text": "Em for numero in range(1, 4):, numero é o nome que recebe um valor por volta; in indica de onde vêm os valores. : anuncia o bloco e os quatro espaços o delimitam. print(numero) mostra o valor atual.",
+          "trace": [
+            "numero recebe 1 e mostra 1",
+            "numero recebe 2 e mostra 2",
+            "numero recebe 3 e mostra 3",
+            "Não há outro valor no intervalo; termina"
+          ],
+          "code": "for numero in range(1, 4):\n    print(numero)"
+        },
+        {
+          "title": "Investigue uma volta a menos",
+          "text": "Se queria mostrar até 4, range(1, 4) não basta. Use range(1, 5). Se o começo é igual à parada com o passo positivo padrão, range(4,4) não fornece valores e o bloco não executa. Compare o esperado com a sequência antes de tentar um laço maior."
+        },
+        {
+          "title": "Guardar um total",
+          "text": "Para somar os valores, crie total = 0 antes do for e atualize total = total + numero dentro do bloco. Os totais para 1, 2 e 3 são 1, 3 e 6. Se zerar total em cada volta, perderá as somas anteriores.",
+          "code": "total = 0\nfor numero in range(1, 4):\n    total = total + numero\nprint(total)"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004104": {
+      "objective": "Guardar e consultar uma sequência sem acessar posições inexistentes.",
+      "prerequisites": "Rever antes: for Python.",
+      "competency": "Guardar e consultar uma sequência sem acessar posições inexistentes.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Várias notas juntas",
+          "text": "Uma lista guarda itens em ordem. notas = [7, 8, 9] usa colchetes para delimitar a lista e vírgulas para separar os elementos. = associa essa lista ao nome notas. Cada valor pode ser consultado por sua posição.",
+          "code": "notas = [7, 8, 9]"
+        },
+        {
+          "title": "A posição começa em zero",
+          "text": "notas[0] vale 7; notas[1] vale 8; notas[2] vale 9. O número entre colchetes é o índice. len(notas) informa a quantidade: 3. Nesta lista, índice 3 não existe.",
+          "variables": [
+            {
+              "name": "notas[0]",
+              "value": "7",
+              "type": "índice 0"
+            },
+            {
+              "name": "len(notas)",
+              "value": "3",
+              "type": "quantidade"
+            }
+          ]
+        },
+        {
+          "title": "Percorra os itens",
+          "text": "for nota in notas: entrega um elemento por volta à variável nota. Podemos somar cada um a total, iniciado antes. Para [7,8,9], o total fica 7, 15 e 24. Essa repetição usa a lista, não range.",
+          "code": "total = 0\nfor nota in notas:\n    total = total + nota"
+        },
+        {
+          "title": "O caso vazio",
+          "text": "[] é uma lista sem itens. len([]) vale 0 e não há índice 0 para acessar. Antes de calcular média, confira a quantidade. Sem itens, mostre um aviso em vez de acessar a primeira posição ou dividir por zero."
+        },
+        {
+          "title": "Teste e explique",
+          "text": "Para [7,8,9], a média é 24 / 3 = 8. Para [6], é 6 / 1 = 6. Para [], espere o aviso Sem notas. Uma solução que só funciona com três elementos fixos ainda não trata os outros casos."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004105": {
+      "objective": "Definir e chamar uma função com retorno.",
+      "prerequisites": "Rever antes: listas Python.",
+      "competency": "Definir e chamar uma função com retorno.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Nomear uma operação",
+          "text": "Uma função reúne instruções para realizar uma operação. Já usamos print e input, prontas na linguagem. Agora vamos criar uma função própria para somar duas entradas, sem repetir a mesma conta em vários lugares."
+        },
+        {
+          "title": "Defina a função",
+          "text": "def inicia a definição. somar é o nome escolhido. Os parênteses contêm os parâmetros a e b, os nomes das entradas dentro da função. A vírgula os separa. : indica o bloco, e a indentação mantém return dentro dele.",
+          "code": "def somar(a, b):\n    return a + b"
+        },
+        {
+          "title": "O retorno",
+          "text": "return entrega o resultado a quem chamou. a + b soma as entradas e produz o valor devolvido. Definir uma função não executa a conta imediatamente: é preciso chamá-la com argumentos, que são valores concretos."
+        },
+        {
+          "title": "Chame e use o resultado",
+          "text": "resultado = somar(2,3) chama a função com 2 e 3. Eles passam a ser a e b dentro dela; o retorno 5 é guardado em resultado. print(resultado) mostra 5. Retornar um valor e mostrar na tela são ações diferentes.",
+          "code": "resultado = somar(2, 3)\nprint(resultado)"
+        },
+        {
+          "title": "Confira outras entradas",
+          "text": "somar(-2,5) devolve 3; somar(0,0) devolve 0. Nesta atividade supomos entradas numéricas válidas. Se vierem de input, converta antes. No projeto final, você poderá usar uma função, mas o principal será receber, calcular e mostrar corretamente."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004002": {
+      "objective": "Aplicar entrada, conversão, cálculo e saída em um programa completo.",
+      "prerequisites": "Rever antes: funções Python.",
+      "competency": "Aplicar entrada, conversão, cálculo e saída em um programa completo.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "O problema completo",
+          "text": "Você vai receber dois números inteiros, um em cada linha, e mostrar somente a soma. Agora já estudamos saída, variáveis, input, conversão e operações. Planeje o caminho antes de abrir o editor."
+        },
+        {
+          "title": "Três papéis",
+          "text": "Entrada: duas linhas contendo inteiros. Processamento: converter cada linha e somar os números. Saída: um único número, sem mensagens adicionais. Para entradas 2 e 3, a saída esperada é 5; para -2 e 5, é 3."
+        },
+        {
+          "title": "Monte as instruções",
+          "text": "Leia a primeira linha com input, converta com int e guarde em a. Faça o mesmo para b. Some os dois valores e entregue o resultado a print. Se usar uma função própria, chame-a depois de obter as entradas; definir a função sozinho não executa a soma."
+        },
+        {
+          "title": "Use o editor com um teste pequeno",
+          "text": "No campo de entrada, escreva 2, uma quebra de linha e 3. Execute seu programa e compare a saída com 5. Depois teste -2 e 5, e 0 e 0. Se aparecer 23, investigue a conversão; se houver uma mensagem extra, confira o formato pedido."
+        },
+        {
+          "title": "Limites deste exercício",
+          "text": "O desafio fornece duas entradas inteiras válidas. Outros formulários podem exigir tratamento de texto vazio e não numérico, como vimos antes. Python precisa carregar o interpretador ao executar no navegador; se o ambiente não carregar, a tela deve avisar em vez de dizer que seu raciocínio está errado."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004106": {
+      "objective": "Exigir duas condições verdadeiras em Python.",
+      "prerequisites": "Rever antes: comparações Python.",
+      "competency": "Exigir duas condições verdadeiras em Python.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Uma regra da escola",
+          "text": "Neste exemplo, a escola exige nota pelo menos 7 e presença de pelo menos 75%. Uma nota alta sozinha não basta. A frequência é o percentual de aulas consideradas em que o estudante esteve presente."
+        },
+        {
+          "title": "Verifique a nota separadamente",
+          "text": "nota guarda o número da nota, de 0 a 10. >= compara com um limite inclusivo. 7 é o mínimo. nota >= 7 é False para 6 e True para 7 e 8.",
+          "code": "nota >= 7"
+        },
+        {
+          "title": "Verifique a frequência",
+          "text": "frequencia guarda o percentual como número de 0 a 100. frequencia >= 75 é False para 70 e True para 75 e 80. O código usa apenas o número; não acrescentamos % ao valor desta variável.",
+          "code": "frequencia >= 75"
+        },
+        {
+          "title": "Junte com and",
+          "text": "Em Python, and é o operador lógico E. Ele combina os resultados das duas comparações e só dá True quando ambas são verdadeiras. Leia a expressão: nota pelo menos 7 E frequência pelo menos 75%. Esta bolinha usa apenas a sintaxe de Python.",
+          "code": "nota >= 7 and frequencia >= 75"
+        },
+        {
+          "title": "Faça o rastreamento",
+          "text": "Com 7 e 75, True and True dá True. Com 8 e 74, True and False dá False. Com 6 e 80, False and True dá False. Registre cada comparação antes de escrever o resultado combinado; assim é possível localizar qual requisito falhou."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004107": {
+      "objective": "Combinar alternativas usando or.",
+      "prerequisites": "Rever antes: E Python.",
+      "competency": "Combinar alternativas usando or.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Uma biblioteca com duas opções",
+          "text": "Uma biblioteca permite entrada com carteira ou comprovante. Basta um documento; quem tem os dois também entra. Aqui procuramos uma alternativa válida, em vez de exigir dois requisitos juntos."
+        },
+        {
+          "title": "Represente cada documento",
+          "text": "tem_carteira e tem_comprovante são nomes de informações lógicas. Use True quando há o documento e False quando não há. Uma variável lógica guarda um resultado que pode ser usado na próxima condição."
+        },
+        {
+          "title": "Use or",
+          "text": "Em Python, or é OU lógico. tem_carteira or tem_comprovante dá True se pelo menos uma informação é True. Só False or False dá False. Não confunda “pelo menos uma” com “exatamente uma”.",
+          "code": "tem_carteira or tem_comprovante"
+        },
+        {
+          "title": "Compare os quatro casos",
+          "text": "Sem documentos: False. Só carteira: True. Só comprovante: True. Ambos: True. Se a regra mudasse para exigir os dois documentos juntos, seria necessário and, que aprendemos na bolinha anterior."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004108": {
+      "objective": "Negar uma condição simples em Python.",
+      "prerequisites": "Rever antes: OU Python.",
+      "competency": "Negar uma condição simples em Python.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Perguntar pelo contrário",
+          "text": "Se tem_pendencia é False, a pessoa não tem pendência. Podemos perguntar pela ausência dela invertendo o resultado lógico. Isso não altera a informação guardada; apenas calcula outra condição."
+        },
+        {
+          "title": "NÃO em Python",
+          "text": "not é a palavra de Python para NÃO lógico. not True é False; not False é True. Em not tem_pendencia, o operador vem antes da condição que será negada.",
+          "code": "tem_pendencia = False\nprint(not tem_pendencia)"
+        },
+        {
+          "title": "Negar não é comparar diferença",
+          "text": "!= compara dois valores, como nota != 7. not nega uma condição, como not tem_pendencia. Escreva a frase completa: “não tem pendência”. Isso ajuda a evitar uma inversão acidental da regra."
+        },
+        {
+          "title": "Prepare a decisão",
+          "text": "Se tem_pendencia é True, not tem_pendencia é False. Se ela é False, a negação é True. Na próxima bolinha, usaremos condições para escolher um bloco com if. Ainda não precisamos negar expressões compostas para compreender a escolha."
+        }
+      ]
     }
   },
   "pedagogy": {
@@ -1871,6 +3414,90 @@
       "requires": [],
       "competency": "Primeiro contato",
       "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004100": {
+      "concepts": ["Python", "print"],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004101": {
+      "concepts": ["variáveis Python", "tipos Python"],
+      "requires": ["print"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004100"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004102": {
+      "concepts": ["input Python", "conversão Python"],
+      "requires": ["tipos Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004101"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004103": {
+      "concepts": ["comparações Python"],
+      "requires": ["conversão Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004102"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004000": {
+      "concepts": ["if Python"],
+      "requires": ["comparações Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004108"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004001": {
+      "concepts": ["for Python", "range Python"],
+      "requires": ["if Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004000"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004104": {
+      "concepts": ["listas Python"],
+      "requires": ["for Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004001"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004105": {
+      "concepts": ["funções Python"],
+      "requires": ["listas Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004104"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004002": {
+      "concepts": ["projeto Python"],
+      "requires": ["funções Python"],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004105"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004106": {
+      "concepts": ["E Python"],
+      "requires": ["comparações Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004103"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004107": {
+      "concepts": ["OU Python"],
+      "requires": ["E Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004106"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004108": {
+      "concepts": ["NÃO Python"],
+      "requires": ["OU Python"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000004107"],
       "version": 2
     }
   }

@@ -15,7 +15,14 @@ import { safeResourceUrl } from "../src/components/LearningResources";
 beforeEach(() => {
   localStorage.clear();
   const d = createDemo();
-  d.progress = [];
+  d.progress = [4100, 4101, 4102, 4103, 4106, 4107, 4108, 4104, 4105].map(
+    (n) => ({
+      id: "prereq-" + n,
+      user_id: id(1),
+      module_id: id(n),
+      completed_at: new Date().toISOString(),
+    }),
+  );
   d.reward_events = [];
   d.attempts = [];
   d.study_days = [];
@@ -38,7 +45,16 @@ it("retains wrong first answers, resumes the stage and awards only after the dyn
     correct: true,
     tries: 2,
   });
-  expect(readDemo().reward_events).toHaveLength(0);
+  expect(
+    readDemo().reward_events.filter((r) => r.source === `module:${mid}`),
+  ).toHaveLength(0);
+  for (const other of demoPlans
+    .find((p) => p.module_id === mid)!
+    .question_ids.filter((q) => q !== qid))
+    await call("answer", {
+      question_id: other,
+      response: exerciseAnswers[other],
+    });
   await call("practice");
   expect((await call("get")).session.stage).toBe("dynamic");
   await expect(

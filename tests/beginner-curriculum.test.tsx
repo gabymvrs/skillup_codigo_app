@@ -100,3 +100,45 @@ it("updates individual and combined results and invalidates a tested mission aft
   expect(screen.getByText("Pendente")).toBeVisible();
   expect(screen.getByText(/a frequência está abaixo de 75%/)).toBeVisible();
 });
+
+it("teaches all declared prerequisites in the same track before requiring them", () => {
+  const metadata = curriculum.pedagogy as Record<
+    string,
+    { concepts: string[]; requires: string[] }
+  >;
+  for (const track of new Set(
+    curriculum.modules.map((m) => modules.find((x) => x.id === m.id)!.track_id),
+  )) {
+    const known = new Set<string>();
+    for (const m of modules
+      .filter((x) => x.track_id === track)
+      .sort((a, b) => a.position - b.position)) {
+      const entry = metadata[m.id];
+      if (!entry) continue;
+      for (const required of entry.requires)
+        expect(known.has(required), `${m.title} requires ${required}`).toBe(
+          true,
+        );
+      entry.concepts.forEach((concept) => known.add(concept));
+    }
+  }
+});
+it("starts Python with output and input before conditions and keeps five valid exercises per lesson", () => {
+  const python = modules
+    .filter((m) => m.track_id === id(2100))
+    .sort((a, b) => a.position - b.position);
+  expect(python.map((m) => m.id)).toEqual(
+    [
+      4100, 4101, 4102, 4103, 4106, 4107, 4108, 4000, 4001, 4104, 4105, 4002,
+    ].map(id),
+  );
+  for (const m of python) {
+    const plan = demoPlans.find((p) => p.module_id === m.id)!;
+    expect(plan.question_ids).toHaveLength(5);
+    for (const qid of plan.question_ids) {
+      const q = questions.find((q) => q.id === qid)!;
+      if (q.activity_type !== "code_practice")
+        expect(evaluateDemo(q, exerciseAnswers[qid] as never)).toBe(true);
+    }
+  }
+});

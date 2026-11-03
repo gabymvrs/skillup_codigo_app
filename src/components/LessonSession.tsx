@@ -368,7 +368,12 @@ export function LessonSession({
                         onChange={(v) =>
                           setAnswers((a) => ({ ...a, [q.id]: v }))
                         }
-                        disabled={action.busy || !!result?.correct}
+                        disabled={
+                          action.busy ||
+                          (!!result?.correct &&
+                            q.activity_type !== "code_practice")
+                        }
+                        codeReadOnly={!!result?.correct}
                       />
                       {result && (
                         <Notice tone={result.correct ? "success" : "warning"}>

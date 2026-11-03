@@ -23,16 +23,16 @@ it("shows the chosen option and never invents a missing historical answer", () =
   expect(formatLessonAnswer(q, undefined)).toMatch(/Não disponível/);
 });
 it("persists the exact question and unfinished work separately from completion", async () => {
-  await lessonAction(true, id(1), id(4000), "get");
-  await saveLessonDraft(true, id(1), id(4000), {
+  await lessonAction(true, id(1), id(4100), "get");
+  await saveLessonDraft(true, id(1), id(4100), {
     index: 0,
-    answers: { [id(12000)]: 1 },
+    answers: { [id(16000)]: 1 },
     text: "Rascunho em andamento",
     checks: [false],
     savedAt: 100,
   });
-  const next = await lessonAction(true, id(1), id(4000), "get");
+  const next = await lessonAction(true, id(1), id(4100), "get");
   expect(next.session.stage).toBe("theory");
   expect(next.session.draft?.text).toBe("Rascunho em andamento");
-  expect(next.session.draft?.answers?.[id(12000)]).toBe(1);
+  expect(next.session.draft?.answers?.[id(16000)]).toBe(1);
 });
