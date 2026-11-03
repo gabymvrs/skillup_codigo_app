@@ -428,6 +428,110 @@
       "position": 8,
       "prerequisite_id": "00000000-0000-4000-8000-000000004304",
       "question_id": "00000000-0000-4000-8000-000000018038"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003010",
+      "title": "Investigar uma necessidade",
+      "body": "Uma interface resolve uma tarefa de alguém. Antes de desenhar a tela, descreva quem precisa encontrar um material de estudo e qual dificuldade aparece hoje.\n\nUma pergunta aberta pede um relato, por exemplo: Como você encontra os materiais da última aula? Ela permite descobrir caminhos e dificuldades sem impor uma resposta.\n\nUma pergunta como Você gostou da minha ideia? sugere a solução antes de ouvir a pessoa. A pesquisa não garante que uma proposta será aprovada.\n\nRegistre a situação, as palavras usadas pela pessoa e a tarefa que ela tenta completar. Separe observação de opinião sua.\n\nReformule a necessidade: estudantes precisam localizar materiais recentes por matéria. Essa frase orienta o próximo esboço, mas ainda será verificada.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000019000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003011",
+      "title": "Organizar a tela",
+      "body": "Um esboço representa a solução antes da tela final. Desenhe uma biblioteca com busca, lista de matérias e indicação do material aberto.\n\nAgrupe itens relacionados: a busca perto da lista filtrada e os materiais dentro da matéria correspondente. Um grupo ajuda a prever onde procurar.\n\nA hierarquia indica prioridade. O título identifica a tela; a busca recebe destaque se encontrar material for a tarefa principal.\n\nRótulos como Buscar materiais explicam a ação. Um texto de exemplo dentro do campo desaparece durante a digitação e não substitui o rótulo.\n\nPercorra o desenho como estudante: encontre a matéria, selecione um material e confirme onde está. Anote qualquer passo ambíguo para o teste seguinte.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003010",
+      "question_id": "00000000-0000-4000-8000-000000019004"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003012",
+      "title": "Observar um teste",
+      "body": "Teste de usabilidade observa uma pessoa tentando cumprir uma tarefa. Proponha: encontre o material da última aula de Biologia.\n\nAntes da sessão, defina sucesso observável: abrir o material correto sem ajuda. Registre também tempo aproximado e hesitações, sem inventar um limite universal.\n\nDurante a tarefa, não aponte o botão nem ensine o caminho. Observe cliques, erros e comentários da pessoa.\n\nDepois, pergunte o que causou dúvida. Uma hesitação observada é evidência; sua hipótese sobre a causa precisa ser verificada.\n\nEscolha uma mudança pequena, como renomear um filtro, e planeje repetir a tarefa. Compare o resultado com o registro anterior.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003011",
+      "question_id": "00000000-0000-4000-8000-000000019008"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004007",
+      "title": "Comparar formulários",
+      "body": "Um formulário pede dados em campos. A pessoa precisa saber o significado de cada campo antes e durante a digitação.\n\nO rótulo Nome completo junto ao campo continua visível quando o texto é digitado. Esse rótulo identifica o dado solicitado.\n\nUm texto de exemplo dentro do campo pode desaparecer ao começar a digitar. Ele pode complementar, mas não substituir o rótulo.\n\nCompare os dois formulários mostrados na prática: procure o rótulo permanente e verifique se o campo continua identificável preenchido.\n\nSe a pessoa esquecer o formato esperado, acrescente uma instrução curta persistente e teste com alguém usando apenas o teclado.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003012",
+      "question_id": "00000000-0000-4000-8000-000000019012"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004008",
+      "title": "Planejar uma avaliação",
+      "body": "Comece observando uma dificuldade real de uso, como não encontrar o filtro de matéria. Registre a tarefa e o ponto onde a pessoa parou.\n\nDefina o problema de forma verificável: o filtro não foi identificado em duas tentativas observadas. Não transforme uma hipótese em conclusão sem teste.\n\nCrie uma alternativa pequena, por exemplo um rótulo de filtro mais claro, mantendo a mesma tarefa para comparação.\n\nTeste o protótipo com pessoas e observe se conseguem filtrar a lista. Dê a tarefa, não o caminho.\n\nCompare os registros, explicite o que melhorou e o que ainda falha. Uma rodada pode exigir nova mudança e novo teste.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004007",
+      "question_id": "00000000-0000-4000-8000-000000019016"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003050",
+      "title": "Leitura e sílaba tônica",
+      "body": "Em uma palavra com mais de uma sílaba, uma sílaba recebe maior força ao falar. Ela é a sílaba tônica. Em árvore, podemos separar ár-vo-re; ár é a sílaba mais forte.\n\nConte da direita para a esquerda: última, penúltima, antepenúltima. Em ár-vo-re, ár é antepenúltima; árvore é proparoxítona.\n\nEm ca-fé, fé é a última sílaba tônica; café é oxítona. Em pa-pel, pel também é a última. Compare o som e a posição, não apenas o acento gráfico.\n\nToda proparoxítona é acentuada na escrita padrão, mas a posição da sílaba tônica define a classificação. Separe a palavra antes de classificá-la.\n\nLeia em voz alta árvore, café e papel. Marque a sílaba forte de cada uma e justifique por que somente árvore responde à prática.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000019020"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003051",
+      "title": "Palavras e suas funções",
+      "body": "As palavras cumprem funções na frase. Em estudante dedicado revisa, estudante nomeia uma pessoa, dedicado a caracteriza e revisa indica uma ação.\n\nSubstantivo nomeia pessoas, objetos, lugares ou ideias. Projeto é substantivo em O projeto começou.\n\nVerbo expressa ação ou estado e varia com o contexto. Em as estudantes estudam, estudam apresenta a ação no presente e concorda com o sujeito plural.\n\nAdjetivo caracteriza um substantivo. Em projeto claro, claro descreve o projeto; não o nomeia nem indica uma ação.\n\nAo revisar uma frase, identifique quem ou o que é nomeado, qual ação ou estado aparece e qual palavra caracteriza. Use a função no contexto da frase.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003050",
+      "question_id": "00000000-0000-4000-8000-000000019024"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003052",
+      "title": "Apresentar um projeto",
+      "body": "Um parágrafo de apresentação responde o que foi feito e para quem. Comece com uma ideia principal, como A turma criou um mapa da biblioteca.\n\nAcrescente um dado concreto: quais salas foram incluídas, como a equipe coletou informações e qual parte você realizou.\n\nLigue as frases na ordem da tarefa: objetivo, ação e resultado observado. Não afirme que o mapa melhorou tudo sem medir esse efeito.\n\nRevise nomes, acentos, concordância e pontuação. Leia o parágrafo em voz alta para perceber trechos difíceis de entender.\n\nPeça que outra pessoa identifique a ideia principal sem explicação adicional. Se não conseguir, ajuste a primeira frase e releia.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003051",
+      "question_id": "00000000-0000-4000-8000-000000019028"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004013",
+      "title": "Concordar o verbo",
+      "body": "O verbo indica ação ou estado. O sujeito é quem realiza a ação na frase. Em As estudantes estudam, estudantes é o núcleo do sujeito.\n\nAs estudantes está no plural. No presente do indicativo, a forma correspondente do verbo estudar é estudam.\n\nCompare A estudante estuda com As estudantes estudam. A forma verbal muda quando o número do sujeito muda.\n\nNão confunda estudam, presente, com estudaram, passado. A atividade pede presente e o advérbio todos os dias indica hábito atual.\n\nReleia a frase completa depois de preencher: As estudantes estudam todos os dias. Confira pessoa, número e tempo verbal.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003052",
+      "question_id": "00000000-0000-4000-8000-000000019032"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004014",
+      "title": "Revisar uma mensagem",
+      "body": "Uma mensagem útil informa o que você precisa. Dizer Revisa isso aí não identifica o trecho a revisar.\n\nInclua o objeto: Você pode revisar o parágrafo de apresentação? Assim a pessoa sabe qual material abrir.\n\nInclua o prazo relevante: até sexta. Se precisar de um aspecto específico, diga se quer verificar clareza, ortografia ou dados.\n\nMantenha um tom respeitoso e realista. Acusações como Você nunca ajuda dificultam a colaboração e não esclarecem o pedido.\n\nAntes de enviar, confira se a pessoa consegue responder: qual material, que tipo de revisão e até quando?",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004013",
+      "question_id": "00000000-0000-4000-8000-000000019036"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003080",
+      "title": "Reconhecer habilidades",
+      "body": "Uma habilidade é algo que você consegue fazer em uma situação. Um projeto escolar pode mostrar planejamento, uso de ferramenta ou colaboração.\n\nDescreva o contexto: a turma precisava organizar materiais. Diga sua ação específica, como classificar os arquivos por matéria.\n\nRegistre o resultado observado, como uma lista criada e conferida. Evite dizer que aumentou o desempenho da turma sem dados.\n\nEm trabalho de grupo, diferencie o que você fez do que a equipe decidiu. Isso permite avaliar sua contribuição com justiça.\n\nEscolha uma habilidade e associe situação, ação e evidência. Esse registro serve de base para documentar um projeto no módulo seguinte.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000019040"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003081",
+      "title": "Documentar projetos",
+      "body": "Um portfólio reúne evidências de trabalho. Um relato permite entender por que um projeto começou, o que você fez e o que aprendeu.\n\nContexto apresenta o problema e as pessoas envolvidas: por exemplo, localizar materiais por matéria na escola.\n\nContribuição descreve suas decisões e ações, como esboçar a busca ou organizar títulos. Se a solução foi feita em equipe, indique a parte coletiva.\n\nResultado relata o que foi observado: um protótipo testado com duas tarefas. Aprendizado registra o que você mudaria após o teste.\n\nRevise o relato para que cada afirmação tenha apoio em uma imagem, artefato, teste ou descrição honesta; não inclua dados pessoais de outras pessoas sem permissão.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003080",
+      "question_id": "00000000-0000-4000-8000-000000019044"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003082",
+      "title": "Preparar uma candidatura",
+      "body": "Leia uma vaga fictícia e destaque uma tarefa solicitada. Separe requisitos obrigatórios de habilidades que ainda deseja aprender.\n\nEscolha uma experiência real que demonstre uma parte do pedido: projeto, atividade escolar ou colaboração. Descreva sua ação, sem inventar cargo.\n\nEscreva uma apresentação curta: interesse pela tarefa, evidência relevante e algo que está aprendendo. Evite adjetivos sem exemplo.\n\nSe um requisito não foi praticado, diga que está em aprendizagem. Uma candidatura honesta permite uma conversa útil sobre seu nível atual.\n\nRevise clareza, tom e dados. Nesta atividade fictícia, não anexe documentos pessoais nem informe dados de outras pessoas.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003081",
+      "question_id": "00000000-0000-4000-8000-000000019048"
     }
   ],
   "plans": [
@@ -1543,6 +1647,294 @@
       "resource_ids": [
         "js-functions"
       ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003010",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019000",
+        "00000000-0000-4000-8000-000000019001",
+        "00000000-0000-4000-8000-000000019002",
+        "00000000-0000-4000-8000-000000019003",
+        "00000000-0000-4000-8000-000000008003"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Entreviste de modo fictício uma pessoa que procura um material; anote pergunta, relato possível e necessidade que você investigaria.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003011",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019004",
+        "00000000-0000-4000-8000-000000019005",
+        "00000000-0000-4000-8000-000000019006",
+        "00000000-0000-4000-8000-000000019007",
+        "00000000-0000-4000-8000-000000008004"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Esboce uma biblioteca com busca e duas matérias; explique por onde alguém começa e como identifica o material encontrado.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003012",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019008",
+        "00000000-0000-4000-8000-000000019009",
+        "00000000-0000-4000-8000-000000019010",
+        "00000000-0000-4000-8000-000000019011",
+        "00000000-0000-4000-8000-000000008005"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Planeje o teste de localizar um material: tarefa, critério de sucesso, o que registrar e uma alteração para retestar.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004007",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019012",
+        "00000000-0000-4000-8000-000000019013",
+        "00000000-0000-4000-8000-000000019014",
+        "00000000-0000-4000-8000-000000019015",
+        "00000000-0000-4000-8000-000000012007"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Compare um campo com rótulo e outro só com exemplo; simule o preenchimento e descreva qual continua identificável.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": [
+        "forms-labels"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004008",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019016",
+        "00000000-0000-4000-8000-000000019017",
+        "00000000-0000-4000-8000-000000019018",
+        "00000000-0000-4000-8000-000000019019",
+        "00000000-0000-4000-8000-000000012008"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Descreva uma dificuldade para achar um filtro, uma mudança e um teste da mesma tarefa após a mudança.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003050",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019020",
+        "00000000-0000-4000-8000-000000019021",
+        "00000000-0000-4000-8000-000000019022",
+        "00000000-0000-4000-8000-000000019023",
+        "00000000-0000-4000-8000-000000008015"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Separe três palavras de um aviso escolar, marque as sílabas tônicas e explique a classificação de cada uma.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003051",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019024",
+        "00000000-0000-4000-8000-000000019025",
+        "00000000-0000-4000-8000-000000019026",
+        "00000000-0000-4000-8000-000000019027",
+        "00000000-0000-4000-8000-000000008016"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Escreva duas frases sobre um projeto; identifique em cada uma um substantivo, um verbo e, se houver, um adjetivo.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003052",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019028",
+        "00000000-0000-4000-8000-000000019029",
+        "00000000-0000-4000-8000-000000019030",
+        "00000000-0000-4000-8000-000000019031",
+        "00000000-0000-4000-8000-000000008017"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Escreva um parágrafo sobre um projeto escolar, destaque a ideia principal e registre duas correções feitas na revisão.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004013",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019032",
+        "00000000-0000-4000-8000-000000019033",
+        "00000000-0000-4000-8000-000000019034",
+        "00000000-0000-4000-8000-000000019035",
+        "00000000-0000-4000-8000-000000012013"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Reescreva duas frases trocando sujeito singular por plural; compare as formas do verbo e explique a escolha.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004014",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019036",
+        "00000000-0000-4000-8000-000000019037",
+        "00000000-0000-4000-8000-000000019038",
+        "00000000-0000-4000-8000-000000019039",
+        "00000000-0000-4000-8000-000000012014"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Reescreva uma mensagem vaga como pedido de revisão de um parágrafo até sexta; explique as mudanças.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003080",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019040",
+        "00000000-0000-4000-8000-000000019041",
+        "00000000-0000-4000-8000-000000019042",
+        "00000000-0000-4000-8000-000000019043",
+        "00000000-0000-4000-8000-000000008024"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Descreva uma habilidade sua a partir de uma tarefa escolar, com situação, ação própria e resultado observado.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003081",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019044",
+        "00000000-0000-4000-8000-000000019045",
+        "00000000-0000-4000-8000-000000019046",
+        "00000000-0000-4000-8000-000000019047",
+        "00000000-0000-4000-8000-000000008025"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Documente um projeto escolar com contexto, contribuição sua, resultado observado e uma mudança que faria.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003082",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000019048",
+        "00000000-0000-4000-8000-000000019049",
+        "00000000-0000-4000-8000-000000019050",
+        "00000000-0000-4000-8000-000000019051",
+        "00000000-0000-4000-8000-000000008026"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique em um caso",
+        "prompt": "Escreva uma apresentação para uma vaga fictícia com experiência real e uma habilidade que ainda desenvolve.",
+        "criteria": [
+          "Descrevi a situação e a ação",
+          "Expliquei a escolha com uma evidência ou verificação"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
     }
   ],
   "questions": [
@@ -4665,6 +5057,838 @@
       "category": "Prática guiada",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019000",
+      "title": "Verifique a ideia",
+      "prompt": "Que pergunta investiga uma experiência?",
+      "options": [
+        "Como você encontra o material?",
+        "Você aprova meu botão?",
+        "Meu desenho está bonito?"
+      ],
+      "explanation": "Como você encontra o material?. Uma pergunta aberta pede um relato, por exemplo: Como você encontra os materiais da última aula? Ela permite descobrir caminhos e dificuldades sem impor uma resposta.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019001",
+      "title": "Verifique a ideia",
+      "prompt": "O que registrar na entrevista?",
+      "options": [
+        "Tarefa e dificuldade relatadas",
+        "Apenas a ideia do designer",
+        "Somente elogios"
+      ],
+      "explanation": "Tarefa e dificuldade relatadas. Uma pergunta como Você gostou da minha ideia? sugere a solução antes de ouvir a pessoa. A pesquisa não garante que uma proposta será aprovada.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019002",
+      "title": "Verifique a ideia",
+      "prompt": "Quando propor a solução?",
+      "options": [
+        "Depois de entender a necessidade",
+        "Antes de ouvir a pessoa",
+        "Sem verificar a tarefa"
+      ],
+      "explanation": "Depois de entender a necessidade. Registre a situação, as palavras usadas pela pessoa e a tarefa que ela tenta completar. Separe observação de opinião sua.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019003",
+      "title": "Verifique a ideia",
+      "prompt": "O que a pesquisa pode revelar?",
+      "options": [
+        "Um problema de localização",
+        "Garantia de aprovação",
+        "A cor obrigatória da tela"
+      ],
+      "explanation": "Um problema de localização. Reformule a necessidade: estudantes precisam localizar materiais recentes por matéria. Essa frase orienta o próximo esboço, mas ainda será verificada.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019004",
+      "title": "Verifique a ideia",
+      "prompt": "Qual elemento ajuda a localizar um material?",
+      "options": [
+        "Busca com rótulo claro",
+        "Texto sem identificação",
+        "Somente decoração"
+      ],
+      "explanation": "Busca com rótulo claro. Agrupe itens relacionados: a busca perto da lista filtrada e os materiais dentro da matéria correspondente. Um grupo ajuda a prever onde procurar.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019005",
+      "title": "Verifique a ideia",
+      "prompt": "Onde colocar itens da mesma matéria?",
+      "options": [
+        "No mesmo grupo",
+        "Em locais aleatórios",
+        "Fora da lista"
+      ],
+      "explanation": "No mesmo grupo. A hierarquia indica prioridade. O título identifica a tela; a busca recebe destaque se encontrar material for a tarefa principal.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019006",
+      "title": "Verifique a ideia",
+      "prompt": "O que a hierarquia mostra?",
+      "options": [
+        "Prioridade entre informações",
+        "A idade do usuário",
+        "A velocidade da rede"
+      ],
+      "explanation": "Prioridade entre informações. Rótulos como Buscar materiais explicam a ação. Um texto de exemplo dentro do campo desaparece durante a digitação e não substitui o rótulo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019007",
+      "title": "Verifique a ideia",
+      "prompt": "Por que manter um rótulo visível?",
+      "options": [
+        "Para identificar o campo durante a digitação",
+        "Para substituir o conteúdo",
+        "Para esconder a busca"
+      ],
+      "explanation": "Para identificar o campo durante a digitação. Percorra o desenho como estudante: encontre a matéria, selecione um material e confirme onde está. Anote qualquer passo ambíguo para o teste seguinte.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019008",
+      "title": "Verifique a ideia",
+      "prompt": "Qual é uma tarefa concreta?",
+      "options": [
+        "Encontrar a última aula de Biologia",
+        "Dizer se a tela é bonita",
+        "Aprovar o designer"
+      ],
+      "explanation": "Encontrar a última aula de Biologia. Antes da sessão, defina sucesso observável: abrir o material correto sem ajuda. Registre também tempo aproximado e hesitações, sem inventar um limite universal.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019009",
+      "title": "Verifique a ideia",
+      "prompt": "O que observar?",
+      "options": [
+        "Cliques e hesitações",
+        "Somente a intenção declarada",
+        "A resposta sugerida pelo mediador"
+      ],
+      "explanation": "Cliques e hesitações. Durante a tarefa, não aponte o botão nem ensine o caminho. Observe cliques, erros e comentários da pessoa.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019010",
+      "title": "Verifique a ideia",
+      "prompt": "Quando ajudar com o caminho?",
+      "options": [
+        "Depois de registrar a dificuldade",
+        "A cada clique",
+        "Antes da tentativa"
+      ],
+      "explanation": "Depois de registrar a dificuldade. Depois, pergunte o que causou dúvida. Uma hesitação observada é evidência; sua hipótese sobre a causa precisa ser verificada.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019011",
+      "title": "Verifique a ideia",
+      "prompt": "O que distingue evidência de hipótese?",
+      "options": [
+        "O comportamento foi observado; a causa ainda será verificada",
+        "Ambos são sempre fatos",
+        "A hipótese dispensa teste"
+      ],
+      "explanation": "O comportamento foi observado; a causa ainda será verificada. Escolha uma mudança pequena, como renomear um filtro, e planeje repetir a tarefa. Compare o resultado com o registro anterior.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019012",
+      "title": "Verifique a ideia",
+      "prompt": "O que identifica o campo enquanto se digita?",
+      "options": [
+        "Rótulo permanente",
+        "Apenas exemplo temporário",
+        "Cor de fundo"
+      ],
+      "explanation": "Rótulo permanente. O rótulo Nome completo junto ao campo continua visível quando o texto é digitado. Esse rótulo identifica o dado solicitado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019013",
+      "title": "Verifique a ideia",
+      "prompt": "O texto de exemplo substitui o rótulo?",
+      "options": [
+        "Não",
+        "Sim, sempre",
+        "Somente se ficar cinza"
+      ],
+      "explanation": "Não. Um texto de exemplo dentro do campo pode desaparecer ao começar a digitar. Ele pode complementar, mas não substituir o rótulo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019014",
+      "title": "Verifique a ideia",
+      "prompt": "Como conferir um formulário preenchido?",
+      "options": [
+        "Verificar se cada campo ainda tem nome",
+        "Apagar todos os rótulos",
+        "Olhar só a cor"
+      ],
+      "explanation": "Verificar se cada campo ainda tem nome. Compare os dois formulários mostrados na prática: procure o rótulo permanente e verifique se o campo continua identificável preenchido.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019015",
+      "title": "Verifique a ideia",
+      "prompt": "Uma instrução de formato deve ser:",
+      "options": [
+        "Clara e disponível quando necessária",
+        "Escondida após digitar",
+        "Igual para todos os campos"
+      ],
+      "explanation": "Clara e disponível quando necessária. Se a pessoa esquecer o formato esperado, acrescente uma instrução curta persistente e teste com alguém usando apenas o teclado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019016",
+      "title": "Verifique a ideia",
+      "prompt": "Qual é o primeiro insumo da rodada?",
+      "options": [
+        "Dificuldade observada",
+        "Cor favorita do designer",
+        "A solução final"
+      ],
+      "explanation": "Dificuldade observada. Defina o problema de forma verificável: o filtro não foi identificado em duas tentativas observadas. Não transforme uma hipótese em conclusão sem teste.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019017",
+      "title": "Verifique a ideia",
+      "prompt": "Como definir o problema?",
+      "options": [
+        "Com tarefa e evidência",
+        "Com elogios vagos",
+        "Sem observação"
+      ],
+      "explanation": "Com tarefa e evidência. Crie uma alternativa pequena, por exemplo um rótulo de filtro mais claro, mantendo a mesma tarefa para comparação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019018",
+      "title": "Verifique a ideia",
+      "prompt": "O que criar após definir o problema?",
+      "options": [
+        "Uma alternativa testável",
+        "Uma conclusão definitiva",
+        "Uma avaliação sem tarefa"
+      ],
+      "explanation": "Uma alternativa testável. Teste o protótipo com pessoas e observe se conseguem filtrar a lista. Dê a tarefa, não o caminho.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019019",
+      "title": "Verifique a ideia",
+      "prompt": "O que comparar após o teste?",
+      "options": [
+        "Resultados da mesma tarefa",
+        "Somente desenhos",
+        "A opinião de quem fez a tela"
+      ],
+      "explanation": "Resultados da mesma tarefa. Compare os registros, explicite o que melhorou e o que ainda falha. Uma rodada pode exigir nova mudança e novo teste.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019020",
+      "title": "Verifique a ideia",
+      "prompt": "Qual sílaba é tônica em ár-vo-re?",
+      "options": [
+        "ár",
+        "vo",
+        "re"
+      ],
+      "explanation": "ár. Conte da direita para a esquerda: última, penúltima, antepenúltima. Em ár-vo-re, ár é antepenúltima; árvore é proparoxítona.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019021",
+      "title": "Verifique a ideia",
+      "prompt": "Onde fica a tônica de uma proparoxítona?",
+      "options": [
+        "Na antepenúltima sílaba",
+        "Na última",
+        "Na penúltima"
+      ],
+      "explanation": "Na antepenúltima sílaba. Em ca-fé, fé é a última sílaba tônica; café é oxítona. Em pa-pel, pel também é a última. Compare o som e a posição, não apenas o acento gráfico.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019022",
+      "title": "Verifique a ideia",
+      "prompt": "Qual é a posição de fé em ca-fé?",
+      "options": [
+        "Última",
+        "Penúltima",
+        "Antepenúltima"
+      ],
+      "explanation": "Última. Toda proparoxítona é acentuada na escrita padrão, mas a posição da sílaba tônica define a classificação. Separe a palavra antes de classificá-la.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019023",
+      "title": "Verifique a ideia",
+      "prompt": "O que fazer antes de classificar?",
+      "options": [
+        "Separar sílabas e localizar a mais forte",
+        "Contar letras",
+        "Olhar só o acento"
+      ],
+      "explanation": "Separar sílabas e localizar a mais forte. Leia em voz alta árvore, café e papel. Marque a sílaba forte de cada uma e justifique por que somente árvore responde à prática.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019024",
+      "title": "Verifique a ideia",
+      "prompt": "Qual palavra nomeia em projeto claro?",
+      "options": [
+        "projeto",
+        "claro",
+        "nenhuma"
+      ],
+      "explanation": "projeto. Substantivo nomeia pessoas, objetos, lugares ou ideias. Projeto é substantivo em O projeto começou.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019025",
+      "title": "Verifique a ideia",
+      "prompt": "Que função tem estudam?",
+      "options": [
+        "Verbo",
+        "Substantivo",
+        "Adjetivo"
+      ],
+      "explanation": "Verbo. Verbo expressa ação ou estado e varia com o contexto. Em as estudantes estudam, estudam apresenta a ação no presente e concorda com o sujeito plural.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019026",
+      "title": "Verifique a ideia",
+      "prompt": "Que função tem claro em projeto claro?",
+      "options": [
+        "Adjetivo",
+        "Verbo",
+        "Artigo"
+      ],
+      "explanation": "Adjetivo. Adjetivo caracteriza um substantivo. Em projeto claro, claro descreve o projeto; não o nomeia nem indica uma ação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019027",
+      "title": "Verifique a ideia",
+      "prompt": "Em as estudantes estudam, por que estudam está no plural?",
+      "options": [
+        "Concorda com as estudantes",
+        "Nomeia o projeto",
+        "É sempre singular"
+      ],
+      "explanation": "Concorda com as estudantes. Ao revisar uma frase, identifique quem ou o que é nomeado, qual ação ou estado aparece e qual palavra caracteriza. Use a função no contexto da frase.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019028",
+      "title": "Verifique a ideia",
+      "prompt": "O que deve aparecer no início?",
+      "options": [
+        "A ideia principal",
+        "Um elogio genérico",
+        "Uma conclusão sem contexto"
+      ],
+      "explanation": "A ideia principal. Acrescente um dado concreto: quais salas foram incluídas, como a equipe coletou informações e qual parte você realizou.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019029",
+      "title": "Verifique a ideia",
+      "prompt": "Qual dado é verificável?",
+      "options": [
+        "A sua contribuição descrita",
+        "Um resultado não observado",
+        "Uma promessa"
+      ],
+      "explanation": "A sua contribuição descrita. Ligue as frases na ordem da tarefa: objetivo, ação e resultado observado. Não afirme que o mapa melhorou tudo sem medir esse efeito.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019030",
+      "title": "Verifique a ideia",
+      "prompt": "Como ordenar o relato?",
+      "options": [
+        "Objetivo, ação e resultado",
+        "Resultado, elogio e silêncio",
+        "Apenas adjetivos"
+      ],
+      "explanation": "Objetivo, ação e resultado. Revise nomes, acentos, concordância e pontuação. Leia o parágrafo em voz alta para perceber trechos difíceis de entender.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019031",
+      "title": "Verifique a ideia",
+      "prompt": "O que revisar antes de enviar?",
+      "options": [
+        "Clareza, concordância e pontuação",
+        "Só o tamanho da fonte",
+        "Somente a cor"
+      ],
+      "explanation": "Clareza, concordância e pontuação. Peça que outra pessoa identifique a ideia principal sem explicação adicional. Se não conseguir, ajuste a primeira frase e releia.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019032",
+      "title": "Verifique a ideia",
+      "prompt": "Quem realiza a ação?",
+      "options": [
+        "As estudantes",
+        "Todos os dias",
+        "A frase"
+      ],
+      "explanation": "As estudantes. As estudantes está no plural. No presente do indicativo, a forma correspondente do verbo estudar é estudam.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019033",
+      "title": "Verifique a ideia",
+      "prompt": "Qual é a forma no plural presente?",
+      "options": [
+        "estudam",
+        "estuda",
+        "estudaram"
+      ],
+      "explanation": "estudam. Compare A estudante estuda com As estudantes estudam. A forma verbal muda quando o número do sujeito muda.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019034",
+      "title": "Verifique a ideia",
+      "prompt": "Qual forma combina com A estudante?",
+      "options": [
+        "estuda",
+        "estudam",
+        "estudaram"
+      ],
+      "explanation": "estuda. Não confunda estudam, presente, com estudaram, passado. A atividade pede presente e o advérbio todos os dias indica hábito atual.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019035",
+      "title": "Verifique a ideia",
+      "prompt": "Qual forma indica passado?",
+      "options": [
+        "estudaram",
+        "estudam",
+        "estuda"
+      ],
+      "explanation": "estudaram. Releia a frase completa depois de preencher: As estudantes estudam todos os dias. Confira pessoa, número e tempo verbal.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019036",
+      "title": "Verifique a ideia",
+      "prompt": "Que pedido é mais preciso?",
+      "options": [
+        "Revisar o parágrafo de apresentação",
+        "Revisar isso aí",
+        "Fazer alguma coisa"
+      ],
+      "explanation": "Revisar o parágrafo de apresentação. Inclua o objeto: Você pode revisar o parágrafo de apresentação? Assim a pessoa sabe qual material abrir.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019037",
+      "title": "Verifique a ideia",
+      "prompt": "Que dado permite planejar a resposta?",
+      "options": [
+        "Prazo até sexta",
+        "Uma acusação",
+        "Uma mensagem vazia"
+      ],
+      "explanation": "Prazo até sexta. Inclua o prazo relevante: até sexta. Se precisar de um aspecto específico, diga se quer verificar clareza, ortografia ou dados.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019038",
+      "title": "Verifique a ideia",
+      "prompt": "Qual tom ajuda a colaborar?",
+      "options": [
+        "Respeitoso e direto",
+        "Ofensivo",
+        "Vago"
+      ],
+      "explanation": "Respeitoso e direto. Mantenha um tom respeitoso e realista. Acusações como Você nunca ajuda dificultam a colaboração e não esclarecem o pedido.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019039",
+      "title": "Verifique a ideia",
+      "prompt": "O que conferir antes de enviar?",
+      "options": [
+        "Objeto, revisão pedida e prazo",
+        "Só o cumprimento",
+        "Número de emojis"
+      ],
+      "explanation": "Objeto, revisão pedida e prazo. Antes de enviar, confira se a pessoa consegue responder: qual material, que tipo de revisão e até quando?",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019040",
+      "title": "Verifique a ideia",
+      "prompt": "Qual é uma evidência concreta?",
+      "options": [
+        "Uma lista que você organizou",
+        "Sou excelente em tudo",
+        "Um resultado inventado"
+      ],
+      "explanation": "Uma lista que você organizou. Descreva o contexto: a turma precisava organizar materiais. Diga sua ação específica, como classificar os arquivos por matéria.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019041",
+      "title": "Verifique a ideia",
+      "prompt": "O que dizer sobre equipe?",
+      "options": [
+        "Sua contribuição específica",
+        "Atribuir tudo a si",
+        "Omitir qualquer ação"
+      ],
+      "explanation": "Sua contribuição específica. Registre o resultado observado, como uma lista criada e conferida. Evite dizer que aumentou o desempenho da turma sem dados.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019042",
+      "title": "Verifique a ideia",
+      "prompt": "Como tratar um resultado não medido?",
+      "options": [
+        "Não afirmar como fato",
+        "Inventar percentual",
+        "Usar superlativo"
+      ],
+      "explanation": "Não afirmar como fato. Em trabalho de grupo, diferencie o que você fez do que a equipe decidiu. Isso permite avaliar sua contribuição com justiça.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019043",
+      "title": "Verifique a ideia",
+      "prompt": "Que três partes ajudam a descrever?",
+      "options": [
+        "Situação, ação e evidência",
+        "Elogio, slogan e promessa",
+        "Nome, cor e foto"
+      ],
+      "explanation": "Situação, ação e evidência. Escolha uma habilidade e associe situação, ação e evidência. Esse registro serve de base para documentar um projeto no módulo seguinte.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019044",
+      "title": "Verifique a ideia",
+      "prompt": "O que é contexto?",
+      "options": [
+        "Problema e situação inicial",
+        "Elogio ao autor",
+        "Apenas uma imagem"
+      ],
+      "explanation": "Problema e situação inicial. Contexto apresenta o problema e as pessoas envolvidas: por exemplo, localizar materiais por matéria na escola.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019045",
+      "title": "Verifique a ideia",
+      "prompt": "O que é contribuição?",
+      "options": [
+        "Ações que você realizou",
+        "Tudo que a equipe fez sozinho",
+        "Uma promessa"
+      ],
+      "explanation": "Ações que você realizou. Contribuição descreve suas decisões e ações, como esboçar a busca ou organizar títulos. Se a solução foi feita em equipe, indique a parte coletiva.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019046",
+      "title": "Verifique a ideia",
+      "prompt": "O que registrar no resultado?",
+      "options": [
+        "Algo observado ou produzido",
+        "Um número inventado",
+        "Um efeito não medido"
+      ],
+      "explanation": "Algo observado ou produzido. Resultado relata o que foi observado: um protótipo testado com duas tarefas. Aprendizado registra o que você mudaria após o teste.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019047",
+      "title": "Verifique a ideia",
+      "prompt": "Para que serve o aprendizado?",
+      "options": [
+        "Explicar o que mudaria",
+        "Substituir evidência",
+        "Omitir limitações"
+      ],
+      "explanation": "Explicar o que mudaria. Revise o relato para que cada afirmação tenha apoio em uma imagem, artefato, teste ou descrição honesta; não inclua dados pessoais de outras pessoas sem permissão.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019048",
+      "title": "Verifique a ideia",
+      "prompt": "O que ler antes de escrever?",
+      "options": [
+        "Tarefas e requisitos da vaga",
+        "A cor da empresa",
+        "A opinião de colegas"
+      ],
+      "explanation": "Tarefas e requisitos da vaga. Escolha uma experiência real que demonstre uma parte do pedido: projeto, atividade escolar ou colaboração. Descreva sua ação, sem inventar cargo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019049",
+      "title": "Verifique a ideia",
+      "prompt": "Qual experiência mencionar?",
+      "options": [
+        "Uma atividade real relevante",
+        "Um cargo inventado",
+        "Um resultado não observado"
+      ],
+      "explanation": "Uma atividade real relevante. Escreva uma apresentação curta: interesse pela tarefa, evidência relevante e algo que está aprendendo. Evite adjetivos sem exemplo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019050",
+      "title": "Verifique a ideia",
+      "prompt": "Como tratar um requisito novo?",
+      "options": [
+        "Dizer que está aprendendo",
+        "Afirmar domínio inexistente",
+        "Ignorar a vaga"
+      ],
+      "explanation": "Dizer que está aprendendo. Se um requisito não foi praticado, diga que está em aprendizagem. Uma candidatura honesta permite uma conversa útil sobre seu nível atual.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000019051",
+      "title": "Verifique a ideia",
+      "prompt": "O que evitar na atividade fictícia?",
+      "options": [
+        "Documentos pessoais",
+        "Exemplo escolar",
+        "Revisão de texto"
+      ],
+      "explanation": "Documentos pessoais. Revise clareza, tom e dados. Nesta atividade fictícia, não anexe documentos pessoais nem informe dados de outras pessoas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "xp": 40
     }
   ],
   "answers": {
@@ -4862,7 +6086,59 @@
     "00000000-0000-4000-8000-000000018038": 0,
     "00000000-0000-4000-8000-000000018039": 0,
     "00000000-0000-4000-8000-000000018040": 0,
-    "00000000-0000-4000-8000-000000018041": 0
+    "00000000-0000-4000-8000-000000018041": 0,
+    "00000000-0000-4000-8000-000000019000": 0,
+    "00000000-0000-4000-8000-000000019001": 0,
+    "00000000-0000-4000-8000-000000019002": 0,
+    "00000000-0000-4000-8000-000000019003": 0,
+    "00000000-0000-4000-8000-000000019004": 0,
+    "00000000-0000-4000-8000-000000019005": 0,
+    "00000000-0000-4000-8000-000000019006": 0,
+    "00000000-0000-4000-8000-000000019007": 0,
+    "00000000-0000-4000-8000-000000019008": 0,
+    "00000000-0000-4000-8000-000000019009": 0,
+    "00000000-0000-4000-8000-000000019010": 0,
+    "00000000-0000-4000-8000-000000019011": 0,
+    "00000000-0000-4000-8000-000000019012": 0,
+    "00000000-0000-4000-8000-000000019013": 0,
+    "00000000-0000-4000-8000-000000019014": 0,
+    "00000000-0000-4000-8000-000000019015": 0,
+    "00000000-0000-4000-8000-000000019016": 0,
+    "00000000-0000-4000-8000-000000019017": 0,
+    "00000000-0000-4000-8000-000000019018": 0,
+    "00000000-0000-4000-8000-000000019019": 0,
+    "00000000-0000-4000-8000-000000019020": 0,
+    "00000000-0000-4000-8000-000000019021": 0,
+    "00000000-0000-4000-8000-000000019022": 0,
+    "00000000-0000-4000-8000-000000019023": 0,
+    "00000000-0000-4000-8000-000000019024": 0,
+    "00000000-0000-4000-8000-000000019025": 0,
+    "00000000-0000-4000-8000-000000019026": 0,
+    "00000000-0000-4000-8000-000000019027": 0,
+    "00000000-0000-4000-8000-000000019028": 0,
+    "00000000-0000-4000-8000-000000019029": 0,
+    "00000000-0000-4000-8000-000000019030": 0,
+    "00000000-0000-4000-8000-000000019031": 0,
+    "00000000-0000-4000-8000-000000019032": 0,
+    "00000000-0000-4000-8000-000000019033": 0,
+    "00000000-0000-4000-8000-000000019034": 0,
+    "00000000-0000-4000-8000-000000019035": 0,
+    "00000000-0000-4000-8000-000000019036": 0,
+    "00000000-0000-4000-8000-000000019037": 0,
+    "00000000-0000-4000-8000-000000019038": 0,
+    "00000000-0000-4000-8000-000000019039": 0,
+    "00000000-0000-4000-8000-000000019040": 0,
+    "00000000-0000-4000-8000-000000019041": 0,
+    "00000000-0000-4000-8000-000000019042": 0,
+    "00000000-0000-4000-8000-000000019043": 0,
+    "00000000-0000-4000-8000-000000019044": 0,
+    "00000000-0000-4000-8000-000000019045": 0,
+    "00000000-0000-4000-8000-000000019046": 0,
+    "00000000-0000-4000-8000-000000019047": 0,
+    "00000000-0000-4000-8000-000000019048": 0,
+    "00000000-0000-4000-8000-000000019049": 0,
+    "00000000-0000-4000-8000-000000019050": 0,
+    "00000000-0000-4000-8000-000000019051": 0
   },
   "guides": {
     "00000000-0000-4000-8000-000000000302": {
@@ -6348,6 +7624,370 @@
           "text": "Se aparecer 34, você juntou textos sem converter cada entrada. Se houver saída extra, confira todos os console.log. Depois de conferir a resposta, a área de entrada e execução permite repetir seus testes."
         }
       ]
+    },
+    "00000000-0000-4000-8000-000000003010": {
+      "objective": "Entender o problema de quem vai usar a interface.",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Entender o problema de quem vai usar a interface.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Uma interface resolve uma tarefa de alguém. Antes de desenhar a tela, descreva quem precisa encontrar um material de estudo e qual dificuldade aparece hoje."
+        },
+        {
+          "title": "Conceito",
+          "text": "Uma pergunta aberta pede um relato, por exemplo: Como você encontra os materiais da última aula? Ela permite descobrir caminhos e dificuldades sem impor uma resposta."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Uma pergunta como Você gostou da minha ideia? sugere a solução antes de ouvir a pessoa. A pesquisa não garante que uma proposta será aprovada."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Registre a situação, as palavras usadas pela pessoa e a tarefa que ela tenta completar. Separe observação de opinião sua."
+        },
+        {
+          "title": "Conferência",
+          "text": "Reformule a necessidade: estudantes precisam localizar materiais recentes por matéria. Essa frase orienta o próximo esboço, mas ainda será verificada."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003011": {
+      "objective": "Agrupar conteúdo e dar prioridade às ações.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Agrupar conteúdo e dar prioridade às ações.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um esboço representa a solução antes da tela final. Desenhe uma biblioteca com busca, lista de matérias e indicação do material aberto."
+        },
+        {
+          "title": "Conceito",
+          "text": "Agrupe itens relacionados: a busca perto da lista filtrada e os materiais dentro da matéria correspondente. Um grupo ajuda a prever onde procurar."
+        },
+        {
+          "title": "Exemplo",
+          "text": "A hierarquia indica prioridade. O título identifica a tela; a busca recebe destaque se encontrar material for a tarefa principal."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Rótulos como Buscar materiais explicam a ação. Um texto de exemplo dentro do campo desaparece durante a digitação e não substitui o rótulo."
+        },
+        {
+          "title": "Conferência",
+          "text": "Percorra o desenho como estudante: encontre a matéria, selecione um material e confirme onde está. Anote qualquer passo ambíguo para o teste seguinte."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003012": {
+      "objective": "Avaliar uma tarefa com pessoas e registrar evidências.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Avaliar uma tarefa com pessoas e registrar evidências.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Teste de usabilidade observa uma pessoa tentando cumprir uma tarefa. Proponha: encontre o material da última aula de Biologia."
+        },
+        {
+          "title": "Conceito",
+          "text": "Antes da sessão, defina sucesso observável: abrir o material correto sem ajuda. Registre também tempo aproximado e hesitações, sem inventar um limite universal."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Durante a tarefa, não aponte o botão nem ensine o caminho. Observe cliques, erros e comentários da pessoa."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Depois, pergunte o que causou dúvida. Uma hesitação observada é evidência; sua hipótese sobre a causa precisa ser verificada."
+        },
+        {
+          "title": "Conferência",
+          "text": "Escolha uma mudança pequena, como renomear um filtro, e planeje repetir a tarefa. Compare o resultado com o registro anterior."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004007": {
+      "objective": "Escolher rótulos que permanecem visíveis.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Escolher rótulos que permanecem visíveis.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um formulário pede dados em campos. A pessoa precisa saber o significado de cada campo antes e durante a digitação."
+        },
+        {
+          "title": "Conceito",
+          "text": "O rótulo Nome completo junto ao campo continua visível quando o texto é digitado. Esse rótulo identifica o dado solicitado."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Um texto de exemplo dentro do campo pode desaparecer ao começar a digitar. Ele pode complementar, mas não substituir o rótulo."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Compare os dois formulários mostrados na prática: procure o rótulo permanente e verifique se o campo continua identificável preenchido."
+        },
+        {
+          "title": "Conferência",
+          "text": "Se a pessoa esquecer o formato esperado, acrescente uma instrução curta persistente e teste com alguém usando apenas o teclado."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004008": {
+      "objective": "Melhorar uma interface com evidências.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Melhorar uma interface com evidências.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Comece observando uma dificuldade real de uso, como não encontrar o filtro de matéria. Registre a tarefa e o ponto onde a pessoa parou."
+        },
+        {
+          "title": "Conceito",
+          "text": "Defina o problema de forma verificável: o filtro não foi identificado em duas tentativas observadas. Não transforme uma hipótese em conclusão sem teste."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Crie uma alternativa pequena, por exemplo um rótulo de filtro mais claro, mantendo a mesma tarefa para comparação."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Teste o protótipo com pessoas e observe se conseguem filtrar a lista. Dê a tarefa, não o caminho."
+        },
+        {
+          "title": "Conferência",
+          "text": "Compare os registros, explicite o que melhorou e o que ainda falha. Uma rodada pode exigir nova mudança e novo teste."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003050": {
+      "objective": "Identificar a sílaba mais forte e a proparoxítona.",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Identificar a sílaba mais forte e a proparoxítona.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Em uma palavra com mais de uma sílaba, uma sílaba recebe maior força ao falar. Ela é a sílaba tônica. Em árvore, podemos separar ár-vo-re; ár é a sílaba mais forte."
+        },
+        {
+          "title": "Conceito",
+          "text": "Conte da direita para a esquerda: última, penúltima, antepenúltima. Em ár-vo-re, ár é antepenúltima; árvore é proparoxítona."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Em ca-fé, fé é a última sílaba tônica; café é oxítona. Em pa-pel, pel também é a última. Compare o som e a posição, não apenas o acento gráfico."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Toda proparoxítona é acentuada na escrita padrão, mas a posição da sílaba tônica define a classificação. Separe a palavra antes de classificá-la."
+        },
+        {
+          "title": "Conferência",
+          "text": "Leia em voz alta árvore, café e papel. Marque a sílaba forte de cada uma e justifique por que somente árvore responde à prática."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003051": {
+      "objective": "Distinguir substantivo, verbo e adjetivo.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Distinguir substantivo, verbo e adjetivo.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "As palavras cumprem funções na frase. Em estudante dedicado revisa, estudante nomeia uma pessoa, dedicado a caracteriza e revisa indica uma ação."
+        },
+        {
+          "title": "Conceito",
+          "text": "Substantivo nomeia pessoas, objetos, lugares ou ideias. Projeto é substantivo em O projeto começou."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Verbo expressa ação ou estado e varia com o contexto. Em as estudantes estudam, estudam apresenta a ação no presente e concorda com o sujeito plural."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Adjetivo caracteriza um substantivo. Em projeto claro, claro descreve o projeto; não o nomeia nem indica uma ação."
+        },
+        {
+          "title": "Conferência",
+          "text": "Ao revisar uma frase, identifique quem ou o que é nomeado, qual ação ou estado aparece e qual palavra caracteriza. Use a função no contexto da frase."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003052": {
+      "objective": "Construir e revisar um parágrafo claro.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Construir e revisar um parágrafo claro.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um parágrafo de apresentação responde o que foi feito e para quem. Comece com uma ideia principal, como A turma criou um mapa da biblioteca."
+        },
+        {
+          "title": "Conceito",
+          "text": "Acrescente um dado concreto: quais salas foram incluídas, como a equipe coletou informações e qual parte você realizou."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Ligue as frases na ordem da tarefa: objetivo, ação e resultado observado. Não afirme que o mapa melhorou tudo sem medir esse efeito."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Revise nomes, acentos, concordância e pontuação. Leia o parágrafo em voz alta para perceber trechos difíceis de entender."
+        },
+        {
+          "title": "Conferência",
+          "text": "Peça que outra pessoa identifique a ideia principal sem explicação adicional. Se não conseguir, ajuste a primeira frase e releia."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004013": {
+      "objective": "Conjugar estudar para sujeito plural no presente.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Conjugar estudar para sujeito plural no presente.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "O verbo indica ação ou estado. O sujeito é quem realiza a ação na frase. Em As estudantes estudam, estudantes é o núcleo do sujeito."
+        },
+        {
+          "title": "Conceito",
+          "text": "As estudantes está no plural. No presente do indicativo, a forma correspondente do verbo estudar é estudam."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Compare A estudante estuda com As estudantes estudam. A forma verbal muda quando o número do sujeito muda."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Não confunda estudam, presente, com estudaram, passado. A atividade pede presente e o advérbio todos os dias indica hábito atual."
+        },
+        {
+          "title": "Conferência",
+          "text": "Releia a frase completa depois de preencher: As estudantes estudam todos os dias. Confira pessoa, número e tempo verbal."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004014": {
+      "objective": "Fazer um pedido com objeto e prazo definidos.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Fazer um pedido com objeto e prazo definidos.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Uma mensagem útil informa o que você precisa. Dizer Revisa isso aí não identifica o trecho a revisar."
+        },
+        {
+          "title": "Conceito",
+          "text": "Inclua o objeto: Você pode revisar o parágrafo de apresentação? Assim a pessoa sabe qual material abrir."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Inclua o prazo relevante: até sexta. Se precisar de um aspecto específico, diga se quer verificar clareza, ortografia ou dados."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Mantenha um tom respeitoso e realista. Acusações como Você nunca ajuda dificultam a colaboração e não esclarecem o pedido."
+        },
+        {
+          "title": "Conferência",
+          "text": "Antes de enviar, confira se a pessoa consegue responder: qual material, que tipo de revisão e até quando?"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003080": {
+      "objective": "Relacionar uma habilidade a uma evidência real.",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Relacionar uma habilidade a uma evidência real.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Uma habilidade é algo que você consegue fazer em uma situação. Um projeto escolar pode mostrar planejamento, uso de ferramenta ou colaboração."
+        },
+        {
+          "title": "Conceito",
+          "text": "Descreva o contexto: a turma precisava organizar materiais. Diga sua ação específica, como classificar os arquivos por matéria."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Registre o resultado observado, como uma lista criada e conferida. Evite dizer que aumentou o desempenho da turma sem dados."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Em trabalho de grupo, diferencie o que você fez do que a equipe decidiu. Isso permite avaliar sua contribuição com justiça."
+        },
+        {
+          "title": "Conferência",
+          "text": "Escolha uma habilidade e associe situação, ação e evidência. Esse registro serve de base para documentar um projeto no módulo seguinte."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003081": {
+      "objective": "Explicar contexto, contribuição e resultado.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Explicar contexto, contribuição e resultado.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um portfólio reúne evidências de trabalho. Um relato permite entender por que um projeto começou, o que você fez e o que aprendeu."
+        },
+        {
+          "title": "Conceito",
+          "text": "Contexto apresenta o problema e as pessoas envolvidas: por exemplo, localizar materiais por matéria na escola."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Contribuição descreve suas decisões e ações, como esboçar a busca ou organizar títulos. Se a solução foi feita em equipe, indique a parte coletiva."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Resultado relata o que foi observado: um protótipo testado com duas tarefas. Aprendizado registra o que você mudaria após o teste."
+        },
+        {
+          "title": "Conferência",
+          "text": "Revise o relato para que cada afirmação tenha apoio em uma imagem, artefato, teste ou descrição honesta; não inclua dados pessoais de outras pessoas sem permissão."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003082": {
+      "objective": "Relacionar uma vaga fictícia a uma experiência real.",
+      "prerequisites": "Revise a bolinha anterior desta trilha se necessário.",
+      "competency": "Relacionar uma vaga fictícia a uma experiência real.",
+      "next": "Resolva a prática e aplique o conteúdo na dinâmica. Volte à teoria quando precisar.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Leia uma vaga fictícia e destaque uma tarefa solicitada. Separe requisitos obrigatórios de habilidades que ainda deseja aprender."
+        },
+        {
+          "title": "Conceito",
+          "text": "Escolha uma experiência real que demonstre uma parte do pedido: projeto, atividade escolar ou colaboração. Descreva sua ação, sem inventar cargo."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Escreva uma apresentação curta: interesse pela tarefa, evidência relevante e algo que está aprendendo. Evite adjetivos sem exemplo."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Se um requisito não foi praticado, diga que está em aprendizagem. Uma candidatura honesta permite uma conversa útil sobre seu nível atual."
+        },
+        {
+          "title": "Conferência",
+          "text": "Revise clareza, tom e dados. Nesta atividade fictícia, não anexe documentos pessoais nem informe dados de outras pessoas."
+        }
+      ]
     }
   },
   "pedagogy": {
@@ -6966,6 +8606,157 @@
         "00000000-0000-4000-8000-000000004304"
       ],
       "version": 2
+    },
+    "00000000-0000-4000-8000-000000003010": {
+      "concepts": [
+        "Investigar uma necessidade"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003011": {
+      "concepts": [
+        "Organizar a tela"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003010"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003012": {
+      "concepts": [
+        "Observar um teste"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003011"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004007": {
+      "concepts": [
+        "Comparar formulários"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003012"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004008": {
+      "concepts": [
+        "Planejar uma avaliação"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004007"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003050": {
+      "concepts": [
+        "Leitura e sílaba tônica"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003051": {
+      "concepts": [
+        "Palavras e suas funções"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003050"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003052": {
+      "concepts": [
+        "Apresentar um projeto"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003051"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004013": {
+      "concepts": [
+        "Concordar o verbo"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003052"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004014": {
+      "concepts": [
+        "Revisar uma mensagem"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004013"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003080": {
+      "concepts": [
+        "Reconhecer habilidades"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003081": {
+      "concepts": [
+        "Documentar projetos"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003080"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003082": {
+      "concepts": [
+        "Preparar uma candidatura"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003081"
+      ],
+      "version": 2
     }
-  }
+  },
+  "question_updates": [
+    {
+      "id": "00000000-0000-4000-8000-000000008004",
+      "explanation": "Pesquisa compreende o contexto; protótipo representa uma solução; teste de usabilidade observa uma pessoa usando a solução."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008017",
+      "explanation": "O parágrafo apresenta a ideia principal do projeto, descreve uma ação concreta e foi revisto para clareza e ortografia."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008025",
+      "explanation": "Contexto apresenta o problema; contribuição explica o que você fez; resultado registra o que observou e aprendeu."
+    }
+  ]
 }

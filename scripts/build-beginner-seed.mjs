@@ -17,6 +17,10 @@ for (const q of c.questions) {
   const answer = c.answers[q.id];
   sql += `insert into private.question_answers(question_id,correct_index,expected) values(${literal(q.id)},${typeof answer === "number" ? answer : "null"},${literal(JSON.stringify(answer))}::jsonb) on conflict(question_id) do nothing;\n`;
 }
+for (const update of c.question_updates || []) {
+  const fields = Object.keys(update).filter((k) => k !== "id");
+  sql += `update public.questions set ${fields.map((k) => `${k}=${literal(update[k])}`).join(",")} where id=${literal(update.id)};\n`;
+}
 for (const m of c.modules.filter((m) => m.track_id)) {
   const cols = Object.keys(m).filter((k) => k !== "prerequisite_id");
   sql += `insert into public.modules(${cols.join(",")}) values(${cols.map((k) => literal(m[k])).join(",")}) on conflict(id) do nothing;\n`;

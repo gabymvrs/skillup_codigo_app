@@ -224,6 +224,10 @@ tracks.push(...(trackActivities.tracks as Track[]));
 modules.push(...(trackActivities.modules as Module[]));
 questions.push(...(trackActivities.questions as Question[]));
 questions.push(...(beginnerCurriculum.questions as Question[]));
+for (const update of beginnerCurriculum.question_updates || []) {
+  const existing = questions.find((q) => q.id === update.id);
+  if (existing) Object.assign(existing, update);
+}
 for (const update of beginnerCurriculum.modules) {
   const existing = modules.find((m) => m.id === update.id);
   if (existing) Object.assign(existing, update);

@@ -205,3 +205,23 @@ it("introduces JavaScript input and conversion before debugging and the final co
   expect(final.question_ids.at(-1)).toBe(id(12005));
   expect(curriculum.guides[id(4003) as keyof typeof curriculum.guides].steps.map((s) => s.text).join(" ")).toContain("não é uma função padrão");
 });
+
+it("keeps the non-code disciplines' original questions after four contextual checks", () => {
+  const originals = [
+    3010, 3011, 3012, 4007, 4008, 3050, 3051, 3052, 4013, 4014,
+    3080, 3081, 3082,
+  ];
+  for (const number of originals) {
+    const module = modules.find((m) => m.id === id(number))!;
+    const plan = demoPlans.find((p) => p.module_id === module.id)!;
+    expect(plan.question_ids, module.title).toHaveLength(5);
+    expect(curriculum.guides[module.id as keyof typeof curriculum.guides].steps).toHaveLength(5);
+    for (const qid of plan.question_ids) {
+      const question = questions.find((q) => q.id === qid)!;
+      expect(question.activity_type).not.toBe("code_practice");
+      if (question.kind !== "challenge")
+        expect(evaluateDemo(question, exerciseAnswers[qid] as never)).toBe(true);
+    }
+  }
+  expect(questions.find((q) => q.id === id(8017))?.explanation).toContain("parágrafo");
+});

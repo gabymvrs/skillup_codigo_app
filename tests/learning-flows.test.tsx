@@ -176,7 +176,15 @@ describe("Interactive exercise formats", () => {
         screen.getByLabelText("Formato de exercício"),
         kind,
       );
-      await user.click(screen.getByRole("button", { name: "Praticar" }));
+      const practiceCard =
+        kind === "choice"
+          ? within(
+              screen
+                .getByRole("heading", { name: "Acentuação e leitura · Escolha" })
+                .closest("section")!,
+            )
+          : screen;
+      await user.click(practiceCard.getByRole("button", { name: "Praticar" }));
       const dialog = within(screen.getByRole("dialog"));
       if (kind === "choice")
         await user.click(dialog.getByRole("radio", { name: "árvore" }));

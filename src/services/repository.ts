@@ -51,6 +51,10 @@ export function readDemo(): Dataset {
       q.activity_type ??= questions.find(
         (item) => item.id === q.id,
       )?.activity_type;
+    for (const update of curriculum.question_updates || []) {
+      const stored = d.questions.find((q: { id: string }) => q.id === update.id);
+      if (stored) Object.assign(stored, update);
+    }
     hydrateDemoLearning(d);
     for (const update of curriculum.modules) {
       const stored = d.modules.find((m: { id: string }) => m.id === update.id);
