@@ -61,5 +61,32 @@
     "publisher": "Microsoft Learn · inglês",
     "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
     "kind": "artigo"
+  },
+  {
+    "id": "dart-operators",
+    "title": "Operadores em Dart",
+    "publisher": "Documentação Dart",
+    "url": "https://dart.dev/language/operators",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "dart-conditions",
+    "title": "Condições em Dart",
+    "publisher": "Documentação Dart",
+    "url": "https://dart.dev/language/branches",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Consulta após a aula"
+  },
+  {
+    "id": "dart-collections",
+    "title": "Listas em Dart",
+    "publisher": "Documentação Dart",
+    "url": "https://dart.dev/language/collections",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Consulta após a aula"
   }
 ]

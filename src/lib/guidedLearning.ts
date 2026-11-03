@@ -1,10 +1,14 @@
 import guides from "../data/guided-theories.json";
+import curriculum from "../data/beginner-curriculum.json";
 export interface TheoryStep {
   title: string;
   text: string;
   code?: string;
   annotations?: string[];
   experiment?: string;
+  variables?: { name: string; value: string; type: string }[];
+  trace?: string[];
+  preview?: string;
 }
 export interface GuidedTheory {
   objective: string;
@@ -13,13 +17,18 @@ export interface GuidedTheory {
   next: string;
   steps: TheoryStep[];
 }
-export const guidedTheories = guides as Record<string, GuidedTheory>;
+export const guidedTheories = { ...guides, ...curriculum.guides } as Record<
+  string,
+  GuidedTheory
+>;
 export const algorithmOrder = ["read", "sum", "mean", "show"];
 export interface LearningInputs {
   first: string;
   second: string;
   order?: string[];
   ran?: boolean;
+  third?: string;
+  operator?: string;
 }
 export function parseGrade(raw: string) {
   const normalized = raw.trim().replace(",", ".");

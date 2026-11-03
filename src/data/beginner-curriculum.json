@@ -1,0 +1,1877 @@
+{
+  "version": 2,
+  "modules": [
+    {
+      "id": "00000000-0000-4000-8000-000000000302",
+      "title": "Lógica",
+      "body": "Antes de sair, você olha se está chovendo. Se estiver, leva um guarda-chuva. Primeiro verifica uma situação; depois escolhe o que fazer. A lógica organiza esse raciocínio de modo que outra pessoa ou um programa consiga segui-lo.\n\nUma condição é uma afirmação que pode ser verdadeira ou falsa. “A luz está acesa” é uma condição: basta observar a luz para conferir. “Acenda a luz” é uma instrução, pois pede uma ação. Um programa precisa distinguir a pergunta da ação que vem depois.\n\nSe a luz está acesa, a condição “a luz está acesa” é verdadeira; se está apagada, é falsa. Falso pode ser um resultado válido da verificação. Em Dart, a linguagem usada nesta trilha, true significa verdadeiro e false significa falso. Esses dois valores formam o tipo bool.\n\nMarque e desmarque a luz no quadro. Compare o estado com a condição e leia a ação sugerida. A pergunta permanece igual; o resultado muda conforme a situação.\n\nPlaneje em português: verificar se a luz está acesa; se sim, ler; se não, acender a luz antes de ler. Nas próximas bolinhas, compararemos números para criar condições mais específicas. Não precisamos de vários operadores ao mesmo tempo.",
+      "question_id": "00000000-0000-4000-8000-000000015000",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000301"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000330",
+      "title": "Comparar valores",
+      "body": "Uma loja tem 3 cadernos e recebeu um pedido de 3. Para saber se as quantidades são iguais, comparamos os números. Uma comparação produz verdadeiro ou falso, como as condições da bolinha anterior.\n\nEm Dart, quantidade == 3 pergunta se quantidade tem valor igual a 3. == é um operador, um símbolo que indica uma operação. Seus dois caracteres ficam juntos. Um único = guarda um valor; == compara sem mudar o valor guardado.\n\n!= é lido como “diferente de”. Com quantidade igual a 4, quantidade != 3 é verdadeira. Com quantidade igual a 3, é falsa. Os dois caracteres juntos formam o operador. O ponto de exclamação sozinho será estudado em outra atividade.\n\n> significa maior que: 8 > 7 é verdadeira; 7 > 7 é falsa. < significa menor que: 6 < 7 é verdadeira; 7 < 7 é falsa. Esses operadores não incluem a igualdade. Mude o operador e os valores no quadro para conferir.\n\nEm quantidade == 3, quantidade é o nome do valor guardado; == faz a comparação; 3 é o valor de referência. Se estoque vale 2 e pedido vale 3, estoque < pedido é verdadeira: falta produto para atender tudo.",
+      "question_id": "00000000-0000-4000-8000-000000015005",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000302",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000331",
+      "title": "Limites nas comparações",
+      "body": "Uma escola usa a regra: a nota precisa ser pelo menos 7. Uma estudante recebeu 7, então atende. “Pelo menos” inclui o próprio limite. A frase “acima de 7” teria outro significado e excluiria essa nota.\n\nEm Dart, >= significa maior ou igual a. Os caracteres > e = juntos formam um único operador, sem espaço entre eles. Em nota >= 7, nota é o nome do dado, >= faz a comparação e 7 é o mínimo. O sinal = dentro de >= não é uma atribuição.\n\n<= significa menor ou igual a. idade <= 17 inclui 16 e 17, mas não 18. > e < excluem a igualdade; >= e <= a incluem. Testar um valor exatamente no limite revela essa diferença.\n\nPara nota >= 7, 6 dá falso; 7, 8 e 9 dão verdadeiro. No quadro, escolha >= e teste esses valores. Depois use > com 7 e compare o resultado.\n\n75% de frequência significa presença em 75 de cada 100 aulas consideradas. Na variável frequencia guardamos o número 75, sem o símbolo %. frequencia >= 75 é falsa para 70, verdadeira para 75 e verdadeira para 80. Ainda estamos avaliando cada regra separadamente.",
+      "question_id": "00000000-0000-4000-8000-000000015010",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000330",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000332",
+      "title": "Duas condições com E",
+      "body": "Uma escola precisa decidir se um estudante foi aprovado. Neste exemplo, exige nota mínima 7 e frequência mínima 75%. Cumprir uma regra sozinha não basta. Primeiro vamos entender os dois requisitos sem mostrar a expressão completa.\n\nnota é o nome usado para representar a nota armazenada no programa. >=, formado por > e = juntos, significa maior ou igual a. 7 é o mínimo. nota >= 7 é falsa para 6 e verdadeira para 7, 8 e 9.\n\nfrequencia guarda o percentual de presença como número de 0 a 100. frequencia >= 75 pergunta se a presença foi de pelo menos 75%. Para 70, dá falso; para 75 e 80, verdadeiro. Ainda não combinamos os resultados.\n\nCom nota 8 e frequência 70, a regra da nota é verdadeira, mas a da presença é falsa. A aprovação é recusada neste exemplo. Com nota 7 e frequência 75, ambas são verdadeiras e a aprovação é permitida. Essa combinação é o E lógico.\n\nEm Dart, os dois caracteres & juntos formam &&, o operador lógico E. Não use apenas um & para esta operação. A expressão completa abaixo significa: a nota precisa ser pelo menos 7 E a frequência precisa ser pelo menos 75%. Cada comparação dá verdadeiro ou falso; o E combina esses resultados.\n\nTeste nota 7 e frequência 75; depois 8 e 74; depois 6 e 80. Confira o resultado de cada requisito e o resultado final. O simulador calcula a regra com os valores que você informa. Vazio não é zero, e entradas fora dos intervalos precisam ser corrigidas.\n\nnota e frequencia são nomes dos dados. >= compara cada dado com seu mínimo. 7 é o mínimo da nota; 75 é o mínimo percentual de presença. && exige ambas as condições verdadeiras. Na prática e na dinâmica desta bolinha, usaremos somente essa combinação.",
+      "question_id": "00000000-0000-4000-8000-000000015015",
+      "position": 5,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000331",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000333",
+      "title": "Uma alternativa com OU",
+      "body": "Uma biblioteca aceita carteira estudantil ou comprovante de matrícula. Basta um documento. Quem tem os dois também entra. Essa regra é diferente da escola, que exigia dois requisitos simultaneamente.\n\ncarteira é uma variável bool: true quando há carteira e false quando não há. comprovante guarda o mesmo tipo de informação sobre o outro documento. Cada uma é uma condição simples.\n\n|| é o operador lógico OU em Dart. São duas barras verticais juntas. carteira || comprovante dá true quando pelo menos uma condição é verdadeira. Só false || false dá false. Uma barra isolada não é este operador.\n\nMarque e desmarque os documentos. Teste nenhum, apenas carteira, apenas comprovante e ambos. OU aceita ambos; não significa “exatamente um”.\n\nUse E quando todos os requisitos são necessários; OU quando basta uma alternativa. Traduza a regra em palavras antes de escolher o símbolo. Se a biblioteca mudasse para exigir os dois documentos, o OU deixaria de representar sua regra.",
+      "question_id": "00000000-0000-4000-8000-000000015020",
+      "position": 6,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000332",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000334",
+      "title": "Inverter com NÃO",
+      "body": "Se aberta guarda true para uma porta aberta, a condição “não está aberta” é falsa. Estamos invertendo a resposta lógica, sem mudar a posição real da porta.\n\nEm Dart, ! antes de um bool significa NÃO. !aberta é lido como “não aberta”. !true é false; !false é true. O símbolo atua na condição que vem depois dele.\n\n!= compara dois valores, como nota != 7. ! sozinho nega uma condição, como !aberta. Os símbolos parecidos participam de operações diferentes.\n\nAltere a porta no quadro. Compare aberta e !aberta. Quando uma é verdadeira, a outra é falsa. O quadro simula essa informação; não altera a variável só por calcular sua negação.\n\nSe temPendencia é false, !temPendencia é true: não há pendência. Diga a frase em voz alta ao usar NÃO, para não inverter uma regra sem querer. A negação de várias condições virá depois.",
+      "question_id": "00000000-0000-4000-8000-000000015025",
+      "position": 7,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000333",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000335",
+      "title": "Agrupar expressões",
+      "body": "O laboratório aceita docentes ou estudantes com autorização. docente, estudante e autorizacao são variáveis bool. Uma alternativa é ser docente; a outra é cumprir os dois requisitos estudantis.\n\nOs parênteses ( e ) delimitam um grupo. Em docente || (estudante && autorizacao), podemos avaliar o grupo estudantil primeiro e depois combinar seu resultado com docente usando OU.\n\n(docente || estudante) && autorizacao exige autorização inclusive para docentes. Compare com docente true e autorizacao false: a regra original permite, a segunda recusa. Em Dart, ! tem prioridade sobre &&, e && sobre ||; os parênteses podem mudar ou deixar explícito o agrupamento.\n\nCom docente false, estudante true e autorizacao true, o grupo estudantil dá true; false || true dá true. No quadro, mude os estados e compare as duas expressões.\n\nEscreva a regra em português antes do código. Escolha um caso que diferencie os agrupamentos para verificar qual representa a regra pedida. As mesmas condições com parênteses diferentes podem permitir pessoas diferentes.",
+      "question_id": "00000000-0000-4000-8000-000000015030",
+      "position": 8,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000334",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000336",
+      "title": "Tabela-verdade",
+      "body": "Uma área exige cadastro confirmado e matrícula ativa. Cada informação tem dois valores. Testar só o caso em que ambas são verdadeiras não mostra o que acontece quando falta um requisito.\n\nTabela-verdade é um quadro de combinações e resultados. Com duas condições A e B, temos falso/falso, falso/verdadeiro, verdadeiro/falso e verdadeiro/verdadeiro. A e B são nomes curtos, não comandos de uma linguagem.\n\nPara A && B, só a linha verdadeiro/verdadeiro produz verdadeiro. As outras três dão falso. Para A || B, apenas falso/falso dá falso. A diferença aparece quando uma condição é verdadeira e a outra falsa.\n\nAltere as duas condições no quadro e veja a linha correspondente. Compare E e OU em cada caso. As quatro linhas cobrem os valores possíveis de duas condições bool.\n\nEscreva o resultado esperado de cada combinação antes de executar. Depois compare com a regra implementada. A tabela não substitui a validação das entradas do formulário: valores vazios ou inválidos precisam de verificação própria.",
+      "question_id": "00000000-0000-4000-8000-000000015035",
+      "position": 9,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000335",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000337",
+      "title": "Negar uma regra composta",
+      "body": "O acesso exige cadastrado && ativo. Para descrever a recusa, negamos a regra inteira. Agora já conhecemos E, OU, NÃO e tabelas; podemos verificar essa transformação sem adivinhar.\n\n!(cadastrado && ativo) nega o resultado combinado. Com ambas verdadeiras, o E dá true e NÃO dá false: não há recusa. Se falta qualquer requisito, o E dá false e NÃO dá true: há recusa.\n\n!cadastrado || !ativo também representa a recusa: basta não estar cadastrado OU não estar ativo. Ao negar E, negamos cada condição e trocamos E por OU. Essa equivalência é uma das leis de De Morgan.\n\nCompare !(A && B) e !A || !B no quadro. Os resultados coincidem nas quatro combinações. !A && !B seria outra regra: só dá verdadeiro se os dois requisitos faltarem, perdendo quem falha em apenas um.\n\n!(A || B) equivale a !A && !B. Se a biblioteca aceita carteira OU comprovante, a recusa acontece sem carteira E sem comprovante. Não basta trocar o operador: negue também cada condição e confira a tabela.",
+      "question_id": "00000000-0000-4000-8000-000000015040",
+      "position": 10,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000336",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000301",
+      "title": "Variáveis",
+      "body": "Uma loja precisa guardar nome, preço e quantidade de um produto. Uma variável associa um nome a um valor que o programa pode usar depois. Por exemplo, quantidade identifica o número de unidades. Quando uma unidade é vendida, esse dado precisa mudar.\n\nDart é uma linguagem de programação: uma forma de escrever instruções que o computador pode executar. Em int quantidade = 3;, int indica número inteiro, quantidade é o nome, = guarda o valor 3 e ; encerra a instrução. Inteiros não têm parte decimal.\n\ndouble indica um número que pode ter parte decimal. Em double preco = 12.5;, o ponto faz parte da escrita numérica do código: lemos doze e meio. preco * quantidade multiplica o preço pela quantidade. O símbolo * significa multiplicação. Com 12.5 e 3, o total é 37.5.\n\nString é o tipo texto. Em String nome = \"Caderno\";, as aspas delimitam onde o texto começa e termina. Elas não fazem parte do nome exibido. O texto \"12.5\" não é o mesmo tipo de dado que o número 12.5.\n\nbool guarda true ou false: verdadeiro ou falso. bool disponivel = true; representa um produto disponível. Esses valores serão usados nas condições. Não são as palavras entre aspas: true é um valor lógico, e \"true\" seria texto.\n\nDepois de int estoque = 10;, estoque = estoque - 3; lê o valor atual, calcula 10 menos 3 e guarda 7 no mesmo nome. - subtrai. Não repetimos int, porque a variável já foi criada. = atribui; ==, com dois sinais, compara igualdade.\n\nfinal codigo = \"A1\"; cria uma variável que recebe valor uma vez. Não podemos depois atribuir \"B2\" ao mesmo nome. Nesta atividade basta reconhecer que final impede uma nova atribuição. Ainda não precisamos estudar estruturas mais complexas.\n\nUm campo pode entregar \"12.5\" como texto. Converter é interpretar esse texto como número. Validar é conferir se ele serve à regra, como um preço não negativo. \"abc\" não é um preço. Na dinâmica, descreva o tratamento em português; não é preciso escrever uma função de conversão.\n\nNome Caderno usa String; preço 12.5 usa double; quantidade 3 usa int; disponibilidade true usa bool. Obtenha e valide os valores antes do cálculo. Multiplicar preço por quantidade produz 37.5. Para usar uma informação, precisamos entender seu valor e seu tipo.",
+      "question_id": "00000000-0000-4000-8000-000000013005",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000300"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000304",
+      "title": "Condicionais",
+      "body": "Uma condição como nota >= 7 já responde verdadeiro ou falso. Uma condicional escolhe o que executar conforme essa resposta. Em Dart, if significa “se”. Vamos começar com uma única escolha.\n\nEm if (nota >= 7), os parênteses contêm a condição. As chaves { e } delimitam o bloco, o conjunto de instruções daquela escolha. print mostra um valor na saída; os parênteses de print contêm o que mostrar, e as aspas delimitam texto. ; encerra essa instrução.\n\nelse significa “senão”. Seu bloco executa quando a condição do if é falsa. Com nota 6, o programa mostra Revisar. Com nota 7, mostra Aprovado. Em Dart, as chaves delimitam o bloco; os espaços no começo da linha ajudam a leitura.\n\nelse if significa “senão, se”. Ele só testa sua condição se a anterior foi falsa. Para aprovação a partir de 7 e recuperação a partir de 5, teste >= 7 primeiro. Só o primeiro ramo verdadeiro desta cadeia executa; o último else cobre as notas válidas restantes.\n\nCom nota 9, >= 5 e >= 7 são verdadeiras. Se >= 5 vier primeiro, ele captura 9 como recuperação antes de chegar à aprovação. Para nota 5: >= 7 é falsa, >= 5 é verdadeira, então a saída é Recuperação.\n\nA escala aceita notas de 0 a 10. Nota 12 é inválida: peça correção antes de aplicar as faixas, mesmo que 12 >= 7. Teste 4.9, 5, 6.9, 7 e 10: revisão, recuperação, recuperação, aprovação e aprovação. = guarda valor; == compara igualdade.",
+      "question_id": "00000000-0000-4000-8000-000000013020",
+      "position": 11,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000337"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000305",
+      "title": "Loops",
+      "body": "Para mostrar 0, 1, 2, 3 e 4, poderíamos escrever cinco instruções. Um laço repete um bloco enquanto a condição permitir. Loop é laço em inglês. Defina onde começa, qual condição mantém a repetição e o que muda a cada volta.\n\nEm for (int i = 0; i < 5; i++), for inicia a repetição. int i = 0 cria um contador começando em zero. i < 5 é conferido antes de cada volta. i++ aumenta i em 1 depois do corpo. Os dois ; separam essas três partes.\n\nCom i em 0, a condição é verdadeira: mostra 0 e aumenta para 1. Repete para 1, 2, 3 e 4. Depois i vira 5; 5 < 5 é falsa e o laço termina. Foram cinco execuções, embora o último valor mostrado seja 4.\n\nCom i <= 5, a volta com i igual a 5 também executa: seriam seis. Se a condição começar falsa, podem ocorrer zero execuções. Conferir começo, condição e atualização ajuda a evitar uma volta a mais ou a menos.\n\nAcumulador é uma variável com um total parcial. Crie soma = 0 antes do laço. Para somar 1, 2 e 3, os totais são 1, 3 e 6. soma = soma + i guarda o total anterior mais o valor atual. soma += i é a forma abreviada.\n\nwhile significa “enquanto”. Neste exemplo, sua atualização precisa estar dentro do corpo. Sem i++, i ficaria sempre em 0 e i < 5 nunca passaria a falso: seria um laço infinito.\n\nPara somar de 1 a 4, use i de 1 até 4, inclusive. Os totais são 1, 3, 6 e 10. Com i < 4, o 4 fica fora e o total é 6. Se zerar soma dentro do laço, os totais anteriores são perdidos. Na dinâmica, registre contador e soma após cada volta.",
+      "question_id": "00000000-0000-4000-8000-000000013025",
+      "position": 12,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000304"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000306",
+      "title": "Arrays e listas",
+      "body": "Uma lista reúne valores em uma ordem. Em Dart, usamos List. Array é um nome de estrutura semelhante usado em outras linguagens; aqui estudamos a lista de Dart. Podemos guardar três notas juntas em vez de criar um nome para cada uma.\n\nEm List<int> notas = [7, 8, 9];, List indica lista e <int> diz que os elementos são inteiros. Aqui < e > fazem parte da escrita do tipo, não são comparações. [ e ] delimitam os valores; as vírgulas separam os elementos.\n\nÍndice é o número usado para consultar uma posição. notas[0] vale 7; notas[1] vale 8; notas[2] vale 9. notas.length é a quantidade de elementos: 3. Numa lista não vazia, o último índice é length - 1: aqui, 2.\n\nEm for (final nota in notas), in indica de onde vêm os elementos; nota recebe um elemento por volta. final impede reatribuir esse nome dentro daquela volta. Com soma iniciada em 0, soma += nota produz totais 7, 15 e 24.\n\nA média de [7,8,9] é 24 / 3 = 8. Divida pela quantidade notas.length. Com apenas [6], a média é 6. Antes de dividir, confira se há notas. [] é uma lista vazia, com length 0: ela não tem notas[0] e não fornece uma quantidade válida para essa divisão.\n\nTeste [] para esperar um aviso “Sem notas”; [6] para esperar média 6; [7,8,9] para esperar 8. Um trecho nomeado que reúne instruções é chamado função; aprenderemos a escrevê-lo na próxima bolinha. Na dinâmica atual, descreva a validação e os cálculos em português.",
+      "question_id": "00000000-0000-4000-8000-000000013030",
+      "position": 13,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000305"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000338",
+      "title": "Funções",
+      "body": "Se várias telas precisam calcular a média de duas notas, repetir a conta em cada lugar dificulta corrigir. Uma função reúne instruções sob um nome; podemos pedir essa operação novamente com outras entradas.\n\nEm Dart, double media(double a, double b) declara uma função. O primeiro double é o tipo do resultado. media é o nome escolhido. Os parênteses contêm parâmetros a e b, nomes das entradas dentro da função. Cada double informa que a entrada é numérica.\n\nreturn devolve um valor a quem chamou a função. (a + b) calcula a soma primeiro; / 2 divide por dois. As chaves delimitam o corpo. print mostra algo na saída; ele não substitui o valor devolvido por return.\n\nEm media(6,8), 6 e 8 são argumentos, os valores concretos da chamada. Dentro da função, a recebe 6 e b recebe 8. O retorno é 7. Em double resultado = media(6,8);, esse 7 fica guardado em resultado.\n\nmedia(4,10) devolve 7; media(0,0) devolve 0. A função do exemplo supõe duas notas válidas. Antes de chamá-la com dados de um formulário, confira presença e intervalo. Reutilizar uma conta não dispensa validar os dados.",
+      "question_id": "00000000-0000-4000-8000-000000015045",
+      "position": 14,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000306",
+      "track_id": "00000000-0000-4000-8000-000000000200",
+      "xp": 100
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000303",
+      "title": "Maratona 1",
+      "body": "A loja quer calcular o valor de três produtos em estoque. Para cada produto, recebe preço e quantidade. Subtotal é o valor de um produto: preço vezes quantidade. O total do estoque é a soma desses subtotais.\n\nProduto A: preço 10, quantidade 2, subtotal 20. Produto B: preço 5, quantidade 3, subtotal 15. Produto C: preço 8, quantidade 1, subtotal 8. Em código, preco * quantidade multiplica os dois dados; somá-los não calcula o subtotal.\n\ntotal começa em 0, antes da repetição. Após A, vale 20. Após B, 35. Após C, 43. Use total = total + subtotal, ou total += subtotal, para guardar a soma com o valor anterior.\n\nSe escrever total = subtotal em cada volta, os valores serão 20, 15 e 8. O programa perdeu os produtos anteriores. Zerar total dentro da repetição também perde o histórico. O acumulador precisa começar antes e ser atualizado durante a repetição.\n\nPreço ou quantidade negativos são inválidos neste cadastro: peça correção antes de calcular. Quantidade zero é válida e contribui com subtotal zero. Confira o total 43 manualmente. Na dinâmica, monte uma tabela com produto, preço, quantidade, subtotal e total parcial.",
+      "question_id": "00000000-0000-4000-8000-000000013015",
+      "position": 15,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000338"
+    }
+  ],
+  "plans": [
+    {
+      "module_id": "00000000-0000-4000-8000-000000000302",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015000",
+        "00000000-0000-4000-8000-000000015001",
+        "00000000-0000-4000-8000-000000015002",
+        "00000000-0000-4000-8000-000000015003",
+        "00000000-0000-4000-8000-000000015004"
+      ],
+      "dynamic": {
+        "kind": "condition",
+        "title": "Planeje a saída de casa",
+        "prompt": "Teste os dois estados da luz. Depois escreva uma condição sobre sair de casa e a ação para cada resultado.",
+        "criteria": [
+          "Escrevi uma condição verificável",
+          "Descrevi a ação quando verdadeira e quando falsa"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000330",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015005",
+        "00000000-0000-4000-8000-000000015006",
+        "00000000-0000-4000-8000-000000015007",
+        "00000000-0000-4000-8000-000000015008",
+        "00000000-0000-4000-8000-000000015009"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Confira um pedido",
+        "prompt": "Teste estoques 2, 3 e 4 para um pedido de 3 usando igualdade e menor que. Registre os resultados e explique quando falta produto.",
+        "criteria": [
+          "Comparei três quantidades",
+          "Expliquei igualdade e falta de produto"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000331",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015010",
+        "00000000-0000-4000-8000-000000015011",
+        "00000000-0000-4000-8000-000000015012",
+        "00000000-0000-4000-8000-000000015013",
+        "00000000-0000-4000-8000-000000015014"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Teste a nota mínima",
+        "prompt": "Compare as notas 6, 7 e 8 com >= e com >. Explique qual operador corresponde a “pelo menos 7”.",
+        "criteria": [
+          "Testei abaixo, no limite e acima",
+          "Expliquei por que incluir a igualdade"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000332",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015015",
+        "00000000-0000-4000-8000-000000015016",
+        "00000000-0000-4000-8000-000000015017",
+        "00000000-0000-4000-8000-000000015018",
+        "00000000-0000-4000-8000-000000015019"
+      ],
+      "dynamic": {
+        "kind": "approval",
+        "title": "Explique o boletim",
+        "prompt": "No simulador, teste (7,75), (8,74) e (6,80). Registre cada comparação e o resultado final. Explique por que nota alta sozinha não basta.",
+        "criteria": [
+          "Testei os três casos",
+          "Expliquei os dois requisitos e o E"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": ["dart-operators"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000333",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015020",
+        "00000000-0000-4000-8000-000000015021",
+        "00000000-0000-4000-8000-000000015022",
+        "00000000-0000-4000-8000-000000015023",
+        "00000000-0000-4000-8000-000000015024"
+      ],
+      "dynamic": {
+        "kind": "or",
+        "title": "Entrada na biblioteca",
+        "prompt": "Teste as quatro combinações no quadro e registre quem entra. Explique o resultado quando ambos os documentos estão presentes.",
+        "criteria": [
+          "Cobri as quatro combinações",
+          "Expliquei que OU aceita ambas verdadeiras"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000334",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015025",
+        "00000000-0000-4000-8000-000000015026",
+        "00000000-0000-4000-8000-000000015027",
+        "00000000-0000-4000-8000-000000015028",
+        "00000000-0000-4000-8000-000000015029"
+      ],
+      "dynamic": {
+        "kind": "not",
+        "title": "Explique os dois estados",
+        "prompt": "Teste a porta aberta e fechada. Depois escreva uma condição sobre uma pendência e sua negação, explicando os resultados.",
+        "criteria": [
+          "Expliquei os dois estados",
+          "Diferenciei negar de alterar o dado"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000335",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015030",
+        "00000000-0000-4000-8000-000000015031",
+        "00000000-0000-4000-8000-000000015032",
+        "00000000-0000-4000-8000-000000015033",
+        "00000000-0000-4000-8000-000000015034"
+      ],
+      "dynamic": {
+        "kind": "grouping",
+        "title": "Investigue um acesso",
+        "prompt": "Compare as duas expressões com docente true e autorização false. Registre qual corresponde à regra original e explique a diferença.",
+        "criteria": [
+          "Testei os dois agrupamentos",
+          "Mostrei o caso que distingue as regras"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000336",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015035",
+        "00000000-0000-4000-8000-000000015036",
+        "00000000-0000-4000-8000-000000015037",
+        "00000000-0000-4000-8000-000000015038",
+        "00000000-0000-4000-8000-000000015039"
+      ],
+      "dynamic": {
+        "kind": "truth-table",
+        "title": "Monte a tabela do acesso",
+        "prompt": "Percorra os quatro casos de cadastro e matrícula no quadro. Registre o resultado do E em cada linha e explique quem pode acessar.",
+        "criteria": [
+          "Registrei as quatro combinações",
+          "Expliquei o resultado do E"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000337",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015040",
+        "00000000-0000-4000-8000-000000015041",
+        "00000000-0000-4000-8000-000000015042",
+        "00000000-0000-4000-8000-000000015043",
+        "00000000-0000-4000-8000-000000015044"
+      ],
+      "dynamic": {
+        "kind": "de-morgan",
+        "title": "Investigue a recusa",
+        "prompt": "Confira os quatro casos no quadro. Registre duas formas equivalentes da recusa e um caso em que !A && !B daria uma resposta errada.",
+        "criteria": [
+          "Conferi as quatro linhas",
+          "Expliquei a troca do operador e as negações"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000301",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013005",
+        "00000000-0000-4000-8000-000000013006",
+        "00000000-0000-4000-8000-000000013007",
+        "00000000-0000-4000-8000-000000013008",
+        "00000000-0000-4000-8000-000000013009"
+      ],
+      "dynamic": {
+        "kind": "creation",
+        "title": "Modele um pequeno cadastro",
+        "prompt": "Defina nome, preço, quantidade e disponibilidade de um produto usando tipos adequados. Mostre como calcular o total e explique como validaria um preço digitado como texto.",
+        "criteria": [
+          "Escolhi tipos e nomes coerentes",
+          "Apresentei os valores e o total esperado",
+          "Expliquei a conversão e a validação da entrada"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": ["dart-variables"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000304",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013020",
+        "00000000-0000-4000-8000-000000013021",
+        "00000000-0000-4000-8000-000000013022",
+        "00000000-0000-4000-8000-000000013023",
+        "00000000-0000-4000-8000-000000013024"
+      ],
+      "dynamic": {
+        "kind": "case",
+        "title": "Revise uma classificação",
+        "prompt": "Um sistema testa nota >= 5 antes de nota >= 7 e classifica nota 9 como recuperação. Explique a causa, proponha uma cadeia corrigida com validação de 0 a 10 e apresente resultados para 4.9, 5, 6.9, 7 e 12.",
+        "criteria": [
+          "Expliquei o efeito da ordem dos ramos",
+          "Validei o domínio antes de classificar",
+          "Defini o resultado esperado dos cinco casos"
+        ],
+        "minLength": 220
+      },
+      "resource_ids": ["dart-conditions"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000305",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013025",
+        "00000000-0000-4000-8000-000000013026",
+        "00000000-0000-4000-8000-000000013027",
+        "00000000-0000-4000-8000-000000013028",
+        "00000000-0000-4000-8000-000000013029"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Faça um rastreamento",
+        "prompt": "Planeje um laço que soma os inteiros de 1 a 4. Mostre contador e soma após cada execução, explique como o laço termina e compare o resultado usando < e <= no limite escolhido.",
+        "criteria": [
+          "Mostrei o estado em cada execução",
+          "Expliquei a atualização e o término",
+          "Comparei as fronteiras e os totais esperados"
+        ],
+        "minLength": 240
+      },
+      "resource_ids": ["dart-loops"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000306",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013030",
+        "00000000-0000-4000-8000-000000013031",
+        "00000000-0000-4000-8000-000000013032",
+        "00000000-0000-4000-8000-000000013033",
+        "00000000-0000-4000-8000-000000013034"
+      ],
+      "dynamic": {
+        "kind": "creation",
+        "title": "Projete uma função de resumo",
+        "prompt": "Descreva uma função que recebe uma lista de notas e devolve quantidade, soma e média. Defina explicitamente o retorno para lista vazia e teste [], [6] e [7, 8, 9], sem inventar uma média para o caso vazio.",
+        "criteria": [
+          "Tratei o vazio antes de acessar ou dividir",
+          "Defini os três campos de saída",
+          "Calculei os resultados dos três testes"
+        ],
+        "minLength": 260
+      },
+      "resource_ids": ["dart-collections"]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000338",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000015045",
+        "00000000-0000-4000-8000-000000015046",
+        "00000000-0000-4000-8000-000000015047",
+        "00000000-0000-4000-8000-000000015048",
+        "00000000-0000-4000-8000-000000015049"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Rastreie duas chamadas",
+        "prompt": "Escolha dois pares de notas válidas. Registre os argumentos, os valores dos parâmetros, a conta e o retorno de cada chamada. Explique como tratar uma entrada ausente.",
+        "criteria": [
+          "Rastreei duas chamadas",
+          "Diferenciei retorno de exibição"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000303",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013015",
+        "00000000-0000-4000-8000-000000013016",
+        "00000000-0000-4000-8000-000000013017",
+        "00000000-0000-4000-8000-000000013018",
+        "00000000-0000-4000-8000-000000013019"
+      ],
+      "dynamic": {
+        "kind": "creation",
+        "title": "Entregue um plano de estoque",
+        "prompt": "Monte um cadastro de três produtos com tipos e valores. Escreva o pseudocódigo que valida os dados e acumula os subtotais. Calcule o total esperado e acrescente um teste com quantidade zero e outro com entrada inválida.",
+        "criteria": [
+          "Apresentei três produtos e seus subtotais",
+          "Inicializei e atualizei o acumulador corretamente",
+          "Incluí testes de quantidade zero e entrada inválida"
+        ],
+        "minLength": 200
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000300",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013000",
+        "00000000-0000-4000-8000-000000013001",
+        "00000000-0000-4000-8000-000000013002",
+        "00000000-0000-4000-8000-000000013003",
+        "00000000-0000-4000-8000-000000013004"
+      ],
+      "dynamic": {
+        "kind": "trace",
+        "title": "Monte um boletim que explica a conta",
+        "prompt": "Uma escola quer mostrar como encontrou a média de duas atividades de mesmo peso. Organize as quatro instruções, informe duas notas e teste sua sequência. Se aparecer um erro, observe qual valor ainda não existe, reorganize e teste novamente. Depois explique suas entradas, a soma, a média obtida e o que a ordem das instruções mudou.",
+        "criteria": [
+          "Organizei e testei as quatro instruções",
+          "Registrei as duas notas, a soma e a média",
+          "Expliquei por que a saída depende dos cálculos anteriores"
+        ],
+        "minLength": 120
+      },
+      "resource_ids": []
+    }
+  ],
+  "questions": [
+    {
+      "id": "00000000-0000-4000-8000-000000015000",
+      "title": "Reconhecer condição",
+      "prompt": "Qual frase é uma condição?",
+      "options": ["Abra a janela", "A janela está aberta", "Feche a porta"],
+      "explanation": "A janela está aberta descreve uma situação verificável. As outras frases pedem ações.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015001",
+      "title": "Verdadeiro",
+      "prompt": "A luz está acesa. A condição “a luz está acesa” é:",
+      "options": ["Verdadeira", "Falsa", "Uma ordem"],
+      "explanation": "A afirmação corresponde à situação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015002",
+      "title": "Aplicar uma regra",
+      "prompt": "Está chovendo. O plano manda levar guarda-chuva quando chove. O que fazer?",
+      "options": [
+        "Ignorar a verificação",
+        "Levar guarda-chuva",
+        "Mudar o significado de chover"
+      ],
+      "explanation": "O resultado da condição orienta a ação do plano.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015003",
+      "title": "Falso é defeito?",
+      "prompt": "Uma condição deu falso. Isso prova um erro no programa?",
+      "options": [
+        "Sim, sempre",
+        "Não, pode ser um resultado válido",
+        "Sim, falso significa travamento"
+      ],
+      "explanation": "Uma condição pode ser verdadeira ou falsa sem defeito no programa.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015004",
+      "title": "Palavra em Dart",
+      "prompt": "Qual palavra significa verdadeiro em Dart?",
+      "options": ["true", "false", "String"],
+      "explanation": "true é verdadeiro; false é falso. String é o tipo texto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015005",
+      "title": "Igualdade",
+      "prompt": "Qual operador compara igualdade em Dart?",
+      "options": ["=", "==", ">"],
+      "explanation": "== compara; = atribui.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015006",
+      "title": "Diferença",
+      "prompt": "Com quantidade 4, quantidade != 3 é:",
+      "options": ["Verdadeira", "Falsa", "Uma atribuição"],
+      "explanation": "4 é diferente de 3.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015007",
+      "title": "Maior",
+      "prompt": "7 > 7 é:",
+      "options": ["Verdadeira", "Falsa", "Impossível comparar"],
+      "explanation": "Os valores são iguais, não maiores.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015008",
+      "title": "Encontrar erro",
+      "prompt": "Uma pessoa diz que quantidade == 3 atualiza o estoque. O que corrigir?",
+      "options": [
+        "== compara sem atualizar",
+        "== apaga a variável",
+        "== soma três"
+      ],
+      "explanation": "A expressão faz uma pergunta sobre igualdade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015009",
+      "title": "Estoque",
+      "prompt": "Estoque 2 e pedido 3. estoque < pedido é:",
+      "options": ["Falsa", "Verdadeira", "Indefinida"],
+      "explanation": "2 é menor que 3.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015010",
+      "title": "Significado",
+      "prompt": "Como ler >=?",
+      "options": ["Maior ou igual a", "Menor que", "Somar e guardar"],
+      "explanation": "Os dois caracteres formam maior ou igual.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015011",
+      "title": "No limite",
+      "prompt": "Com nota 7, qual condição é verdadeira?",
+      "options": ["nota > 7", "nota >= 7", "nota < 7"],
+      "explanation": ">= inclui a nota 7.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015012",
+      "title": "Presença",
+      "prompt": "frequencia 70 atende a frequencia >= 75?",
+      "options": ["Sim", "Não", "Só com nota alta"],
+      "explanation": "70 é menor que 75.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015013",
+      "title": "Corrigir limite",
+      "prompt": "Qual condição inclui idade até 17?",
+      "options": ["idade <= 17", "idade > 17", "idade == 18"],
+      "explanation": "<= inclui valores menores e o limite.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015014",
+      "title": "Notas aceitas",
+      "prompt": "Quais notas atendem a nota >= 7?",
+      "options": ["Somente 7", "6, 7 e 8", "7, 8 e 9"],
+      "explanation": "Todos os valores iguais ou maiores que 7 atendem.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015015",
+      "title": "Reconhecer E",
+      "prompt": "Quando E produz verdadeiro?",
+      "options": [
+        "Quando basta uma verdadeira",
+        "Quando ambas são verdadeiras",
+        "Quando ambas são falsas"
+      ],
+      "explanation": "E exige as duas condições verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015016",
+      "title": "Interpretar",
+      "prompt": "Como ler nota >= 7 && frequencia >= 75?",
+      "options": [
+        "Nota pelo menos 7 E presença pelo menos 75%",
+        "Nota maior que 7, ignorando presença",
+        "Somar nota e presença"
+      ],
+      "explanation": "Cada comparação verifica seu limite; && exige ambas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015017",
+      "title": "No limite",
+      "prompt": "Nota 7 e frequência 75 atendem à regra?",
+      "options": [
+        "Sim, ambas são verdadeiras",
+        "Não, precisam ser maiores",
+        "Só a nota importa"
+      ],
+      "explanation": ">= inclui os limites 7 e 75.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015018",
+      "title": "Encontrar erro",
+      "prompt": "Nota 8 e frequência 74: qual requisito falhou?",
+      "options": ["Nota", "Frequência", "Nenhum"],
+      "explanation": "8 >= 7 é verdadeira; 74 >= 75 é falsa.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015019",
+      "title": "Caso da escola",
+      "prompt": "Qual estudante cumpre as duas regras?",
+      "options": [
+        "Nota 9, presença 70",
+        "Nota 6, presença 90",
+        "Nota 8, presença 80"
+      ],
+      "explanation": "8 >= 7 e 80 >= 75 são verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015020",
+      "title": "Reconhecer",
+      "prompt": "Qual regra corresponde a OU?",
+      "options": [
+        "Exigir dois documentos juntos",
+        "Aceitar carteira ou comprovante",
+        "Exigir nota e presença"
+      ],
+      "explanation": "Basta uma alternativa.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015021",
+      "title": "Uma verdadeira",
+      "prompt": "true || false vale:",
+      "options": ["true", "false", "Erro"],
+      "explanation": "Uma verdadeira satisfaz OU.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015022",
+      "title": "Ambas verdadeiras",
+      "prompt": "true || true vale:",
+      "options": ["false", "true", "Exige exatamente uma"],
+      "explanation": "OU inclusivo aceita ambas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015023",
+      "title": "Nenhuma",
+      "prompt": "false || false vale:",
+      "options": ["true", "false", "Zero numérico"],
+      "explanation": "Nenhuma alternativa foi cumprida.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015024",
+      "title": "Símbolo",
+      "prompt": "Qual é o OU lógico em Dart?",
+      "options": ["||", "&&", "=="],
+      "explanation": "|| é OU; && é E; == compara igualdade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015025",
+      "title": "Reconhecer",
+      "prompt": "Qual operação inverte verdadeiro e falso?",
+      "options": ["NÃO", "E", "Maior que"],
+      "explanation": "A negação troca o resultado lógico.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015026",
+      "title": "Negar verdadeiro",
+      "prompt": "!true vale:",
+      "options": ["true", "false", "7"],
+      "explanation": "NÃO verdadeiro é falso.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015027",
+      "title": "Negar falso",
+      "prompt": "!false vale:",
+      "options": ["true", "false", "Texto vazio"],
+      "explanation": "NÃO falso é verdadeiro.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015028",
+      "title": "Erro de leitura",
+      "prompt": "aberta é true. !aberta:",
+      "options": [
+        "Abre a porta",
+        "Calcula a condição contrária",
+        "Reatribui aberta automaticamente"
+      ],
+      "explanation": "Negar calcula outro resultado, sem atribuir à variável.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015029",
+      "title": "Aplicar",
+      "prompt": "temPendencia é false. !temPendencia vale:",
+      "options": ["false", "true", "Indefinido"],
+      "explanation": "A negação indica que não há pendência.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015030",
+      "title": "Agrupar",
+      "prompt": "Para que servem parênteses na expressão?",
+      "options": [
+        "Somar XP",
+        "Delimitar agrupamento",
+        "Converter bool em texto"
+      ],
+      "explanation": "Eles indicam o grupo a avaliar.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015031",
+      "title": "Prioridade",
+      "prompt": "Em Dart, qual tem maior prioridade entre estes?",
+      "options": ["||", "&&", "!"],
+      "explanation": "! tem prioridade sobre && e ||.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015032",
+      "title": "Aplicar",
+      "prompt": "false || (true && true) vale:",
+      "options": ["true", "false", "Erro"],
+      "explanation": "O grupo dá true, satisfazendo OU.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015033",
+      "title": "Outro grupo",
+      "prompt": "(docente || estudante) && autorizacao exige autorização para docentes?",
+      "options": ["Sim", "Não", "Só se estudante for false"],
+      "explanation": "O resultado do grupo ainda precisa cumprir autorização.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015034",
+      "title": "Docente",
+      "prompt": "docente true e autorizacao false. docente || (estudante && autorizacao) vale:",
+      "options": ["false", "true", "Indefinido"],
+      "explanation": "A alternativa docente já satisfaz OU.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015035",
+      "title": "Reconhecer",
+      "prompt": "Cada linha representa:",
+      "options": [
+        "Uma combinação das condições",
+        "Um novo operador",
+        "Um erro"
+      ],
+      "explanation": "Cada linha fixa valores e apresenta o resultado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015036",
+      "title": "Contar",
+      "prompt": "Duas condições bool têm quantas combinações?",
+      "options": ["2", "3", "4"],
+      "explanation": "Cada uma tem dois valores: 2 vezes 2 = 4.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015037",
+      "title": "E",
+      "prompt": "true && false vale:",
+      "options": ["true", "false", "Depende dos nomes"],
+      "explanation": "E exige ambas verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015038",
+      "title": "Linha ausente",
+      "prompt": "Já testou falso/falso, falso/verdadeiro e verdadeiro/falso. Falta:",
+      "options": [
+        "verdadeiro/verdadeiro",
+        "falso/falso",
+        "Uma quinta combinação"
+      ],
+      "explanation": "Falta o caso com ambas verdadeiras.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015039",
+      "title": "OU",
+      "prompt": "Quando A || B é falso?",
+      "options": [
+        "Ambas verdadeiras",
+        "A falsa e B verdadeira",
+        "Ambas falsas"
+      ],
+      "explanation": "Nenhuma alternativa é cumprida.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015040",
+      "title": "Negar grupo",
+      "prompt": "Qual nega A && B inteiro?",
+      "options": ["!A && B", "!(A && B)", "A && !B"],
+      "explanation": "Os parênteses põem a regra inteira sob a negação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015041",
+      "title": "Equivalência",
+      "prompt": "!(A && B) equivale a:",
+      "options": ["!A || !B", "!A && !B", "A || B"],
+      "explanation": "Negar E troca para OU e nega cada condição.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015042",
+      "title": "Uma falha",
+      "prompt": "cadastrado true e ativo false. A recusa vale:",
+      "options": ["true", "false", "Só se os dois forem false"],
+      "explanation": "O E dá false e a negação dá true.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015043",
+      "title": "Erro",
+      "prompt": "Por que !cadastrado && !ativo não cobre toda recusa?",
+      "options": [
+        "Aceita todos",
+        "Exige que os dois requisitos faltem",
+        "! não existe em Dart"
+      ],
+      "explanation": "Ela perde os casos em que só um requisito falta.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015044",
+      "title": "Negar OU",
+      "prompt": "!(A || B) equivale a:",
+      "options": ["!A || !B", "A && B", "!A && !B"],
+      "explanation": "Negar OU exige a ausência das duas alternativas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015045",
+      "title": "Função",
+      "prompt": "Por que criar media?",
+      "options": [
+        "Reutilizar uma operação com outras entradas",
+        "Guardar todos os usuários",
+        "Executar sem chamada"
+      ],
+      "explanation": "A função dá nome a uma operação reutilizável.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015046",
+      "title": "Parâmetro",
+      "prompt": "a e b na declaração são:",
+      "options": ["Mensagens", "Parâmetros", "Resultados prontos"],
+      "explanation": "Eles nomeiam as entradas dentro da função.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015047",
+      "title": "Aplicar",
+      "prompt": "media(6,8) devolve:",
+      "options": ["14", "2", "7"],
+      "explanation": "Soma 6 e 8 e divide por 2.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015048",
+      "title": "Retorno",
+      "prompt": "Qual devolve o resultado a quem chamou?",
+      "options": ["return", "print", "List"],
+      "explanation": "return devolve; print exibe.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000015049",
+      "title": "Dados",
+      "prompt": "Falta uma nota do formulário. O que fazer antes da chamada?",
+      "options": ["Usar 10", "Solicitar preenchimento", "Ignorar validação"],
+      "explanation": "A função supõe duas notas válidas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "xp": 40
+    }
+  ],
+  "answers": {
+    "00000000-0000-4000-8000-000000015000": 1,
+    "00000000-0000-4000-8000-000000015001": 0,
+    "00000000-0000-4000-8000-000000015002": 1,
+    "00000000-0000-4000-8000-000000015003": 1,
+    "00000000-0000-4000-8000-000000015004": 0,
+    "00000000-0000-4000-8000-000000015005": 1,
+    "00000000-0000-4000-8000-000000015006": 0,
+    "00000000-0000-4000-8000-000000015007": 1,
+    "00000000-0000-4000-8000-000000015008": 0,
+    "00000000-0000-4000-8000-000000015009": 1,
+    "00000000-0000-4000-8000-000000015010": 0,
+    "00000000-0000-4000-8000-000000015011": 1,
+    "00000000-0000-4000-8000-000000015012": 1,
+    "00000000-0000-4000-8000-000000015013": 0,
+    "00000000-0000-4000-8000-000000015014": 2,
+    "00000000-0000-4000-8000-000000015015": 1,
+    "00000000-0000-4000-8000-000000015016": 0,
+    "00000000-0000-4000-8000-000000015017": 0,
+    "00000000-0000-4000-8000-000000015018": 1,
+    "00000000-0000-4000-8000-000000015019": 2,
+    "00000000-0000-4000-8000-000000015020": 1,
+    "00000000-0000-4000-8000-000000015021": 0,
+    "00000000-0000-4000-8000-000000015022": 1,
+    "00000000-0000-4000-8000-000000015023": 1,
+    "00000000-0000-4000-8000-000000015024": 0,
+    "00000000-0000-4000-8000-000000015025": 0,
+    "00000000-0000-4000-8000-000000015026": 1,
+    "00000000-0000-4000-8000-000000015027": 0,
+    "00000000-0000-4000-8000-000000015028": 1,
+    "00000000-0000-4000-8000-000000015029": 1,
+    "00000000-0000-4000-8000-000000015030": 1,
+    "00000000-0000-4000-8000-000000015031": 2,
+    "00000000-0000-4000-8000-000000015032": 0,
+    "00000000-0000-4000-8000-000000015033": 0,
+    "00000000-0000-4000-8000-000000015034": 1,
+    "00000000-0000-4000-8000-000000015035": 0,
+    "00000000-0000-4000-8000-000000015036": 2,
+    "00000000-0000-4000-8000-000000015037": 1,
+    "00000000-0000-4000-8000-000000015038": 0,
+    "00000000-0000-4000-8000-000000015039": 2,
+    "00000000-0000-4000-8000-000000015040": 1,
+    "00000000-0000-4000-8000-000000015041": 0,
+    "00000000-0000-4000-8000-000000015042": 0,
+    "00000000-0000-4000-8000-000000015043": 1,
+    "00000000-0000-4000-8000-000000015044": 2,
+    "00000000-0000-4000-8000-000000015045": 0,
+    "00000000-0000-4000-8000-000000015046": 1,
+    "00000000-0000-4000-8000-000000015047": 2,
+    "00000000-0000-4000-8000-000000015048": 0,
+    "00000000-0000-4000-8000-000000015049": 1
+  },
+  "guides": {
+    "00000000-0000-4000-8000-000000000302": {
+      "objective": "Reconhecer uma condição e dizer se é verdadeira ou falsa.",
+      "prerequisites": "Rever antes: variáveis.",
+      "competency": "Reconhecer uma condição e dizer se é verdadeira ou falsa.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Uma decisão antes de sair",
+          "text": "Antes de sair, você olha se está chovendo. Se estiver, leva um guarda-chuva. Primeiro verifica uma situação; depois escolhe o que fazer. A lógica organiza esse raciocínio de modo que outra pessoa ou um programa consiga segui-lo."
+        },
+        {
+          "title": "Uma afirmação que pode ser verificada",
+          "text": "Uma condição é uma afirmação que pode ser verdadeira ou falsa. “A luz está acesa” é uma condição: basta observar a luz para conferir. “Acenda a luz” é uma instrução, pois pede uma ação. Um programa precisa distinguir a pergunta da ação que vem depois."
+        },
+        {
+          "title": "Verdadeiro e falso não são acerto e erro",
+          "text": "Se a luz está acesa, a condição “a luz está acesa” é verdadeira; se está apagada, é falsa. Falso pode ser um resultado válido da verificação. Em Dart, a linguagem usada nesta trilha, true significa verdadeiro e false significa falso. Esses dois valores formam o tipo bool."
+        },
+        {
+          "title": "Experimente os dois estados",
+          "text": "Marque e desmarque a luz no quadro. Compare o estado com a condição e leia a ação sugerida. A pergunta permanece igual; o resultado muda conforme a situação.",
+          "experiment": "condition"
+        },
+        {
+          "title": "Da condição para a ação",
+          "text": "Planeje em português: verificar se a luz está acesa; se sim, ler; se não, acender a luz antes de ler. Nas próximas bolinhas, compararemos números para criar condições mais específicas. Não precisamos de vários operadores ao mesmo tempo."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000330": {
+      "objective": "Ler igualdade, diferença, maior e menor.",
+      "prerequisites": "Rever antes: condição.",
+      "competency": "Ler igualdade, diferença, maior e menor.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Conferir um pedido",
+          "text": "Uma loja tem 3 cadernos e recebeu um pedido de 3. Para saber se as quantidades são iguais, comparamos os números. Uma comparação produz verdadeiro ou falso, como as condições da bolinha anterior."
+        },
+        {
+          "title": "Igualdade usa dois sinais",
+          "text": "Em Dart, quantidade == 3 pergunta se quantidade tem valor igual a 3. == é um operador, um símbolo que indica uma operação. Seus dois caracteres ficam juntos. Um único = guarda um valor; == compara sem mudar o valor guardado.",
+          "code": "int quantidade = 3;\nquantidade == 3"
+        },
+        {
+          "title": "Diferente de",
+          "text": "!= é lido como “diferente de”. Com quantidade igual a 4, quantidade != 3 é verdadeira. Com quantidade igual a 3, é falsa. Os dois caracteres juntos formam o operador. O ponto de exclamação sozinho será estudado em outra atividade."
+        },
+        {
+          "title": "Maior e menor",
+          "text": "> significa maior que: 8 > 7 é verdadeira; 7 > 7 é falsa. < significa menor que: 6 < 7 é verdadeira; 7 < 7 é falsa. Esses operadores não incluem a igualdade. Mude o operador e os valores no quadro para conferir.",
+          "experiment": "comparison"
+        },
+        {
+          "title": "Leia cada parte",
+          "text": "Em quantidade == 3, quantidade é o nome do valor guardado; == faz a comparação; 3 é o valor de referência. Se estoque vale 2 e pedido vale 3, estoque < pedido é verdadeira: falta produto para atender tudo."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000331": {
+      "objective": "Interpretar maior ou igual e menor ou igual.",
+      "prerequisites": "Rever antes: comparação.",
+      "competency": "Interpretar maior ou igual e menor ou igual.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "A nota exatamente no limite",
+          "text": "Uma escola usa a regra: a nota precisa ser pelo menos 7. Uma estudante recebeu 7, então atende. “Pelo menos” inclui o próprio limite. A frase “acima de 7” teria outro significado e excluiria essa nota."
+        },
+        {
+          "title": ">= é um único operador",
+          "text": "Em Dart, >= significa maior ou igual a. Os caracteres > e = juntos formam um único operador, sem espaço entre eles. Em nota >= 7, nota é o nome do dado, >= faz a comparação e 7 é o mínimo. O sinal = dentro de >= não é uma atribuição.",
+          "code": "nota >= 7"
+        },
+        {
+          "title": "Menor ou igual",
+          "text": "<= significa menor ou igual a. idade <= 17 inclui 16 e 17, mas não 18. > e < excluem a igualdade; >= e <= a incluem. Testar um valor exatamente no limite revela essa diferença."
+        },
+        {
+          "title": "Teste os dois lados do limite",
+          "text": "Para nota >= 7, 6 dá falso; 7, 8 e 9 dão verdadeiro. No quadro, escolha >= e teste esses valores. Depois use > com 7 e compare o resultado.",
+          "experiment": "comparison"
+        },
+        {
+          "title": "A frequência também é um número",
+          "text": "75% de frequência significa presença em 75 de cada 100 aulas consideradas. Na variável frequencia guardamos o número 75, sem o símbolo %. frequencia >= 75 é falsa para 70, verdadeira para 75 e verdadeira para 80. Ainda estamos avaliando cada regra separadamente.",
+          "code": "frequencia >= 75"
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000332": {
+      "objective": "Explicar cada parte de uma regra que exige nota e frequência.",
+      "prerequisites": "Rever antes: limites.",
+      "competency": "Explicar cada parte de uma regra que exige nota e frequência.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Uma escola verifica duas regras",
+          "text": "Uma escola precisa decidir se um estudante foi aprovado. Neste exemplo, exige nota mínima 7 e frequência mínima 75%. Cumprir uma regra sozinha não basta. Primeiro vamos entender os dois requisitos sem mostrar a expressão completa."
+        },
+        {
+          "title": "Primeiro requisito: a nota",
+          "text": "nota é o nome usado para representar a nota armazenada no programa. >=, formado por > e = juntos, significa maior ou igual a. 7 é o mínimo. nota >= 7 é falsa para 6 e verdadeira para 7, 8 e 9.",
+          "code": "nota >= 7"
+        },
+        {
+          "title": "Segundo requisito: a frequência",
+          "text": "frequencia guarda o percentual de presença como número de 0 a 100. frequencia >= 75 pergunta se a presença foi de pelo menos 75%. Para 70, dá falso; para 75 e 80, verdadeiro. Ainda não combinamos os resultados.",
+          "code": "frequencia >= 75"
+        },
+        {
+          "title": "As duas precisam ser verdadeiras",
+          "text": "Com nota 8 e frequência 70, a regra da nota é verdadeira, mas a da presença é falsa. A aprovação é recusada neste exemplo. Com nota 7 e frequência 75, ambas são verdadeiras e a aprovação é permitida. Essa combinação é o E lógico."
+        },
+        {
+          "title": "Agora introduza &&",
+          "text": "Em Dart, os dois caracteres & juntos formam &&, o operador lógico E. Não use apenas um & para esta operação. A expressão completa abaixo significa: a nota precisa ser pelo menos 7 E a frequência precisa ser pelo menos 75%. Cada comparação dá verdadeiro ou falso; o E combina esses resultados.",
+          "code": "nota >= 7 && frequencia >= 75"
+        },
+        {
+          "title": "Mude uma entrada de cada vez",
+          "text": "Teste nota 7 e frequência 75; depois 8 e 74; depois 6 e 80. Confira o resultado de cada requisito e o resultado final. O simulador calcula a regra com os valores que você informa. Vazio não é zero, e entradas fora dos intervalos precisam ser corrigidas.",
+          "experiment": "approval"
+        },
+        {
+          "title": "Reconstrua a regra com suas palavras",
+          "text": "nota e frequencia são nomes dos dados. >= compara cada dado com seu mínimo. 7 é o mínimo da nota; 75 é o mínimo percentual de presença. && exige ambas as condições verdadeiras. Na prática e na dinâmica desta bolinha, usaremos somente essa combinação."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000333": {
+      "objective": "Usar OU quando basta uma das condições.",
+      "prerequisites": "Rever antes: E lógico.",
+      "competency": "Usar OU quando basta uma das condições.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Duas formas de entrar",
+          "text": "Uma biblioteca aceita carteira estudantil ou comprovante de matrícula. Basta um documento. Quem tem os dois também entra. Essa regra é diferente da escola, que exigia dois requisitos simultaneamente."
+        },
+        {
+          "title": "Dê nomes aos fatos",
+          "text": "carteira é uma variável bool: true quando há carteira e false quando não há. comprovante guarda o mesmo tipo de informação sobre o outro documento. Cada uma é uma condição simples."
+        },
+        {
+          "title": "OU usa duas barras",
+          "text": "|| é o operador lógico OU em Dart. São duas barras verticais juntas. carteira || comprovante dá true quando pelo menos uma condição é verdadeira. Só false || false dá false. Uma barra isolada não é este operador.",
+          "code": "carteira || comprovante"
+        },
+        {
+          "title": "Teste todas as alternativas",
+          "text": "Marque e desmarque os documentos. Teste nenhum, apenas carteira, apenas comprovante e ambos. OU aceita ambos; não significa “exatamente um”.",
+          "experiment": "or"
+        },
+        {
+          "title": "Escolha pela regra",
+          "text": "Use E quando todos os requisitos são necessários; OU quando basta uma alternativa. Traduza a regra em palavras antes de escolher o símbolo. Se a biblioteca mudasse para exigir os dois documentos, o OU deixaria de representar sua regra."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000334": {
+      "objective": "Negar uma condição simples.",
+      "prerequisites": "Rever antes: OU lógico.",
+      "competency": "Negar uma condição simples.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "A pergunta contrária",
+          "text": "Se aberta guarda true para uma porta aberta, a condição “não está aberta” é falsa. Estamos invertendo a resposta lógica, sem mudar a posição real da porta."
+        },
+        {
+          "title": "O sinal antes da condição",
+          "text": "Em Dart, ! antes de um bool significa NÃO. !aberta é lido como “não aberta”. !true é false; !false é true. O símbolo atua na condição que vem depois dele.",
+          "code": "!aberta"
+        },
+        {
+          "title": "Diferente de não é a mesma operação",
+          "text": "!= compara dois valores, como nota != 7. ! sozinho nega uma condição, como !aberta. Os símbolos parecidos participam de operações diferentes."
+        },
+        {
+          "title": "Observe a inversão",
+          "text": "Altere a porta no quadro. Compare aberta e !aberta. Quando uma é verdadeira, a outra é falsa. O quadro simula essa informação; não altera a variável só por calcular sua negação.",
+          "experiment": "not"
+        },
+        {
+          "title": "Leia o nome inteiro",
+          "text": "Se temPendencia é false, !temPendencia é true: não há pendência. Diga a frase em voz alta ao usar NÃO, para não inverter uma regra sem querer. A negação de várias condições virá depois."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000335": {
+      "objective": "Usar parênteses para explicitar quais requisitos formam um grupo.",
+      "prerequisites": "Rever antes: NÃO lógico.",
+      "competency": "Usar parênteses para explicitar quais requisitos formam um grupo.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Um laboratório com alternativas",
+          "text": "O laboratório aceita docentes ou estudantes com autorização. docente, estudante e autorizacao são variáveis bool. Uma alternativa é ser docente; a outra é cumprir os dois requisitos estudantis."
+        },
+        {
+          "title": "Agrupe o que anda junto",
+          "text": "Os parênteses ( e ) delimitam um grupo. Em docente || (estudante && autorizacao), podemos avaliar o grupo estudantil primeiro e depois combinar seu resultado com docente usando OU.",
+          "code": "docente || (estudante && autorizacao)"
+        },
+        {
+          "title": "Outro agrupamento, outra regra",
+          "text": "(docente || estudante) && autorizacao exige autorização inclusive para docentes. Compare com docente true e autorizacao false: a regra original permite, a segunda recusa. Em Dart, ! tem prioridade sobre &&, e && sobre ||; os parênteses podem mudar ou deixar explícito o agrupamento."
+        },
+        {
+          "title": "Rastreie os resultados",
+          "text": "Com docente false, estudante true e autorizacao true, o grupo estudantil dá true; false || true dá true. No quadro, mude os estados e compare as duas expressões.",
+          "experiment": "grouping"
+        },
+        {
+          "title": "Confira a intenção",
+          "text": "Escreva a regra em português antes do código. Escolha um caso que diferencie os agrupamentos para verificar qual representa a regra pedida. As mesmas condições com parênteses diferentes podem permitir pessoas diferentes."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000336": {
+      "objective": "Conferir todas as combinações de duas condições.",
+      "prerequisites": "Rever antes: expressões compostas.",
+      "competency": "Conferir todas as combinações de duas condições.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Evite esquecer uma possibilidade",
+          "text": "Uma área exige cadastro confirmado e matrícula ativa. Cada informação tem dois valores. Testar só o caso em que ambas são verdadeiras não mostra o que acontece quando falta um requisito."
+        },
+        {
+          "title": "Uma linha para cada combinação",
+          "text": "Tabela-verdade é um quadro de combinações e resultados. Com duas condições A e B, temos falso/falso, falso/verdadeiro, verdadeiro/falso e verdadeiro/verdadeiro. A e B são nomes curtos, não comandos de uma linguagem."
+        },
+        {
+          "title": "Calcule E em cada linha",
+          "text": "Para A && B, só a linha verdadeiro/verdadeiro produz verdadeiro. As outras três dão falso. Para A || B, apenas falso/falso dá falso. A diferença aparece quando uma condição é verdadeira e a outra falsa."
+        },
+        {
+          "title": "Explore a tabela",
+          "text": "Altere as duas condições no quadro e veja a linha correspondente. Compare E e OU em cada caso. As quatro linhas cobrem os valores possíveis de duas condições bool.",
+          "experiment": "truth-table"
+        },
+        {
+          "title": "Use como plano de teste",
+          "text": "Escreva o resultado esperado de cada combinação antes de executar. Depois compare com a regra implementada. A tabela não substitui a validação das entradas do formulário: valores vazios ou inválidos precisam de verificação própria."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000337": {
+      "objective": "Negar E e OU conferindo a equivalência em todos os casos.",
+      "prerequisites": "Rever antes: tabela-verdade.",
+      "competency": "Negar E e OU conferindo a equivalência em todos os casos.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Quem fica de fora?",
+          "text": "O acesso exige cadastrado && ativo. Para descrever a recusa, negamos a regra inteira. Agora já conhecemos E, OU, NÃO e tabelas; podemos verificar essa transformação sem adivinhar."
+        },
+        {
+          "title": "Negue o grupo inteiro",
+          "text": "!(cadastrado && ativo) nega o resultado combinado. Com ambas verdadeiras, o E dá true e NÃO dá false: não há recusa. Se falta qualquer requisito, o E dá false e NÃO dá true: há recusa.",
+          "code": "!(cadastrado && ativo)"
+        },
+        {
+          "title": "Uma forma equivalente",
+          "text": "!cadastrado || !ativo também representa a recusa: basta não estar cadastrado OU não estar ativo. Ao negar E, negamos cada condição e trocamos E por OU. Essa equivalência é uma das leis de De Morgan.",
+          "code": "!cadastrado || !ativo"
+        },
+        {
+          "title": "Confira todas as linhas",
+          "text": "Compare !(A && B) e !A || !B no quadro. Os resultados coincidem nas quatro combinações. !A && !B seria outra regra: só dá verdadeiro se os dois requisitos faltarem, perdendo quem falha em apenas um.",
+          "experiment": "de-morgan"
+        },
+        {
+          "title": "Negar OU",
+          "text": "!(A || B) equivale a !A && !B. Se a biblioteca aceita carteira OU comprovante, a recusa acontece sem carteira E sem comprovante. Não basta trocar o operador: negue também cada condição e confira a tabela."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000301": {
+      "objective": "Nomear e atualizar dados com tipos adequados.",
+      "prerequisites": "Rever antes: algoritmo.",
+      "competency": "Nomear e atualizar dados com tipos adequados.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "O que a loja precisa lembrar?",
+          "text": "Uma loja precisa guardar nome, preço e quantidade de um produto. Uma variável associa um nome a um valor que o programa pode usar depois. Por exemplo, quantidade identifica o número de unidades. Quando uma unidade é vendida, esse dado precisa mudar."
+        },
+        {
+          "title": "Dart e uma instrução inteira",
+          "text": "Dart é uma linguagem de programação: uma forma de escrever instruções que o computador pode executar. Em int quantidade = 3;, int indica número inteiro, quantidade é o nome, = guarda o valor 3 e ; encerra a instrução. Inteiros não têm parte decimal.",
+          "variables": [
+            {
+              "name": "quantidade",
+              "value": "3",
+              "type": "int · inteiro"
+            }
+          ],
+          "code": "int quantidade = 3;"
+        },
+        {
+          "title": "Preço pode ter parte decimal",
+          "text": "double indica um número que pode ter parte decimal. Em double preco = 12.5;, o ponto faz parte da escrita numérica do código: lemos doze e meio. preco * quantidade multiplica o preço pela quantidade. O símbolo * significa multiplicação. Com 12.5 e 3, o total é 37.5.",
+          "code": "double preco = 12.5;\nint quantidade = 3;\ndouble total = preco * quantidade;"
+        },
+        {
+          "title": "Palavras são texto",
+          "text": "String é o tipo texto. Em String nome = \"Caderno\";, as aspas delimitam onde o texto começa e termina. Elas não fazem parte do nome exibido. O texto \"12.5\" não é o mesmo tipo de dado que o número 12.5.",
+          "code": "String nome = \"Caderno\";"
+        },
+        {
+          "title": "Sim e não como valores",
+          "text": "bool guarda true ou false: verdadeiro ou falso. bool disponivel = true; representa um produto disponível. Esses valores serão usados nas condições. Não são as palavras entre aspas: true é um valor lógico, e \"true\" seria texto.",
+          "code": "bool disponivel = true;"
+        },
+        {
+          "title": "Atualizar um valor",
+          "text": "Depois de int estoque = 10;, estoque = estoque - 3; lê o valor atual, calcula 10 menos 3 e guarda 7 no mesmo nome. - subtrai. Não repetimos int, porque a variável já foi criada. = atribui; ==, com dois sinais, compara igualdade.",
+          "trace": [
+            "estoque começa em 10",
+            "Calcular 10 - 3 = 7",
+            "Guardar 7 em estoque"
+          ],
+          "code": "int estoque = 10;\nestoque = estoque - 3;"
+        },
+        {
+          "title": "Quando não pode atribuir outra vez",
+          "text": "final codigo = \"A1\"; cria uma variável que recebe valor uma vez. Não podemos depois atribuir \"B2\" ao mesmo nome. Nesta atividade basta reconhecer que final impede uma nova atribuição. Ainda não precisamos estudar estruturas mais complexas."
+        },
+        {
+          "title": "Texto digitado precisa ser interpretado",
+          "text": "Um campo pode entregar \"12.5\" como texto. Converter é interpretar esse texto como número. Validar é conferir se ele serve à regra, como um preço não negativo. \"abc\" não é um preço. Na dinâmica, descreva o tratamento em português; não é preciso escrever uma função de conversão."
+        },
+        {
+          "title": "Confira o cadastro",
+          "text": "Nome Caderno usa String; preço 12.5 usa double; quantidade 3 usa int; disponibilidade true usa bool. Obtenha e valide os valores antes do cálculo. Multiplicar preço por quantidade produz 37.5. Para usar uma informação, precisamos entender seu valor e seu tipo."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000304": {
+      "objective": "Escolher um bloco de instruções com if e else.",
+      "prerequisites": "Rever antes: negação composta.",
+      "competency": "Escolher um bloco de instruções com if e else.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Depois de verificar, escolha a ação",
+          "text": "Uma condição como nota >= 7 já responde verdadeiro ou falso. Uma condicional escolhe o que executar conforme essa resposta. Em Dart, if significa “se”. Vamos começar com uma única escolha."
+        },
+        {
+          "title": "Entenda os delimitadores",
+          "text": "Em if (nota >= 7), os parênteses contêm a condição. As chaves { e } delimitam o bloco, o conjunto de instruções daquela escolha. print mostra um valor na saída; os parênteses de print contêm o que mostrar, e as aspas delimitam texto. ; encerra essa instrução.",
+          "code": "if (nota >= 7) {\n  print(\"Aprovado\");\n}"
+        },
+        {
+          "title": "Quando a condição é falsa",
+          "text": "else significa “senão”. Seu bloco executa quando a condição do if é falsa. Com nota 6, o programa mostra Revisar. Com nota 7, mostra Aprovado. Em Dart, as chaves delimitam o bloco; os espaços no começo da linha ajudam a leitura.",
+          "code": "if (nota >= 7) {\n  print(\"Aprovado\");\n} else {\n  print(\"Revisar\");\n}"
+        },
+        {
+          "title": "Uma segunda faixa",
+          "text": "else if significa “senão, se”. Ele só testa sua condição se a anterior foi falsa. Para aprovação a partir de 7 e recuperação a partir de 5, teste >= 7 primeiro. Só o primeiro ramo verdadeiro desta cadeia executa; o último else cobre as notas válidas restantes.",
+          "code": "if (nota >= 7) {\n  print(\"Aprovação\");\n} else if (nota >= 5) {\n  print(\"Recuperação\");\n} else {\n  print(\"Revisão\");\n}"
+        },
+        {
+          "title": "A ordem pode classificar errado",
+          "text": "Com nota 9, >= 5 e >= 7 são verdadeiras. Se >= 5 vier primeiro, ele captura 9 como recuperação antes de chegar à aprovação. Para nota 5: >= 7 é falsa, >= 5 é verdadeira, então a saída é Recuperação.",
+          "trace": [
+            "Receber nota 5",
+            "5 >= 7 → falso",
+            "5 >= 5 → verdadeiro",
+            "Mostrar Recuperação e sair da cadeia"
+          ]
+        },
+        {
+          "title": "Valide antes de classificar",
+          "text": "A escala aceita notas de 0 a 10. Nota 12 é inválida: peça correção antes de aplicar as faixas, mesmo que 12 >= 7. Teste 4.9, 5, 6.9, 7 e 10: revisão, recuperação, recuperação, aprovação e aprovação. = guarda valor; == compara igualdade."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000305": {
+      "objective": "Rastrear repetições e explicar seu término.",
+      "prerequisites": "Rever antes: condicionais, variáveis.",
+      "competency": "Rastrear repetições e explicar seu término.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Repetir sem copiar tudo",
+          "text": "Para mostrar 0, 1, 2, 3 e 4, poderíamos escrever cinco instruções. Um laço repete um bloco enquanto a condição permitir. Loop é laço em inglês. Defina onde começa, qual condição mantém a repetição e o que muda a cada volta."
+        },
+        {
+          "title": "O começo do for",
+          "text": "Em for (int i = 0; i < 5; i++), for inicia a repetição. int i = 0 cria um contador começando em zero. i < 5 é conferido antes de cada volta. i++ aumenta i em 1 depois do corpo. Os dois ; separam essas três partes.",
+          "code": "for (int i = 0; i < 5; i++) {\n  print(i);\n}"
+        },
+        {
+          "title": "Acompanhe cada volta",
+          "text": "Com i em 0, a condição é verdadeira: mostra 0 e aumenta para 1. Repete para 1, 2, 3 e 4. Depois i vira 5; 5 < 5 é falsa e o laço termina. Foram cinco execuções, embora o último valor mostrado seja 4.",
+          "trace": [
+            "i = 0: mostra 0",
+            "i = 1: mostra 1",
+            "i = 2: mostra 2",
+            "i = 3: mostra 3",
+            "i = 4: mostra 4",
+            "i = 5: condição falsa, termina"
+          ]
+        },
+        {
+          "title": "A fronteira muda a contagem",
+          "text": "Com i <= 5, a volta com i igual a 5 também executa: seriam seis. Se a condição começar falsa, podem ocorrer zero execuções. Conferir começo, condição e atualização ajuda a evitar uma volta a mais ou a menos."
+        },
+        {
+          "title": "Uma soma que não se perde",
+          "text": "Acumulador é uma variável com um total parcial. Crie soma = 0 antes do laço. Para somar 1, 2 e 3, os totais são 1, 3 e 6. soma = soma + i guarda o total anterior mais o valor atual. soma += i é a forma abreviada.",
+          "code": "int soma = 0;\nfor (int i = 1; i <= 3; i++) {\n  soma = soma + i;\n}"
+        },
+        {
+          "title": "Enquanto a condição for verdadeira",
+          "text": "while significa “enquanto”. Neste exemplo, sua atualização precisa estar dentro do corpo. Sem i++, i ficaria sempre em 0 e i < 5 nunca passaria a falso: seria um laço infinito.",
+          "code": "int i = 0;\nwhile (i < 5) {\n  print(i);\n  i++;\n}"
+        },
+        {
+          "title": "Prepare a tabela de teste",
+          "text": "Para somar de 1 a 4, use i de 1 até 4, inclusive. Os totais são 1, 3, 6 e 10. Com i < 4, o 4 fica fora e o total é 6. Se zerar soma dentro do laço, os totais anteriores são perdidos. Na dinâmica, registre contador e soma após cada volta."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000306": {
+      "objective": "Consultar uma lista e tratar o caso vazio antes da média.",
+      "prerequisites": "Rever antes: repetição, acumulador.",
+      "competency": "Consultar uma lista e tratar o caso vazio antes da média.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "Notas guardadas em sequência",
+          "text": "Uma lista reúne valores em uma ordem. Em Dart, usamos List. Array é um nome de estrutura semelhante usado em outras linguagens; aqui estudamos a lista de Dart. Podemos guardar três notas juntas em vez de criar um nome para cada uma."
+        },
+        {
+          "title": "Entenda a declaração",
+          "text": "Em List<int> notas = [7, 8, 9];, List indica lista e <int> diz que os elementos são inteiros. Aqui < e > fazem parte da escrita do tipo, não são comparações. [ e ] delimitam os valores; as vírgulas separam os elementos.",
+          "code": "List<int> notas = [7, 8, 9];"
+        },
+        {
+          "title": "A primeira posição é zero",
+          "text": "Índice é o número usado para consultar uma posição. notas[0] vale 7; notas[1] vale 8; notas[2] vale 9. notas.length é a quantidade de elementos: 3. Numa lista não vazia, o último índice é length - 1: aqui, 2.",
+          "variables": [
+            {
+              "name": "notas[0]",
+              "value": "7",
+              "type": "posição 0"
+            },
+            {
+              "name": "notas[1]",
+              "value": "8",
+              "type": "posição 1"
+            },
+            {
+              "name": "notas[2]",
+              "value": "9",
+              "type": "posição 2"
+            }
+          ]
+        },
+        {
+          "title": "Percorrer e somar",
+          "text": "Em for (final nota in notas), in indica de onde vêm os elementos; nota recebe um elemento por volta. final impede reatribuir esse nome dentro daquela volta. Com soma iniciada em 0, soma += nota produz totais 7, 15 e 24.",
+          "code": "int soma = 0;\nfor (final nota in notas) {\n  soma += nota;\n}"
+        },
+        {
+          "title": "Calcule usando a quantidade",
+          "text": "A média de [7,8,9] é 24 / 3 = 8. Divida pela quantidade notas.length. Com apenas [6], a média é 6. Antes de dividir, confira se há notas. [] é uma lista vazia, com length 0: ela não tem notas[0] e não fornece uma quantidade válida para essa divisão."
+        },
+        {
+          "title": "Teste tamanhos diferentes",
+          "text": "Teste [] para esperar um aviso “Sem notas”; [6] para esperar média 6; [7,8,9] para esperar 8. Um trecho nomeado que reúne instruções é chamado função; aprenderemos a escrevê-lo na próxima bolinha. Na dinâmica atual, descreva a validação e os cálculos em português."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000338": {
+      "objective": "Reconhecer parâmetros, chamada e retorno.",
+      "prerequisites": "Rever antes: listas, variáveis.",
+      "competency": "Reconhecer parâmetros, chamada e retorno.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "A mesma regra em vários lugares",
+          "text": "Se várias telas precisam calcular a média de duas notas, repetir a conta em cada lugar dificulta corrigir. Uma função reúne instruções sob um nome; podemos pedir essa operação novamente com outras entradas."
+        },
+        {
+          "title": "Leia a declaração",
+          "text": "Em Dart, double media(double a, double b) declara uma função. O primeiro double é o tipo do resultado. media é o nome escolhido. Os parênteses contêm parâmetros a e b, nomes das entradas dentro da função. Cada double informa que a entrada é numérica.",
+          "code": "double media(double a, double b) {\n  return (a + b) / 2;\n}"
+        },
+        {
+          "title": "Entregar o resultado",
+          "text": "return devolve um valor a quem chamou a função. (a + b) calcula a soma primeiro; / 2 divide por dois. As chaves delimitam o corpo. print mostra algo na saída; ele não substitui o valor devolvido por return."
+        },
+        {
+          "title": "Chamar com argumentos",
+          "text": "Em media(6,8), 6 e 8 são argumentos, os valores concretos da chamada. Dentro da função, a recebe 6 e b recebe 8. O retorno é 7. Em double resultado = media(6,8);, esse 7 fica guardado em resultado.",
+          "code": "double resultado = media(6, 8);\nprint(resultado);"
+        },
+        {
+          "title": "Outras entradas, mesma operação",
+          "text": "media(4,10) devolve 7; media(0,0) devolve 0. A função do exemplo supõe duas notas válidas. Antes de chamá-la com dados de um formulário, confira presença e intervalo. Reutilizar uma conta não dispensa validar os dados."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000303": {
+      "objective": "Somar subtotais de estoque sem perder o total anterior.",
+      "prerequisites": "Rever antes: funções, acumulador.",
+      "competency": "Somar subtotais de estoque sem perder o total anterior.",
+      "next": "Use os exemplos para resolver a prática. Na dinâmica, aplique o conceito e explique o resultado. Você pode voltar para revisar.",
+      "steps": [
+        {
+          "title": "O problema da loja",
+          "text": "A loja quer calcular o valor de três produtos em estoque. Para cada produto, recebe preço e quantidade. Subtotal é o valor de um produto: preço vezes quantidade. O total do estoque é a soma desses subtotais."
+        },
+        {
+          "title": "Calcule cada subtotal",
+          "text": "Produto A: preço 10, quantidade 2, subtotal 20. Produto B: preço 5, quantidade 3, subtotal 15. Produto C: preço 8, quantidade 1, subtotal 8. Em código, preco * quantidade multiplica os dois dados; somá-los não calcula o subtotal."
+        },
+        {
+          "title": "Atualize o acumulador",
+          "text": "total começa em 0, antes da repetição. Após A, vale 20. Após B, 35. Após C, 43. Use total = total + subtotal, ou total += subtotal, para guardar a soma com o valor anterior.",
+          "trace": [
+            "Inicializar total = 0",
+            "Produto A: 0 + 20 = 20",
+            "Produto B: 20 + 15 = 35",
+            "Produto C: 35 + 8 = 43"
+          ]
+        },
+        {
+          "title": "Investigue um resultado 8",
+          "text": "Se escrever total = subtotal em cada volta, os valores serão 20, 15 e 8. O programa perdeu os produtos anteriores. Zerar total dentro da repetição também perde o histórico. O acumulador precisa começar antes e ser atualizado durante a repetição."
+        },
+        {
+          "title": "Valide e teste",
+          "text": "Preço ou quantidade negativos são inválidos neste cadastro: peça correção antes de calcular. Quantidade zero é válida e contribui com subtotal zero. Confira o total 43 manualmente. Na dinâmica, monte uma tabela com produto, preço, quantidade, subtotal e total parcial."
+        }
+      ]
+    }
+  },
+  "pedagogy": {
+    "00000000-0000-4000-8000-000000000302": {
+      "concepts": ["condição", "verdadeiro e falso"],
+      "requires": ["variáveis"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000301"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000330": {
+      "concepts": ["comparação"],
+      "requires": ["condição"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000302"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000331": {
+      "concepts": ["limites"],
+      "requires": ["comparação"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000330"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000332": {
+      "concepts": ["E lógico"],
+      "requires": ["limites"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000331"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000333": {
+      "concepts": ["OU lógico"],
+      "requires": ["E lógico"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000332"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000334": {
+      "concepts": ["NÃO lógico"],
+      "requires": ["OU lógico"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000333"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000335": {
+      "concepts": ["expressões compostas"],
+      "requires": ["NÃO lógico"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000334"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000336": {
+      "concepts": ["tabela-verdade"],
+      "requires": ["expressões compostas"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000335"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000337": {
+      "concepts": ["negação composta"],
+      "requires": ["tabela-verdade"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000336"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000301": {
+      "concepts": ["variáveis", "tipos Dart", "atribuição", "conversão básica"],
+      "requires": ["algoritmo"],
+      "competency": "Compreensão",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000300"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000304": {
+      "concepts": ["condicionais", "faixas"],
+      "requires": ["negação composta"],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000337"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000305": {
+      "concepts": ["repetição", "contador", "acumulador"],
+      "requires": ["condicionais", "variáveis"],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000304"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000306": {
+      "concepts": ["listas", "índice", "lista vazia"],
+      "requires": ["repetição", "acumulador"],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000305"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000338": {
+      "concepts": ["funções"],
+      "requires": ["listas", "variáveis"],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000306"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000303": {
+      "concepts": ["estoque aplicado"],
+      "requires": ["funções", "acumulador"],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": ["00000000-0000-4000-8000-000000000338"],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000300": {
+      "concepts": ["algoritmo"],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    }
+  }
+}

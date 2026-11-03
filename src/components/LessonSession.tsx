@@ -1,4 +1,7 @@
 import { GuidedTheory, AverageExperiment } from "./GuidedTheory";
+import { LogicExperiment } from "./LogicExperiment";
+import curriculum from "../data/beginner-curriculum.json";
+import { isLogicKind, logicMissionReady } from "../lib/logicLearning";
 import {
   guidedTheories,
   missionReady,
@@ -81,7 +84,10 @@ export function LessonSession({
               : d;
           if (chosen) {
             const d = chosen;
-            if (["theory", "practice", "dynamic", "completed"].includes(d.view))
+            if (
+              ["theory", "practice", "dynamic", "completed"].includes(d.view) &&
+              (d.view !== "completed" || next.session.stage === "completed")
+            )
               setView(d.view);
             setTheoryStep(d.theoryStep || 0);
             if (d.theoryInputs) setTheoryInputs(d.theoryInputs);
@@ -183,7 +189,9 @@ export function LessonSession({
   }
   async function navigate(target: string) {
     if (stage === "theory" && target !== "theory") {
-      setState(await lessonAction(auth.demo, auth.id!, module.id, "theory"));
+      setState(
+        await lessonAction(auth.demo, auth.id!, module.id, "open_practice"),
+      );
     }
     setView(target);
   }
@@ -253,6 +261,21 @@ export function LessonSession({
                 label="Progresso desta atividade"
               />
               <Badge>Nível {state.plan.level}</Badge>
+              {(curriculum.pedagogy as Record<string, { competency: string }>)[
+                module.id
+              ] && (
+                <p className="small">
+                  Competência:{" "}
+                  {
+                    (
+                      curriculum.pedagogy as Record<
+                        string,
+                        { competency: string }
+                      >
+                    )[module.id].competency
+                  }
+                </p>
+              )}
               {currentView === "theory" && (
                 <Button
                   variant="outline"
@@ -278,7 +301,20 @@ export function LessonSession({
                   onInputs={setTheoryInputs}
                   resourceIds={state.plan.resource_ids}
                   disabled={action.busy}
-                  onComplete={() => action.run(() => navigate("practice"))}
+                  onComplete={() =>
+                    action.run(async () => {
+                      if (stage !== "completed")
+                        setState(
+                          await lessonAction(
+                            auth.demo,
+                            auth.id!,
+                            module.id,
+                            "theory",
+                          ),
+                        );
+                      setView("practice");
+                    })
+                  }
                 />
               ) : (
                 currentView === "theory" && (
@@ -296,7 +332,20 @@ export function LessonSession({
                     <LearningResources ids={state.plan.resource_ids} />
                     <Button
                       disabled={action.busy}
-                      onClick={() => action.run(() => navigate("practice"))}
+                      onClick={() =>
+                        action.run(async () => {
+                          if (stage !== "completed")
+                            setState(
+                              await lessonAction(
+                                auth.demo,
+                                auth.id!,
+                                module.id,
+                                "theory",
+                              ),
+                            );
+                          setView("practice");
+                        })
+                      }
                     >
                       Continuar para a prática
                     </Button>
@@ -327,6 +376,21 @@ export function LessonSession({
                             ? "Resposta correta."
                             : "Vamos revisar e tentar novamente."}{" "}
                           {result.explanation}
+                        </Notice>
+                      )}
+                      {result && !result.correct && result.tries >= 2 && (
+                        <Notice>
+                          Você pode revisar o conceito antes de tentar de novo.
+                          Nenhum XP é descontado.
+                          <Button
+                            variant="outline"
+                            onClick={() => {
+                              setTheoryStep(0);
+                              setView("theory");
+                            }}
+                          >
+                            Rever explicação passo a passo
+                          </Button>
                         </Notice>
                       )}
                       {!result?.correct && (
@@ -409,6 +473,22 @@ export function LessonSession({
                       prática.
                     </Notice>
                   )}
+                  {!state.session.theory_completed && stage !== "completed" && (
+                    <Notice tone="warning">
+                      Você pode estudar as partes em qualquer ordem. Antes de
+                      finalizar, percorra a teoria e use “Continuar para a
+                      prática” no último passo.
+                    </Notice>
+                  )}
+                  {isLogicKind(state.plan.dynamic.kind) && (
+                    <LogicExperiment
+                      kind={state.plan.dynamic.kind}
+                      value={interaction}
+                      onChange={setInteraction}
+                      mission
+                      disabled={action.busy}
+                    />
+                  )}
                   {state.plan.dynamic.kind === "trace" && (
                     <AverageExperiment
                       value={interaction}
@@ -468,6 +548,13 @@ export function LessonSession({
                     disabled={
                       action.busy ||
                       !practiceReady ||
+                      (!state.session.theory_completed &&
+                        stage !== "completed") ||
+                      (isLogicKind(state.plan.dynamic.kind) &&
+                        !logicMissionReady(
+                          state.plan.dynamic.kind,
+                          interaction,
+                        )) ||
                       (state.plan.dynamic.kind === "trace" &&
                         !missionReady(interaction)) ||
                       text.trim().length < state.plan.dynamic.minLength ||
@@ -478,7 +565,8 @@ export function LessonSession({
                         advance("finish", {
                           text,
                           checks,
-                          ...(state.plan.dynamic.kind === "trace"
+                          ...(state.plan.dynamic.kind === "trace" ||
+                          isLogicKind(state.plan.dynamic.kind)
                             ? { interaction }
                             : {}),
                         }),

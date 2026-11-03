@@ -3,6 +3,7 @@ import trackActivities from "./track-activities.json";
 import practicePacks from "./practice-packs.json";
 import enrichment from "./enrichment.json";
 import originalMaterials from "./legacy-materials.json";
+import beginnerCurriculum from "./beginner-curriculum.json";
 import type { Material, Module, Question, Subject, Track } from "../lib/types";
 export const id = (n: number) =>
   `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
@@ -215,12 +216,19 @@ export const exerciseAnswers: Record<string, unknown> = {
   ...enrichment.answers,
   ...practicePacks.answers,
   ...trackActivities.answers,
+  ...beginnerCurriculum.answers,
 };
 export const practiceSets = practicePacks.packs;
 
 tracks.push(...(trackActivities.tracks as Track[]));
 modules.push(...(trackActivities.modules as Module[]));
 questions.push(...(trackActivities.questions as Question[]));
+questions.push(...(beginnerCurriculum.questions as Question[]));
+for (const update of beginnerCurriculum.modules) {
+  const existing = modules.find((m) => m.id === update.id);
+  if (existing) Object.assign(existing, update);
+  else modules.push(update as Module);
+}
 for (const q of questions)
   q.activity_type ??= (
     {

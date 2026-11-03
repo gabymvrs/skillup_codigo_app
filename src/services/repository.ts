@@ -10,6 +10,7 @@ import type { Dataset, TableMap, TableName } from "../lib/types";
 import { emptyDataset, tableNames } from "../lib/types";
 import { createDemo, demoPortraits } from "../data/demo";
 import { requireSupabase } from "./supabase";
+import curriculum from "../data/beginner-curriculum.json";
 export const DEMO_KEY = "skillup.demo.v2";
 export function readDemo(): Dataset {
   const raw = localStorage.getItem(DEMO_KEY);
@@ -51,6 +52,12 @@ export function readDemo(): Dataset {
         (item) => item.id === q.id,
       )?.activity_type;
     hydrateDemoLearning(d);
+    for (const update of curriculum.modules) {
+      const stored = d.modules.find((m: { id: string }) => m.id === update.id);
+      const canonical = modules.find((m) => m.id === update.id);
+      if (stored && canonical)
+        Object.assign(stored, structuredClone(canonical));
+    }
     d.support_tickets?.forEach((t: Record<string, unknown>) => {
       t.assigned_to ??= null;
       t.response ??= null;

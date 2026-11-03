@@ -10,7 +10,7 @@ import {
 } from "../src/services/lessonJourney";
 import { readDemo, writeDemo } from "../src/services/repository";
 import { createDemo } from "../src/data/demo";
-import { id, modules, questions } from "../src/data/catalog";
+import { id, modules, questions, exerciseAnswers } from "../src/data/catalog";
 import { safeResourceUrl } from "../src/components/LearningResources";
 beforeEach(() => {
   localStorage.clear();
@@ -85,12 +85,7 @@ it("every current module has exactly one complete plan, and each legacy upgrade 
     expect(plan.question_ids).toHaveLength(5);
     for (const qid of plan.question_ids) {
       const q = questions.find((q) => q.id === qid)!;
-      expect(
-        evaluateDemo(
-          q,
-          (foundationLessons.answers as Record<string, any>)[qid],
-        ),
-      ).toBe(true);
+      expect(evaluateDemo(q, exerciseAnswers[qid] as any)).toBe(true);
     }
   }
 });
@@ -120,7 +115,7 @@ it("requires all five answers in a legacy lesson before the dynamic and preserve
     if (i > 0) await expect(call("practice")).rejects.toThrow();
     await call("answer", {
       question_id: qid,
-      response: (foundationLessons.answers as Record<string, any>)[qid],
+      response: exerciseAnswers[qid] as any,
     });
   }
   await call("practice");

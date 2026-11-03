@@ -1,5 +1,7 @@
 import { missionReady } from "../lib/guidedLearning";
+import { isLogicKind, logicMissionReady } from "../lib/logicLearning";
 import plans from "../data/lesson-plans.json";
+import curriculum from "../data/beginner-curriculum.json";
 import resources from "../data/learning-resources.json";
 import type {
   LessonPlan,
@@ -13,7 +15,11 @@ import { awardDemo, evaluateDemo } from "./learning";
 import { activityType } from "./activities";
 import { exerciseAnswers, demoAnswers } from "../data/catalog";
 import { uid } from "../lib/utils";
-export const demoPlans = plans as LessonPlan[];
+export const demoPlans = [
+  ...new Map(
+    [...plans, ...curriculum.plans].map((p) => [p.module_id, p]),
+  ).values(),
+] as LessonPlan[];
 export const learningResources = resources as LearningResource[];
 const key = (user: string, module: string) =>
   `skillup.lesson.demo.${user}.${module}`;
@@ -39,6 +45,7 @@ export async function lessonAction(
   if (!plan || !m) throw new Error("Conteúdo desta atividade indisponível.");
   if (
     m.prerequisite_id &&
+    !d.progress.some((p) => p.user_id === user && p.module_id === module) &&
     !d.progress.some(
       (p) => p.user_id === user && p.module_id === m.prerequisite_id,
     )
@@ -49,6 +56,7 @@ export async function lessonAction(
     stage: "theory",
     results: {},
     xp: 0,
+    theory_completed: false,
   };
   try {
     s = JSON.parse(localStorage.getItem(key(user, module)) || "null") || s;
@@ -57,12 +65,18 @@ export async function lessonAction(
   }
   const valid =
     action === "get" ||
-    (action === "theory" && s.stage === "theory") ||
+    (action === "theory" && s.stage !== "completed") ||
+    (action === "open_practice" && s.stage === "theory") ||
     ((action === "answer" || action === "practice") &&
       s.stage === "practice") ||
     (action === "finish" && (s.stage === "dynamic" || s.stage === "completed"));
   if (!valid) throw new Error("Ação incompatível com a parte atual.");
-  if (action === "theory" && s.stage === "theory") s.stage = "practice";
+  s.theory_completed ??= s.stage !== "theory";
+  if (action === "theory") {
+    s.theory_completed = true;
+    if (s.stage === "theory") s.stage = "practice";
+  }
+  if (action === "open_practice") s.stage = "practice";
   if (action === "answer") {
     if (s.stage !== "practice") throw new Error("Abra a parte de prática.");
     const { question_id, response } = payload as {
@@ -110,6 +124,8 @@ export async function lessonAction(
     s.stage = "dynamic";
   }
   if (action === "finish" && s.stage === "dynamic") {
+    if (!s.theory_completed)
+      throw new Error("Conclua a teoria antes de finalizar a atividade.");
     const response = payload as { text: string; checks: boolean[] };
     if (
       !response ||
@@ -132,6 +148,18 @@ export async function lessonAction(
       )
     )
       throw new Error("Organize e teste a sequência com duas notas válidas.");
+    if (
+      isLogicKind(plan.dynamic.kind) &&
+      !logicMissionReady(
+        plan.dynamic.kind,
+        (
+          payload as {
+            interaction?: import("../lib/guidedLearning").LearningInputs;
+          }
+        ).interaction,
+      )
+    )
+      throw new Error("Teste a simulação antes de finalizar a atividade.");
     s.dynamic_response = response;
     s.stage = "completed";
     if (!d.progress.some((p) => p.user_id === user && p.module_id === module)) {

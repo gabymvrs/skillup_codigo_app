@@ -1,5 +1,6 @@
 import type { LearningInputs } from "./guidedLearning";
 import type { ExerciseAnswer } from "./types";
+import type { LogicKind } from "./logicLearning";
 export interface LessonDynamic {
   kind:
     | "applied"
@@ -8,7 +9,8 @@ export interface LessonDynamic {
     | "visual"
     | "podcast"
     | "simulation"
-    | "trace";
+    | "trace"
+    | LogicKind;
   title: string;
   prompt: string;
   criteria: string[];
@@ -54,6 +56,7 @@ export interface LessonState {
     interaction?: LearningInputs;
   };
   xp: number;
+  theory_completed?: boolean;
 }
 export interface LearningResource {
   id: string;

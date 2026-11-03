@@ -6,7 +6,10 @@ import {
   type LearningInputs,
 } from "../lib/guidedLearning";
 import { Button, Notice, ProgressBar } from "./ui";
+import { TeachingCode } from "./TeachingCode";
 import { LearningResources } from "./LearningResources";
+import { LogicExperiment } from "./LogicExperiment";
+import { isLogicKind } from "../lib/logicLearning";
 export function AverageExperiment({
   value,
   onChange,
@@ -185,11 +188,7 @@ export function GuidedTheory({
       {current.text.split("\n\n").map((p, i) => (
         <p key={i}>{p}</p>
       ))}
-      {current.code && (
-        <pre className="guided-code">
-          <code>{current.code}</code>
-        </pre>
-      )}
+      {current.code && <TeachingCode source={current.code} />}
       {current.annotations && (
         <ul>
           {current.annotations.map((a) => (
@@ -197,8 +196,36 @@ export function GuidedTheory({
           ))}
         </ul>
       )}
-      {current.experiment && (
+      {current.variables && (
+        <dl className="variable-grid">
+          {current.variables.map((v) => (
+            <div className="card" key={v.name}>
+              <dt>
+                <code>{v.name}</code>
+              </dt>
+              <dd>{v.value}</dd>
+              <small>{v.type}</small>
+            </div>
+          ))}
+        </dl>
+      )}
+      {current.trace && (
+        <ol className="execution-trace" aria-label="Passos da execução">
+          {current.trace.map((row, i) => (
+            <li key={i}>{row}</li>
+          ))}
+        </ol>
+      )}
+      {current.experiment === "average" && (
         <AverageExperiment
+          value={inputs}
+          onChange={onInputs}
+          disabled={disabled}
+        />
+      )}
+      {current.experiment && isLogicKind(current.experiment) && (
+        <LogicExperiment
+          kind={current.experiment}
           value={inputs}
           onChange={onInputs}
           disabled={disabled}

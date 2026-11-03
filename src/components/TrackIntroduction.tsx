@@ -97,10 +97,11 @@ export function TrackIntroduction({
           <h3>Como funcionam as atividades?</h3>
           <p>
             Cada bolinha reúne Teoria, Prática e Dinâmica na mesma atividade.
-            Você pode alternar entre as três partes e pular a teoria quando já
-            conhecer o assunto. A prática oferece correção e novas tentativas; a
-            dinâmica aplica o que foi estudado. A conclusão válida registra seu
-            resultado, concede XP uma única vez e libera a próxima etapa.
+            Você pode alternar entre as três partes e pular para a prática,
+            retornando à teoria depois. Para concluir, registre as três partes.
+            A prática oferece correção e novas tentativas; a dinâmica aplica o
+            que foi estudado. A conclusão válida registra seu resultado, concede
+            XP uma única vez e libera a próxima etapa.
           </p>
           <p>
             O conteúdo das etapas depende do que veio antes. Se encontrar um

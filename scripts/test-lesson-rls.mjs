@@ -14,6 +14,7 @@ export async function testLesson({
     `insert into auth.users(id,raw_user_meta_data) values('${id(40)}','{"full_name":"Lesson Test"}');insert into auth.sessions(id,user_id) values('${id(40)}','${id(40)}');`,
   );
   await db.exec(await readFile("supabase/lesson-seed.sql", "utf8"));
+  await db.exec(await readFile("supabase/beginner-seed.sql", "utf8"));
   const module = id(4000),
     question = id(12000);
   const call = async (action, payload = null) =>
@@ -160,7 +161,7 @@ export async function testLesson({
       0,
     );
   });
-  await test("All 56 modules have plans; legacy seed is idempotent and preserves recorded progress", async () => {
+  await test("All curriculum modules have plans; legacy seed is idempotent and preserves recorded progress", async () => {
     await admin();
     assert.equal(
       await scalar(
@@ -168,7 +169,7 @@ export async function testLesson({
       ),
       0,
     );
-    assert.equal(await scalar("select count(*) from public.lesson_plans"), 56);
+    assert.equal(await scalar("select count(*) from public.lesson_plans"), 65);
     assert.equal(
       await scalar(
         "select count(*) from public.lesson_plans where module_id in (select id from public.modules where track_id in ('" +
@@ -177,11 +178,12 @@ export async function testLesson({
           id(201) +
           "')) and cardinality(question_ids)=5",
       ),
-      10,
+      19,
     );
     const progress = await scalar("select count(*) from public.progress");
     const questions = await scalar("select count(*) from public.questions");
     await db.exec(await readFile("supabase/lesson-seed.sql", "utf8"));
+    await db.exec(await readFile("supabase/beginner-seed.sql", "utf8"));
     assert.equal(
       await scalar("select count(*) from public.progress"),
       progress,
@@ -191,17 +193,37 @@ export async function testLesson({
       questions,
     );
   });
-  await test("All ten legacy lessons grade five formats, block partial practice and reward only after the dynamic", async () => {
+  await test("All fundamental and backend lessons grade their exercises, block partial practice and reward only after the dynamic", async () => {
     await admin();
     await db.exec(
       `insert into auth.users(id,raw_user_meta_data) values('${id(41)}','{"full_name":"Complete Catalogue Test"}');insert into auth.sessions(id,user_id) values('${id(41)}','${id(41)}');`,
     );
-    const upgrades = JSON.parse(
+    const foundation = JSON.parse(
       await readFile("src/data/foundation-lessons.json", "utf8"),
     );
-    const plans = JSON.parse(
+    const curriculum = JSON.parse(
+      await readFile("src/data/beginner-curriculum.json", "utf8"),
+    );
+    const upgrades = {
+      answers: { ...foundation.answers, ...curriculum.answers },
+      modules: (
+        await db.query(
+          "select id from public.modules where track_id in ('" +
+            id(200) +
+            "','" +
+            id(201) +
+            "') order by track_id,position",
+        )
+      ).rows,
+    };
+    const original = JSON.parse(
       await readFile("src/data/lesson-plans.json", "utf8"),
     );
+    const plans = [
+      ...new Map(
+        [...original, ...curriculum.plans].map((p) => [p.module_id, p]),
+      ).values(),
+    ];
     await actor(41);
     for (const module of upgrades.modules) {
       const plan = plans.find((p) => p.module_id === module.id);
@@ -247,7 +269,25 @@ export async function testLesson({
                 ran: true,
               },
             }
-          : {}),
+          : [
+                "condition",
+                "or",
+                "not",
+                "grouping",
+                "truth-table",
+                "de-morgan",
+              ].includes(plan.dynamic.kind)
+            ? {
+                interaction: {
+                  first: "true",
+                  second: "false",
+                  third: "false",
+                  ran: true,
+                },
+              }
+            : plan.dynamic.kind === "approval"
+              ? { interaction: { first: "7", second: "75", ran: true } }
+              : {}),
       });
       const xpAfter = await scalar(
         "select coalesce(sum(xp),0) from public.reward_events",
@@ -258,12 +298,12 @@ export async function testLesson({
         xpAfter,
       );
     }
-    assert.equal(await scalar("select count(*) from public.progress"), 10);
+    assert.equal(await scalar("select count(*) from public.progress"), 19);
     assert.equal(
       await scalar(
         "select count(*) from public.attempts where lesson_module_id is not null",
       ),
-      50,
+      95,
     );
   });
   await test("Lesson drafts cannot forge completion and answer feedback retains the first response", async () => {
@@ -395,6 +435,71 @@ export async function testLesson({
       "insert into public.practice_completions(user_id,set_id) values('" +
         id(5) +
         "','fake')",
+    );
+  });
+  await test("Skipped theory remains incomplete; logic missions enforce valid tested inputs and unique XP", async () => {
+    await admin();
+    await db.exec(
+      `insert into auth.users(id,raw_user_meta_data) values('${id(90)}','{"full_name":"Logic Pilot Test"}');insert into auth.sessions(id,user_id) values('${id(90)}','${id(90)}');`,
+    );
+    for (const previous of [300, 301, 302, 330, 331])
+      await db.query(
+        "insert into public.progress(user_id,module_id) values($1,$2)",
+        [id(90), id(previous)],
+      );
+    const curriculum = JSON.parse(
+      await readFile("src/data/beginner-curriculum.json", "utf8"),
+    );
+    const plan = curriculum.plans.find((p) => p.module_id === id(332));
+    await actor(90);
+    const call = async (action, payload = null) =>
+      (
+        await db.query("select public.lesson_action($1,$2,$3) result", [
+          id(332),
+          action,
+          JSON.stringify(payload),
+        ])
+      ).rows[0].result;
+    await call("get");
+    const skipped = await call("open_practice");
+    assert.equal(skipped.session.theory_completed, false);
+    for (const qid of plan.question_ids)
+      await call("answer", {
+        question_id: qid,
+        response: curriculum.answers[qid],
+      });
+    await call("practice");
+    const payload = {
+      text: "A nota precisa ser pelo menos 7 e a frequência precisa ser pelo menos 75. Com nota 8 e presença 74, somente a regra da nota foi cumprida.",
+      checks: [true, true],
+      interaction: { first: "7", second: "75", ran: true },
+    };
+    await assert.rejects(() => call("finish", payload));
+    await db.query("select public.save_lesson_draft($1,$2)", [
+      id(332),
+      JSON.stringify({ theory_completed: true, stage: "completed" }),
+    ]);
+    await assert.rejects(() => call("finish", payload));
+    await call("theory");
+    for (const interaction of [
+      { first: "7", second: "75", ran: false },
+      { first: "", second: "75", ran: true },
+      { first: "11", second: "75", ran: true },
+      { first: "7", second: "101", ran: true },
+    ])
+      await assert.rejects(() => call("finish", { ...payload, interaction }));
+    const done = await call("finish", payload);
+    assert.equal(done.session.stage, "completed");
+    await call("finish");
+    assert.equal(
+      await scalar(
+        "select count(*) from public.reward_events where user_id='" +
+          id(90) +
+          "' and source='module:" +
+          id(332) +
+          "'",
+      ),
+      1,
     );
   });
   await admin();

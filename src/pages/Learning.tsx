@@ -210,6 +210,7 @@ export function TrackDetail() {
         {modules.map((m, i) => {
           const locked =
             auth.role === "estudante" &&
+            !done(m.id) &&
             Boolean(m.prerequisite_id && !done(m.prerequisite_id));
           return (
             <button

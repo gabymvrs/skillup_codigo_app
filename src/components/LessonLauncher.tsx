@@ -48,8 +48,8 @@ export function LessonLauncher({
           </p>
         )}
         <p>
-          Consulte a teoria quando precisar. Conclua a prática e a dinâmica para
-          registrar a atividade e receber XP.
+          Você pode navegar entre as partes. Conclua teoria, prática e dinâmica
+          para registrar a atividade e receber XP.
         </p>
         {error ? (
           <Notice tone="warning">{error}</Notice>
