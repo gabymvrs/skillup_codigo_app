@@ -225,3 +225,28 @@ it("keeps the non-code disciplines' original questions after four contextual che
   }
   expect(questions.find((q) => q.id === id(8017))?.explanation).toContain("parágrafo");
 });
+
+it("teaches networks and low-voltage electronics before their applied cases", () => {
+  for (const [track, order] of [
+    [2002, [3020, 3021, 3022, 4009, 4010]],
+    [2003, [3030, 3031, 3032]],
+    [201, [320, 321, 322]],
+  ] as const) {
+    const ordered = modules.filter((m) => m.track_id === id(track)).sort((a,b) => a.position-b.position);
+    expect(ordered.map((m) => m.id)).toEqual(order.map(id));
+    for (const [index, m] of ordered.entries()) {
+      expect(m.prerequisite_id).toBe(index ? ordered[index - 1].id : null);
+      const plan = demoPlans.find((p) => p.module_id === m.id)!;
+      expect(plan.question_ids.length).toBeGreaterThanOrEqual(5);
+      expect(curriculum.guides[m.id as keyof typeof curriculum.guides].steps).toHaveLength(5);
+      for (const qid of plan.question_ids) {
+        const q = questions.find((item) => item.id === qid)!;
+        if (q.kind !== "challenge" && q.activity_type !== "code_practice")
+          expect(evaluateDemo(q, exerciseAnswers[qid] as never)).toBe(true);
+      }
+    }
+  }
+  const electronics = [3030, 3031, 3032].map((n) => curriculum.guides[id(n) as keyof typeof curriculum.guides].steps.map((s) => s.text).join(" ")).join(" ");
+  expect(electronics).toContain("0,02 A");
+  expect(electronics).toContain("Não use a rede elétrica");
+});

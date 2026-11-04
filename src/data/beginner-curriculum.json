@@ -532,6 +532,94 @@
       "position": 2,
       "prerequisite_id": "00000000-0000-4000-8000-000000003081",
       "question_id": "00000000-0000-4000-8000-000000019048"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003020",
+      "title": "Rede local e internet",
+      "body": "Uma rede local conecta dispositivos em uma área, como computadores e um roteador de uma escola. Compartilhar essa rede não significa alcançar qualquer site na internet.\n\nWi-Fi é uma forma de ligação sem fio até um equipamento local. Um aparelho pode mostrar Wi-Fi conectado mesmo quando o acesso externo está indisponível.\n\nInternet interliga várias redes. O roteador encaminha pacotes, pequenas partes de dados, de uma rede para outra conforme o destino.\n\nUma página é procurada por nome. DNS é o serviço que relaciona o nome de domínio a um endereço IP, identificação usada para localizar o destino na rede.\n\nSepare as observações: há ligação à rede local? Há acesso externo por endereço? Um nome de site é resolvido? Cada resposta aponta para uma etapa diferente.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000020000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003021",
+      "title": "Endereçamento e DNS",
+      "body": "Um endereço IP identifica uma interface em uma rede. Ele permite que dados tenham um destino, mas não substitui um nome fácil de lembrar.\n\nDNS consulta a relação entre um nome, como um domínio escolar, e o endereço IP usado para chegar ao destino. Resolver o nome é uma etapa distinta de manter o enlace local.\n\nO roteador encaminha pacotes para outras redes. Se o aparelho alcança o roteador, isso confirma parte do caminho local, não todas as etapas externas.\n\nHTTPS indica comunicação Web protegida por criptografia entre navegador e servidor, com verificação de identidade do servidor; não significa que todo conteúdo de uma página seja confiável.\n\nEm um relato de falha, identifique o que foi testado: acesso ao roteador, acesso a um IP externo e acesso pelo nome. Não atribua toda falha ao DNS sem evidência.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003020",
+      "question_id": "00000000-0000-4000-8000-000000020004"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003022",
+      "title": "Diagnóstico de conexão",
+      "body": "Diagnosticar é localizar uma etapa que falhou com testes observáveis. Comece anotando o que funciona e o que não funciona, sem trocar equipamentos por palpite.\n\nConfira o enlace local: o dispositivo está conectado ao Wi-Fi e alcança o roteador? O ícone de Wi-Fi sozinho não comprova acesso à internet.\n\nDepois confira acesso externo por endereço IP conhecido e autorizado para o teste. Se não funcionar, investigue o caminho externo antes de culpar nomes de sites.\n\nSe o acesso externo por IP funciona, mas por nome não, teste configuração e resposta do DNS. A diferença entre os dois testes é a evidência relevante.\n\nRegistre horário, teste, resultado e próxima hipótese. Repita o mesmo teste após uma mudança para verificar se ela corrigiu a falha.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003021",
+      "question_id": "00000000-0000-4000-8000-000000020008"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004009",
+      "title": "Interpretar uma topologia",
+      "body": "Topologia descreve como os equipamentos estão ligados. Em estrela, cada computador tem um enlace até um equipamento central, como um switch.\n\nUm switch conecta equipamentos na rede local. Ele encaminha tráfego entre portas conforme os endereços observados; cada cabo do desenho corresponde a um enlace.\n\nNo diagrama da prática, o cabo X liga somente o computador B ao switch. Se apenas X for retirado, B perde esse enlace; A mantém o seu cabo.\n\nSe o equipamento central falha, vários computadores ligados a ele podem perder a comunicação. Essa situação difere de desligar um cabo periférico.\n\nPara prever o impacto, siga o caminho de cada computador até o centro e marque exatamente o trecho interrompido.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003022",
+      "question_id": "00000000-0000-4000-8000-000000020012"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004010",
+      "title": "Diagnóstico por evidências",
+      "body": "Teste cada parte da conexão separadamente: enlace local, roteador, acesso externo por IP e resolução de nomes. Um teste positivo elimina algumas hipóteses, não todas.\n\nSe o computador alcança o roteador, há comunicação local até ele no momento do teste. Isso não comprova o caminho até um servidor externo.\n\nSe um servidor externo responde por IP, o caminho externo funciona para aquele teste. Quando o mesmo destino não abre pelo nome, o DNS torna-se a hipótese principal.\n\nVerifique o endereço do servidor DNS configurado e sua resposta. Não conclua que todo cabo ou todo acesso externo está quebrado quando os testes por IP funcionam.\n\nDocumente a sequência e a evidência que levou à hipótese; mude um fator de cada vez e repita o teste afetado.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004009",
+      "question_id": "00000000-0000-4000-8000-000000020016"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003030",
+      "title": "Tensão, corrente e resistência",
+      "body": "Tensão elétrica é a diferença de potencial entre dois pontos; mede-se em volts (V). Uma fonte de baixa tensão pode ser representada em um desenho de circuito.\n\nCorrente é o fluxo de carga elétrica; mede-se em amperes (A). O valor da corrente depende do circuito fechado e de seus componentes.\n\nResistência oferece oposição à corrente; mede-se em ohms (Ω). Um resistor é um componente que pode limitar a corrente em um circuito.\n\nCompare as unidades: V para tensão, A para corrente e Ω para resistência. Elas descrevem grandezas diferentes e não devem ser trocadas.\n\nPor enquanto, desenhe e simule somente circuitos de baixa tensão. Não ligue componentes de estudo diretamente à rede elétrica.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000020020"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003031",
+      "title": "Circuito com resistor",
+      "body": "Em um circuito simples de baixa tensão, a corrente percorre um caminho fechado. Um resistor em série faz parte desse mesmo caminho.\n\nA lei de Ohm relaciona tensão V, corrente I e resistência R: I = V / R. A divisão usa volts e ohms e resulta em amperes.\n\nPara 2 V em um resistor de 100 Ω, I = 2 / 100 = 0,02 A, ou 20 mA. Um miliampere (mA) é um milésimo de ampere.\n\nCom os mesmos 2 V e 200 Ω, I = 2 / 200 = 0,01 A, ou 10 mA. Dobrar a resistência reduz a corrente calculada à metade nesse modelo.\n\nO cálculo idealizado não substitui conferir limites da fonte e do componente. Use o exercício em desenho ou simulador de baixa tensão, sem rede elétrica.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003030",
+      "question_id": "00000000-0000-4000-8000-000000020024"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003032",
+      "title": "Simulação de LED",
+      "body": "LED é um diodo que emite luz quando ligado de forma apropriada. Neste exercício, represente uma fonte de baixa tensão, resistor e LED em série.\n\nUm LED tem polaridade: ânodo e cátodo indicam os lados. No desenho simplificado, a corrente convencional segue da saída positiva da fonte, pelo resistor e LED orientado, até o retorno.\n\nO resistor limita a corrente. Antes de uma montagem física, seria necessário consultar a especificação do LED, da fonte e do resistor; apenas a cor do LED não determina esses valores.\n\nNo simulador ou papel, observe o que muda ao inverter o LED: ele normalmente deixa de conduzir no sentido contrário dentro dos limites especificados.\n\nRegistre a orientação, a função do resistor e uma verificação de baixa tensão. Não use a rede elétrica nesta atividade.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003031",
+      "question_id": "00000000-0000-4000-8000-000000020028"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000320",
+      "title": "Requisições HTTP",
+      "body": "Um cliente, como o navegador, envia uma requisição HTTP a um servidor. O servidor responde com um status, cabeçalhos e, quando apropriado, um corpo.\n\nUma requisição tem método e caminho. GET /produtos pede uma representação da lista de produtos; GET indica consulta, não autoriza por si só acesso a dados privados.\n\nPOST costuma enviar dados para criar ou processar um recurso. Um corpo pode carregar dados; não coloque senhas no caminho ou na URL, que pode aparecer em históricos e registros.\n\nO status 200 indica sucesso da consulta; 404 indica que o recurso não foi encontrado. Um status precisa ser interpretado com o contexto e o corpo da resposta.\n\nDesenhe o caminho cliente → requisição → servidor → resposta. Identifique método, caminho, status e conteúdo sem misturar as partes.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000013035"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000321",
+      "title": "APIs REST",
+      "body": "Uma API define como programas trocam dados. Um contrato descreve caminho, método, campos de entrada, resposta e erros esperados.\n\nEm /produtos, GET consulta a coleção. POST /produtos pode solicitar a criação de um produto com nome e preço no corpo JSON.\n\nJSON organiza dados em pares de nome e valor: {\"nome\":\"Lápis\",\"preco\":2}. As aspas delimitam chaves e textos; números como 2 ficam sem aspas.\n\nO servidor valida campos e permissões. Se preco não é um número válido, devolva um erro de entrada, por exemplo 400, sem tratar isso como falha interna 500.\n\nEscreva um exemplo válido, um inválido e as respostas correspondentes; confira se outra pessoa consegue usar o contrato sem adivinhar campos.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000320",
+      "question_id": "00000000-0000-4000-8000-000000013040"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000322",
+      "title": "Falhas entre serviços",
+      "body": "Um sistema pode dividir pedido, estoque e pagamento entre serviços. Uma operação pode completar em um serviço e falhar em outro, por isso o estado precisa ser acompanhado.\n\nUma chamada pela rede pode demorar ou falhar. Um timeout limita quanto tempo a aplicação espera; ao expirar, não se deve presumir automaticamente que a operação remota nunca ocorreu.\n\nRepetir uma solicitação pode duplicar um pagamento. Uma chave de idempotência permite reconhecer uma repetição como a mesma tentativa, desde que o serviço implemente esse contrato.\n\nEm um pedido, reserve estoque e solicite pagamento. Se o pagamento falhar de modo confirmado, uma compensação pode liberar a reserva; se o resultado é desconhecido, consulte o estado antes de repetir.\n\nRegistre identificador do pedido, etapa concluída, falha observada e próxima ação. Essas decisões são de nível avançado; o exemplo não exige implantar serviços reais.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000000321",
+      "question_id": "00000000-0000-4000-8000-000000013045"
     }
   ],
   "plans": [
@@ -1935,6 +2023,252 @@
         "minLength": 100
       },
       "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003020",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020000",
+        "00000000-0000-4000-8000-000000020001",
+        "00000000-0000-4000-8000-000000020002",
+        "00000000-0000-4000-8000-000000020003",
+        "00000000-0000-4000-8000-000000008006"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Desenhe dois aparelhos e um roteador; explique como verificaria rede local, internet e resolução de nomes.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003021",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020004",
+        "00000000-0000-4000-8000-000000020005",
+        "00000000-0000-4000-8000-000000020006",
+        "00000000-0000-4000-8000-000000020007",
+        "00000000-0000-4000-8000-000000008007"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Relate a visita a um site em três etapas: nome, endereço de destino e encaminhamento entre redes.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003022",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020008",
+        "00000000-0000-4000-8000-000000020009",
+        "00000000-0000-4000-8000-000000020010",
+        "00000000-0000-4000-8000-000000020011",
+        "00000000-0000-4000-8000-000000008008"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Monte um roteiro para um aparelho conectado ao Wi-Fi que não abre sites: teste local, externo, nome e registro dos resultados.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004009",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020012",
+        "00000000-0000-4000-8000-000000020013",
+        "00000000-0000-4000-8000-000000020014",
+        "00000000-0000-4000-8000-000000020015",
+        "00000000-0000-4000-8000-000000012009"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Desenhe A e B ligados a um switch. Marque uma falha em B e outra no switch e compare o impacto.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004010",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020016",
+        "00000000-0000-4000-8000-000000020017",
+        "00000000-0000-4000-8000-000000020018",
+        "00000000-0000-4000-8000-000000020019",
+        "00000000-0000-4000-8000-000000012010"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Escreva a evidência para um caso em que IP externo funciona e nomes falham; proponha o próximo teste.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003030",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020020",
+        "00000000-0000-4000-8000-000000020021",
+        "00000000-0000-4000-8000-000000020022",
+        "00000000-0000-4000-8000-000000020023",
+        "00000000-0000-4000-8000-000000008009"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Desenhe uma fonte de baixa tensão e um resistor; rotule V, A e Ω e explique o papel de cada grandeza.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003031",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020024",
+        "00000000-0000-4000-8000-000000020025",
+        "00000000-0000-4000-8000-000000020026",
+        "00000000-0000-4000-8000-000000020027",
+        "00000000-0000-4000-8000-000000008010"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Compare, em um desenho ou simulador, 2 V com 100 Ω e 200 Ω; registre as correntes e explique a diferença.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003032",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000020028",
+        "00000000-0000-4000-8000-000000020029",
+        "00000000-0000-4000-8000-000000020030",
+        "00000000-0000-4000-8000-000000020031",
+        "00000000-0000-4000-8000-000000008011"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Investigue um caso",
+        "prompt": "Desenhe ou simule fonte de baixa tensão, resistor e LED; explique polaridade, resistor e o que testaria ao inverter o LED.",
+        "criteria": [
+          "Descrevi a situação e os passos",
+          "Registrei o resultado esperado e como conferi"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000320",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013035",
+        "00000000-0000-4000-8000-000000013036",
+        "00000000-0000-4000-8000-000000013037",
+        "00000000-0000-4000-8000-000000013038",
+        "00000000-0000-4000-8000-000000013039"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Desenhe e explique",
+        "prompt": "Desenhe uma consulta GET /produtos e uma resposta 200 com lista; depois uma resposta 404 para um recurso ausente.",
+        "criteria": [
+          "Identifiquei as partes do fluxo",
+          "Expliquei uma resposta ou falha verificável"
+        ],
+        "minLength": 120
+      },
+      "resource_ids": [
+        "http-overview"
+      ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000321",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013040",
+        "00000000-0000-4000-8000-000000013041",
+        "00000000-0000-4000-8000-000000013042",
+        "00000000-0000-4000-8000-000000013043",
+        "00000000-0000-4000-8000-000000013044"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Desenhe e explique",
+        "prompt": "Especifique POST /produtos com JSON, uma resposta válida e um erro de validação, incluindo status e campo problemático.",
+        "criteria": [
+          "Identifiquei as partes do fluxo",
+          "Expliquei uma resposta ou falha verificável"
+        ],
+        "minLength": 120
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000000322",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000013045",
+        "00000000-0000-4000-8000-000000013046",
+        "00000000-0000-4000-8000-000000013047",
+        "00000000-0000-4000-8000-000000013048",
+        "00000000-0000-4000-8000-000000013049"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Desenhe e explique",
+        "prompt": "Desenhe pedido, estoque e pagamento. Simule timeout no pagamento e descreva como verificar o estado antes de repetir ou liberar a reserva.",
+        "criteria": [
+          "Identifiquei as partes do fluxo",
+          "Expliquei uma resposta ou falha verificável"
+        ],
+        "minLength": 120
+      },
+      "resource_ids": [
+        "retry-pattern"
+      ]
     }
   ],
   "questions": [
@@ -5889,6 +6223,518 @@
       "category": "Prática guiada",
       "subject_id": "00000000-0000-4000-8000-000000000015",
       "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020000",
+      "title": "Verifique o conceito",
+      "prompt": "O que uma rede local conecta?",
+      "options": [
+        "Dispositivos de uma área",
+        "Todos os sites do mundo",
+        "Somente monitores"
+      ],
+      "explanation": "Dispositivos de uma área. Wi-Fi é uma forma de ligação sem fio até um equipamento local. Um aparelho pode mostrar Wi-Fi conectado mesmo quando o acesso externo está indisponível.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020001",
+      "title": "Verifique o conceito",
+      "prompt": "Wi-Fi conectado garante internet?",
+      "options": [
+        "Não",
+        "Sim",
+        "Somente com DNS"
+      ],
+      "explanation": "Não. Internet interliga várias redes. O roteador encaminha pacotes, pequenas partes de dados, de uma rede para outra conforme o destino.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020002",
+      "title": "Verifique o conceito",
+      "prompt": "O que um roteador encaminha?",
+      "options": [
+        "Pacotes entre redes",
+        "Títulos HTML",
+        "Baterias"
+      ],
+      "explanation": "Pacotes entre redes. Uma página é procurada por nome. DNS é o serviço que relaciona o nome de domínio a um endereço IP, identificação usada para localizar o destino na rede.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020003",
+      "title": "Verifique o conceito",
+      "prompt": "Qual serviço relaciona nome e IP?",
+      "options": [
+        "DNS",
+        "CSS",
+        "Bluetooth"
+      ],
+      "explanation": "DNS. Separe as observações: há ligação à rede local? Há acesso externo por endereço? Um nome de site é resolvido? Cada resposta aponta para uma etapa diferente.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020004",
+      "title": "Verifique o conceito",
+      "prompt": "O que identifica uma interface na rede?",
+      "options": [
+        "Endereço IP",
+        "Título da página",
+        "Rótulo do formulário"
+      ],
+      "explanation": "Endereço IP. DNS consulta a relação entre um nome, como um domínio escolar, e o endereço IP usado para chegar ao destino. Resolver o nome é uma etapa distinta de manter o enlace local.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020005",
+      "title": "Verifique o conceito",
+      "prompt": "Qual tarefa cabe ao DNS?",
+      "options": [
+        "Resolver nome para endereço",
+        "Trocar um cabo",
+        "Desenhar uma página"
+      ],
+      "explanation": "Resolver nome para endereço. O roteador encaminha pacotes para outras redes. Se o aparelho alcança o roteador, isso confirma parte do caminho local, não todas as etapas externas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020006",
+      "title": "Verifique o conceito",
+      "prompt": "O que um roteador faz?",
+      "options": [
+        "Encaminha pacotes entre redes",
+        "Converte palavras em imagens",
+        "Valida o conteúdo do site"
+      ],
+      "explanation": "Encaminha pacotes entre redes. HTTPS indica comunicação Web protegida por criptografia entre navegador e servidor, com verificação de identidade do servidor; não significa que todo conteúdo de uma página seja confiável.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020007",
+      "title": "Verifique o conceito",
+      "prompt": "HTTPS protege que trecho?",
+      "options": [
+        "Comunicação entre navegador e servidor",
+        "Todas as decisões do usuário",
+        "O monitor do computador"
+      ],
+      "explanation": "Comunicação entre navegador e servidor. Em um relato de falha, identifique o que foi testado: acesso ao roteador, acesso a um IP externo e acesso pelo nome. Não atribua toda falha ao DNS sem evidência.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020008",
+      "title": "Verifique o conceito",
+      "prompt": "O que registrar primeiro?",
+      "options": [
+        "O que funciona e o que falha",
+        "Uma peça para trocar",
+        "A conclusão antes do teste"
+      ],
+      "explanation": "O que funciona e o que falha. Confira o enlace local: o dispositivo está conectado ao Wi-Fi e alcança o roteador? O ícone de Wi-Fi sozinho não comprova acesso à internet.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020009",
+      "title": "Verifique o conceito",
+      "prompt": "Wi-Fi conectado comprova internet?",
+      "options": [
+        "Não",
+        "Sim",
+        "Comprova o DNS"
+      ],
+      "explanation": "Não. Depois confira acesso externo por endereço IP conhecido e autorizado para o teste. Se não funcionar, investigue o caminho externo antes de culpar nomes de sites.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020010",
+      "title": "Verifique o conceito",
+      "prompt": "IP externo funciona, nome falha: investigar o quê?",
+      "options": [
+        "DNS",
+        "Cor do monitor",
+        "Teclado"
+      ],
+      "explanation": "DNS. Se o acesso externo por IP funciona, mas por nome não, teste configuração e resposta do DNS. A diferença entre os dois testes é a evidência relevante.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020011",
+      "title": "Verifique o conceito",
+      "prompt": "Após uma mudança, o que fazer?",
+      "options": [
+        "Repetir o teste e comparar",
+        "Apagar o registro",
+        "Trocar tudo"
+      ],
+      "explanation": "Repetir o teste e comparar. Registre horário, teste, resultado e próxima hipótese. Repita o mesmo teste após uma mudança para verificar se ela corrigiu a falha.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020012",
+      "title": "Verifique o conceito",
+      "prompt": "O que caracteriza uma estrela?",
+      "options": [
+        "Enlaces individuais ao centro",
+        "Um único cabo em linha",
+        "Nenhum equipamento central"
+      ],
+      "explanation": "Enlaces individuais ao centro. Um switch conecta equipamentos na rede local. Ele encaminha tráfego entre portas conforme os endereços observados; cada cabo do desenho corresponde a um enlace.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020013",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é o papel do switch?",
+      "options": [
+        "Ligar equipamentos da rede local",
+        "Medir corrente elétrica",
+        "Resolver nomes em todos os casos"
+      ],
+      "explanation": "Ligar equipamentos da rede local. No diagrama da prática, o cabo X liga somente o computador B ao switch. Se apenas X for retirado, B perde esse enlace; A mantém o seu cabo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020014",
+      "title": "Verifique o conceito",
+      "prompt": "Se só o cabo B falha, quem perde esse enlace?",
+      "options": [
+        "B",
+        "Todos",
+        "A apenas"
+      ],
+      "explanation": "B. Se o equipamento central falha, vários computadores ligados a ele podem perder a comunicação. Essa situação difere de desligar um cabo periférico.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020015",
+      "title": "Verifique o conceito",
+      "prompt": "O que pode afetar vários enlaces?",
+      "options": [
+        "Falha do equipamento central",
+        "Falha de um único cabo periférico",
+        "Mudança de título"
+      ],
+      "explanation": "Falha do equipamento central. Para prever o impacto, siga o caminho de cada computador até o centro e marque exatamente o trecho interrompido.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020016",
+      "title": "Verifique o conceito",
+      "prompt": "Alcançar o roteador confirma o quê?",
+      "options": [
+        "Trecho local até ele",
+        "Todo site",
+        "Resolução DNS"
+      ],
+      "explanation": "Trecho local até ele. Se o computador alcança o roteador, há comunicação local até ele no momento do teste. Isso não comprova o caminho até um servidor externo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020017",
+      "title": "Verifique o conceito",
+      "prompt": "Alcançar IP externo confirma o quê?",
+      "options": [
+        "Caminho externo daquele teste",
+        "Todos os nomes",
+        "Todas as páginas seguras"
+      ],
+      "explanation": "Caminho externo daquele teste. Se um servidor externo responde por IP, o caminho externo funciona para aquele teste. Quando o mesmo destino não abre pelo nome, o DNS torna-se a hipótese principal.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020018",
+      "title": "Verifique o conceito",
+      "prompt": "IP funciona e nome falha: hipótese principal?",
+      "options": [
+        "DNS",
+        "Monitor",
+        "Bateria"
+      ],
+      "explanation": "DNS. Verifique o endereço do servidor DNS configurado e sua resposta. Não conclua que todo cabo ou todo acesso externo está quebrado quando os testes por IP funcionam.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020019",
+      "title": "Verifique o conceito",
+      "prompt": "Por que mudar um fator por vez?",
+      "options": [
+        "Para relacionar mudança e resultado",
+        "Para evitar registro",
+        "Para pular testes"
+      ],
+      "explanation": "Para relacionar mudança e resultado. Documente a sequência e a evidência que levou à hipótese; mude um fator de cada vez e repita o teste afetado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020020",
+      "title": "Verifique o conceito",
+      "prompt": "Qual unidade mede tensão?",
+      "options": [
+        "Volt (V)",
+        "Ampere (A)",
+        "Ohm (Ω)"
+      ],
+      "explanation": "Volt (V). Corrente é o fluxo de carga elétrica; mede-se em amperes (A). O valor da corrente depende do circuito fechado e de seus componentes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020021",
+      "title": "Verifique o conceito",
+      "prompt": "Qual unidade mede corrente?",
+      "options": [
+        "Ampere (A)",
+        "Volt (V)",
+        "Metro (m)"
+      ],
+      "explanation": "Ampere (A). Resistência oferece oposição à corrente; mede-se em ohms (Ω). Um resistor é um componente que pode limitar a corrente em um circuito.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020022",
+      "title": "Verifique o conceito",
+      "prompt": "Qual unidade mede resistência?",
+      "options": [
+        "Ohm (Ω)",
+        "Ampere (A)",
+        "Segundo (s)"
+      ],
+      "explanation": "Ohm (Ω). Compare as unidades: V para tensão, A para corrente e Ω para resistência. Elas descrevem grandezas diferentes e não devem ser trocadas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020023",
+      "title": "Verifique o conceito",
+      "prompt": "Que componente pode limitar corrente?",
+      "options": [
+        "Resistor",
+        "Fio ideal",
+        "Conector"
+      ],
+      "explanation": "Resistor. Por enquanto, desenhe e simule somente circuitos de baixa tensão. Não ligue componentes de estudo diretamente à rede elétrica.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020024",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é a relação da lei de Ohm?",
+      "options": [
+        "I = V / R",
+        "I = V + R",
+        "I = R / V"
+      ],
+      "explanation": "I = V / R. A lei de Ohm relaciona tensão V, corrente I e resistência R: I = V / R. A divisão usa volts e ohms e resulta em amperes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020025",
+      "title": "Verifique o conceito",
+      "prompt": "Quanto é 2 V / 100 Ω?",
+      "options": [
+        "0,02 A",
+        "2 A",
+        "200 A"
+      ],
+      "explanation": "0,02 A. Para 2 V em um resistor de 100 Ω, I = 2 / 100 = 0,02 A, ou 20 mA. Um miliampere (mA) é um milésimo de ampere.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020026",
+      "title": "Verifique o conceito",
+      "prompt": "Quanto é 0,01 A em mA?",
+      "options": [
+        "10 mA",
+        "1 mA",
+        "100 mA"
+      ],
+      "explanation": "10 mA. Com os mesmos 2 V e 200 Ω, I = 2 / 200 = 0,01 A, ou 10 mA. Dobrar a resistência reduz a corrente calculada à metade nesse modelo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020027",
+      "title": "Verifique o conceito",
+      "prompt": "Com tensão fixa, dobrar R faz I:",
+      "options": [
+        "Cair à metade",
+        "Dobrar",
+        "Ficar sempre igual"
+      ],
+      "explanation": "Cair à metade. O cálculo idealizado não substitui conferir limites da fonte e do componente. Use o exercício em desenho ou simulador de baixa tensão, sem rede elétrica.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020028",
+      "title": "Verifique o conceito",
+      "prompt": "Qual é a função do resistor em série?",
+      "options": [
+        "Limitar corrente",
+        "Trocar a cor",
+        "Substituir a fonte"
+      ],
+      "explanation": "Limitar corrente. Um LED tem polaridade: ânodo e cátodo indicam os lados. No desenho simplificado, a corrente convencional segue da saída positiva da fonte, pelo resistor e LED orientado, até o retorno.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020029",
+      "title": "Verifique o conceito",
+      "prompt": "Por que marcar ânodo e cátodo?",
+      "options": [
+        "Para orientar o LED",
+        "Para medir comprimento",
+        "Para escolher o nome"
+      ],
+      "explanation": "Para orientar o LED. O resistor limita a corrente. Antes de uma montagem física, seria necessário consultar a especificação do LED, da fonte e do resistor; apenas a cor do LED não determina esses valores.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020030",
+      "title": "Verifique o conceito",
+      "prompt": "O que consultar antes de montar?",
+      "options": [
+        "Especificações dos componentes",
+        "Só a cor do LED",
+        "A velocidade da internet"
+      ],
+      "explanation": "Especificações dos componentes. No simulador ou papel, observe o que muda ao inverter o LED: ele normalmente deixa de conduzir no sentido contrário dentro dos limites especificados.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000020031",
+      "title": "Verifique o conceito",
+      "prompt": "Qual ambiente usar nesta atividade?",
+      "options": [
+        "Papel ou simulação de baixa tensão",
+        "Tomada da rede elétrica",
+        "Ligação direta sem resistor"
+      ],
+      "explanation": "Papel ou simulação de baixa tensão. Registre a orientação, a função do resistor e uma verificação de baixa tensão. Não use a rede elétrica nesta atividade.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "xp": 40
     }
   ],
   "answers": {
@@ -6138,7 +6984,39 @@
     "00000000-0000-4000-8000-000000019048": 0,
     "00000000-0000-4000-8000-000000019049": 0,
     "00000000-0000-4000-8000-000000019050": 0,
-    "00000000-0000-4000-8000-000000019051": 0
+    "00000000-0000-4000-8000-000000019051": 0,
+    "00000000-0000-4000-8000-000000020000": 0,
+    "00000000-0000-4000-8000-000000020001": 0,
+    "00000000-0000-4000-8000-000000020002": 0,
+    "00000000-0000-4000-8000-000000020003": 0,
+    "00000000-0000-4000-8000-000000020004": 0,
+    "00000000-0000-4000-8000-000000020005": 0,
+    "00000000-0000-4000-8000-000000020006": 0,
+    "00000000-0000-4000-8000-000000020007": 0,
+    "00000000-0000-4000-8000-000000020008": 0,
+    "00000000-0000-4000-8000-000000020009": 0,
+    "00000000-0000-4000-8000-000000020010": 0,
+    "00000000-0000-4000-8000-000000020011": 0,
+    "00000000-0000-4000-8000-000000020012": 0,
+    "00000000-0000-4000-8000-000000020013": 0,
+    "00000000-0000-4000-8000-000000020014": 0,
+    "00000000-0000-4000-8000-000000020015": 0,
+    "00000000-0000-4000-8000-000000020016": 0,
+    "00000000-0000-4000-8000-000000020017": 0,
+    "00000000-0000-4000-8000-000000020018": 0,
+    "00000000-0000-4000-8000-000000020019": 0,
+    "00000000-0000-4000-8000-000000020020": 0,
+    "00000000-0000-4000-8000-000000020021": 0,
+    "00000000-0000-4000-8000-000000020022": 0,
+    "00000000-0000-4000-8000-000000020023": 0,
+    "00000000-0000-4000-8000-000000020024": 0,
+    "00000000-0000-4000-8000-000000020025": 0,
+    "00000000-0000-4000-8000-000000020026": 0,
+    "00000000-0000-4000-8000-000000020027": 0,
+    "00000000-0000-4000-8000-000000020028": 0,
+    "00000000-0000-4000-8000-000000020029": 0,
+    "00000000-0000-4000-8000-000000020030": 0,
+    "00000000-0000-4000-8000-000000020031": 0
   },
   "guides": {
     "00000000-0000-4000-8000-000000000302": {
@@ -7988,6 +8866,314 @@
           "text": "Revise clareza, tom e dados. Nesta atividade fictícia, não anexe documentos pessoais nem informe dados de outras pessoas."
         }
       ]
+    },
+    "00000000-0000-4000-8000-000000003020": {
+      "objective": "Rede local e internet",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Rede local e internet",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Uma rede local conecta dispositivos em uma área, como computadores e um roteador de uma escola. Compartilhar essa rede não significa alcançar qualquer site na internet."
+        },
+        {
+          "title": "Conceito",
+          "text": "Wi-Fi é uma forma de ligação sem fio até um equipamento local. Um aparelho pode mostrar Wi-Fi conectado mesmo quando o acesso externo está indisponível."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Internet interliga várias redes. O roteador encaminha pacotes, pequenas partes de dados, de uma rede para outra conforme o destino."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Uma página é procurada por nome. DNS é o serviço que relaciona o nome de domínio a um endereço IP, identificação usada para localizar o destino na rede."
+        },
+        {
+          "title": "Conferência",
+          "text": "Separe as observações: há ligação à rede local? Há acesso externo por endereço? Um nome de site é resolvido? Cada resposta aponta para uma etapa diferente."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003021": {
+      "objective": "Endereçamento e DNS",
+      "prerequisites": "Revise a bolinha anterior desta trilha.",
+      "competency": "Endereçamento e DNS",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um endereço IP identifica uma interface em uma rede. Ele permite que dados tenham um destino, mas não substitui um nome fácil de lembrar."
+        },
+        {
+          "title": "Conceito",
+          "text": "DNS consulta a relação entre um nome, como um domínio escolar, e o endereço IP usado para chegar ao destino. Resolver o nome é uma etapa distinta de manter o enlace local."
+        },
+        {
+          "title": "Exemplo",
+          "text": "O roteador encaminha pacotes para outras redes. Se o aparelho alcança o roteador, isso confirma parte do caminho local, não todas as etapas externas."
+        },
+        {
+          "title": "Aplicação",
+          "text": "HTTPS indica comunicação Web protegida por criptografia entre navegador e servidor, com verificação de identidade do servidor; não significa que todo conteúdo de uma página seja confiável."
+        },
+        {
+          "title": "Conferência",
+          "text": "Em um relato de falha, identifique o que foi testado: acesso ao roteador, acesso a um IP externo e acesso pelo nome. Não atribua toda falha ao DNS sem evidência."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003022": {
+      "objective": "Diagnóstico de conexão",
+      "prerequisites": "Revise a bolinha anterior desta trilha.",
+      "competency": "Diagnóstico de conexão",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Diagnosticar é localizar uma etapa que falhou com testes observáveis. Comece anotando o que funciona e o que não funciona, sem trocar equipamentos por palpite."
+        },
+        {
+          "title": "Conceito",
+          "text": "Confira o enlace local: o dispositivo está conectado ao Wi-Fi e alcança o roteador? O ícone de Wi-Fi sozinho não comprova acesso à internet."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Depois confira acesso externo por endereço IP conhecido e autorizado para o teste. Se não funcionar, investigue o caminho externo antes de culpar nomes de sites."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Se o acesso externo por IP funciona, mas por nome não, teste configuração e resposta do DNS. A diferença entre os dois testes é a evidência relevante."
+        },
+        {
+          "title": "Conferência",
+          "text": "Registre horário, teste, resultado e próxima hipótese. Repita o mesmo teste após uma mudança para verificar se ela corrigiu a falha."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004009": {
+      "objective": "Interpretar uma topologia",
+      "prerequisites": "Revise a bolinha anterior desta trilha.",
+      "competency": "Interpretar uma topologia",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Topologia descreve como os equipamentos estão ligados. Em estrela, cada computador tem um enlace até um equipamento central, como um switch."
+        },
+        {
+          "title": "Conceito",
+          "text": "Um switch conecta equipamentos na rede local. Ele encaminha tráfego entre portas conforme os endereços observados; cada cabo do desenho corresponde a um enlace."
+        },
+        {
+          "title": "Exemplo",
+          "text": "No diagrama da prática, o cabo X liga somente o computador B ao switch. Se apenas X for retirado, B perde esse enlace; A mantém o seu cabo."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Se o equipamento central falha, vários computadores ligados a ele podem perder a comunicação. Essa situação difere de desligar um cabo periférico."
+        },
+        {
+          "title": "Conferência",
+          "text": "Para prever o impacto, siga o caminho de cada computador até o centro e marque exatamente o trecho interrompido."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004010": {
+      "objective": "Diagnóstico por evidências",
+      "prerequisites": "Revise a bolinha anterior desta trilha.",
+      "competency": "Diagnóstico por evidências",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Teste cada parte da conexão separadamente: enlace local, roteador, acesso externo por IP e resolução de nomes. Um teste positivo elimina algumas hipóteses, não todas."
+        },
+        {
+          "title": "Conceito",
+          "text": "Se o computador alcança o roteador, há comunicação local até ele no momento do teste. Isso não comprova o caminho até um servidor externo."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Se um servidor externo responde por IP, o caminho externo funciona para aquele teste. Quando o mesmo destino não abre pelo nome, o DNS torna-se a hipótese principal."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Verifique o endereço do servidor DNS configurado e sua resposta. Não conclua que todo cabo ou todo acesso externo está quebrado quando os testes por IP funcionam."
+        },
+        {
+          "title": "Conferência",
+          "text": "Documente a sequência e a evidência que levou à hipótese; mude um fator de cada vez e repita o teste afetado."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003030": {
+      "objective": "Tensão, corrente e resistência",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Tensão, corrente e resistência",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Tensão elétrica é a diferença de potencial entre dois pontos; mede-se em volts (V). Uma fonte de baixa tensão pode ser representada em um desenho de circuito."
+        },
+        {
+          "title": "Conceito",
+          "text": "Corrente é o fluxo de carga elétrica; mede-se em amperes (A). O valor da corrente depende do circuito fechado e de seus componentes."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Resistência oferece oposição à corrente; mede-se em ohms (Ω). Um resistor é um componente que pode limitar a corrente em um circuito."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Compare as unidades: V para tensão, A para corrente e Ω para resistência. Elas descrevem grandezas diferentes e não devem ser trocadas."
+        },
+        {
+          "title": "Conferência",
+          "text": "Por enquanto, desenhe e simule somente circuitos de baixa tensão. Não ligue componentes de estudo diretamente à rede elétrica."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003031": {
+      "objective": "Circuito com resistor",
+      "prerequisites": "Revise a bolinha anterior desta trilha.",
+      "competency": "Circuito com resistor",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Em um circuito simples de baixa tensão, a corrente percorre um caminho fechado. Um resistor em série faz parte desse mesmo caminho."
+        },
+        {
+          "title": "Conceito",
+          "text": "A lei de Ohm relaciona tensão V, corrente I e resistência R: I = V / R. A divisão usa volts e ohms e resulta em amperes."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Para 2 V em um resistor de 100 Ω, I = 2 / 100 = 0,02 A, ou 20 mA. Um miliampere (mA) é um milésimo de ampere."
+        },
+        {
+          "title": "Aplicação",
+          "text": "Com os mesmos 2 V e 200 Ω, I = 2 / 200 = 0,01 A, ou 10 mA. Dobrar a resistência reduz a corrente calculada à metade nesse modelo."
+        },
+        {
+          "title": "Conferência",
+          "text": "O cálculo idealizado não substitui conferir limites da fonte e do componente. Use o exercício em desenho ou simulador de baixa tensão, sem rede elétrica."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003032": {
+      "objective": "Simulação de LED",
+      "prerequisites": "Revise a bolinha anterior desta trilha.",
+      "competency": "Simulação de LED",
+      "next": "Resolva a prática e aplique a ideia na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "LED é um diodo que emite luz quando ligado de forma apropriada. Neste exercício, represente uma fonte de baixa tensão, resistor e LED em série."
+        },
+        {
+          "title": "Conceito",
+          "text": "Um LED tem polaridade: ânodo e cátodo indicam os lados. No desenho simplificado, a corrente convencional segue da saída positiva da fonte, pelo resistor e LED orientado, até o retorno."
+        },
+        {
+          "title": "Exemplo",
+          "text": "O resistor limita a corrente. Antes de uma montagem física, seria necessário consultar a especificação do LED, da fonte e do resistor; apenas a cor do LED não determina esses valores."
+        },
+        {
+          "title": "Aplicação",
+          "text": "No simulador ou papel, observe o que muda ao inverter o LED: ele normalmente deixa de conduzir no sentido contrário dentro dos limites especificados."
+        },
+        {
+          "title": "Conferência",
+          "text": "Registre a orientação, a função do resistor e uma verificação de baixa tensão. Não use a rede elétrica nesta atividade."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000320": {
+      "objective": "Descrever uma consulta e interpretar a resposta.",
+      "prerequisites": "Nenhum conceito anterior de Backend é necessário.",
+      "competency": "Descrever uma consulta e interpretar a resposta.",
+      "next": "Resolva a prática e aplique o caso na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um cliente, como o navegador, envia uma requisição HTTP a um servidor. O servidor responde com um status, cabeçalhos e, quando apropriado, um corpo."
+        },
+        {
+          "title": "Partes",
+          "text": "Uma requisição tem método e caminho. GET /produtos pede uma representação da lista de produtos; GET indica consulta, não autoriza por si só acesso a dados privados."
+        },
+        {
+          "title": "Exemplo",
+          "text": "POST costuma enviar dados para criar ou processar um recurso. Um corpo pode carregar dados; não coloque senhas no caminho ou na URL, que pode aparecer em históricos e registros."
+        },
+        {
+          "title": "Falha",
+          "text": "O status 200 indica sucesso da consulta; 404 indica que o recurso não foi encontrado. Um status precisa ser interpretado com o contexto e o corpo da resposta."
+        },
+        {
+          "title": "Conferência",
+          "text": "Desenhe o caminho cliente → requisição → servidor → resposta. Identifique método, caminho, status e conteúdo sem misturar as partes."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000321": {
+      "objective": "Descrever um contrato de recurso com validação.",
+      "prerequisites": "Revise a bolinha anterior de Backend.",
+      "competency": "Descrever um contrato de recurso com validação.",
+      "next": "Resolva a prática e aplique o caso na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Uma API define como programas trocam dados. Um contrato descreve caminho, método, campos de entrada, resposta e erros esperados."
+        },
+        {
+          "title": "Partes",
+          "text": "Em /produtos, GET consulta a coleção. POST /produtos pode solicitar a criação de um produto com nome e preço no corpo JSON."
+        },
+        {
+          "title": "Exemplo",
+          "text": "JSON organiza dados em pares de nome e valor: {\"nome\":\"Lápis\",\"preco\":2}. As aspas delimitam chaves e textos; números como 2 ficam sem aspas."
+        },
+        {
+          "title": "Falha",
+          "text": "O servidor valida campos e permissões. Se preco não é um número válido, devolva um erro de entrada, por exemplo 400, sem tratar isso como falha interna 500."
+        },
+        {
+          "title": "Conferência",
+          "text": "Escreva um exemplo válido, um inválido e as respostas correspondentes; confira se outra pessoa consegue usar o contrato sem adivinhar campos."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000000322": {
+      "objective": "Explicar a recuperação de uma falha parcial.",
+      "prerequisites": "Revise a bolinha anterior de Backend.",
+      "competency": "Explicar a recuperação de uma falha parcial.",
+      "next": "Resolva a prática e aplique o caso na dinâmica.",
+      "steps": [
+        {
+          "title": "Situação",
+          "text": "Um sistema pode dividir pedido, estoque e pagamento entre serviços. Uma operação pode completar em um serviço e falhar em outro, por isso o estado precisa ser acompanhado."
+        },
+        {
+          "title": "Partes",
+          "text": "Uma chamada pela rede pode demorar ou falhar. Um timeout limita quanto tempo a aplicação espera; ao expirar, não se deve presumir automaticamente que a operação remota nunca ocorreu."
+        },
+        {
+          "title": "Exemplo",
+          "text": "Repetir uma solicitação pode duplicar um pagamento. Uma chave de idempotência permite reconhecer uma repetição como a mesma tentativa, desde que o serviço implemente esse contrato."
+        },
+        {
+          "title": "Falha",
+          "text": "Em um pedido, reserve estoque e solicite pagamento. Se o pagamento falhar de modo confirmado, uma compensação pode liberar a reserva; se o resultado é desconhecido, consulte o estado antes de repetir."
+        },
+        {
+          "title": "Conferência",
+          "text": "Registre identificador do pedido, etapa concluída, falha observada e próxima ação. Essas decisões são de nível avançado; o exemplo não exige implantar serviços reais."
+        }
+      ]
     }
   },
   "pedagogy": {
@@ -8743,6 +9929,125 @@
         "00000000-0000-4000-8000-000000003081"
       ],
       "version": 2
+    },
+    "00000000-0000-4000-8000-000000003020": {
+      "concepts": [
+        "Rede local e internet"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003021": {
+      "concepts": [
+        "Endereçamento e DNS"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003020"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003022": {
+      "concepts": [
+        "Diagnóstico de conexão"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003021"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004009": {
+      "concepts": [
+        "Interpretar uma topologia"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003022"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004010": {
+      "concepts": [
+        "Diagnóstico por evidências"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004009"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003030": {
+      "concepts": [
+        "Tensão, corrente e resistência"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003031": {
+      "concepts": [
+        "Circuito com resistor"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003030"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003032": {
+      "concepts": [
+        "Simulação de LED"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003031"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000320": {
+      "concepts": [
+        "Requisições HTTP"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000321": {
+      "concepts": [
+        "APIs REST"
+      ],
+      "requires": [
+        "Requisições HTTP"
+      ],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000320"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000000322": {
+      "concepts": [
+        "Falhas entre serviços"
+      ],
+      "requires": [
+        "APIs REST"
+      ],
+      "competency": "Resolução avançada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000000321"
+      ],
+      "version": 2
     }
   },
   "question_updates": [
@@ -8757,6 +10062,18 @@
     {
       "id": "00000000-0000-4000-8000-000000008025",
       "explanation": "Contexto apresenta o problema; contribuição explica o que você fez; resultado registra o que observou e aprendeu."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008007",
+      "explanation": "DNS relaciona nomes a endereços IP; roteadores encaminham pacotes entre redes; IP identifica uma interface na rede."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008008",
+      "explanation": "O roteiro separa enlace local, acesso externo por IP e resolução de nomes, com registro dos resultados de cada teste."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008011",
+      "explanation": "O desenho ou simulação de baixa tensão mostra LED com polaridade e resistor em série para limitar corrente. Não use a rede elétrica."
     }
   ]
 }

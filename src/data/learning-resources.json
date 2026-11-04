@@ -160,5 +160,14 @@
     "kind": "artigo",
     "language": "Português brasileiro",
     "level": "Consulta após a aula"
+  },
+  {
+    "id": "http-overview",
+    "title": "Visão geral do HTTP",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Consulta após a aula"
   }
 ]
