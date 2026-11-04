@@ -12,6 +12,8 @@ import { createDemo, demoPortraits } from "../data/demo";
 import { requireSupabase } from "./supabase";
 import curriculum from "../data/beginner-curriculum.json";
 export const DEMO_KEY = "skillup.demo.v2";
+const canonicalQuestions = new Map(questions.map((q) => [q.id, q]));
+const canonicalModules = new Map(modules.map((m) => [m.id, m]));
 export function readDemo(): Dataset {
   const raw = localStorage.getItem(DEMO_KEY);
   if (!raw) return hydrateDemoLearning(createDemo());
@@ -30,11 +32,16 @@ export function readDemo(): Dataset {
       questions,
     })) {
       d[table] ??= [];
+      const existingRows = new Map<string, { id: string; question_id?: string | null; body?: string }>(
+        d[table].map((row: { id: string }) => [row.id, row]),
+      );
       for (const row of additions) {
-        const existing = d[table].find(
-          (old: { id: string }) => old.id === row.id,
-        );
-        if (!existing) d[table].push(structuredClone(row));
+        const existing = existingRows.get(row.id);
+        if (!existing) {
+          const added = structuredClone(row);
+          d[table].push(added);
+          existingRows.set(row.id, added);
+        }
         else if (
           table === "modules" &&
           "question_id" in row &&
@@ -48,9 +55,7 @@ export function readDemo(): Dataset {
       }
     }
     for (const q of d.questions)
-      q.activity_type ??= questions.find(
-        (item) => item.id === q.id,
-      )?.activity_type;
+      q.activity_type ??= canonicalQuestions.get(q.id)?.activity_type;
     for (const update of curriculum.question_updates || []) {
       const stored = d.questions.find((q: { id: string }) => q.id === update.id);
       if (stored) Object.assign(stored, update);
@@ -58,7 +63,7 @@ export function readDemo(): Dataset {
     hydrateDemoLearning(d);
     for (const update of curriculum.modules) {
       const stored = d.modules.find((m: { id: string }) => m.id === update.id);
-      const canonical = modules.find((m) => m.id === update.id);
+      const canonical = canonicalModules.get(update.id);
       if (stored && canonical)
         Object.assign(stored, structuredClone(canonical));
     }

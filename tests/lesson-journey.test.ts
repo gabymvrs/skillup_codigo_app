@@ -28,6 +28,36 @@ beforeEach(() => {
   d.study_days = [];
   writeDemo(d);
 });
+it("reopens incomplete practice after a saved demo lesson gains questions", async () => {
+  const module = id(4000), user = id(1), qid = id(12000);
+  const results = { [qid]: { correct: true, firstCorrect: false, tries: 2 } };
+  localStorage.setItem(`skillup.lesson.demo.${user}.${module}`, JSON.stringify({
+    module_id: module, stage: "dynamic", theory_completed: true, results, xp: 0,
+  }));
+  const resumed = await lessonAction(true, user, module, "get");
+  expect(resumed.session.stage).toBe("practice");
+  expect(resumed.session.theory_completed).toBe(true);
+  expect(resumed.session.results).toEqual(results);
+  const added = resumed.plan.question_ids.find((q) => q !== qid)!;
+  await expect(lessonAction(true, user, module, "answer", {
+    question_id: added, response: exerciseAnswers[added],
+  })).resolves.toMatchObject({ session: { stage: "practice" } });
+  expect(readDemo().reward_events.some((r) => r.source === `module:${module}`)).toBe(false);
+  for (const question_id of resumed.plan.question_ids.filter((q) => q !== qid && q !== added))
+    await lessonAction(true, user, module, "answer", { question_id, response: exerciseAnswers[question_id] });
+  await lessonAction(true, user, module, "practice");
+  await lessonAction(true, user, module, "finish", { text: "Um caso concreto de decisão compara a nota ao limite informado e mostra o caminho escolhido. Verifiquei o resultado com notas abaixo e acima do limite.", checks: [true, true] });
+  await lessonAction(true, user, module, "finish");
+  expect(readDemo().reward_events.filter((r) => r.source === `module:${module}`)).toHaveLength(1);
+});
+it("keeps a completed legacy lesson completed when new questions are added", async () => {
+  localStorage.setItem(`skillup.lesson.demo.${id(1)}.${id(4000)}`, JSON.stringify({
+    module_id: id(4000), stage: "completed", results: {}, xp: 100,
+  }));
+  const { session } = await lessonAction(true, id(1), id(4000), "get");
+  expect(session.stage).toBe("completed");
+  expect(session.xp).toBe(100);
+});
 it("retains wrong first answers, resumes the stage and awards only after the dynamic", async () => {
   const mid = id(4000),
     qid = id(12000),

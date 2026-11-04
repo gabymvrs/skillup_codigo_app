@@ -63,6 +63,10 @@ export async function lessonAction(
   } catch {
     /* recover only this demo session */
   }
+  s.theory_completed ??= s.stage !== "theory";
+  // New practice items must remain answerable in an unfinished saved lesson.
+  if (s.stage === "dynamic" && plan.question_ids.some((id) => !s.results[id]?.correct))
+    s.stage = "practice";
   const valid =
     action === "get" ||
     (action === "theory" && s.stage !== "completed") ||
@@ -71,7 +75,6 @@ export async function lessonAction(
       s.stage === "practice") ||
     (action === "finish" && (s.stage === "dynamic" || s.stage === "completed"));
   if (!valid) throw new Error("Ação incompatível com a parte atual.");
-  s.theory_completed ??= s.stage !== "theory";
   if (action === "theory") {
     s.theory_completed = true;
     if (s.stage === "theory") s.stage = "practice";
