@@ -93,54 +93,81 @@ export function DemoPicker() {
   if (!demoEnabled) return <Navigate to="/login" replace />;
   if (auth.loading) return <p role="status">Preparando versão de teste…</p>;
   const signedIn = Boolean(auth.id && !auth.demo);
-  const descriptions: Record<Role, string> = {
-    estudante: "Aprendizagem, trilhas, práticas, comunidade e oportunidades.",
-    docente: "Turmas, atividades e acompanhamento dos estudantes.",
-    recrutador: "Vagas, candidatos e mensagens profissionais.",
-    instituicao: "Gestão de turmas, docentes, estudantes e indicadores.",
-  };
+  const profiles: { role: Role; icon: string; description: string }[] = [
+    {
+      role: "estudante",
+      icon: "graduation",
+      description: "Explore trilhas, pratique e acompanhe seu aprendizado.",
+    },
+    {
+      role: "docente",
+      icon: "users",
+      description: "Organize turmas, atividades e acompanhe estudantes.",
+    },
+    {
+      role: "instituicao",
+      icon: "building",
+      description: "Gerencie turmas, docentes e indicadores educacionais.",
+    },
+    {
+      role: "recrutador",
+      icon: "briefcase",
+      description: "Conheça perfis profissionais, vagas e candidatos.",
+    },
+  ];
   return (
     <AuthFrame
-      title="Versão de teste"
-      description="Escolha um perfil para explorar a navegação. Não precisa criar uma conta."
+      variant="demo"
+      title="Explore o SkillUp"
+      description="Escolha um perfil e conheça a plataforma. Não é preciso criar uma conta."
     >
-      <Notice>
-        Dados demonstrativos. As alterações ficam neste navegador e não afetam
-        contas reais. Você pode trocar de perfil durante o teste.
-      </Notice>
+      <div className="demo-intro">
+        <span className="demo-eyebrow">AMBIENTE DE DEMONSTRAÇÃO</span>
+        <Notice>
+          Use dados de exemplo para conhecer cada perfil. Suas ações não
+          alteram contas reais e você pode trocar de perfil depois.
+        </Notice>
+      </div>
       {signedIn ? (
-        <div className="stack">
+        <div className="demo-signed-in stack">
           <Notice tone="warning">
-            Você está em uma conta real. Para testar outros perfis, saia dessa
-            conta primeiro. Isso encerra suas sessões reais.
+            Você está em uma conta real. Para experimentar outros perfis, saia
+            primeiro. Isso encerra sua sessão atual.
           </Notice>
-          <Button
-            disabled={action.busy}
-            onClick={() => action.run(auth.logout)}
-          >
+          <Button disabled={action.busy} onClick={() => action.run(auth.logout)}>
             Sair da conta e liberar teste
           </Button>
           <Link to="/app/home">Voltar à minha conta</Link>
           <ActionFeedback action={action} />
         </div>
       ) : (
-        <div className="demo-profile-list">
-          {allRoles.map((role) => (
-            <div className="demo-profile-option" key={role}>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  auth.startDemo(role);
-                  navigate("/app/home", { replace: true });
-                }}
-              >
-                {roleLabels[role]}
-              </Button>
-              <p className="small muted">{descriptions[role]}</p>
-            </div>
-          ))}
-          <Link to="/login">Entrar com uma conta real</Link>
-        </div>
+        <>
+          <div className="demo-profile-list" aria-label="Escolha um perfil para testar">
+            {profiles.map(({ role, icon, description }) => (
+              <div className="demo-profile-option" key={role}>
+                <div className="demo-profile-copy">
+                  <span className="demo-profile-label">PERFIL</span>
+                  <h2>{roleLabels[role]}</h2>
+                  <p>{description}</p>
+                </div>
+                <Button
+                  variant="outline"
+                  icon={icon}
+                  onClick={() => {
+                    auth.startDemo(role);
+                    navigate("/app/home", { replace: true });
+                  }}
+                  aria-label={`Explorar como ${roleLabels[role]}`}
+                >
+                  Explorar como {roleLabels[role]}
+                </Button>
+              </div>
+            ))}
+          </div>
+          <p className="demo-real-account">
+            Já tem uma conta? <Link to="/login">Entrar com uma conta real</Link>
+          </p>
+        </>
       )}
     </AuthFrame>
   );
