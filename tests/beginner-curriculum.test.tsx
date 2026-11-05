@@ -11,10 +11,71 @@ import {
   compareNumbers,
   logicMissionReady,
 } from "../src/lib/logicLearning";
-import type { LearningInputs } from "../src/lib/guidedLearning";
+import { guidedTheories, type LearningInputs } from "../src/lib/guidedLearning";
 import { id, questions, modules, exerciseAnswers } from "../src/data/catalog";
 import { demoPlans } from "../src/services/lessonJourney";
 import { evaluateDemo } from "../src/services/learning";
+import originalPlans from "../src/data/lesson-plans.json";
+import enrichment from "../src/data/enrichment.json";
+import trackActivities from "../src/data/track-activities.json";
+
+const pendingLessons = [3040,3041,3042,4011,4012,3060,3061,3062,4015,4016,3070,3071,3072,4017,4018];
+
+it("provides at least five exercises and four guided steps in all 86 lesson plans", () => {
+  expect(demoPlans).toHaveLength(86);
+  for (const plan of demoPlans) {
+    expect(plan.question_ids.length, plan.module_id).toBeGreaterThanOrEqual(5);
+    const guide = guidedTheories[plan.module_id];
+    expect(guide?.steps.length ?? 0, plan.module_id).toBeGreaterThanOrEqual(4);
+    for (const qid of plan.question_ids) {
+      const question = questions.find((q) => q.id === qid)!;
+      expect(question, qid).toBeDefined();
+      if (question.activity_type === "code_practice") continue;
+      const answer = exerciseAnswers[qid];
+      const response = question.activity_type === "calculation"
+        ? String((answer as { value: number; tolerance: number }).value)
+        : question.kind === "challenge"
+          ? { text: "Registro da atividade com observações, procedimento e resultado. ".repeat(8), checks: question.payload!.criteria!.map(() => true) }
+          : answer;
+      expect(evaluateDemo(question, response as never), `${qid}: ${question.prompt}`).toBe(true);
+    }
+  }
+});
+
+it("aligns logistics, biology and physics to their topics while retaining original questions and rewards", () => {
+  const moved = new Map([[8018,3061], [8019,3062], [8022,3070]]);
+  for (const n of pendingLessons) {
+    const module = modules.find((m) => m.id === id(n))!;
+    const original = [...enrichment.modules, ...trackActivities.modules].find((m) => m.id === id(n))!;
+    expect(module.position).toBe(original.position);
+    expect(module.prerequisite_id).toBe(original.prerequisite_id);
+    expect(module.xp).toBe(original.xp);
+    const plan = demoPlans.find((p) => p.module_id === id(n))!;
+    expect(curriculum.guides[id(n) as keyof typeof curriculum.guides].steps).toHaveLength(5);
+    expect(plan.dynamic.prompt).not.toMatch(/código|programa|software/iu);
+    for (const qid of originalPlans.find((p) => p.module_id === id(n))!.question_ids) {
+      const target = moved.get(Number(qid.slice(-4))) ?? n;
+      expect(demoPlans.find((p) => p.module_id === id(target))!.question_ids).toContain(qid);
+      const oldQuestion = [...enrichment.questions, ...trackActivities.questions].find((q) => q.id === qid)!;
+      expect(questions.find((q) => q.id === qid)!.xp).toBe(oldQuestion.xp);
+      expect(exerciseAnswers[qid]).toEqual(({ ...enrichment.answers, ...trackActivities.answers } as Record<string, unknown>)[qid]);
+    }
+    for (const qid of plan.question_ids)
+      expect(questions.find((q) => q.id === qid)!.activity_type).not.toBe("code_practice");
+  }
+  const plan = (n: number) => demoPlans.find((p) => p.module_id === id(n))!;
+  expect(plan(3060).question_ids).not.toContain(id(8018));
+  expect(plan(3061).question_ids).not.toContain(id(8019));
+  expect(plan(3071).question_ids).not.toContain(id(8022));
+  const text = (n: number) => curriculum.guides[id(n) as keyof typeof curriculum.guides].steps.map((s) => s.text).join(" ");
+  expect(text(3060)).toMatch(/membrana.*citoplasma.*núcleo/iu);
+  expect(text(3060)).not.toMatch(/briófitas|angiospermas/iu);
+  expect(text(4011)).toContain("120 + 80 − 135 − 15 − 20 = 30");
+  expect(text(4015)).toMatch(/1.*membrana.*2.*núcleo.*3.*citoplasma/iu);
+  expect(text(3071)).toMatch(/distância.*tempo/iu);
+  expect(text(4017)).toContain("180 m / 90 s = 2 m/s");
+  expect(modules.find((m) => m.id === id(4017))!.title).toBe("Calcular rapidez média");
+});
 it("tests limits and rejects empty, invalid and out-of-range inputs", () => {
   expect(approvalResult({ first: "7", second: "75" })).toEqual({
     grade: true,

@@ -620,6 +620,126 @@
       "position": 2,
       "prerequisite_id": "00000000-0000-4000-8000-000000000321",
       "question_id": "00000000-0000-4000-8000-000000013045"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003040",
+      "title": "Fluxo de materiais",
+      "body": "Logística organiza o caminho dos materiais, desde o fornecedor até o destino. Fluxo de materiais é a sequência de recebimento, armazenamento, separação e envio; cada etapa precisa de informação sobre produto e quantidade.\n\nFornecedor é quem fornece insumos ou produtos. O estoque guarda os materiais; a distribuição os leva ao destino. Um registro de entrada informa o que chegou, e um de saída informa o que deixou o estoque.\n\nExemplo: chegam 20 caixas de cadernos do fornecedor. A equipe confere as caixas, registra a entrada e guarda no local indicado. Quando 7 caixas saem para uma escola, o saldo passa a 20 − 7 = 13 caixas.\n\nA sequência deve permitir conferir o caminho: receber e conferir, registrar a entrada, armazenar, separar o pedido, conferir e enviar. Registre as quantidades na mesma unidade; 20 caixas não significam 20 cadernos.\n\nLimite: um registro não prova que o material físico está correto. Se chegarem 19 caixas em vez das 20 esperadas, registre a divergência e confira com o documento antes de prometer a entrega. Distribuir não elimina atrasos e avarias.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000021000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003041",
+      "title": "Controle de estoque",
+      "body": "Controle de estoque é o registro das entradas, saídas e saldos de cada item. Identifique produto, quantidade, unidade, data e documento para conseguir conferir cada movimentação depois.\n\nSaldo inicial é a quantidade no começo do período. Some as entradas e subtraia as saídas para obter o saldo registrado. Fornecedor fornece insumos; estoque armazena produtos; distribuição entrega ao destino.\n\nExemplo de um item: o saldo inicial é 30 unidades, entram 12 e saem 8. O saldo registrado é 30 + 12 − 8 = 34 unidades. A contagem física deve ser comparada às 34 registradas.\n\nInventário é a contagem dos materiais existentes. Se a contagem mostrar 32 unidades, a diferença é 32 − 34 = −2 unidades. Procure entrada, saída ou avaria sem registro antes de corrigir o saldo.\n\nLimite: itens diferentes não formam um único saldo. Separe produtos, unidades e locais; não some caixas com peças sem conversão conhecida. Uma diferença precisa de investigação e registro, não de ajuste sem motivo.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003040",
+      "question_id": "00000000-0000-4000-8000-000000021004"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003042",
+      "title": "Preparação de pedidos",
+      "body": "Um pedido informa quais produtos e quantidades devem chegar a um destinatário. Preparar o pedido é separar os itens certos, conferir, proteger na embalagem e registrar a saída.\n\nSeparação é buscar no estoque os itens listados. Conferência é comparar produto, código e quantidade com o pedido. Embalagem protege o conteúdo; identificação relaciona o pacote ao destinatário e ao pedido.\n\nExemplo: o pedido pede 2 cadernos, 1 régua e 3 lápis. Separe esses três tipos de produto e conte 6 peças no total. Confira cada linha: ter 6 peças não basta se uma régua foi trocada por um lápis.\n\nApós conferir, escolha proteção adequada, identifique o volume e registre a saída das quantidades efetivamente enviadas. Se faltar a régua, sinalize a falta e confirme o procedimento de envio parcial antes de fechar o pacote.\n\nLimite: não substitua item por conta própria nem registre saída de algo que ficou no estoque. A conferência precisa ocorrer antes do lacre, quando ainda é possível corrigir uma quantidade ou um produto incorreto.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003041",
+      "question_id": "00000000-0000-4000-8000-000000021008"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004011",
+      "title": "Calcular estoque disponível",
+      "body": "Saldo físico é a quantidade existente no estoque. Estoque disponível é a parte que pode atender novas vendas: retire do saldo físico as unidades avariadas e as reservadas para outros pedidos.\n\nEntrada aumenta o saldo físico; saída o reduz. Uma reserva compromete unidades que ainda estão fisicamente presentes. Uma avaria torna a unidade indisponível até que seja tratada; nesta atividade, reservas e avarias são grupos distintos.\n\nExemplo: há 120 unidades, entram 80 e saem 135. O saldo físico é 120 + 80 − 135 = 65. Dessas 65, há 15 avariadas e 20 reservadas. O disponível é 65 − 15 − 20 = 30 unidades.\n\nA conta completa é 120 + 80 − 135 − 15 − 20 = 30. Confira a decomposição: 30 disponíveis + 15 avariadas + 20 reservadas = 65 físicas. Uma reserva não é uma segunda saída física.\n\nLimite: não desconte a mesma unidade duas vezes. Se uma unidade reservada também estiver avariada, identifique a sobreposição antes da conta. Resultado negativo indica compromissos maiores que o saldo utilizável e exige revisão dos registros.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003042",
+      "question_id": "00000000-0000-4000-8000-000000021012"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004012",
+      "title": "Organizar a expedição",
+      "body": "Expedição é a preparação e liberação dos pedidos para transporte. Ela reúne separação, conferência, embalagem, identificação e registro da saída para que o material enviado corresponda ao pedido.\n\nCada etapa deixa uma evidência: lista de separação, confirmação dos itens, etiqueta do volume e registro de saída. A etiqueta associa o volume ao pedido e ao destinatário; não substitui a contagem do conteúdo.\n\nExemplo: um pedido contém 4 pastas e 2 cadernos. Separe os itens, confira cada quantidade, embale e identifique. Só então registre a saída de 4 pastas e 2 cadernos correspondentes ao envio preparado.\n\nSe a conferência encontrar apenas 3 pastas, interrompa o fechamento, corrija ou registre a falta conforme o procedimento. Conferir antes de lacrar evita ter de reabrir um volume com conteúdo incorreto.\n\nLimite: a sequência organizada reduz erros, mas não garante ausência de dano no transporte. Verifique proteção, destinatário e rastreabilidade. Não registre como enviado um pedido que ainda está aguardando correção.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004011",
+      "question_id": "00000000-0000-4000-8000-000000021016"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003060",
+      "title": "Células e organelas",
+      "body": "Célula é uma unidade básica dos seres vivos. A membrana delimita a célula, o citoplasma ocupa a região interna e, nas células eucarióticas, o núcleo abriga a maior parte do material genético.\n\nOrganelas são estruturas internas com funções específicas. Mitocôndrias participam da respiração celular, processo que disponibiliza energia para a célula. Cloroplastos realizam fotossíntese em células vegetais fotossintetizantes.\n\nExemplo: em uma célula de folha exposta à luz, cloroplastos participam da produção de matéria orgânica pela fotossíntese. Essa célula também possui mitocôndrias; uma função não elimina a outra.\n\nCompare estruturas e funções: membrana controla trocas com o meio; núcleo contém a maior parte do material genético na célula eucariótica; citoplasma abriga estruturas e reações. Uma célula animal possui mitocôndrias, mas não cloroplastos.\n\nLimite: o desenho didático simplifica formas e proporções. Nem toda célula tem núcleo delimitado: bactérias são procarióticas. Nem toda célula vegetal possui cloroplastos; células de muitas raízes não fazem fotossíntese.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000021020"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003061",
+      "title": "Grupos de plantas",
+      "body": "Classificar plantas é comparar características compartilhadas. Vasos condutores transportam água e outras substâncias; sementes protegem o embrião. Flores e frutos ajudam a reconhecer um grupo específico.\n\nBriófitas, como musgos, não possuem vasos condutores verdadeiros nem sementes. Pteridófitas, como samambaias, possuem vasos, mas não sementes. Esses dois grupos se reproduzem por ciclos que incluem esporos.\n\nGimnospermas, como pinheiros, possuem sementes que não ficam dentro de frutos. Angiospermas produzem flores e frutos; o fruto envolve as sementes. Uma mangueira com flores e mangas é exemplo de angiosperma.\n\nExemplo de comparação: musgo sem vasos verdadeiros é briófita; samambaia com vasos e sem sementes é pteridófita; pinheiro com sementes sem frutos é gimnosperma; feijoeiro com flores e vagens é angiosperma.\n\nLimite: tamanho e cor não bastam para classificar. Uma angiosperma pode estar sem flores na época observada; ausência momentânea de flor não comprova outro grupo. Registre as características e o que ainda falta verificar.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003060",
+      "question_id": "00000000-0000-4000-8000-000000021025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003062",
+      "title": "Observação científica",
+      "body": "Observar cientificamente é registrar características que podem ser verificadas. Separe observação, como ver uma folha verde, de interpretação, como explicar a função daquela folha.\n\nÓrgãos vegetais possuem funções: a raiz absorve água e sais e ajuda na fixação; o caule sustenta e transporta substâncias; a folha costuma ser o principal órgão fotossintetizante; a flor participa da reprodução das angiospermas.\n\nExemplo de registro: em uma planta no vaso, vejo caule, quatro folhas e uma flor. Não vejo a raiz porque está coberta. A frase ‘a raiz absorve água’ é uma explicação de função, não uma observação direta dessa raiz.\n\nAnote data, local, partes visíveis e uma descrição sem arrancar a planta. Um desenho rotulado ou uma foto autorizada pode ajudar a repetir a observação. Se comparar dias, mantenha ponto de vista e condições semelhantes.\n\nLimite: não ver uma estrutura não prova que ela não existe. Não invente cor ou tamanho de uma raiz oculta. Diferencie o que foi visto, a função conhecida do órgão e uma hipótese que precisaria de outra observação.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003061",
+      "question_id": "00000000-0000-4000-8000-000000021029"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004015",
+      "title": "Identificar estruturas celulares",
+      "body": "Um esquema celular representa estruturas para facilitar a comparação de posições e funções. Neste desenho de célula eucariótica, procure primeiro o limite externo, depois a estrutura central e a região interna ao redor dela.\n\nA membrana delimita a célula e regula trocas. O núcleo abriga a maior parte do material genético. O citoplasma é a região interna entre a membrana e o núcleo, onde ficam diversas estruturas celulares.\n\nNo esquema da prática, 1 indica a membrana, 2 indica o núcleo e 3 indica o citoplasma. Siga cada linha até a estrutura: o número 2 está à direita, mas sua linha termina na estrutura arredondada central.\n\nExemplo: se a pergunta pede o núcleo, escolha 2 porque a linha aponta para a estrutura central delimitada. Se pede o contorno externo, escolha 1. A região ao redor do núcleo corresponde a 3, citoplasma.\n\nLimite: a posição do número no papel não é a posição da estrutura. Cores e proporções são escolhas didáticas; não representam todas as células nem todas as organelas. Use a ponta da linha e a função para conferir.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003062",
+      "question_id": "00000000-0000-4000-8000-000000021032"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004016",
+      "title": "Classificar grupos de plantas",
+      "body": "Uma classificação precisa de um critério verificável. Para estes grupos, compare vasos condutores, presença de sementes e presença de frutos; não use apenas o tamanho ou o ambiente da planta.\n\nBriófitas não possuem vasos condutores verdadeiros. Pteridófitas possuem vasos, mas não sementes. Gimnospermas têm sementes sem frutos. Angiospermas possuem flores e frutos que envolvem sementes.\n\nExemplo: a amostra A tem sementes em cones, sem frutos, e corresponde a uma gimnosperma. A amostra B tem flores e frutos com sementes, correspondendo a uma angiosperma. Vasos, sozinhos, não distinguem esses dois grupos.\n\nOrganize uma decisão: sem vasos verdadeiros, considere briófitas; com vasos e sem sementes, pteridófitas; com sementes, investigue frutos. Confira mais de uma característica e registre qual evidência sustenta cada associação.\n\nLimite: uma amostra incompleta pode não mostrar semente ou fruto existente em outra época. Escreva ‘dados insuficientes’ quando necessário. Não transforme a falta de uma observação em prova de ausência no grupo.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004015",
+      "question_id": "00000000-0000-4000-8000-000000021036"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003070",
+      "title": "Grandezas e unidades",
+      "body": "Grandeza física é uma propriedade que pode ser medida, como comprimento, tempo ou massa. Uma medida combina valor e unidade: 2 m indica dois metros, enquanto 2 s indica dois segundos.\n\nNo Sistema Internacional, comprimento usa metro (m), tempo usa segundo (s) e massa usa quilograma (kg). Massa expressa uma propriedade do corpo; peso é a força gravitacional sobre ele, medida em newtons (N).\n\nForça descreve uma interação capaz de alterar o movimento ou deformar um corpo e usa newton (N). Energia está associada à capacidade de realizar trabalho ou provocar transformações e usa joule (J). Potência é a energia transferida por tempo e usa watt (W).\n\nExemplo: registre comprimento de uma mesa como 2 m, duração como 10 s, massa de um pacote como 3 kg, força como 20 N, energia como 100 J e potência como 5 W. Cada unidade identifica uma grandeza diferente.\n\nLimite: o número isolado não basta. ‘O pacote mede 3’ não informa se são metros ou quilogramas. Não troque kg por N nem J por W; comparar valores exige a mesma grandeza e unidades compatíveis.",
+      "position": 0,
+      "prerequisite_id": null,
+      "question_id": "00000000-0000-4000-8000-000000021040"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003071",
+      "title": "Movimento",
+      "body": "Movimento é a mudança de posição em relação a um referencial, como uma marca no chão. Distância é o comprimento total do caminho percorrido; tempo é a duração observada. Registre distância em metros e tempo em segundos.\n\nRapidez média é a distância total dividida pelo tempo total: rapidez = distância / tempo. A unidade m/s significa quantos metros por segundo correspondem à média do trajeto, sem afirmar que o ritmo foi constante.\n\nExemplo: uma pessoa caminha 10 m em 5 s. Dividindo 10 por 5, a rapidez média é 2 m/s. Se percorrer os mesmos 10 m em 10 s, a média será 1 m/s, menor porque levou mais tempo.\n\nDistância e deslocamento são diferentes: ao andar 5 m e voltar 5 m ao início, a distância é 10 m e o deslocamento total é zero. A velocidade média usa deslocamento e direção; a rapidez média usa distância.\n\nLimite: tempo total precisa ser maior que zero para dividir. Inclua uma parada se ela pertence ao intervalo observado. Uma média de 2 m/s não permite concluir que a pessoa manteve 2 m/s a cada instante.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003070",
+      "question_id": "00000000-0000-4000-8000-000000021043"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003072",
+      "title": "Medição e análise",
+      "body": "Medir é comparar uma grandeza com uma unidade usando um instrumento. Para estudar movimento, defina o trecho, meça sua distância e registre o intervalo de tempo com o mesmo critério de início e fim.\n\nUma fita métrica pode medir distância; um cronômetro registra duração. Anote valor e unidade de cada leitura. Rapidez média usa distância por tempo; velocidade média usa deslocamento por tempo e exige considerar direção.\n\nExemplo em linha reta sem retorno: entre duas marcas há 12 m e o tempo é 6 s. A rapidez média é 12 / 6 = 2 m/s. Nesse percurso, a distância e o módulo do deslocamento coincidem.\n\nPlaneje medições repetidas do mesmo trecho, mantendo o critério. Tempos de 6,0 s e 6,2 s podem diferir por reação ao cronômetro ou variação de movimento; registre as duas leituras em vez de apagar a que não esperava.\n\nLimite: um cálculo não elimina incerteza de medição. Escolha um trajeto seguro para caminhada ou trabalhe com dados hipotéticos. Não faça teste em via com tráfego; não conclua a precisão do instrumento apenas pelo número de casas decimais anotado.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003071",
+      "question_id": "00000000-0000-4000-8000-000000021048"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004017",
+      "title": "Calcular rapidez média",
+      "body": "Rapidez média é a distância total percorrida dividida pelo tempo total observado. Ela resume um trajeto em um único valor e não informa a direção; velocidade média usa o deslocamento, que pode ser diferente da distância.\n\nEm um trajeto por etapas, some primeiro todas as distâncias e todos os tempos. Inclua intervalos de parada que façam parte da observação. Só depois divida a distância total pelo tempo total, com unidades compatíveis.\n\nExemplo: uma pessoa percorre 120 m em 60 s e mais 60 m em 30 s. A distância total é 120 + 60 = 180 m e o tempo total é 60 + 30 = 90 s. Logo, 180 m / 90 s = 2 m/s.\n\nConfira com outra situação: 10 m em 10 s e 90 m em 30 s totalizam 100 m em 40 s, ou 2,5 m/s. Fazer a média simples de 1 m/s e 3 m/s daria 2 m/s e estaria errado, pois as durações são diferentes.\n\nLimite: não divida por tempo zero nem some metros com quilômetros sem converter. Se a pessoa retorna ao ponto inicial, o deslocamento é zero, mas a distância e a rapidez podem ser positivas. A média não comprova ritmo constante.",
+      "position": 3,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003072",
+      "question_id": "00000000-0000-4000-8000-000000021052"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000004018",
+      "title": "Interpretar uma medição",
+      "body": "Interpretar uma medição é reconhecer a grandeza, a unidade e o que o registro permite concluir. Valores numéricos diferentes podem representar a mesma quantidade quando as unidades mudam.\n\nUm quilômetro corresponde a 1000 metros. Para passar de km para m, multiplique por 1000; para passar de m para km, divida por 1000. Um minuto corresponde a 60 segundos, portanto a conversão de tempo usa outro fator.\n\nExemplo: 1,5 km × 1000 = 1500 m. Os registros 1,5 km e 1500 m representam a mesma distância. Para comparar com 1200 m, use a mesma unidade: 1500 m é 300 m maior que 1200 m.\n\nAntes de calcular rapidez, converta também o tempo: 0,12 km são 120 m e 1 min são 60 s. Assim, 120 m / 60 s = 2 m/s. Registre as conversões para outra pessoa poder conferir a conta.\n\nLimite: escrever 1500 m em vez de 1,5 km não comprova maior precisão. Precisão depende do instrumento, do procedimento e da repetição; a escrita sozinha não basta. Não compare distância com tempo como se fossem a mesma grandeza.",
+      "position": 4,
+      "prerequisite_id": "00000000-0000-4000-8000-000000004017",
+      "question_id": "00000000-0000-4000-8000-000000021056"
     }
   ],
   "plans": [
@@ -2269,6 +2389,351 @@
       "resource_ids": [
         "retry-pattern"
       ]
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003040",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021000",
+        "00000000-0000-4000-8000-000000021001",
+        "00000000-0000-4000-8000-000000021002",
+        "00000000-0000-4000-8000-000000021003",
+        "00000000-0000-4000-8000-000000008012"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Desenhe o caminho de 20 caixas do fornecedor ao estoque e de 7 caixas até uma escola. Marque as conferências, os registros de entrada e saída, o saldo e uma possível divergência.",
+        "criteria": [
+          "Identifiquei fornecedor, estoque e destino",
+          "Registrei 20 caixas na entrada, 7 na saída e saldo 13",
+          "Expliquei como conferir uma divergência"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003041",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021004",
+        "00000000-0000-4000-8000-000000021005",
+        "00000000-0000-4000-8000-000000021006",
+        "00000000-0000-4000-8000-000000021007",
+        "00000000-0000-4000-8000-000000008013"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Monte uma ficha de um item com saldo 30, entrada 12 e saída 8. Compare o saldo com uma contagem de 32 unidades; registre a diferença e dois documentos que verificaria antes de ajustar.",
+        "criteria": [
+          "Registrei produto, unidade e movimentações",
+          "Calculei saldo 34 e diferença −2",
+          "Propus conferência antes do ajuste"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003042",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021008",
+        "00000000-0000-4000-8000-000000021009",
+        "00000000-0000-4000-8000-000000021010",
+        "00000000-0000-4000-8000-000000021011",
+        "00000000-0000-4000-8000-000000008014"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Prepare no papel um pedido de 2 cadernos, 1 régua e 3 lápis. Liste a separação, a conferência por linha, a proteção, a identificação e o registro de saída. Explique como trataria a falta da régua.",
+        "criteria": [
+          "Listei cada produto e quantidade",
+          "Conferi antes de lacrar e identifiquei o pacote",
+          "Registrei somente o que seria enviado"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004011",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021012",
+        "00000000-0000-4000-8000-000000021013",
+        "00000000-0000-4000-8000-000000021014",
+        "00000000-0000-4000-8000-000000021015",
+        "00000000-0000-4000-8000-000000012011"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Monte uma tabela com 50 unidades físicas, 6 avariadas e 9 reservadas, sem sobreposição. Calcule o disponível, confira a soma das três parcelas e explique o efeito de reservar mais 4 unidades.",
+        "criteria": [
+          "Distingui saldo físico, avarias e reservas",
+          "Calculei 35 disponíveis e depois 31",
+          "Conferi que não descontei unidades duas vezes"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004012",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021016",
+        "00000000-0000-4000-8000-000000021017",
+        "00000000-0000-4000-8000-000000021018",
+        "00000000-0000-4000-8000-000000021019",
+        "00000000-0000-4000-8000-000000012012"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Organize uma ficha de expedição para 4 pastas e 2 cadernos. Indique a ordem das etapas, a evidência de cada conferência e o procedimento caso uma pasta esteja em falta antes do lacre.",
+        "criteria": [
+          "Ordenei separação, conferência, embalagem e registro",
+          "Relacionei etiqueta, pedido e destinatário",
+          "Expliquei a interrupção para corrigir a falta"
+        ],
+        "minLength": 180
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003060",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021020",
+        "00000000-0000-4000-8000-000000021021",
+        "00000000-0000-4000-8000-000000021022",
+        "00000000-0000-4000-8000-000000021023",
+        "00000000-0000-4000-8000-000000021024"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Faça um esquema de célula eucariótica com membrana, citoplasma, núcleo e mitocôndria. Ao lado, represente uma célula de folha com cloroplastos. Relacione cada estrutura à função e explique um limite do desenho.",
+        "criteria": [
+          "Associei cada estrutura à sua função",
+          "Distingui mitocôndria de cloroplasto",
+          "Expliquei uma simplificação do esquema"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003061",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021025",
+        "00000000-0000-4000-8000-000000021026",
+        "00000000-0000-4000-8000-000000021027",
+        "00000000-0000-4000-8000-000000021028",
+        "00000000-0000-4000-8000-000000008018"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Monte uma tabela para musgo, samambaia, pinheiro e feijoeiro. Compare vasos, sementes e frutos, indique o grupo de cada exemplo e explique por que uma planta sem flores no momento pode continuar sendo angiosperma.",
+        "criteria": [
+          "Comparei vasos, sementes e frutos",
+          "Classifiquei os quatro exemplos pelas características",
+          "Registrei o limite da ausência momentânea de flor"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003062",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021029",
+        "00000000-0000-4000-8000-000000021030",
+        "00000000-0000-4000-8000-000000021031",
+        "00000000-0000-4000-8000-000000008019",
+        "00000000-0000-4000-8000-000000008020"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Observe uma planta sem arrancá-la, ou use uma imagem que permita ver pelo menos dois órgãos. Registre data e partes visíveis; associe duas funções e separe uma observação de uma interpretação. Declare qualquer parte que não conseguiu observar.",
+        "criteria": [
+          "Registrei o que realmente estava visível",
+          "Relacionei dois órgãos às funções",
+          "Separei observação, interpretação e limite"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004015",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021032",
+        "00000000-0000-4000-8000-000000021033",
+        "00000000-0000-4000-8000-000000021034",
+        "00000000-0000-4000-8000-000000021035",
+        "00000000-0000-4000-8000-000000012015"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Reproduza um esquema simples da célula eucariótica da prática. Marque 1 na membrana, 2 no núcleo e 3 no citoplasma; escreva uma função de cada estrutura e uma informação que o desenho não permite concluir.",
+        "criteria": [
+          "Associei 1 à membrana, 2 ao núcleo e 3 ao citoplasma",
+          "Relacionei as estruturas às funções",
+          "Expliquei um limite de cores, formas ou proporções"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004016",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021036",
+        "00000000-0000-4000-8000-000000021037",
+        "00000000-0000-4000-8000-000000021038",
+        "00000000-0000-4000-8000-000000021039",
+        "00000000-0000-4000-8000-000000012016"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Classifique três fichas: A sem vasos verdadeiros; B com sementes em cones sem frutos; C com flores e frutos com sementes. Justifique por características e acrescente uma ficha incompleta em que faltam dados para concluir.",
+        "criteria": [
+          "Classifiquei A, B e C pelos critérios ensinados",
+          "Distingui sementes e frutos",
+          "Expliquei por que a ficha incompleta exige mais evidência"
+        ],
+        "minLength": 180
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003070",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021040",
+        "00000000-0000-4000-8000-000000021041",
+        "00000000-0000-4000-8000-000000021042",
+        "00000000-0000-4000-8000-000000008021",
+        "00000000-0000-4000-8000-000000008022"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Monte uma ficha de medidas hipotéticas para um pacote: comprimento em m, massa em kg e tempo de transporte em s. Acrescente associações de força, energia e potência com N, J e W; explique por que kg não é unidade de peso.",
+        "criteria": [
+          "Registrei valores acompanhados de unidades",
+          "Associei força, energia e potência a N, J e W",
+          "Distingui massa e peso"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003071",
+      "level": 1,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021043",
+        "00000000-0000-4000-8000-000000021044",
+        "00000000-0000-4000-8000-000000021045",
+        "00000000-0000-4000-8000-000000021046",
+        "00000000-0000-4000-8000-000000021047"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Desenhe um trajeto de ida de 5 m e volta de 5 m em 10 s no total. Registre distância, deslocamento e rapidez média; depois acrescente uma parada de 5 s e recalcule a rapidez considerando todo o intervalo.",
+        "criteria": [
+          "Distingui distância 10 m e deslocamento zero",
+          "Calculei rapidez 1 m/s para 10 s",
+          "Incluí a parada no tempo total de 15 s"
+        ],
+        "minLength": 100
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000003072",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021048",
+        "00000000-0000-4000-8000-000000021049",
+        "00000000-0000-4000-8000-000000021050",
+        "00000000-0000-4000-8000-000000021051",
+        "00000000-0000-4000-8000-000000008023"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Planeje uma medição hipotética de caminhada em trecho reto seguro de 12 m. Use tempos de 6,0 s e 6,2 s, registre as unidades e calcule a rapidez de cada tentativa. Explique uma fonte de variação e quando distância e deslocamento coincidem.",
+        "criteria": [
+          "Defini instrumentos e critérios de início e fim",
+          "Registrei distância, tempos e cálculos com unidades",
+          "Expliquei uma fonte de variação sem apagar leituras"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004017",
+      "level": 2,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021052",
+        "00000000-0000-4000-8000-000000021053",
+        "00000000-0000-4000-8000-000000021054",
+        "00000000-0000-4000-8000-000000021055",
+        "00000000-0000-4000-8000-000000012017"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Calcule a rapidez média de 10 m em 10 s seguidos de 90 m em 30 s. Mostre as somas e compare com a média simples das rapidez das etapas. Depois inclua 10 s de parada e explique o novo resultado.",
+        "criteria": [
+          "Somei 100 m e 40 s para obter 2,5 m/s",
+          "Expliquei por que a média simples de 1 e 3 não serve",
+          "Incluí a parada: 100 m em 50 s, ou 2 m/s"
+        ],
+        "minLength": 140
+      },
+      "resource_ids": []
+    },
+    {
+      "module_id": "00000000-0000-4000-8000-000000004018",
+      "level": 3,
+      "question_ids": [
+        "00000000-0000-4000-8000-000000021056",
+        "00000000-0000-4000-8000-000000021057",
+        "00000000-0000-4000-8000-000000021058",
+        "00000000-0000-4000-8000-000000021059",
+        "00000000-0000-4000-8000-000000012018"
+      ],
+      "dynamic": {
+        "kind": "applied",
+        "title": "Aplique ao caso",
+        "prompt": "Compare os registros 1,5 km, 1500 m e 1200 m, mostrando a conversão e a diferença. Em seguida, calcule a rapidez de 0,12 km em 1 min em m/s e explique por que a escrita de uma medida não comprova sua precisão.",
+        "criteria": [
+          "Converti as distâncias e comparei na mesma unidade",
+          "Converti 0,12 km e 1 min para obter 2 m/s",
+          "Distingui equivalência de unidades e precisão"
+        ],
+        "minLength": 180
+      },
+      "resource_ids": []
     }
   ],
   "questions": [
@@ -6735,6 +7200,966 @@
       "category": "Prática guiada",
       "subject_id": "00000000-0000-4000-8000-000000000016",
       "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021000",
+      "title": "Fluxo de materiais · verifique o conceito",
+      "prompt": "O que é fluxo de materiais?",
+      "options": [
+        "Caminho entre recebimento, armazenamento e envio",
+        "Somente o nome do fornecedor",
+        "Apenas o preço de venda"
+      ],
+      "explanation": "Caminho entre recebimento, armazenamento e envio. Fornecedor é quem fornece insumos ou produtos. O estoque guarda os materiais; a distribuição os leva ao destino. Um registro de entrada informa o que chegou, e um de saída informa o que deixou o estoque.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021001",
+      "title": "Fluxo de materiais · verifique o conceito",
+      "prompt": "Quem fornece os produtos?",
+      "options": [
+        "Cliente final em todos os casos",
+        "Fornecedor",
+        "Etiqueta do pedido"
+      ],
+      "explanation": "Fornecedor. Exemplo: chegam 20 caixas de cadernos do fornecedor. A equipe confere as caixas, registra a entrada e guarda no local indicado. Quando 7 caixas saem para uma escola, o saldo passa a 20 − 7 = 13 caixas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021002",
+      "title": "Fluxo de materiais · verifique o conceito",
+      "prompt": "Chegaram 20 caixas e saíram 7. Qual é o saldo?",
+      "options": [
+        "27 caixas",
+        "7 caixas",
+        "13 caixas"
+      ],
+      "explanation": "13 caixas. A sequência deve permitir conferir o caminho: receber e conferir, registrar a entrada, armazenar, separar o pedido, conferir e enviar. Registre as quantidades na mesma unidade; 20 caixas não significam 20 cadernos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021003",
+      "title": "Fluxo de materiais · verifique o conceito",
+      "prompt": "Chegaram 19 das 20 caixas esperadas. O que fazer?",
+      "options": [
+        "Registrar a divergência e conferir o documento",
+        "Registrar 20 sem conferir",
+        "Enviar tudo sem contar"
+      ],
+      "explanation": "Registrar a divergência e conferir o documento. Limite: um registro não prova que o material físico está correto. Se chegarem 19 caixas em vez das 20 esperadas, registre a divergência e confira com o documento antes de prometer a entrega. Distribuir não elimina atrasos e avarias.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021004",
+      "title": "Controle de estoque · verifique o conceito",
+      "prompt": "Que dados permitem conferir uma movimentação?",
+      "options": [
+        "Somente a cor da embalagem",
+        "Produto, quantidade, unidade, data e documento",
+        "Somente o preço total"
+      ],
+      "explanation": "Produto, quantidade, unidade, data e documento. Saldo inicial é a quantidade no começo do período. Some as entradas e subtraia as saídas para obter o saldo registrado. Fornecedor fornece insumos; estoque armazena produtos; distribuição entrega ao destino.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021005",
+      "title": "Controle de estoque · verifique o conceito",
+      "prompt": "Saldo 30, entrada 12 e saída 8: qual é o saldo?",
+      "options": [
+        "50 unidades",
+        "10 unidades",
+        "34 unidades"
+      ],
+      "explanation": "34 unidades. Exemplo de um item: o saldo inicial é 30 unidades, entram 12 e saem 8. O saldo registrado é 30 + 12 − 8 = 34 unidades. A contagem física deve ser comparada às 34 registradas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021006",
+      "title": "Controle de estoque · verifique o conceito",
+      "prompt": "O que é inventário?",
+      "options": [
+        "Contagem física dos materiais",
+        "Envio ao cliente",
+        "Compra de qualquer produto"
+      ],
+      "explanation": "Contagem física dos materiais. Inventário é a contagem dos materiais existentes. Se a contagem mostrar 32 unidades, a diferença é 32 − 34 = −2 unidades. Procure entrada, saída ou avaria sem registro antes de corrigir o saldo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021007",
+      "title": "Controle de estoque · verifique o conceito",
+      "prompt": "Registro 34 e contagem 32: qual é a diferença física menos registrada?",
+      "options": [
+        "2 entradas confirmadas",
+        "−2 unidades",
+        "66 unidades"
+      ],
+      "explanation": "−2 unidades. Limite: itens diferentes não formam um único saldo. Separe produtos, unidades e locais; não some caixas com peças sem conversão conhecida. Uma diferença precisa de investigação e registro, não de ajuste sem motivo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021008",
+      "title": "Preparação de pedidos · verifique o conceito",
+      "prompt": "O que comparar na conferência?",
+      "options": [
+        "Somente o peso da caixa",
+        "Somente a cor do pacote",
+        "Produto, código e quantidade com o pedido"
+      ],
+      "explanation": "Produto, código e quantidade com o pedido. Separação é buscar no estoque os itens listados. Conferência é comparar produto, código e quantidade com o pedido. Embalagem protege o conteúdo; identificação relaciona o pacote ao destinatário e ao pedido.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021009",
+      "title": "Preparação de pedidos · verifique o conceito",
+      "prompt": "Pedido com 2 cadernos, 1 régua e 3 lápis tem quantas peças?",
+      "options": [
+        "6 peças",
+        "3 peças",
+        "5 peças"
+      ],
+      "explanation": "6 peças. Exemplo: o pedido pede 2 cadernos, 1 régua e 3 lápis. Separe esses três tipos de produto e conte 6 peças no total. Confira cada linha: ter 6 peças não basta se uma régua foi trocada por um lápis.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021010",
+      "title": "Preparação de pedidos · verifique o conceito",
+      "prompt": "Se a régua estiver em falta, o que fazer?",
+      "options": [
+        "Trocar por lápis sem autorização",
+        "Sinalizar a falta e confirmar o procedimento",
+        "Registrar como enviada"
+      ],
+      "explanation": "Sinalizar a falta e confirmar o procedimento. Após conferir, escolha proteção adequada, identifique o volume e registre a saída das quantidades efetivamente enviadas. Se faltar a régua, sinalize a falta e confirme o procedimento de envio parcial antes de fechar o pacote.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021011",
+      "title": "Preparação de pedidos · verifique o conceito",
+      "prompt": "Quando conferir o conteúdo?",
+      "options": [
+        "Somente após a entrega",
+        "Depois de descartar o pedido",
+        "Antes de lacrar a embalagem"
+      ],
+      "explanation": "Antes de lacrar a embalagem. Limite: não substitua item por conta própria nem registre saída de algo que ficou no estoque. A conferência precisa ocorrer antes do lacre, quando ainda é possível corrigir uma quantidade ou um produto incorreto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021012",
+      "title": "Calcular estoque disponível · verifique o conceito",
+      "prompt": "Uma reserva ainda está fisicamente no estoque?",
+      "options": [
+        "Sim, até a saída física",
+        "Nunca",
+        "Só depois da entrega"
+      ],
+      "explanation": "Sim, até a saída física. Entrada aumenta o saldo físico; saída o reduz. Uma reserva compromete unidades que ainda estão fisicamente presentes. Uma avaria torna a unidade indisponível até que seja tratada; nesta atividade, reservas e avarias são grupos distintos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021013",
+      "title": "Calcular estoque disponível · verifique o conceito",
+      "prompt": "120 + 80 − 135 resulta em qual saldo físico?",
+      "options": [
+        "30 unidades",
+        "65 unidades",
+        "335 unidades"
+      ],
+      "explanation": "65 unidades. Exemplo: há 120 unidades, entram 80 e saem 135. O saldo físico é 120 + 80 − 135 = 65. Dessas 65, há 15 avariadas e 20 reservadas. O disponível é 65 − 15 − 20 = 30 unidades.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021014",
+      "title": "Calcular estoque disponível · verifique o conceito",
+      "prompt": "65 físicas, 15 avariadas e 20 reservadas distintas: disponível?",
+      "options": [
+        "65 unidades",
+        "100 unidades",
+        "30 unidades"
+      ],
+      "explanation": "30 unidades. A conta completa é 120 + 80 − 135 − 15 − 20 = 30. Confira a decomposição: 30 disponíveis + 15 avariadas + 20 reservadas = 65 físicas. Uma reserva não é uma segunda saída física.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021015",
+      "title": "Calcular estoque disponível · verifique o conceito",
+      "prompt": "Por que verificar sobreposição entre avarias e reservas?",
+      "options": [
+        "Para não descontar a mesma unidade duas vezes",
+        "Para somar todas as reservas ao saldo",
+        "Para ignorar as avarias"
+      ],
+      "explanation": "Para não descontar a mesma unidade duas vezes. Limite: não desconte a mesma unidade duas vezes. Se uma unidade reservada também estiver avariada, identifique a sobreposição antes da conta. Resultado negativo indica compromissos maiores que o saldo utilizável e exige revisão dos registros.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021016",
+      "title": "Organizar a expedição · verifique o conceito",
+      "prompt": "Qual etapa vem antes de embalar e lacrar?",
+      "options": [
+        "Ignorar o pedido",
+        "Conferir itens e quantidades",
+        "Apagar o saldo"
+      ],
+      "explanation": "Conferir itens e quantidades. Cada etapa deixa uma evidência: lista de separação, confirmação dos itens, etiqueta do volume e registro de saída. A etiqueta associa o volume ao pedido e ao destinatário; não substitui a contagem do conteúdo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021017",
+      "title": "Organizar a expedição · verifique o conceito",
+      "prompt": "Para que serve a identificação do volume?",
+      "options": [
+        "Substituir a contagem dos itens",
+        "Aumentar o estoque físico",
+        "Relacionar volume, pedido e destinatário"
+      ],
+      "explanation": "Relacionar volume, pedido e destinatário. Exemplo: um pedido contém 4 pastas e 2 cadernos. Separe os itens, confira cada quantidade, embale e identifique. Só então registre a saída de 4 pastas e 2 cadernos correspondentes ao envio preparado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021018",
+      "title": "Organizar a expedição · verifique o conceito",
+      "prompt": "Foram pedidas 4 pastas e separadas 3. O que fazer?",
+      "options": [
+        "Interromper o fechamento e tratar a falta",
+        "Lacrar e registrar 4",
+        "Trocar o nome do destinatário"
+      ],
+      "explanation": "Interromper o fechamento e tratar a falta. Se a conferência encontrar apenas 3 pastas, interrompa o fechamento, corrija ou registre a falta conforme o procedimento. Conferir antes de lacrar evita ter de reabrir um volume com conteúdo incorreto.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021019",
+      "title": "Organizar a expedição · verifique o conceito",
+      "prompt": "O registro da saída deve representar o quê?",
+      "options": [
+        "Tudo que estava previsto mesmo faltando",
+        "O pedido efetivamente preparado e enviado",
+        "O estoque anterior à separação"
+      ],
+      "explanation": "O pedido efetivamente preparado e enviado. Limite: a sequência organizada reduz erros, mas não garante ausência de dano no transporte. Verifique proteção, destinatário e rastreabilidade. Não registre como enviado um pedido que ainda está aguardando correção.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021020",
+      "title": "Células e organelas · verifique o conceito",
+      "prompt": "O que delimita a célula e controla trocas com o meio?",
+      "options": [
+        "Flor",
+        "Fruto",
+        "Membrana"
+      ],
+      "explanation": "Membrana. Organelas são estruturas internas com funções específicas. Mitocôndrias participam da respiração celular, processo que disponibiliza energia para a célula. Cloroplastos realizam fotossíntese em células vegetais fotossintetizantes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021021",
+      "title": "Células e organelas · verifique o conceito",
+      "prompt": "Onde fica a maior parte do material genético de uma célula eucariótica?",
+      "options": [
+        "Núcleo",
+        "Fora da célula",
+        "Somente na membrana"
+      ],
+      "explanation": "Núcleo. Exemplo: em uma célula de folha exposta à luz, cloroplastos participam da produção de matéria orgânica pela fotossíntese. Essa célula também possui mitocôndrias; uma função não elimina a outra.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021022",
+      "title": "Células e organelas · verifique o conceito",
+      "prompt": "Qual organela realiza fotossíntese?",
+      "options": [
+        "Mitocôndria",
+        "Cloroplasto",
+        "Núcleo"
+      ],
+      "explanation": "Cloroplasto. Compare estruturas e funções: membrana controla trocas com o meio; núcleo contém a maior parte do material genético na célula eucariótica; citoplasma abriga estruturas e reações. Uma célula animal possui mitocôndrias, mas não cloroplastos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021023",
+      "title": "Células e organelas · verifique o conceito",
+      "prompt": "Uma célula animal geralmente possui qual organela?",
+      "options": [
+        "Cloroplasto",
+        "Parede vegetal",
+        "Mitocôndria"
+      ],
+      "explanation": "Mitocôndria. Limite: o desenho didático simplifica formas e proporções. Nem toda célula tem núcleo delimitado: bactérias são procarióticas. Nem toda célula vegetal possui cloroplastos; células de muitas raízes não fazem fotossíntese.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021024",
+      "title": "Células e organelas · verifique o conceito",
+      "prompt": "Toda célula vegetal possui cloroplastos?",
+      "options": [
+        "Não, muitas células de raízes não possuem",
+        "Sim, sem exceção",
+        "Somente as células animais possuem"
+      ],
+      "explanation": "Não, muitas células de raízes não possuem. Limite: o desenho didático simplifica formas e proporções. Nem toda célula tem núcleo delimitado: bactérias são procarióticas. Nem toda célula vegetal possui cloroplastos; células de muitas raízes não fazem fotossíntese.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021025",
+      "title": "Grupos de plantas · verifique o conceito",
+      "prompt": "Qual grupo não possui vasos condutores verdadeiros?",
+      "options": [
+        "Gimnospermas",
+        "Briófitas",
+        "Angiospermas"
+      ],
+      "explanation": "Briófitas. Briófitas, como musgos, não possuem vasos condutores verdadeiros nem sementes. Pteridófitas, como samambaias, possuem vasos, mas não sementes. Esses dois grupos se reproduzem por ciclos que incluem esporos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021026",
+      "title": "Grupos de plantas · verifique o conceito",
+      "prompt": "Samambaia tem vasos e não produz sementes. Qual grupo?",
+      "options": [
+        "Angiospermas",
+        "Gimnospermas",
+        "Pteridófitas"
+      ],
+      "explanation": "Pteridófitas. Gimnospermas, como pinheiros, possuem sementes que não ficam dentro de frutos. Angiospermas produzem flores e frutos; o fruto envolve as sementes. Uma mangueira com flores e mangas é exemplo de angiosperma.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021027",
+      "title": "Grupos de plantas · verifique o conceito",
+      "prompt": "O que caracteriza as sementes das gimnospermas?",
+      "options": [
+        "Não ficam dentro de frutos",
+        "Sempre ficam em frutos",
+        "Não existem"
+      ],
+      "explanation": "Não ficam dentro de frutos. Exemplo de comparação: musgo sem vasos verdadeiros é briófita; samambaia com vasos e sem sementes é pteridófita; pinheiro com sementes sem frutos é gimnosperma; feijoeiro com flores e vagens é angiosperma.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021028",
+      "title": "Grupos de plantas · verifique o conceito",
+      "prompt": "Uma planta está sem flor hoje. O que concluir?",
+      "options": [
+        "É obrigatoriamente briófita",
+        "Ainda faltam evidências para definir o grupo",
+        "Não pode ser angiosperma"
+      ],
+      "explanation": "Ainda faltam evidências para definir o grupo. Limite: tamanho e cor não bastam para classificar. Uma angiosperma pode estar sem flores na época observada; ausência momentânea de flor não comprova outro grupo. Registre as características e o que ainda falta verificar.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021029",
+      "title": "Observação científica · verifique o conceito",
+      "prompt": "Qual frase é observação direta?",
+      "options": [
+        "A raiz oculta tem 10 cm",
+        "A planta nunca terá fruto",
+        "Vejo quatro folhas e uma flor"
+      ],
+      "explanation": "Vejo quatro folhas e uma flor. Órgãos vegetais possuem funções: a raiz absorve água e sais e ajuda na fixação; o caule sustenta e transporta substâncias; a folha costuma ser o principal órgão fotossintetizante; a flor participa da reprodução das angiospermas.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021030",
+      "title": "Observação científica · verifique o conceito",
+      "prompt": "Qual é uma função da raiz?",
+      "options": [
+        "Absorver água e sais",
+        "Produzir flores em todos os casos",
+        "Substituir todas as folhas"
+      ],
+      "explanation": "Absorver água e sais. Exemplo de registro: em uma planta no vaso, vejo caule, quatro folhas e uma flor. Não vejo a raiz porque está coberta. A frase ‘a raiz absorve água’ é uma explicação de função, não uma observação direta dessa raiz.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021031",
+      "title": "Observação científica · verifique o conceito",
+      "prompt": "A raiz não está visível no vaso. O que registrar?",
+      "options": [
+        "A planta não possui raiz",
+        "Raiz não visível, sem inventar medidas",
+        "Raiz obrigatoriamente vermelha"
+      ],
+      "explanation": "Raiz não visível, sem inventar medidas. Anote data, local, partes visíveis e uma descrição sem arrancar a planta. Um desenho rotulado ou uma foto autorizada pode ajudar a repetir a observação. Se comparar dias, mantenha ponto de vista e condições semelhantes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021032",
+      "title": "Identificar estruturas celulares · verifique o conceito",
+      "prompt": "Qual número indica a membrana no esquema da prática?",
+      "options": [
+        "2",
+        "3",
+        "1"
+      ],
+      "explanation": "1. A membrana delimita a célula e regula trocas. O núcleo abriga a maior parte do material genético. O citoplasma é a região interna entre a membrana e o núcleo, onde ficam diversas estruturas celulares.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021033",
+      "title": "Identificar estruturas celulares · verifique o conceito",
+      "prompt": "Qual número indica o citoplasma no esquema?",
+      "options": [
+        "3",
+        "2",
+        "1"
+      ],
+      "explanation": "3. No esquema da prática, 1 indica a membrana, 2 indica o núcleo e 3 indica o citoplasma. Siga cada linha até a estrutura: o número 2 está à direita, mas sua linha termina na estrutura arredondada central.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021034",
+      "title": "Identificar estruturas celulares · verifique o conceito",
+      "prompt": "Que função corresponde ao núcleo eucariótico?",
+      "options": [
+        "Ser o limite externo da célula",
+        "Abrigar a maior parte do material genético",
+        "Ser uma flor"
+      ],
+      "explanation": "Abrigar a maior parte do material genético. Exemplo: se a pergunta pede o núcleo, escolha 2 porque a linha aponta para a estrutura central delimitada. Se pede o contorno externo, escolha 1. A região ao redor do núcleo corresponde a 3, citoplasma.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021035",
+      "title": "Identificar estruturas celulares · verifique o conceito",
+      "prompt": "Como localizar uma estrutura numerada?",
+      "options": [
+        "Olhar apenas a posição do número",
+        "Usar sempre a mesma cor em qualquer desenho",
+        "Seguir a linha até a estrutura indicada"
+      ],
+      "explanation": "Seguir a linha até a estrutura indicada. Limite: a posição do número no papel não é a posição da estrutura. Cores e proporções são escolhas didáticas; não representam todas as células nem todas as organelas. Use a ponta da linha e a função para conferir.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021036",
+      "title": "Classificar grupos de plantas · verifique o conceito",
+      "prompt": "Qual característica separa gimnospermas de angiospermas neste estudo?",
+      "options": [
+        "Sementes sem frutos ou sementes dentro de frutos",
+        "Somente a altura",
+        "Somente a presença de vasos"
+      ],
+      "explanation": "Sementes sem frutos ou sementes dentro de frutos. Briófitas não possuem vasos condutores verdadeiros. Pteridófitas possuem vasos, mas não sementes. Gimnospermas têm sementes sem frutos. Angiospermas possuem flores e frutos que envolvem sementes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021037",
+      "title": "Classificar grupos de plantas · verifique o conceito",
+      "prompt": "Uma planta com vasos e sem sementes pertence a qual grupo estudado?",
+      "options": [
+        "Briófitas",
+        "Pteridófitas",
+        "Gimnospermas"
+      ],
+      "explanation": "Pteridófitas. Exemplo: a amostra A tem sementes em cones, sem frutos, e corresponde a uma gimnosperma. A amostra B tem flores e frutos com sementes, correspondendo a uma angiosperma. Vasos, sozinhos, não distinguem esses dois grupos.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021038",
+      "title": "Classificar grupos de plantas · verifique o conceito",
+      "prompt": "Amostra com sementes em cones, sem frutos: qual grupo?",
+      "options": [
+        "Briófitas",
+        "Angiospermas",
+        "Gimnospermas"
+      ],
+      "explanation": "Gimnospermas. Organize uma decisão: sem vasos verdadeiros, considere briófitas; com vasos e sem sementes, pteridófitas; com sementes, investigue frutos. Confira mais de uma característica e registre qual evidência sustenta cada associação.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021039",
+      "title": "Classificar grupos de plantas · verifique o conceito",
+      "prompt": "Uma amostra incompleta não mostra fruto nem semente. O que fazer?",
+      "options": [
+        "Registrar dados insuficientes e buscar mais evidências",
+        "Classificar só pela cor",
+        "Afirmar que não produz sementes"
+      ],
+      "explanation": "Registrar dados insuficientes e buscar mais evidências. Limite: uma amostra incompleta pode não mostrar semente ou fruto existente em outra época. Escreva ‘dados insuficientes’ quando necessário. Não transforme a falta de uma observação em prova de ausência no grupo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021040",
+      "title": "Grandezas e unidades · verifique o conceito",
+      "prompt": "Qual registro representa um comprimento?",
+      "options": [
+        "2 s",
+        "2 m",
+        "2 kg"
+      ],
+      "explanation": "2 m. No Sistema Internacional, comprimento usa metro (m), tempo usa segundo (s) e massa usa quilograma (kg). Massa expressa uma propriedade do corpo; peso é a força gravitacional sobre ele, medida em newtons (N).",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021041",
+      "title": "Grandezas e unidades · verifique o conceito",
+      "prompt": "Qual unidade do SI mede tempo?",
+      "options": [
+        "Quilograma (kg)",
+        "Newton (N)",
+        "Segundo (s)"
+      ],
+      "explanation": "Segundo (s). Força descreve uma interação capaz de alterar o movimento ou deformar um corpo e usa newton (N). Energia está associada à capacidade de realizar trabalho ou provocar transformações e usa joule (J). Potência é a energia transferida por tempo e usa watt (W).",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021042",
+      "title": "Grandezas e unidades · verifique o conceito",
+      "prompt": "Qual é a diferença entre massa e peso?",
+      "options": [
+        "Massa usa kg; peso é força e usa N",
+        "Ambos são sempre medidos em J",
+        "Peso é comprimento e usa m"
+      ],
+      "explanation": "Massa usa kg; peso é força e usa N. Exemplo: registre comprimento de uma mesa como 2 m, duração como 10 s, massa de um pacote como 3 kg, força como 20 N, energia como 100 J e potência como 5 W. Cada unidade identifica uma grandeza diferente.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021043",
+      "title": "Movimento · verifique o conceito",
+      "prompt": "O que caracteriza movimento em relação a um referencial?",
+      "options": [
+        "Somente a massa do corpo",
+        "Mudança de posição",
+        "Somente a cor do objeto"
+      ],
+      "explanation": "Mudança de posição. Rapidez média é a distância total dividida pelo tempo total: rapidez = distância / tempo. A unidade m/s significa quantos metros por segundo correspondem à média do trajeto, sem afirmar que o ritmo foi constante.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021044",
+      "title": "Movimento · verifique o conceito",
+      "prompt": "Como calcular rapidez média?",
+      "options": [
+        "Tempo dividido pela distância",
+        "Distância somada ao tempo",
+        "Distância total dividida pelo tempo total"
+      ],
+      "explanation": "Distância total dividida pelo tempo total. Exemplo: uma pessoa caminha 10 m em 5 s. Dividindo 10 por 5, a rapidez média é 2 m/s. Se percorrer os mesmos 10 m em 10 s, a média será 1 m/s, menor porque levou mais tempo.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021045",
+      "title": "Movimento · verifique o conceito",
+      "prompt": "10 m em 5 s corresponde a qual rapidez média?",
+      "options": [
+        "2 m/s",
+        "50 m/s",
+        "0,5 m/s"
+      ],
+      "explanation": "2 m/s. Distância e deslocamento são diferentes: ao andar 5 m e voltar 5 m ao início, a distância é 10 m e o deslocamento total é zero. A velocidade média usa deslocamento e direção; a rapidez média usa distância.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021046",
+      "title": "Movimento · verifique o conceito",
+      "prompt": "Andar 5 m e voltar 5 m ao início dá qual distância total?",
+      "options": [
+        "0 m",
+        "10 m",
+        "5 m"
+      ],
+      "explanation": "10 m. Limite: tempo total precisa ser maior que zero para dividir. Inclua uma parada se ela pertence ao intervalo observado. Uma média de 2 m/s não permite concluir que a pessoa manteve 2 m/s a cada instante.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021047",
+      "title": "Movimento · verifique o conceito",
+      "prompt": "É válido dividir a distância por tempo total zero?",
+      "options": [
+        "Sim, o resultado sempre é zero",
+        "Sim, basta retirar a unidade",
+        "Não, a divisão por zero não é definida"
+      ],
+      "explanation": "Não, a divisão por zero não é definida. Limite: tempo total precisa ser maior que zero para dividir. Inclua uma parada se ela pertence ao intervalo observado. Uma média de 2 m/s não permite concluir que a pessoa manteve 2 m/s a cada instante.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021048",
+      "title": "Medição e análise · verifique o conceito",
+      "prompt": "Que dados permitem calcular rapidez média?",
+      "options": [
+        "Distância e tempo com unidades",
+        "Massa e cor do tênis",
+        "Somente o tempo"
+      ],
+      "explanation": "Distância e tempo com unidades. Uma fita métrica pode medir distância; um cronômetro registra duração. Anote valor e unidade de cada leitura. Rapidez média usa distância por tempo; velocidade média usa deslocamento por tempo e exige considerar direção.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021049",
+      "title": "Medição e análise · verifique o conceito",
+      "prompt": "12 m percorridos em 6 s dão qual rapidez média?",
+      "options": [
+        "72 m/s",
+        "2 m/s",
+        "0,5 m/s"
+      ],
+      "explanation": "2 m/s. Exemplo em linha reta sem retorno: entre duas marcas há 12 m e o tempo é 6 s. A rapidez média é 12 / 6 = 2 m/s. Nesse percurso, a distância e o módulo do deslocamento coincidem.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021050",
+      "title": "Medição e análise · verifique o conceito",
+      "prompt": "Duas medições dão tempos ligeiramente diferentes. O que registrar?",
+      "options": [
+        "Somente a leitura preferida",
+        "Um tempo inventado sem variação",
+        "As leituras e as condições de medição"
+      ],
+      "explanation": "As leituras e as condições de medição. Planeje medições repetidas do mesmo trecho, mantendo o critério. Tempos de 6,0 s e 6,2 s podem diferir por reação ao cronômetro ou variação de movimento; registre as duas leituras em vez de apagar a que não esperava.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021051",
+      "title": "Medição e análise · verifique o conceito",
+      "prompt": "Que situação permite distância e módulo do deslocamento iguais?",
+      "options": [
+        "Trecho em linha reta sem retorno",
+        "Ida e volta ao mesmo ponto",
+        "Qualquer trajeto com curvas e retorno"
+      ],
+      "explanation": "Trecho em linha reta sem retorno. Limite: um cálculo não elimina incerteza de medição. Escolha um trajeto seguro para caminhada ou trabalhe com dados hipotéticos. Não faça teste em via com tráfego; não conclua a precisão do instrumento apenas pelo número de casas decimais anotado.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021052",
+      "title": "Calcular rapidez média · verifique o conceito",
+      "prompt": "Como combinar duas etapas para obter rapidez média?",
+      "options": [
+        "Somar somente as rapidez das etapas",
+        "Somar distâncias e tempos antes de dividir",
+        "Ignorar a etapa mais lenta"
+      ],
+      "explanation": "Somar distâncias e tempos antes de dividir. Em um trajeto por etapas, some primeiro todas as distâncias e todos os tempos. Inclua intervalos de parada que façam parte da observação. Só depois divida a distância total pelo tempo total, com unidades compatíveis.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021053",
+      "title": "Calcular rapidez média · verifique o conceito",
+      "prompt": "120 m + 60 m e 60 s + 30 s resultam em quê?",
+      "options": [
+        "180 m em 30 s",
+        "60 m em 90 s",
+        "180 m em 90 s"
+      ],
+      "explanation": "180 m em 90 s. Exemplo: uma pessoa percorre 120 m em 60 s e mais 60 m em 30 s. A distância total é 120 + 60 = 180 m e o tempo total é 60 + 30 = 90 s. Logo, 180 m / 90 s = 2 m/s.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021054",
+      "title": "Calcular rapidez média · verifique o conceito",
+      "prompt": "100 m em 40 s dão qual rapidez média?",
+      "options": [
+        "2,5 m/s",
+        "2 m/s",
+        "4 m/s"
+      ],
+      "explanation": "2,5 m/s. Confira com outra situação: 10 m em 10 s e 90 m em 30 s totalizam 100 m em 40 s, ou 2,5 m/s. Fazer a média simples de 1 m/s e 3 m/s daria 2 m/s e estaria errado, pois as durações são diferentes.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021055",
+      "title": "Calcular rapidez média · verifique o conceito",
+      "prompt": "Uma parada de 10 s dentro da observação entra na conta?",
+      "options": [
+        "Não, tempo parado nunca conta",
+        "Sim, no tempo total",
+        "Sim, como distância extra"
+      ],
+      "explanation": "Sim, no tempo total. Limite: não divida por tempo zero nem some metros com quilômetros sem converter. Se a pessoa retorna ao ponto inicial, o deslocamento é zero, mas a distância e a rapidez podem ser positivas. A média não comprova ritmo constante.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021056",
+      "title": "Interpretar uma medição · verifique o conceito",
+      "prompt": "Quanto vale 0,12 km em metros?",
+      "options": [
+        "12 m",
+        "1200 m",
+        "120 m"
+      ],
+      "explanation": "120 m. Um quilômetro corresponde a 1000 metros. Para passar de km para m, multiplique por 1000; para passar de m para km, divida por 1000. Um minuto corresponde a 60 segundos, portanto a conversão de tempo usa outro fator.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021057",
+      "title": "Interpretar uma medição · verifique o conceito",
+      "prompt": "Quantos segundos há em 1 minuto?",
+      "options": [
+        "60 s",
+        "100 s",
+        "1000 s"
+      ],
+      "explanation": "60 s. Exemplo: 1,5 km × 1000 = 1500 m. Os registros 1,5 km e 1500 m representam a mesma distância. Para comparar com 1200 m, use a mesma unidade: 1500 m é 300 m maior que 1200 m.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021058",
+      "title": "Interpretar uma medição · verifique o conceito",
+      "prompt": "Qual a diferença entre 1500 m e 1200 m?",
+      "options": [
+        "0,3 m",
+        "300 m",
+        "2700 m"
+      ],
+      "explanation": "300 m. Antes de calcular rapidez, converta também o tempo: 0,12 km são 120 m e 1 min são 60 s. Assim, 120 m / 60 s = 2 m/s. Registre as conversões para outra pessoa poder conferir a conta.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000021059",
+      "title": "Interpretar uma medição · verifique o conceito",
+      "prompt": "Escrever 1500 m em lugar de 1,5 km comprova maior precisão?",
+      "options": [
+        "Sim, porque há mais algarismos",
+        "Sim, porque metros sempre são exatos",
+        "Não, é preciso conhecer instrumento e procedimento"
+      ],
+      "explanation": "Não, é preciso conhecer instrumento e procedimento. Limite: escrever 1500 m em vez de 1,5 km não comprova maior precisão. Precisão depende do instrumento, do procedimento e da repetição; a escrita sozinha não basta. Não compare distância com tempo como se fossem a mesma grandeza.",
+      "kind": "choice",
+      "activity_type": "multiple_choice",
+      "category": "Prática guiada",
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "xp": 40
     }
   ],
   "answers": {
@@ -7016,7 +8441,67 @@
     "00000000-0000-4000-8000-000000020028": 0,
     "00000000-0000-4000-8000-000000020029": 0,
     "00000000-0000-4000-8000-000000020030": 0,
-    "00000000-0000-4000-8000-000000020031": 0
+    "00000000-0000-4000-8000-000000020031": 0,
+    "00000000-0000-4000-8000-000000021000": 0,
+    "00000000-0000-4000-8000-000000021001": 1,
+    "00000000-0000-4000-8000-000000021002": 2,
+    "00000000-0000-4000-8000-000000021003": 0,
+    "00000000-0000-4000-8000-000000021004": 1,
+    "00000000-0000-4000-8000-000000021005": 2,
+    "00000000-0000-4000-8000-000000021006": 0,
+    "00000000-0000-4000-8000-000000021007": 1,
+    "00000000-0000-4000-8000-000000021008": 2,
+    "00000000-0000-4000-8000-000000021009": 0,
+    "00000000-0000-4000-8000-000000021010": 1,
+    "00000000-0000-4000-8000-000000021011": 2,
+    "00000000-0000-4000-8000-000000021012": 0,
+    "00000000-0000-4000-8000-000000021013": 1,
+    "00000000-0000-4000-8000-000000021014": 2,
+    "00000000-0000-4000-8000-000000021015": 0,
+    "00000000-0000-4000-8000-000000021016": 1,
+    "00000000-0000-4000-8000-000000021017": 2,
+    "00000000-0000-4000-8000-000000021018": 0,
+    "00000000-0000-4000-8000-000000021019": 1,
+    "00000000-0000-4000-8000-000000021020": 2,
+    "00000000-0000-4000-8000-000000021021": 0,
+    "00000000-0000-4000-8000-000000021022": 1,
+    "00000000-0000-4000-8000-000000021023": 2,
+    "00000000-0000-4000-8000-000000021024": 0,
+    "00000000-0000-4000-8000-000000021025": 1,
+    "00000000-0000-4000-8000-000000021026": 2,
+    "00000000-0000-4000-8000-000000021027": 0,
+    "00000000-0000-4000-8000-000000021028": 1,
+    "00000000-0000-4000-8000-000000021029": 2,
+    "00000000-0000-4000-8000-000000021030": 0,
+    "00000000-0000-4000-8000-000000021031": 1,
+    "00000000-0000-4000-8000-000000021032": 2,
+    "00000000-0000-4000-8000-000000021033": 0,
+    "00000000-0000-4000-8000-000000021034": 1,
+    "00000000-0000-4000-8000-000000021035": 2,
+    "00000000-0000-4000-8000-000000021036": 0,
+    "00000000-0000-4000-8000-000000021037": 1,
+    "00000000-0000-4000-8000-000000021038": 2,
+    "00000000-0000-4000-8000-000000021039": 0,
+    "00000000-0000-4000-8000-000000021040": 1,
+    "00000000-0000-4000-8000-000000021041": 2,
+    "00000000-0000-4000-8000-000000021042": 0,
+    "00000000-0000-4000-8000-000000021043": 1,
+    "00000000-0000-4000-8000-000000021044": 2,
+    "00000000-0000-4000-8000-000000021045": 0,
+    "00000000-0000-4000-8000-000000021046": 1,
+    "00000000-0000-4000-8000-000000021047": 2,
+    "00000000-0000-4000-8000-000000021048": 0,
+    "00000000-0000-4000-8000-000000021049": 1,
+    "00000000-0000-4000-8000-000000021050": 2,
+    "00000000-0000-4000-8000-000000021051": 0,
+    "00000000-0000-4000-8000-000000021052": 1,
+    "00000000-0000-4000-8000-000000021053": 2,
+    "00000000-0000-4000-8000-000000021054": 0,
+    "00000000-0000-4000-8000-000000021055": 1,
+    "00000000-0000-4000-8000-000000021056": 2,
+    "00000000-0000-4000-8000-000000021057": 0,
+    "00000000-0000-4000-8000-000000021058": 1,
+    "00000000-0000-4000-8000-000000021059": 2
   },
   "guides": {
     "00000000-0000-4000-8000-000000000302": {
@@ -9174,6 +10659,426 @@
           "text": "Registre identificador do pedido, etapa concluída, falha observada e próxima ação. Essas decisões são de nível avançado; o exemplo não exige implantar serviços reais."
         }
       ]
+    },
+    "00000000-0000-4000-8000-000000003040": {
+      "objective": "Fluxo de materiais",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Desenhe o caminho de 20 caixas do fornecedor ao estoque e de 7 caixas até uma escola. Marque as conferências, os registros de entrada e saída, o saldo e uma possível divergência.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Logística organiza o caminho dos materiais, desde o fornecedor até o destino. Fluxo de materiais é a sequência de recebimento, armazenamento, separação e envio; cada etapa precisa de informação sobre produto e quantidade."
+        },
+        {
+          "title": "Definições",
+          "text": "Fornecedor é quem fornece insumos ou produtos. O estoque guarda os materiais; a distribuição os leva ao destino. Um registro de entrada informa o que chegou, e um de saída informa o que deixou o estoque."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: chegam 20 caixas de cadernos do fornecedor. A equipe confere as caixas, registra a entrada e guarda no local indicado. Quando 7 caixas saem para uma escola, o saldo passa a 20 − 7 = 13 caixas."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "A sequência deve permitir conferir o caminho: receber e conferir, registrar a entrada, armazenar, separar o pedido, conferir e enviar. Registre as quantidades na mesma unidade; 20 caixas não significam 20 cadernos."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: um registro não prova que o material físico está correto. Se chegarem 19 caixas em vez das 20 esperadas, registre a divergência e confira com o documento antes de prometer a entrega. Distribuir não elimina atrasos e avarias."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003041": {
+      "objective": "Controle de estoque",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Monte uma ficha de um item com saldo 30, entrada 12 e saída 8. Compare o saldo com uma contagem de 32 unidades; registre a diferença e dois documentos que verificaria antes de ajustar.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Controle de estoque é o registro das entradas, saídas e saldos de cada item. Identifique produto, quantidade, unidade, data e documento para conseguir conferir cada movimentação depois."
+        },
+        {
+          "title": "Definições",
+          "text": "Saldo inicial é a quantidade no começo do período. Some as entradas e subtraia as saídas para obter o saldo registrado. Fornecedor fornece insumos; estoque armazena produtos; distribuição entrega ao destino."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo de um item: o saldo inicial é 30 unidades, entram 12 e saem 8. O saldo registrado é 30 + 12 − 8 = 34 unidades. A contagem física deve ser comparada às 34 registradas."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Inventário é a contagem dos materiais existentes. Se a contagem mostrar 32 unidades, a diferença é 32 − 34 = −2 unidades. Procure entrada, saída ou avaria sem registro antes de corrigir o saldo."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: itens diferentes não formam um único saldo. Separe produtos, unidades e locais; não some caixas com peças sem conversão conhecida. Uma diferença precisa de investigação e registro, não de ajuste sem motivo."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003042": {
+      "objective": "Preparação de pedidos",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Prepare no papel um pedido de 2 cadernos, 1 régua e 3 lápis. Liste a separação, a conferência por linha, a proteção, a identificação e o registro de saída. Explique como trataria a falta da régua.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Um pedido informa quais produtos e quantidades devem chegar a um destinatário. Preparar o pedido é separar os itens certos, conferir, proteger na embalagem e registrar a saída."
+        },
+        {
+          "title": "Definições",
+          "text": "Separação é buscar no estoque os itens listados. Conferência é comparar produto, código e quantidade com o pedido. Embalagem protege o conteúdo; identificação relaciona o pacote ao destinatário e ao pedido."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: o pedido pede 2 cadernos, 1 régua e 3 lápis. Separe esses três tipos de produto e conte 6 peças no total. Confira cada linha: ter 6 peças não basta se uma régua foi trocada por um lápis."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Após conferir, escolha proteção adequada, identifique o volume e registre a saída das quantidades efetivamente enviadas. Se faltar a régua, sinalize a falta e confirme o procedimento de envio parcial antes de fechar o pacote."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: não substitua item por conta própria nem registre saída de algo que ficou no estoque. A conferência precisa ocorrer antes do lacre, quando ainda é possível corrigir uma quantidade ou um produto incorreto."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004011": {
+      "objective": "Calcular estoque disponível",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Monte uma tabela com 50 unidades físicas, 6 avariadas e 9 reservadas, sem sobreposição. Calcule o disponível, confira a soma das três parcelas e explique o efeito de reservar mais 4 unidades.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Saldo físico é a quantidade existente no estoque. Estoque disponível é a parte que pode atender novas vendas: retire do saldo físico as unidades avariadas e as reservadas para outros pedidos."
+        },
+        {
+          "title": "Definições",
+          "text": "Entrada aumenta o saldo físico; saída o reduz. Uma reserva compromete unidades que ainda estão fisicamente presentes. Uma avaria torna a unidade indisponível até que seja tratada; nesta atividade, reservas e avarias são grupos distintos."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: há 120 unidades, entram 80 e saem 135. O saldo físico é 120 + 80 − 135 = 65. Dessas 65, há 15 avariadas e 20 reservadas. O disponível é 65 − 15 − 20 = 30 unidades."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "A conta completa é 120 + 80 − 135 − 15 − 20 = 30. Confira a decomposição: 30 disponíveis + 15 avariadas + 20 reservadas = 65 físicas. Uma reserva não é uma segunda saída física."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: não desconte a mesma unidade duas vezes. Se uma unidade reservada também estiver avariada, identifique a sobreposição antes da conta. Resultado negativo indica compromissos maiores que o saldo utilizável e exige revisão dos registros."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004012": {
+      "objective": "Organizar a expedição",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Organize uma ficha de expedição para 4 pastas e 2 cadernos. Indique a ordem das etapas, a evidência de cada conferência e o procedimento caso uma pasta esteja em falta antes do lacre.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Expedição é a preparação e liberação dos pedidos para transporte. Ela reúne separação, conferência, embalagem, identificação e registro da saída para que o material enviado corresponda ao pedido."
+        },
+        {
+          "title": "Definições",
+          "text": "Cada etapa deixa uma evidência: lista de separação, confirmação dos itens, etiqueta do volume e registro de saída. A etiqueta associa o volume ao pedido e ao destinatário; não substitui a contagem do conteúdo."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: um pedido contém 4 pastas e 2 cadernos. Separe os itens, confira cada quantidade, embale e identifique. Só então registre a saída de 4 pastas e 2 cadernos correspondentes ao envio preparado."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Se a conferência encontrar apenas 3 pastas, interrompa o fechamento, corrija ou registre a falta conforme o procedimento. Conferir antes de lacrar evita ter de reabrir um volume com conteúdo incorreto."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: a sequência organizada reduz erros, mas não garante ausência de dano no transporte. Verifique proteção, destinatário e rastreabilidade. Não registre como enviado um pedido que ainda está aguardando correção."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003060": {
+      "objective": "Células e organelas",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Faça um esquema de célula eucariótica com membrana, citoplasma, núcleo e mitocôndria. Ao lado, represente uma célula de folha com cloroplastos. Relacione cada estrutura à função e explique um limite do desenho.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Célula é uma unidade básica dos seres vivos. A membrana delimita a célula, o citoplasma ocupa a região interna e, nas células eucarióticas, o núcleo abriga a maior parte do material genético."
+        },
+        {
+          "title": "Definições",
+          "text": "Organelas são estruturas internas com funções específicas. Mitocôndrias participam da respiração celular, processo que disponibiliza energia para a célula. Cloroplastos realizam fotossíntese em células vegetais fotossintetizantes."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: em uma célula de folha exposta à luz, cloroplastos participam da produção de matéria orgânica pela fotossíntese. Essa célula também possui mitocôndrias; uma função não elimina a outra."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Compare estruturas e funções: membrana controla trocas com o meio; núcleo contém a maior parte do material genético na célula eucariótica; citoplasma abriga estruturas e reações. Uma célula animal possui mitocôndrias, mas não cloroplastos."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: o desenho didático simplifica formas e proporções. Nem toda célula tem núcleo delimitado: bactérias são procarióticas. Nem toda célula vegetal possui cloroplastos; células de muitas raízes não fazem fotossíntese."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003061": {
+      "objective": "Grupos de plantas",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Monte uma tabela para musgo, samambaia, pinheiro e feijoeiro. Compare vasos, sementes e frutos, indique o grupo de cada exemplo e explique por que uma planta sem flores no momento pode continuar sendo angiosperma.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Classificar plantas é comparar características compartilhadas. Vasos condutores transportam água e outras substâncias; sementes protegem o embrião. Flores e frutos ajudam a reconhecer um grupo específico."
+        },
+        {
+          "title": "Definições",
+          "text": "Briófitas, como musgos, não possuem vasos condutores verdadeiros nem sementes. Pteridófitas, como samambaias, possuem vasos, mas não sementes. Esses dois grupos se reproduzem por ciclos que incluem esporos."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Gimnospermas, como pinheiros, possuem sementes que não ficam dentro de frutos. Angiospermas produzem flores e frutos; o fruto envolve as sementes. Uma mangueira com flores e mangas é exemplo de angiosperma."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Exemplo de comparação: musgo sem vasos verdadeiros é briófita; samambaia com vasos e sem sementes é pteridófita; pinheiro com sementes sem frutos é gimnosperma; feijoeiro com flores e vagens é angiosperma."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: tamanho e cor não bastam para classificar. Uma angiosperma pode estar sem flores na época observada; ausência momentânea de flor não comprova outro grupo. Registre as características e o que ainda falta verificar."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003062": {
+      "objective": "Observação científica",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Observe uma planta sem arrancá-la, ou use uma imagem que permita ver pelo menos dois órgãos. Registre data e partes visíveis; associe duas funções e separe uma observação de uma interpretação. Declare qualquer parte que não conseguiu observar.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Observar cientificamente é registrar características que podem ser verificadas. Separe observação, como ver uma folha verde, de interpretação, como explicar a função daquela folha."
+        },
+        {
+          "title": "Definições",
+          "text": "Órgãos vegetais possuem funções: a raiz absorve água e sais e ajuda na fixação; o caule sustenta e transporta substâncias; a folha costuma ser o principal órgão fotossintetizante; a flor participa da reprodução das angiospermas."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo de registro: em uma planta no vaso, vejo caule, quatro folhas e uma flor. Não vejo a raiz porque está coberta. A frase ‘a raiz absorve água’ é uma explicação de função, não uma observação direta dessa raiz."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Anote data, local, partes visíveis e uma descrição sem arrancar a planta. Um desenho rotulado ou uma foto autorizada pode ajudar a repetir a observação. Se comparar dias, mantenha ponto de vista e condições semelhantes."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: não ver uma estrutura não prova que ela não existe. Não invente cor ou tamanho de uma raiz oculta. Diferencie o que foi visto, a função conhecida do órgão e uma hipótese que precisaria de outra observação."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004015": {
+      "objective": "Identificar estruturas celulares",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Reproduza um esquema simples da célula eucariótica da prática. Marque 1 na membrana, 2 no núcleo e 3 no citoplasma; escreva uma função de cada estrutura e uma informação que o desenho não permite concluir.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Um esquema celular representa estruturas para facilitar a comparação de posições e funções. Neste desenho de célula eucariótica, procure primeiro o limite externo, depois a estrutura central e a região interna ao redor dela."
+        },
+        {
+          "title": "Definições",
+          "text": "A membrana delimita a célula e regula trocas. O núcleo abriga a maior parte do material genético. O citoplasma é a região interna entre a membrana e o núcleo, onde ficam diversas estruturas celulares."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "No esquema da prática, 1 indica a membrana, 2 indica o núcleo e 3 indica o citoplasma. Siga cada linha até a estrutura: o número 2 está à direita, mas sua linha termina na estrutura arredondada central."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Exemplo: se a pergunta pede o núcleo, escolha 2 porque a linha aponta para a estrutura central delimitada. Se pede o contorno externo, escolha 1. A região ao redor do núcleo corresponde a 3, citoplasma."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: a posição do número no papel não é a posição da estrutura. Cores e proporções são escolhas didáticas; não representam todas as células nem todas as organelas. Use a ponta da linha e a função para conferir."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004016": {
+      "objective": "Classificar grupos de plantas",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Classifique três fichas: A sem vasos verdadeiros; B com sementes em cones sem frutos; C com flores e frutos com sementes. Justifique por características e acrescente uma ficha incompleta em que faltam dados para concluir.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Uma classificação precisa de um critério verificável. Para estes grupos, compare vasos condutores, presença de sementes e presença de frutos; não use apenas o tamanho ou o ambiente da planta."
+        },
+        {
+          "title": "Definições",
+          "text": "Briófitas não possuem vasos condutores verdadeiros. Pteridófitas possuem vasos, mas não sementes. Gimnospermas têm sementes sem frutos. Angiospermas possuem flores e frutos que envolvem sementes."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: a amostra A tem sementes em cones, sem frutos, e corresponde a uma gimnosperma. A amostra B tem flores e frutos com sementes, correspondendo a uma angiosperma. Vasos, sozinhos, não distinguem esses dois grupos."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Organize uma decisão: sem vasos verdadeiros, considere briófitas; com vasos e sem sementes, pteridófitas; com sementes, investigue frutos. Confira mais de uma característica e registre qual evidência sustenta cada associação."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: uma amostra incompleta pode não mostrar semente ou fruto existente em outra época. Escreva ‘dados insuficientes’ quando necessário. Não transforme a falta de uma observação em prova de ausência no grupo."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003070": {
+      "objective": "Grandezas e unidades",
+      "prerequisites": "Nenhum conceito anterior desta trilha é necessário.",
+      "competency": "Monte uma ficha de medidas hipotéticas para um pacote: comprimento em m, massa em kg e tempo de transporte em s. Acrescente associações de força, energia e potência com N, J e W; explique por que kg não é unidade de peso.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Grandeza física é uma propriedade que pode ser medida, como comprimento, tempo ou massa. Uma medida combina valor e unidade: 2 m indica dois metros, enquanto 2 s indica dois segundos."
+        },
+        {
+          "title": "Definições",
+          "text": "No Sistema Internacional, comprimento usa metro (m), tempo usa segundo (s) e massa usa quilograma (kg). Massa expressa uma propriedade do corpo; peso é a força gravitacional sobre ele, medida em newtons (N)."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Força descreve uma interação capaz de alterar o movimento ou deformar um corpo e usa newton (N). Energia está associada à capacidade de realizar trabalho ou provocar transformações e usa joule (J). Potência é a energia transferida por tempo e usa watt (W)."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Exemplo: registre comprimento de uma mesa como 2 m, duração como 10 s, massa de um pacote como 3 kg, força como 20 N, energia como 100 J e potência como 5 W. Cada unidade identifica uma grandeza diferente."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: o número isolado não basta. ‘O pacote mede 3’ não informa se são metros ou quilogramas. Não troque kg por N nem J por W; comparar valores exige a mesma grandeza e unidades compatíveis."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003071": {
+      "objective": "Movimento",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Desenhe um trajeto de ida de 5 m e volta de 5 m em 10 s no total. Registre distância, deslocamento e rapidez média; depois acrescente uma parada de 5 s e recalcule a rapidez considerando todo o intervalo.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Movimento é a mudança de posição em relação a um referencial, como uma marca no chão. Distância é o comprimento total do caminho percorrido; tempo é a duração observada. Registre distância em metros e tempo em segundos."
+        },
+        {
+          "title": "Definições",
+          "text": "Rapidez média é a distância total dividida pelo tempo total: rapidez = distância / tempo. A unidade m/s significa quantos metros por segundo correspondem à média do trajeto, sem afirmar que o ritmo foi constante."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: uma pessoa caminha 10 m em 5 s. Dividindo 10 por 5, a rapidez média é 2 m/s. Se percorrer os mesmos 10 m em 10 s, a média será 1 m/s, menor porque levou mais tempo."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Distância e deslocamento são diferentes: ao andar 5 m e voltar 5 m ao início, a distância é 10 m e o deslocamento total é zero. A velocidade média usa deslocamento e direção; a rapidez média usa distância."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: tempo total precisa ser maior que zero para dividir. Inclua uma parada se ela pertence ao intervalo observado. Uma média de 2 m/s não permite concluir que a pessoa manteve 2 m/s a cada instante."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000003072": {
+      "objective": "Medição e análise",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Planeje uma medição hipotética de caminhada em trecho reto seguro de 12 m. Use tempos de 6,0 s e 6,2 s, registre as unidades e calcule a rapidez de cada tentativa. Explique uma fonte de variação e quando distância e deslocamento coincidem.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Medir é comparar uma grandeza com uma unidade usando um instrumento. Para estudar movimento, defina o trecho, meça sua distância e registre o intervalo de tempo com o mesmo critério de início e fim."
+        },
+        {
+          "title": "Definições",
+          "text": "Uma fita métrica pode medir distância; um cronômetro registra duração. Anote valor e unidade de cada leitura. Rapidez média usa distância por tempo; velocidade média usa deslocamento por tempo e exige considerar direção."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo em linha reta sem retorno: entre duas marcas há 12 m e o tempo é 6 s. A rapidez média é 12 / 6 = 2 m/s. Nesse percurso, a distância e o módulo do deslocamento coincidem."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Planeje medições repetidas do mesmo trecho, mantendo o critério. Tempos de 6,0 s e 6,2 s podem diferir por reação ao cronômetro ou variação de movimento; registre as duas leituras em vez de apagar a que não esperava."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: um cálculo não elimina incerteza de medição. Escolha um trajeto seguro para caminhada ou trabalhe com dados hipotéticos. Não faça teste em via com tráfego; não conclua a precisão do instrumento apenas pelo número de casas decimais anotado."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004017": {
+      "objective": "Calcular rapidez média",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Calcule a rapidez média de 10 m em 10 s seguidos de 90 m em 30 s. Mostre as somas e compare com a média simples das rapidez das etapas. Depois inclua 10 s de parada e explique o novo resultado.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Rapidez média é a distância total percorrida dividida pelo tempo total observado. Ela resume um trajeto em um único valor e não informa a direção; velocidade média usa o deslocamento, que pode ser diferente da distância."
+        },
+        {
+          "title": "Definições",
+          "text": "Em um trajeto por etapas, some primeiro todas as distâncias e todos os tempos. Inclua intervalos de parada que façam parte da observação. Só depois divida a distância total pelo tempo total, com unidades compatíveis."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: uma pessoa percorre 120 m em 60 s e mais 60 m em 30 s. A distância total é 120 + 60 = 180 m e o tempo total é 60 + 30 = 90 s. Logo, 180 m / 90 s = 2 m/s."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Confira com outra situação: 10 m em 10 s e 90 m em 30 s totalizam 100 m em 40 s, ou 2,5 m/s. Fazer a média simples de 1 m/s e 3 m/s daria 2 m/s e estaria errado, pois as durações são diferentes."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: não divida por tempo zero nem some metros com quilômetros sem converter. Se a pessoa retorna ao ponto inicial, o deslocamento é zero, mas a distância e a rapidez podem ser positivas. A média não comprova ritmo constante."
+        }
+      ]
+    },
+    "00000000-0000-4000-8000-000000004018": {
+      "objective": "Interpretar uma medição",
+      "prerequisites": "Revise os conceitos da bolinha anterior desta trilha quando precisar.",
+      "competency": "Compare os registros 1,5 km, 1500 m e 1200 m, mostrando a conversão e a diferença. Em seguida, calcule a rapidez de 0,12 km em 1 min em m/s e explique por que a escrita de uma medida não comprova sua precisão.",
+      "next": "Resolva os exercícios e registre a aplicação na dinâmica.",
+      "steps": [
+        {
+          "title": "O que vamos estudar",
+          "text": "Interpretar uma medição é reconhecer a grandeza, a unidade e o que o registro permite concluir. Valores numéricos diferentes podem representar a mesma quantidade quando as unidades mudam."
+        },
+        {
+          "title": "Definições",
+          "text": "Um quilômetro corresponde a 1000 metros. Para passar de km para m, multiplique por 1000; para passar de m para km, divida por 1000. Um minuto corresponde a 60 segundos, portanto a conversão de tempo usa outro fator."
+        },
+        {
+          "title": "Exemplo resolvido",
+          "text": "Exemplo: 1,5 km × 1000 = 1500 m. Os registros 1,5 km e 1500 m representam a mesma distância. Para comparar com 1200 m, use a mesma unidade: 1500 m é 300 m maior que 1200 m."
+        },
+        {
+          "title": "Como aplicar",
+          "text": "Antes de calcular rapidez, converta também o tempo: 0,12 km são 120 m e 1 min são 60 s. Assim, 120 m / 60 s = 2 m/s. Registre as conversões para outra pessoa poder conferir a conta."
+        },
+        {
+          "title": "Limites e conferência",
+          "text": "Limite: escrever 1500 m em vez de 1,5 km não comprova maior precisão. Precisão depende do instrumento, do procedimento e da repetição; a escrita sozinha não basta. Não compare distância com tempo como se fossem a mesma grandeza."
+        }
+      ]
     }
   },
   "pedagogy": {
@@ -10048,6 +11953,165 @@
         "00000000-0000-4000-8000-000000000321"
       ],
       "version": 2
+    },
+    "00000000-0000-4000-8000-000000003040": {
+      "concepts": [
+        "Fluxo de materiais"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003041": {
+      "concepts": [
+        "Controle de estoque"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003040"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003042": {
+      "concepts": [
+        "Preparação de pedidos"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003041"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004011": {
+      "concepts": [
+        "Calcular estoque disponível"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003042"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004012": {
+      "concepts": [
+        "Organizar a expedição"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004011"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003060": {
+      "concepts": [
+        "Células e organelas"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003061": {
+      "concepts": [
+        "Grupos de plantas"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003060"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003062": {
+      "concepts": [
+        "Observação científica"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003061"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004015": {
+      "concepts": [
+        "Identificar estruturas celulares"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003062"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004016": {
+      "concepts": [
+        "Classificar grupos de plantas"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004015"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003070": {
+      "concepts": [
+        "Grandezas e unidades"
+      ],
+      "requires": [],
+      "competency": "Primeiro contato",
+      "prerequisite_ids": [],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003071": {
+      "concepts": [
+        "Movimento"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003070"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000003072": {
+      "concepts": [
+        "Medição e análise"
+      ],
+      "requires": [],
+      "competency": "Aplicação guiada",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003071"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004017": {
+      "concepts": [
+        "Calcular rapidez média"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000003072"
+      ],
+      "version": 2
+    },
+    "00000000-0000-4000-8000-000000004018": {
+      "concepts": [
+        "Interpretar uma medição"
+      ],
+      "requires": [],
+      "competency": "Aplicação independente",
+      "prerequisite_ids": [
+        "00000000-0000-4000-8000-000000004017"
+      ],
+      "version": 2
     }
   },
   "question_updates": [
@@ -10074,6 +12138,37 @@
     {
       "id": "00000000-0000-4000-8000-000000008011",
       "explanation": "O desenho ou simulação de baixa tensão mostra LED com polaridade e resistor em série para limitar corrente. Não use a rede elétrica."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008014",
+      "explanation": "Confira cada produto e quantidade antes de embalar. Identifique o pedido e registre a saída somente do que foi efetivamente enviado."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008018",
+      "title": "Grupos de plantas · prática",
+      "explanation": "Angiospermas produzem flores e frutos. A ausência de flores em uma observação isolada não exclui esse grupo."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008019",
+      "title": "Observação científica · órgãos vegetais",
+      "explanation": "A raiz absorve água e sais; a folha costuma ser o principal órgão fotossintetizante; a flor participa da reprodução das angiospermas."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008020",
+      "explanation": "Registre apenas as partes visíveis, sem arrancar a planta. Separe a descrição observada da explicação sobre a função de cada órgão."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008022",
+      "title": "Grandezas e unidades · associação",
+      "explanation": "Força é medida em newtons (N), energia em joules (J) e potência em watts (W). São grandezas distintas."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008023",
+      "explanation": "Em um trecho reto sem retorno, a distância coincide com o módulo do deslocamento. Registre distância em metros e tempo em segundos; a rapidez média é distância dividida pelo tempo. Fora desse caso, diferencie rapidez de velocidade média."
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000012017",
+      "title": "Calcular rapidez média"
     }
   ]
 }
