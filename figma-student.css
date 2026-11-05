@@ -79,3 +79,6 @@ body{overflow-x:hidden}
 .practice-dashboard-card .skill-button{margin-top:12px}
 .practice-disclaimer{margin:11px 0 0;color:#737d8d;font-size:10px;line-height:1.45}
 @media(max-width:700px){.practice-dashboard-header{gap:8px}.practice-toggle{padding:7px 10px}.practice-dashboard-header h3{font-size:15px}.practice-stat{padding:11px}.practice-stat strong{font-size:20px}}
+
+/* Fotos reais selecionadas para substituir blocos ilustrativos */
+.photo-card{display:flex;flex-direction:column;gap:14px}.photo-card img{display:block;width:100%;height:128px;object-fit:cover;border-radius:9px}.photo-card h3{margin-bottom:7px}.photo-card p{margin:0}.subject-photo-card{position:relative;overflow:hidden;aspect-ratio:1/1.08;border:0;border-radius:9px;padding:0;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-end;text-align:left;background:var(--subject-color);color:#fff;isolation:isolate}.subject-photo{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2}.subject-photo-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,9,99,.02) 26%,rgba(0,9,99,.84) 100%);z-index:-1}.subject-photo-card b{position:relative;padding:13px;font-size:12px;text-shadow:0 1px 2px #0008}@media(max-width:700px){.photo-card img{height:112px}.subject-photo-card b{font-size:10px;padding:10px}}
