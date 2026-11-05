@@ -185,6 +185,20 @@ export function GuidedTheory({
       <h3 ref={heading} tabIndex={-1}>
         {current.title}
       </h3>
+      {moduleId === "00000000-0000-4000-8000-000000000302" && index === 1 && (
+        <div className="two-columns" aria-label="Diferença entre condição e instrução">
+          <div className="card stack">
+            <strong>Condição: verificar</strong>
+            <p>“A luz está acesa?”</p>
+            <small>Você observa e responde: verdadeiro ou falso.</small>
+          </div>
+          <div className="card stack">
+            <strong>Instrução: agir</strong>
+            <p>“Acenda a luz.”</p>
+            <small>Você realiza uma ação em vez de responder.</small>
+          </div>
+        </div>
+      )}
       {current.text.split("\n\n").map((p, i) => (
         <p key={i}>{p}</p>
       ))}
