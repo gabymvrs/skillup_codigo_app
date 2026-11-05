@@ -421,143 +421,104 @@
 }
 
 
-/* Demonstração: layout independente dos formulários de autenticação. */
+/* Demonstração: manter o visual original em uma coluna centralizada. */
 .auth-demo {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
-  align-content: start;
   min-height: 100dvh;
-  width: 100%;
-  padding: clamp(20px, 4vw, 48px) clamp(16px, 4vw, 48px)
-    max(40px, env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(28px, 5vh, 56px) clamp(16px, 4vw, 40px)
+    max(36px, env(safe-area-inset-bottom));
 }
+
 .auth-demo .auth-panel {
-  width: 100%;
-  max-width: 960px;
-  min-width: 0;
+  width: min(100%, 560px);
   margin-inline: auto;
-}
-.auth-demo .auth-header {
+  min-width: 0;
   text-align: center;
-  margin-inline: auto;
 }
-.auth-demo .app-logo {
-  width: clamp(72px, 9vw, 96px);
-  height: clamp(72px, 9vw, 96px);
-  margin-bottom: 16px;
-}
-.auth-demo .auth-header h1 {
-  font-size: clamp(26px, 4vw, 38px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-}
-.auth-demo .auth-description {
-  max-width: 52ch;
-  margin-inline: auto;
-  line-height: 1.55;
-}
-.auth-demo .auth-back {
-  z-index: 1;
-}
-.demo-intro {
+
+.auth-demo .auth-header,
+.auth-demo .auth-panel > .notice {
   width: 100%;
-  display: grid;
-  gap: 12px;
-  margin-top: 28px;
 }
-.demo-eyebrow,
-.demo-profile-label {
-  color: var(--primary);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
+
+.auth-demo .auth-panel > .notice {
+  margin-top: 18px;
 }
-.demo-intro .notice {
-  margin: 0;
-  padding: 14px 18px;
-  font-size: 14px;
-  line-height: 1.5;
-}
+
 .auth-demo .demo-profile-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  width: 100%;
-  margin: 22px 0 0;
-  text-align: left;
-}
-.demo-profile-option {
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: clamp(18px, 2.5vw, 28px);
-  border: 1px solid var(--neutral-300);
-  border-radius: 18px;
-  background: var(--surface);
-  transition: border-color 150ms ease, box-shadow 150ms ease;
-}
-.demo-profile-option:hover,
-.demo-profile-option:focus-within {
-  border-color: var(--primary-200);
-  box-shadow: 0 5px 20px rgb(15 35 86 / 7%);
-}
-.demo-profile-copy {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
-}
-.demo-profile-copy h2 {
-  color: var(--secondary);
-  font-size: clamp(19px, 2vw, 23px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-.demo-profile-copy p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-.demo-profile-option .button {
+  align-items: center;
+  gap: 18px;
   width: 100%;
-  min-height: 50px;
-  margin-top: auto;
-  border-radius: 12px;
-  justify-content: center;
-  padding: 10px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  background: var(--tertiary-100);
-  border-color: var(--primary-200);
+  margin: 24px auto 0;
+}
+
+.auth-demo .demo-profile-option {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  width: min(100%, 362px);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+}
+
+.auth-demo .demo-profile-option:hover,
+.auth-demo .demo-profile-option:focus-within {
+  border: none;
+  box-shadow: none;
+}
+
+.auth-demo .demo-profile-option > .button {
+  align-self: stretch;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--neutral-300);
+  background: var(--surface);
   color: var(--secondary);
-}
-.demo-profile-option .button:hover {
-  color: #fff;
-  background: var(--primary);
-  border-color: var(--primary);
-}
-.demo-profile-option .button svg {
-  width: 20px;
-  height: 20px;
-}
-.demo-real-account {
-  margin-top: 24px;
-  font-size: 14px;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 500;
   text-align: center;
 }
-.demo-signed-in {
-  margin-top: 24px;
-  align-items: stretch;
+
+.auth-demo .demo-profile-option > .button:hover {
+  border-color: var(--primary);
+  background: var(--tertiary-100);
+  color: var(--primary);
 }
-.auth-demo .auth-panel footer {
+
+.auth-demo .demo-profile-option > p {
+  margin: 0;
+  line-height: 1.55;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.auth-demo .demo-profile-list > a {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 12px 32px;
-  margin-top: 30px;
+  min-height: 44px;
+  text-align: center;
 }
+
+.auth-demo .auth-panel footer {
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
 @media (max-width: 679px) {
   .auth-demo {
-    padding-inline: 18px;
+    padding: 24px 18px max(32px, env(safe-area-inset-bottom));
   }
   .auth-demo .auth-back {
     position: absolute;
@@ -569,35 +530,22 @@
   .auth-demo .auth-header {
     padding-top: 36px;
   }
+  .auth-demo .app-logo {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 18px;
+  }
   .auth-demo .demo-profile-list {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-  }
-  .demo-profile-option {
-    gap: 14px;
-  }
-  .auth-demo .demo-intro {
-    margin-top: 22px;
+    margin-top: 20px;
+    gap: 16px;
   }
 }
-@media (min-width: 680px) and (max-width: 900px) {
-  .auth-demo .demo-profile-list {
-    gap: 12px;
-  }
-}
+
 @media (max-width: 359px) {
   .auth-demo {
     padding-inline: 14px;
   }
-  .demo-profile-option {
-    padding: 16px;
-  }
-  .demo-profile-option .button {
-    font-size: 13px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .demo-profile-option {
-    transition: none;
+  .auth-demo .demo-profile-option > .button {
+    min-height: 52px;
   }
 }
