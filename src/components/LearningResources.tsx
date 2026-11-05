@@ -60,11 +60,12 @@ export function LearningResources({
               </summary>
               <p>
                 {r.publisher} ·{" "}
-                {new URL(r.url).hostname === "docs.python.org" ||
+                {r.language || (new URL(r.url).hostname === "docs.python.org" ||
                 r.url.includes("/pt-BR/")
                   ? "Português brasileiro"
-                  : "Inglês"}
+                  : "Inglês")}
               </p>
+              {r.level && <p className="small">Nível recomendado: {r.level}</p>}
               <a href={url} target="_blank" rel="noopener noreferrer">
                 Abrir recurso externo ↗
               </a>

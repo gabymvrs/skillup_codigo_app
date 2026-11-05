@@ -64,6 +64,8 @@ export interface LearningResource {
   publisher: string;
   url: string;
   kind: string;
+  language?: string;
+  level?: string;
   embedUrl?: string;
   allowEmbed?: boolean;
 }
