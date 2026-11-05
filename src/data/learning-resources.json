@@ -1,0 +1,191 @@
+[
+  {
+    "id": "python-control",
+    "title": "Controle de fluxo em Python",
+    "publisher": "Documentação Python",
+    "url": "https://docs.python.org/pt-br/3/tutorial/controlflow.html",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "js-control",
+    "title": "Controle de fluxo e tratamento de erros",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Control_flow_and_error_handling",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "html-structure",
+    "title": "Estrutura de documentos e sites",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "css-responsive",
+    "title": "Design responsivo",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "forms-labels",
+    "title": "Rótulos em formulários acessíveis",
+    "publisher": "W3C WAI · inglês",
+    "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "dart-variables",
+    "title": "Variáveis em Dart",
+    "publisher": "Documentação Dart · inglês",
+    "url": "https://dart.dev/language/variables",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "dart-loops",
+    "title": "Repetições em Dart",
+    "publisher": "Documentação Dart · inglês",
+    "url": "https://dart.dev/language/loops",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "http-methods",
+    "title": "Métodos de requisição HTTP",
+    "publisher": "MDN Web Docs · inglês",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "retry-pattern",
+    "title": "Padrão Retry e falhas transitórias",
+    "publisher": "Microsoft Learn · inglês",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Avançado — após a aula de falhas entre serviços"
+  },
+  {
+    "id": "dart-operators",
+    "title": "Operadores em Dart",
+    "publisher": "Documentação Dart",
+    "url": "https://dart.dev/language/operators",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "dart-conditions",
+    "title": "Condições em Dart",
+    "publisher": "Documentação Dart",
+    "url": "https://dart.dev/language/branches",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "dart-collections",
+    "title": "Listas em Dart",
+    "publisher": "Documentação Dart",
+    "url": "https://dart.dev/language/collections",
+    "kind": "artigo",
+    "language": "Inglês",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "python-intro",
+    "title": "Primeiros valores e textos em Python",
+    "publisher": "Documentação Python",
+    "url": "https://docs.python.org/pt-br/3/tutorial/introduction.html",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "python-input",
+    "title": "Entrada, conversão e saída em Python",
+    "publisher": "Documentação Python",
+    "url": "https://docs.python.org/pt-br/3/library/functions.html#input",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "html-basics",
+    "title": "Primeiros elementos e atributos HTML",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "css-basics",
+    "title": "O papel das regras CSS",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/What_is_CSS",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "css-layout",
+    "title": "Introdução à distribuição com CSS",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/CSS_layout/Introduction",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "js-intro",
+    "title": "Introdução ao JavaScript",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Introduction",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "js-number",
+    "title": "Números e conversão",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "js-functions",
+    "title": "Funções em JavaScript",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  },
+  {
+    "id": "http-overview",
+    "title": "Visão geral do HTTP",
+    "publisher": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview",
+    "kind": "artigo",
+    "language": "Português brasileiro",
+    "level": "Introdutório — consulta após a aula"
+  }
+]

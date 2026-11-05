@@ -1,0 +1,98 @@
+{
+  "Português": [
+    [
+      "Ortografia e acentuação",
+      "Regras básicas de acentuação",
+      "Palavras oxítonas terminadas em a, e, o, em e ens geralmente recebem acento: café, também. Paroxítonas têm regras específicas, como fácil e lápis. Proparoxítonas são sempre acentuadas.\n\nExercício: identifique a sílaba tônica de café, árvore e fácil."
+    ],
+    [
+      "Interpretação de texto",
+      "Leitura ativa",
+      "Identifique assunto, tese e argumentos. Diferencie fato de opinião e procure pistas do contexto antes de concluir.\n\nExercício: ao ler uma notícia, escreva uma frase com a ideia principal."
+    ]
+  ],
+  "Logística": [
+    [
+      "Cadeia de suprimentos",
+      "Da origem ao cliente",
+      "A cadeia de suprimentos conecta fornecedores, produção, armazenagem, transporte e consumidor. O fluxo de informações ajuda a reduzir atrasos e desperdícios.\n\nExercício: desenhe o caminho de um produto até sua casa."
+    ],
+    [
+      "Gestão de estoque",
+      "Entrada, saída e reposição",
+      "O controle de estoque registra entradas, saídas e saldos. Estoque mínimo e ponto de pedido ajudam a evitar faltas.\n\nExercício: calcule o saldo após receber 20 unidades e vender 7."
+    ]
+  ],
+  "Biologia": [
+    [
+      "Células e organelas",
+      "A unidade da vida",
+      "A membrana plasmática delimita a célula; o citoplasma abriga estruturas e o material genético orienta processos celulares. Mitocôndrias participam da produção de ATP.\n\nExercício: compare células procariontes e eucariontes."
+    ],
+    [
+      "Fotossíntese",
+      "Energia e produção de matéria",
+      "Organismos fotossintetizantes utilizam energia luminosa para produzir matéria orgânica a partir de água e dióxido de carbono, liberando oxigênio em muitos casos.\n\nExercício: explique a importância da luz nesse processo."
+    ]
+  ],
+  "Física": [
+    [
+      "Velocidade média",
+      "Movimento no cotidiano",
+      "Velocidade média é deslocamento dividido pelo intervalo de tempo: v = Δs/Δt. Observe as unidades, como km/h e m/s.\n\nExercício: um ciclista percorre 12 km em 2 h. Qual é a velocidade média?"
+    ],
+    [
+      "Leis de Newton",
+      "Força e movimento",
+      "A primeira lei trata da inércia. A segunda relaciona força resultante, massa e aceleração: F = m·a. A terceira afirma que as forças de ação e reação têm mesma intensidade e sentidos opostos em corpos diferentes.\n\nExercício: dê um exemplo de inércia."
+    ]
+  ],
+  "Program.": [
+    [
+      "Variáveis e tipos",
+      "Primeiros passos em Dart",
+      "Use int para números inteiros, double para decimais, String para textos e bool para verdadeiro ou falso. Exemplo: int idade = 16;\n\nExercício: declare as variáveis nome, nota e aprovado com tipos adequados."
+    ],
+    [
+      "Condicionais",
+      "Tomando decisões",
+      "Uma estrutura if executa um bloco quando uma condição é verdadeira; else permite tratar o caso alternativo. Exemplo: if (nota >= 7) { print(\"Aprovado\"); } else { print(\"Revisar\"); }\n\nExercício: crie uma condição para verificar a maioridade."
+    ]
+  ],
+  "Filosofia": [
+    [
+      "Ética e moral",
+      "Refletindo sobre decisões",
+      "Moral reúne costumes e normas de grupos sociais. Ética investiga criticamente os fundamentos de nossas escolhas e ações.\n\nExercício: pense em um dilema cotidiano e apresente duas perspectivas."
+    ],
+    [
+      "Conhecimento e argumentação",
+      "Como justificar uma ideia",
+      "Um argumento reúne premissas que sustentam uma conclusão. Avalie a coerência das premissas e se há evidências suficientes.\n\nExercício: diferencie opinião de argumento justificado."
+    ]
+  ],
+  "Eletrônica": [
+    [
+      "Tensão, corrente e resistência",
+      "Grandezas elétricas",
+      "Tensão elétrica é medida em volts, corrente em ampères e resistência em ohms. Em muitos circuitos resistivos, aplica-se a relação V = R·I.\n\nExercício: qual a corrente em um resistor de 10 Ω sob 20 V?"
+    ],
+    [
+      "Circuitos em série e paralelo",
+      "Conexões elétricas",
+      "Em série, a corrente é a mesma nos componentes; em paralelo, os ramos compartilham a diferença de potencial.\n\nSegurança: não faça experimentos diretamente na rede elétrica."
+    ]
+  ],
+  "Redes": [
+    [
+      "Endereços IP",
+      "Identificação na rede",
+      "Um endereço IP identifica uma interface em uma rede. IPv4 usa quatro grupos numéricos; IPv6 oferece um espaço de endereçamento muito maior.\n\nExercício: explique a diferença entre um IP local e um IP público."
+    ],
+    [
+      "Protocolos e serviços",
+      "Comunicação entre computadores",
+      "HTTP e HTTPS são usados na web. DNS associa nomes de domínio a endereços; TCP e UDP são protocolos de transporte com características diferentes.\n\nExercício: descreva o papel do DNS ao abrir um site."
+    ]
+  ]
+}

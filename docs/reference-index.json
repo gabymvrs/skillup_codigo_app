@@ -1,0 +1,477 @@
+{
+  "sources": [
+    "SkillUp wireframe (21)(1).zip",
+    "Case study UIUX (7)(1).pdf"
+  ],
+  "screens": [
+    {
+      "number": 1,
+      "file": "Mobile · Acesso · Cadastro Instituição 1/2.pdf",
+      "width": 393.0,
+      "height": 856.0,
+      "sha256": "a9601259fa5c3bfdb729274c9fcbc30603380c7f51ab705e92abc4294ad780eb"
+    },
+    {
+      "number": 2,
+      "file": "Mobile · Acesso · Cadastro Instituição 2/2.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "fc172dfc350ec0cec20a830576df960fa877434aef4748a96c9b552ec58eddcd"
+    },
+    {
+      "number": 3,
+      "file": "Mobile · Acesso · Cadastro docente.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "b6dcf491852cdcbb00268af1015cedb7f3d98b4d9a20abee2c157f73f12f5026"
+    },
+    {
+      "number": 4,
+      "file": "Mobile · Acesso · Cadastro estudante.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "596efedc631cb65687c1861e6b7debddfb37bafb590b248b557ef673505cbcfb"
+    },
+    {
+      "number": 5,
+      "file": "Mobile · Acesso · Cadastro recrutador.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "51b1edaad46cb8cc3deeb63e6b0e00e86580eedd04be02ea0d150b8fd1bb633e"
+    },
+    {
+      "number": 6,
+      "file": "Mobile · Acesso · Cadastro.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "904978a929f85f20b811314ae683e95383539b8da36bee2505da34be7a1a41fd"
+    },
+    {
+      "number": 7,
+      "file": "Mobile · Acesso · Login.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "2180baffdabcd10fd82616c6091ea9cc441b50b9b22997a6729fed35298e5309"
+    },
+    {
+      "number": 8,
+      "file": "Mobile · Acesso · Tela inicial.pdf",
+      "width": 393.0,
+      "height": 852.0,
+      "sha256": "c4887dbdfed57a5a37cd7bf7c5a5ce303620f93d6e99e2b56daf1671f07bdc69"
+    },
+    {
+      "number": 9,
+      "file": "Mobile · Docente · Aprenda · Material.pdf",
+      "width": 393.0,
+      "height": 1208.0,
+      "sha256": "de65095acf75d92e7020579d5ca433de197645b809380a4f81eb2d3b2f124bb7"
+    },
+    {
+      "number": 10,
+      "file": "Mobile · Docente · Aprenda · Prática.pdf",
+      "width": 393.0,
+      "height": 2552.0,
+      "sha256": "fc299086d6a6f9daaa5b6a9f1545dfd3ea096fc828be27fa84c3c5d3046160db"
+    },
+    {
+      "number": 11,
+      "file": "Mobile · Docente · Aprenda · Suporte.pdf",
+      "width": 393.0,
+      "height": 999.0,
+      "sha256": "9fecf685bc0dc554903a6a0075d74fc5b7ffac5a861d469cbea44199d1397d78"
+    },
+    {
+      "number": 12,
+      "file": "Mobile · Docente · Aprenda · Trilhas.pdf",
+      "width": 393.0,
+      "height": 1729.0,
+      "sha256": "5a1b7ee6b6cc9f8915e81cb55c13052e0661e28348facad4c060a03a599574d2"
+    },
+    {
+      "number": 13,
+      "file": "Mobile · Docente · Emprego.pdf",
+      "width": 393.0,
+      "height": 2832.0,
+      "sha256": "979878caa6c96c30e52b97be6a06d849ecc15eff79a305d0d1fca4eeb9e40d39"
+    },
+    {
+      "number": 14,
+      "file": "Mobile · Docente · Home.pdf",
+      "width": 393.0,
+      "height": 941.0,
+      "sha256": "c61d69cdb49cc73a20dd40c5898246d4d39e937d4cd950d2bdd805a0ad506c44"
+    },
+    {
+      "number": 15,
+      "file": "Mobile · Docente · Social · Feed.pdf",
+      "width": 393.0,
+      "height": 2042.0,
+      "sha256": "a006a9864018fdda1d0b919693cd2fa12c65d2cd1ebccf6a455545f5fbdb3266"
+    },
+    {
+      "number": 16,
+      "file": "Mobile · Docente · Social · Fóruns.pdf",
+      "width": 393.0,
+      "height": 1189.0,
+      "sha256": "2a1cb2b5138ee3e6cdfff6943c41f6ab3c77a9b43fbd05f2c2dde634ce33efbc"
+    },
+    {
+      "number": 17,
+      "file": "Mobile · Docente · Social · Início.pdf",
+      "width": 393.0,
+      "height": 2536.0,
+      "sha256": "3157e0bfde80ad586d0f55598b63a63fb6a106bb96cdb40a8200d0c1ec9584a7"
+    },
+    {
+      "number": 18,
+      "file": "Mobile · Docente · Social · Projetos.pdf",
+      "width": 393.0,
+      "height": 2689.0,
+      "sha256": "53d95d4d62092e97b5a3664b066a53c49c0f04c33e8129aa913da6414c99fe30"
+    },
+    {
+      "number": 19,
+      "file": "Mobile · Estudante · Aprenda · Material.pdf",
+      "width": 393.0,
+      "height": 985.0,
+      "sha256": "543496bdb93985edb8e3d69ab4e36309401288ba46e8ad8c77735276c6c065f9"
+    },
+    {
+      "number": 20,
+      "file": "Mobile · Estudante · Aprenda · Prática.pdf",
+      "width": 393.0,
+      "height": 859.0,
+      "sha256": "7ecf253497e7f7d1ce275800cc5d44bed5882d21f1e2ca52a5ea1c34c419447a"
+    },
+    {
+      "number": 21,
+      "file": "Mobile · Estudante · Aprenda · Suporte.pdf",
+      "width": 393.0,
+      "height": 1375.0,
+      "sha256": "f732b5c903665d81b0e6872474f7ff1885a870c3c2050538473805f163086cb9"
+    },
+    {
+      "number": 22,
+      "file": "Mobile · Estudante · Aprenda · Trilhas.pdf",
+      "width": 393.0,
+      "height": 1957.0,
+      "sha256": "dd70748c3f3a4d5997af202183b26b45c44c62026cd4e8b5472f51c1a79f06ba"
+    },
+    {
+      "number": 23,
+      "file": "Mobile · Estudante · Configurações.pdf",
+      "width": 393.0,
+      "height": 1100.0,
+      "sha256": "27e94a7bed064a76f92bc2e8ba723a0c3c305f4d30e1776f78bd443988e6caae"
+    },
+    {
+      "number": 24,
+      "file": "Mobile · Estudante · Emprego.pdf",
+      "width": 393.0,
+      "height": 1914.0,
+      "sha256": "6349cec3c0052ae65b4fe590cc735d256b3406e790472e64ec9b4fe306302022"
+    },
+    {
+      "number": 25,
+      "file": "Mobile · Estudante · Home.pdf",
+      "width": 393.0,
+      "height": 2081.0,
+      "sha256": "e4ccd35c9a427bb4a24f4ed0c8dc67c2ba88705c31a8903db1a0bb01623f011e"
+    },
+    {
+      "number": 26,
+      "file": "Mobile · Estudante · Social · Feed.pdf",
+      "width": 393.0,
+      "height": 1300.0,
+      "sha256": "1e56503839e4739287c2e5c6df4fc3faa22070776fa581aab07666b4f50a0a30"
+    },
+    {
+      "number": 27,
+      "file": "Mobile · Estudante · Social · Fóruns.pdf",
+      "width": 393.0,
+      "height": 1088.0,
+      "sha256": "b8f9205aa3ad938be513de618c3f5ba804987ee1e5c0731e650a1e82609feff0"
+    },
+    {
+      "number": 28,
+      "file": "Mobile · Estudante · Social · Início.pdf",
+      "width": 393.0,
+      "height": 2261.0,
+      "sha256": "d4048664de9928183f0b615ad1c6ad480fc3c993629bd5b0c57d7e8cd35795f2"
+    },
+    {
+      "number": 29,
+      "file": "Mobile · Estudante · Social · Projetos.pdf",
+      "width": 393.0,
+      "height": 2494.0,
+      "sha256": "2c15c508af69fd3a2ec9bd49887853ee951a8a981029de7c44329a8267c10a29"
+    },
+    {
+      "number": 30,
+      "file": "Mobile · Instituição · Aprenda.pdf",
+      "width": 393.0,
+      "height": 2977.0,
+      "sha256": "cfdc0a4e46d10a0a1cfcbfa09344182055193190fc2951c154f3db0fcab3a675"
+    },
+    {
+      "number": 31,
+      "file": "Mobile · Instituição · Configurações.pdf",
+      "width": 393.0,
+      "height": 1692.0,
+      "sha256": "9109620595126988864937466ede73e6863704f98c19cc4de0be695b26b932f4"
+    },
+    {
+      "number": 32,
+      "file": "Mobile · Instituição · Emprego.pdf",
+      "width": 393.0,
+      "height": 1819.0,
+      "sha256": "265a2c3bad7f13125ed2700dd1a0ad87b0190cd2167dc0c43ae60252e2057b64"
+    },
+    {
+      "number": 33,
+      "file": "Mobile · Instituição · Home.pdf",
+      "width": 393.0,
+      "height": 2237.0,
+      "sha256": "4570fe5d23312329f468240734e4f3d837e83f5b05aa8906e9fa62634b544fa6"
+    },
+    {
+      "number": 34,
+      "file": "Mobile · Instituição · Social.pdf",
+      "width": 393.0,
+      "height": 2979.0,
+      "sha256": "c111be30f1e23c2db5fcfa71d1c6cf413eb8d672d5389a0e4326a29cf7830dd8"
+    },
+    {
+      "number": 35,
+      "file": "Mobile · Recrutador · Aprenda.pdf",
+      "width": 393.0,
+      "height": 1431.0,
+      "sha256": "9d083b3c261758a740c096f4c28b908c0f3c3b366487dd1b015db76182b1c366"
+    },
+    {
+      "number": 36,
+      "file": "Mobile · Recrutador · Configurações.pdf",
+      "width": 393.0,
+      "height": 2406.0,
+      "sha256": "e070e3c71e453f115e81574aa961187a7cd29877c42452b4ee2054f4fd3d5316"
+    },
+    {
+      "number": 37,
+      "file": "Mobile · Recrutador · Emprego.pdf",
+      "width": 393.0,
+      "height": 1351.0,
+      "sha256": "87d969ad09154614cb7091ca7a85bfd6131a7844d25b736890cd30d6c46e18a3"
+    },
+    {
+      "number": 38,
+      "file": "Mobile · Recrutador · Home.pdf",
+      "width": 393.0,
+      "height": 1141.0,
+      "sha256": "9e14890501bdd969ed4a33efc75048230222329e451f419aef0069be9b17f847"
+    },
+    {
+      "number": 39,
+      "file": "Mobile · Recrutador · Social.pdf",
+      "width": 393.0,
+      "height": 2193.0,
+      "sha256": "ac6ae3abc8154ff19b1fe53c9bae78fd5239a133f5e98be542c8c365b38cc5d3"
+    },
+    {
+      "number": 40,
+      "file": "Web · Acesso · Cadastro Instituição 1/2.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "2d507e26943afb852a217631821139665c939a697b56a6e6d03610a1561857f9"
+    },
+    {
+      "number": 41,
+      "file": "Web · Acesso · Cadastro Instituição 2/2.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "ad51d02d40d2623775c792d3ea65246cb494e98edd515a205c10022b935b9efd"
+    },
+    {
+      "number": 42,
+      "file": "Web · Acesso · Cadastro docente.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "6b812bb7e5478204aa138d00d066a5b56e63e410eb2da949c24980f2c1f3510a"
+    },
+    {
+      "number": 43,
+      "file": "Web · Acesso · Cadastro estudante.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "21dbdafe9863ebafb0e19df150bc7bb6e8fac716803b54f5ef68858e2d77a3dd"
+    },
+    {
+      "number": 44,
+      "file": "Web · Acesso · Cadastro recrutador.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "12337e046c211ac7307e0b6faebfe139402b03287508ee6a74c3c05d681d1494"
+    },
+    {
+      "number": 45,
+      "file": "Web · Acesso · Cadastro.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "4b7ff24d6908e710291aa8f53dd2beab17abbf44add941ac775f67c13975d990"
+    },
+    {
+      "number": 46,
+      "file": "Web · Acesso · Login.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "2ba89f457116f951a6c70e41a87ff7b9a645f49f7a68cf06d2c6361da098e751"
+    },
+    {
+      "number": 47,
+      "file": "Web · Acesso · Tela inicial.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "84d5a583652d4a0d9892a64f4d22e2d589d760ac29d9ca9e2abd30c78b584e72"
+    },
+    {
+      "number": 48,
+      "file": "Web · Docente · Aprenda · Material.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "278243bee754a228c389429d7e2bd0a787a1e8f1a0bb8b04ec7d62e481396577"
+    },
+    {
+      "number": 49,
+      "file": "Web · Docente · Aprenda · Prática.pdf",
+      "width": 1440.0,
+      "height": 1204.0,
+      "sha256": "6d4be19700ef92dc7a8945de2073a36093063a51f909299910417bcd754e91df"
+    },
+    {
+      "number": 50,
+      "file": "Web · Docente · Aprenda · Suporte.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "8c19e45eea5a9083fa254298732c7632d062c0263d00aa55a20c3cff20361b20"
+    },
+    {
+      "number": 51,
+      "file": "Web · Docente · Aprenda · Trilhas.pdf",
+      "width": 1440.0,
+      "height": 1076.0,
+      "sha256": "295120364d5d7f7f7e73583af3bb9d11fb6eb761dedd22fc8744ad7d8f8f6346"
+    },
+    {
+      "number": 52,
+      "file": "Web · Docente · Home.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "9f9bd16c8def289da36de58ae6fed86c3e59aaf5c14e77a3b193c001e3ee1e87"
+    },
+    {
+      "number": 53,
+      "file": "Web · Docente · Social · Feed.pdf",
+      "width": 1440.0,
+      "height": 1452.0,
+      "sha256": "4b991308adc8243358fbad91bac2992535e045b9f70d329b4e278750f64c287c"
+    },
+    {
+      "number": 54,
+      "file": "Web · Docente · Social · Fóruns.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "1b1f12e85c529fd33a648ae5babddfe9ba37138f78ee26286f486f6a1cba398c"
+    },
+    {
+      "number": 55,
+      "file": "Web · Docente · Social · Início.pdf",
+      "width": 1440.0,
+      "height": 1544.0,
+      "sha256": "f741f75b2ee4a2534239741bb51522e587e681db28cf7bf6956a4bab2b2b71ed"
+    },
+    {
+      "number": 56,
+      "file": "Web · Docente · Social · Projetos.pdf",
+      "width": 1440.0,
+      "height": 1124.0,
+      "sha256": "6a8925cba1b614bddda7a9c95d7fe5f26b1ae2b415fc7b77d674066d9028b356"
+    },
+    {
+      "number": 57,
+      "file": "Web · Estudante · Home.pdf",
+      "width": 1440.0,
+      "height": 1231.0,
+      "sha256": "81e64edf0e4d98eeb19a9fff8f5902d641f5a6d2f271bc5ac1d7a4cb0d46a15b"
+    },
+    {
+      "number": 58,
+      "file": "Web · Instituição · Aprenda.pdf",
+      "width": 1440.0,
+      "height": 1466.0,
+      "sha256": "ac90004d56fac66c3c504cea7034c7ab18856ea0308f794466c8e656d4e1ac3f"
+    },
+    {
+      "number": 59,
+      "file": "Web · Instituição · Configurações.pdf",
+      "width": 1440.0,
+      "height": 1172.0,
+      "sha256": "d5055ad7e0d69f09b9d36b32566d37583112d1008bfd78393fe2a921f03d8901"
+    },
+    {
+      "number": 60,
+      "file": "Web · Instituição · Emprego.pdf",
+      "width": 1440.0,
+      "height": 1076.0,
+      "sha256": "a657578a769bc3f3ea6bfc0acad3b5e6ba00923cf6be314cc1bca65a6c294bbe"
+    },
+    {
+      "number": 61,
+      "file": "Web · Instituição · Home.pdf",
+      "width": 1440.0,
+      "height": 1263.0,
+      "sha256": "add545b1d285840a802b092fbb46ffa10a73c5d17669b28c1c2b1771b2b9efc4"
+    },
+    {
+      "number": 62,
+      "file": "Web · Instituição · Social.pdf",
+      "width": 1440.0,
+      "height": 1388.0,
+      "sha256": "f359a0570642f3ad09e760fd42258efb91a2f9fa9f83c85f275c5c306dc07941"
+    },
+    {
+      "number": 63,
+      "file": "Web · Recrutador · Aprenda.pdf",
+      "width": 1440.0,
+      "height": 1000.0,
+      "sha256": "e672ae84e25738284a096de93b34b2a03b9347d1d7c4682b910967f3a20da1e7"
+    },
+    {
+      "number": 64,
+      "file": "Web · Recrutador · Configurações.pdf",
+      "width": 1440.0,
+      "height": 1240.0,
+      "sha256": "b0d630a290701aed5f7f5ee752f7ef447bfa1b961a2f5d3273799f2d424dc6ce"
+    },
+    {
+      "number": 65,
+      "file": "Web · Recrutador · Emprego.pdf",
+      "width": 1440.0,
+      "height": 1004.0,
+      "sha256": "47ffbad615c6b87ebbcdc38442b2d3eec5f2f49f2c8e1f7046d317745d80c7d5"
+    },
+    {
+      "number": 66,
+      "file": "Web · Recrutador · Home.pdf",
+      "width": 1440.0,
+      "height": 1026.0,
+      "sha256": "28e99a8d3054cd14c2c79de1e046bb5a2a5882b682e38c30ef8154e3d0aa44d1"
+    },
+    {
+      "number": 67,
+      "file": "Web · Recrutador · Social.pdf",
+      "width": 1440.0,
+      "height": 1402.0,
+      "sha256": "9961b8911dc8c6a7ad30b787c9e21d6a239cf83913f7633440e099adb1edef74"
+    }
+  ]
+}

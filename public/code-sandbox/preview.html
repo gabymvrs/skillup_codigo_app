@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Pré-visualização isolada</title>
+  </head>
+  <body>
+    <script>
+      // The HTTP CSP remains in force after document.write. Meta CSP is repeated for local preview.
+      window.addEventListener("message", function show(event) {
+        if (
+          event.source !== parent ||
+          event.data?.kind !== "preview" ||
+          typeof event.data.html !== "string" ||
+          event.data.html.length > 10000
+        )
+          return;
+        window.removeEventListener("message", show);
+        document.open();
+        document.write(
+          "<!doctype html><meta charset=\"utf-8\"><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'\">" +
+            event.data.html,
+        );
+        document.close();
+      });
+    </script>
+  </body>
+</html>

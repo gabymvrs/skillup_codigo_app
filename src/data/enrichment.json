@@ -1,0 +1,1663 @@
+{
+  "questions": [
+    {
+      "id": "00000000-0000-4000-8000-000000006000",
+      "title": "Acentuação e leitura · Escolha",
+      "prompt": "Qual palavra é proparoxítona?",
+      "options": ["café", "árvore", "papel"],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006001",
+      "title": "Acentuação e leitura · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Toda proparoxítona é acentuada.",
+        "Todo texto apresenta apenas fatos."
+      ],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Toda proparoxítona é acentuada.",
+          "Todo texto apresenta apenas fatos."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006002",
+      "title": "Acentuação e leitura · Lacuna",
+      "prompt": "A palavra que nomeia seres, objetos e ideias é o ____.",
+      "options": [],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006003",
+      "title": "Acentuação e leitura · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Nomeia", "Expressa ação ou estado", "Caracteriza"],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Substantivo", "Verbo", "Adjetivo"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006004",
+      "title": "Acentuação e leitura · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Ler o texto",
+        "Identificar a ideia principal",
+        "Revisar a interpretação"
+      ],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006005",
+      "title": "Acentuação e leitura · Desafio prático",
+      "prompt": "Escreva um parágrafo apresentando um projeto da escola. Identifique a ideia principal e revise a ortografia.",
+      "options": [],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Apresentei uma ideia principal",
+          "Usei um exemplo para sustentá-la",
+          "Revisei pontuação e acentuação"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006010",
+      "title": "Estoque e distribuição · Escolha",
+      "prompt": "Um estoque tinha 20 unidades e vendeu 7. Qual é o saldo?",
+      "options": ["27", "13", "7"],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006011",
+      "title": "Estoque e distribuição · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Registrar entradas e saídas ajuda a controlar o estoque.",
+        "Estoque mínimo elimina qualquer risco de falta."
+      ],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Registrar entradas e saídas ajuda a controlar o estoque.",
+          "Estoque mínimo elimina qualquer risco de falta."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006012",
+      "title": "Estoque e distribuição · Lacuna",
+      "prompt": "Fornecedores, produção, distribuição e clientes formam a cadeia de ____.",
+      "options": [],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006013",
+      "title": "Estoque e distribuição · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Fornece insumos", "Armazena produtos", "Entrega ao destino"],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Fornecedor", "Estoque", "Distribuição"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006014",
+      "title": "Estoque e distribuição · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Receber o pedido",
+        "Separar os produtos",
+        "Conferir e despachar"
+      ],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006015",
+      "title": "Estoque e distribuição · Desafio prático",
+      "prompt": "Planeje o envio de um pedido com três produtos. Descreva conferência, embalagem e registro da saída.",
+      "options": [],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Listei os produtos e quantidades",
+          "Descrevi a conferência antes do envio",
+          "Registrei a saída no estoque"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006020",
+      "title": "Plantas e células · Escolha",
+      "prompt": "Qual grupo de plantas produz flores e frutos?",
+      "options": ["Briófitas", "Angiospermas", "Pteridófitas"],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006021",
+      "title": "Plantas e células · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Angiospermas produzem flores.",
+        "Briófitas possuem vasos condutores verdadeiros."
+      ],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Angiospermas produzem flores.",
+          "Briófitas possuem vasos condutores verdadeiros."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006022",
+      "title": "Plantas e células · Lacuna",
+      "prompt": "A organela associada à fotossíntese nas plantas é o ____.",
+      "options": [],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006023",
+      "title": "Plantas e células · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": [
+        "Absorção de água e sais",
+        "Principal órgão fotossintetizante",
+        "Reprodução das angiospermas"
+      ],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Raiz", "Folha", "Flor"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006024",
+      "title": "Plantas e células · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Absorção de água pelas raízes",
+        "Transporte até as folhas",
+        "Uso de água na fotossíntese"
+      ],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006025",
+      "title": "Plantas e células · Desafio prático",
+      "prompt": "Observe uma planta sem arrancá-la. Descreva raiz quando visível, caule e folhas; explique uma função de cada órgão observado.",
+      "options": [],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Registrei o que realmente observei",
+          "Descrevi pelo menos dois órgãos",
+          "Relacionei os órgãos às suas funções"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006030",
+      "title": "Movimento e medidas · Escolha",
+      "prompt": "Qual é a unidade de força no Sistema Internacional?",
+      "options": ["Joule", "Newton", "Watt"],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006031",
+      "title": "Movimento e medidas · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Velocidade média relaciona deslocamento e intervalo de tempo.",
+        "Massa e peso são a mesma grandeza."
+      ],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Velocidade média relaciona deslocamento e intervalo de tempo.",
+          "Massa e peso são a mesma grandeza."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006032",
+      "title": "Movimento e medidas · Lacuna",
+      "prompt": "A unidade de tempo do Sistema Internacional é o ____.",
+      "options": [],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006033",
+      "title": "Movimento e medidas · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Newton", "Joule", "Watt"],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Força", "Energia", "Potência"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006034",
+      "title": "Movimento e medidas · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Medir o deslocamento",
+        "Medir o intervalo de tempo",
+        "Calcular a velocidade média"
+      ],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006035",
+      "title": "Movimento e medidas · Desafio prático",
+      "prompt": "Descreva como medir a velocidade média em um trajeto seguro. Apresente valores hipotéticos, unidades e cálculo.",
+      "options": [],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Defini deslocamento e tempo",
+          "Informei as unidades",
+          "Calculei deslocamento dividido pelo tempo"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006040",
+      "title": "Lógica e algoritmos · Escolha",
+      "prompt": "Qual tipo representa verdadeiro ou falso em Dart?",
+      "options": ["int", "bool", "String"],
+      "explanation": "bool representa valores lógicos; int representa inteiros; String representa texto. List começa no índice zero.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006041",
+      "title": "Lógica e algoritmos · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Um algoritmo deve ter passos definidos.",
+        "O índice inicial de uma List em Dart é 1."
+      ],
+      "explanation": "bool representa valores lógicos; int representa inteiros; String representa texto. List começa no índice zero.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Um algoritmo deve ter passos definidos.",
+          "O índice inicial de uma List em Dart é 1."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006042",
+      "title": "Lógica e algoritmos · Lacuna",
+      "prompt": "Em Dart, o tipo para números inteiros é ____.",
+      "options": [],
+      "explanation": "bool representa valores lógicos; int representa inteiros; String representa texto. List começa no índice zero.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006043",
+      "title": "Lógica e algoritmos · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Inteiro", "Texto", "Valor lógico"],
+      "explanation": "bool representa valores lógicos; int representa inteiros; String representa texto. List começa no índice zero.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "matching",
+      "payload": {
+        "labels": ["int", "String", "bool"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006044",
+      "title": "Lógica e algoritmos · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": ["Receber as notas", "Calcular a média", "Exibir o resultado"],
+      "explanation": "bool representa valores lógicos; int representa inteiros; String representa texto. List começa no índice zero.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006045",
+      "title": "Lógica e algoritmos · Desafio prático",
+      "prompt": "Descreva um algoritmo que calcule a média de duas notas. Inclua um teste com valores conhecidos e outro no limite de aprovação.",
+      "options": [],
+      "explanation": "bool representa valores lógicos; int representa inteiros; String representa texto. List começa no índice zero.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Descrevi entrada, cálculo e saída",
+          "Mostrei um teste com resultado esperado",
+          "Testei o limite de aprovação"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006050",
+      "title": "Argumentação e ética · Escolha",
+      "prompt": "O que fortalece um argumento?",
+      "options": [
+        "Ataque pessoal",
+        "Razões relacionadas à conclusão",
+        "Repetir a conclusão"
+      ],
+      "explanation": "Premissas apoiam conclusões. Contraexemplos testam generalizações; ataques pessoais não demonstram a falsidade de uma tese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006051",
+      "title": "Argumentação e ética · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Uma conclusão pode ser discutida com razões.",
+        "Atacar a pessoa demonstra que sua ideia é falsa."
+      ],
+      "explanation": "Premissas apoiam conclusões. Contraexemplos testam generalizações; ataques pessoais não demonstram a falsidade de uma tese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Uma conclusão pode ser discutida com razões.",
+          "Atacar a pessoa demonstra que sua ideia é falsa."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006052",
+      "title": "Argumentação e ética · Lacuna",
+      "prompt": "Uma afirmação usada para sustentar uma conclusão é uma ____.",
+      "options": [],
+      "explanation": "Premissas apoiam conclusões. Contraexemplos testam generalizações; ataques pessoais não demonstram a falsidade de uma tese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006053",
+      "title": "Argumentação e ética · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": [
+        "Razão de apoio",
+        "Afirmação defendida",
+        "Caso que desafia uma generalização"
+      ],
+      "explanation": "Premissas apoiam conclusões. Contraexemplos testam generalizações; ataques pessoais não demonstram a falsidade de uma tese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Premissa", "Conclusão", "Contraexemplo"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006054",
+      "title": "Argumentação e ética · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Identificar a tese",
+        "Examinar as razões",
+        "Avaliar a conclusão"
+      ],
+      "explanation": "Premissas apoiam conclusões. Contraexemplos testam generalizações; ataques pessoais não demonstram a falsidade de uma tese.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006055",
+      "title": "Argumentação e ética · Desafio prático",
+      "prompt": "Defenda uma regra de convivência escolar. Apresente uma razão, uma possível objeção e uma resposta respeitosa.",
+      "options": [],
+      "explanation": "Premissas apoiam conclusões. Contraexemplos testam generalizações; ataques pessoais não demonstram a falsidade de uma tese.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Apresentei uma tese clara",
+          "Usei uma razão relacionada à tese",
+          "Considerei uma objeção sem atacar pessoas"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006060",
+      "title": "Circuitos de baixa tensão · Escolha",
+      "prompt": "Qual componente limita corrente em um circuito?",
+      "options": ["Resistor", "Fio ideal", "Conector"],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006061",
+      "title": "Circuitos de baixa tensão · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "Um resistor pode limitar corrente.",
+        "Um LED pode ser ligado a qualquer tensão sem proteção."
+      ],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "Um resistor pode limitar corrente.",
+          "Um LED pode ser ligado a qualquer tensão sem proteção."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006062",
+      "title": "Circuitos de baixa tensão · Lacuna",
+      "prompt": "A unidade de resistência elétrica é o ____.",
+      "options": [],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006063",
+      "title": "Circuitos de baixa tensão · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Ohm", "Ampere", "Volt"],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Resistência", "Corrente", "Tensão"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006064",
+      "title": "Circuitos de baixa tensão · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Desenhar o circuito",
+        "Calcular o resistor",
+        "Simular antes de montar"
+      ],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006065",
+      "title": "Circuitos de baixa tensão · Desafio prático",
+      "prompt": "Desenhe no papel um circuito de LED com fonte de baixa tensão e resistor. Explique a função do resistor e a polaridade. Não use a rede elétrica.",
+      "options": [],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Descrevi uma fonte de baixa tensão",
+          "Incluí um resistor de proteção",
+          "Indiquei a polaridade do LED"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006070",
+      "title": "Conectividade e protocolos · Escolha",
+      "prompt": "Qual serviço associa nomes de domínio a endereços IP?",
+      "options": ["DNS", "HTML", "CSS"],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006071",
+      "title": "Conectividade e protocolos · Verdadeiro ou falso",
+      "prompt": "Avalie cada afirmação.",
+      "options": [
+        "DNS auxilia na resolução de nomes.",
+        "Wi-Fi é sinônimo de acesso garantido à internet."
+      ],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "true_false",
+      "payload": {
+        "statements": [
+          "DNS auxilia na resolução de nomes.",
+          "Wi-Fi é sinônimo de acesso garantido à internet."
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006072",
+      "title": "Conectividade e protocolos · Lacuna",
+      "prompt": "O protocolo seguro usado para acessar páginas web é ____.",
+      "options": [],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "blank",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006073",
+      "title": "Conectividade e protocolos · Associação",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": [
+        "Resolve nomes",
+        "Encaminha pacotes entre redes",
+        "Identifica uma interface na rede"
+      ],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "matching",
+      "payload": {
+        "labels": ["DNS", "Roteador", "Endereço IP"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006074",
+      "title": "Conectividade e protocolos · Sequência",
+      "prompt": "Organize as etapas na sequência solicitada.",
+      "options": [
+        "Verificar a conexão local",
+        "Testar o acesso ao roteador",
+        "Investigar o acesso externo"
+      ],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Prática guiada",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "ordering",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000006075",
+      "title": "Conectividade e protocolos · Desafio prático",
+      "prompt": "Crie um roteiro de diagnóstico quando um dispositivo conecta ao Wi-Fi mas não abre sites. Separe rede local, internet e resolução de nomes.",
+      "options": [],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Prática guiada",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Verifiquei a conexão local",
+          "Incluí uma checagem do acesso externo",
+          "Considerei falha de resolução de nomes"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008000",
+      "title": "HTML semântico · prática",
+      "prompt": "Qual elemento HTML representa a navegação principal?",
+      "options": ["nav", "div sem significado", "span"],
+      "explanation": "nav identifica uma região de navegação.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008001",
+      "title": "CSS responsivo · prática",
+      "prompt": "Relacione cada recurso à sua função.",
+      "options": [
+        "Estrutura do conteúdo",
+        "Apresentação visual",
+        "Comportamento interativo"
+      ],
+      "explanation": "Compare a finalidade de cada conceito com o conteúdo desta etapa.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "matching",
+      "payload": {
+        "labels": ["HTML", "CSS", "JavaScript"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008002",
+      "title": "Publicação acessível · prática",
+      "prompt": "Revise uma página que você conhece. Descreva como verificar títulos, teclado e links.",
+      "options": [],
+      "explanation": "Relato autodeclarado para revisão e aprendizagem.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000014",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Conferi a hierarquia de títulos",
+          "Planejei navegar só com teclado",
+          "Listei os links a verificar"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008003",
+      "title": "Entender o problema · prática",
+      "prompt": "O que uma pergunta aberta em pesquisa permite?",
+      "options": [
+        "Investigar experiências",
+        "Garantir que a ideia será aprovada",
+        "Dispensar observação"
+      ],
+      "explanation": "Perguntas abertas ajudam a compreender experiências e necessidades.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008004",
+      "title": "Estruturar a interface · prática",
+      "prompt": "Relacione cada etapa à sua finalidade.",
+      "options": [
+        "Compreender o contexto",
+        "Representar uma solução",
+        "Observar o uso"
+      ],
+      "explanation": "Compare a finalidade de cada conceito com o conteúdo desta etapa.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Pesquisa", "Protótipo", "Teste de usabilidade"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008005",
+      "title": "Testar com pessoas · prática",
+      "prompt": "Planeje um teste para encontrar um material de estudo. Descreva tarefa, observação e critério de sucesso.",
+      "options": [],
+      "explanation": "Relato autodeclarado para revisão e aprendizagem.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Defini uma tarefa sem dar o caminho",
+          "Descrevi o que observar",
+          "Defini como reconhecer o sucesso"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008006",
+      "title": "Rede local · prática",
+      "prompt": "Qual serviço associa nomes de domínio a endereços IP?",
+      "options": ["DNS", "HTML", "CSS"],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008007",
+      "title": "Endereçamento e DNS · prática",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": [
+        "Resolve nomes",
+        "Encaminha pacotes entre redes",
+        "Identifica uma interface na rede"
+      ],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "matching",
+      "payload": {
+        "labels": ["DNS", "Roteador", "Endereço IP"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008008",
+      "title": "Diagnóstico de conexão · prática",
+      "prompt": "Crie um roteiro de diagnóstico quando um dispositivo conecta ao Wi-Fi mas não abre sites. Separe rede local, internet e resolução de nomes.",
+      "options": [],
+      "explanation": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000017",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Verifiquei a conexão local",
+          "Incluí uma checagem do acesso externo",
+          "Considerei falha de resolução de nomes"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008009",
+      "title": "Grandezas elétricas · prática",
+      "prompt": "Qual componente limita corrente em um circuito?",
+      "options": ["Resistor", "Fio ideal", "Conector"],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008010",
+      "title": "Circuito com resistor · prática",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Ohm", "Ampere", "Volt"],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Resistência", "Corrente", "Tensão"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008011",
+      "title": "Simulação de LED · prática",
+      "prompt": "Desenhe no papel um circuito de LED com fonte de baixa tensão e resistor. Explique a função do resistor e a polaridade. Não use a rede elétrica.",
+      "options": [],
+      "explanation": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000016",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Descrevi uma fonte de baixa tensão",
+          "Incluí um resistor de proteção",
+          "Indiquei a polaridade do LED"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008012",
+      "title": "Fluxo de materiais · prática",
+      "prompt": "Um estoque tinha 20 unidades e vendeu 7. Qual é o saldo?",
+      "options": ["27", "13", "7"],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008013",
+      "title": "Controle de estoque · prática",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Fornece insumos", "Armazena produtos", "Entrega ao destino"],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Fornecedor", "Estoque", "Distribuição"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008014",
+      "title": "Preparação de pedidos · prática",
+      "prompt": "Planeje o envio de um pedido com três produtos. Descreva conferência, embalagem e registro da saída.",
+      "options": [],
+      "explanation": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000011",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Listei os produtos e quantidades",
+          "Descrevi a conferência antes do envio",
+          "Registrei a saída no estoque"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008015",
+      "title": "Leitura ativa · prática",
+      "prompt": "Qual palavra é proparoxítona?",
+      "options": ["café", "árvore", "papel"],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008016",
+      "title": "Ortografia e revisão · prática",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Nomeia", "Expressa ação ou estado", "Caracteriza"],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Substantivo", "Verbo", "Adjetivo"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008017",
+      "title": "Comunicação de projetos · prática",
+      "prompt": "Escreva um parágrafo apresentando um projeto da escola. Identifique a ideia principal e revise a ortografia.",
+      "options": [],
+      "explanation": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Apresentei uma ideia principal",
+          "Usei um exemplo para sustentá-la",
+          "Revisei pontuação e acentuação"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008018",
+      "title": "Células e organelas · prática",
+      "prompt": "Qual grupo de plantas produz flores e frutos?",
+      "options": ["Briófitas", "Angiospermas", "Pteridófitas"],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008019",
+      "title": "Grupos de plantas · prática",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": [
+        "Absorção de água e sais",
+        "Principal órgão fotossintetizante",
+        "Reprodução das angiospermas"
+      ],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Raiz", "Folha", "Flor"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008020",
+      "title": "Observação científica · prática",
+      "prompt": "Observe uma planta sem arrancá-la. Descreva raiz quando visível, caule e folhas; explique uma função de cada órgão observado.",
+      "options": [],
+      "explanation": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Registrei o que realmente observei",
+          "Descrevi pelo menos dois órgãos",
+          "Relacionei os órgãos às suas funções"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008021",
+      "title": "Grandezas e unidades · prática",
+      "prompt": "Qual é a unidade de força no Sistema Internacional?",
+      "options": ["Joule", "Newton", "Watt"],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008022",
+      "title": "Movimento · prática",
+      "prompt": "Relacione cada conceito à sua definição.",
+      "options": ["Newton", "Joule", "Watt"],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Força", "Energia", "Potência"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008023",
+      "title": "Medição e análise · prática",
+      "prompt": "Descreva como medir a velocidade média em um trajeto seguro. Apresente valores hipotéticos, unidades e cálculo.",
+      "options": [],
+      "explanation": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000013",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Defini deslocamento e tempo",
+          "Informei as unidades",
+          "Calculei deslocamento dividido pelo tempo"
+        ],
+        "minLength": 120
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008024",
+      "title": "Reconhecer habilidades · prática",
+      "prompt": "Qual evidência comunica melhor uma habilidade?",
+      "options": [
+        "Uma lista de elogios genéricos",
+        "Um projeto com contribuição e resultado descritos",
+        "Uma competência inventada"
+      ],
+      "explanation": "Uma contribuição concreta pode ser explicada e verificada.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "choice",
+      "payload": {}
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008025",
+      "title": "Documentar projetos · prática",
+      "prompt": "Relacione as partes do relato de um projeto.",
+      "options": [
+        "Situação e problema",
+        "O que você fez",
+        "O que observou e aprendeu"
+      ],
+      "explanation": "Compare a finalidade de cada conceito com o conteúdo desta etapa.",
+      "category": "Etapa de trilha",
+      "xp": 40,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "matching",
+      "payload": {
+        "labels": ["Contexto", "Contribuição", "Resultado"]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000008026",
+      "title": "Preparar uma candidatura · prática",
+      "prompt": "Escreva uma apresentação para uma vaga fictícia. Use uma experiência real sua e indique algo que ainda está aprendendo.",
+      "options": [],
+      "explanation": "Relato autodeclarado para revisão e aprendizagem.",
+      "category": "Etapa de trilha",
+      "xp": 10,
+      "subject_id": "00000000-0000-4000-8000-000000000015",
+      "kind": "challenge",
+      "payload": {
+        "criteria": [
+          "Expliquei meu interesse",
+          "Citei uma contribuição verificável",
+          "Evitei inventar experiência"
+        ],
+        "minLength": 120
+      }
+    }
+  ],
+  "answers": {
+    "00000000-0000-4000-8000-000000006000": 1,
+    "00000000-0000-4000-8000-000000006001": [true, false],
+    "00000000-0000-4000-8000-000000006002": "substantivo",
+    "00000000-0000-4000-8000-000000006003": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006004": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006010": 1,
+    "00000000-0000-4000-8000-000000006011": [true, false],
+    "00000000-0000-4000-8000-000000006012": "suprimentos",
+    "00000000-0000-4000-8000-000000006013": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006014": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006020": 1,
+    "00000000-0000-4000-8000-000000006021": [true, false],
+    "00000000-0000-4000-8000-000000006022": "cloroplasto",
+    "00000000-0000-4000-8000-000000006023": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006024": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006030": 1,
+    "00000000-0000-4000-8000-000000006031": [true, false],
+    "00000000-0000-4000-8000-000000006032": "segundo",
+    "00000000-0000-4000-8000-000000006033": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006034": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006040": 1,
+    "00000000-0000-4000-8000-000000006041": [true, false],
+    "00000000-0000-4000-8000-000000006042": "int",
+    "00000000-0000-4000-8000-000000006043": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006044": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006050": 1,
+    "00000000-0000-4000-8000-000000006051": [true, false],
+    "00000000-0000-4000-8000-000000006052": "premissa",
+    "00000000-0000-4000-8000-000000006053": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006054": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006060": 0,
+    "00000000-0000-4000-8000-000000006061": [true, false],
+    "00000000-0000-4000-8000-000000006062": "ohm",
+    "00000000-0000-4000-8000-000000006063": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006064": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006070": 0,
+    "00000000-0000-4000-8000-000000006071": [true, false],
+    "00000000-0000-4000-8000-000000006072": "https",
+    "00000000-0000-4000-8000-000000006073": [0, 1, 2],
+    "00000000-0000-4000-8000-000000006074": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008000": 0,
+    "00000000-0000-4000-8000-000000008001": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008003": 0,
+    "00000000-0000-4000-8000-000000008004": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008006": 0,
+    "00000000-0000-4000-8000-000000008007": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008009": 0,
+    "00000000-0000-4000-8000-000000008010": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008012": 1,
+    "00000000-0000-4000-8000-000000008013": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008015": 1,
+    "00000000-0000-4000-8000-000000008016": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008018": 1,
+    "00000000-0000-4000-8000-000000008019": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008021": 1,
+    "00000000-0000-4000-8000-000000008022": [0, 1, 2],
+    "00000000-0000-4000-8000-000000008024": 1,
+    "00000000-0000-4000-8000-000000008025": [0, 1, 2]
+  },
+  "tracks": [
+    {
+      "id": "00000000-0000-4000-8000-000000002000",
+      "title": "Desenvolvimento Web",
+      "description": "Aprenda desenvolvimento web com leitura, exercícios e um desafio aplicado.",
+      "category": "Desenvolvimento",
+      "skills": ["Lógica e algoritmos"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002001",
+      "title": "UI/UX Design",
+      "description": "Aprenda ui/ux design com leitura, exercícios e um desafio aplicado.",
+      "category": "Design",
+      "skills": ["Argumentação e ética"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002002",
+      "title": "Redes de Computadores",
+      "description": "Aprenda redes de computadores com leitura, exercícios e um desafio aplicado.",
+      "category": "Infraestrutura",
+      "skills": ["Conectividade e protocolos"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002003",
+      "title": "Eletrônica Básica",
+      "description": "Aprenda eletrônica básica com leitura, exercícios e um desafio aplicado.",
+      "category": "Eletrônica",
+      "skills": ["Circuitos de baixa tensão"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002004",
+      "title": "Introdução à Logística",
+      "description": "Aprenda introdução à logística com leitura, exercícios e um desafio aplicado.",
+      "category": "Logística",
+      "skills": ["Estoque e distribuição"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002005",
+      "title": "Comunicação e Português",
+      "description": "Aprenda comunicação e português com leitura, exercícios e um desafio aplicado.",
+      "category": "Linguagens",
+      "skills": ["Acentuação e leitura"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002006",
+      "title": "Fundamentos de Biologia",
+      "description": "Aprenda fundamentos de biologia com leitura, exercícios e um desafio aplicado.",
+      "category": "Ciências",
+      "skills": ["Plantas e células"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002007",
+      "title": "Física Aplicada",
+      "description": "Aprenda física aplicada com leitura, exercícios e um desafio aplicado.",
+      "category": "Ciências",
+      "skills": ["Movimento e medidas"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000002008",
+      "title": "Preparação para o Mercado de Trabalho",
+      "description": "Aprenda preparação para o mercado de trabalho com leitura, exercícios e um desafio aplicado.",
+      "category": "Carreira",
+      "skills": ["Argumentação e ética"],
+      "duration_hours": 6,
+      "owner_id": null,
+      "organization_id": null,
+      "published": true,
+      "difficulty": "Iniciante"
+    }
+  ],
+  "modules": [
+    {
+      "id": "00000000-0000-4000-8000-000000003000",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "title": "HTML semântico",
+      "body": "HTML descreve a estrutura do documento. Use títulos em ordem e elementos como main, nav e button conforme sua função. Um botão executa uma ação; um link leva a outro endereço. Crie no papel o esqueleto semântico de uma página de estudos.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008000"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003001",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "title": "CSS responsivo",
+      "body": "CSS define apresentação. Use grid ou flex para distribuir conteúdo, unidades flexíveis e limites de largura. Comece pela tela pequena; mantenha rótulos legíveis e foco visível. Descreva como sua página se reorganiza ao ganhar espaço.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003000",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008001"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003002",
+      "track_id": "00000000-0000-4000-8000-000000002000",
+      "title": "Publicação acessível",
+      "body": "Antes de publicar, verifique títulos, alternativas textuais, contraste e navegação por teclado. Teste links e formulários. Descreva três verificações que faria em uma página de estudos.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003001",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008002"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003010",
+      "track_id": "00000000-0000-4000-8000-000000002001",
+      "title": "Entender o problema",
+      "body": "Comece pelo problema e pelo contexto. Uma entrevista investiga experiências, não confirma uma solução pronta. Escreva uma pergunta aberta sobre como estudantes encontram materiais e indique qual dúvida a pesquisa resolve.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008003"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003011",
+      "track_id": "00000000-0000-4000-8000-000000002001",
+      "title": "Estruturar a interface",
+      "body": "Agrupe informações relacionadas, estabeleça uma hierarquia de títulos e mantenha padrões de navegação. Desenhe uma tela de biblioteca com busca, matérias e indicação de leitura. Explique a prioridade visual escolhida.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003010",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008004"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003012",
+      "track_id": "00000000-0000-4000-8000-000000002001",
+      "title": "Testar com pessoas",
+      "body": "No teste de usabilidade, proponha uma tarefa realista e observe sem ensinar o caminho. Registre erros, hesitações e comentários. Planeje uma tarefa para encontrar um material e descreva como perceberá que foi concluída.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003011",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008005"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003020",
+      "track_id": "00000000-0000-4000-8000-000000002002",
+      "title": "Rede local",
+      "body": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008006"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003021",
+      "track_id": "00000000-0000-4000-8000-000000002002",
+      "title": "Endereçamento e DNS",
+      "body": "DNS resolve nomes. Um roteador encaminha pacotes. Uma conexão Wi-Fi local não garante acesso à internet.\n\nO protocolo seguro usado para acessar páginas web é ____.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003020",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008007"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003022",
+      "track_id": "00000000-0000-4000-8000-000000002002",
+      "title": "Diagnóstico de conexão",
+      "body": "Crie um roteiro de diagnóstico quando um dispositivo conecta ao Wi-Fi mas não abre sites. Separe rede local, internet e resolução de nomes.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003021",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008008"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003030",
+      "track_id": "00000000-0000-4000-8000-000000002003",
+      "title": "Grandezas elétricas",
+      "body": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008009"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003031",
+      "track_id": "00000000-0000-4000-8000-000000002003",
+      "title": "Circuito com resistor",
+      "body": "Resistores limitam corrente. Resistência é medida em ohms, corrente em amperes e tensão em volts. Confira limites dos componentes.\n\nA unidade de resistência elétrica é o ____.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003030",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008010"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003032",
+      "track_id": "00000000-0000-4000-8000-000000002003",
+      "title": "Simulação de LED",
+      "body": "Desenhe no papel um circuito de LED com fonte de baixa tensão e resistor. Explique a função do resistor e a polaridade. Não use a rede elétrica.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003031",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008011"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003040",
+      "track_id": "00000000-0000-4000-8000-000000002004",
+      "title": "Fluxo de materiais",
+      "body": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008012"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003041",
+      "track_id": "00000000-0000-4000-8000-000000002004",
+      "title": "Controle de estoque",
+      "body": "O saldo é 20 − 7 = 13. O controle registra movimentações; a distribuição conecta o estoque ao destino, sem eliminar todos os riscos.\n\nFornecedores, produção, distribuição e clientes formam a cadeia de ____.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003040",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008013"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003042",
+      "track_id": "00000000-0000-4000-8000-000000002004",
+      "title": "Preparação de pedidos",
+      "body": "Planeje o envio de um pedido com três produtos. Descreva conferência, embalagem e registro da saída.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003041",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008014"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003050",
+      "track_id": "00000000-0000-4000-8000-000000002005",
+      "title": "Leitura ativa",
+      "body": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008015"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003051",
+      "track_id": "00000000-0000-4000-8000-000000002005",
+      "title": "Ortografia e revisão",
+      "body": "Proparoxítonas têm a antepenúltima sílaba tônica. Substantivos nomeiam; verbos expressam ação ou estado; adjetivos caracterizam.\n\nA palavra que nomeia seres, objetos e ideias é o ____.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003050",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008016"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003052",
+      "track_id": "00000000-0000-4000-8000-000000002005",
+      "title": "Comunicação de projetos",
+      "body": "Escreva um parágrafo apresentando um projeto da escola. Identifique a ideia principal e revise a ortografia.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003051",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008017"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003060",
+      "track_id": "00000000-0000-4000-8000-000000002006",
+      "title": "Células e organelas",
+      "body": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008018"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003061",
+      "track_id": "00000000-0000-4000-8000-000000002006",
+      "title": "Grupos de plantas",
+      "body": "Angiospermas produzem flores e frutos; briófitas não possuem vasos verdadeiros. Cloroplastos participam da fotossíntese.\n\nA organela associada à fotossíntese nas plantas é o ____.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003060",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008019"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003062",
+      "track_id": "00000000-0000-4000-8000-000000002006",
+      "title": "Observação científica",
+      "body": "Observe uma planta sem arrancá-la. Descreva raiz quando visível, caule e folhas; explique uma função de cada órgão observado.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003061",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008020"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003070",
+      "track_id": "00000000-0000-4000-8000-000000002007",
+      "title": "Grandezas e unidades",
+      "body": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008021"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003071",
+      "track_id": "00000000-0000-4000-8000-000000002007",
+      "title": "Movimento",
+      "body": "Força é medida em newtons; energia em joules; potência em watts. Massa é medida em quilogramas, enquanto peso é uma força.\n\nA unidade de tempo do Sistema Internacional é o ____.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003070",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008022"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003072",
+      "track_id": "00000000-0000-4000-8000-000000002007",
+      "title": "Medição e análise",
+      "body": "Descreva como medir a velocidade média em um trajeto seguro. Apresente valores hipotéticos, unidades e cálculo.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003071",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008023"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003080",
+      "track_id": "00000000-0000-4000-8000-000000002008",
+      "title": "Reconhecer habilidades",
+      "body": "Habilidades técnicas e de colaboração podem ser demonstradas por projetos escolares. Liste uma situação, a ação que realizou e o resultado observado. Evite atribuir a si resultados que não foram medidos.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 0,
+      "prerequisite_id": null,
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008024"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003081",
+      "track_id": "00000000-0000-4000-8000-000000002008",
+      "title": "Documentar projetos",
+      "body": "Um portfólio explica contexto, contribuição, decisões e aprendizados. Escolha um projeto e escreva um parágrafo para cada item. Diferencie trabalho individual de decisões feitas em equipe.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 1,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003080",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000003082",
+      "track_id": "00000000-0000-4000-8000-000000002008",
+      "title": "Preparar uma candidatura",
+      "body": "Leia os requisitos da vaga, compare com experiências reais e adapte a apresentação. Não invente competências. Prepare uma mensagem curta com interesse, evidência de aprendizado e disponibilidade, sem incluir documentos pessoais.\n\nReflita: explique o conceito com suas próprias palavras e realize o exercício associado antes de concluir.",
+      "position": 2,
+      "prerequisite_id": "00000000-0000-4000-8000-000000003081",
+      "xp": 100,
+      "question_id": "00000000-0000-4000-8000-000000008026"
+    }
+  ],
+  "materials": [
+    {
+      "id": "00000000-0000-4000-8000-000000000150",
+      "subject_id": "00000000-0000-4000-8000-000000000010",
+      "title": "Gramática ortográfica",
+      "summary": "Revise a escrita de palavras e a acentuação.",
+      "body": "A ortografia organiza a escrita convencional das palavras. Compare a pronúncia com a grafia e consulte um dicionário quando houver dúvida.\n\nAcentuação: proparoxítonas, como árvore e lâmpada, recebem acento. Oxítonas terminadas em a, e, o, em e ens também são acentuadas: café, sofá, também.\n\nPrática: revise um parágrafo de um projeto escolar. Marque três palavras que exigiram atenção e explique a correção.",
+      "kind": "artigo",
+      "file_path": null,
+      "allow_offline": true,
+      "published": true,
+      "owner_id": null,
+      "organization_id": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000151",
+      "subject_id": "00000000-0000-4000-8000-000000000012",
+      "title": "Tipos de plantas",
+      "summary": "Conheça quatro grupos de plantas e suas características.",
+      "body": "Briófitas, como musgos, não têm vasos condutores verdadeiros. Pteridófitas, como samambaias, têm vasos, mas não sementes.\n\nGimnospermas, como pinheiros, produzem sementes sem frutos. Angiospermas produzem flores e frutos que envolvem as sementes.\n\nPrática: observe plantas em um local seguro, sem coletar. Registre características visíveis e não conclua a classificação apenas pela ausência temporária de flores.",
+      "kind": "artigo",
+      "file_path": null,
+      "allow_offline": true,
+      "published": true,
+      "owner_id": null,
+      "organization_id": null
+    }
+  ]
+}

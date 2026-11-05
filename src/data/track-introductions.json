@@ -1,0 +1,207 @@
+{
+  "00000000-0000-4000-8000-000000000200": {
+    "about": "Programar é transformar uma necessidade em instruções que um computador consegue seguir. Antes de escolher uma linguagem, precisamos entender o problema e planejar uma solução.",
+    "context": "Pense em um boletim: alguém precisa definir quais notas receber, como calcular a média e o que mostrar quando faltar uma informação. Dividir o problema em partes, organizar os passos e conferir o resultado são formas de pensamento computacional.",
+    "applications": [
+      "Boletins e cadastros escolares",
+      "Controle de quantidades e valores em um pequeno estoque"
+    ],
+    "objectives": [
+      "Distinguir entradas, processamento e saídas",
+      "Representar valores com variáveis e tipos",
+      "Rastrear condições, repetições e listas"
+    ],
+    "outcome": "Você poderá planejar pequenos cálculos e cadastros, explicar a ordem das instruções e conferir exemplos de entrada e saída.",
+    "prerequisites": "Nenhum conhecimento de programação. O primeiro exemplo apresenta a conta e as instruções em português.",
+    "difficulty": "Primeiro contato"
+  },
+  "00000000-0000-4000-8000-000000000201": {
+    "about": "Backend é a parte de um sistema que recebe pedidos, aplica regras e trabalha com dados. É o que permite que uma tela consulte ou registre informações com controle de acesso.",
+    "context": "Ao consultar um produto em uma loja, a interface faz uma requisição ao servidor. O backend precisa interpretar esse pedido, conferir permissões e devolver uma resposta que a tela saiba tratar.",
+    "applications": [
+      "Consulta e cadastro de produtos",
+      "Comunicação entre serviços de pedidos e pagamentos"
+    ],
+    "objectives": [
+      "Interpretar uma troca HTTP",
+      "Definir contratos de entrada, saída e validação",
+      "Analisar uma falha parcial entre serviços"
+    ],
+    "outcome": "Você poderá especificar uma requisição e uma resposta, esboçar um contrato de cadastro e planejar uma recuperação sem duplicar uma operação.",
+    "prerequisites": "Conhecer entradas, saídas e condições. A trilha Fundamentos prepara essa base; não é necessário conhecer um framework.",
+    "difficulty": "Aplicação guiada"
+  },
+  "00000000-0000-4000-8000-000000002000": {
+    "about": "Desenvolvimento web é a criação de páginas e aplicações acessadas pelo navegador. O navegador é o programa que solicita os recursos de um site e apresenta a página para você.",
+    "context": "Ao abrir um endereço, o navegador pode buscar documentos e outros recursos em um servidor. HTML descreve a estrutura e o significado do conteúdo; CSS cuida da apresentação; JavaScript permite programar comportamentos, como reagir a um clique.",
+    "applications": [
+      "Uma página com informações de uma escola",
+      "Um catálogo de produtos ou uma página de estudos"
+    ],
+    "objectives": [
+      "Entender navegador, página, elementos, tags e atributos",
+      "Montar um documento com navegação e conteúdo principal",
+      "Aplicar regras CSS, adaptar o layout e conferir acessibilidade"
+    ],
+    "outcome": "Você poderá construir uma página simples, explicar sua estrutura e conferir links, leitura e teclado no laboratório.",
+    "prerequisites": "Nenhum conhecimento de HTML ou CSS. Começamos pelo papel do navegador e explicamos cada parte dos exemplos.",
+    "difficulty": "Iniciante"
+  },
+  "00000000-0000-4000-8000-000000002001": {
+    "about": "UI e UX estudam como as pessoas interagem com produtos. UI é a interface visível e seus controles; UX considera a experiência da pessoa ao tentar realizar uma tarefa.",
+    "context": "Em um formulário escolar, uma pessoa precisa entender quais dados preencher e se o envio funcionou. A equipe de design investiga essas dificuldades e propõe uma interface mais clara.",
+    "applications": [
+      "Formulários e fluxos de cadastro",
+      "Protótipos de aplicativos para testar uma ideia"
+    ],
+    "objectives": [
+      "Identificar necessidades em uma tarefa",
+      "Organizar informações e observar hierarquia visual",
+      "Comparar formulários e reconhecer problemas de acessibilidade"
+    ],
+    "outcome": "Você poderá justificar escolhas de organização visual e propor melhorias para um formulário com base na tarefa do usuário.",
+    "prerequisites": "Nenhuma experiência com código. Observe interfaces que você já utiliza.",
+    "difficulty": "Primeiro contato"
+  },
+  "00000000-0000-4000-8000-000000002002": {
+    "about": "Redes conectam dispositivos para trocar informações. O estudo da área ajuda a compreender endereços, caminhos e serviços envolvidos nessa comunicação.",
+    "context": "Quando dois computadores de uma escola precisam acessar o mesmo serviço, a equipe de redes confere como eles estão conectados e procura a origem de uma falha.",
+    "applications": [
+      "Conexão entre computadores de uma escola",
+      "Diagnóstico de acesso a serviços e nomes de domínio"
+    ],
+    "objectives": [
+      "Reconhecer componentes e organização de uma rede",
+      "Distinguir endereço e serviço de resolução de nomes",
+      "Interpretar situações de conectividade"
+    ],
+    "outcome": "Você poderá interpretar um esquema introdutório e explicar etapas de um diagnóstico simples; configurações reais exigem prática supervisionada.",
+    "prerequisites": "Uso básico de computador; os termos da área são apresentados nas atividades.",
+    "difficulty": "Iniciante"
+  },
+  "00000000-0000-4000-8000-000000002003": {
+    "about": "Eletrônica estuda componentes e circuitos que utilizam sinais elétricos. Entender grandezas e conexões ajuda a interpretar o funcionamento de dispositivos.",
+    "context": "Uma luz de indicação precisa de um circuito adequado. Antes de montar ou modificar um equipamento, é necessário entender seus componentes e respeitar as orientações de segurança.",
+    "applications": [
+      "Leitura de diagramas didáticos",
+      "Identificação de componentes em projetos de baixa tensão"
+    ],
+    "objectives": [
+      "Distinguir grandezas elétricas básicas",
+      "Reconhecer componentes e suas funções",
+      "Interpretar cálculos e representações introdutórias"
+    ],
+    "outcome": "Você poderá explicar relações básicas e interpretar os exercícios do curso. As atividades não autorizam intervenções em instalações ou equipamentos energizados.",
+    "prerequisites": "Operações aritméticas básicas. Montagens reais precisam de orientação adequada.",
+    "difficulty": "Iniciante"
+  },
+  "00000000-0000-4000-8000-000000002004": {
+    "about": "Logística organiza o fluxo de materiais e informações entre origem, armazenamento e destino. A área procura atender necessidades com controle e previsibilidade.",
+    "context": "Em um pequeno estoque, uma venda altera o saldo e um pedido precisa ser separado e enviado. Registrar cada movimento ajuda a evitar promessas de produtos indisponíveis.",
+    "applications": ["Controle de estoque", "Separação e expedição de pedidos"],
+    "objectives": [
+      "Identificar etapas do fluxo de materiais",
+      "Calcular entradas, saídas e saldo disponível",
+      "Organizar uma sequência de expedição"
+    ],
+    "outcome": "Você poderá calcular um saldo e explicar um procedimento de preparação e envio de pedidos usando os dados de um caso.",
+    "prerequisites": "Soma e subtração. Não é necessário já ter trabalhado em estoque.",
+    "difficulty": "Primeiro contato"
+  },
+  "00000000-0000-4000-8000-000000002005": {
+    "about": "Comunicação e Português trabalham a construção e a interpretação de mensagens. Na formação técnica, explicar uma ideia com clareza é parte do trabalho em equipe.",
+    "context": "Uma documentação de projeto precisa dizer o que foi feito e por quê. O leitor depende de organização, exemplos e escolhas de linguagem para compreender a mensagem.",
+    "applications": [
+      "Relatos de projetos",
+      "Mensagens e documentação para a equipe"
+    ],
+    "objectives": [
+      "Identificar ideias principais e relações no texto",
+      "Revisar escolhas de palavras e convenções de escrita",
+      "Produzir uma explicação com exemplos"
+    ],
+    "outcome": "Você poderá revisar um pequeno relato e sustentar sua ideia principal com um exemplo compreensível.",
+    "prerequisites": "Leitura e escrita de frases em português; não há exigência de programação.",
+    "difficulty": "Iniciante"
+  },
+  "00000000-0000-4000-8000-000000002006": {
+    "about": "Biologia estuda os seres vivos e suas relações. Conceitos como célula, hereditariedade e ambiente ajudam a interpretar fenômenos de diferentes escalas.",
+    "context": "Para compreender uma observação sobre um organismo, precisamos distinguir o que acontece em suas estruturas e o que depende do ambiente em que ele vive.",
+    "applications": [
+      "Interpretação de observações sobre organismos",
+      "Análise de relações entre seres vivos e ambiente"
+    ],
+    "objectives": [
+      "Reconhecer estruturas e processos introdutórios",
+      "Relacionar conceitos usando exemplos",
+      "Interpretar uma situação biológica apresentada"
+    ],
+    "outcome": "Você poderá organizar explicações introdutórias e analisar os casos do curso com o vocabulário trabalhado nas atividades.",
+    "prerequisites": "Leitura e operações básicas quando solicitadas. A trilha é introdutória.",
+    "difficulty": "Primeiro contato"
+  },
+  "00000000-0000-4000-8000-000000002007": {
+    "about": "Física procura descrever fenômenos usando observações, modelos e grandezas. Medir e comparar valores ajuda a explicar movimento e outras situações do cotidiano.",
+    "context": "Ao acompanhar um deslocamento, precisamos saber a distância e o intervalo de tempo. Um número só é útil quando sabemos o que ele representa e em qual unidade foi medido.",
+    "applications": [
+      "Interpretação de deslocamentos",
+      "Conferência de medidas e resultados em problemas técnicos"
+    ],
+    "objectives": [
+      "Identificar grandezas e unidades",
+      "Relacionar dados de uma situação a um cálculo",
+      "Conferir se o resultado faz sentido no contexto"
+    ],
+    "outcome": "Você poderá resolver os problemas introdutórios apresentados e explicar as unidades e os dados utilizados no cálculo.",
+    "prerequisites": "Aritmética básica. Fórmulas e unidades precisam ser lidas na teoria antes de aplicá-las.",
+    "difficulty": "Iniciante"
+  },
+  "00000000-0000-4000-8000-000000002008": {
+    "about": "Preparação para o mercado de trabalho envolve apresentar competências, compreender uma oportunidade e colaborar com outras pessoas. A área conecta o que você aprende às evidências que consegue mostrar.",
+    "context": "Um recrutador precisa entender qual foi sua contribuição em um projeto. Descrever o problema, suas decisões e o resultado ajuda a comunicar essa experiência sem exagerar o que realizou.",
+    "applications": [
+      "Apresentação de um projeto no portfólio",
+      "Leitura de oportunidades e preparação para conversas profissionais"
+    ],
+    "objectives": [
+      "Identificar competências em experiências de estudo",
+      "Organizar uma apresentação profissional",
+      "Analisar decisões de comunicação e colaboração"
+    ],
+    "outcome": "Você poderá preparar um relato de projeto e reconhecer informações úteis para apresentar suas competências. O curso não garante contratação.",
+    "prerequisites": "Nenhuma experiência profissional é exigida; projetos escolares podem servir de exemplo.",
+    "difficulty": "Primeiro contato"
+  },
+  "00000000-0000-4000-8000-000000002100": {
+    "about": "Python é uma linguagem de programação: uma forma de escrever instruções que um ambiente de execução consegue interpretar. Um programa recebe ou usa dados, realiza operações e produz resultados.",
+    "context": "Profissionais utilizam Python para tarefas como organizar dados e automatizar rotinas. Antes de automatizar algo, é preciso entender a regra e testar se as instruções produzem a saída esperada.",
+    "applications": [
+      "Organização de registros e cálculos",
+      "Automação de tarefas repetitivas, em estudos posteriores"
+    ],
+    "objectives": [
+      "Ler e explicar print, variáveis e input antes de escrever o primeiro desafio",
+      "Converter entradas, interpretar condições e rastrear repetições",
+      "Usar listas e funções e testar um programa completo de soma"
+    ],
+    "outcome": "Você poderá escrever pequenos programas com entrada, cálculo e saída e explicar os testes usados para conferir o resultado.",
+    "prerequisites": "Nenhum conhecimento de Python. A primeira bolinha explica linguagem, interpretador, chamadas e saída.",
+    "difficulty": "Iniciante com pré-requisitos"
+  },
+  "00000000-0000-4000-8000-000000002101": {
+    "about": "JavaScript é uma linguagem usada para expressar operações e comportamentos em programas. Ela pode funcionar no navegador e em outros ambientes, que oferecem recursos diferentes.",
+    "context": "Em uma página, JavaScript pode reagir a uma interação. Nesta trilha, o foco inicial está na lógica: organizar instruções, interpretar valores e conferir o resultado de um cálculo.",
+    "applications": [
+      "Comportamento de interfaces, em estudos posteriores",
+      "Tratamento de entradas e cálculos em programas"
+    ],
+    "objectives": [
+      "Organizar entrada, processamento e saída",
+      "Identificar uma soma feita com textos em vez de números",
+      "Converter entradas e conferir um programa de soma"
+    ],
+    "outcome": "Você poderá rastrear uma sequência, identificar um erro de conversão e escrever a soma no ambiente da atividade. A função input usada pelo exercício pertence a esse ambiente; não é uma função padrão de JavaScript no navegador.",
+    "prerequisites": "Conhecer variáveis, números, textos e sequência de instruções. A trilha Fundamentos oferece essa preparação.",
+    "difficulty": "Iniciante com pré-requisitos"
+  }
+}

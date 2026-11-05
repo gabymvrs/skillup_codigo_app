@@ -1,0 +1,14 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>SkillUp · validação de layout</title><h1>Validação de layout</h1><pre id="results">Carregando…</pre><script type="module">
+sessionStorage.setItem('skillup.demo.role','estudante');
+if(new URLSearchParams(location.search).has('history')) {
+ const {createDemo}=await import('/src/data/demo.ts'); const d=createDemo();
+ d.attempts=[true,false].map((correct,i)=>({id:'qa-attempt-'+i,user_id:'00000000-0000-4000-8000-000000000001',question_id:'00000000-0000-4000-8000-000000000400',selected_index:i,correct,xp:0,created_at:new Date().toISOString()}));
+ localStorage.setItem('skillup.demo.v2',JSON.stringify(d));
+}
+
+const rows=[];for(const width of [360,768,1024,1440]){
+ const frame=document.createElement('iframe');frame.title=`Material ${width}px`;frame.style.cssText=`width:${width}px;height:900px;display:block;margin:20px 0`;frame.src=new URLSearchParams(location.search).get('page')==='practice'?'/app/aprenda/pratica':'/app/aprenda/material';document.body.append(frame);
+ frame.onload=()=>{let tries=0;const check=()=>{const d=frame.contentDocument,practice=new URLSearchParams(location.search).get('page')==='practice',g=d.querySelector(practice?'.practice-metric-grid':'.subject-grid'),r=d.querySelector(practice?'.practice-filters':'.recent-grid');if(!g||!r){if(++tries<60)setTimeout(check,200);return;}
+ const a=g.getBoundingClientRect(),b=r.getBoundingClientRect(),cards=[...g.children].map(x=>x.getBoundingClientRect());const result={width,aligned:Math.abs(a.left-b.left)<1&&Math.abs(a.right-b.right)<1,filtersBelowActions:practice?r.getBoundingClientRect().top>=d.querySelector('.practice-grid').getBoundingClientRect().bottom:undefined,cards:cards.length,columns:frame.contentWindow.getComputedStyle(g).gridTemplateColumns.split(' ').length,equalWidths:cards.every(c=>Math.abs(c.width-cards[0].width)<1),noOverflow:d.documentElement.scrollWidth<=width};rows.push(result);document.querySelector('#results').textContent=JSON.stringify(rows.sort((a,b)=>a.width-b.width),null,2);};check();};
+}
+</script></html>
