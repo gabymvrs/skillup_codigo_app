@@ -82,6 +82,10 @@ describe("Test navigation for all account types", () => {
     const button = await screen.findByRole("button", { name: "Abrir menu" });
     await user.click(button);
     const menu = screen.getByLabelText("Menu lateral");
+    expect(within(menu).getByRole("link", { name: "SkillUp" })).toHaveFocus();
+    expect(
+      screen.getByRole("navigation", { name: "Navegação principal mobile" }),
+    ).toHaveAttribute("inert");
     const swipe = (x: number, y: number) => {
       fireEvent.touchStart(menu, { touches: [{ clientX: 200, clientY: 200 }] });
       fireEvent.touchMove(menu, { touches: [{ clientX: x, clientY: y }] });
@@ -97,7 +101,10 @@ describe("Test navigation for all account types", () => {
     await user.click(button);
     await user.keyboard("{Escape}");
     expect(menu).not.toHaveClass("open");
-    expect(button).toHaveFocus();
+    await waitFor(() => expect(button).toHaveFocus());
+    expect(
+      screen.getByRole("navigation", { name: "Navegação principal mobile" }),
+    ).not.toHaveAttribute("inert");
   });
   it.each(roles)(
     "enters %s without real authentication and navigates every tab",

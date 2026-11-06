@@ -143,6 +143,7 @@ export function Layout() {
     [menu, setMenu] = useState(false),
     action = useAction();
   const swipe = useRef<{ x: number; y: number } | null>(null);
+  const menuRef = useRef<HTMLElement>(null);
   const [dragX, setDragX] = useState(0);
   const closeMenu = () => {
     swipe.current = null;
@@ -151,14 +152,33 @@ export function Layout() {
   };
   useEffect(() => {
     if (!menu) return;
-    const escape = (event: KeyboardEvent) => {
+    const drawer = menuRef.current;
+    const focusable = drawer?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    focusable?.[0]?.focus();
+    const handleKeys = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         closeMenu();
-        document.querySelector<HTMLButtonElement>(".mobile-menu")?.focus();
+        requestAnimationFrame(() =>
+          document.querySelector<HTMLButtonElement>(".mobile-menu")?.focus(),
+        );
+      }
+      if (event.key === "Tab" && focusable?.length) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
-    window.addEventListener("keydown", escape);
-    return () => window.removeEventListener("keydown", escape);
+    window.addEventListener("keydown", handleKeys);
+    return () => window.removeEventListener("keydown", handleKeys);
   }, [menu]);
   const learning = learningStats(repo.data, auth.id!);
   const profile = repo.data.profiles.find((x) => x.id === auth.id),
@@ -199,6 +219,7 @@ export function Layout() {
       </a>
       <div className="app-layout">
         <aside
+          ref={menuRef}
           id="primary-navigation"
           className={`side-nav ${menu ? "open" : ""} ${dragX < 0 ? "dragging" : ""}`}
           style={
@@ -267,7 +288,7 @@ export function Layout() {
           aria-hidden={!menu}
           onClick={closeMenu}
         />
-        <div className="app-main">
+        <div className="app-main" inert={menu ? true : undefined}>
           <header className="topbar">
             <button
               className="icon-button mobile-menu"
@@ -351,7 +372,11 @@ export function Layout() {
           </main>
         </div>
       </div>
-      <nav className="bottom-nav" aria-label="Navegação principal mobile">
+      <nav
+        className="bottom-nav"
+        aria-label="Navegação principal mobile"
+        inert={menu ? true : undefined}
+      >
         <Navigation close={closeMenu} compact />
       </nav>
       {!repo.loading && !repo.error && <GlobalSupport />}
