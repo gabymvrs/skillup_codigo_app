@@ -804,7 +804,7 @@ function Security({ onClose }: { onClose: () => void }) {
               <img
                 className="mfa-qr"
                 src={factor.qr}
-                alt="QR code para configurar o autenticador"
+                alt="Código QR para configurar o autenticador"
               />
               <details>
                 <summary>Usar chave manual</summary>

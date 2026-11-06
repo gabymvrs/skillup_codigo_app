@@ -215,18 +215,18 @@ export function PracticeSession({
                   </h3>
                   {stage === "review" && (
                     <p>
-                      {questions.length - answered} questão(ões) sem resposta
-                      completa. Você pode voltar para responder ou finalizar; as
-                      não respondidas ficam sem pontuação.
+                      {questions.length - answered} questões sem resposta
+                      completa. Você pode voltar para respondê-las ou finalizar;
+                      as questões não respondidas ficam sem pontuação.
                     </p>
                   )}
                   {stage === "result" && (
                     <Notice tone="success">
                       {Object.values(results).filter((r) => r.correct).length}{" "}
-                      acerto(s) de {questions.length} questões ·{" "}
+                      acertos de {questions.length} questões ·{" "}
                       {Object.values(results).reduce((sum, r) => sum + r.xp, 0)}{" "}
-                      XP nas respostas. {questions.length - answered} não
-                      respondida(s).
+                      XP nas respostas. {questions.length - answered} questões não
+                      respondidas.
                     </Notice>
                   )}
                   {questions.map((item, i) => (

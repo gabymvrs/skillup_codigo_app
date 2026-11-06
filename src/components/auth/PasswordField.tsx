@@ -23,7 +23,7 @@ export function PasswordField({
           autoComplete={newPassword ? "new-password" : "current-password"}
           minLength={newPassword ? 8 : undefined}
           maxLength={newPassword ? 128 : undefined}
-          placeholder="Ex: Aluno_@123"
+          placeholder="Ex.: Aluno_@123"
           aria-describedby={newPassword ? `${id}-hint` : undefined}
         />
         <button

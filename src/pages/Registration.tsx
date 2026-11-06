@@ -106,7 +106,7 @@ function SignupForm({ role }: { role: Role }) {
               name="email"
               type="email"
               autoComplete="email"
-              placeholder="Ex: Aluno@gmail.com"
+              placeholder="Ex.: aluno@gmail.com"
               required
               maxLength={254}
             />
@@ -134,7 +134,7 @@ function SignupForm({ role }: { role: Role }) {
             {action.busy
               ? "Criando acesso…"
               : role === "estudante"
-                ? "Completar Cadastro"
+                ? "Completar cadastro"
                 : "Criar acesso"}
           </Button>
           <ActionFeedback action={action} />
@@ -326,7 +326,7 @@ function DocumentForm() {
               {field(
                 "organization_name",
                 "Instituição vinculada",
-                "Ex: Centro Educacional São José LTDA.",
+                "Ex.: Centro Educacional São José Ltda.",
                 160,
               )}
               {upload(0)}
@@ -339,8 +339,8 @@ function DocumentForm() {
               {upload(1)}
               {field(
                 "registration_number",
-                "CNPJ/ CPF",
-                "Ex: 60.311.238/0001-98",
+                "CNPJ/CPF",
+                "Ex.: 60.311.238/0001-98",
                 32,
               )}
               <div className="responsibility-row">
@@ -353,14 +353,14 @@ function DocumentForm() {
                 />
                 <div>
                   <label htmlFor="responsibility">
-                    Concordo com a Declaração de responsabilidades
+                    Concordo com a declaração de responsabilidades
                   </label>
                   <button
                     type="button"
                     className="text-link"
                     onClick={() => setDeclaration(true)}
                   >
-                    Ler Declaração de responsabilidades
+                    Ler declaração de responsabilidades
                   </button>
                 </div>
               </div>
@@ -370,17 +370,17 @@ function DocumentForm() {
             <>
               {field(
                 "organization_name",
-                "Razão Social",
-                "Ex: Centro Educacional São José LTDA.",
+                "Razão social",
+                "Ex.: Centro Educacional São José Ltda.",
                 160,
               )}
               {field(
                 "registration_number",
                 "CNPJ",
-                "Ex: 60.311.238/0001-98",
+                "Ex.: 60.311.238/0001-98",
                 32,
               )}
-              {field("cnae", "CNAE", "Ex: 85.13-9-00 - Ensino fundamental", 30)}
+              {field("cnae", "CNAE", "Ex.: 85.13-9-00 — ensino fundamental", 30)}
               {upload(0)}
             </>
           )}
@@ -397,7 +397,7 @@ function DocumentForm() {
               : role === "instituicao" && step === 1
                 ? "Avançar"
                 : role === "estudante"
-                  ? "Completar Cadastro"
+                  ? "Completar cadastro"
                   : "Concluir cadastro"}
           </Button>
           <ActionFeedback action={action} />

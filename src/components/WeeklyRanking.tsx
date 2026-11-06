@@ -44,7 +44,7 @@ export function WeeklyRanking() {
         {auth.demo && <Badge>Demonstração</Badge>}
       </div>
       <p className="small muted">
-        Segunda a domingo · horário de Brasília · perfis que optaram por
+        De segunda a domingo · horário de Brasília · perfis que optaram por
         participar.
       </p>
       {loading ? (

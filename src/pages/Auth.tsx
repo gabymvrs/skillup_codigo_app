@@ -183,7 +183,7 @@ export function Login() {
             name="email"
             autoComplete="email"
             type="email"
-            placeholder="Ex: Aluno@gmail.com"
+            placeholder="Ex.: aluno@gmail.com"
             required
           />
         </label>
@@ -192,7 +192,7 @@ export function Login() {
           Não tenho uma conta
         </Link>
         <Button type="submit" disabled={!configured || action.busy}>
-          {action.busy ? "Entrando…" : "Fazer Login"}
+          {action.busy ? "Entrando…" : "Fazer login"}
         </Button>
         <ActionFeedback action={action} />
       </form>

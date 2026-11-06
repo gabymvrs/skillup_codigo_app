@@ -111,7 +111,7 @@ export function ResumePanel() {
         <p>Nenhum currículo importado.</p>
       )}
       <label>
-        {resume ? "Substituir currículo PDF" : "Importar currículo PDF"}
+        {resume ? "Substituir currículo em PDF" : "Importar currículo em PDF"}
         <input
           type="file"
           accept="application/pdf"

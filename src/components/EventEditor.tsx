@@ -54,7 +54,7 @@ export function EventEditor({
           />
         </label>
         <label>
-          Data e horário local
+          Data e horário locais
           <input
             type="datetime-local"
             name="date"

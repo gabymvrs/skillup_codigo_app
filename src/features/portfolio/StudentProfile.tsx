@@ -100,7 +100,7 @@ export function StudentProfile() {
         {own && (
           <div className="actions">
             <ActionLink to="/app/config/perfil" variant="outline">
-              Editar Perfil
+              Editar perfil
             </ActionLink>
             <Button
               variant="outline"
@@ -147,7 +147,7 @@ export function StudentProfile() {
         </div>
         {!profile.skills.length && (
           <p>
-            Adicione habilidades em Editar Perfil para personalizar suas
+            Adicione habilidades em Editar perfil para personalizar suas
             recomendações.
           </p>
         )}

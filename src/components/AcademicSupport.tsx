@@ -88,7 +88,7 @@ export function AcademicSupport() {
       />
       <div className="support-grid">
         <Card className="academic-assistant">
-          <h2>Assistente IA</h2>
+          <h2>Assistente de IA</h2>
           <p>Tire dúvidas sobre o aplicativo e a organização dos estudos.</p>
           <p className="small">
             Versão demonstrativa com respostas locais por assunto. IA generativa
@@ -105,7 +105,7 @@ export function AcademicSupport() {
               </Button>
             ))}
             <Button variant="outline" onClick={() => setPanel("faq")}>
-              FAQs Gerais
+              Perguntas frequentes
             </Button>
           </div>
           {!!conversation.length && (
@@ -172,7 +172,7 @@ export function AcademicSupport() {
                   : "Mensagens disponíveis · presença online não informada"}
               </p>
               <Button icon="message" onClick={() => setTeacherId(t.id)}>
-                Enviar Mensagem
+                Enviar mensagem
               </Button>
             </Card>
           ))}
@@ -213,14 +213,14 @@ export function AcademicSupport() {
       </div>
       <div className="help-center">
         <Button variant="ghost" icon="chevron" onClick={() => setPanel("faq")}>
-          Central de Ajuda
+          Central de ajuda
         </Button>
         <Button
           variant="ghost"
           icon="chevron"
           onClick={() => setPanel("ticket")}
         >
-          Abrir Chamado Técnico
+          Abrir chamado técnico
         </Button>
         <ActionLink to="/app/atividades" variant="ghost">
           Orientação e atividades da turma
