@@ -19,6 +19,16 @@ export function readDemo(): Dataset {
   if (!raw) return hydrateDemoLearning(createDemo());
   try {
     const d = JSON.parse(raw);
+    const imageMigrations: Record<string, string> = {
+      "/assets/code.png": "/assets/code.webp",
+      "/assets/iot.png": "/assets/iot.webp",
+      "/assets/lab.png": "/assets/lab.webp",
+      "/assets/network.png": "/assets/network.webp",
+    };
+    for (const row of [...(d.posts || []), ...(d.projects || [])]) {
+      if (row.image && imageMigrations[row.image])
+        row.image = imageMigrations[row.image];
+    }
     d.experiences ??= [];
     for (const profile of d.profiles || []) {
       if (!profile.avatar_demo || profile.avatar_demo === "/assets/story-4.svg")

@@ -28,6 +28,15 @@ beforeEach(() => {
   d.study_days = [];
   writeDemo(d);
 });
+it("migrates legacy demo post and project image paths", () => {
+  const d = readDemo();
+  d.posts[0].image = "/assets/code.png";
+  d.projects[0].image = "/assets/lab.png";
+  writeDemo(d);
+  const migrated = readDemo();
+  expect(migrated.posts[0].image).toBe("/assets/code.webp");
+  expect(migrated.projects[0].image).toBe("/assets/lab.webp");
+});
 it("reopens incomplete practice after a saved demo lesson gains questions", async () => {
   const module = id(4000), user = id(1), qid = id(12000);
   const results = { [qid]: { correct: true, firstCorrect: false, tries: 2 } };
