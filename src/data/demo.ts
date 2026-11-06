@@ -171,7 +171,7 @@ export function createDemo(): Dataset {
       category: "Programação",
       title: "Masterclass: Arquitetura de Microserviços",
       body: "Um exercício para a turma: descreva os limites entre os serviços de pedidos, estoque e pagamentos.",
-      image: "/assets/code.png",
+      image: "/assets/code.webp",
       created_at: "2026-10-19T12:00:00Z",
     },
     {
@@ -193,7 +193,7 @@ export function createDemo(): Dataset {
       category: "Aprendizagem",
       title: "Meu primeiro projeto em equipe",
       body: "Dividimos as tarefas, revisamos o código juntos e documentamos o que aprendemos.",
-      image: "/assets/lab.png",
+      image: "/assets/lab.webp",
       created_at: "2026-10-17T17:00:00Z",
     },
     {
@@ -218,7 +218,7 @@ export function createDemo(): Dataset {
       category: "Web",
       skills: ["React", "Node.js", "PostgreSQL"],
       status: "open",
-      image: "/assets/network.png",
+      image: "/assets/network.webp",
     },
     {
       id: id(701),
@@ -229,7 +229,7 @@ export function createDemo(): Dataset {
       category: "IA",
       skills: ["Python", "Hardware"],
       status: "review",
-      image: "/assets/iot.png",
+      image: "/assets/iot.webp",
     },
     {
       id: id(702),
@@ -240,7 +240,7 @@ export function createDemo(): Dataset {
       category: "Design",
       skills: ["Figma", "Pesquisa"],
       status: "open",
-      image: "/assets/lab.png",
+      image: "/assets/lab.webp",
     },
   ];
   data.project_members = [{ id: id(710), project_id: id(700), user_id: id(1) }];
