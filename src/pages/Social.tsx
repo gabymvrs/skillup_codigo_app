@@ -86,7 +86,6 @@ export function SocialPage({
                   ? "Fóruns de discussão"
                   : "Feed de atividades"
         }
-        description="Compartilhe aprendizados, troque experiências e construa em conjunto."
         action={
           <Button icon="plus" onClick={() => setCreating(true)}>
             {section === "foruns"

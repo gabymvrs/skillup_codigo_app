@@ -56,11 +56,6 @@ export function Tracks({ embedded = false }: { embedded?: boolean }) {
             ? "Consultar trilhas"
             : "Trilhas de aprendizagem"
         }
-        description={
-          auth.role === "recrutador"
-            ? "Veja os conteúdos e as competências trabalhadas."
-            : "Escolha uma trilha com teoria, prática e atividades."
-        }
         action={
           ["docente", "instituicao"].includes(auth.role!) ? (
             <Button icon="plus" onClick={() => setCreating(true)}>

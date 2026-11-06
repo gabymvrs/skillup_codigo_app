@@ -82,7 +82,6 @@ export function Settings() {
             ? "Configurações institucionais"
             : "Configurações"
         }
-        description="Perfil, preferências e dados."
       />
       <div className="settings-grid">
         <Card className="profile-card">

@@ -89,13 +89,6 @@ export function Materials() {
           subject?.name ||
           (canWrite ? "Material de estudo" : "Biblioteca de materiais")
         }
-        description={
-          subject
-            ? "Artigos e materiais organizados para a sua revisão."
-            : canWrite
-              ? "Organize os conteúdos para suas turmas."
-              : "Escolha uma matéria e continue aprendendo."
-        }
         action={
           canWrite ? (
             <Button icon="plus" onClick={() => setCreate(true)}>
