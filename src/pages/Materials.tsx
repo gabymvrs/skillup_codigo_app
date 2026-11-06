@@ -115,8 +115,7 @@ export function Materials() {
           <SectionTitle>Vistos recentemente</SectionTitle>
           {suggested && (
             <p className="small muted">
-              Sugestões para sua primeira leitura. Ao abrir um conteúdo, ele
-              passa a aparecer no histórico.
+              Abra um material para adicioná-lo ao histórico.
             </p>
           )}
           {shownRecent.length ? (
@@ -144,7 +143,7 @@ export function Materials() {
             </div>
           ) : (
             <p className="muted">
-              Os últimos materiais que você abrir aparecerão aqui.
+              Os materiais abertos recentemente aparecerão aqui.
             </p>
           )}
           <SectionTitle>Matérias</SectionTitle>
@@ -194,7 +193,7 @@ export function Materials() {
                       r.completed_at,
                   )
                     ? "Leitura concluída"
-                    : "Leitura ainda não concluída"
+                    : "Leitura pendente"
                 }
               />
               <div className="actions">
@@ -212,7 +211,7 @@ export function Materials() {
                     action.run(async () => {
                       await saveMaterial(owner, m);
                       setSaved(await listSaved(owner));
-                    }, "Gravação confirmada. O material está disponível offline no app.")
+                    }, "Material salvo para acesso offline.")
                   }
                 >
                   Salvar no app

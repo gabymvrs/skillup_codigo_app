@@ -43,12 +43,13 @@ export function LearningResources({
   if (!visible.length)
     return savedOnly ? (
       <p className="muted">
-        Salve um recurso nas atividades para encontrá-lo aqui.
+        Nenhum recurso salvo. Salve um item durante uma atividade para vê-lo
+        aqui.
       </p>
     ) : null;
   return (
     <section className="stack" aria-label="Recursos para aprender mais">
-      <h3>{savedOnly ? "Recursos salvos" : "Aprofunde seu conhecimento"}</h3>
+      <h3>{savedOnly ? "Recursos salvos" : "Recursos complementares"}</h3>
       {visible.map((r) => {
         const url = safeResourceUrl(r.url);
         if (!url) return null;

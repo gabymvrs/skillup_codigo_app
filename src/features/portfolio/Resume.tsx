@@ -79,8 +79,8 @@ export function ResumePanel() {
   return (
     <div className="stack">
       <Notice>
-        Seu currículo é privado. Envie a uma candidatura ou gere um link de 15
-        minutos somente quando quiser compartilhar.
+        Seu currículo é privado. Compartilhe-o em uma candidatura ou por um
+        link que expira em 15 minutos.
       </Notice>
       {resume ? (
         <>
@@ -144,7 +144,7 @@ export function ResumePanel() {
               if (resume)
                 await removePortfolioFile("student-resumes", resume.file_path);
               setUrl("");
-            }, "Currículo armazenado com acesso privado.");
+            }, "Currículo salvo de forma privada.");
           }}
         />
       </label>

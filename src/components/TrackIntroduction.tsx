@@ -65,10 +65,10 @@ export function TrackIntroduction({
           >
             {expanded
               ? "Recolher apresentação"
-              : "Rever apresentação da trilha"}
+              : "Ver apresentação da trilha"}
           </Button>
         </div>
-        <h2 ref={heading}>Conheça a trilha: {track.title}</h2>
+        <h2 ref={heading}>{track.title}</h2>
         <div id={`intro-${track.id}`} hidden={!expanded} className="stack">
           <p>{intro.about}</p>
           <p>{intro.context}</p>
@@ -84,11 +84,11 @@ export function TrackIntroduction({
               <li key={o}>{o}</li>
             ))}
           </ul>
-          <h3>O que poderá realizar neste percurso</h3>
+          <h3>Ao final da trilha</h3>
           <p>{intro.outcome}</p>
           <h3>O que preciso saber antes?</h3>
           <p>{intro.prerequisites}</p>
-          <h3>Seu percurso de aprendizagem</h3>
+          <h3>Etapas da trilha</h3>
           <ol>
             {modules.map((m) => (
               <li key={m.id}>{m.title}</li>

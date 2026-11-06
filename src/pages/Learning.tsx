@@ -58,8 +58,8 @@ export function Tracks({ embedded = false }: { embedded?: boolean }) {
         }
         description={
           auth.role === "recrutador"
-            ? "Conheça os conteúdos e as competências trabalhadas."
-            : "Escolha uma trilha para estudar com teoria, prática e dinâmica."
+            ? "Veja os conteúdos e as competências trabalhadas."
+            : "Escolha uma trilha com teoria, prática e atividades."
         }
         action={
           ["docente", "instituicao"].includes(auth.role!) ? (

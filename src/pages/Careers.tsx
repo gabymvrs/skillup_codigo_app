@@ -146,9 +146,8 @@ export function Careers() {
         <Card>
           <h2>Orientação profissional</h2>
           <p>
-            As candidaturas são feitas pelos estudantes. Acompanhe as
-            competências e use as mensagens para orientar os alunos vinculados
-            às suas turmas.
+            As candidaturas são feitas pelos estudantes. Use as mensagens para
+            orientar os alunos das suas turmas.
           </p>
           <ActionLink to="/app/turmas" variant="outline">
             Ver estudantes
@@ -191,8 +190,7 @@ function JobCard({ job }: { job: Job }) {
       </div>
       {auth.role === "estudante" && (
         <p className="small muted">
-          {shared.length} de {job.skills.length} habilidade(s) também
-          informada(s) no seu perfil.
+          Habilidades em comum: {shared.length} de {job.skills.length}.
         </p>
       )}
       <div className="actions">
@@ -427,7 +425,7 @@ export function Applications() {
     <div className="stack">
       <Heading
         title="Minhas candidaturas"
-        description="Acompanhe os registros internos do SkillUp."
+        description="Veja o andamento das suas candidaturas."
       />
       {applications.map((a) => (
         <Card key={a.id}>

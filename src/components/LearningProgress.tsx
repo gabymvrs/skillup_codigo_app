@@ -25,9 +25,11 @@ export function LearningProgress() {
             name="flame"
             className={s.current > 0 ? "streak-flame active" : "streak-flame"}
           />
-          {s.current} dia(s) de ofensiva
+          {s.current} {s.current === 1 ? "dia" : "dias"} de sequência
         </span>
-        <span>Melhor: {s.best} dia(s)</span>
+        <span>
+          Melhor: {s.best} {s.best === 1 ? "dia" : "dias"}
+        </span>
       </div>
       <Button variant="ghost" onClick={() => setOpen(true)}>
         Ver recompensas e conquistas
@@ -49,7 +51,7 @@ export function LearningProgress() {
                 name={s.best >= n ? "flame" : "lock"}
                 className={s.best >= n ? "streak-flame active" : ""}
               />{" "}
-              {n} dia(s) · {s.best >= n ? "Conquistado" : "Em construção"}
+              {n} {n === 1 ? "dia" : "dias"} · {s.best >= n ? "Conquistado" : "Ainda não alcançado"}
             </p>
           ))}
           <h3>Histórico de recompensas</h3>

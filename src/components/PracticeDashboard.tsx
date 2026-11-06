@@ -84,7 +84,7 @@ export function PracticeDashboard({
     >
       <div>
         <div className="row-between">
-          <h2>Seu progresso na prática</h2>
+          <h2>Progresso na prática</h2>
           {!loading && !error && s.total > 0 && (
             <Button
               variant="outline"
@@ -97,11 +97,9 @@ export function PracticeDashboard({
           )}
         </div>
         <p>
-          {demo
-            ? "Dados da demonstração neste navegador. "
-            : "Dados da sua conta. "}
-          Acertos e erros consideram tentativas objetivas; produções abertas
-          ficam fora da taxa.
+          {demo ? "Dados desta demonstração. " : "Dados da sua conta. "}
+          A taxa considera apenas tentativas objetivas; respostas abertas ficam
+          de fora.
         </p>
       </div>
       {loading ? (
@@ -152,14 +150,14 @@ export function PracticeDashboard({
           </dl>
           <p className="small muted">
             {s.uniqueQuestions} questões distintas · {s.total} tentativas
-            avaliadas. Questões avulsas não contam como bloco concluído.
-            Conclusões anteriores sem registro de finalização não são estimadas.
-            Tempo de estudo não registrado.
+            avaliadas. Questões avulsas não entram nos blocos. Conclusões
+            anteriores sem registro de finalização não são estimadas. Tempo de
+            estudo não registrado.
           </p>
           {!s.total ? (
             <Notice>
-              Você ainda não tem respostas objetivas suficientes para visualizar
-              seu desempenho. Comece uma atividade para acompanhar sua evolução.
+              Ainda não há respostas objetivas suficientes para mostrar seu
+              desempenho. Comece uma atividade para acompanhar os resultados.
             </Notice>
           ) : (
             <>

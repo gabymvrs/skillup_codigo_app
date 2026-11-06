@@ -93,8 +93,8 @@ export function Agenda() {
           </button>
         ))}
         {!events.length && (
-          <Empty title="Sua agenda começa aqui">
-            Reserve um horário curto para seu próximo estudo.
+          <Empty title="Sua agenda está vazia">
+            Reserve um horário para o próximo estudo.
           </Empty>
         )}
       </Card>
@@ -211,9 +211,9 @@ function StudentHome() {
         </div>
         <div className="stack">
           <Card className="dark">
-            <h2>Sugestão de plano</h2>
+            <h2>Plano de estudo</h2>
             <p>
-              Nos dias mais ocupados, reserve 15 minutos para exercícios e
+              Nos dias corridos, estude por 15 minutos com exercícios e
               laboratórios.
             </p>
             <Button
@@ -228,7 +228,7 @@ function StudentHome() {
                         study_minutes: 15,
                       },
                     });
-                }, "Plano de 15 minutos salvo nas suas preferências.")
+                }, "Plano de 15 minutos salvo.")
               }
               icon="check"
             >
@@ -269,7 +269,7 @@ function StudentHome() {
                   key={icon}
                   title={
                     progress.length > i
-                      ? `${i + 1} etapa(s) concluída(s)`
+                      ? `${i + 1} ${i === 0 ? "etapa concluída" : "etapas concluídas"}`
                       : "Conclua mais etapas"
                   }
                 >
@@ -309,7 +309,7 @@ function TeacherHome() {
     <div className="stack">
       <Heading
         title="Bem-vindo, professor"
-        description={`${classes.length} turma(s) · ${waiting.length} atividade(s) aguardando correção`}
+        description={`${classes.length} ${classes.length === 1 ? "turma" : "turmas"} · ${waiting.length} ${waiting.length === 1 ? "atividade aguardando" : "atividades aguardando"} correção`}
       />
       <div className="quick-actions">
         <ActionLink to="/app/turmas" icon="plus" variant="outline">
@@ -341,7 +341,9 @@ function TeacherHome() {
                 <strong>{c.title}</strong>
                 <p>
                   {data.enrollments.filter((e) => e.class_id === c.id).length}{" "}
-                  estudante(s)
+                  {data.enrollments.filter((e) => e.class_id === c.id).length === 1
+                    ? "estudante"
+                    : "estudantes"}
                 </p>
               </div>
               <ActionLink to="/app/turmas" variant="ghost">
@@ -371,10 +373,10 @@ function RecruiterHome() {
     <div className="stack">
       <Heading
         title={`Olá, ${profile?.full_name.split(" ")[0] || "recrutador"}`}
-        description="Confira as atualizações do seu processo seletivo."
+        description="Veja as atualizações do seu processo seletivo."
       />
       <Card className="dark">
-        <span className="eyebrow">Panorama geral</span>
+        <span className="eyebrow">Resumo</span>
         <div className="stats-grid">
           <div>
             <strong>
@@ -430,7 +432,7 @@ function RecruiterHome() {
           ))}
         {!applications.length && (
           <Empty title="Nenhuma candidatura recebida">
-            As candidaturas às suas vagas aparecerão aqui.
+            As candidaturas às suas vagas ficarão aqui.
           </Empty>
         )}
       </Card>
@@ -497,8 +499,7 @@ function InstitutionHome() {
             label="Atividades corrigidas"
           />
           <p className="small muted">
-            Calculado sobre {submitted.length} envio(s) visíveis. Ainda não há
-            integração de frequência.
+            Calculado sobre {submitted.length} {submitted.length === 1 ? "envio" : "envios"} visíveis. Ainda não há integração de frequência.
           </p>
           <ActionLink to="/app/relatorios" variant="outline">
             Ver relatório
@@ -506,7 +507,7 @@ function InstitutionHome() {
         </Card>
         <Card className="dark">
           <span className="eyebrow">Status de certificação</span>
-          <h2>{data.certificates.length} comprovante(s)</h2>
+          <h2>{data.certificates.length} {data.certificates.length === 1 ? "comprovante" : "comprovantes"}</h2>
           <p>Registros internos de conclusão emitidos pela instituição.</p>
           <ActionLink to="/app/certificados" variant="outline">
             Revisar certificações

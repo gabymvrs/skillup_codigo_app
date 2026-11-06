@@ -90,12 +90,12 @@ export function Messages() {
     <div className="stack narrow">
       <Heading
         title="Mensagens"
-        description="Converse com docentes, estudantes e responsáveis por candidaturas vinculadas a você."
+        description="Converse com docentes, estudantes e contatos de candidaturas."
       />
       {auth.demo && (
         <Notice>
-          As mensagens de demonstração são locais. Nenhuma pessoa receberá o
-          conteúdo.
+          As mensagens da demonstração ficam neste navegador. Ninguém receberá
+          o conteúdo.
         </Notice>
       )}
       <label>
@@ -124,7 +124,7 @@ export function Messages() {
                 <small>{dateLabel(m.created_at)}</small>
               </div>
             ))}
-            {!messages.length && <Empty title="Conversa sem mensagens" />}
+            {!messages.length && <Empty title="Ainda não há mensagens" />}
           </div>
           <form
             className="chat-compose"

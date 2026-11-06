@@ -44,7 +44,7 @@ export function Classrooms() {
     <div className="stack">
       <Heading
         title="Turmas e estudantes"
-        description="Acompanhe matrículas, conteúdos e atividades."
+        description="Matrículas, conteúdos e atividades."
         action={
           auth.role === "instituicao" ? (
             <Button icon="plus" onClick={() => setCreate(true)}>
@@ -67,7 +67,9 @@ export function Classrooms() {
             </div>
             <Badge>
               {repo.data.enrollments.filter((e) => e.class_id === c.id).length}{" "}
-              estudante(s)
+              {repo.data.enrollments.filter((e) => e.class_id === c.id).length === 1
+                ? "estudante"
+                : "estudantes"}
             </Badge>
           </div>
           <div className="actions">
@@ -727,7 +729,7 @@ export function Certificates() {
     <div className="stack">
       <Heading
         title="Conquistas e comprovantes"
-        description="Acompanhe etapas concluídas e registros emitidos pela sua instituição."
+        description="Etapas concluídas e registros da sua instituição."
         action={
           ["docente", "instituicao"].includes(auth.role!) ? (
             <Button icon="award" onClick={() => setIssuing(true)}>

@@ -130,8 +130,8 @@ export function SocialPage({
             <PostCard key={p.id} post={p} />
           ))}
           {!posts.length && (
-            <Empty title="Nenhuma publicação por aqui">
-              Compartilhe um aprendizado ou tente outra busca.
+            <Empty title="Ainda não há publicações">
+              Publique algo ou tente outra busca.
             </Empty>
           )}
         </div>
@@ -532,7 +532,9 @@ export function Projects() {
             </div>
             <p className="small muted">
               {data.project_members.filter((m) => m.project_id === p.id).length}{" "}
-              participante(s)
+              {data.project_members.filter((m) => m.project_id === p.id).length === 1
+                ? "participante"
+                : "participantes"}
             </p>
             {p.cover_path && (
               <PortfolioImage path={p.cover_path} alt={p.title} />
@@ -604,7 +606,9 @@ export function ProjectDetail() {
             repo.data.project_members.filter((p) => p.project_id === projectId)
               .length
           }{" "}
-          participante(s)
+          {repo.data.project_members.filter((p) => p.project_id === projectId).length === 1
+            ? "participante"
+            : "participantes"}
         </p>
         {membership ? (
           <Button variant="outline" onClick={() => setLeaving(true)}>

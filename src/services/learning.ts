@@ -92,7 +92,7 @@ export function awardDemo(
       user,
       `streak:${start}:${current}`,
       bonus,
-      `Ofensiva de ${current} dia(s)`,
+      `Sequência de ${current} ${current === 1 ? "dia" : "dias"}`,
       now,
       false,
     );

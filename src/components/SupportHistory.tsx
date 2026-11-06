@@ -64,7 +64,7 @@ export function SupportHistory() {
       ))}
       {!own.length && (
         <Empty title="Nenhum resumo salvo">
-          Os resumos que você salvar aparecerão aqui.
+          Seus resumos salvos aparecerão aqui.
         </Empty>
       )}
       {sharing && (

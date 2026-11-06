@@ -81,7 +81,7 @@ export function Settings() {
             ? "Configurações institucionais"
             : "Configurações"
         }
-        description="Seu perfil, suas preferências e seus dados."
+        description="Perfil, preferências e dados."
       />
       <div className="settings-grid">
         <Card className="profile-card">
@@ -148,7 +148,7 @@ export function Settings() {
             onClick={() =>
               action.run(
                 exportData,
-                "Cópia dos seus dados preparada para download.",
+                "Seus dados estão prontos para download.",
               )
             }
           >

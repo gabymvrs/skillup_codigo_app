@@ -45,7 +45,7 @@ export function AuthGate() {
   if (auth.error || !auth.role)
     return (
       <main className="standalone stack">
-        <h1>Precisamos validar seu acesso</h1>
+        <h1>Não foi possível confirmar seu acesso</h1>
         <Notice tone="error">
           {auth.error || "Seu perfil ainda não está disponível."}
         </Notice>
@@ -69,7 +69,7 @@ export function MfaChallenge() {
     [code, setCode] = useState("");
   return (
     <main className="standalone stack narrow">
-      <h1>Confirme seu acesso</h1>
+      <h1>Confirme o acesso</h1>
       <p>Digite o código de seis dígitos do seu aplicativo autenticador.</p>
       <form
         className="stack"

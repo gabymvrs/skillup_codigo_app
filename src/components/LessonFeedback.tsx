@@ -109,7 +109,7 @@ export function LessonFeedback({
           {errorsOnly ? "Mostrar todas as questões" : "Revisar meus erros"}
         </Button>
         <Button variant="outline" onClick={() => setTheory((v) => !v)}>
-          Estudar esse assunto
+          Rever este assunto
         </Button>
       </div>
       {theory && (
@@ -143,7 +143,7 @@ export function LessonFeedback({
                   : r?.firstCorrect
                     ? "Acertou de primeira"
                     : "Revisar"}{" "}
-                · {r?.tries || 0} tentativa(s)
+                · {r?.tries || 0} {(r?.tries || 0) === 1 ? "tentativa" : "tentativas"}
               </summary>
               <p>
                 <strong>Sua primeira resposta: </strong>
@@ -168,8 +168,8 @@ export function LessonFeedback({
       <h4>Resultado da dinâmica</h4>
       <p>
         {plan.dynamic.kind === "trace" && session.dynamic_response?.interaction
-          ? `Sequência validada com as notas ${session.dynamic_response.interaction.first} e ${session.dynamic_response.interaction.second}. Média: ${traceAverage(session.dynamic_response.interaction).mean}. O relato foi registrado por autoavaliação dos critérios.`
-          : "Conclusão registrada por autoavaliação dos critérios."}
+          ? `Sequência validada com as notas ${session.dynamic_response.interaction.first} e ${session.dynamic_response.interaction.second}. Média: ${traceAverage(session.dynamic_response.interaction).mean}. A dinâmica foi registrada com base nos critérios de autoavaliação.`
+          : "A dinâmica foi registrada com base nos critérios de autoavaliação."}
       </p>
       {session.dynamic_response && (
         <details>

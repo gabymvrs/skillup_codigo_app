@@ -473,16 +473,15 @@ export function LessonSession({
                   <p>{state.plan.dynamic.prompt}</p>
                   {!practiceReady && (
                     <Notice tone="warning">
-                      Você pode explorar a dinâmica agora. Para finalizar e
-                      receber XP, confira e corrija todas as questões da
-                      prática.
+                      Explore a dinâmica agora. Para receber XP, corrija todas as
+                      questões da prática.
                     </Notice>
                   )}
                   {!state.session.theory_completed && stage !== "completed" && (
                     <Notice tone="warning">
                       Você pode estudar as partes em qualquer ordem. Antes de
-                      finalizar, percorra a teoria e use “Continuar para a
-                      prática” no último passo.
+                      finalizar, percorra a teoria e use “Continuar para a prática”
+                      no último passo.
                     </Notice>
                   )}
                   {isLogicKind(state.plan.dynamic.kind) && (
