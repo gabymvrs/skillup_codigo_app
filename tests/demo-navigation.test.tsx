@@ -39,6 +39,24 @@ describe("Test navigation for all account types", () => {
     await screen.findByRole("heading", { name: "Meu perfil profissional" });
     expect(screen.getByLabelText("Menu lateral")).not.toHaveClass("open");
   });
+  it("uses a full sidebar label and keeps the mobile tab label compact", async () => {
+    sessionStorage.setItem("skillup.demo.role", "estudante");
+    app("/app/home");
+    const menuButton = await screen.findByRole("button", {
+      name: "Abrir menu",
+    });
+    expect(menuButton).toHaveAttribute("aria-controls", "primary-navigation");
+    const sidebar = screen.getByLabelText("Menu lateral");
+    expect(
+      within(sidebar).getByRole("link", { name: "Configurações" }),
+    ).toHaveAttribute("href", "/app/config");
+    const tabbar = screen.getByRole("navigation", {
+      name: "Navegação principal mobile",
+    });
+    expect(
+      within(tabbar).getByRole("link", { name: "Config." }),
+    ).toHaveAttribute("href", "/app/config");
+  });
   it("dismisses the drawer with a left swipe but not a vertical or short gesture", async () => {
     sessionStorage.setItem("skillup.demo.role", "estudante");
     const user = userEvent.setup();

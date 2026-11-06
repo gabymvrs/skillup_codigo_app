@@ -18,11 +18,11 @@ import {
   ActionFeedback,
 } from "./ui";
 const nav = [
-  ["home", "Home", "home"],
-  ["aprenda", "Aprenda", "book"],
-  ["social", "Social", "users"],
-  ["emprego", "Emprego", "briefcase"],
-  ["config", "Config.", "settings"],
+  ["home", "Home", "Home", "home"],
+  ["aprenda", "Aprenda", "Aprenda", "book"],
+  ["social", "Social", "Social", "users"],
+  ["emprego", "Emprego", "Emprego", "briefcase"],
+  ["config", "Configurações", "Config.", "settings"],
 ];
 export function AuthGate() {
   const auth = useAuth(),
@@ -112,10 +112,16 @@ export function MfaChallenge() {
     </main>
   );
 }
-function Navigation({ close }: { close: () => void }) {
+function Navigation({
+  close,
+  compact = false,
+}: {
+  close: () => void;
+  compact?: boolean;
+}) {
   return (
     <>
-      {nav.map(([path, label, icon]) => (
+      {nav.map(([path, label, compactLabel, icon]) => (
         <NavLink
           key={path}
           to={`/app/${path}`}
@@ -123,7 +129,7 @@ function Navigation({ close }: { close: () => void }) {
           onClick={close}
         >
           <Icon name={icon} size={23} />
-          <span>{label}</span>
+          <span>{compact ? compactLabel : label}</span>
         </NavLink>
       ))}
     </>
@@ -193,6 +199,7 @@ export function Layout() {
       </a>
       <div className="app-layout">
         <aside
+          id="primary-navigation"
           className={`side-nav ${menu ? "open" : ""} ${dragX < 0 ? "dragging" : ""}`}
           style={
             dragX < 0 ? { transform: `translateX(${dragX}px)` } : undefined
@@ -266,6 +273,7 @@ export function Layout() {
               className="icon-button mobile-menu"
               aria-label={menu ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menu}
+              aria-controls="primary-navigation"
               onClick={() => setMenu((v) => !v)}
             >
               <Icon name={menu ? "x" : "menu"} />
@@ -344,7 +352,7 @@ export function Layout() {
         </div>
       </div>
       <nav className="bottom-nav" aria-label="Navegação principal mobile">
-        <Navigation close={closeMenu} />
+        <Navigation close={closeMenu} compact />
       </nav>
       {!repo.loading && !repo.error && <GlobalSupport />}
     </>
