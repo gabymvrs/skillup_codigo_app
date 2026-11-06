@@ -1556,6 +1556,7 @@ details summary {
   align-self: center;
 }
 .profile-card .stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
   background: var(--tertiary-200);
   padding: 20px;

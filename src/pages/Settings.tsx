@@ -45,7 +45,8 @@ export function Settings() {
     [legacy, setLegacy] = useState(false);
   const p = repo.data.profiles.find((p) => p.id === auth.id);
   const progress = repo.data.progress.filter((p) => p.user_id === auth.id),
-    xp = learningStats(repo.data, auth.id!).xp;
+    stats = learningStats(repo.data, auth.id!),
+    xp = stats.xp;
   async function exportData() {
     const data = {
       experiences: repo.data.experiences.filter((x) => x.user_id === auth.id),
@@ -101,6 +102,10 @@ export function Settings() {
             <div>
               <strong>{progress.length}</strong>
               <span>Etapas concluídas</span>
+            </div>
+            <div>
+              <strong>{stats.current}</strong>
+              <span>Sequência</span>
             </div>
           </div>
           {auth.role === "estudante" && (
