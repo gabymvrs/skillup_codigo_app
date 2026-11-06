@@ -130,7 +130,7 @@ export function Materials() {
                     key={m.id}
                     to={`/app/aprenda/material/item/${m.id}`}
                   >
-                    <Badge>{m.kind}</Badge>
+                    <Badge>{m.kind === "artigo" ? "Artigo" : m.kind}</Badge>
                     <h3>
                       {
                         repo.data.subjects.find((s) => s.id === m.subject_id)
@@ -167,7 +167,7 @@ export function Materials() {
           {visible.map((m) => (
             <Card key={m.id}>
               <div className="row-between">
-                <Badge>{m.kind}</Badge>
+                <Badge>{m.kind === "artigo" ? "Artigo" : m.kind}</Badge>
                 {saved.some((s) => s.material.id === m.id) && (
                   <Badge tone="success">Salvo no app</Badge>
                 )}
@@ -324,7 +324,9 @@ export function MaterialReader() {
       </Link>
       <Heading title={material.title} description={material.summary} />
       <div className="actions">
-        <Badge>{material.kind}</Badge>
+        <Badge>
+          {material.kind === "artigo" ? "Artigo" : material.kind}
+        </Badge>
         {saved && <Badge tone="success">Cópia salva no app</Badge>}
       </div>
       <article className="reading-content card">

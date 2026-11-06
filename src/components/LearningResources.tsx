@@ -40,13 +40,7 @@ export function LearningResources({
   const visible = learningResources.filter(
     (r) => (!ids || ids.includes(r.id)) && (!savedOnly || saved.includes(r.id)),
   );
-  if (!visible.length)
-    return savedOnly ? (
-      <p className="muted">
-        Nenhum recurso salvo. Salve um item durante uma atividade para vê-lo
-        aqui.
-      </p>
-    ) : null;
+  if (!visible.length) return null;
   return (
     <section className="stack" aria-label="Recursos para aprender mais">
       <h3>{savedOnly ? "Recursos salvos" : "Recursos complementares"}</h3>
@@ -57,7 +51,7 @@ export function LearningResources({
           <Card key={r.id}>
             <details>
               <summary>
-                <strong>{r.title}</strong> · {r.kind}
+                <strong>{r.title}</strong> · {r.kind === "artigo" ? "Artigo" : r.kind}
               </summary>
               <p>
                 {r.publisher} ·{" "}
