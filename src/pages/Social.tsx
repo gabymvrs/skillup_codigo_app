@@ -153,7 +153,13 @@ export function SocialPage({
                     key={p.id}
                     to={`/app/social/projetos/${p.id}`}
                   >
-                    {p.image && <img src={p.image} alt="" loading="lazy" />}
+                    {p.image && (
+                      <img
+                        src={p.image}
+                        alt={`Imagem do projeto ${p.title}`}
+                        loading="lazy"
+                      />
+                    )}
                     <h3>{p.title}</h3>
                     <p>{p.description}</p>
                   </Link>
@@ -258,7 +264,7 @@ export function PostCard({
         <img
           className="post-image"
           src={post.image}
-          alt="Imagem ilustrativa do projeto"
+          alt={`Imagem da publicação: ${post.title}`}
           loading="lazy"
           decoding="async"
           sizes="(max-width: 720px) 100vw, 640px"
@@ -513,7 +519,7 @@ export function Projects() {
             {p.image && (
               <img
                 src={p.image}
-                alt="Imagem ilustrativa do projeto"
+                alt={`Imagem do projeto ${p.title}`}
                 loading="lazy"
                 decoding="async"
                 width={1600}
@@ -597,7 +603,7 @@ export function ProjectDetail() {
         <img
           className="project-hero"
           src={project.image}
-          alt="Imagem ilustrativa do projeto"
+          alt={`Imagem do projeto ${project.title}`}
           decoding="async"
           width={1600}
           height={900}
