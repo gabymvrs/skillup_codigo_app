@@ -96,11 +96,6 @@ export function PracticeDashboard({
             </Button>
           )}
         </div>
-        <p>
-          {demo ? "Dados desta demonstração. " : "Dados da sua conta. "}
-          A taxa considera apenas tentativas objetivas; respostas abertas ficam
-          de fora.
-        </p>
       </div>
       {loading ? (
         <p role="status">Carregando desempenho…</p>
