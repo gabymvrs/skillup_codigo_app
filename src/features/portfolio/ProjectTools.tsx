@@ -48,6 +48,8 @@ export function PortfolioImage({
       src={url || fallback!}
       alt={alt}
       loading="lazy"
+      decoding="async"
+      sizes="(max-width: 720px) 100vw, 520px"
     />
   ) : (
     <div

@@ -57,6 +57,8 @@ export function ActivityRenderer({
           <img
             src={q.payload.image}
             alt={q.payload.imageAlt || "Ilustração da atividade"}
+            loading="lazy"
+            decoding="async"
           />
           <figcaption>{q.payload.imageAlt}</figcaption>
         </figure>

@@ -40,6 +40,8 @@ export function Stories() {
               alt={`Ilustração de ${s.name}, personagem fictício`}
               width={240}
               height={180}
+              loading="lazy"
+              decoding="async"
             />
             <div>
               <small>

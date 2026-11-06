@@ -260,6 +260,8 @@ export function PostCard({
           src={post.image}
           alt="Imagem ilustrativa do projeto"
           loading="lazy"
+          decoding="async"
+          sizes="(max-width: 720px) 100vw, 640px"
         />
       )}
       <div className="post-actions">
@@ -513,6 +515,10 @@ export function Projects() {
                 src={p.image}
                 alt="Imagem ilustrativa do projeto"
                 loading="lazy"
+                decoding="async"
+                width={1600}
+                height={900}
+                sizes="(max-width: 720px) 100vw, 360px"
               />
             )}
             <Badge>
@@ -592,6 +598,9 @@ export function ProjectDetail() {
           className="project-hero"
           src={project.image}
           alt="Imagem ilustrativa do projeto"
+          decoding="async"
+          width={1600}
+          height={900}
         />
       )}
       <Card>

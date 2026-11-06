@@ -44,6 +44,8 @@ export function Avatar({
               ? `Retrato ilustrativo do perfil de demonstração ${name}`
               : `Foto de ${name}`
           }
+          loading={size >= 72 ? "eager" : "lazy"}
+          decoding="async"
           onError={() => setFailed(src)}
         />
       ) : (
