@@ -22,6 +22,7 @@ const urls = paths
     (p) =>
       !p.includes("/code-sandbox/") && !/\/(CodePractice|codeRunner)-/.test(p),
   )
+  .filter((p) => !/\/assets\/.*\.webp$/i.test(p))
   .map((p) => "/" + p.replace(/^dist\//, ""));
 const template = await readFile("scripts/sw-template.js", "utf8");
 await writeFile(
