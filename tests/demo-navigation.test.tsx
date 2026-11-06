@@ -57,6 +57,24 @@ describe("Test navigation for all account types", () => {
       within(tabbar).getByRole("link", { name: "Config." }),
     ).toHaveAttribute("href", "/app/config");
   });
+  it("keeps data export in one clear location", async () => {
+    sessionStorage.setItem("skillup.demo.role", "estudante");
+    const user = userEvent.setup();
+    app("/app/config");
+    expect(
+      await screen.findByRole("button", { name: "Exportar meus dados" }),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Privacidade" }));
+    expect(
+      within(screen.getByRole("dialog", { name: "Privacidade" })).queryByRole(
+        "button",
+        { name: "Exportar meus dados" },
+      ),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getAllByRole("button", { name: "Exportar meus dados" }),
+    ).toHaveLength(1);
+  });
   it("dismisses the drawer with a left swipe but not a vertical or short gesture", async () => {
     sessionStorage.setItem("skillup.demo.role", "estudante");
     const user = userEvent.setup();

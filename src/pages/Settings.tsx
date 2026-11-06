@@ -286,9 +286,6 @@ export function Settings() {
             A triagem automática não deve receber senhas ou documentos.
             Documentos de verificação ficam em uma área privada.
           </p>
-          <Button variant="outline" onClick={() => action.run(exportData)}>
-            Exportar meus dados
-          </Button>
           <ActionFeedback action={action} />
         </Modal>
       )}
