@@ -148,12 +148,6 @@ export function PracticeDashboard({
               </div>
             ))}
           </dl>
-          <p className="small muted">
-            {s.uniqueQuestions} questões distintas · {s.total} tentativas
-            avaliadas. Questões avulsas não entram nos blocos. Conclusões
-            anteriores sem registro de finalização não são estimadas. Tempo de
-            estudo não registrado.
-          </p>
           {!s.total ? (
             <Notice>
               Ainda não há respostas objetivas suficientes para mostrar seu
