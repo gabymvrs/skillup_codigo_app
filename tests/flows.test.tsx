@@ -193,8 +193,11 @@ describe("Learning and support", () => {
     ).toBeInTheDocument();
     await user.click(screen.getByRole("tab", { name: "Professores" }));
     expect(
-      screen.getByRole("heading", { name: "Professores da sua turma" }),
+      screen.getByRole("heading", { name: "Conversar com professores" }),
     ).toBeInTheDocument();
+    expect(
+      screen.getAllByRole("link", { name: /Conversar com/ })[0],
+    ).toHaveAttribute("href", expect.stringContaining("/app/mensagens?para="));
     await user.click(screen.getByRole("tab", { name: "Bot IA" }));
     expect(
       screen.queryByRole("searchbox", { name: "Buscar perguntas frequentes" }),

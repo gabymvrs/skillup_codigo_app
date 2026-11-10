@@ -1,5 +1,6 @@
 import { SupportHistory, SupportQueue } from "./SupportHistory";
 import { useEffect, useId, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { faq } from "../data/faq";
@@ -12,7 +13,6 @@ import {
 import { copyText, matches, uid } from "../lib/utils";
 import {
   ActionFeedback,
-  ActionLink,
   Badge,
   Button,
   Chips,
@@ -63,7 +63,9 @@ export function FAQ() {
     </div>
   );
 }
-export function SupportContent() {
+export function SupportContent({
+  onNavigate,
+}: { onNavigate?: () => void } = {}) {
   const auth = useAuth(),
     repo = useData(),
     key = `skillup.triage.${auth.demo ? "demo." : ""}${auth.id}`;
@@ -175,30 +177,43 @@ export function SupportContent() {
       ) : tab === "teachers" ? (
         <div className="stack support-teachers" role="tabpanel">
           <div>
-            <h3>Professores da sua turma</h3>
+            <h3>Conversar com professores</h3>
             <p className="small muted">
-              Consulte seus docentes para dúvidas específicas das atividades.
+              Abra rapidamente o chat com um docente da sua turma.
             </p>
           </div>
           {teachers.map((teacher) => (
-            <div className="support-teacher" key={teacher.id}>
-              <Icon name="graduation" />
-              <div>
+            <Link
+              className="support-teacher"
+              key={teacher.id}
+              to={`/app/mensagens?para=${teacher.id}`}
+              onClick={onNavigate}
+              aria-label={`Conversar com ${teacher.full_name}`}
+            >
+              <Icon name="message" />
+              <span className="support-teacher-details">
                 <strong>{teacher.full_name}</strong>
                 <span className="small muted">
                   {teacher.headline || "Docente da sua turma"}
                 </span>
-              </div>
-            </div>
+              </span>
+              <span className="small support-teacher-action">Conversar</span>
+            </Link>
           ))}
           {!teachers.length && (
-            <p className="small muted">
-              Nenhum professor está vinculado à sua turma no momento.
-            </p>
+            <div className="stack">
+              <p className="small muted">
+                Nenhum professor está vinculado à sua turma no momento.
+              </p>
+              <Link
+                className="button outline"
+                to="/app/aprenda/suporte"
+                onClick={onNavigate}
+              >
+                Abrir suporte acadêmico
+              </Link>
+            </div>
           )}
-          <ActionLink to="/app/aprenda/suporte" variant="outline">
-            Abrir suporte acadêmico
-          </ActionLink>
         </div>
       ) : (
         <div className="stack" role="tabpanel">
@@ -367,7 +382,7 @@ export function GlobalSupport() {
           className="support-dialog"
           onClose={() => setOpen(false)}
         >
-          <SupportContent />
+          <SupportContent onNavigate={() => setOpen(false)} />
         </Modal>
       )}
     </>

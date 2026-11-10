@@ -864,14 +864,26 @@ a svg {
   gap: 12px;
   padding-block: 12px;
   border-bottom: var(--border);
+  color: var(--text);
+  text-decoration: none;
 }
 .support-teacher > svg {
   color: var(--primary);
   flex: none;
 }
-.support-teacher > div {
+.support-teacher-details {
   display: grid;
   gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.support-teacher-action {
+  color: var(--primary);
+  font-weight: 500;
+}
+.support-teacher:hover .support-teacher-action,
+.support-teacher:focus-visible .support-teacher-action {
+  text-decoration: underline;
 }
 .chat-log {
   display: flex;
