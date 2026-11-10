@@ -2,3 +2,9 @@
 # This supports current Supabase signing keys without relying on the legacy gateway verifier.
 [functions.grading-code]
 verify_jwt = false
+
+# delete-account verifies the bearer token with Auth.getUser. Destructive
+# execution also requires ACCOUNT_DELETION_EXECUTION_ENABLED=true and the
+# database policy gate to report ready_for_auth_deletion=true.
+[functions.delete-account]
+verify_jwt = false

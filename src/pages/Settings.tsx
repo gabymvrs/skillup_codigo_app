@@ -150,10 +150,7 @@ export function Settings() {
           <button
             className="settings-row"
             onClick={() =>
-              action.run(
-                exportData,
-                "Seus dados estão prontos para download.",
-              )
+              action.run(exportData, "Seus dados estão prontos para download.")
             }
           >
             <Icon name="download" />
@@ -285,6 +282,9 @@ export function Settings() {
             A triagem automática não deve receber senhas ou documentos.
             Documentos de verificação ficam em uma área privada.
           </p>
+          <ActionLink to="/app/config/privacidade" variant="outline">
+            Abrir controles de privacidade
+          </ActionLink>
           <ActionFeedback action={action} />
         </Modal>
       )}
@@ -353,6 +353,199 @@ export function Settings() {
           anterior permanecerá intacta; XP e certificados reais não serão
           criados.
         </Confirm>
+      )}
+    </div>
+  );
+}
+export function Privacy() {
+  const auth = useAuth(),
+    navigate = useNavigate(),
+    action = useAction();
+  const [checking, setChecking] = useState(!auth.demo),
+    [recent, setRecent] = useState(false),
+    [confirming, setConfirming] = useState(false),
+    [confirmation, setConfirmation] = useState(""),
+    [acknowledgeIrreversible, setAcknowledgeIrreversible] = useState(false),
+    [acknowledgeAcademicRecords, setAcknowledgeAcademicRecords] =
+      useState(false),
+    [previewComplete, setPreviewComplete] = useState(false);
+
+  async function checkRecentAuthentication() {
+    if (auth.demo) {
+      setChecking(false);
+      setRecent(false);
+      return;
+    }
+    setChecking(true);
+    try {
+      const { data, error } = await requireSupabase().auth.getSession();
+      if (error) throw error;
+      const signedInAt = Date.parse(data.session?.user.last_sign_in_at || "");
+      setRecent(
+        Number.isFinite(signedInAt) && Date.now() - signedInAt <= 10 * 60_000,
+      );
+    } catch (error) {
+      setRecent(false);
+      action.setError(
+        error instanceof Error
+          ? error.message
+          : "Não foi possível verificar sua autenticação.",
+      );
+    } finally {
+      setChecking(false);
+    }
+  }
+
+  useEffect(() => {
+    void checkRecentAuthentication();
+  }, [auth.demo, auth.id]);
+
+  return (
+    <div className="stack narrow privacy-page">
+      <Link className="back-link" to="/app/config">
+        <Icon name="arrow" />
+        Configurações
+      </Link>
+      <Heading
+        title="Privacidade"
+        description="Controle a visibilidade do perfil e consulte as opções relacionadas aos seus dados."
+      />
+      <Card>
+        <SectionTitle>Excluir minha conta</SectionTitle>
+        <p>
+          A exclusão definitiva removerá a identidade de acesso e os dados
+          pessoais que puderem ser eliminados. Arquivos privados também deverão
+          ser removidos.
+        </p>
+        <p>
+          Informações compartilhadas com outras pessoas, registros de segurança
+          ou dados sujeitos a uma obrigação de conservação poderão precisar de
+          anonimização ou retenção restrita. Os critérios ainda dependem de
+          validação jurídica.
+        </p>
+        <Notice tone="warning">
+          Esta etapa prepara e valida a interface. O processamento definitivo
+          ainda não está conectado e nenhuma conta será excluída.
+        </Notice>
+        {auth.demo ? (
+          <Notice>
+            A demonstração não possui uma conta real para excluir. Saia do modo
+            de demonstração e entre em uma conta de teste para validar o fluxo.
+          </Notice>
+        ) : checking ? (
+          <p role="status">Verificando quando você entrou na conta…</p>
+        ) : recent ? (
+          <Notice tone="success">
+            Autenticação recente confirmada para esta etapa.
+          </Notice>
+        ) : (
+          <div className="stack account-reauthentication">
+            <Notice tone="warning">
+              Por segurança, entre novamente antes de continuar. A autenticação
+              deve ter ocorrido nos últimos 10 minutos.
+            </Notice>
+            <Button
+              variant="outline"
+              onClick={() =>
+                void action.run(async () => {
+                  await auth.logout();
+                  navigate("/login", { replace: true });
+                })
+              }
+            >
+              Sair e entrar novamente
+            </Button>
+          </div>
+        )}
+        <Button
+          variant="danger"
+          disabled={auth.demo || checking || !recent || action.busy}
+          onClick={() => {
+            setConfirmation("");
+            setAcknowledgeIrreversible(false);
+            setAcknowledgeAcademicRecords(false);
+            setPreviewComplete(false);
+            setConfirming(true);
+          }}
+        >
+          Excluir minha conta
+        </Button>
+        {previewComplete && (
+          <Notice>
+            Confirmação validada. Nenhuma solicitação foi enviada porque o
+            backend de exclusão será implementado no próximo lote.
+          </Notice>
+        )}
+        <ActionFeedback action={action} />
+      </Card>
+      {confirming && (
+        <Modal
+          title="Confirmar exclusão da conta"
+          onClose={() => setConfirming(false)}
+          className="account-deletion-modal"
+        >
+          <div className="stack">
+            <Notice tone="warning">
+              Esta ação será irreversível quando o backend estiver conectado.
+              Ela não está ativa neste lote.
+            </Notice>
+            <label className="check-label">
+              <input
+                type="checkbox"
+                checked={acknowledgeIrreversible}
+                onChange={(event) =>
+                  setAcknowledgeIrreversible(event.target.checked)
+                }
+              />
+              Entendo que não poderei recuperar a conta nem os dados apagados.
+            </label>
+            <label className="check-label">
+              <input
+                type="checkbox"
+                checked={acknowledgeAcademicRecords}
+                onChange={(event) =>
+                  setAcknowledgeAcademicRecords(event.target.checked)
+                }
+              />
+              Entendo que certificados, progresso e registros acadêmicos também
+              serão apagados e deixarão de ser verificáveis.
+            </label>
+            <label>
+              Digite EXCLUIR para confirmar
+              <input
+                value={confirmation}
+                autoComplete="off"
+                onChange={(event) => setConfirmation(event.target.value)}
+              />
+            </label>
+            <div className="actions">
+              <Button
+                variant="outline"
+                disabled={action.busy}
+                onClick={() => setConfirming(false)}
+              >
+                Cancelar
+              </Button>
+              <Button
+                variant="danger"
+                disabled={
+                  confirmation !== "EXCLUIR" ||
+                  !acknowledgeIrreversible ||
+                  !acknowledgeAcademicRecords ||
+                  action.busy
+                }
+                onClick={() =>
+                  void action.run(async () => {
+                    setConfirming(false);
+                    setPreviewComplete(true);
+                  })
+                }
+              >
+                {action.busy ? "Validando…" : "Confirmar exclusão"}
+              </Button>
+            </div>
+          </div>
+        </Modal>
       )}
     </div>
   );

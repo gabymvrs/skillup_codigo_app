@@ -10,7 +10,7 @@ export function AuthFrame({
   onBack,
   step,
   footer = true,
-  variant = "form",
+  variant = "generic",
 }: {
   children: ReactNode;
   description: string;

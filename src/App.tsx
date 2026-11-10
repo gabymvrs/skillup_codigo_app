@@ -43,7 +43,12 @@ import {
   Certificates,
   VerifyCertificate,
 } from "./pages/Workspace";
-import { Settings, ProfileEditor, Verification } from "./pages/Settings";
+import {
+  Settings,
+  ProfileEditor,
+  Verification,
+  Privacy,
+} from "./pages/Settings";
 import { Messages, Notifications } from "./pages/Messages";
 import { Empty, Notice } from "./components/ui";
 function ConnectedLayout() {
@@ -148,6 +153,7 @@ export function AppRoutes() {
           <Route path="destaques/:id" element={<CommunityHighlight />} />
           <Route path="config" element={<Settings />} />
           <Route path="config/perfil" element={<ProfileEditor />} />
+          <Route path="config/privacidade" element={<Privacy />} />
           <Route path="config/verificacao" element={<Verification />} />
           <Route path="turmas" element={<Classrooms />} />
           <Route path="atividades" element={<Activities />} />

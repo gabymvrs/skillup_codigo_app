@@ -1594,6 +1594,24 @@ details summary {
 .danger-text {
   color: #ac1621;
 }
+.privacy-page {
+  width: 100%;
+}
+.privacy-page .card {
+  width: 100%;
+}
+.privacy-page .button.danger {
+  align-self: flex-start;
+}
+.account-reauthentication {
+  gap: 12px;
+}
+.account-deletion-modal {
+  width: min(560px, calc(100% - 32px));
+}
+.account-deletion-modal input {
+  text-transform: uppercase;
+}
 .check-label {
   display: flex;
   align-items: flex-start;

@@ -232,6 +232,14 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       ),
     );
   });
+  it("does not apply the inner form layout class to the reset page", () => {
+    const { container } = show("/redefinir-senha");
+    expect(container.querySelector("main")).toHaveClass(
+      "auth-page",
+      "auth-generic",
+    );
+    expect(container.querySelector("main")).not.toHaveClass("auth-form");
+  });
   it("reports a cancelled OAuth callback without claiming the link expired", () => {
     show("/auth/callback?error=access_denied&error_description=cancelled");
     expect(screen.getByRole("alert")).toHaveTextContent(

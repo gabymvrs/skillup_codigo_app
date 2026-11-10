@@ -2,6 +2,10 @@
   "engine": "PostgreSQL via PGlite; auth and storage APIs mocked, real RLS executed",
   "tests": [
     {
+      "name": "Account deletion is service-only, recent and idempotent",
+      "status": "pass"
+    },
+    {
       "name": "Signup ignores forged administrative metadata",
       "status": "pass"
     },

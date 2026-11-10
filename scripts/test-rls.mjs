@@ -12,7 +12,7 @@ await db.exec(`
  create role anon;create role authenticated;create role service_role bypassrls;
  create schema auth;create schema storage;
  grant usage on schema public,auth,storage to anon,authenticated,service_role;
- create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}',email_confirmed_at timestamptz default now(),is_anonymous boolean default false,banned_until timestamptz);
+ create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}',email_confirmed_at timestamptz default now(),is_anonymous boolean default false,banned_until timestamptz,last_sign_in_at timestamptz default now());
  create table auth.sessions(id uuid primary key,user_id uuid references auth.users(id),not_after timestamptz);
  create table auth.mfa_factors(id uuid primary key default gen_random_uuid(),user_id uuid,status text);
  create function auth.jwt() returns jsonb language sql stable as $$select coalesce(nullif(current_setting('request.jwt.claims',true),''),'{}')::jsonb$$;
@@ -88,6 +88,49 @@ async function rejects(sql) {
 async function scalar(sql) {
   return Object.values((await db.query(sql)).rows[0])[0];
 }
+await test("Account deletion is service-only, recent and idempotent", async () => {
+  const hash = "a".repeat(64);
+  await actor(1);
+  await rejects(
+    `select * from public.create_account_deletion_request('${id(1)}','${hash}')`,
+  );
+  await rejects("select * from private.account_deletion_requests");
+
+  await db.exec("reset role; set role service_role");
+  const first = await scalar(
+    `select request_id from public.create_account_deletion_request('${id(1)}','${hash}')`,
+  );
+  const repeated = await scalar(
+    `select request_id from public.create_account_deletion_request('${id(1)}','${hash}')`,
+  );
+  assert.equal(first, repeated);
+  await db.exec("reset role");
+  assert.equal(
+    Number(
+      await scalar(
+        `select count(*) from private.account_deletion_requests where user_id='${id(1)}'`,
+      ),
+    ),
+    1,
+  );
+  await db.exec("set role service_role");
+  assert.equal(
+    await scalar(
+      `select request_status from public.prepare_account_deletion('${first}','${id(1)}')`,
+    ),
+    "awaiting_policy_review",
+  );
+  await rejects(
+    `select public.complete_account_deletion('${first}','${id(1)}')`,
+  );
+
+  await db.exec(
+    `reset role; update auth.users set last_sign_in_at=now()-interval '11 minutes' where id='${id(2)}'; set role service_role`,
+  );
+  await rejects(
+    `select * from public.create_account_deletion_request('${id(2)}','${hash}')`,
+  );
+});
 await test("Signup ignores forged administrative metadata", async () => {
   await actor(7);
   assert.equal(
