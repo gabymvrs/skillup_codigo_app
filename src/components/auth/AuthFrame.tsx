@@ -55,7 +55,7 @@ export function AuthFrame({
         <header className="auth-header">
           <img
             className="app-logo"
-            src="/assets/skillup-auth-logo.png"
+            src="/assets/skillup-logo.png"
             alt="SkillUp"
             fetchPriority="high"
             decoding="async"
