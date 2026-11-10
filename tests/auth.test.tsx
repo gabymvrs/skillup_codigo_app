@@ -140,22 +140,17 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     expect(password).toHaveAttribute("type", "password");
     expect(mocks.api.signUp).not.toHaveBeenCalled();
   });
-  it("shows provider availability and calls real OAuth only for enabled providers", async () => {
-    const user = userEvent.setup();
+  it("does not offer Google and keeps unavailable providers disabled", async () => {
     show("/login");
     await waitFor(() =>
       expect(
-        screen.getByRole("button", { name: "Entrar com Google" }),
-      ).toBeEnabled(),
+        screen.getByRole("button", { name: "Entrar com Facebook" }),
+      ).toBeDisabled(),
     );
     expect(
-      screen.getByRole("button", { name: "Entrar com Facebook" }),
-    ).toBeDisabled();
-    await user.click(screen.getByRole("button", { name: "Entrar com Google" }));
-    expect(mocks.api.signInWithOAuth).toHaveBeenCalledWith({
-      provider: "google",
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
-    });
+      screen.queryByRole("button", { name: "Entrar com Google" }),
+    ).not.toBeInTheDocument();
+    expect(mocks.api.signInWithOAuth).not.toHaveBeenCalled();
   });
   it("does not mark a rejected signup as successful", async () => {
     mocks.api.signUp.mockResolvedValue({
