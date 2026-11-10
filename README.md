@@ -122,6 +122,10 @@ As telas de acesso foram atualizadas com base nas 16 pranchas mobile/web do ZIP 
 
 Google e Facebook são exibidos no login e habilitados apenas quando o endpoint público de configurações do Supabase confirma o provedor ativo. Configure os provedores no painel Supabase e mantenha o domínio atual da Vercel autorizado para `/auth/callback`. Nunca adicione segredos de provedores ao front-end. A Declaração de responsabilidades é provisória e precisa de revisão do responsável antes da produção.
 
+Para ativar o Google, crie um cliente OAuth 2.0 do tipo **Aplicativo da Web** no Google Cloud. Em **Origens JavaScript autorizadas**, inclua a origem exata do aplicativo, como `http://localhost:5173` e cada domínio HTTPS publicado. Em **URIs de redirecionamento autorizados**, use a URL de callback exibida pelo Supabase, normalmente `https://SEU-PROJETO.supabase.co/auth/v1/callback` — não a rota do React. Copie o Client ID e o Client Secret somente para Authentication → Providers → Google no painel Supabase. No Supabase, adicione `http://localhost:5173/auth/callback` e as variantes HTTPS publicadas à lista de Redirect URLs. O Client Secret não pertence ao `.env` do Vite nem ao repositório.
+
+Contas Google que já possuem perfil entram diretamente no aplicativo. Uma conta social nova escolhe Estudante, Docente, Recrutador ou Instituição após o retorno. A escolha de perfil profissional cria apenas uma solicitação pendente em `role_requests`; `user_roles` continua como estudante até uma aprovação administrativa. A restrição única de solicitação pendente e as políticas RLS evitam solicitações duplicadas e alterações em contas de terceiros.
+
 ### Atualização de aprendizagem, suporte e perfil — outubro/2026
 
 Veja [o inventário, alterações, testes e instruções de atualização](docs/EVOLUCAO-OUTUBRO.md).

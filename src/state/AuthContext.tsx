@@ -31,6 +31,7 @@ interface AuthValue {
   error: string;
   recovery: boolean;
   mfaRequired: boolean;
+  needsProfileSelection: boolean;
   setRecovery: (v: boolean) => void;
   startDemo: (r: Role) => void;
   logout: () => Promise<void>;
@@ -230,6 +231,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         error,
         recovery,
         mfaRequired,
+        needsProfileSelection: Boolean(
+          session &&
+          !demoRole &&
+          membership?.role === "estudante" &&
+          ["google", "facebook"].includes(
+            String(session.user.app_metadata?.provider),
+          ) &&
+          !session.user.user_metadata?.requested_role &&
+          !session.user.user_metadata?.skillup_profile_selected,
+        ),
         setRecovery,
         startDemo,
         logout,

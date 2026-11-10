@@ -14,9 +14,12 @@ import {
 import { AuthFrame } from "../components/auth/AuthFrame";
 import { PasswordField } from "../components/auth/PasswordField";
 import { SocialSignIn } from "../components/auth/SocialSignIn";
+import { completeSocialRegistration } from "../services/registration";
 const allRoles: Role[] = ["estudante", "instituicao", "docente", "recrutador"];
 export function Welcome() {
   const auth = useAuth();
+  if (auth.id && auth.needsProfileSelection)
+    return <Navigate to="/perfis?social=1" replace />;
   if (auth.id && auth.role) return <Navigate to="/app/home" replace />;
   return (
     <AuthFrame
@@ -57,6 +60,10 @@ function BadgeDemo() {
   );
 }
 export function RolePicker() {
+  const auth = useAuth(),
+    navigate = useNavigate(),
+    action = useAction();
+  if (auth.loading) return <p role="status">Verificando sua conta…</p>;
   return (
     <AuthFrame
       description="Escolha o tipo de conta que você vai usar."
@@ -64,25 +71,52 @@ export function RolePicker() {
       variant="roles"
     >
       <div className="auth-options">
-        {allRoles.map((role) => (
-          <ActionLink
-            key={role}
-            to={`/cadastro/${role}`}
-            variant="outline"
-            icon={
-              {
-                estudante: "graduation",
-                docente: "users",
-                recrutador: "briefcase",
-                instituicao: "building",
-              }[role]
-            }
-          >
-            {roleLabels[role]}
-          </ActionLink>
-        ))}
+        {allRoles.map((role) => {
+          const icon = {
+            estudante: "graduation",
+            docente: "users",
+            recrutador: "briefcase",
+            instituicao: "building",
+          }[role];
+          return auth.id && !auth.demo ? (
+            <Button
+              key={role}
+              variant="outline"
+              icon={icon}
+              disabled={action.busy}
+              onClick={() =>
+                void action.run(async () => {
+                  await completeSocialRegistration(role);
+                  await auth.refreshRole();
+                  navigate(
+                    role === "estudante" ? "/app/home" : "/cadastro/documentos",
+                    { replace: true },
+                  );
+                })
+              }
+            >
+              {roleLabels[role]}
+            </Button>
+          ) : (
+            <ActionLink
+              key={role}
+              to={`/cadastro/${role}`}
+              variant="outline"
+              icon={icon}
+            >
+              {roleLabels[role]}
+            </ActionLink>
+          );
+        })}
       </div>
-      <Link to="/login">Já tenho uma conta</Link>
+      <ActionFeedback action={action} />
+      {auth.id && !auth.demo ? (
+        <Button variant="ghost" onClick={() => action.run(auth.logout)}>
+          Sair e usar outra conta
+        </Button>
+      ) : (
+        <Link to="/login">Já tenho uma conta</Link>
+      )}
     </AuthFrame>
   );
 }
@@ -313,18 +347,27 @@ export function ResetPassword() {
 }
 export function AuthCallback() {
   const auth = useAuth();
+  const [search] = useSearchParams();
+  const callbackError = search.get("error_description") || search.get("error");
+  if (!auth.loading && !callbackError && auth.id && !auth.demo) {
+    return (
+      <Navigate
+        to={auth.needsProfileSelection ? "/perfis?social=1" : "/app/home"}
+        replace
+      />
+    );
+  }
   return (
     <AuthFrame description="Confirmação do seu acesso.">
-      {auth.loading ? (
-        <p>Verificando sua sessão…</p>
+      {callbackError ? (
+        <Notice tone="error">
+          O acesso com o provedor foi cancelado ou não pôde ser concluído. Tente
+          novamente pela tela de login.
+        </Notice>
+      ) : auth.loading ? (
+        <p role="status">Verificando sua sessão…</p>
       ) : auth.error ? (
         <Notice tone="error">{auth.error}</Notice>
-      ) : auth.id && !auth.demo ? (
-        <>
-          <Notice tone="success">Sessão confirmada.</Notice>
-          <ActionLink to="/cadastro/documentos">Continuar cadastro</ActionLink>
-          <Link to="/app/home">Ir para o aplicativo</Link>
-        </>
       ) : (
         <>
           <Notice>

@@ -68,6 +68,7 @@ export function SocialSignIn() {
             aria-label={`Entrar com ${provider === "google" ? "Google" : "Facebook"}`}
             aria-describedby="social-signin-status"
             disabled={!providers?.[provider] || action.busy}
+            aria-busy={action.busy}
             onClick={() =>
               void action.run(async () => {
                 const { error } = await requireSupabase().auth.signInWithOAuth({
@@ -81,6 +82,9 @@ export function SocialSignIn() {
             }
           >
             <ProviderIcon provider={provider} />
+            <span className="sr-only">
+              {action.busy ? "Abrindo provedor…" : ""}
+            </span>
           </button>
         ))}
       </div>

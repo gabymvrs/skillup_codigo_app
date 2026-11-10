@@ -43,6 +43,63 @@ export function stagedStudentDocument(email: string) {
 export function clearRegistrationDraft() {
   stagedStudent = null;
 }
+export async function completeSocialRegistration(role: Role) {
+  const client = requireSupabase();
+  const { data: userData, error: userError } = await client.auth.getUser();
+  if (userError) throw userError;
+  const user = userData.user;
+  if (
+    !user ||
+    !["google", "facebook"].includes(String(user.app_metadata.provider))
+  )
+    throw new Error("Entre com sua conta social para selecionar um perfil.");
+
+  const { data: membership, error: membershipError } = await client
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", user.id)
+    .single();
+  if (membershipError) throw membershipError;
+  if (
+    membership.role !== "estudante" ||
+    user.user_metadata?.skillup_profile_selected ||
+    user.user_metadata?.requested_role
+  )
+    throw new Error("Esta conta já possui um perfil configurado.");
+
+  // A client selection never promotes an account. Existing elevated roles are
+  // preserved; only a pending request can be created for server-side review.
+  if (membership.role === "estudante" && role !== "estudante") {
+    const existing = await client
+      .from("role_requests")
+      .select("requested_role")
+      .eq("user_id", user.id)
+      .eq("status", "pending")
+      .maybeSingle();
+    if (existing.error) throw existing.error;
+    if (existing.data && existing.data.requested_role !== role)
+      throw new Error(
+        "Já existe uma solicitação de perfil em análise para esta conta.",
+      );
+    if (!existing.data) {
+      const created = await client.from("role_requests").insert({
+        user_id: user.id,
+        requested_role: role,
+        status: "pending",
+        organization_name: "",
+        registration_number: "",
+        cnae: "",
+        document_paths: [],
+      });
+      if (created.error) throw created.error;
+    }
+  }
+
+  const update = await client.auth.updateUser({
+    data: { requested_role: role, skillup_profile_selected: true },
+  });
+  if (update.error) throw update.error;
+}
 async function confirmedUser() {
   const { data, error } = await requireSupabase().auth.getUser();
   if (error) throw error;
@@ -146,15 +203,13 @@ export async function saveRegistration({
         .eq("id", request.id)
         .eq("user_id", user.id)
         .eq("status", "pending")
-    : client
-        .from("role_requests")
-        .insert({
-          ...info,
-          user_id: user.id,
-          requested_role: role,
-          status: "pending",
-          document_paths: [],
-        });
+    : client.from("role_requests").insert({
+        ...info,
+        user_id: user.id,
+        requested_role: role,
+        status: "pending",
+        document_paths: [],
+      });
   const result = await query.select("*").single();
   if (result.error) throw result.error;
   let current = result.data as RoleRequest;

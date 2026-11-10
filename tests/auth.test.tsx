@@ -20,6 +20,7 @@ const mocks = vi.hoisted(() => ({
     setRecovery: vi.fn(),
     logout: vi.fn(),
     mfaRequired: false,
+    needsProfileSelection: false,
   },
   api: {
     signUp: vi.fn(),
@@ -45,6 +46,7 @@ beforeEach(() => {
   mocks.auth.demo = false;
   mocks.auth.loading = false;
   mocks.auth.mfaRequired = false;
+  mocks.auth.needsProfileSelection = false;
   mocks.auth.logout.mockResolvedValue(undefined);
   mocks.auth.signIn.mockResolvedValue(undefined);
   for (const fn of Object.values(mocks.api))
@@ -59,6 +61,7 @@ function show(path: string) {
         <Route path="/recuperar-senha" element={<Recover />} />
         <Route path="/redefinir-senha" element={<ResetPassword />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/perfis" element={<h1>Seleção de perfil</h1>} />
         <Route
           path="/app/home"
           element={<h1>Acesso autorizado pela sessão</h1>}
@@ -77,7 +80,7 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       "aluno@example.test",
     );
     await user.type(screen.getByLabelText("Senha:"), "invalid-pass");
-    await user.click(screen.getByRole("button", { name: "Fazer Login" }));
+    await user.click(screen.getByRole("button", { name: /Fazer login/i }));
     expect(await screen.findByRole("alert")).toHaveTextContent(
       /E-mail ou senha incorretos/,
     );
@@ -93,7 +96,7 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       "aluno@example.test",
     );
     await user.type(screen.getByLabelText("Senha:"), "example-pass");
-    await user.click(screen.getByRole("button", { name: "Fazer Login" }));
+    await user.click(screen.getByRole("button", { name: /Fazer login/i }));
     expect(
       await screen.findByRole("heading", {
         name: "Acesso autorizado pela sessão",
@@ -113,7 +116,7 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       await user.type(screen.getByLabelText("Senha:"), "example-pass");
       await user.click(
         screen.getByRole("button", {
-          name: role === "estudante" ? "Completar Cadastro" : "Criar acesso",
+          name: role === "estudante" ? /Completar cadastro/i : "Criar acesso",
         }),
       );
       expect(
@@ -163,7 +166,7 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     await user.type(screen.getByLabelText("E-mail:"), "pessoa@example.test");
     await user.type(screen.getByLabelText("Senha:"), "example-pass");
     await user.click(
-      screen.getByRole("button", { name: "Completar Cadastro" }),
+      screen.getByRole("button", { name: /Completar cadastro/i }),
     );
     expect(await screen.findByRole("alert")).toHaveTextContent(
       "Falha de conexão",
@@ -228,6 +231,23 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
         }),
       ),
     );
+  });
+  it("reports a cancelled OAuth callback without claiming the link expired", () => {
+    show("/auth/callback?error=access_denied&error_description=cancelled");
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      /cancelado ou não pôde ser concluído/,
+    );
+    expect(
+      screen.queryByText(/O link pode ter expirado/),
+    ).not.toBeInTheDocument();
+  });
+  it("routes an authenticated social account to profile selection", () => {
+    mocks.auth.id = "social-user";
+    mocks.auth.needsProfileSelection = true;
+    show("/auth/callback");
+    expect(
+      screen.getByRole("heading", { name: "Seleção de perfil" }),
+    ).toBeInTheDocument();
   });
 });
 

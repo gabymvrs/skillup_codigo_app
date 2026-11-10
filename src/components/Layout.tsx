@@ -41,6 +41,8 @@ export function AuthGate() {
         replace
       />
     );
+  if (auth.needsProfileSelection)
+    return <Navigate to="/perfis?social=1" replace />;
   if (auth.mfaRequired) return <MfaChallenge />;
   if (auth.error || !auth.role)
     return (
