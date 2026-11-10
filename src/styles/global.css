@@ -1326,6 +1326,33 @@ details summary {
   background: var(--neutral-100);
   color: var(--neutral-500);
 }
+.track-introduction-content[hidden] {
+  display: none;
+}
+.track-introduction-content {
+  gap: 16px;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 16px;
+}
+.intro-section {
+  padding: 16px;
+  border: var(--border);
+  border-radius: 10px;
+  background: var(--tertiary-100);
+}
+.intro-section h3 {
+  margin-bottom: 8px;
+}
+.intro-section p,
+.intro-section ul {
+  margin: 0;
+}
+.intro-section li + li {
+  margin-top: 6px;
+}
 .practice-dashboard {
   gap: 16px;
 }

@@ -63,51 +63,62 @@ export function TrackIntroduction({
             aria-controls={`intro-${track.id}`}
             onClick={() => setExpanded((v) => !v)}
           >
-            {expanded
-              ? "Recolher apresentação"
-              : "Ver apresentação da trilha"}
+            {expanded ? "Recolher apresentação" : "Expandir apresentação"}
           </Button>
         </div>
         <h2 ref={heading}>{track.title}</h2>
-        <div id={`intro-${track.id}`} hidden={!expanded} className="stack">
-          <p>{intro.about}</p>
-          <p>{intro.context}</p>
-          <h3>Onde esse conhecimento é usado?</h3>
-          <ul>
-            {intro.applications.map((a) => (
-              <li key={a}>{a}</li>
-            ))}
-          </ul>
-          <h3>O que você vai aprender</h3>
-          <ul>
-            {intro.objectives.map((o) => (
-              <li key={o}>{o}</li>
-            ))}
-          </ul>
-          <h3>Ao final da trilha</h3>
-          <p>{intro.outcome}</p>
-          <h3>O que preciso saber antes?</h3>
-          <p>{intro.prerequisites}</p>
-          <h3>Etapas da trilha</h3>
-          <ol>
-            {modules.map((m) => (
-              <li key={m.id}>{m.title}</li>
-            ))}
-          </ol>
-          <h3>Como funcionam as atividades?</h3>
-          <p>
-            Cada bolinha reúne Teoria, Prática e Dinâmica na mesma atividade.
-            Você pode alternar entre as três partes e pular para a prática,
-            retornando à teoria depois. Para concluir, registre as três partes.
-            A prática oferece correção e novas tentativas; a dinâmica aplica o
-            que foi estudado. A conclusão válida registra seu resultado, concede
-            XP uma única vez e libera a próxima etapa.
-          </p>
-          <p>
-            O conteúdo das etapas depende do que veio antes. Se encontrar um
-            termo desconhecido, volte à explicação; os recursos complementares
-            são opcionais. Você pode estudar outras trilhas em paralelo.
-          </p>
+        <div
+          id={`intro-${track.id}`}
+          hidden={!expanded}
+          className="stack track-introduction-content"
+        >
+          <section className="intro-section">
+            <h3>Visão geral</h3>
+            <ul>
+              <li>{intro.about}</li>
+              <li>{intro.context}</li>
+            </ul>
+          </section>
+          <div className="intro-grid">
+            <section className="intro-section">
+              <h3>Onde você pode usar</h3>
+              <ul>
+                {intro.applications.map((application) => (
+                  <li key={application}>{application}</li>
+                ))}
+              </ul>
+            </section>
+            <section className="intro-section">
+              <h3>O que você vai aprender</h3>
+              <ul>
+                {intro.objectives.map((objective) => (
+                  <li key={objective}>{objective}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+          <div className="intro-grid">
+            <section className="intro-section">
+              <h3>Ao concluir</h3>
+              <p>{intro.outcome}</p>
+            </section>
+            <section className="intro-section">
+              <h3>Antes de começar</h3>
+              <p>{intro.prerequisites}</p>
+            </section>
+          </div>
+          <section className="intro-section">
+            <h3>Como funciona</h3>
+            <ul>
+              <li>{modules.length} etapas no percurso.</li>
+              <li>Cada etapa reúne Teoria, Prática e Dinâmica.</li>
+              <li>Você pode alternar entre as partes e tentar novamente.</li>
+              <li>
+                Ao concluir as três partes, você recebe o XP uma vez e libera a
+                próxima etapa.
+              </li>
+            </ul>
+          </section>
         </div>
         {student && (
           <Button
