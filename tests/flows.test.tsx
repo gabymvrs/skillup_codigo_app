@@ -109,9 +109,7 @@ describe("Learning and support", () => {
       "true",
     ];
     for (let i = 0; i < correctOptions.length; i++) {
-      await user.click(
-          screen.getByRole("radio", { name: correctOptions[i] }),
-      );
+      await user.click(screen.getByRole("radio", { name: correctOptions[i] }));
       await user.click(
         screen.getByRole("button", { name: "Conferir resposta" }),
       );
@@ -184,7 +182,7 @@ describe("Learning and support", () => {
     const user = userEvent.setup();
     app();
     await user.click(await screen.findByRole("button", { name: "Dúvidas?" }));
-    await user.click(screen.getByRole("button", { name: "FAQ" }));
+    await user.click(screen.getByRole("tab", { name: "FAQ" }));
     expect(screen.queryByRole("log")).not.toBeInTheDocument();
     await user.type(
       screen.getByRole("searchbox", { name: "Buscar perguntas frequentes" }),
@@ -193,7 +191,11 @@ describe("Learning and support", () => {
     expect(
       screen.getByText("O certificado tem reconhecimento oficial?"),
     ).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Bot de triagem" }));
+    await user.click(screen.getByRole("tab", { name: "Professores" }));
+    expect(
+      screen.getByRole("heading", { name: "Professores da sua turma" }),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("tab", { name: "Bot IA" }));
     expect(
       screen.queryByRole("searchbox", { name: "Buscar perguntas frequentes" }),
     ).not.toBeInTheDocument();

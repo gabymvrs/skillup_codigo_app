@@ -12,6 +12,7 @@ import {
 import { copyText, matches, uid } from "../lib/utils";
 import {
   ActionFeedback,
+  ActionLink,
   Badge,
   Button,
   Chips,
@@ -66,7 +67,7 @@ export function SupportContent() {
   const auth = useAuth(),
     repo = useData(),
     key = `skillup.triage.${auth.demo ? "demo." : ""}${auth.id}`;
-  const [tab, setTab] = useState("Bot de triagem"),
+  const [tab, setTab] = useState<"bot" | "faq" | "teachers">("bot"),
     [message, setMessage] = useState(""),
     [state, setState] = useState<Triage>(() => {
       try {
@@ -88,6 +89,21 @@ export function SupportContent() {
   const action = useAction(),
     log = useRef<HTMLDivElement>(null),
     messageId = useId();
+  const teachers = [
+    ...new Set(
+      repo.data.classes
+        .filter((classroom) =>
+          repo.data.enrollments.some(
+            (enrollment) =>
+              enrollment.class_id === classroom.id &&
+              enrollment.user_id === auth.id,
+          ),
+        )
+        .map((classroom) => classroom.teacher_id),
+    ),
+  ]
+    .map((id) => repo.data.profiles.find((profile) => profile.id === id))
+    .filter((profile) => !!profile);
   useEffect(() => {
     const receive = (event: Event) => {
       const value = (event as CustomEvent<{ key: string; state: Triage }>)
@@ -132,20 +148,60 @@ export function SupportContent() {
   return (
     <div className="support-content">
       <div
-        className="segmented"
-        role="group"
-        aria-label="Bot de triagem ou FAQ"
+        className="support-tabs"
+        role="tablist"
+        aria-label="Opções da central de ajuda"
       >
-        {["Bot de triagem", "FAQ"].map((t) => (
-          <button key={t} aria-pressed={tab === t} onClick={() => setTab(t)}>
-            {t}
+        {[
+          ["bot", "cpu", "Bot IA"],
+          ["faq", "book", "FAQ"],
+          ["teachers", "graduation", "Professores"],
+        ].map(([value, icon, label]) => (
+          <button
+            key={value}
+            role="tab"
+            aria-selected={tab === value}
+            onClick={() => setTab(value as typeof tab)}
+          >
+            <Icon name={icon} size={18} />
+            <span>{label}</span>
           </button>
         ))}
       </div>
-      {tab === "FAQ" ? (
-        <FAQ />
+      {tab === "faq" ? (
+        <div role="tabpanel">
+          <FAQ />
+        </div>
+      ) : tab === "teachers" ? (
+        <div className="stack support-teachers" role="tabpanel">
+          <div>
+            <h3>Professores da sua turma</h3>
+            <p className="small muted">
+              Consulte seus docentes para dúvidas específicas das atividades.
+            </p>
+          </div>
+          {teachers.map((teacher) => (
+            <div className="support-teacher" key={teacher.id}>
+              <Icon name="graduation" />
+              <div>
+                <strong>{teacher.full_name}</strong>
+                <span className="small muted">
+                  {teacher.headline || "Docente da sua turma"}
+                </span>
+              </div>
+            </div>
+          ))}
+          {!teachers.length && (
+            <p className="small muted">
+              Nenhum professor está vinculado à sua turma no momento.
+            </p>
+          )}
+          <ActionLink to="/app/aprenda/suporte" variant="outline">
+            Abrir suporte acadêmico
+          </ActionLink>
+        </div>
       ) : (
-        <div className="stack">
+        <div className="stack" role="tabpanel">
           <div className="row-between">
             <span className="small muted">
               Automático · sem atendente conectado
