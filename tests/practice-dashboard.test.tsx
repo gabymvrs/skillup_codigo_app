@@ -8,7 +8,7 @@ import { PracticeDashboard } from "../src/components/PracticeDashboard";
 import { createDemo } from "../src/data/demo";
 import { id } from "../src/data/catalog";
 
-it("collapses charts while retaining metrics and the selected period", async () => {
+it("shows charts by default and retains metrics and period when collapsed", async () => {
   const user = userEvent.setup();
   const data = createDemo();
   data.attempts = [
@@ -33,24 +33,19 @@ it("collapses charts while retaining metrics and the selected period", async () 
       onRetry={() => {}}
     />,
   );
-  const toggle = screen.getByRole("button", { name: "Expandir" });
-  expect(toggle).toHaveAttribute("aria-expanded", "false");
-  expect(
-    screen.queryByRole("heading", { name: "Evolução de desempenho" }),
-  ).not.toBeInTheDocument();
+  const toggle = screen.getByRole("button", { name: "Recolher" });
+  expect(toggle).toHaveAttribute("aria-expanded", "true");
+  const chart = screen.getByRole("heading", { name: "Evolução de desempenho" });
+  expect(chart).toBeVisible();
   expect(screen.getByText("Taxa de acertos")).toBeVisible();
   const title = screen.getByRole("heading", {
     name: "Seu progresso na prática",
   });
   expect(title.closest("header")).toContainElement(toggle);
-  await user.click(toggle);
-  const chart = screen.getByRole("heading", { name: "Evolução de desempenho" });
   await user.selectOptions(
     screen.getByRole("combobox", { name: "Período" }),
     "30",
   );
-  expect(toggle).toHaveAccessibleName("Recolher");
-  expect(toggle).toHaveAttribute("aria-expanded", "true");
   await user.click(toggle);
   expect(toggle).toHaveAttribute("aria-expanded", "false");
   expect(chart).not.toBeVisible();

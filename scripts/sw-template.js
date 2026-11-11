@@ -2,7 +2,12 @@
 const CACHE = "skillup-shell-__VERSION__";
 const PRECACHE = __PRECACHE__;
 self.addEventListener("install", (event) =>
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(PRECACHE))),
+  event.waitUntil(
+    caches
+      .open(CACHE)
+      .then((cache) => cache.addAll(PRECACHE))
+      .then(() => self.skipWaiting()),
+  ),
 );
 self.addEventListener("activate", (event) =>
   event.waitUntil(

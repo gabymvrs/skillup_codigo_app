@@ -59,7 +59,7 @@ export function PracticeDashboard({
   onRetry: () => void;
 }) {
   const [days, setDays] = useState(7),
-    [chartsExpanded, setChartsExpanded] = useState(false),
+    [chartsExpanded, setChartsExpanded] = useState(true),
     chartsId = useId(),
     [point, setPoint] = useState<number | null>(null),
     s = practiceMetrics(data, user, completions, days),
