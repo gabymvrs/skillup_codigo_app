@@ -488,18 +488,6 @@ export function Practice() {
               <option value="pending">Não concluído</option>
             </select>
           </label>
-          <Button
-            variant="outline"
-            onClick={() => {
-              setSubject("");
-              setFormat("");
-              setDifficulty("");
-              setStatus("");
-              setType("Prática guiada");
-            }}
-          >
-            Limpar filtros
-          </Button>
         </div>
       </section>
       {!type ? (

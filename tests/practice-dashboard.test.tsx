@@ -69,7 +69,7 @@ function app() {
     </MemoryRouter>,
   );
 }
-it("places combined filters below actions and clears them back to the available sets", async () => {
+it("places combined filters below actions and allows changing them", async () => {
   const user = userEvent.setup();
   app();
   const action = await screen.findByRole("heading", { name: "Ações rápidas" }),
@@ -90,7 +90,15 @@ it("places combined filters below actions and clears them back to the available 
   expect(
     screen.queryByRole("button", { name: "Iniciar exame" }),
   ).not.toBeInTheDocument();
-  await user.click(screen.getByRole("button", { name: "Limpar filtros" }));
+  await user.click(screen.getByRole("button", { name: "Voltar" }));
+  await user.selectOptions(
+    screen.getByRole("combobox", { name: "Dificuldade" }),
+    "",
+  );
+  await user.selectOptions(
+    screen.getByRole("combobox", { name: "Status do bloco" }),
+    "",
+  );
   await user.selectOptions(
     screen.getByRole("combobox", { name: "Disciplina" }),
     "00000000-0000-4000-8000-000000000010",
