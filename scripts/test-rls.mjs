@@ -341,8 +341,26 @@ await test("Chat only allows related accounts", async () => {
   await db.exec(
     `insert into public.messages(sender_id,recipient_id,body) values('${id(1)}','${id(2)}','Dúvida sobre a atividade')`,
   );
+  await actor(2);
+  assert.equal(await scalar("select count(*) from public.messages"), 1);
+  assert.equal(
+    await scalar(
+      "select title from public.notifications order by created_at desc limit 1",
+    ),
+    "Nova mensagem de Pessoa 1",
+  );
+  assert.equal(
+    await scalar(
+      "select link from public.notifications order by created_at desc limit 1",
+    ),
+    `/app/mensagens?para=${id(1)}`,
+  );
+  await rejects(
+    `insert into public.notifications(user_id,title,body) values('${id(2)}','Aviso falso','Conteúdo forjado')`,
+  );
   await actor(5);
   assert.equal(await scalar("select count(*) from public.messages"), 0);
+  assert.equal(await scalar("select count(*) from public.notifications"), 0);
 });
 await test("Private storage denies other users documents", async () => {
   await actor(1);

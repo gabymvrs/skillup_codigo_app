@@ -2050,9 +2050,19 @@ html[data-large-text="true"] {
 .story-card h3 {
   margin-top: 12px;
 }
-.story-achievement {
+.story-source {
+  display: inline-block;
   font-size: 12px;
+  font-weight: 700;
   color: var(--primary);
+}
+.story-photo-credit {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+}
+.story-photo-credit a {
+  color: inherit;
 }
 .support-grid {
   display: grid;

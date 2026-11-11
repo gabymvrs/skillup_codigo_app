@@ -1,25 +1,40 @@
 import { Card, SectionTitle } from "./ui";
 const stories = [
   {
-    name: "Ana",
-    area: "Desenvolvimento de Sistemas",
-    title: "De estudante a desenvolvedora",
-    body: "Ana começou com exercícios de lógica e reuniu seus projetos em um portfólio. Agora consegue mostrar o que aprendeu ao explorar oportunidades.",
-    achievement: "Primeiro portfólio publicado",
+    name: "Nina da Hora",
+    area: "Ciência da Computação",
+    title: "Pesquisa em inteligência artificial",
+    body: "Nina pesquisa inteligência artificial, visão computacional, avaliação técnica de modelos e governança de IA.",
+    source: "https://ninadahora.dev/",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Retrato fotográfico de uma jovem sorrindo",
+    photographer: "Aiony Haust",
+    photographerUrl: "https://unsplash.com/@aiony",
   },
   {
-    name: "Lucas",
-    area: "Redes de Computadores",
-    title: "Meu primeiro projeto em equipe",
-    body: "Lucas tinha dificuldade para dividir tarefas. Com acordos simples e revisões em grupo, participou da documentação de uma rede para a escola.",
-    achievement: "Projeto colaborativo concluído",
+    name: "Bianca Muniz",
+    area: "Análise de Dados",
+    title: "Da biomedicina ao jornalismo de dados",
+    body: "Bianca é analista de dados da Agência Pública. Formada em Biomedicina, fez mestrado em Ciências e especialização em Jornalismo de Dados e Automação.",
+    source: "https://www.pretalab.com/rede/bianca-aparecida-muniz-pereira-739",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Retrato fotográfico de uma mulher sorrindo",
+    photographer: "Christopher Campbell",
+    photographerUrl: "https://unsplash.com/@chrisjoelcampbell",
   },
   {
-    name: "Júlia",
-    area: "UI/UX Design",
-    title: "Descobrindo meu caminho no design",
-    body: "Ao observar as dificuldades dos colegas, Júlia começou a desenhar interfaces. Testou um protótipo e descobriu uma nova área de interesse.",
-    achievement: "Primeiro teste de usabilidade",
+    name: "Ire Aderinokun",
+    area: "Engenharia de Software",
+    title: "Tecnologia e empreendedorismo",
+    body: "Ire é engenheira de software, empreendedora e investidora. Há uma década, trabalha na construção e no apoio a negócios de tecnologia em mercados emergentes.",
+    source: "https://ireaderinokun.com/",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Retrato fotográfico de uma mulher olhando para a câmera",
+    photographer: "Michael Dam",
+    photographerUrl: "https://unsplash.com/@michaeldam",
   },
 ];
 export function Stories() {
@@ -29,17 +44,17 @@ export function Stories() {
         <span id="stories-title">Histórias que inspiram</span>
       </SectionTitle>
       <p className="small muted">
-        Histórias fictícias e ilustrativas sobre caminhos possíveis na educação
-        técnica.
+        Trajetórias reais, resumidas a partir das fontes indicadas. As fotos são
+        ilustrativas e mostram pessoas reais fotografadas para o Unsplash.
       </p>
       <div className="stories-grid">
-        {stories.map((s, i) => (
+        {stories.map((s) => (
           <Card key={s.name} className="story-card">
             <img
-              src={`/assets/story-${i + 1}.svg`}
-              alt={`Ilustração de ${s.name}, personagem fictício`}
-              width={240}
-              height={180}
+              src={s.image}
+              alt={s.imageAlt}
+              width={900}
+              height={600}
               loading="lazy"
               decoding="async"
             />
@@ -49,7 +64,25 @@ export function Stories() {
               </small>
               <h3>{s.title}</h3>
               <p>{s.body}</p>
-              <strong className="story-achievement">{s.achievement}</strong>
+              <a
+                className="story-source"
+                href={s.source}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ler fonte original
+              </a>
+              <small className="story-photo-credit">
+                Foto ilustrativa: {" "}
+                <a
+                  href={`${s.photographerUrl}?utm_source=skillup&utm_medium=referral`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {s.photographer}
+                </a>{" "}
+                / Unsplash
+              </small>
             </div>
           </Card>
         ))}

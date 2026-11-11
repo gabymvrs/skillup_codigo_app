@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { requireSupabase } from "../services/supabase";
@@ -94,8 +94,8 @@ export function Messages() {
       />
       {auth.demo && (
         <Notice>
-          As mensagens da demonstração ficam neste navegador. Ninguém receberá
-          o conteúdo.
+          As mensagens da demonstração ficam neste navegador. Ninguém receberá o
+          conteúdo.
         </Notice>
       )}
       <label>
@@ -198,6 +198,11 @@ export function Notifications() {
           </div>
           <p>{n.body}</p>
           <small>{dateLabel(n.created_at)}</small>
+          {n.link && (
+            <Link className="button outline" to={n.link}>
+              Abrir conversa
+            </Link>
+          )}
           {!n.read_at && (
             <Button
               variant="ghost"

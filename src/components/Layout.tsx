@@ -210,6 +210,28 @@ export function Layout() {
     };
   }, []);
   useEffect(() => {
+    if (auth.demo || !auth.id) return;
+    const client = requireSupabase();
+    const channel = client
+      .channel(`notifications-${auth.id}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "notifications",
+          filter: `user_id=eq.${auth.id}`,
+        },
+        () => {
+          void repo.reload().catch(() => {});
+        },
+      )
+      .subscribe();
+    return () => {
+      void client.removeChannel(channel);
+    };
+  }, [auth.demo, auth.id, repo.reload]);
+  useEffect(() => {
     closeMenu();
     window.scrollTo({ top: 0, behavior: "instant" });
     document.getElementById("page-content")?.focus();
