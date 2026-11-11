@@ -66,8 +66,14 @@ export function PracticeDashboard({
       x: number;
       y: number;
     } | null>(null),
+    [donutPoint, setDonutPoint] = useState<{
+      kind: "correct" | "wrong";
+      x: number;
+      y: number;
+    } | null>(null),
     s = practiceMetrics(data, user, completions, days),
     correctPercent = s.total ? Math.round((s.correct / s.total) * 100) : 0,
+    wrongPercent = 100 - correctPercent,
     w = 640,
     h = 200;
   let path = "",
@@ -258,20 +264,72 @@ export function PracticeDashboard({
                   <section className="card stack performance-card">
                     <h3>Acertos e erros</h3>
                     <p>Histórico completo de tentativas objetivas.</p>
-                    <div
-                      className="performance-donut"
-                      role="img"
-                      aria-label={`${correctPercent}% de acertos: ${s.correct} respostas corretas e ${s.wrong} incorretas`}
-                      style={
-                        {
-                          "--practice-rate": `${correctPercent * 3.6}deg`,
-                        } as CSSProperties
-                      }
-                    >
-                      <div>
-                        <strong>{correctPercent}%</strong>
-                        <span>de acertos</span>
+                    <div className="performance-donut-wrap">
+                      <div
+                        className="performance-donut"
+                        role="img"
+                        tabIndex={0}
+                        aria-label={`${correctPercent}% de acertos: ${s.correct} respostas corretas e ${s.wrong} incorretas`}
+                        style={
+                          {
+                            "--practice-rate": `${correctPercent * 3.6}deg`,
+                          } as CSSProperties
+                        }
+                        onMouseMove={(event) => {
+                          const rect =
+                              event.currentTarget.getBoundingClientRect(),
+                            x = event.clientX - rect.left,
+                            y = event.clientY - rect.top,
+                            angle =
+                              ((Math.atan2(
+                                y - rect.height / 2,
+                                x - rect.width / 2,
+                              ) *
+                                180) /
+                                Math.PI +
+                                450) %
+                              360;
+                          setDonutPoint({
+                            kind:
+                              angle < correctPercent * 3.6
+                                ? "correct"
+                                : "wrong",
+                            x,
+                            y,
+                          });
+                        }}
+                        onMouseLeave={() => setDonutPoint(null)}
+                        onBlur={() => setDonutPoint(null)}
+                      >
+                        <div>
+                          <strong>{correctPercent}%</strong>
+                          <span>de acertos</span>
+                        </div>
                       </div>
+                      {donutPoint && (
+                        <div
+                          className="performance-tooltip donut-tooltip"
+                          role="tooltip"
+                          style={{ left: donutPoint.x, top: donutPoint.y }}
+                        >
+                          <strong>
+                            {donutPoint.kind === "correct" ? "Acertos" : "Erros"}
+                          </strong>
+                          <span>
+                            {donutPoint.kind === "correct"
+                              ? correctPercent
+                              : wrongPercent}
+                            % das respostas
+                          </span>
+                          <small>
+                            {donutPoint.kind === "correct" ? s.correct : s.wrong}{" "}
+                            {(donutPoint.kind === "correct" ? s.correct : s.wrong) ===
+                            1
+                              ? "questão"
+                              : "questões"}
+                          </small>
+                        </div>
+                      )}
                     </div>
                     <dl className="performance-legend">
                       <div>

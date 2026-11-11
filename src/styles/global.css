@@ -2766,6 +2766,24 @@ html[data-large-text="true"] {
     #187948 0 var(--practice-rate),
     #b42332 var(--practice-rate) 360deg
   );
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    filter 160ms ease;
+}
+.performance-donut-wrap {
+  position: relative;
+  width: min(210px, 70vw);
+  margin: 8px auto;
+}
+.performance-donut-wrap .performance-donut {
+  width: 100%;
+  margin: 0;
+}
+.performance-donut:hover,
+.performance-donut:focus-visible {
+  filter: drop-shadow(0 10px 14px rgb(20 54 125 / 18%));
+  transform: scale(1.025);
 }
 .performance-donut > div {
   display: grid;
@@ -2895,6 +2913,10 @@ html[data-large-text="true"] {
 .performance-tooltip span,
 .performance-tooltip small {
   color: white;
+}
+.donut-tooltip {
+  z-index: 2;
+  min-width: 132px;
 }
 .performance-plot .performance-line text {
   display: none;
