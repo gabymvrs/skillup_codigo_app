@@ -1393,7 +1393,8 @@ details summary {
   margin-top: 6px;
 }
 .practice-dashboard {
-  gap: 16px;
+  gap: 20px;
+  padding-top: 8px;
 }
 .practice-dashboard-header {
   display: flex;
@@ -1408,6 +1409,7 @@ details summary {
 }
 .practice-dashboard-title h2 {
   color: var(--secondary);
+  font-size: clamp(24px, 3vw, 30px);
 }
 .practice-dashboard-title p,
 .practice-dashboard-empty {
@@ -2713,6 +2715,8 @@ html[data-large-text="true"] {
 .practice-metric-grid > .card {
   min-width: 0;
   padding: 20px;
+  border-color: #dce4f2;
+  box-shadow: 0 8px 24px rgb(20 54 125 / 5%);
 }
 .practice-metric-grid dt {
   margin-top: 12px;
@@ -2725,11 +2729,16 @@ html[data-large-text="true"] {
 }
 .performance-chart-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.85fr);
   gap: 16px;
 }
 .performance-chart-grid > * {
   min-width: 0;
+}
+.performance-card {
+  min-height: 360px;
+  border-color: #dce4f2;
+  box-shadow: 0 12px 32px rgb(20 54 125 / 6%);
 }
 .performance-line {
   width: 100%;
@@ -2753,6 +2762,73 @@ html[data-large-text="true"] {
 .performance-bar span {
   display: block;
   height: 100%;
+}
+.performance-donut {
+  --practice-rate: 0deg;
+  width: min(210px, 70vw);
+  aspect-ratio: 1;
+  margin: 8px auto;
+  padding: 30px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #187948 0 var(--practice-rate),
+    #b42332 var(--practice-rate) 360deg
+  );
+}
+.performance-donut > div {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-content: center;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--surface);
+}
+.performance-donut strong {
+  color: var(--secondary);
+  font-size: 30px;
+}
+.performance-donut span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.performance-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: auto 0 0;
+}
+.performance-legend > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--tertiary-100);
+}
+.performance-legend dt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.performance-legend dd {
+  margin: 0;
+  color: var(--secondary);
+  font-weight: 700;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+}
+.legend-dot.correct {
+  background: #187948;
+}
+.legend-dot.wrong {
+  background: #b42332;
 }
 .practice-filters {
   display: grid;
@@ -2787,6 +2863,9 @@ html[data-large-text="true"] {
   }
   .performance-chart-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .performance-card {
+    min-height: auto;
   }
 }
 @media (max-width: 380px) {

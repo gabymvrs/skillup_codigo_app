@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, type CSSProperties } from "react";
 import type { Dataset } from "../lib/types";
 import {
   loadPracticeCompletions,
@@ -63,6 +63,7 @@ export function PracticeDashboard({
     chartsId = useId(),
     [point, setPoint] = useState<number | null>(null),
     s = practiceMetrics(data, user, completions, days),
+    correctPercent = s.total ? Math.round((s.correct / s.total) * 100) : 0,
     w = 640,
     h = 200;
   let path = "",
@@ -82,9 +83,11 @@ export function PracticeDashboard({
       className="practice-dashboard stack"
       aria-label="Painel de prática do aluno"
     >
-      <div>
-        <div className="row-between">
-          <h2>Progresso na prática</h2>
+      <header className="practice-dashboard-header">
+        <div className="practice-dashboard-title">
+          <h2>Seu progresso na prática</h2>
+          <p>Veja sua evolução e identifique onde vale praticar mais.</p>
+        </div>
           {!loading && !error && s.total > 0 && (
             <Button
               variant="outline"
@@ -95,8 +98,7 @@ export function PracticeDashboard({
               {chartsExpanded ? "Recolher" : "Expandir"}
             </Button>
           )}
-        </div>
-      </div>
+      </header>
       {loading ? (
         <p role="status">Carregando desempenho…</p>
       ) : error ? (
@@ -150,9 +152,13 @@ export function PracticeDashboard({
             </Notice>
           ) : (
             <>
-              <div id={chartsId} hidden={!chartsExpanded}>
+              <div
+                id={chartsId}
+                className="practice-dashboard-details"
+                hidden={!chartsExpanded}
+              >
                 <div className="performance-chart-grid">
-                  <section className="card stack">
+                  <section className="card stack performance-card">
                     <div className="row-between">
                       <h3>Evolução de desempenho</h3>
                       <label>
@@ -279,34 +285,38 @@ export function PracticeDashboard({
                       </div>
                     </details>
                   </section>
-                  <section className="card stack">
+                  <section className="card stack performance-card">
                     <h3>Acertos e erros</h3>
-                    <p>Histórico completo de tentativas objetivas</p>
-                    {[
-                      ["Acertos", s.correct, "#187948"],
-                      ["Erros", s.wrong, "#b42332"],
-                    ].map(([label, count, color]) => (
-                      <div key={label}>
-                        <p>
-                          <strong>
-                            {label}: {count}
-                          </strong>{" "}
-                          · {Math.round((Number(count) / s.total) * 100)}%
-                        </p>
-                        <div
-                          className="performance-bar"
-                          role="img"
-                          aria-label={`${label}: ${count} de ${s.total}`}
-                        >
-                          <span
-                            style={{
-                              width: `${(Number(count) / s.total) * 100}%`,
-                              background: String(color),
-                            }}
-                          />
-                        </div>
+                    <p>Histórico completo de tentativas objetivas.</p>
+                    <div
+                      className="performance-donut"
+                      role="img"
+                      aria-label={`${correctPercent}% de acertos: ${s.correct} respostas corretas e ${s.wrong} incorretas`}
+                      style={
+                        {
+                          "--practice-rate": `${correctPercent * 3.6}deg`,
+                        } as CSSProperties
+                      }
+                    >
+                      <div>
+                        <strong>{correctPercent}%</strong>
+                        <span>de acertos</span>
                       </div>
-                    ))}
+                    </div>
+                    <dl className="performance-legend">
+                      <div>
+                        <dt>
+                          <span className="legend-dot correct" /> Acertos
+                        </dt>
+                        <dd>{s.correct}</dd>
+                      </div>
+                      <div>
+                        <dt>
+                          <span className="legend-dot wrong" /> Erros
+                        </dt>
+                        <dd>{s.wrong}</dd>
+                      </div>
+                    </dl>
                   </section>
                 </div>
               </div>

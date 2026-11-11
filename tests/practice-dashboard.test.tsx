@@ -42,7 +42,7 @@ it("collapses charts while retaining metrics and the selected period", async () 
   const title = screen.getByRole("heading", {
     name: "Seu progresso na prática",
   });
-  expect(title.parentElement).toContainElement(toggle);
+  expect(title.closest("header")).toContainElement(toggle);
   await user.click(toggle);
   const chart = screen.getByRole("heading", { name: "Evolução de desempenho" });
   await user.selectOptions(
