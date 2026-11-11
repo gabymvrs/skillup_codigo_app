@@ -58,8 +58,15 @@ export function PracticeDashboard({
   error: string;
   onRetry: () => void;
 }) {
+  const chartsPreferenceKey = `skillup.practice.charts-expanded:${user}`;
   const [days, setDays] = useState(7),
-    [chartsExpanded, setChartsExpanded] = useState(true),
+    [chartsExpanded, setChartsExpanded] = useState(() => {
+      try {
+        return localStorage.getItem(chartsPreferenceKey) !== "collapsed";
+      } catch {
+        return true;
+      }
+    }),
     chartsId = useId(),
     [point, setPoint] = useState<{
       index: number;
@@ -102,7 +109,20 @@ export function PracticeDashboard({
             variant="outline"
             aria-expanded={chartsExpanded}
             aria-controls={chartsId}
-            onClick={() => setChartsExpanded((expanded) => !expanded)}
+            onClick={() =>
+              setChartsExpanded((expanded) => {
+                const next = !expanded;
+                try {
+                  localStorage.setItem(
+                    chartsPreferenceKey,
+                    next ? "expanded" : "collapsed",
+                  );
+                } catch {
+                  // The preference is optional when browser storage is blocked.
+                }
+                return next;
+              })
+            }
           >
             {chartsExpanded ? "Recolher" : "Expandir"}
           </Button>

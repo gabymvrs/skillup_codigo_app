@@ -11,6 +11,8 @@ import { id } from "../src/data/catalog";
 it("shows one dashboard by default and retains the period when collapsed", async () => {
   const user = userEvent.setup();
   const data = createDemo();
+  const preferenceKey = `skillup.practice.charts-expanded:${id(1)}`;
+  localStorage.removeItem(preferenceKey);
   data.attempts = [
     {
       id: "chart-attempt",
@@ -22,7 +24,7 @@ it("shows one dashboard by default and retains the period when collapsed", async
       created_at: new Date().toISOString(),
     },
   ];
-  render(
+  const view = render(
     <PracticeDashboard
       data={data}
       user={id(1)}
@@ -67,6 +69,44 @@ it("shows one dashboard by default and retains the period when collapsed", async
   await user.click(screen.getByRole("button", { name: "Expandir" }));
   expect(chart).toBeVisible();
   expect(screen.getByRole("combobox", { name: "Período" })).toHaveValue("30");
+  await user.click(screen.getByRole("button", { name: "Recolher" }));
+  expect(localStorage.getItem(preferenceKey)).toBe("collapsed");
+  view.unmount();
+
+  const collapsedView = render(
+    <PracticeDashboard
+      data={data}
+      user={id(1)}
+      demo
+      completions={[]}
+      loading={false}
+      error=""
+      onRetry={() => {}}
+    />,
+  );
+  expect(screen.getByRole("button", { name: "Expandir" })).toHaveAttribute(
+    "aria-expanded",
+    "false",
+  );
+  await user.click(screen.getByRole("button", { name: "Expandir" }));
+  expect(localStorage.getItem(preferenceKey)).toBe("expanded");
+  collapsedView.unmount();
+
+  render(
+    <PracticeDashboard
+      data={data}
+      user={id(1)}
+      demo
+      completions={[]}
+      loading={false}
+      error=""
+      onRetry={() => {}}
+    />,
+  );
+  expect(screen.getByRole("button", { name: "Recolher" })).toHaveAttribute(
+    "aria-expanded",
+    "true",
+  );
 });
 function app() {
   sessionStorage.setItem("skillup.demo.role", "estudante");
