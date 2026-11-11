@@ -100,7 +100,7 @@ describe("Complete practice blocks", () => {
   });
   it("does not show the student dashboard for a recruiter", async () => {
     app("/app/aprenda/pratica", "recrutador");
-    await screen.findByRole("heading", { name: "Prática" });
+    await screen.findByRole("heading", { name: "Ações rápidas" });
     expect(
       screen.queryByRole("region", { name: "Painel de prática do aluno" }),
     ).not.toBeInTheDocument();

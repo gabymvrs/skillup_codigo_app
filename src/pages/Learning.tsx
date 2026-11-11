@@ -381,10 +381,6 @@ export function Practice() {
   });
   return (
     <div className="stack">
-      <Heading
-        title="Prática"
-        description="Faça exercícios curtos e acompanhe seus acertos e erros."
-      />
       {auth.role === "estudante" && (
         <PracticeDashboard
           data={data}
