@@ -1458,7 +1458,7 @@ details summary {
 }
 .practice-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
 }
 .practice-grid > button {
@@ -1728,7 +1728,7 @@ details summary {
     flex: 1;
   }
   .practice-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .quick-actions {
     grid-template-columns: repeat(4, minmax(0, 1fr));
