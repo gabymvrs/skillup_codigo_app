@@ -389,38 +389,58 @@ export function Practice() {
   });
   return (
     <div className="stack">
-      {auth.role === "estudante" && (
-        <PracticeDashboard
-          data={data}
-          user={auth.id!}
-          demo={auth.demo}
-          completions={completion.rows}
-          loading={loading || completion.loading}
-          error={error || completion.error}
-          onRetry={() => {
-            completion.retry();
-            void reload().catch(() => {});
-          }}
-        />
+      {!type && (
+        <>
+          {auth.role === "estudante" && (
+            <PracticeDashboard
+              data={data}
+              user={auth.id!}
+              demo={auth.demo}
+              completions={completion.rows}
+              loading={loading || completion.loading}
+              error={error || completion.error}
+              onRetry={() => {
+                completion.retry();
+                void reload().catch(() => {});
+              }}
+            />
+          )}
+          <SectionTitle>Ações rápidas</SectionTitle>
+          <div className="practice-grid">
+            {[
+              ["Exames", "file"],
+              ["Exercício", "clipboard"],
+              ["Dinâmica", "zap"],
+            ].map(([label, icon]) => (
+              <button
+                key={label}
+                onClick={() => {
+                  setSubject("");
+                  setFormat("");
+                  setDifficulty("");
+                  setStatus("");
+                  setType(label);
+                }}
+              >
+                <Icon name={icon} size={28} />
+                <strong>{label}</strong>
+              </button>
+            ))}
+          </div>
+        </>
       )}
-      <SectionTitle>Ações rápidas</SectionTitle>
-      <div className="practice-grid">
-        {[
-          ["Exames", "file"],
-          ["Exercício", "clipboard"],
-          ["Dinâmica", "zap"],
-        ].map(([label, icon]) => (
-          <button
-            key={label}
-            onClick={() => setType(label)}
-            aria-pressed={type === label}
-          >
-            <Icon name={icon} size={28} />
-            <strong>{label}</strong>
-          </button>
-        ))}
-      </div>
-      <section className="stack" aria-label="Filtros da prática">
+      {type && (
+        <SectionTitle
+          action={
+            <Button variant="ghost" onClick={() => setType("")}>
+              Voltar
+            </Button>
+          }
+        >
+          {type}
+        </SectionTitle>
+      )}
+      {type && <section className="stack" aria-label="Filtros da prática">
         <h2>Filtros da prática</h2>
         <div className="practice-filters">
           <label>
@@ -493,7 +513,7 @@ export function Practice() {
             </select>
           </label>
         </div>
-      </section>
+      </section>}
       {!type ? (
         <Card className="challenge">
           <Badge>Desafio do dia</Badge>
@@ -507,15 +527,6 @@ export function Practice() {
         </Card>
       ) : (
         <>
-          <SectionTitle
-            action={
-              <Button variant="ghost" onClick={() => setType("")}>
-                Voltar
-              </Button>
-            }
-          >
-            {type}
-          </SectionTitle>
           <div className="two-columns">
             {visibleSets.map((set) => (
               <Card key={set.id}>
@@ -575,7 +586,7 @@ export function Practice() {
           )}
         </>
       )}
-      <div className="section-heading practice-history-heading">
+      {!type && <><div className="section-heading practice-history-heading">
         <h2>Histórico de prática</h2>
         <button
           type="button"
@@ -627,6 +638,7 @@ export function Practice() {
           )}
         </Card>
       </div>
+      </>}
       {session && (
         <PracticeSession
           key={session.id}

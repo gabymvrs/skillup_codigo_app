@@ -118,33 +118,43 @@ function app() {
     </MemoryRouter>,
   );
 }
-it("places combined filters below actions and allows changing them", async () => {
+it("opens a focused practice view and restores filters", async () => {
   const user = userEvent.setup();
   const historyKey = `skillup.practice.history-expanded:${id(1)}`;
   localStorage.removeItem(historyKey);
   const view = app();
-  const action = await screen.findByRole("heading", { name: "Ações rápidas" }),
-    filters = screen.getByRole("region", { name: "Filtros da prática" });
+  await screen.findByRole("heading", { name: "Ações rápidas" });
   expect(
-    action.compareDocumentPosition(filters) & Node.DOCUMENT_POSITION_FOLLOWING,
-  ).toBeTruthy();
+    screen.queryByRole("region", { name: "Filtros da prática" }),
+  ).not.toBeInTheDocument();
+  await user.click(screen.getByRole("button", { name: "Exercício" }));
+  const filters = screen.getByRole("region", { name: "Filtros da prática" });
+  expect(filters).toBeVisible();
+  expect(
+    screen.queryByRole("region", { name: "Painel de prática do aluno" }),
+  ).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole("heading", { name: "Ações rápidas" }),
+  ).not.toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Exercício" })).toBeVisible();
   const subject = screen.getByRole("combobox", { name: "Disciplina" }),
     format = screen.getByRole("combobox", { name: "Formato de exercício" }),
     difficulty = screen.getByRole("combobox", { name: "Dificuldade" }),
     status = screen.getByRole("combobox", { name: "Status do bloco" });
 
+  const allSets = screen.getAllByRole("button", {
+    name: "Iniciar prática",
+  }).length;
+  expect(allSets).toBeGreaterThan(0);
+
   await user.selectOptions(
     subject,
     "00000000-0000-4000-8000-000000000010",
   );
+  await user.selectOptions(subject, "");
   expect(
     screen.getAllByRole("button", { name: "Iniciar prática" }),
-  ).toHaveLength(1);
-  await user.selectOptions(subject, "");
-  const allSets = screen.getAllByRole("button", {
-    name: "Iniciar prática",
-  }).length;
-  expect(allSets).toBeGreaterThan(1);
+  ).toHaveLength(allSets);
 
   await user.selectOptions(format, "blank");
   expect(format).toHaveValue("blank");
@@ -174,6 +184,12 @@ it("places combined filters below actions and allows changing them", async () =>
   expect(format).toHaveValue("");
   expect(difficulty).toHaveValue("");
   expect(status).toHaveValue("");
+
+  await user.click(screen.getByRole("button", { name: "Voltar" }));
+  await screen.findByRole("heading", { name: "Ações rápidas" });
+  expect(
+    screen.queryByRole("region", { name: "Filtros da prática" }),
+  ).not.toBeInTheDocument();
 
   const historyToggle = screen.getByRole("button", {
     name: "Recolher histórico de prática",
