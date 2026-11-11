@@ -1476,6 +1476,16 @@ details summary {
 .practice-grid > button[aria-pressed="true"] {
   border-color: var(--primary);
 }
+.practice-history-actions {
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.practice-history-toggle svg {
+  transition: transform 160ms ease;
+}
+.practice-history-toggle.expanded svg {
+  transform: rotate(90deg);
+}
 .answer-option {
   display: flex;
   align-items: center;

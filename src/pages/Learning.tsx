@@ -342,12 +342,20 @@ export function Practice() {
   const auth = useAuth(),
     { data, loading, error, reload } = useData(),
     completion = usePracticeCompletions(auth.demo, auth.id!);
+  const historyPreferenceKey = `skillup.practice.history-expanded:${auth.id}`;
   const attempts = data.attempts.filter((a) => a.user_id === auth.id),
     [type, setType] = useState(""),
     [subject, setSubject] = useState(""),
     [format, setFormat] = useState(""),
     [difficulty, setDifficulty] = useState(""),
     [status, setStatus] = useState(""),
+    [historyExpanded, setHistoryExpanded] = useState(() => {
+      try {
+        return localStorage.getItem(historyPreferenceKey) !== "collapsed";
+      } catch {
+        return true;
+      }
+    }),
     [open, setOpen] = useState<string | null>(null),
     [session, setSession] = useState<PracticeSet | null>(null);
   const sets: PracticeSet[] =
@@ -569,37 +577,64 @@ export function Practice() {
       )}
       <SectionTitle
         action={
-          <ActionLink to="/app/atividades" variant="ghost">
-            Atividades da turma
-          </ActionLink>
+          <div className="actions practice-history-actions">
+            <ActionLink to="/app/atividades" variant="ghost">
+              Atividades da turma
+            </ActionLink>
+            <button
+              type="button"
+              className={`icon-button practice-history-toggle ${historyExpanded ? "expanded" : ""}`}
+              aria-label={`${historyExpanded ? "Recolher" : "Expandir"} histórico de prática`}
+              aria-expanded={historyExpanded}
+              aria-controls="practice-history"
+              onClick={() =>
+                setHistoryExpanded((expanded) => {
+                  const next = !expanded;
+                  try {
+                    localStorage.setItem(
+                      historyPreferenceKey,
+                      next ? "expanded" : "collapsed",
+                    );
+                  } catch {
+                    // The preference is optional when browser storage is blocked.
+                  }
+                  return next;
+                })
+              }
+            >
+              <Icon name="chevron" size={18} />
+            </button>
+          </div>
         }
       >
         Histórico de prática
       </SectionTitle>
-      <Card>
-        {attempts.length ? (
-          attempts
-            .slice(-10)
-            .reverse()
-            .map((a) => (
-              <div className="list-row" key={a.id}>
-                <div>
-                  <strong>
-                    {data.questions.find((q) => q.id === a.question_id)?.title}
-                  </strong>
-                  <small>{dateLabel(a.created_at)}</small>
+      <div id="practice-history" hidden={!historyExpanded}>
+        <Card>
+          {attempts.length ? (
+            attempts
+              .slice(-10)
+              .reverse()
+              .map((a) => (
+                <div className="list-row" key={a.id}>
+                  <div>
+                    <strong>
+                      {data.questions.find((q) => q.id === a.question_id)?.title}
+                    </strong>
+                    <small>{dateLabel(a.created_at)}</small>
+                  </div>
+                  <Badge tone={a.correct ? "success" : ""}>
+                    {a.correct ? "Correta" : "Revisar"} · {a.xp} XP
+                  </Badge>
                 </div>
-                <Badge tone={a.correct ? "success" : ""}>
-                  {a.correct ? "Correta" : "Revisar"} · {a.xp} XP
-                </Badge>
-              </div>
-            ))
-        ) : (
-          <Empty title="Seu primeiro desafio está esperando">
-            Escolha uma ação rápida para começar.
-          </Empty>
-        )}
-      </Card>
+              ))
+          ) : (
+            <Empty title="Seu primeiro desafio está esperando">
+              Escolha uma ação rápida para começar.
+            </Empty>
+          )}
+        </Card>
+      </div>
       {session && (
         <PracticeSession
           key={session.id}

@@ -110,7 +110,7 @@ it("shows one dashboard by default and retains the period when collapsed", async
 });
 function app() {
   sessionStorage.setItem("skillup.demo.role", "estudante");
-  render(
+  return render(
     <MemoryRouter initialEntries={["/app/aprenda/pratica"]}>
       <AuthProvider>
         <AppRoutes />
@@ -120,7 +120,9 @@ function app() {
 }
 it("places combined filters below actions and allows changing them", async () => {
   const user = userEvent.setup();
-  app();
+  const historyKey = `skillup.practice.history-expanded:${id(1)}`;
+  localStorage.removeItem(historyKey);
+  const view = app();
   const action = await screen.findByRole("heading", { name: "Ações rápidas" }),
     filters = screen.getByRole("region", { name: "Filtros da prática" });
   expect(
@@ -172,4 +174,22 @@ it("places combined filters below actions and allows changing them", async () =>
   expect(format).toHaveValue("");
   expect(difficulty).toHaveValue("");
   expect(status).toHaveValue("");
+
+  const historyToggle = screen.getByRole("button", {
+    name: "Recolher histórico de prática",
+  });
+  const history = document.getElementById("practice-history")!;
+  expect(history).not.toHaveAttribute("hidden");
+  await user.click(historyToggle);
+  expect(history).toHaveAttribute("hidden");
+  expect(localStorage.getItem(historyKey)).toBe("collapsed");
+  view.unmount();
+
+  app();
+  const savedToggle = await screen.findByRole("button", {
+    name: "Expandir histórico de prática",
+  });
+  expect(savedToggle).toHaveAttribute("aria-expanded", "false");
+  await user.click(savedToggle);
+  expect(localStorage.getItem(historyKey)).toBe("expanded");
 });
