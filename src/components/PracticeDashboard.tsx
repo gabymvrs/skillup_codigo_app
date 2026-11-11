@@ -61,7 +61,11 @@ export function PracticeDashboard({
   const [days, setDays] = useState(7),
     [chartsExpanded, setChartsExpanded] = useState(true),
     chartsId = useId(),
-    [point, setPoint] = useState<number | null>(null),
+    [point, setPoint] = useState<{
+      index: number;
+      x: number;
+      y: number;
+    } | null>(null),
     s = practiceMetrics(data, user, completions, days),
     correctPercent = s.total ? Math.round((s.correct / s.total) * 100) : 0,
     w = 640,
@@ -185,14 +189,31 @@ export function PracticeDashboard({
                                   fill="#193f9f"
                                   tabIndex={0}
                                   aria-label={`${p.day}: ${p.rate}%, ${p.correct} acertos em ${p.total} tentativas`}
-                                  onFocus={() => setPoint(i)}
-                                  onMouseEnter={() => setPoint(i)}
-                                >
-                                  <title>
-                                    {p.day}: {p.rate}% · {p.correct}/{p.total}{" "}
-                                    acertos
-                                  </title>
-                                </circle>
+                                  onFocus={(event) => {
+                                    const dot =
+                                        event.currentTarget.getBoundingClientRect(),
+                                      plot = event.currentTarget
+                                        .closest(".performance-plot")!
+                                        .getBoundingClientRect();
+                                    setPoint({
+                                      index: i,
+                                      x: dot.left + dot.width / 2 - plot.left,
+                                      y: dot.top - plot.top,
+                                    });
+                                  }}
+                                  onBlur={() => setPoint(null)}
+                                  onMouseMove={(event) => {
+                                    const plot = event.currentTarget
+                                      .closest(".performance-plot")!
+                                      .getBoundingClientRect();
+                                    setPoint({
+                                      index: i,
+                                      x: event.clientX - plot.left,
+                                      y: event.clientY - plot.top,
+                                    });
+                                  }}
+                                  onMouseLeave={() => setPoint(null)}
+                                />
                               ),
                             )}
                             <text x="44" y="195">
@@ -202,14 +223,28 @@ export function PracticeDashboard({
                               {s.points.at(-1)?.day.slice(5)}
                             </text>
                           </svg>
+                          {point && (
+                            <div
+                              className="performance-tooltip"
+                              role="tooltip"
+                              style={{ left: point.x, top: point.y }}
+                            >
+                              <strong>{s.points[point.index].day}</strong>
+                              <span>{s.points[point.index].rate}% de acertos</span>
+                              <small>
+                                {s.points[point.index].correct} acertos · {" "}
+                                {s.points[point.index].wrong} erros
+                              </small>
+                            </div>
+                          )}
                         </div>
                         <div className="performance-dates">
                           <span>{s.points[0].day}</span>
                           <span>{s.points.at(-1)?.day}</span>
                         </div>
-                        <p role="status">
-                          {point !== null
-                            ? `${s.points[point].day}: ${s.points[point].rate}% · ${s.points[point].correct} acertos e ${s.points[point].wrong} erros em ${s.points[point].total} tentativas.`
+                        <p className="sr-only" role="status">
+                          {point
+                            ? `${s.points[point.index].day}: ${s.points[point.index].rate}% · ${s.points[point.index].correct} acertos e ${s.points[point.index].wrong} erros em ${s.points[point.index].total} tentativas.`
                             : "Selecione um ponto com o mouse ou teclado para ver os detalhes. Dias sem respostas não recebem uma taxa."}
                         </p>
                       </>

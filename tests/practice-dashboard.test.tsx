@@ -39,6 +39,11 @@ it("shows one dashboard by default and retains the period when collapsed", async
   expect(chart).toBeVisible();
   expect(screen.getByText("de acertos")).toBeVisible();
   expect(screen.queryByText("Práticas concluídas")).not.toBeInTheDocument();
+  const chartPoint = screen.getByLabelText(/100%, 1 acertos/);
+  await user.hover(chartPoint);
+  expect(screen.getByRole("tooltip")).toHaveTextContent("100% de acertos");
+  await user.unhover(chartPoint);
+  expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
   const title = screen.getByRole("heading", {
     name: "Seu progresso na prática",
   });
