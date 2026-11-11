@@ -8,7 +8,7 @@ import { PracticeDashboard } from "../src/components/PracticeDashboard";
 import { createDemo } from "../src/data/demo";
 import { id } from "../src/data/catalog";
 
-it("shows charts by default and retains metrics and period when collapsed", async () => {
+it("shows one dashboard by default and retains the period when collapsed", async () => {
   const user = userEvent.setup();
   const data = createDemo();
   data.attempts = [
@@ -37,7 +37,8 @@ it("shows charts by default and retains metrics and period when collapsed", asyn
   expect(toggle).toHaveAttribute("aria-expanded", "true");
   const chart = screen.getByRole("heading", { name: "Evolução de desempenho" });
   expect(chart).toBeVisible();
-  expect(screen.getByText("Taxa de acertos")).toBeVisible();
+  expect(screen.getByText("de acertos")).toBeVisible();
+  expect(screen.queryByText("Práticas concluídas")).not.toBeInTheDocument();
   const title = screen.getByRole("heading", {
     name: "Seu progresso na prática",
   });
@@ -49,7 +50,6 @@ it("shows charts by default and retains metrics and period when collapsed", asyn
   await user.click(toggle);
   expect(toggle).toHaveAttribute("aria-expanded", "false");
   expect(chart).not.toBeVisible();
-  expect(screen.getByText("Taxa de acertos")).toBeVisible();
   await user.click(screen.getByRole("button", { name: "Expandir" }));
   expect(chart).toBeVisible();
   expect(screen.getByRole("combobox", { name: "Período" })).toHaveValue("30");

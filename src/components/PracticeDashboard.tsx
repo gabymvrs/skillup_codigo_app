@@ -5,7 +5,7 @@ import {
   practiceMetrics,
   type PracticeCompletion,
 } from "../services/practiceProgress";
-import { Button, Icon, Notice } from "./ui";
+import { Button, Notice } from "./ui";
 export function usePracticeCompletions(demo: boolean, user: string) {
   const [rows, setRows] = useState<PracticeCompletion[]>([]),
     [loading, setLoading] = useState(true),
@@ -110,41 +110,6 @@ export function PracticeDashboard({
         </Notice>
       ) : (
         <>
-          <dl className="practice-metric-grid">
-            {[
-              [
-                "Práticas concluídas",
-                s.completed,
-                "Blocos completos, contados uma vez",
-                "check",
-              ],
-              [
-                "Taxa de acertos",
-                s.rate === null ? "—" : s.rate + "%",
-                "Todas as tentativas avaliadas",
-                "award",
-              ],
-              [
-                "Questões corretas",
-                s.correct,
-                "Acertos por tentativa",
-                "check",
-              ],
-              [
-                "Questões incorretas",
-                s.wrong,
-                "Erros por tentativa",
-                "clipboard",
-              ],
-            ].map(([label, value, desc, icon]) => (
-              <div className="card" key={label}>
-                <Icon name={String(icon)} />
-                <dt>{label}</dt>
-                <dd>{value}</dd>
-                <small>{desc}</small>
-              </div>
-            ))}
-          </dl>
           {!s.total ? (
             <Notice>
               Ainda não há respostas objetivas suficientes para mostrar seu

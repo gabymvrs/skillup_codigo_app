@@ -2706,27 +2706,6 @@ html[data-large-text="true"] {
   }
 }
 
-.practice-metric-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0;
-}
-.practice-metric-grid > .card {
-  min-width: 0;
-  padding: 20px;
-  border-color: #dce4f2;
-  box-shadow: 0 8px 24px rgb(20 54 125 / 5%);
-}
-.practice-metric-grid dt {
-  margin-top: 12px;
-  font-size: 14px;
-}
-.practice-metric-grid dd {
-  margin: 8px 0;
-  font-size: 32px;
-  font-weight: 700;
-}
 .performance-chart-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.85fr);
@@ -2857,7 +2836,6 @@ html[data-large-text="true"] {
   border-bottom: 1px solid #d7deed;
 }
 @media (max-width: 900px) {
-  .practice-metric-grid,
   .practice-filters {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2869,12 +2847,6 @@ html[data-large-text="true"] {
   }
 }
 @media (max-width: 380px) {
-  .practice-metric-grid > .card {
-    padding: 12px;
-  }
-  .practice-metric-grid dd {
-    font-size: 26px;
-  }
   .practice-filters {
     grid-template-columns: minmax(0, 1fr);
   }
