@@ -254,36 +254,6 @@ export function PracticeDashboard({
                         preservado.
                       </p>
                     )}
-                    <details>
-                      <summary>Ver dados do gráfico em tabela</summary>
-                      <div className="chart-table">
-                        <table>
-                          <caption>Desempenho por dia</caption>
-                          <thead>
-                            <tr>
-                              <th>Dia</th>
-                              <th>Acertos</th>
-                              <th>Erros</th>
-                              <th>Taxa</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {s.points.map((p) => (
-                              <tr key={p.day}>
-                                <th>{p.day}</th>
-                                <td>{p.correct}</td>
-                                <td>{p.wrong}</td>
-                                <td>
-                                  {p.rate === null
-                                    ? "Sem tentativas"
-                                    : p.rate + "%"}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </details>
                   </section>
                   <section className="card stack performance-card">
                     <h3>Acertos e erros</h3>

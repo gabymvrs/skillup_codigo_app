@@ -39,6 +39,9 @@ it("shows one dashboard by default and retains the period when collapsed", async
   expect(chart).toBeVisible();
   expect(screen.getByText("de acertos")).toBeVisible();
   expect(screen.queryByText("Práticas concluídas")).not.toBeInTheDocument();
+  expect(
+    screen.queryByText("Ver dados do gráfico em tabela"),
+  ).not.toBeInTheDocument();
   const chartPoint = screen.getByLabelText(/100%, 1 acertos/);
   await user.hover(chartPoint);
   expect(screen.getByRole("tooltip")).toHaveTextContent("100% de acertos");
@@ -77,37 +80,50 @@ it("places combined filters below actions and allows changing them", async () =>
   expect(
     action.compareDocumentPosition(filters) & Node.DOCUMENT_POSITION_FOLLOWING,
   ).toBeTruthy();
-  await user.click(screen.getByRole("button", { name: "Exames" }));
+  const subject = screen.getByRole("combobox", { name: "Disciplina" }),
+    format = screen.getByRole("combobox", { name: "Formato de exercício" }),
+    difficulty = screen.getByRole("combobox", { name: "Dificuldade" }),
+    status = screen.getByRole("combobox", { name: "Status do bloco" });
+
   await user.selectOptions(
-    screen.getByRole("combobox", { name: "Dificuldade" }),
-    "unknown",
-  );
-  await screen.findByText("Nenhum bloco encontrado");
-  await user.selectOptions(
-    screen.getByRole("combobox", { name: "Status do bloco" }),
-    "done",
-  );
-  expect(
-    screen.queryByRole("button", { name: "Iniciar exame" }),
-  ).not.toBeInTheDocument();
-  await user.click(screen.getByRole("button", { name: "Voltar" }));
-  await user.selectOptions(
-    screen.getByRole("combobox", { name: "Dificuldade" }),
-    "",
-  );
-  await user.selectOptions(
-    screen.getByRole("combobox", { name: "Status do bloco" }),
-    "",
-  );
-  await user.selectOptions(
-    screen.getByRole("combobox", { name: "Disciplina" }),
+    subject,
     "00000000-0000-4000-8000-000000000010",
-  );
-  await user.selectOptions(
-    screen.getByRole("combobox", { name: "Formato de exercício" }),
-    "blank",
   );
   expect(
     screen.getAllByRole("button", { name: "Iniciar prática" }),
   ).toHaveLength(1);
+  await user.selectOptions(subject, "");
+  const allSets = screen.getAllByRole("button", {
+    name: "Iniciar prática",
+  }).length;
+  expect(allSets).toBeGreaterThan(1);
+
+  await user.selectOptions(format, "blank");
+  expect(format).toHaveValue("blank");
+  await user.selectOptions(format, "");
+  expect(format).toHaveValue("");
+  expect(
+    screen.getAllByRole("button", { name: "Iniciar prática" }),
+  ).toHaveLength(allSets);
+
+  await user.selectOptions(difficulty, "advanced");
+  await screen.findByText("Nenhum bloco encontrado");
+  await user.selectOptions(difficulty, "");
+  expect(
+    screen.getAllByRole("button", { name: "Iniciar prática" }),
+  ).toHaveLength(allSets);
+
+  await user.selectOptions(status, "done");
+  expect(
+    screen.queryAllByRole("button", { name: "Iniciar prática" }),
+  ).toHaveLength(0);
+  await user.selectOptions(status, "");
+  expect(
+    screen.getAllByRole("button", { name: "Iniciar prática" }),
+  ).toHaveLength(allSets);
+
+  expect(subject).toHaveValue("");
+  expect(format).toHaveValue("");
+  expect(difficulty).toHaveValue("");
+  expect(status).toHaveValue("");
 });
