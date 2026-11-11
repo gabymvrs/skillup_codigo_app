@@ -416,9 +416,6 @@ export function Practice() {
           </button>
         ))}
       </div>
-      <Button variant="outline" onClick={() => setType("Prática guiada")}>
-        Explorar exercícios das oito matérias
-      </Button>
       <section className="stack" aria-label="Filtros da prática">
         <h2>Filtros da prática</h2>
         <div className="practice-filters">

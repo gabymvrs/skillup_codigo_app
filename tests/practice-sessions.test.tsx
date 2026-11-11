@@ -93,7 +93,9 @@ describe("Complete practice blocks", () => {
       name: "Painel de prática do aluno",
     });
     await within(dashboard).findByText("67%");
-    expect(within(dashboard).getByText("Questões corretas")).toBeVisible();
+    expect(
+      within(dashboard).getByText("Acertos", { selector: "dt" }),
+    ).toBeVisible();
     expect(stored().attempts).toHaveLength(3);
   });
   it("does not show the student dashboard for a recruiter", async () => {
@@ -143,7 +145,7 @@ describe("Complete practice blocks", () => {
     );
     await dialog.findByRole("heading", { name: "Resultado do bloco" });
     expect(
-      dialog.getByText(/2 acerto\(s\) de 10 questões/),
+      dialog.getByText(/2 acertos de 10 questões/),
     ).toBeInTheDocument();
     expect(stored().attempts).toHaveLength(3);
     expect(
