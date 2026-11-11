@@ -575,40 +575,32 @@ export function Practice() {
           )}
         </>
       )}
-      <SectionTitle
-        action={
-          <div className="actions practice-history-actions">
-            <ActionLink to="/app/atividades" variant="ghost">
-              Atividades da turma
-            </ActionLink>
-            <button
-              type="button"
-              className={`icon-button practice-history-toggle ${historyExpanded ? "expanded" : ""}`}
-              aria-label={`${historyExpanded ? "Recolher" : "Expandir"} histórico de prática`}
-              aria-expanded={historyExpanded}
-              aria-controls="practice-history"
-              onClick={() =>
-                setHistoryExpanded((expanded) => {
-                  const next = !expanded;
-                  try {
-                    localStorage.setItem(
-                      historyPreferenceKey,
-                      next ? "expanded" : "collapsed",
-                    );
-                  } catch {
-                    // The preference is optional when browser storage is blocked.
-                  }
-                  return next;
-                })
+      <div className="section-heading practice-history-heading">
+        <h2>Histórico de prática</h2>
+        <button
+          type="button"
+          className={`icon-button practice-history-toggle ${historyExpanded ? "expanded" : ""}`}
+          aria-label={`${historyExpanded ? "Recolher" : "Expandir"} histórico de prática`}
+          aria-expanded={historyExpanded}
+          aria-controls="practice-history"
+          onClick={() =>
+            setHistoryExpanded((expanded) => {
+              const next = !expanded;
+              try {
+                localStorage.setItem(
+                  historyPreferenceKey,
+                  next ? "expanded" : "collapsed",
+                );
+              } catch {
+                // The preference is optional when browser storage is blocked.
               }
-            >
-              <Icon name="chevron" size={18} />
-            </button>
-          </div>
-        }
-      >
-        Histórico de prática
-      </SectionTitle>
+              return next;
+            })
+          }
+        >
+          <Icon name="chevron" size={18} />
+        </button>
+      </div>
       <div id="practice-history" hidden={!historyExpanded}>
         <Card>
           {attempts.length ? (

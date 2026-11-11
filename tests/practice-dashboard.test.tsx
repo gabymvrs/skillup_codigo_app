@@ -178,6 +178,13 @@ it("places combined filters below actions and allows changing them", async () =>
   const historyToggle = screen.getByRole("button", {
     name: "Recolher histórico de prática",
   });
+  const historyHeading = screen.getByRole("heading", {
+    name: "Histórico de prática",
+  });
+  expect(historyHeading.parentElement).toContainElement(historyToggle);
+  expect(
+    screen.queryByRole("link", { name: "Atividades da turma" }),
+  ).not.toBeInTheDocument();
   const history = document.getElementById("practice-history")!;
   expect(history).not.toHaveAttribute("hidden");
   await user.click(historyToggle);
