@@ -96,18 +96,17 @@ export function PracticeDashboard({
       <header className="practice-dashboard-header">
         <div className="practice-dashboard-title">
           <h2>Seu progresso na prática</h2>
-          <p>Veja sua evolução e identifique onde vale praticar mais.</p>
         </div>
-          {!loading && !error && s.total > 0 && (
-            <Button
-              variant="outline"
-              aria-expanded={chartsExpanded}
-              aria-controls={chartsId}
-              onClick={() => setChartsExpanded((expanded) => !expanded)}
-            >
-              {chartsExpanded ? "Recolher" : "Expandir"}
-            </Button>
-          )}
+        {!loading && !error && s.total > 0 && (
+          <Button
+            variant="outline"
+            aria-expanded={chartsExpanded}
+            aria-controls={chartsId}
+            onClick={() => setChartsExpanded((expanded) => !expanded)}
+          >
+            {chartsExpanded ? "Recolher" : "Expandir"}
+          </Button>
+        )}
       </header>
       {loading ? (
         <p role="status">Carregando desempenho…</p>
@@ -255,15 +254,11 @@ export function PracticeDashboard({
                         </p>
                       </>
                     ) : (
-                      <p>
-                        Não há tentativas nesse período. Seu histórico geral foi
-                        preservado.
-                      </p>
+                      <p className="small muted">Sem tentativas neste período.</p>
                     )}
                   </section>
                   <section className="card stack performance-card">
                     <h3>Acertos e erros</h3>
-                    <p>Histórico completo de tentativas objetivas.</p>
                     <div className="performance-donut-wrap">
                       <div
                         className="performance-donut"

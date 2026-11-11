@@ -1393,8 +1393,7 @@ details summary {
   margin-top: 6px;
 }
 .practice-dashboard {
-  gap: 20px;
-  padding-top: 8px;
+  gap: 12px;
 }
 .practice-dashboard-header {
   display: flex;
@@ -1466,13 +1465,13 @@ details summary {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 20px;
+  gap: 12px;
   border: 1px solid transparent;
   border-radius: 12px;
-  padding: 24px;
+  padding: 18px 20px;
   background: var(--tertiary-200);
   color: var(--secondary);
-  min-height: 140px;
+  min-height: 104px;
 }
 .practice-grid > button[aria-pressed="true"] {
   border-color: var(--primary);
@@ -2715,7 +2714,7 @@ html[data-large-text="true"] {
   min-width: 0;
 }
 .performance-card {
-  min-height: 360px;
+  min-height: 270px;
   border-color: #dce4f2;
   box-shadow: 0 12px 32px rgb(20 54 125 / 6%);
 }
@@ -2757,10 +2756,10 @@ html[data-large-text="true"] {
 }
 .performance-donut {
   --practice-rate: 0deg;
-  width: min(210px, 70vw);
+  width: min(160px, 58vw);
   aspect-ratio: 1;
-  margin: 8px auto;
-  padding: 30px;
+  margin: 0 auto;
+  padding: 22px;
   border-radius: 50%;
   background: conic-gradient(
     #187948 0 var(--practice-rate),
@@ -2773,8 +2772,8 @@ html[data-large-text="true"] {
 }
 .performance-donut-wrap {
   position: relative;
-  width: min(210px, 70vw);
-  margin: 8px auto;
+  width: min(160px, 58vw);
+  margin: 0 auto;
 }
 .performance-donut-wrap .performance-donut {
   width: 100%;
@@ -2796,7 +2795,7 @@ html[data-large-text="true"] {
 }
 .performance-donut strong {
   color: var(--secondary);
-  font-size: 30px;
+  font-size: 26px;
 }
 .performance-donut span {
   color: var(--muted);
@@ -2813,7 +2812,7 @@ html[data-large-text="true"] {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 12px;
+  padding: 9px 10px;
   border-radius: 10px;
   background: var(--tertiary-100);
 }
