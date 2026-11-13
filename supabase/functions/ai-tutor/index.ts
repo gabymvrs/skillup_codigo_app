@@ -133,8 +133,22 @@ Deno.serve(async (request) => {
     );
     if (response.status === 429)
       return reply({ error: "Limite gratuito do Gemini atingido." }, 429);
-    if (!response.ok)
-      return reply({ error: "Tutor temporariamente indisponível." }, 503);
+    if (!response.ok) {
+      const providerError = await response.json().catch(() => null);
+      console.error("Gemini request failed", {
+        status: response.status,
+        reason: providerError?.error?.status || "unknown",
+      });
+      const message =
+        response.status === 400
+          ? "O Google recusou a configuração do tutor (erro 400). Verifique o modelo Gemini configurado."
+          : response.status === 403
+            ? "A chave Gemini não tem permissão para usar a API (erro 403). Verifique a chave no Google AI Studio."
+            : response.status === 404
+              ? "O modelo Gemini configurado não foi encontrado (erro 404)."
+              : `O serviço Gemini falhou temporariamente (erro ${response.status}).`;
+      return reply({ error: message }, 503);
+    }
     const result = await response.json();
     const answer = result.candidates?.[0]?.content?.parts
       ?.map((part: { text?: string }) => part.text || "")
