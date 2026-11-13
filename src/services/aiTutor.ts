@@ -25,11 +25,20 @@ export async function askTutor(
     },
   });
   if (error) {
-    const status = (error as { context?: Response }).context?.status;
+    const response = (error as { context?: Response }).context;
+    const status = response?.status;
     if (status === 429)
       throw new Error(
         "O tutor está temporariamente indisponível por limite de uso. Tente novamente em alguns minutos.",
       );
+    if (response) {
+      const detail = await response
+        .clone()
+        .json()
+        .catch(() => null);
+      if (detail?.error && typeof detail.error === "string")
+        throw new Error(detail.error.slice(0, 240));
+    }
     throw new Error(
       "Não foi possível falar com o tutor agora. Tente novamente.",
     );
