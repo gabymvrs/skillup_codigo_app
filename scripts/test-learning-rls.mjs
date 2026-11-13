@@ -21,6 +21,19 @@ export async function testLearning({
     ])
       await rejects(sql);
   });
+  await test("AI tutor quota requires a valid student session and is enforced atomically", async () => {
+    await actor(5);
+    for (let request = 0; request < 10; request += 1)
+      assert.equal(
+        await scalar("select public.consume_ai_tutor_quota()"),
+        true,
+      );
+    assert.equal(await scalar("select public.consume_ai_tutor_quota()"), false);
+    await actor(2);
+    await rejects("select public.consume_ai_tutor_quota()");
+    await actor(null);
+    await rejects("select public.consume_ai_tutor_quota()");
+  });
   await test("Server stores timezone once and awards one first-day bonus across repeated and different exercises", async () => {
     await actor(5);
     await db.exec(

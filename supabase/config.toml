@@ -8,3 +8,8 @@ verify_jwt = false
 # database policy gate to report ready_for_auth_deletion=true.
 [functions.delete-account]
 verify_jwt = false
+
+# ai-tutor verifies the bearer token with Auth.getUser and enforces an
+# authenticated, session-aware student quota in the database.
+[functions.ai-tutor]
+verify_jwt = false

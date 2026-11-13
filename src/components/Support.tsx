@@ -1,6 +1,6 @@
 import { SupportHistory, SupportQueue } from "./SupportHistory";
-import { useEffect, useId, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { faq } from "../data/faq";
@@ -11,6 +11,11 @@ import {
   type Triage,
 } from "../services/triage";
 import { copyText, matches, uid } from "../lib/utils";
+import {
+  aiTutorEnabled,
+  askTutor,
+  type TutorMessage,
+} from "../services/aiTutor";
 import {
   ActionFeedback,
   Badge,
@@ -68,6 +73,7 @@ export function SupportContent({
 }: { onNavigate?: () => void } = {}) {
   const auth = useAuth(),
     repo = useData(),
+    location = useLocation(),
     key = `skillup.triage.${auth.demo ? "demo." : ""}${auth.id}`;
   const [tab, setTab] = useState<"bot" | "faq" | "teachers">("bot"),
     [message, setMessage] = useState(""),
@@ -87,10 +93,28 @@ export function SupportContent({
     }),
     [showSummary, setShowSummary] = useState(false),
     [copyFallback, setCopyFallback] = useState(false),
-    [recorded, setRecorded] = useState(false);
+    [recorded, setRecorded] = useState(false),
+    [tutorMessages, setTutorMessages] = useState<TutorMessage[]>([]),
+    [tutorBusy, setTutorBusy] = useState(false),
+    [tutorError, setTutorError] = useState("");
   const action = useAction(),
     log = useRef<HTMLDivElement>(null),
     messageId = useId();
+  const useAutomaticTutor =
+    aiTutorEnabled && !auth.demo && auth.role === "estudante";
+  const academicContext = useMemo(() => {
+    const path = location.pathname;
+    const named = [
+      ...repo.data.subjects,
+      ...repo.data.tracks,
+      ...repo.data.modules,
+      ...repo.data.materials,
+    ].find((item) => path.includes(item.id));
+    if (named && "title" in named) return named.title;
+    if (named && "name" in named) return named.name;
+    if (path.includes("/aprenda/pratica")) return "Prática escolar";
+    return "";
+  }, [location.pathname, repo.data]);
   const teachers = [
     ...new Set(
       repo.data.classes
@@ -129,9 +153,36 @@ export function SupportContent({
     }
     if (log.current) log.current.scrollTop = log.current.scrollHeight;
   }, [state, key]);
+  useEffect(() => {
+    if (log.current) log.current.scrollTop = log.current.scrollHeight;
+  }, [tutorMessages, tutorBusy]);
   function send(text: string) {
     replaceConversation(advance(state, text));
     setMessage("");
+  }
+  async function sendToTutor(text: string) {
+    const question = text.trim();
+    if (!question || tutorBusy) return;
+    const next = [...tutorMessages, { role: "user", text: question } as const];
+    setTutorMessages(next);
+    setMessage("");
+    setTutorError("");
+    setTutorBusy(true);
+    try {
+      const answer = await askTutor(next, academicContext);
+      setTutorMessages((current) => [
+        ...current,
+        { role: "model", text: answer },
+      ]);
+    } catch (error) {
+      setTutorError(
+        error instanceof Error
+          ? error.message
+          : "O tutor está temporariamente indisponível.",
+      );
+    } finally {
+      setTutorBusy(false);
+    }
   }
   async function record() {
     await repo.add("support_tickets", {
@@ -217,147 +268,235 @@ export function SupportContent({
         </div>
       ) : (
         <div className="stack" role="tabpanel">
-          <div className="row-between">
-            <span className="small muted">
-              Automático · sem atendente conectado
-            </span>
-            <Button
-              variant="ghost"
-              onClick={() => {
-                replaceConversation(initialTriage());
-                setShowSummary(false);
-                setRecorded(false);
-                setCopyFallback(false);
-              }}
-            >
-              Reiniciar
-            </Button>
-          </div>
-          <div
-            className="chat-log"
-            role="log"
-            aria-live="polite"
-            aria-label="Conversa com o bot"
-            ref={log}
-          >
-            {state.messages.map((m, i) => (
-              <div key={i} className={`chat-message ${m.who}`}>
-                <span className="sr-only">
-                  {m.who === "bot" ? "Bot:" : "Você:"}
-                </span>
-                {m.text}
-              </div>
-            ))}
-          </div>
-          {state.stage !== "done" && (
+          {useAutomaticTutor ? (
             <>
-              <div className="chips">
-                {(state.stage === "topic"
-                  ? [
-                      "Esqueci minha senha",
-                      "Material offline",
-                      "Minha candidatura",
-                    ]
-                  : state.stage === "urgency"
-                    ? [
-                        "Impede uma entrega hoje",
-                        "Dificulta meus estudos",
-                        "Dúvida sem prazo",
-                      ]
-                    : []
-                ).map((x) => (
-                  <button key={x} onClick={() => send(x)}>
-                    {x}
-                  </button>
+              <div className="row-between">
+                <span className="small muted">
+                  Tutor automático
+                  {academicContext ? ` · ${academicContext}` : ""}
+                </span>
+                <Button
+                  variant="ghost"
+                  disabled={tutorBusy}
+                  onClick={() => {
+                    setTutorMessages([]);
+                    setTutorError("");
+                  }}
+                >
+                  Reiniciar
+                </Button>
+              </div>
+              <div
+                className="chat-log"
+                role="log"
+                aria-live="polite"
+                aria-label="Conversa com o tutor"
+                ref={log}
+              >
+                {!tutorMessages.length && (
+                  <div className="chat-message bot">
+                    <span className="sr-only">Tutor:</span>
+                    Olá! Qual conteúdo escolar você gostaria de entender?
+                  </div>
+                )}
+                {tutorMessages.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`chat-message ${item.role === "model" ? "bot" : "user"}`}
+                  >
+                    <span className="sr-only">
+                      {item.role === "model" ? "Tutor:" : "Você:"}
+                    </span>
+                    {item.text}
+                  </div>
                 ))}
+                {tutorBusy && (
+                  <div className="chat-message bot" role="status">
+                    Preparando uma explicação…
+                  </div>
+                )}
               </div>
               <form
                 className="chat-compose"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (message.trim()) send(message);
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  void sendToTutor(message);
                 }}
               >
                 <label className="sr-only" htmlFor={messageId}>
-                  Mensagem para o bot
+                  Mensagem para o tutor
                 </label>
                 <input
                   id={messageId}
                   placeholder="Digite sua dúvida…"
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  maxLength={1000}
+                  onChange={(event) => setMessage(event.target.value)}
+                  maxLength={2000}
+                  disabled={tutorBusy}
                   required
                 />
                 <Button
                   type="submit"
                   aria-label="Enviar mensagem"
-                  disabled={!message.trim()}
+                  disabled={!message.trim() || tutorBusy}
                   icon="send"
                 >
                   Enviar
                 </Button>
               </form>
+              {tutorError && <Notice tone="warning">{tutorError}</Notice>}
+              <p className="small muted">
+                A IA pode cometer erros. Não informe nomes completos,
+                documentos, senhas ou outros dados pessoais.
+              </p>
             </>
-          )}
-          {state.stage === "done" && (
+          ) : (
             <>
-              <Badge>Prioridade {state.urgency.toLowerCase()}</Badge>
-              <Button
-                variant="outline"
-                onClick={() => setShowSummary((v) => !v)}
+              <div className="row-between">
+                <span className="small muted">
+                  Automático · sem atendente conectado
+                </span>
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    replaceConversation(initialTriage());
+                    setShowSummary(false);
+                    setRecorded(false);
+                    setCopyFallback(false);
+                  }}
+                >
+                  Reiniciar
+                </Button>
+              </div>
+              <div
+                className="chat-log"
+                role="log"
+                aria-live="polite"
+                aria-label="Conversa com o bot"
+                ref={log}
               >
-                {showSummary ? "Ocultar resumo" : "Ver resumo do atendimento"}
-              </Button>
-              {showSummary && (
-                <div className="summary-box">
-                  <pre>{summary(state)}</pre>
+                {state.messages.map((m, i) => (
+                  <div key={i} className={`chat-message ${m.who}`}>
+                    <span className="sr-only">
+                      {m.who === "bot" ? "Bot:" : "Você:"}
+                    </span>
+                    {m.text}
+                  </div>
+                ))}
+              </div>
+              {state.stage !== "done" && (
+                <>
+                  <div className="chips">
+                    {(state.stage === "topic"
+                      ? [
+                          "Esqueci minha senha",
+                          "Material offline",
+                          "Minha candidatura",
+                        ]
+                      : state.stage === "urgency"
+                        ? [
+                            "Impede uma entrega hoje",
+                            "Dificulta meus estudos",
+                            "Dúvida sem prazo",
+                          ]
+                        : []
+                    ).map((x) => (
+                      <button key={x} onClick={() => send(x)}>
+                        {x}
+                      </button>
+                    ))}
+                  </div>
+                  <form
+                    className="chat-compose"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (message.trim()) send(message);
+                    }}
+                  >
+                    <label className="sr-only" htmlFor={messageId}>
+                      Mensagem para o bot
+                    </label>
+                    <input
+                      id={messageId}
+                      placeholder="Digite sua dúvida…"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      maxLength={1000}
+                      required
+                    />
+                    <Button
+                      type="submit"
+                      aria-label="Enviar mensagem"
+                      disabled={!message.trim()}
+                      icon="send"
+                    >
+                      Enviar
+                    </Button>
+                  </form>
+                </>
+              )}
+              {state.stage === "done" && (
+                <>
+                  <Badge>Prioridade {state.urgency.toLowerCase()}</Badge>
                   <Button
                     variant="outline"
-                    icon="clipboard"
-                    onClick={() =>
-                      action.run(async () => {
-                        if (!(await copyText(summary(state))))
-                          setCopyFallback(true);
-                        else action.setSuccess("Resumo copiado.");
-                      })
-                    }
+                    onClick={() => setShowSummary((v) => !v)}
                   >
-                    Copiar resumo
+                    {showSummary
+                      ? "Ocultar resumo"
+                      : "Ver resumo do atendimento"}
                   </Button>
-                  {copyFallback && (
-                    <label>
-                      Selecione e copie manualmente
-                      <textarea
-                        readOnly
-                        value={summary(state)}
-                        onFocus={(e) => e.target.select()}
-                      />
-                    </label>
+                  {showSummary && (
+                    <div className="summary-box">
+                      <pre>{summary(state)}</pre>
+                      <Button
+                        variant="outline"
+                        icon="clipboard"
+                        onClick={() =>
+                          action.run(async () => {
+                            if (!(await copyText(summary(state))))
+                              setCopyFallback(true);
+                            else action.setSuccess("Resumo copiado.");
+                          })
+                        }
+                      >
+                        Copiar resumo
+                      </Button>
+                      {copyFallback && (
+                        <label>
+                          Selecione e copie manualmente
+                          <textarea
+                            readOnly
+                            value={summary(state)}
+                            onFocus={(e) => e.target.select()}
+                          />
+                        </label>
+                      )}
+                      <Button
+                        disabled={action.busy || recorded}
+                        onClick={() =>
+                          action.run(
+                            record,
+                            auth.demo
+                              ? "Resumo salvo na demonstração local."
+                              : "Resumo salvo no seu histórico. Não há confirmação de atendimento humano.",
+                          )
+                        }
+                      >
+                        {recorded
+                          ? "Salvo no histórico"
+                          : "Salvar no meu histórico"}
+                      </Button>
+                    </div>
                   )}
-                  <Button
-                    disabled={action.busy || recorded}
-                    onClick={() =>
-                      action.run(
-                        record,
-                        auth.demo
-                          ? "Resumo salvo na demonstração local."
-                          : "Resumo salvo no seu histórico. Não há confirmação de atendimento humano.",
-                      )
-                    }
-                  >
-                    {recorded
-                      ? "Salvo no histórico"
-                      : "Salvar no meu histórico"}
-                  </Button>
-                </div>
+                </>
               )}
+              <ActionFeedback action={action} />
+              <p className="small muted">
+                Evite informar senhas ou documentos pessoais na conversa.
+              </p>
             </>
           )}
-          <ActionFeedback action={action} />
-          <p className="small muted">
-            Evite informar senhas ou documentos pessoais na conversa.
-          </p>
         </div>
       )}
     </div>

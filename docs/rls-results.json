@@ -122,6 +122,10 @@
       "status": "pass"
     },
     {
+      "name": "AI tutor quota requires a valid student session and is enforced atomically",
+      "status": "pass"
+    },
+    {
       "name": "Server stores timezone once and awards one first-day bonus across repeated and different exercises",
       "status": "pass"
     },
