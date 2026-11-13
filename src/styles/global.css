@@ -1800,6 +1800,9 @@ details summary {
   .home-grid {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   }
+  .home-grid > .stack > .card:last-child {
+    flex-grow: 1;
+  }
   .social-grid {
     grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
   }

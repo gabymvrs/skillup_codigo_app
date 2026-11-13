@@ -208,6 +208,15 @@ function StudentHome() {
             </Empty>
           )}
           <Agenda />
+          <Card className="career-tip">
+            <Icon name="briefcase" />
+            <h3>Dica de carreira</h3>
+            <p>
+              Documente os projetos do seu módulo. Explique o problema, suas
+              decisões e o que aprendeu em cada etapa.
+            </p>
+            <Link to="/app/config/perfil">Atualizar meu perfil</Link>
+          </Card>
         </div>
         <div className="stack">
           <Card className="dark">
@@ -277,15 +286,6 @@ function StudentHome() {
                 </span>
               ))}
             </div>
-          </Card>
-          <Card className="career-tip">
-            <Icon name="briefcase" />
-            <h3>Dica de carreira</h3>
-            <p>
-              Documente os projetos do seu módulo. Explique o problema, suas
-              decisões e o que aprendeu em cada etapa.
-            </p>
-            <Link to="/app/config/perfil">Atualizar meu perfil</Link>
           </Card>
         </div>
       </div>

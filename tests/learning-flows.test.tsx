@@ -68,11 +68,11 @@ describe("Academic support", () => {
   });
 });
 describe("Home and material", () => {
-  it("displays three illustrative stories and weekly ranking from the same source as Social", async () => {
+  it("displays three sourced stories and weekly ranking from the same source as Social", async () => {
     const user = userEvent.setup();
     app("/app/home");
     await screen.findByRole("heading", { name: "Histórias que inspiram" });
-    expect(screen.getAllByText(/Primeiro portfólio publicado/)).toHaveLength(1);
+    expect(screen.getByText("Nina da Hora · Ciência da Computação")).toBeVisible();
     expect(
       screen.getByRole("heading", { name: "Ranking semanal" }),
     ).toBeInTheDocument();
