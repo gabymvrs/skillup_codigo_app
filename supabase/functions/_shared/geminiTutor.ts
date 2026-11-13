@@ -47,7 +47,7 @@ export function geminiPayload(messages: TutorInput[], subject: string) {
     messages.at(-1)?.text || "",
   );
   return {
-    system_instruction: {
+    systemInstruction: {
       parts: [
         {
           text:

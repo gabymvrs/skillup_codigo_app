@@ -34,7 +34,7 @@ describe("Gemini school tutor", () => {
     );
     expect(normal.generationConfig.maxOutputTokens).toBe(250);
     expect(detailed.generationConfig.maxOutputTokens).toBe(500);
-    expect(normal.system_instruction.parts[0].text).toContain("Matemática");
+    expect(normal.systemInstruction.parts[0].text).toContain("Matemática");
   });
 
   it("rejects malformed history", () => {
