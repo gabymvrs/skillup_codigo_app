@@ -208,6 +208,19 @@ export async function testPortfolio({
       ),
       1,
     );
+    assert.equal(
+      await scalar(
+        `select sum(xp) from public.reward_events where user_id='${id(30)}' and source='achievement:first_lesson'`,
+      ),
+      25,
+    );
+    await db.exec("select public.refresh_student_achievements()");
+    assert.equal(
+      await scalar(
+        `select count(*) from public.reward_events where user_id='${id(30)}' and source='achievement:first_lesson'`,
+      ),
+      1,
+    );
     await db.exec(
       `update public.student_portfolios set featured_badges=array['first_lesson','creator'] where id='${id(30)}'`,
     );

@@ -23,6 +23,8 @@ import {
 } from "../components/ui";
 import { MaterialEditor } from "./Materials";
 import { Tracks } from "./Learning";
+import { loadPortfolio } from "../features/portfolio/service";
+import type { PortfolioData } from "../features/portfolio/model";
 export function Classrooms() {
   const auth = useAuth(),
     repo = useData(),
@@ -67,7 +69,8 @@ export function Classrooms() {
             </div>
             <Badge>
               {repo.data.enrollments.filter((e) => e.class_id === c.id).length}{" "}
-              {repo.data.enrollments.filter((e) => e.class_id === c.id).length === 1
+              {repo.data.enrollments.filter((e) => e.class_id === c.id)
+                .length === 1
                 ? "estudante"
                 : "estudantes"}
             </Badge>
@@ -710,7 +713,31 @@ export function Certificates() {
   const auth = useAuth(),
     repo = useData(),
     [issuing, setIssuing] = useState(false),
+    [achievementData, setAchievementData] = useState<PortfolioData | null>(
+      null,
+    ),
+    [achievementError, setAchievementError] = useState(""),
     action = useAction();
+  useEffect(() => {
+    if (auth.role !== "estudante" || !auth.id) return;
+    let active = true;
+    loadPortfolio(auth.demo, auth.id, true)
+      .then(async (data) => {
+        if (!active) return;
+        setAchievementData(data);
+        setAchievementError("");
+        await repo.reload().catch(() => {});
+      })
+      .catch(() => {
+        if (active)
+          setAchievementError(
+            "Não foi possível atualizar as conquistas neste momento.",
+          );
+      });
+    return () => {
+      active = false;
+    };
+  }, [auth.demo, auth.id, auth.role]);
   const own = repo.data.certificates.filter((c) =>
       auth.role === "estudante" ? c.user_id === auth.id : true,
     ),
@@ -743,6 +770,53 @@ export function Certificates() {
         MEC/SENAI, blockchain ou equivalência automática a certificações
         profissionais.
       </Notice>
+      {auth.role === "estudante" && (
+        <section className="stack" aria-labelledby="achievement-title">
+          <SectionTitle>
+            <span id="achievement-title">Insígnias e bônus de XP</span>
+          </SectionTitle>
+          <p className="small muted">
+            Cada bônus é concedido uma única vez quando o marco é alcançado.
+          </p>
+          {achievementError && (
+            <Notice tone="warning">{achievementError}</Notice>
+          )}
+          {achievementData ? (
+            <div className="achievement-grid achievement-reward-grid">
+              {achievementData.achievement_definitions.map((definition) => {
+                const earned = achievementData.student_achievements.find(
+                  (item) =>
+                    item.user_id === auth.id &&
+                    item.achievement_id === definition.id,
+                );
+                return (
+                  <Card
+                    key={definition.id}
+                    className={`achievement ${earned ? "earned" : "locked"}`}
+                  >
+                    <Icon name={earned ? definition.icon : "lock"} size={28} />
+                    <div>
+                      <h3>{definition.name}</h3>
+                      <p>{definition.description}</p>
+                    </div>
+                    <Badge tone={earned ? "success" : ""}>
+                      {earned ? "Conquistada" : "Bloqueada"}
+                    </Badge>
+                    <strong className="achievement-xp">
+                      +{definition.xp_reward} XP
+                    </strong>
+                    {earned && (
+                      <small>Obtida em {dateLabel(earned.earned_at)}</small>
+                    )}
+                  </Card>
+                );
+              })}
+            </div>
+          ) : (
+            !achievementError && <p role="status">Atualizando conquistas…</p>
+          )}
+        </section>
+      )}
       <SectionTitle>Trilhas concluídas</SectionTitle>
       <div className="two-columns">
         {completed.map((t) => (

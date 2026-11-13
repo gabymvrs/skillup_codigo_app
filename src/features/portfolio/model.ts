@@ -99,6 +99,7 @@ export interface Definition {
   name: string;
   description: string;
   icon: string;
+  xp_reward: number;
 }
 export interface Signal {
   id: string;
@@ -127,40 +128,67 @@ export interface PortfolioData {
 }
 export const definitions: Definition[] = [
   {
+    id: "first_activity",
+    name: "Primeira Atividade",
+    description: "Concluir corretamente a primeira atividade.",
+    icon: "check",
+    xp_reward: 20,
+  },
+  {
     id: "first_lesson",
     name: "Primeiros Passos",
     description: "Concluir a primeira lição.",
     icon: "book",
+    xp_reward: 25,
   },
   {
     id: "first_code",
     name: "Programador Iniciante",
     description: "Concluir corretamente uma prática de código.",
     icon: "code",
+    xp_reward: 30,
+  },
+  {
+    id: "practice_5",
+    name: "Ritmo de Prática",
+    description: "Acertar cinco atividades diferentes.",
+    icon: "zap",
+    xp_reward: 40,
+  },
+  {
+    id: "practice_10",
+    name: "Prática Constante",
+    description: "Acertar dez atividades diferentes.",
+    icon: "award",
+    xp_reward: 75,
   },
   {
     id: "streak7",
     name: "Estudante Dedicado",
     description: "Estudar por 7 dias consecutivos.",
     icon: "flame",
+    xp_reward: 100,
   },
   {
     id: "explorer",
     name: "Explorador",
     description: "Iniciar 3 trilhas diferentes.",
     icon: "compass",
+    xp_reward: 50,
   },
   {
     id: "creator",
     name: "Criador",
     description: "Publicar o primeiro projeto público ou da comunidade.",
     icon: "briefcase",
+    xp_reward: 75,
   },
   {
     id: "weekly_top3",
     name: "Destaque Semanal",
     description: "Terminar uma semana entre os três primeiros do ranking.",
     icon: "trophy",
+    xp_reward: 150,
   },
 ];
 export const emptyPortfolioData = (): PortfolioData => ({
@@ -251,6 +279,12 @@ export function recommendProjects(
 }
 export function demoAchievements(d: Dataset, userId: string): string[] {
   const earned: string[] = [];
+  const correctActivities = new Set(
+    d.attempts
+      .filter((a) => a.user_id === userId && a.correct)
+      .map((a) => a.question_id),
+  ).size;
+  if (correctActivities >= 1) earned.push("first_activity");
   if (d.progress.some((p) => p.user_id === userId)) earned.push("first_lesson");
   if (
     d.attempts.some(
@@ -263,6 +297,8 @@ export function demoAchievements(d: Dataset, userId: string): string[] {
     )
   )
     earned.push("first_code");
+  if (correctActivities >= 5) earned.push("practice_5");
+  if (correctActivities >= 10) earned.push("practice_10");
   if (
     new Set(
       d.track_enrollments

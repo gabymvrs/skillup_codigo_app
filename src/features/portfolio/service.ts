@@ -1,5 +1,6 @@
 import { requireSupabase } from "../../services/supabase";
-import { readDemo } from "../../services/repository";
+import { readDemo, writeDemo } from "../../services/repository";
+import { awardDemo } from "../../services/learning";
 import { uid } from "../../lib/utils";
 import {
   demoAchievements,
@@ -11,10 +12,19 @@ const event = "skillup-portfolio-changed";
 export const notifyPortfolio = () => window.dispatchEvent(new Event(event));
 export function readPortfolioDemo(): PortfolioData {
   try {
-    return {
+    const saved = {
       ...emptyPortfolioData(),
       ...JSON.parse(localStorage.getItem(KEY) || "{}"),
     };
+    saved.achievement_definitions =
+      emptyPortfolioData().achievement_definitions.map((definition) => ({
+        ...definition,
+        ...(saved.achievement_definitions || []).find(
+          (item: { id: string }) => item.id === definition.id,
+        ),
+        xp_reward: definition.xp_reward,
+      }));
+    return saved;
   } catch {
     return emptyPortfolioData();
   }
@@ -30,8 +40,9 @@ export async function loadPortfolio(
 ): Promise<PortfolioData> {
   if (demo) {
     const d = readPortfolioDemo();
-    if (student)
-      for (const achievement_id of demoAchievements(readDemo(), userId))
+    if (student) {
+      const learning = readDemo();
+      for (const achievement_id of demoAchievements(learning, userId)) {
         if (
           !d.student_achievements.some(
             (a) => a.user_id === userId && a.achievement_id === achievement_id,
@@ -43,6 +54,22 @@ export async function loadPortfolio(
             achievement_id,
             earned_at: new Date().toISOString(),
           });
+        const definition = d.achievement_definitions.find(
+          (item) => item.id === achievement_id,
+        );
+        if (definition?.xp_reward)
+          awardDemo(
+            learning,
+            userId,
+            `achievement:${achievement_id}`,
+            definition.xp_reward,
+            `Conquista: ${definition.name}`,
+            new Date(),
+            false,
+          );
+      }
+      writeDemo(learning);
+    }
     localStorage.setItem(KEY, JSON.stringify(d));
     d.profile_highlights = d.profile_highlights.filter(
       (h) => h.user_id === userId || h.visibility !== "private",

@@ -2526,6 +2526,13 @@ html[data-large-text="true"] {
 .achievement.earned > svg {
   color: var(--primary);
 }
+.achievement-xp {
+  color: var(--primary);
+  font-size: var(--title);
+}
+.achievement-grid .achievement {
+  align-content: start;
+}
 .portfolio-page details > summary {
   cursor: pointer;
   font-size: 18px;

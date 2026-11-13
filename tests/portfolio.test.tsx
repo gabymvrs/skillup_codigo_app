@@ -216,6 +216,63 @@ describe("Student portfolio logic and privacy", () => {
     });
     expect(demoAchievements(d, id(1))).toEqual(["first_lesson"]);
   });
+  it("unlocks the first activity badge from a correct attempt", () => {
+    const d = createDemo();
+    d.progress = [];
+    d.attempts = [
+      {
+        id: id(9998),
+        user_id: id(1),
+        question_id: d.questions[0].id,
+        selected_index: 0,
+        correct: true,
+        xp: 5,
+        created_at: new Date().toISOString(),
+      },
+    ];
+    expect(demoAchievements(d, id(1))).toContain("first_activity");
+  });
+  it("awards achievement XP only once in demo mode", async () => {
+    const d = createDemo();
+    d.progress = [];
+    d.projects = [];
+    d.study_days = [];
+    d.track_enrollments = [];
+    d.attempts = [
+      {
+        id: id(9997),
+        user_id: id(1),
+        question_id: d.questions[0].id,
+        selected_index: 0,
+        correct: true,
+        xp: 5,
+        created_at: new Date().toISOString(),
+      },
+    ];
+    localStorage.setItem(DEMO_KEY, JSON.stringify(d));
+
+    await loadPortfolio(true, id(1), true);
+    await loadPortfolio(true, id(1), true);
+
+    const saved = await loadData(true);
+    const bonuses = saved.reward_events.filter(
+      (reward) =>
+        reward.user_id === id(1) &&
+        reward.source === "achievement:first_activity",
+    );
+    expect(bonuses).toHaveLength(1);
+    expect(bonuses[0]).toMatchObject({
+      xp: 20,
+      label: "Conquista: Primeira Atividade",
+    });
+    expect(
+      readPortfolioDemo().student_achievements.filter(
+        (achievement) =>
+          achievement.user_id === id(1) &&
+          achievement.achievement_id === "first_activity",
+      ),
+    ).toHaveLength(1);
+  });
   it("blocks manual badge grants and featuring locked badges", async () => {
     await expect(
       savePortfolioRow(true, "student_achievements", {
@@ -287,6 +344,17 @@ describe("Student portfolio logic and privacy", () => {
   });
 });
 describe("Student portfolio user flows", () => {
+  it("shows every achievement and its XP reward on the achievements page", async () => {
+    app("/app/certificados");
+    expect(
+      await screen.findByRole("heading", { name: "Primeira Atividade" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("+20 XP")).toBeInTheDocument();
+    const practiceBadge = screen
+      .getByRole("heading", { name: "Prática Constante" })
+      .closest("section")!;
+    expect(within(practiceBadge).getByText("+75 XP")).toBeInTheDocument();
+  });
   it("edits headline and adds/removes searchable skills", async () => {
     const user = userEvent.setup();
     app("/app/config/perfil");
@@ -352,7 +420,7 @@ describe("Student portfolio user flows", () => {
     app();
     await screen.findByRole("heading", { name: "Meu perfil profissional" });
     await user.click(screen.getByText("Currículo · privado"));
-    expect(screen.getByLabelText("Importar currículo PDF")).toBeDisabled();
+    expect(screen.getByLabelText("Importar currículo em PDF")).toBeDisabled();
     await user.click(
       screen.getByRole("button", {
         name: "Pré-visualizar e exportar currículo",
