@@ -126,6 +126,7 @@ await test("Account deletion is service-only, recent and idempotent", async () =
     ),
     "ready_for_auth_deletion",
   );
+  await db.exec("reset role");
   assert.equal(
     Number(
       await scalar(
@@ -134,9 +135,11 @@ await test("Account deletion is service-only, recent and idempotent", async () =
     ),
     0,
   );
+  await db.exec("set role service_role");
   await db.exec(
     `select public.complete_account_deletion('${first}','${id(10)}')`,
   );
+  await db.exec("reset role");
   assert.equal(
     await scalar(
       `select status from private.account_deletion_requests where id='${first}'`,
