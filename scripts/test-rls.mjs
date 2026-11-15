@@ -90,25 +90,31 @@ async function scalar(sql) {
 }
 await test("Account deletion is service-only, recent and idempotent", async () => {
   const hash = "a".repeat(64);
-  await actor(1);
+  await db.exec(`
+    reset role;
+    insert into auth.users(id, raw_user_meta_data)
+    values ('${id(10)}', '{"full_name":"Conta descartável"}');
+    insert into auth.sessions(id, user_id) values ('${id(10)}', '${id(10)}');
+  `);
+  await actor(10);
   await rejects(
-    `select * from public.create_account_deletion_request('${id(1)}','${hash}')`,
+    `select * from public.create_account_deletion_request('${id(10)}','${hash}')`,
   );
   await rejects("select * from private.account_deletion_requests");
 
   await db.exec("reset role; set role service_role");
   const first = await scalar(
-    `select request_id from public.create_account_deletion_request('${id(1)}','${hash}')`,
+    `select request_id from public.create_account_deletion_request('${id(10)}','${hash}')`,
   );
   const repeated = await scalar(
-    `select request_id from public.create_account_deletion_request('${id(1)}','${hash}')`,
+    `select request_id from public.create_account_deletion_request('${id(10)}','${hash}')`,
   );
   assert.equal(first, repeated);
   await db.exec("reset role");
   assert.equal(
     Number(
       await scalar(
-        `select count(*) from private.account_deletion_requests where user_id='${id(1)}'`,
+        `select count(*) from private.account_deletion_requests where user_id='${id(10)}'`,
       ),
     ),
     1,
@@ -116,12 +122,29 @@ await test("Account deletion is service-only, recent and idempotent", async () =
   await db.exec("set role service_role");
   assert.equal(
     await scalar(
-      `select request_status from public.prepare_account_deletion('${first}','${id(1)}')`,
+      `select request_status from public.prepare_account_deletion('${first}','${id(10)}')`,
     ),
-    "awaiting_policy_review",
+    "ready_for_auth_deletion",
   );
-  await rejects(
-    `select public.complete_account_deletion('${first}','${id(1)}')`,
+  await db.exec("reset role");
+  assert.equal(
+    Number(
+      await scalar(
+        `select count(*) from public.profiles where id='${id(10)}'`,
+      ),
+    ),
+    0,
+  );
+  await db.exec("set role service_role");
+  await db.exec(
+    `select public.complete_account_deletion('${first}','${id(10)}')`,
+  );
+  await db.exec("reset role");
+  assert.equal(
+    await scalar(
+      `select status from private.account_deletion_requests where id='${first}'`,
+    ),
+    "completed",
   );
 
   await db.exec(
