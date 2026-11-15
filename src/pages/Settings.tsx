@@ -367,8 +367,7 @@ export function Privacy() {
     [confirmation, setConfirmation] = useState(""),
     [acknowledgeIrreversible, setAcknowledgeIrreversible] = useState(false),
     [acknowledgeAcademicRecords, setAcknowledgeAcademicRecords] =
-      useState(false),
-    [previewComplete, setPreviewComplete] = useState(false);
+      useState(false);
 
   async function checkRecentAuthentication() {
     if (auth.demo) {
@@ -418,14 +417,13 @@ export function Privacy() {
           ser removidos.
         </p>
         <p>
-          Informações compartilhadas com outras pessoas, registros de segurança
-          ou dados sujeitos a uma obrigação de conservação poderão precisar de
-          anonimização ou retenção restrita. Os critérios ainda dependem de
-          validação jurídica.
+          O fluxo automático está disponível para contas de estudante. Contas
+          docentes, institucionais ou de recrutadores exigem análise antes da
+          exclusão, pois podem possuir conteúdo usado por outras pessoas.
         </p>
         <Notice tone="warning">
-          Esta etapa prepara e valida a interface. O processamento definitivo
-          ainda não está conectado e nenhuma conta será excluída.
+          A exclusão é definitiva. Progresso, certificados, publicações,
+          mensagens, arquivos privados e acesso à conta serão removidos.
         </Notice>
         {auth.demo ? (
           <Notice>
@@ -464,19 +462,12 @@ export function Privacy() {
             setConfirmation("");
             setAcknowledgeIrreversible(false);
             setAcknowledgeAcademicRecords(false);
-            setPreviewComplete(false);
             setConfirming(true);
           }}
         >
           Excluir minha conta
         </Button>
-        {previewComplete && (
-          <Notice>
-            Confirmação validada. Nenhuma solicitação foi enviada porque o
-            backend de exclusão será implementado no próximo lote.
-          </Notice>
-        )}
-        <ActionFeedback action={action} />
+         <ActionFeedback action={action} />
       </Card>
       {confirming && (
         <Modal
@@ -486,8 +477,8 @@ export function Privacy() {
         >
           <div className="stack">
             <Notice tone="warning">
-              Esta ação será irreversível quando o backend estiver conectado.
-              Ela não está ativa neste lote.
+              Esta ação é irreversível. Confirme somente se quiser apagar a
+              conta e os dados vinculados.
             </Notice>
             <label className="check-label">
               <input
@@ -536,8 +527,40 @@ export function Privacy() {
                 }
                 onClick={() =>
                   void action.run(async () => {
+                    const client = requireSupabase();
+                    const { data, error } = await client.functions.invoke(
+                      "delete-account",
+                      {
+                        body: {
+                          confirmation: "EXCLUIR",
+                          acknowledge_irreversible: true,
+                          acknowledge_academic_records: true,
+                        },
+                      },
+                    );
+                    if (error)
+                      throw new Error(
+                        "Não foi possível concluir a exclusão. Tente novamente.",
+                      );
+                    if (data?.status !== "completed")
+                      throw new Error(
+                        data?.error ||
+                          "A exclusão ainda não foi concluída. Tente novamente.",
+                      );
+
+                    await clearOffline(auth.id!);
+                    for (const storage of [localStorage, sessionStorage]) {
+                      for (let index = storage.length - 1; index >= 0; index--) {
+                        const key = storage.key(index);
+                        if (key?.includes(auth.id!)) storage.removeItem(key);
+                      }
+                    }
                     setConfirming(false);
-                    setPreviewComplete(true);
+                    await auth.logout().catch(() => {});
+                    navigate("/login", {
+                      replace: true,
+                      state: { accountDeleted: true },
+                    });
                   })
                 }
               >
