@@ -80,7 +80,7 @@ describe("Account deletion interface", () => {
         },
       }),
     );
-    expect(mocks.logout).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(mocks.logout).toHaveBeenCalledTimes(1));
   });
 
   it("blocks the action when the login is older than ten minutes", async () => {
