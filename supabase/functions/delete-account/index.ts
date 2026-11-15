@@ -14,25 +14,38 @@ const USER_STORAGE_BUCKETS = [
   "learning-materials",
 ] as const;
 
+async function listStorageFiles(
+  admin: ReturnType<typeof createClient>,
+  bucket: string,
+  folder: string,
+): Promise<string[]> {
+  const files: string[] = [];
+  for (let offset = 0; ; offset += 100) {
+    const { data, error } = await admin.storage
+      .from(bucket)
+      .list(folder, { limit: 100, offset });
+    if (error) throw new Error(`storage_list_${bucket}`);
+    for (const item of data || []) {
+      const path = `${folder}/${item.name}`;
+      if (item.id) files.push(path);
+      else files.push(...(await listStorageFiles(admin, bucket, path)));
+    }
+    if ((data || []).length < 100) break;
+  }
+  return files;
+}
+
 async function removeUserStorage(
   admin: ReturnType<typeof createClient>,
   userId: string,
 ) {
   for (const bucket of USER_STORAGE_BUCKETS) {
-    while (true) {
-      const { data, error } = await admin.storage
+    const paths = await listStorageFiles(admin, bucket, userId);
+    for (let index = 0; index < paths.length; index += 100) {
+      const { error } = await admin.storage
         .from(bucket)
-        .list(userId, { limit: 100, offset: 0 });
-      if (error) throw new Error(`storage_list_${bucket}`);
-      const paths = (data || [])
-        .filter((item) => item.id)
-        .map((item) => `${userId}/${item.name}`);
-      if (!paths.length) break;
-      const { error: removeError } = await admin.storage
-        .from(bucket)
-        .remove(paths);
-      if (removeError) throw new Error(`storage_remove_${bucket}`);
-      if (paths.length < 100) break;
+        .remove(paths.slice(index, index + 100));
+      if (error) throw new Error(`storage_remove_${bucket}`);
     }
   }
 }
