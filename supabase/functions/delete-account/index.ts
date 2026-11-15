@@ -6,6 +6,37 @@ import {
   validConfirmation,
 } from "../_shared/accountDeletion.ts";
 
+const USER_STORAGE_BUCKETS = [
+  "profile-documents",
+  "avatars",
+  "student-resumes",
+  "portfolio-files",
+  "learning-materials",
+] as const;
+
+async function removeUserStorage(
+  admin: ReturnType<typeof createClient>,
+  userId: string,
+) {
+  for (const bucket of USER_STORAGE_BUCKETS) {
+    while (true) {
+      const { data, error } = await admin.storage
+        .from(bucket)
+        .list(userId, { limit: 100, offset: 0 });
+      if (error) throw new Error(`storage_list_${bucket}`);
+      const paths = (data || [])
+        .filter((item) => item.id)
+        .map((item) => `${userId}/${item.name}`);
+      if (!paths.length) break;
+      const { error: removeError } = await admin.storage
+        .from(bucket)
+        .remove(paths);
+      if (removeError) throw new Error(`storage_remove_${bucket}`);
+      if (paths.length < 100) break;
+    }
+  }
+}
+
 Deno.serve(async (request) => {
   const origin = request.headers.get("Origin") || "";
   const cors: Record<string, string> = {
@@ -95,18 +126,18 @@ Deno.serve(async (request) => {
     if (!requestRow?.request_id)
       return reply({ error: "Não foi possível registrar a solicitação." }, 503);
 
-    // Execution is deliberately gated twice: environment configuration and
-    // the database policy gate. Auth deletion can only happen after the DB
-    // reports that every approved data step completed successfully.
-    if (Deno.env.get("ACCOUNT_DELETION_EXECUTION_ENABLED") !== "true")
+    try {
+      await removeUserStorage(admin, data.user.id);
+    } catch {
       return reply(
         {
           request_id: requestRow.request_id,
-          status: requestRow.request_status,
-          execution_enabled: false,
+          status: "failed",
+          error: "Não foi possível remover os arquivos privados da conta.",
         },
-        202,
+        503,
       );
+    }
 
     const { data: prepared, error: prepareError } = await admin.rpc(
       "prepare_account_deletion",
@@ -123,14 +154,20 @@ Deno.serve(async (request) => {
       );
 
     const preparation = Array.isArray(prepared) ? prepared[0] : prepared;
-    if (!preparation?.ready_for_auth_deletion)
+    if (!preparation?.ready_for_auth_deletion) {
+      const status = preparation?.request_status || "failed";
       return reply(
         {
           request_id: requestRow.request_id,
-          status: preparation?.request_status || "awaiting_policy_review",
+          status,
+          error:
+            status === "failed"
+              ? "Esta conta precisa de análise antes da exclusão automática."
+              : "A exclusão ainda está sendo processada.",
         },
-        202,
+        status === "failed" ? 409 : 202,
       );
+    }
 
     const { error: deleteError } = await admin.auth.admin.deleteUser(
       data.user.id,
