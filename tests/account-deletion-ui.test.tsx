@@ -6,6 +6,7 @@ import { Privacy } from "../src/pages/Settings";
 
 const mocks = vi.hoisted(() => ({
   getSession: vi.fn(),
+  invoke: vi.fn(),
   logout: vi.fn(),
 }));
 
@@ -30,9 +31,14 @@ beforeEach(() => {
     },
     error: null,
   });
+  mocks.invoke.mockResolvedValue({
+    data: { request_id: "request-1", status: "completed" },
+    error: null,
+  });
+  mocks.logout.mockResolvedValue(undefined);
 });
 
-describe("Account deletion interface without destructive backend", () => {
+describe("Account deletion interface", () => {
   it("requires recent authentication and an explicit confirmation phrase", async () => {
     const user = userEvent.setup();
     render(
@@ -62,10 +68,16 @@ describe("Account deletion interface without destructive backend", () => {
     );
     expect(confirm).toBeEnabled();
     await user.click(confirm);
-    expect(
-      await screen.findByText(/Nenhuma solicitação foi enviada/),
-    ).toBeVisible();
-    expect(mocks.logout).not.toHaveBeenCalled();
+    await waitFor(() =>
+      expect(mocks.invoke).toHaveBeenCalledWith("delete-account", {
+        body: {
+          confirmation: "EXCLUIR",
+          acknowledge_irreversible: true,
+          acknowledge_academic_records: true,
+        },
+      }),
+    );
+    expect(mocks.logout).toHaveBeenCalledTimes(1);
   });
 
   it("blocks the action when the login is older than ten minutes", async () => {
