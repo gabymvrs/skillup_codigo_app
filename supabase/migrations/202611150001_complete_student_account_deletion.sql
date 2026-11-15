@@ -13,7 +13,7 @@ security definer
 set search_path = ''
 as $$
 declare
-  target private.account_deletion_requests;
+  target private.account_deletion_requests%rowtype;
   account_role public.app_role;
 begin
   if p_request_id is null or p_user_id is null then
