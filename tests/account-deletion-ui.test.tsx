@@ -20,7 +20,10 @@ vi.mock("../src/state/AuthContext", () => ({
 }));
 
 vi.mock("../src/services/supabase", () => ({
-  requireSupabase: () => ({ auth: { getSession: mocks.getSession } }),
+  requireSupabase: () => ({
+    auth: { getSession: mocks.getSession },
+    functions: { invoke: mocks.invoke },
+  }),
 }));
 
 beforeEach(() => {
