@@ -114,6 +114,7 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       show(`/cadastro/${role}`);
       await user.type(screen.getByLabelText("E-mail:"), "pessoa@example.test");
       await user.type(screen.getByLabelText("Senha:"), "example-pass");
+      await user.click(screen.getByLabelText(/Li e aceito os Termos de Uso/i));
       await user.click(
         screen.getByRole("button", {
           name: role === "estudante" ? /Completar cadastro/i : "Criar acesso",
@@ -124,6 +125,13 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
       ).toBeInTheDocument();
       const request = mocks.api.signUp.mock.calls[0][0];
       expect(request.options.data.requested_role).toBe(role);
+      expect(request.options.data.terms_accepted).toBe(true);
+      expect(request.options.data.terms_version).toBe(
+        "termos-e-privacidade-2026-11-16",
+      );
+      expect(request.options.data.terms_accepted_client_at).toEqual(
+        expect.any(String),
+      );
       expect(request.options.data.role).toBeUndefined();
       expect(request.options.emailRedirectTo).toContain("/auth/callback");
     },
@@ -165,6 +173,7 @@ describe("Auth forms with a mocked Supabase contract (not live authentication)",
     show("/cadastro/estudante");
     await user.type(screen.getByLabelText("E-mail:"), "pessoa@example.test");
     await user.type(screen.getByLabelText("Senha:"), "example-pass");
+    await user.click(screen.getByLabelText(/Li e aceito os Termos de Uso/i));
     await user.click(
       screen.getByRole("button", { name: /Completar cadastro/i }),
     );
