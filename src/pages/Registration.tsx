@@ -22,6 +22,7 @@ import {
   saveRegistration,
   stagedStudentDocument,
   stageStudentDocument,
+  termsVersion,
 } from "../services/registration";
 export function Signup() {
   const { role: input } = useParams();
@@ -34,7 +35,8 @@ function SignupForm({ role }: { role: Role }) {
   const action = useAction(),
     auth = useAuth();
   const [done, setDone] = useState(false),
-    [file, setFile] = useState<File>();
+    [file, setFile] = useState<File>(),
+    [acceptedTerms, setAcceptedTerms] = useState(false);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget,
@@ -46,7 +48,12 @@ function SignupForm({ role }: { role: Role }) {
         password: String(f.get("password")),
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback`,
-          data: { requested_role: role },
+          data: {
+            requested_role: role,
+            terms_accepted: true,
+            terms_version: termsVersion,
+            terms_accepted_client_at: new Date().toISOString(),
+          },
         },
       });
       if (error) throw error;
@@ -61,7 +68,6 @@ function SignupForm({ role }: { role: Role }) {
     <AuthFrame
       description="Complete as informações para concluir o cadastro."
       backTo="/perfis"
-      footer={false}
       variant="signup"
     >
       {done ? (
@@ -130,6 +136,19 @@ function SignupForm({ role }: { role: Role }) {
               </p>
             </>
           )}
+          <div className="responsibility-row">
+            <input
+              id="terms-acceptance"
+              name="terms_accepted"
+              type="checkbox"
+              checked={acceptedTerms}
+              required
+              onChange={(event) => setAcceptedTerms(event.target.checked)}
+            />
+            <label htmlFor="terms-acceptance">
+              Li e aceito os Termos de Uso e a Política de Privacidade.
+            </label>
+          </div>
           <Button type="submit" disabled={!configured || action.busy}>
             {action.busy
               ? "Criando acesso…"
@@ -380,7 +399,12 @@ function DocumentForm() {
                 "Ex.: 60.311.238/0001-98",
                 32,
               )}
-              {field("cnae", "CNAE", "Ex.: 85.13-9-00 — ensino fundamental", 30)}
+              {field(
+                "cnae",
+                "CNAE",
+                "Ex.: 85.13-9-00 — ensino fundamental",
+                30,
+              )}
               {upload(0)}
             </>
           )}
