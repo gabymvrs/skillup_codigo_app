@@ -12,6 +12,7 @@ export const registrationDocuments: Record<Role, string[]> = {
   ],
 };
 export const responsibilityVersion = "cadastro-desenvolvimento-2026-10-20";
+export const termsVersion = "termos-e-privacidade-2026-11-16";
 export const responsibilityText =
   "Declaro que as informações e os documentos enviados são verdadeiros e que tenho autorização para representar a empresa ou atuar como recrutador. Comprometo-me a publicar oportunidades verdadeiras e a utilizar os dados de candidatos somente para os processos seletivos informados. Sei que o envio está sujeito à análise e não concede aprovação ou permissões profissionais automaticamente.";
 export function validateDocument(file: File) {
