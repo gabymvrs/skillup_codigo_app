@@ -80,24 +80,47 @@ export function AuthFrame({
       </div>
       {policy && (
         <Modal title={policy} onClose={() => setPolicy("")}>
-          <p>
-            Esta é uma versão de desenvolvimento do SkillUp. Contas reais usam o
-            Supabase configurado pelo responsável pela implantação.
-          </p>
-          <p>
-            Os documentos definitivos de {policy.toLowerCase()} ainda precisam
-            ser fornecidos pelo responsável. Este aviso não substitui esses
-            documentos.
-          </p>
-          <p>
-            Documentos de cadastro são enviados ao armazenamento privado depois
-            da confirmação do e-mail. A demonstração não recebe documentos
-            pessoais.
-          </p>
-          <p>
-            Materiais offline podem ser removidos na biblioteca. Sair pelas
-            configurações remove as cópias da conta neste dispositivo.
-          </p>
+          {policy === "Termos" ? (
+            <>
+              <p>
+                Ao criar uma conta, você se compromete a fornecer informações
+                verdadeiras, proteger sua senha e usar o SkillUp para fins de
+                aprendizagem, colaboração ou recrutamento legítimo.
+              </p>
+              <p>
+                Não publique conteúdo ilegal, discriminatório, enganoso ou que
+                viole direitos de outras pessoas. O acesso profissional depende
+                da análise dos documentos enviados e não é liberado apenas pelo
+                cadastro.
+              </p>
+            </>
+          ) : policy === "Privacidade" ? (
+            <>
+              <p>
+                O SkillUp usa os dados da conta para autenticação, aprendizagem,
+                comunicação, emissão de certificados e recursos profissionais
+                solicitados por você.
+              </p>
+              <p>
+                Documentos de cadastro ficam em armazenamento privado. Você pode
+                controlar a visibilidade do perfil e solicitar a exclusão da
+                conta nas configurações.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                Publicações, mensagens e projetos devem respeitar outras pessoas
+                e a finalidade educacional da plataforma. Denúncias podem ser
+                analisadas pela instituição responsável.
+              </p>
+              <p>
+                Materiais offline podem ser removidos na biblioteca. Sair pelas
+                configurações remove as cópias da conta deste dispositivo.
+              </p>
+            </>
+          )}
+          <p className="small muted">Versão de 16 de novembro de 2026.</p>
         </Modal>
       )}
     </main>
