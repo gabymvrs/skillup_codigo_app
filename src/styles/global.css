@@ -198,6 +198,55 @@ a svg {
 .skip-link:focus {
   top: 8px;
 }
+.cookie-banner {
+  position: fixed;
+  z-index: 90;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  padding: 20px;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: 0 12px 36px rgb(17 25 71 / 18%);
+}
+.cookie-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.cookie-banner h2 {
+  margin-bottom: 6px;
+  color: var(--secondary);
+  font-size: var(--title);
+  font-weight: 600;
+}
+.cookie-banner p {
+  max-width: 72ch;
+  color: var(--muted);
+}
+.cookie-banner .button {
+  flex: none;
+}
+@media (max-width: 640px) {
+  .cookie-banner {
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    padding: 16px;
+  }
+  .cookie-banner-content {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cookie-banner .button {
+    width: 100%;
+  }
+}
 .muted {
   color: var(--muted);
 }
