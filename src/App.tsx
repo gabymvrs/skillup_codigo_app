@@ -51,6 +51,7 @@ import {
 } from "./pages/Settings";
 import { Messages, Notifications } from "./pages/Messages";
 import { Empty, Notice } from "./components/ui";
+import { CookieBanner } from "./components/CookieBanner";
 function ConnectedLayout() {
   const auth = useAuth();
   return (
@@ -212,6 +213,7 @@ export default function App() {
       <BrowserRouter>
         <AuthProvider>
           <AppRoutes />
+          <CookieBanner />
         </AuthProvider>
       </BrowserRouter>
     </ErrorBoundary>
