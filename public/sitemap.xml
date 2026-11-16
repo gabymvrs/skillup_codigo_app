@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/perfis</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/demonstracao</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/login</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/cadastro/estudante</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/cadastro/docente</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/cadastro/recrutador</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/cadastro/instituicao</loc>
+  </url>
+  <url>
+    <loc>https://skillup-codigo-app.vercel.app/ajuda</loc>
+  </url>
+</urlset>
