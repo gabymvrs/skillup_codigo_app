@@ -2,6 +2,34 @@ import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 
 type TutorInput = { role: "user" | "model"; text: string };
 
+function chooseGeminiModel(
+  models: Array<{ name?: string; supportedGenerationMethods?: string[] }>,
+) {
+  const available = models
+    .filter((model) =>
+      model.supportedGenerationMethods?.includes("generateContent"),
+    )
+    .map((model) => (model.name || "").replace(/^models\//, ""))
+    .filter(
+      (name) =>
+        /^gemini-[\w.-]+-flash(?:-lite)?(?:-[\w.-]+)?$/.test(name) &&
+        !/(image|audio|tts|live)/.test(name),
+    );
+  const preferred = [
+    "gemini-2.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-2.5-flash",
+    "gemini-3-flash-preview",
+    "gemini-2.0-flash-lite",
+  ];
+  return (
+    preferred.find((name) => available.includes(name)) ||
+    available.find((name) => name.includes("flash-lite")) ||
+    available.find((name) => name.includes("flash")) ||
+    ""
+  );
+}
+
 function removePersonalData(text: string) {
   return text
     .replace(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g, "[e-mail removido]")
@@ -123,16 +151,35 @@ Deno.serve(async (request) => {
     if (!apiKey) return reply({ error: "Tutor ainda não configurado." }, 503);
     // Keep the production model controlled by reviewed code. This avoids
     // quotes, whitespace or NAME=value accidentally saved in a secret.
-    const model = "gemini-2.5-flash-lite";
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(geminiPayload(input.messages, input.subject)),
-        signal: AbortSignal.timeout(20000),
-      },
+    let model = "gemini-2.5-flash-lite";
+    const requestBody = JSON.stringify(
+      geminiPayload(input.messages, input.subject),
     );
+    const requestModel = (name: string) =>
+      fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(name)}:generateContent?key=${encodeURIComponent(apiKey)}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: requestBody,
+          signal: AbortSignal.timeout(20000),
+        },
+      );
+    let response = await requestModel(model);
+    if (response.status === 404) {
+      const catalogueResponse = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`,
+        { signal: AbortSignal.timeout(10000) },
+      );
+      if (catalogueResponse.ok) {
+        const catalogue = await catalogueResponse.json();
+        const fallback = chooseGeminiModel(catalogue.models || []);
+        if (fallback && fallback !== model) {
+          model = fallback;
+          response = await requestModel(model);
+        }
+      }
+    }
     if (response.status === 429)
       return reply({ error: "Limite gratuito do Gemini atingido." }, 429);
     if (!response.ok) {

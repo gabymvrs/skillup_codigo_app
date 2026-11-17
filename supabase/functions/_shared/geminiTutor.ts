@@ -1,5 +1,33 @@
 export type TutorInput = { role: "user" | "model"; text: string };
 
+export function chooseGeminiModel(
+  models: Array<{ name?: string; supportedGenerationMethods?: string[] }>,
+) {
+  const available = models
+    .filter((model) =>
+      model.supportedGenerationMethods?.includes("generateContent"),
+    )
+    .map((model) => (model.name || "").replace(/^models\//, ""))
+    .filter(
+      (name) =>
+        /^gemini-[\w.-]+-flash(?:-lite)?(?:-[\w.-]+)?$/.test(name) &&
+        !/(image|audio|tts|live)/.test(name),
+    );
+  const preferred = [
+    "gemini-2.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-2.5-flash",
+    "gemini-3-flash-preview",
+    "gemini-2.0-flash-lite",
+  ];
+  return (
+    preferred.find((name) => available.includes(name)) ||
+    available.find((name) => name.includes("flash-lite")) ||
+    available.find((name) => name.includes("flash")) ||
+    ""
+  );
+}
+
 function removePersonalData(text: string) {
   return text
     .replace(/[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/g, "[e-mail removido]")

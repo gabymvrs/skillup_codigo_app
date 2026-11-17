@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  chooseGeminiModel,
   geminiPayload,
   parseTutorRequest,
 } from "../supabase/functions/_shared/geminiTutor";
@@ -43,5 +44,24 @@ describe("Gemini school tutor", () => {
         JSON.stringify({ messages: [{ role: "model", text: "sem pergunta" }] }),
       ),
     ).toThrow(/última mensagem/i);
+  });
+
+  it("selects an available text Flash model when the initial model is absent", () => {
+    expect(
+      chooseGeminiModel([
+        {
+          name: "models/gemini-3.1-flash-lite-image",
+          supportedGenerationMethods: ["generateContent"],
+        },
+        {
+          name: "models/gemini-3.1-flash-lite",
+          supportedGenerationMethods: ["generateContent"],
+        },
+        {
+          name: "models/gemini-embedding",
+          supportedGenerationMethods: ["embedContent"],
+        },
+      ]),
+    ).toBe("gemini-3.1-flash-lite");
   });
 });
