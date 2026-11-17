@@ -810,6 +810,50 @@ a svg {
   border-color: var(--primary);
   font-weight: 500;
 }
+.learning-subtabs {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  overflow-x: auto;
+}
+.simulation-catalog {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.simulation-catalog > li {
+  display: flex;
+  min-width: 0;
+}
+.simulation-card {
+  width: 100%;
+}
+.simulation-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.simulation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--tertiary-200);
+  color: var(--primary);
+}
+.simulation-card .button {
+  margin-top: auto;
+}
+.simulation-goals {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 24px;
+}
 .help-fab {
   position: fixed;
   bottom: calc(var(--tabbar-height) + 16px + env(safe-area-inset-bottom));
@@ -1787,6 +1831,9 @@ details summary {
   }
   .practice-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .simulation-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .quick-actions {
     grid-template-columns: repeat(4, minmax(0, 1fr));
