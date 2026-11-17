@@ -433,7 +433,7 @@ describe("Final interaction regressions", () => {
     const user = userEvent.setup();
     app();
     await user.click(
-      await screen.findByRole("button", { name: /Laboratório rápido: lógica/ }),
+      await screen.findByRole("button", { name: /Dinâmica rápida: lógica/ }),
     );
     await user.click(screen.getByRole("button", { name: "Editar evento" }));
     const title = screen.getByRole("textbox", { name: "Título" });

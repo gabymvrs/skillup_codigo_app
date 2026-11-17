@@ -184,11 +184,13 @@ describe("Activities selected by pedagogical type", () => {
       screen.getByRole("button", { name: /Organizar a expedição/ }),
     ).toBeEnabled();
   });
-  it("has no independent laboratory section", async () => {
+  it("presents the former laboratory as dynamics", async () => {
     app("/app/aprenda/pratica");
-    await screen.findByRole("heading", { name: "Prática" });
     expect(
-      screen.queryByRole("button", { name: "Laboratório" }),
+      await screen.findByRole("link", { name: "Dinâmica" }),
+    ).toHaveAttribute("href", "/app/aprenda/dinamica");
+    expect(
+      screen.queryByRole("link", { name: "Laboratório" }),
     ).not.toBeInTheDocument();
   });
 });

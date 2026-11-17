@@ -78,9 +78,7 @@ export function LogicExperiment({
     <section
       className="guided-experiment stack"
       aria-label={
-        kind === "approval"
-          ? "Simulador de aprovação"
-          : "Laboratório de condições"
+        kind === "approval" ? "Simulador de aprovação" : "Dinâmica de condições"
       }
     >
       {numeric ? (

@@ -14,7 +14,7 @@ export function SimulationCatalogPage() {
   return (
     <div className="stack simulation-lab">
       <Heading
-        title="Laboratório de simulações"
+        title="Dinâmicas"
         description="Escolha um tema para consultar o objetivo da atividade. As experiências interativas serão liberadas nos próximos lotes."
       />
       <ul className="simulation-catalog" aria-label="Simulações educativas">
@@ -30,7 +30,7 @@ export function SimulationCatalogPage() {
               <h2>{simulation.title}</h2>
               <p>{simulation.description}</p>
               <ActionLink
-                to={`/app/aprenda/laboratorio/${simulation.id}`}
+                to={`/app/aprenda/dinamica/${simulation.id}`}
                 variant="outline"
               >
                 Ver planejamento
@@ -52,18 +52,18 @@ export function SimulationPage() {
       <Empty
         title="Simulação não encontrada"
         action={
-          <ActionLink to="/app/aprenda/laboratorio">Ver catálogo</ActionLink>
+          <ActionLink to="/app/aprenda/dinamica">Ver catálogo</ActionLink>
         }
       >
-        Confira as atividades disponíveis no laboratório.
+        Confira as dinâmicas disponíveis.
       </Empty>
     );
 
   return (
     <div className="stack simulation-lab">
-      <Link className="back-link" to="/app/aprenda/laboratorio">
+      <Link className="back-link" to="/app/aprenda/dinamica">
         <Icon name="arrow" />
-        Laboratório
+        Dinâmicas
       </Link>
       <Heading title={simulation.title} description={simulation.description} />
       <Notice>

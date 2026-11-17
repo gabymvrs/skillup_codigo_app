@@ -60,7 +60,7 @@
       "prompt": "Na busca linear em [8, 3, 6, 1, 9], quantas comparações com elementos são necessárias para concluir que 7 não está presente?",
       "options": ["1", "4", "5", "7"],
       "explanation": "Sem ordenação e sem encontrar o alvo, todos os cinco elementos precisam ser comparados.",
-      "category": "Laboratório",
+      "category": "Dinâmica",
       "kind": "choice",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 50
@@ -71,7 +71,7 @@
       "prompt": "Uma busca linear retorna assim que encontra o alvo. Para [4, 2, 4, 9] e alvo 4, qual índice, contando a partir de zero, será retornado?",
       "options": ["0", "2", "4", "3"],
       "explanation": "O alvo já está no primeiro elemento, índice zero; a busca termina antes da segunda ocorrência.",
-      "category": "Laboratório",
+      "category": "Dinâmica",
       "kind": "choice",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 50
@@ -87,7 +87,7 @@
         "Lista de 3 números repetidos"
       ],
       "explanation": "Na lista vazia não existe índice zero. A função precisa tratar esse caso antes de acessar o primeiro item.",
-      "category": "Laboratório",
+      "category": "Dinâmica",
       "kind": "choice",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 50
@@ -103,7 +103,7 @@
         "Comparar apenas o último item"
       ],
       "explanation": "Encerrar no primeiro acerto é suficiente para verificar existência e evita as comparações restantes.",
-      "category": "Laboratório",
+      "category": "Dinâmica",
       "kind": "choice",
       "subject_id": "00000000-0000-4000-8000-000000000014",
       "xp": 50
@@ -467,8 +467,8 @@
     },
     {
       "id": "laboratorio",
-      "title": "Laboratório de busca e depuração",
-      "category": "Laboratório",
+      "title": "Dinâmica de busca e depuração",
+      "category": "Dinâmica",
       "questionIds": [
         "00000000-0000-4000-8000-000000000402",
         "00000000-0000-4000-8000-000000010004",

@@ -223,7 +223,7 @@ function StudentHome() {
             <h2>Plano de estudo</h2>
             <p>
               Nos dias corridos, estude por 15 minutos com exercícios e
-              laboratórios.
+              dinâmicas.
             </p>
             <Button
               variant="outline"
@@ -341,7 +341,8 @@ function TeacherHome() {
                 <strong>{c.title}</strong>
                 <p>
                   {data.enrollments.filter((e) => e.class_id === c.id).length}{" "}
-                  {data.enrollments.filter((e) => e.class_id === c.id).length === 1
+                  {data.enrollments.filter((e) => e.class_id === c.id)
+                    .length === 1
                     ? "estudante"
                     : "estudantes"}
                 </p>
@@ -499,7 +500,9 @@ function InstitutionHome() {
             label="Atividades corrigidas"
           />
           <p className="small muted">
-            Calculado sobre {submitted.length} {submitted.length === 1 ? "envio" : "envios"} visíveis. Ainda não há integração de frequência.
+            Calculado sobre {submitted.length}{" "}
+            {submitted.length === 1 ? "envio" : "envios"} visíveis. Ainda não há
+            integração de frequência.
           </p>
           <ActionLink to="/app/relatorios" variant="outline">
             Ver relatório
@@ -507,7 +510,10 @@ function InstitutionHome() {
         </Card>
         <Card className="dark">
           <span className="eyebrow">Status de certificação</span>
-          <h2>{data.certificates.length} {data.certificates.length === 1 ? "comprovante" : "comprovantes"}</h2>
+          <h2>
+            {data.certificates.length}{" "}
+            {data.certificates.length === 1 ? "comprovante" : "comprovantes"}
+          </h2>
           <p>Registros internos de conclusão emitidos pela instituição.</p>
           <ActionLink to="/app/certificados" variant="outline">
             Revisar certificações

@@ -136,7 +136,12 @@ export function AppRoutes() {
               element={<MaterialReader />}
             />
             <Route path="pratica" element={<PracticeRoute />} />
-            <Route path="laboratorio" element={<SimulationCatalogPage />} />
+            <Route path="dinamica" element={<SimulationCatalogPage />} />
+            <Route path="dinamica/:simulationId" element={<SimulationPage />} />
+            <Route
+              path="laboratorio"
+              element={<Navigate to="../dinamica" replace />}
+            />
             <Route
               path="laboratorio/:simulationId"
               element={<SimulationPage />}

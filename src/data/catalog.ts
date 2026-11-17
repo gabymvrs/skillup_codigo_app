@@ -172,7 +172,7 @@ export const questions: Question[] = [
     ],
     explanation:
       "A busca linear percorre a lista e funciona sem exigir ordenação.",
-    category: "Laboratório",
+    category: "Dinâmica",
     xp: 150,
   },
   {

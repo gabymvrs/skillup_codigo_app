@@ -279,7 +279,7 @@ export function createDemo(): Dataset {
       id: id(900),
       user_id: id(1),
       class_id: null,
-      title: "Laboratório rápido: lógica",
+      title: "Dinâmica rápida: lógica",
       description: "Revise condições e faça um exercício.",
       starts_at: new Date(new Date().setHours(18, 0, 0, 0)).toISOString(),
       duration_minutes: 15,

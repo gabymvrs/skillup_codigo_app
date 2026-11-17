@@ -8,16 +8,16 @@ import {
 } from "../src/features/simulations/SimulationLab";
 import { simulationCatalog } from "../src/features/simulations/catalog";
 
-function laboratory(path = "/app/aprenda/laboratorio") {
+function laboratory(path = "/app/aprenda/dinamica") {
   return render(
     <MemoryRouter initialEntries={[path]}>
       <Routes>
         <Route
-          path="/app/aprenda/laboratorio"
+          path="/app/aprenda/dinamica"
           element={<SimulationCatalogPage />}
         />
         <Route
-          path="/app/aprenda/laboratorio/:simulationId"
+          path="/app/aprenda/dinamica/:simulationId"
           element={<SimulationPage />}
         />
       </Routes>
@@ -44,7 +44,7 @@ describe("Simulation laboratory architecture", () => {
         within(card as HTMLElement).getByRole("link", {
           name: "Ver planejamento",
         }),
-      ).toHaveAttribute("href", `/app/aprenda/laboratorio/${simulation.id}`);
+      ).toHaveAttribute("href", `/app/aprenda/dinamica/${simulation.id}`);
     }
     expect(new Set(simulationCatalog.map(({ id }) => id)).size).toBe(4);
   });
@@ -72,13 +72,13 @@ describe("Simulation laboratory architecture", () => {
   });
 
   it("handles an unknown simulation without breaking navigation", () => {
-    laboratory("/app/aprenda/laboratorio/desconhecida");
+    laboratory("/app/aprenda/dinamica/desconhecida");
     expect(
       screen.getByRole("heading", { name: "Simulação não encontrada" }),
     ).toBeVisible();
     expect(screen.getByRole("link", { name: "Ver catálogo" })).toHaveAttribute(
       "href",
-      "/app/aprenda/laboratorio",
+      "/app/aprenda/dinamica",
     );
   });
 });
