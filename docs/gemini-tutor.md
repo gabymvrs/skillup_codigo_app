@@ -9,7 +9,6 @@ O tutor usa a Edge Function `ai-tutor`. A chave do Google nunca é enviada ao na
 
    ```sh
    supabase secrets set GEMINI_API_KEY="SUA_CHAVE"
-   supabase secrets set GEMINI_MODEL="gemini-2.5-flash-lite"
    supabase secrets set ALLOWED_ORIGINS="https://skillup-codigo-app.vercel.app"
    ```
 
@@ -28,6 +27,7 @@ Para desenvolvimento local, acrescente a origem local a `ALLOWED_ORIGINS`, separ
 
 ## Limites e acompanhamento
 
+- Modelo: `gemini-2.5-flash-lite`, definido no código revisado da função.
 - Limite interno: 10 solicitações por minuto e 100 por dia por estudante.
 - Histórico enviado ao Gemini: no máximo quatro mensagens, com até 2.000 caracteres cada.
 - Resposta normal: até 250 tokens; pedidos explícitos de aprofundamento: até 500 tokens.

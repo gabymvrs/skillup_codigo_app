@@ -121,7 +121,9 @@ Deno.serve(async (request) => {
 
     const apiKey = Deno.env.get("GEMINI_API_KEY");
     if (!apiKey) return reply({ error: "Tutor ainda não configurado." }, 503);
-    const model = Deno.env.get("GEMINI_MODEL") || "gemini-2.5-flash-lite";
+    // Keep the production model controlled by reviewed code. This avoids
+    // quotes, whitespace or NAME=value accidentally saved in a secret.
+    const model = "gemini-2.5-flash-lite";
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
       {
