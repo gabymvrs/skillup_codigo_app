@@ -16,6 +16,10 @@ import {
   type PracticeSet,
 } from "../components/PracticeSession";
 import { practiceSets } from "../data/catalog";
+import {
+  simulationCatalog,
+  type SimulationCatalogItem,
+} from "../features/simulations/catalog";
 import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
@@ -357,7 +361,8 @@ export function Practice() {
       }
     }),
     [open, setOpen] = useState<string | null>(null),
-    [session, setSession] = useState<PracticeSet | null>(null);
+    [session, setSession] = useState<PracticeSet | null>(null),
+    [simulation, setSimulation] = useState<SimulationCatalogItem | null>(null);
   const sets: PracticeSet[] =
     type === "Prática guiada"
       ? data.subjects.map((s) => ({
@@ -440,80 +445,104 @@ export function Practice() {
           {type}
         </SectionTitle>
       )}
-      {type && <section className="stack" aria-label="Filtros da prática">
-        <h2>Filtros da prática</h2>
-        <div className="practice-filters">
-          <label>
-            Disciplina
-            <select
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-                setType((t) => t || "Prática guiada");
-              }}
-            >
-              <option value="">Todas as matérias</option>
-              {data.subjects.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Formato de exercício
-            <select
-              value={format}
-              onChange={(e) => {
-                setFormat(e.target.value);
-                setType((t) => t || "Prática guiada");
-              }}
-            >
-              <option value="">Todos os formatos</option>
-              {Object.entries({
-                choice: "Múltipla escolha",
-                true_false: "Verdadeiro ou falso",
-                blank: "Completar lacunas",
-                matching: "Relacionar colunas",
-                ordering: "Ordenação",
-                challenge: "Desafios práticos",
-              }).map(([v, l]) => (
-                <option key={v} value={v}>
-                  {l}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Dificuldade
-            <select
-              value={difficulty}
-              onChange={(e) => {
-                setDifficulty(e.target.value);
-                setType((t) => t || "Prática guiada");
-              }}
-            >
-              <option value="">Todas</option>
-              <option value="advanced">Avançado (exames)</option>
-              <option value="unknown">Não informada</option>
-            </select>
-          </label>
-          <label>
-            Status do bloco
-            <select
-              value={status}
-              onChange={(e) => {
-                setStatus(e.target.value);
-                setType((t) => t || "Prática guiada");
-              }}
-            >
-              <option value="">Todos</option>
-              <option value="done">Concluído</option>
-              <option value="pending">Não concluído</option>
-            </select>
-          </label>
-        </div>
-      </section>}
+      {type === "Dinâmica" && (
+        <section className="stack" aria-labelledby="dynamic-catalog-title">
+          <h2 id="dynamic-catalog-title">Dinâmicas interativas</h2>
+          <div className="two-columns">
+            {simulationCatalog.map((item) => (
+              <Card key={item.id} className="simulation-card">
+                <div className="simulation-card-heading">
+                  <span className="simulation-icon" aria-hidden="true">
+                    <Icon name={item.icon} size={28} />
+                  </span>
+                  <Badge>{item.subject}</Badge>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <Button variant="outline" onClick={() => setSimulation(item)}>
+                  Ver planejamento
+                </Button>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+      {type && (
+        <section className="stack" aria-label="Filtros da prática">
+          <h2>Filtros da prática</h2>
+          <div className="practice-filters">
+            <label>
+              Disciplina
+              <select
+                value={subject}
+                onChange={(e) => {
+                  setSubject(e.target.value);
+                  setType((t) => t || "Prática guiada");
+                }}
+              >
+                <option value="">Todas as matérias</option>
+                {data.subjects.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Formato de exercício
+              <select
+                value={format}
+                onChange={(e) => {
+                  setFormat(e.target.value);
+                  setType((t) => t || "Prática guiada");
+                }}
+              >
+                <option value="">Todos os formatos</option>
+                {Object.entries({
+                  choice: "Múltipla escolha",
+                  true_false: "Verdadeiro ou falso",
+                  blank: "Completar lacunas",
+                  matching: "Relacionar colunas",
+                  ordering: "Ordenação",
+                  challenge: "Desafios práticos",
+                }).map(([v, l]) => (
+                  <option key={v} value={v}>
+                    {l}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Dificuldade
+              <select
+                value={difficulty}
+                onChange={(e) => {
+                  setDifficulty(e.target.value);
+                  setType((t) => t || "Prática guiada");
+                }}
+              >
+                <option value="">Todas</option>
+                <option value="advanced">Avançado (exames)</option>
+                <option value="unknown">Não informada</option>
+              </select>
+            </label>
+            <label>
+              Status do bloco
+              <select
+                value={status}
+                onChange={(e) => {
+                  setStatus(e.target.value);
+                  setType((t) => t || "Prática guiada");
+                }}
+              >
+                <option value="">Todos</option>
+                <option value="done">Concluído</option>
+                <option value="pending">Não concluído</option>
+              </select>
+            </label>
+          </div>
+        </section>
+      )}
       {!type ? (
         <Card className="challenge">
           <Badge>Desafio do dia</Badge>
@@ -586,65 +615,89 @@ export function Practice() {
           )}
         </>
       )}
-      {!type && <><div className="section-heading practice-history-heading">
-        <h2>Histórico de prática</h2>
-        <button
-          type="button"
-          className={`icon-button practice-history-toggle ${historyExpanded ? "expanded" : ""}`}
-          aria-label={`${historyExpanded ? "Recolher" : "Expandir"} histórico de prática`}
-          aria-expanded={historyExpanded}
-          aria-controls="practice-history"
-          onClick={() =>
-            setHistoryExpanded((expanded) => {
-              const next = !expanded;
-              try {
-                localStorage.setItem(
-                  historyPreferenceKey,
-                  next ? "expanded" : "collapsed",
-                );
-              } catch {
-                // The preference is optional when browser storage is blocked.
+      {!type && (
+        <>
+          <div className="section-heading practice-history-heading">
+            <h2>Histórico de prática</h2>
+            <button
+              type="button"
+              className={`icon-button practice-history-toggle ${historyExpanded ? "expanded" : ""}`}
+              aria-label={`${historyExpanded ? "Recolher" : "Expandir"} histórico de prática`}
+              aria-expanded={historyExpanded}
+              aria-controls="practice-history"
+              onClick={() =>
+                setHistoryExpanded((expanded) => {
+                  const next = !expanded;
+                  try {
+                    localStorage.setItem(
+                      historyPreferenceKey,
+                      next ? "expanded" : "collapsed",
+                    );
+                  } catch {
+                    // The preference is optional when browser storage is blocked.
+                  }
+                  return next;
+                })
               }
-              return next;
-            })
-          }
-        >
-          <Icon name="chevron" size={18} />
-        </button>
-      </div>
-      <div id="practice-history" hidden={!historyExpanded}>
-        <Card>
-          {attempts.length ? (
-            attempts
-              .slice(-10)
-              .reverse()
-              .map((a) => (
-                <div className="list-row" key={a.id}>
-                  <div>
-                    <strong>
-                      {data.questions.find((q) => q.id === a.question_id)?.title}
-                    </strong>
-                    <small>{dateLabel(a.created_at)}</small>
-                  </div>
-                  <Badge tone={a.correct ? "success" : ""}>
-                    {a.correct ? "Correta" : "Revisar"} · {a.xp} XP
-                  </Badge>
-                </div>
-              ))
-          ) : (
-            <Empty title="Seu primeiro desafio está esperando">
-              Escolha uma ação rápida para começar.
-            </Empty>
-          )}
-        </Card>
-      </div>
-      </>}
+            >
+              <Icon name="chevron" size={18} />
+            </button>
+          </div>
+          <div id="practice-history" hidden={!historyExpanded}>
+            <Card>
+              {attempts.length ? (
+                attempts
+                  .slice(-10)
+                  .reverse()
+                  .map((a) => (
+                    <div className="list-row" key={a.id}>
+                      <div>
+                        <strong>
+                          {
+                            data.questions.find((q) => q.id === a.question_id)
+                              ?.title
+                          }
+                        </strong>
+                        <small>{dateLabel(a.created_at)}</small>
+                      </div>
+                      <Badge tone={a.correct ? "success" : ""}>
+                        {a.correct ? "Correta" : "Revisar"} · {a.xp} XP
+                      </Badge>
+                    </div>
+                  ))
+              ) : (
+                <Empty title="Seu primeiro desafio está esperando">
+                  Escolha uma ação rápida para começar.
+                </Empty>
+              )}
+            </Card>
+          </div>
+        </>
+      )}
       {session && (
         <PracticeSession
           key={session.id}
           set={session}
           onClose={() => setSession(null)}
         />
+      )}
+      {simulation && (
+        <Modal title={simulation.title} onClose={() => setSimulation(null)}>
+          <div className="stack">
+            <Badge>{simulation.subject}</Badge>
+            <p>{simulation.description}</p>
+            <h3>O que você vai aprender</h3>
+            <ul className="simulation-goals">
+              {simulation.learningGoals.map((goal) => (
+                <li key={goal}>{goal}</li>
+              ))}
+            </ul>
+            <Notice>
+              Esta dinâmica está planejada para o Lote{" "}
+              {simulation.implementationBatch}.
+            </Notice>
+          </div>
+        </Modal>
       )}
       {open && (
         <QuestionDialog questionId={open} onClose={() => setOpen(null)} />

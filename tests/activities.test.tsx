@@ -191,6 +191,27 @@ describe("Activities selected by pedagogical type", () => {
     await user.click(dynamics);
     expect(screen.getByRole("heading", { name: "Dinâmica" })).toBeVisible();
     expect(
+      screen.getByRole("heading", { name: "Dinâmicas interativas" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Portas lógicas" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Sistema Solar" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Célula animal" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Circuito elétrico" }),
+    ).toBeVisible();
+    await user.click(
+      screen.getAllByRole("button", { name: "Ver planejamento" })[0],
+    );
+    expect(screen.getByRole("dialog")).toHaveTextContent(
+      "Distinguir as regras das portas AND, OR e NOT",
+    );
+    expect(
       screen.getByRole("region", { name: "Filtros da prática" }),
     ).toBeVisible();
     expect(screen.queryByRole("link", { name: "Dinâmica" })).toBeNull();
