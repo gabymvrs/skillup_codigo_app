@@ -412,10 +412,14 @@ export function LearnLayout() {
   return (
     <>
       {(role === "estudante" || role === "docente") && (
-        <nav className="subtabs" aria-label="Seções de aprendizagem">
+        <nav
+          className="subtabs learning-subtabs"
+          aria-label="Seções de aprendizagem"
+        >
           {[
             ["material", "Material"],
             ["pratica", "Prática"],
+            ["laboratorio", "Laboratório"],
             ["trilhas", "Trilhas"],
             ["suporte", "Suporte"],
           ].map(([path, label]) => (
