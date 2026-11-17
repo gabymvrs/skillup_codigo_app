@@ -52,6 +52,10 @@ import {
 import { Messages, Notifications } from "./pages/Messages";
 import { Empty, Notice } from "./components/ui";
 import { CookieBanner } from "./components/CookieBanner";
+import {
+  SimulationCatalogPage,
+  SimulationPage,
+} from "./features/simulations/SimulationLab";
 function ConnectedLayout() {
   const auth = useAuth();
   return (
@@ -132,6 +136,11 @@ export function AppRoutes() {
               element={<MaterialReader />}
             />
             <Route path="pratica" element={<PracticeRoute />} />
+            <Route path="laboratorio" element={<SimulationCatalogPage />} />
+            <Route
+              path="laboratorio/:simulationId"
+              element={<SimulationPage />}
+            />
             <Route path="trilhas" element={<Tracks />} />
             <Route path="trilhas/:trackId" element={<TrackDetail />} />
             <Route path="suporte" element={<AcademicSupport />} />
