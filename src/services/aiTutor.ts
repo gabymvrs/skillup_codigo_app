@@ -7,10 +7,64 @@ export interface TutorMessage {
   text: string;
 }
 
+export interface TutorUsage {
+  minuteUsed: number;
+  minuteLimit: number;
+  dailyUsed: number;
+  dailyLimit: number;
+  promptTokens?: number;
+  outputTokens?: number;
+  totalTokens?: number;
+}
+
+export interface TutorAnswer {
+  answer: string;
+  usage: TutorUsage;
+}
+
+const emptyUsage = (): TutorUsage => ({
+  minuteUsed: 0,
+  minuteLimit: 10,
+  dailyUsed: 0,
+  dailyLimit: 100,
+});
+
+export async function loadTutorHistory(): Promise<TutorMessage[]> {
+  const { data, error } = await requireSupabase()
+    .from("ai_tutor_messages")
+    .select("role,content")
+    .order("created_at", { ascending: false })
+    .limit(50);
+  if (error) throw error;
+  return [...(data || [])].reverse().map((item) => ({
+    role: item.role as TutorMessage["role"],
+    text: item.content,
+  }));
+}
+
+export async function clearTutorHistory() {
+  const { error } = await requireSupabase()
+    .from("ai_tutor_messages")
+    .delete()
+    .gte("id", 0);
+  if (error) throw error;
+}
+
+export async function loadTutorUsage(): Promise<TutorUsage> {
+  const { data, error } = await requireSupabase().rpc("get_ai_tutor_usage");
+  if (error) throw error;
+  const usage = data as { minute_used?: number; daily_used?: number } | null;
+  return {
+    ...emptyUsage(),
+    minuteUsed: usage?.minute_used || 0,
+    dailyUsed: usage?.daily_used || 0,
+  };
+}
+
 export async function askTutor(
   messages: TutorMessage[],
   subject?: string,
-): Promise<string> {
+): Promise<TutorAnswer> {
   const recent = messages
     .filter((message) => message.text.trim())
     .slice(-4)
@@ -47,5 +101,11 @@ export async function askTutor(
     throw new Error(
       "O tutor não conseguiu preparar uma resposta. Tente reformular a pergunta.",
     );
-  return data.answer.trim();
+  return {
+    answer: data.answer.trim(),
+    usage: {
+      ...emptyUsage(),
+      ...(data.usage || {}),
+    },
+  };
 }

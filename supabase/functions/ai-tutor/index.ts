@@ -143,12 +143,28 @@ Deno.serve(async (request) => {
     if (authError || !authData.user)
       return reply({ error: "Sessão inválida. Entre novamente." }, 401);
     const input = parseTutorRequest(await request.text());
-    const { data: allowedRequest, error: limitError } = await client.rpc(
+    const { data: quota, error: limitError } = await client.rpc(
       "consume_ai_tutor_quota",
     );
     if (limitError) return reply({ error: "Sessão sem acesso ao tutor." }, 403);
-    if (!allowedRequest)
-      return reply({ error: "Limite gratuito temporariamente atingido." }, 429);
+    const usage = quota as {
+      allowed?: boolean;
+      minute_used?: number;
+      daily_used?: number;
+    } | null;
+    if (!usage?.allowed)
+      return reply(
+        {
+          error: "Limite gratuito temporariamente atingido.",
+          usage: {
+            minuteUsed: usage?.minute_used || 0,
+            minuteLimit: 10,
+            dailyUsed: usage?.daily_used || 0,
+            dailyLimit: 100,
+          },
+        },
+        429,
+      );
 
     const apiKey = Deno.env.get("GEMINI_API_KEY");
     if (!apiKey) return reply({ error: "Tutor ainda não configurado." }, 503);
@@ -213,19 +229,51 @@ Deno.serve(async (request) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
       { auth: { persistSession: false } },
     );
+    const promptTokens = Math.max(
+      0,
+      Number(result.usageMetadata?.promptTokenCount) || 0,
+    );
+    const outputTokens = Math.max(
+      0,
+      Number(result.usageMetadata?.candidatesTokenCount) || 0,
+    );
     await admin.from("ai_tutor_metrics").insert({
       user_id: authData.user.id,
       model,
-      prompt_tokens: Math.max(
-        0,
-        Number(result.usageMetadata?.promptTokenCount) || 0,
-      ),
-      output_tokens: Math.max(
-        0,
-        Number(result.usageMetadata?.candidatesTokenCount) || 0,
-      ),
+      prompt_tokens: promptTokens,
+      output_tokens: outputTokens,
     });
-    return reply({ answer });
+    const question = input.messages.at(-1)?.text || "";
+    const { error: historyError } = await admin
+      .from("ai_tutor_messages")
+      .insert([
+        {
+          user_id: authData.user.id,
+          role: "user",
+          content: question,
+          subject: input.subject,
+        },
+        {
+          user_id: authData.user.id,
+          role: "model",
+          content: answer,
+          subject: input.subject,
+        },
+      ]);
+    if (historyError)
+      console.error("Tutor history save failed", { code: historyError.code });
+    return reply({
+      answer,
+      usage: {
+        minuteUsed: usage.minute_used || 0,
+        minuteLimit: 10,
+        dailyUsed: usage.daily_used || 0,
+        dailyLimit: 100,
+        promptTokens,
+        outputTokens,
+        totalTokens: promptTokens + outputTokens,
+      },
+    });
   } catch (error) {
     return reply(
       {

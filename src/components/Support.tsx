@@ -14,7 +14,11 @@ import { copyText, matches, uid } from "../lib/utils";
 import {
   aiTutorEnabled,
   askTutor,
+  clearTutorHistory,
+  loadTutorHistory,
+  loadTutorUsage,
   type TutorMessage,
+  type TutorUsage,
 } from "../services/aiTutor";
 import {
   ActionFeedback,
@@ -95,6 +99,13 @@ export function SupportContent({
     [copyFallback, setCopyFallback] = useState(false),
     [recorded, setRecorded] = useState(false),
     [tutorMessages, setTutorMessages] = useState<TutorMessage[]>([]),
+    [tutorUsage, setTutorUsage] = useState<TutorUsage>({
+      minuteUsed: 0,
+      minuteLimit: 10,
+      dailyUsed: 0,
+      dailyLimit: 100,
+    }),
+    [tutorHistoryLoading, setTutorHistoryLoading] = useState(false),
     [tutorBusy, setTutorBusy] = useState(false),
     [tutorError, setTutorError] = useState("");
   const action = useAction(),
@@ -156,6 +167,27 @@ export function SupportContent({
   useEffect(() => {
     if (log.current) log.current.scrollTop = log.current.scrollHeight;
   }, [tutorMessages, tutorBusy]);
+  useEffect(() => {
+    if (!useAutomaticTutor || !auth.id) return;
+    let active = true;
+    setTutorHistoryLoading(true);
+    Promise.all([loadTutorHistory(), loadTutorUsage()])
+      .then(([history, usage]) => {
+        if (!active) return;
+        setTutorMessages(history);
+        setTutorUsage(usage);
+      })
+      .catch(() => {
+        if (active)
+          setTutorError("Não foi possível carregar a conversa salva.");
+      })
+      .finally(() => {
+        if (active) setTutorHistoryLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [auth.id, useAutomaticTutor]);
   function send(text: string) {
     replaceConversation(advance(state, text));
     setMessage("");
@@ -169,11 +201,12 @@ export function SupportContent({
     setTutorError("");
     setTutorBusy(true);
     try {
-      const answer = await askTutor(next, academicContext);
+      const result = await askTutor(next, academicContext);
       setTutorMessages((current) => [
         ...current,
-        { role: "model", text: answer },
+        { role: "model", text: result.answer },
       ]);
+      setTutorUsage(result.usage);
     } catch (error) {
       setTutorError(
         error instanceof Error
@@ -277,14 +310,29 @@ export function SupportContent({
                 </span>
                 <Button
                   variant="ghost"
-                  disabled={tutorBusy}
+                  disabled={tutorBusy || tutorHistoryLoading}
                   onClick={() => {
-                    setTutorMessages([]);
-                    setTutorError("");
+                    void clearTutorHistory()
+                      .then(() => {
+                        setTutorMessages([]);
+                        setTutorError("");
+                      })
+                      .catch(() =>
+                        setTutorError(
+                          "Não foi possível limpar a conversa salva.",
+                        ),
+                      );
                   }}
                 >
-                  Reiniciar
+                  Limpar conversa
                 </Button>
+              </div>
+              <div className="small muted" aria-live="polite">
+                Hoje: {tutorUsage.dailyUsed}/{tutorUsage.dailyLimit} perguntas ·
+                Minuto: {tutorUsage.minuteUsed}/{tutorUsage.minuteLimit}
+                {tutorUsage.totalTokens !== undefined
+                  ? ` · Última resposta: ${tutorUsage.totalTokens} tokens`
+                  : ""}
               </div>
               <div
                 className="chat-log"
@@ -293,11 +341,17 @@ export function SupportContent({
                 aria-label="Conversa com o tutor"
                 ref={log}
               >
-                {!tutorMessages.length && (
-                  <div className="chat-message bot">
-                    <span className="sr-only">Tutor:</span>
-                    Olá! Qual conteúdo escolar você gostaria de entender?
+                {tutorHistoryLoading ? (
+                  <div className="chat-message bot" role="status">
+                    Carregando conversa salva…
                   </div>
+                ) : (
+                  !tutorMessages.length && (
+                    <div className="chat-message bot">
+                      <span className="sr-only">Tutor:</span>
+                      Olá! Qual conteúdo escolar você gostaria de entender?
+                    </div>
+                  )
                 )}
                 {tutorMessages.map((item, index) => (
                   <div
