@@ -64,4 +64,22 @@ describe("Gemini school tutor", () => {
       ]),
     ).toBe("gemini-3.1-flash-lite");
   });
+
+  it("does not retry a model that already returned 404", () => {
+    expect(
+      chooseGeminiModel(
+        [
+          {
+            name: "models/gemini-2.5-flash-lite",
+            supportedGenerationMethods: ["generateContent"],
+          },
+          {
+            name: "models/gemini-3.1-flash-lite",
+            supportedGenerationMethods: ["generateContent"],
+          },
+        ],
+        ["gemini-2.5-flash-lite"],
+      ),
+    ).toBe("gemini-3.1-flash-lite");
+  });
 });

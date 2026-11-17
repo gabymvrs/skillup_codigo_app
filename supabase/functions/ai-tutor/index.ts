@@ -4,7 +4,9 @@ type TutorInput = { role: "user" | "model"; text: string };
 
 function chooseGeminiModel(
   models: Array<{ name?: string; supportedGenerationMethods?: string[] }>,
+  excludedModels: string[] = [],
 ) {
+  const excluded = new Set(excludedModels);
   const available = models
     .filter((model) =>
       model.supportedGenerationMethods?.includes("generateContent"),
@@ -13,7 +15,8 @@ function chooseGeminiModel(
     .filter(
       (name) =>
         /^gemini-[\w.-]+-flash(?:-lite)?(?:-[\w.-]+)?$/.test(name) &&
-        !/(image|audio|tts|live)/.test(name),
+        !/(image|audio|tts|live)/.test(name) &&
+        !excluded.has(name),
     );
   const preferred = [
     "gemini-2.5-flash-lite",
@@ -173,7 +176,7 @@ Deno.serve(async (request) => {
       );
       if (catalogueResponse.ok) {
         const catalogue = await catalogueResponse.json();
-        const fallback = chooseGeminiModel(catalogue.models || []);
+        const fallback = chooseGeminiModel(catalogue.models || [], [model]);
         if (fallback && fallback !== model) {
           model = fallback;
           response = await requestModel(model);

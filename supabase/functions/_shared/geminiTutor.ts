@@ -2,7 +2,9 @@ export type TutorInput = { role: "user" | "model"; text: string };
 
 export function chooseGeminiModel(
   models: Array<{ name?: string; supportedGenerationMethods?: string[] }>,
+  excludedModels: string[] = [],
 ) {
+  const excluded = new Set(excludedModels);
   const available = models
     .filter((model) =>
       model.supportedGenerationMethods?.includes("generateContent"),
@@ -11,7 +13,8 @@ export function chooseGeminiModel(
     .filter(
       (name) =>
         /^gemini-[\w.-]+-flash(?:-lite)?(?:-[\w.-]+)?$/.test(name) &&
-        !/(image|audio|tts|live)/.test(name),
+        !/(image|audio|tts|live)/.test(name) &&
+        !excluded.has(name),
     );
   const preferred = [
     "gemini-2.5-flash-lite",
