@@ -184,11 +184,16 @@ describe("Activities selected by pedagogical type", () => {
       screen.getByRole("button", { name: /Organizar a expedição/ }),
     ).toBeEnabled();
   });
-  it("presents the former laboratory as dynamics", async () => {
+  it("presents dynamics as a practice card instead of a separate section", async () => {
+    const user = userEvent.setup();
     app("/app/aprenda/pratica");
+    const dynamics = await screen.findByRole("button", { name: "Dinâmica" });
+    await user.click(dynamics);
+    expect(screen.getByRole("heading", { name: "Dinâmica" })).toBeVisible();
     expect(
-      await screen.findByRole("link", { name: "Dinâmica" }),
-    ).toHaveAttribute("href", "/app/aprenda/dinamica");
+      screen.getByRole("region", { name: "Filtros da prática" }),
+    ).toBeVisible();
+    expect(screen.queryByRole("link", { name: "Dinâmica" })).toBeNull();
     expect(
       screen.queryByRole("link", { name: "Laboratório" }),
     ).not.toBeInTheDocument();

@@ -419,7 +419,6 @@ export function LearnLayout() {
           {[
             ["material", "Material"],
             ["pratica", "Prática"],
-            ["dinamica", "Dinâmica"],
             ["trilhas", "Trilhas"],
             ["suporte", "Suporte"],
           ].map(([path, label]) => (

@@ -52,10 +52,6 @@ import {
 import { Messages, Notifications } from "./pages/Messages";
 import { Empty, Notice } from "./components/ui";
 import { CookieBanner } from "./components/CookieBanner";
-import {
-  SimulationCatalogPage,
-  SimulationPage,
-} from "./features/simulations/SimulationLab";
 function ConnectedLayout() {
   const auth = useAuth();
   return (
@@ -136,15 +132,21 @@ export function AppRoutes() {
               element={<MaterialReader />}
             />
             <Route path="pratica" element={<PracticeRoute />} />
-            <Route path="dinamica" element={<SimulationCatalogPage />} />
-            <Route path="dinamica/:simulationId" element={<SimulationPage />} />
+            <Route
+              path="dinamica"
+              element={<Navigate to="/app/aprenda/pratica" replace />}
+            />
+            <Route
+              path="dinamica/:simulationId"
+              element={<Navigate to="/app/aprenda/pratica" replace />}
+            />
             <Route
               path="laboratorio"
-              element={<Navigate to="../dinamica" replace />}
+              element={<Navigate to="/app/aprenda/pratica" replace />}
             />
             <Route
               path="laboratorio/:simulationId"
-              element={<SimulationPage />}
+              element={<Navigate to="/app/aprenda/pratica" replace />}
             />
             <Route path="trilhas" element={<Tracks />} />
             <Route path="trilhas/:trackId" element={<TrackDetail />} />
