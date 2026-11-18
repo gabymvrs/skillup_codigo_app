@@ -146,8 +146,27 @@ describe("Activities selected by pedagogical type", () => {
       }),
     );
     await user.click(
-      await screen.findByRole("button", { name: "Continuar para a prática" }),
+      await screen.findByRole("button", {
+        name: "Pular teoria e ir para prática",
+      }),
     );
+    await user.click(screen.getByRole("radio", { name: "Nunca" }));
+    await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
+    await screen.findByText(/Vamos revisar e tentar novamente/);
+    for (const answer of [
+      "Sim, até a saída física",
+      "65 unidades",
+      "30 unidades",
+      "Para não descontar a mesma unidade duas vezes",
+    ]) {
+      await user.click(screen.getByRole("radio", { name: answer }));
+      await user.click(
+        screen.getByRole("button", { name: "Conferir resposta" }),
+      );
+      await user.click(
+        await screen.findByRole("button", { name: "Próxima questão" }),
+      );
+    }
     await user.type(
       screen.getByRole("textbox", { name: "Resultado (unidades)" }),
       "31",
@@ -170,6 +189,18 @@ describe("Activities selected by pedagogical type", () => {
       "O saldo considera as entradas e saídas registradas. Vou verificar as unidades recebidas, os pedidos separados e o estoque final para conferir se o resultado está consistente.",
     );
     for (const box of screen.getAllByRole("checkbox")) await user.click(box);
+    expect(
+      screen.getByRole("button", { name: "Finalizar atividade" }),
+    ).toBeDisabled();
+    await user.click(screen.getByRole("button", { name: /1\/3.*Teoria/ }));
+    for (let i = 0; i < 4; i++)
+      await user.click(
+        screen.getByRole("button", { name: "Continuar teoria" }),
+      );
+    await user.click(
+      screen.getByRole("button", { name: "Continuar para a prática" }),
+    );
+    await user.click(screen.getByRole("button", { name: /3\/3.*Dinâmica/ }));
     await user.click(
       screen.getByRole("button", { name: "Finalizar atividade" }),
     );
