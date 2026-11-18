@@ -9,6 +9,7 @@ import {
   Notice,
 } from "../../components/ui";
 import { findSimulation, simulationCatalog } from "./catalog";
+import { LogicGatesSimulation } from "./LogicGatesSimulation";
 
 export function SimulationCatalogPage() {
   return (
@@ -33,7 +34,9 @@ export function SimulationCatalogPage() {
                 to={`/app/aprenda/dinamica/${simulation.id}`}
                 variant="outline"
               >
-                Ver planejamento
+                {simulation.status === "available"
+                  ? "Abrir dinâmica"
+                  : "Ver planejamento"}
               </ActionLink>
             </Card>
           </li>
@@ -66,11 +69,14 @@ export function SimulationPage() {
         Dinâmicas
       </Link>
       <Heading title={simulation.title} description={simulation.description} />
-      <Notice>
-        A experiência interativa será implementada no Lote{" "}
-        {simulation.implementationBatch}. Este lote organiza somente o catálogo
-        e a navegação.
-      </Notice>
+      {simulation.id === "portas-logicas" ? (
+        <LogicGatesSimulation />
+      ) : (
+        <Notice>
+          A experiência interativa será implementada no Lote{" "}
+          {simulation.implementationBatch}.
+        </Notice>
+      )}
       <Card>
         <h2>O que você vai aprender</h2>
         <ul className="simulation-goals">
