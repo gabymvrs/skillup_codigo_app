@@ -255,11 +255,11 @@ export function SupportContent({
         ))}
       </div>
       {tab === "faq" ? (
-        <div className="support-panel" role="tabpanel">
+        <div role="tabpanel">
           <FAQ />
         </div>
       ) : tab === "teachers" ? (
-        <div className="stack support-panel support-teachers" role="tabpanel">
+        <div className="stack support-teachers" role="tabpanel">
           <div>
             <h3>Conversar com professores</h3>
             <p className="small muted">
@@ -300,20 +300,14 @@ export function SupportContent({
           )}
         </div>
       ) : (
-        <div
-          className="stack support-panel support-conversation"
-          role="tabpanel"
-        >
+        <div className="stack" role="tabpanel">
           {useAutomaticTutor ? (
             <>
-              <div className="support-conversation-header">
-                <div>
-                  <h3>Conversa com o tutor</h3>
-                  <p className="small muted">
-                    Tutor automático
-                    {academicContext ? ` · ${academicContext}` : ""}
-                  </p>
-                </div>
+              <div className="row-between">
+                <span className="small muted">
+                  Tutor automático
+                  {academicContext ? ` · ${academicContext}` : ""}
+                </span>
                 <Button
                   variant="ghost"
                   disabled={tutorBusy || tutorHistoryLoading}
@@ -349,18 +343,12 @@ export function SupportContent({
               >
                 {tutorHistoryLoading ? (
                   <div className="chat-message bot" role="status">
-                    <span className="chat-message-author" aria-hidden="true">
-                      Tutor
-                    </span>
                     Carregando conversa salva…
                   </div>
                 ) : (
                   !tutorMessages.length && (
                     <div className="chat-message bot">
                       <span className="sr-only">Tutor:</span>
-                      <span className="chat-message-author" aria-hidden="true">
-                        Tutor
-                      </span>
                       Olá! Qual conteúdo escolar você gostaria de entender?
                     </div>
                   )
@@ -373,17 +361,11 @@ export function SupportContent({
                     <span className="sr-only">
                       {item.role === "model" ? "Tutor:" : "Você:"}
                     </span>
-                    <span className="chat-message-author" aria-hidden="true">
-                      {item.role === "model" ? "Tutor" : "Você"}
-                    </span>
                     {item.text}
                   </div>
                 ))}
                 {tutorBusy && (
                   <div className="chat-message bot" role="status">
-                    <span className="chat-message-author" aria-hidden="true">
-                      Tutor
-                    </span>
                     Preparando uma explicação…
                   </div>
                 )}
@@ -395,19 +377,18 @@ export function SupportContent({
                   void sendToTutor(message);
                 }}
               >
-                <div className="chat-compose-field">
-                  <label htmlFor={messageId}>Escreva sua pergunta</label>
-                  <textarea
-                    id={messageId}
-                    rows={2}
-                    placeholder="Digite sua dúvida…"
-                    value={message}
-                    onChange={(event) => setMessage(event.target.value)}
-                    maxLength={2000}
-                    disabled={tutorBusy}
-                    required
-                  />
-                </div>
+                <label className="sr-only" htmlFor={messageId}>
+                  Mensagem para o tutor
+                </label>
+                <input
+                  id={messageId}
+                  placeholder="Digite sua dúvida…"
+                  value={message}
+                  onChange={(event) => setMessage(event.target.value)}
+                  maxLength={2000}
+                  disabled={tutorBusy}
+                  required
+                />
                 <Button
                   type="submit"
                   aria-label="Enviar mensagem"
@@ -425,11 +406,10 @@ export function SupportContent({
             </>
           ) : (
             <>
-              <div className="support-conversation-header">
-                <div>
-                  <h3>Atendimento automático</h3>
-                  <p className="small muted">Sem atendente conectado</p>
-                </div>
+              <div className="row-between">
+                <span className="small muted">
+                  Automático · sem atendente conectado
+                </span>
                 <Button
                   variant="ghost"
                   onClick={() => {
@@ -453,9 +433,6 @@ export function SupportContent({
                   <div key={i} className={`chat-message ${m.who}`}>
                     <span className="sr-only">
                       {m.who === "bot" ? "Bot:" : "Você:"}
-                    </span>
-                    <span className="chat-message-author" aria-hidden="true">
-                      {m.who === "bot" ? "Bot SkillUp" : "Você"}
                     </span>
                     {m.text}
                   </div>
@@ -490,18 +467,17 @@ export function SupportContent({
                       if (message.trim()) send(message);
                     }}
                   >
-                    <div className="chat-compose-field">
-                      <label htmlFor={messageId}>Escreva sua pergunta</label>
-                      <textarea
-                        id={messageId}
-                        rows={2}
-                        placeholder="Digite sua dúvida…"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        maxLength={1000}
-                        required
-                      />
-                    </div>
+                    <label className="sr-only" htmlFor={messageId}>
+                      Mensagem para o bot
+                    </label>
+                    <input
+                      id={messageId}
+                      placeholder="Digite sua dúvida…"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      maxLength={1000}
+                      required
+                    />
                     <Button
                       type="submit"
                       aria-label="Enviar mensagem"
