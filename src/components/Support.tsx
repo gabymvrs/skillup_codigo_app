@@ -395,19 +395,19 @@ export function SupportContent({
                   void sendToTutor(message);
                 }}
               >
-                <label className="sr-only" htmlFor={messageId}>
-                  Mensagem para o tutor
-                </label>
-                <textarea
-                  id={messageId}
-                  rows={2}
-                  placeholder="Digite sua dúvida…"
-                  value={message}
-                  onChange={(event) => setMessage(event.target.value)}
-                  maxLength={2000}
-                  disabled={tutorBusy}
-                  required
-                />
+                <div className="chat-compose-field">
+                  <label htmlFor={messageId}>Escreva sua pergunta</label>
+                  <textarea
+                    id={messageId}
+                    rows={2}
+                    placeholder="Digite sua dúvida…"
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    maxLength={2000}
+                    disabled={tutorBusy}
+                    required
+                  />
+                </div>
                 <Button
                   type="submit"
                   aria-label="Enviar mensagem"
@@ -490,18 +490,18 @@ export function SupportContent({
                       if (message.trim()) send(message);
                     }}
                   >
-                    <label className="sr-only" htmlFor={messageId}>
-                      Mensagem para o bot
-                    </label>
-                    <textarea
-                      id={messageId}
-                      rows={2}
-                      placeholder="Digite sua dúvida…"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      maxLength={1000}
-                      required
-                    />
+                    <div className="chat-compose-field">
+                      <label htmlFor={messageId}>Escreva sua pergunta</label>
+                      <textarea
+                        id={messageId}
+                        rows={2}
+                        placeholder="Digite sua dúvida…"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        maxLength={1000}
+                        required
+                      />
+                    </div>
                     <Button
                       type="submit"
                       aria-label="Enviar mensagem"
