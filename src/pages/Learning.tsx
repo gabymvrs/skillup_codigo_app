@@ -20,6 +20,7 @@ import {
   simulationCatalog,
   type SimulationCatalogItem,
 } from "../features/simulations/catalog";
+import { LogicGatesSimulation } from "../features/simulations/LogicGatesSimulation";
 import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
@@ -460,7 +461,9 @@ export function Practice() {
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <Button variant="outline" onClick={() => setSimulation(item)}>
-                  Ver planejamento
+                  {item.status === "available"
+                    ? "Abrir dinâmica"
+                    : "Ver planejamento"}
                 </Button>
               </Card>
             ))}
@@ -682,7 +685,13 @@ export function Practice() {
         />
       )}
       {simulation && (
-        <Modal title={simulation.title} onClose={() => setSimulation(null)}>
+        <Modal
+          title={simulation.title}
+          className={
+            simulation.id === "portas-logicas" ? "simulation-dialog" : ""
+          }
+          onClose={() => setSimulation(null)}
+        >
           <div className="stack">
             <Badge>{simulation.subject}</Badge>
             <p>{simulation.description}</p>
@@ -692,10 +701,14 @@ export function Practice() {
                 <li key={goal}>{goal}</li>
               ))}
             </ul>
-            <Notice>
-              Esta dinâmica está planejada para o Lote{" "}
-              {simulation.implementationBatch}.
-            </Notice>
+            {simulation.id === "portas-logicas" ? (
+              <LogicGatesSimulation />
+            ) : (
+              <Notice>
+                Esta dinâmica está planejada para o Lote{" "}
+                {simulation.implementationBatch}.
+              </Notice>
+            )}
           </div>
         </Modal>
       )}
