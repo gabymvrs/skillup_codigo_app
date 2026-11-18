@@ -67,7 +67,7 @@ export const simulationCatalog: readonly SimulationCatalogItem[] = [
     ],
     icon: "zap",
     implementationBatch: 5,
-    status: "planned",
+    status: "available",
   },
 ] as const;
 
