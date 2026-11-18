@@ -26,7 +26,7 @@ function laboratory(path = "/app/aprenda/dinamica") {
 }
 
 describe("Simulation laboratory architecture", () => {
-  it("lists the four planned simulations with stable links", () => {
+  it("lists the four available simulations with stable links", () => {
     laboratory();
 
     const catalog = screen.getByRole("list", {
@@ -50,6 +50,9 @@ describe("Simulation laboratory architecture", () => {
       ).toHaveAttribute("href", `/app/aprenda/dinamica/${simulation.id}`);
     }
     expect(new Set(simulationCatalog.map(({ id }) => id)).size).toBe(4);
+    expect(
+      simulationCatalog.every(({ status }) => status === "available"),
+    ).toBe(true);
   });
 
   it("opens the available logic-gates simulation", async () => {
