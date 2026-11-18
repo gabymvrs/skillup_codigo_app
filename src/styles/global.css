@@ -901,7 +901,8 @@ a svg {
   color: var(--secondary);
   font-weight: 600;
 }
-.logic-inputs label {
+.logic-inputs label,
+.logic-inputs .logic-input {
   display: grid;
   gap: 6px;
   color: var(--secondary);
