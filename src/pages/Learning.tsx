@@ -22,6 +22,7 @@ import {
 } from "../features/simulations/catalog";
 import { LogicGatesSimulation } from "../features/simulations/LogicGatesSimulation";
 import { SolarSystemSimulation } from "../features/simulations/SolarSystemSimulation";
+import { AnimalCellSimulation } from "../features/simulations/AnimalCellSimulation";
 import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
@@ -706,6 +707,8 @@ export function Practice() {
               <LogicGatesSimulation />
             ) : simulation.id === "sistema-solar" ? (
               <SolarSystemSimulation />
+            ) : simulation.id === "celula-animal" ? (
+              <AnimalCellSimulation />
             ) : (
               <Notice>
                 Esta dinâmica está planejada para o Lote{" "}
