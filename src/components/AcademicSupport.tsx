@@ -116,15 +116,9 @@ export function AcademicSupport() {
               aria-live="polite"
             >
               {conversation.map((m, i) => (
-                <div className="academic-exchange" key={i}>
-                  <div className="academic-message user">
-                    <span>Você</span>
-                    <p>{m.question}</p>
-                  </div>
-                  <div className="academic-message bot">
-                    <span>Assistente</span>
-                    <p>{m.answer}</p>
-                  </div>
+                <div key={i}>
+                  <strong>{m.question}</strong>
+                  <p>{m.answer}</p>
                 </div>
               ))}
             </div>
