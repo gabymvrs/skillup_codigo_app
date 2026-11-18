@@ -29,7 +29,7 @@ describe("Academic support", () => {
       ),
     ).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Fechar" }));
-    await user.click(screen.getByRole("button", { name: "Enviar Mensagem" }));
+    await user.click(screen.getByRole("button", { name: "Enviar mensagem" }));
     await user.type(
       screen.getByRole("textbox", { name: "Sua mensagem ao docente" }),
       "Como revisar as camadas do projeto?",
@@ -51,7 +51,7 @@ describe("Academic support", () => {
       await screen.findByText(/Nenhuma alteração foi feita aqui/),
     ).toBeInTheDocument();
     await user.click(
-      screen.getByRole("button", { name: "Abrir Chamado Técnico" }),
+      screen.getByRole("button", { name: "Abrir chamado técnico" }),
     );
     await user.type(
       screen.getByRole("textbox", { name: "Assunto" }),
@@ -72,7 +72,9 @@ describe("Home and material", () => {
     const user = userEvent.setup();
     app("/app/home");
     await screen.findByRole("heading", { name: "Histórias que inspiram" });
-    expect(screen.getByText("Nina da Hora · Ciência da Computação")).toBeVisible();
+    expect(
+      screen.getByText("Nina da Hora · Ciência da Computação"),
+    ).toBeVisible();
     expect(
       screen.getByRole("heading", { name: "Ranking semanal" }),
     ).toBeInTheDocument();
@@ -168,6 +170,9 @@ describe("Interactive exercise formats", () => {
     async (kind) => {
       const user = userEvent.setup();
       app("/app/aprenda/pratica");
+      await user.click(
+        await screen.findByRole("button", { name: "Exercício" }),
+      );
       await user.selectOptions(
         await screen.findByLabelText("Disciplina"),
         id(10),
@@ -180,7 +185,9 @@ describe("Interactive exercise formats", () => {
         kind === "choice"
           ? within(
               screen
-                .getByRole("heading", { name: "Acentuação e leitura · Escolha" })
+                .getByRole("heading", {
+                  name: "Acentuação e leitura · Escolha",
+                })
                 .closest("section")!,
             )
           : screen;
