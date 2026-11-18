@@ -21,6 +21,7 @@ import {
   type SimulationCatalogItem,
 } from "../features/simulations/catalog";
 import { LogicGatesSimulation } from "../features/simulations/LogicGatesSimulation";
+import { SolarSystemSimulation } from "../features/simulations/SolarSystemSimulation";
 import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
@@ -688,7 +689,7 @@ export function Practice() {
         <Modal
           title={simulation.title}
           className={
-            simulation.id === "portas-logicas" ? "simulation-dialog" : ""
+            simulation.status === "available" ? "simulation-dialog" : ""
           }
           onClose={() => setSimulation(null)}
         >
@@ -703,6 +704,8 @@ export function Practice() {
             </ul>
             {simulation.id === "portas-logicas" ? (
               <LogicGatesSimulation />
+            ) : simulation.id === "sistema-solar" ? (
+              <SolarSystemSimulation />
             ) : (
               <Notice>
                 Esta dinâmica está planejada para o Lote{" "}
