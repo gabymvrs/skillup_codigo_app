@@ -28,6 +28,7 @@ Cada simulação deverá permanecer no navegador, sem IA, serviço pago, bibliot
 - Testes do laboratório e regressão de navegação: 14 aprovados.
 - Checagem de TypeScript e ESLint: aprovada.
 - Build de produção: aprovado.
+
 - Suíte completa: 189 testes aprovados e 18 falhas fora do escopo deste lote, concentradas em fluxos de atividades, cadastro, navegação e service worker; nenhuma está nos arquivos do laboratório.
 
 ## Lote 2 — portas lógicas
@@ -111,5 +112,34 @@ O modelo informa que tamanhos e posições foram simplificados. A dinâmica func
 ### Validação do lote
 
 - Testes da dinâmica, integração com Prática e catálogo: 8 aprovados.
+- Checagem de TypeScript: aprovada.
+- Build de produção: aprovado.
+
+## Lote 5 — circuito elétrico básico
+
+A dinâmica está disponível em **Aprenda → Prática → Dinâmica → Circuito elétrico**.
+
+### Interações implementadas
+
+- Chave que abre e fecha o circuito, interrompendo ou completando o caminho da corrente.
+- Fonte ajustável entre 3 V, 6 V e 9 V.
+- Resistência da lâmpada ajustável entre 10 Ω e 40 Ω.
+- Cálculo da corrente pela Lei de Ohm e indicação da potência elétrica.
+- Lâmpada com brilho atualizado conforme a potência calculada.
+- Leituras e explicações atualizadas após cada ação.
+- Botão **Reiniciar**, que abre a chave e restaura 6 V e 20 Ω.
+
+O modelo explica que os valores e o brilho foram simplificados. A dinâmica funciona somente no navegador, sem IA, serviço pago, biblioteca 3D ou backend.
+
+### Arquivos do lote
+
+- `src/features/simulations/ElectricCircuitSimulation.tsx`: controles, circuito 2D, cálculos e leituras.
+- `src/features/simulations/catalog.ts`: marca Circuito elétrico como disponível.
+- `src/pages/Learning.tsx`: abre a dinâmica pelo catálogo integrado à Prática.
+- `tests/electric-circuit-simulation.test.tsx`: cobre chave, tensão, resistência, leituras e reinício.
+
+### Validação do lote
+
+- Testes da dinâmica, integração com Prática e catálogo: 9 aprovados.
 - Checagem de TypeScript: aprovada.
 - Build de produção: aprovado.
