@@ -205,7 +205,15 @@ describe("Activities selected by pedagogical type", () => {
     expect(
       screen.getByRole("heading", { name: "Circuito elétrico" }),
     ).toBeVisible();
-    await user.click(screen.getByRole("button", { name: "Abrir dinâmica" }));
+    const logicCard = screen
+      .getByRole("heading", { name: "Portas lógicas" })
+      .closest("section");
+    expect(logicCard).not.toBeNull();
+    await user.click(
+      within(logicCard as HTMLElement).getByRole("button", {
+        name: "Abrir dinâmica",
+      }),
+    );
     expect(screen.getByRole("dialog")).toHaveTextContent(
       "Distinguir as regras das portas AND, OR e NOT",
     );
