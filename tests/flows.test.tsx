@@ -22,7 +22,7 @@ describe("Authenticated boundaries and role navigation", () => {
   it("redirects a direct app URL to login without silently creating a demo session", async () => {
     app("/app/home", null);
     expect(
-      await screen.findByRole("button", { name: "Fazer Login" }),
+      await screen.findByRole("button", { name: "Fazer login" }),
     ).toBeDisabled();
     expect(
       screen.queryByRole("heading", { name: /Olá/ }),
@@ -223,7 +223,11 @@ describe("Learning and support", () => {
       screen.getByRole("textbox", { name: "Mensagem para o bot" }),
       "Tentei na tela de login",
     );
-    await user.click(screen.getByRole("button", { name: "Enviar mensagem" }));
+    await user.click(
+      within(screen.getByRole("dialog")).getByRole("button", {
+        name: "Enviar mensagem",
+      }),
+    );
     await user.click(
       screen.getByRole("button", { name: "Impede uma entrega hoje" }),
     );
@@ -449,7 +453,7 @@ describe("Final interaction regressions", () => {
     ).toHaveLength(1);
     await user.click(screen.getByRole("button", { name: "Confirmar" }));
     expect(
-      await screen.findByText("Sua agenda começa aqui"),
+      await screen.findByText("Sua agenda está vazia"),
     ).toBeInTheDocument();
   });
   it("keeps floating triage separate from academic support and preserves it on reopen", async () => {
