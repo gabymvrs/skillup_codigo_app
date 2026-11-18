@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { AuthProvider } from "../src/state/AuthContext";
@@ -205,12 +205,15 @@ describe("Activities selected by pedagogical type", () => {
     expect(
       screen.getByRole("heading", { name: "Circuito elétrico" }),
     ).toBeVisible();
-    await user.click(
-      screen.getAllByRole("button", { name: "Ver planejamento" })[0],
-    );
+    await user.click(screen.getByRole("button", { name: "Abrir dinâmica" }));
     expect(screen.getByRole("dialog")).toHaveTextContent(
       "Distinguir as regras das portas AND, OR e NOT",
     );
+    expect(
+      within(screen.getByRole("dialog")).getByRole("heading", {
+        name: "Experimente as portas",
+      }),
+    ).toBeVisible();
     expect(
       screen.getByRole("region", { name: "Filtros da prática" }),
     ).toBeVisible();
