@@ -29,3 +29,31 @@ Cada simulação deverá permanecer no navegador, sem IA, serviço pago, bibliot
 - Checagem de TypeScript e ESLint: aprovada.
 - Build de produção: aprovado.
 - Suíte completa: 189 testes aprovados e 18 falhas fora do escopo deste lote, concentradas em fluxos de atividades, cadastro, navegação e service worker; nenhuma está nos arquivos do laboratório.
+
+## Lote 2 — portas lógicas
+
+A dinâmica de portas lógicas está disponível em **Aprenda → Prática → Dinâmica → Portas lógicas**. As rotas antigas de Laboratório e Dinâmica continuam redirecionando para Prática, conforme a navegação atual do SkillUp.
+
+### Interações implementadas
+
+- Seleção das portas AND (E), OR (OU) e NOT (NÃO).
+- Entradas binárias que podem ser ligadas e desligadas.
+- Diagrama 2D com fios, porta e lâmpada de saída atualizados a cada ação.
+- Explicação curta da regra selecionada.
+- Tabela-verdade com destaque para a combinação atual.
+- Botão **Reiniciar**, que retorna à porta AND com as entradas desligadas.
+
+A dinâmica funciona somente no navegador. Não usa IA, serviço pago, biblioteca 3D ou backend.
+
+### Arquivos do lote
+
+- `src/features/simulations/LogicGatesSimulation.tsx`: regras, controles, diagrama e tabela-verdade.
+- `src/features/simulations/catalog.ts`: marca Portas lógicas como disponível.
+- `src/pages/Learning.tsx`: abre a dinâmica pelo catálogo integrado à Prática.
+- `tests/logic-gates-simulation.test.tsx`: cobre AND, OR, NOT, reinício, tabela e descrição acessível.
+
+### Validação do lote
+
+- Testes da dinâmica, integração com Prática e catálogo: 7 aprovados.
+- Checagem de TypeScript: aprovada.
+- Build de produção: aprovado.
