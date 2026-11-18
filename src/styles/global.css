@@ -1023,6 +1023,185 @@ a svg {
   color: var(--secondary);
   font-weight: 700;
 }
+.solar-simulation-heading {
+  align-items: flex-start;
+}
+.solar-simulation-heading h3,
+.solar-simulation-heading p {
+  margin: 0;
+}
+.solar-simulation-heading p {
+  margin-top: 4px;
+  color: var(--muted);
+}
+.solar-controls {
+  display: grid;
+  grid-template-columns: auto minmax(180px, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--neutral-100);
+}
+.solar-speed-control {
+  display: grid;
+  gap: 4px;
+  color: var(--secondary);
+  font-size: var(--label);
+  font-weight: 600;
+}
+.solar-speed-control input {
+  width: 100%;
+  accent-color: var(--primary);
+}
+.solar-label-control {
+  margin: 0;
+  white-space: nowrap;
+}
+.solar-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.5fr);
+  gap: 20px;
+  align-items: start;
+}
+.solar-scene {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 1;
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid #27365f;
+  border-radius: var(--radius-sm);
+  background:
+    radial-gradient(circle at 18% 22%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 75% 15%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 72%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 25% 78%, #ffffff 0 1px, transparent 2px), #071331;
+}
+.solar-star {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 12%;
+  min-width: 48px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffc83d;
+  box-shadow: 0 0 24px #ffc83dcc;
+  color: #5c3900;
+  font-size: 11px;
+  font-weight: 700;
+}
+.solar-orbit {
+  --solar-orbit: 20%;
+  --solar-duration: 10s;
+  --solar-delay: 0s;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--solar-orbit) * 2);
+  aspect-ratio: 1;
+  border: 1px solid #9ba8cf55;
+  border-radius: 50%;
+  animation: solar-orbit-turn var(--solar-duration) linear infinite;
+  animation-delay: var(--solar-delay);
+}
+.solar-scene.paused .solar-orbit {
+  animation-play-state: paused;
+}
+.solar-scene.running .solar-orbit {
+  animation-play-state: running;
+}
+@keyframes solar-orbit-turn {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.solar-planet {
+  --planet-color: #ffffff;
+  --planet-size: 12px;
+  position: absolute;
+  top: 50%;
+  right: calc(var(--planet-size) / -2);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 4px;
+  border: 0;
+  border-radius: 18px;
+  transform: translateY(-50%);
+  background: #071331cc;
+  color: white;
+  font-size: 9px;
+  line-height: 1;
+}
+.solar-planet:hover,
+.solar-planet:focus-visible,
+.solar-planet.selected {
+  z-index: 4;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+.solar-planet-dot {
+  display: block;
+  flex: none;
+  width: var(--planet-size);
+  height: var(--planet-size);
+  border-radius: 50%;
+  background: var(--planet-color);
+  box-shadow: inset -2px -2px 3px #00000055;
+}
+.solar-planet-name {
+  padding-right: 4px;
+  white-space: nowrap;
+}
+.solar-planet-details {
+  min-width: 0;
+  padding: 20px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.solar-position {
+  color: var(--primary);
+  font-size: var(--label);
+  font-weight: 700;
+}
+.solar-planet-details h4 {
+  margin: 8px 0;
+  color: var(--secondary);
+  font-size: var(--subtitle);
+}
+.solar-planet-details dl {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 0;
+}
+.solar-planet-details dl > div {
+  padding-top: 12px;
+  border-top: var(--border);
+}
+.solar-planet-details dt {
+  color: var(--muted);
+  font-size: var(--label);
+}
+.solar-planet-details dd {
+  margin: 4px 0 0;
+  color: var(--secondary);
+  font-weight: 600;
+}
 .help-fab {
   position: fixed;
   bottom: calc(var(--tabbar-height) + 16px + env(safe-area-inset-bottom));
@@ -2470,6 +2649,17 @@ html[data-large-text="true"] {
   .logic-simulation-heading {
     align-items: stretch;
     flex-direction: column;
+  }
+  .solar-simulation-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .solar-controls,
+  .solar-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .solar-label-control {
+    white-space: normal;
   }
   .academic-assistant .chat-compose {
     grid-template-columns: minmax(0, 1fr) auto;
