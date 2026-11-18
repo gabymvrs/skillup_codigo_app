@@ -915,45 +915,21 @@ a svg {
   justify-content: flex-end;
 }
 .support-dialog {
-  width: min(720px, calc(100% - 32px));
-  height: min(760px, calc(100dvh - 32px));
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.support-dialog > header {
-  flex: none;
-  margin-bottom: 16px;
-}
-.support-dialog .support-content {
-  display: flex;
-  min-height: 0;
-  flex: 1;
-  flex-direction: column;
-}
-.support-panel {
-  min-height: 0;
-  overflow-y: auto;
-  padding: 2px 4px 4px;
+  width: min(480px, calc(100% - 24px));
 }
 .support-tabs {
   display: flex;
-  flex: none;
   width: 100%;
-  gap: 6px;
-  padding: 5px;
-  border: var(--border);
-  border-radius: 12px;
-  background: var(--neutral-100);
-  margin-bottom: 16px;
+  border-bottom: var(--border);
+  margin-bottom: 20px;
 }
 .support-tabs button {
   flex: 1;
   min-width: 0;
-  min-height: 44px;
-  padding: 8px 12px;
+  min-height: 40px;
+  padding: 8px 4px;
   border: 0;
-  border-radius: 8px;
+  border-bottom: 3px solid transparent;
   background: transparent;
   color: var(--muted);
   font-size: var(--label);
@@ -963,17 +939,16 @@ a svg {
   gap: 6px;
 }
 .support-tabs button[aria-selected="true"] {
-  color: var(--secondary);
-  background: var(--surface);
-  box-shadow: var(--shadow-card);
-  font-weight: 600;
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 500;
 }
 .support-tabs button:hover {
   color: var(--secondary);
   background: var(--tertiary-100);
 }
 .support-teachers {
-  min-height: 0;
+  min-height: 280px;
   align-content: start;
 }
 .support-teacher {
@@ -1007,23 +982,16 @@ a svg {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: none;
-  flex: 1;
+  max-height: 340px;
   overflow-y: auto;
-  padding: 20px;
-  min-height: 260px;
-  overscroll-behavior: contain;
-  border: var(--border);
-  border-radius: 14px;
-  background: var(--neutral-50, #f8f9fc);
-  scrollbar-gutter: stable;
+  padding: 4px;
+  min-height: 160px;
 }
 .chat-message {
-  padding: 11px 14px 13px;
-  border: var(--border);
-  border-radius: 4px 16px 16px 16px;
-  background: var(--surface);
-  max-width: min(84%, 520px);
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--neutral-100);
+  max-width: 92%;
   align-self: flex-start;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -1032,22 +1000,7 @@ a svg {
 .chat-message.user {
   background: var(--primary);
   color: white;
-  border-color: transparent;
-  border-radius: 16px 4px 16px 16px;
   align-self: flex-end;
-}
-.chat-message-author {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--primary);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-}
-.chat-message.user .chat-message-author {
-  color: white;
-  opacity: 0.82;
 }
 .chat-message small {
   display: block;
@@ -1058,38 +1011,14 @@ a svg {
 .chat-compose {
   display: flex;
   gap: 8px;
-  align-items: flex-end;
-  flex: none;
-  padding: 12px;
-  border: var(--border);
-  border-radius: 12px;
-  background: var(--surface);
-  box-shadow: 0 -4px 16px rgb(12 28 93 / 6%);
+  align-items: center;
 }
-.chat-compose-field {
-  display: grid;
-  flex: 1;
-  gap: 6px;
-  min-width: 0;
-}
-.chat-compose-field label {
-  color: var(--secondary);
-  font-size: var(--label);
-  font-weight: 600;
-}
-.chat-compose input,
-.chat-compose textarea {
+.chat-compose input {
   flex: 1;
   min-width: 0;
-}
-.chat-compose textarea {
-  min-height: 48px;
-  max-height: 140px;
-  resize: vertical;
 }
 .chat-compose .button {
   flex: none;
-  min-height: 48px;
   padding-inline: 12px;
 }
 .chat-compose .button svg {
@@ -1103,23 +1032,6 @@ a svg {
   background: var(--tertiary-100);
   border: var(--border);
   border-radius: 8px;
-}
-.support-conversation {
-  display: flex;
-  flex: 1;
-  gap: 12px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-.support-conversation-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.support-conversation-header h3,
-.support-conversation-header p {
-  margin: 0;
 }
 .faq-list details,
 .ticket {
@@ -2066,26 +1978,6 @@ details summary {
   .modal {
     padding: 20px;
   }
-  .support-dialog {
-    width: calc(100% - 16px);
-    height: calc(100dvh - 16px);
-    max-height: calc(100dvh - 16px);
-    padding: 16px;
-  }
-  .support-tabs {
-    gap: 2px;
-    padding: 3px;
-  }
-  .support-tabs button {
-    padding-inline: 6px;
-  }
-  .chat-log {
-    min-height: 180px;
-    padding: 12px;
-  }
-  .chat-message {
-    max-width: 92%;
-  }
   .card .actions {
     gap: 8px;
   }
@@ -2329,48 +2221,10 @@ html[data-large-text="true"] {
   max-height: 300px;
   overflow-y: auto;
   margin-bottom: 16px;
-  padding: 12px;
-  border: 1px solid var(--secondary-200);
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--secondary-500) 88%, white);
 }
-.academic-exchange {
-  display: grid;
-  gap: 10px;
-  padding-block: 14px;
+.academic-log > div {
+  padding-block: 12px;
   border-bottom: 1px solid var(--secondary-200);
-}
-.academic-exchange:last-child {
-  border-bottom: 0;
-}
-.academic-message {
-  width: fit-content;
-  max-width: 90%;
-  padding: 10px 12px;
-  border-radius: 4px 14px 14px 14px;
-  background: white;
-  color: var(--text);
-}
-.academic-message.user {
-  justify-self: end;
-  border-radius: 14px 4px 14px 14px;
-  background: var(--primary);
-  color: white;
-}
-.academic-message span {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--primary);
-  font-size: 11px;
-  font-weight: 700;
-}
-.academic-message.user span {
-  color: white;
-  opacity: 0.82;
-}
-.academic-message p {
-  margin: 0;
-  color: inherit;
 }
 .teacher-heading {
   display: flex;
