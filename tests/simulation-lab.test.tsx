@@ -55,14 +55,22 @@ describe("Simulation laboratory architecture", () => {
   it("opens the available logic-gates simulation", async () => {
     const user = userEvent.setup();
     laboratory();
-    await user.click(screen.getByRole("link", { name: "Abrir dinâmica" }));
+    const logicCard = screen
+      .getByRole("heading", { name: "Portas lógicas" })
+      .closest("section");
+    expect(logicCard).not.toBeNull();
+    await user.click(
+      within(logicCard as HTMLElement).getByRole("link", {
+        name: "Abrir dinâmica",
+      }),
+    );
     expect(
       screen.getByRole("heading", { name: "Experimente as portas" }),
     ).toBeVisible();
     expect(screen.getByRole("button", { name: "Reiniciar" })).toBeVisible();
   });
 
-  it("opens a catalog item and explains its implementation status", async () => {
+  it("opens the available Solar System simulation", async () => {
     const user = userEvent.setup();
     laboratory();
     const solarCard = screen
@@ -71,17 +79,17 @@ describe("Simulation laboratory architecture", () => {
     expect(solarCard).not.toBeNull();
     await user.click(
       within(solarCard as HTMLElement).getByRole("link", {
-        name: "Ver planejamento",
+        name: "Abrir dinâmica",
       }),
     );
 
     expect(
       screen.getByRole("heading", { name: "Sistema Solar" }),
     ).toBeVisible();
-    expect(screen.getByRole("status")).toHaveTextContent(
-      "será implementada no Lote 3",
-    );
-    expect(screen.queryByRole("button", { name: /reiniciar/i })).toBeNull();
+    expect(
+      screen.getByRole("heading", { name: "Explore as órbitas" }),
+    ).toBeVisible();
+    expect(screen.getByRole("button", { name: "Reiniciar" })).toBeVisible();
   });
 
   it("handles an unknown simulation without breaking navigation", () => {
