@@ -39,7 +39,7 @@ export const simulationCatalog: readonly SimulationCatalogItem[] = [
     ],
     icon: "compass",
     implementationBatch: 3,
-    status: "planned",
+    status: "available",
   },
   {
     id: "celula-animal",
