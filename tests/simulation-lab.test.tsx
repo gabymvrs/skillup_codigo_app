@@ -42,11 +42,24 @@ describe("Simulation laboratory architecture", () => {
       expect(card).not.toBeNull();
       expect(
         within(card as HTMLElement).getByRole("link", {
-          name: "Ver planejamento",
+          name:
+            simulation.status === "available"
+              ? "Abrir dinâmica"
+              : "Ver planejamento",
         }),
       ).toHaveAttribute("href", `/app/aprenda/dinamica/${simulation.id}`);
     }
     expect(new Set(simulationCatalog.map(({ id }) => id)).size).toBe(4);
+  });
+
+  it("opens the available logic-gates simulation", async () => {
+    const user = userEvent.setup();
+    laboratory();
+    await user.click(screen.getByRole("link", { name: "Abrir dinâmica" }));
+    expect(
+      screen.getByRole("heading", { name: "Experimente as portas" }),
+    ).toBeVisible();
+    expect(screen.getByRole("button", { name: "Reiniciar" })).toBeVisible();
   });
 
   it("opens a catalog item and explains its implementation status", async () => {
