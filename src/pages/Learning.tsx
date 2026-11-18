@@ -23,6 +23,7 @@ import {
 import { LogicGatesSimulation } from "../features/simulations/LogicGatesSimulation";
 import { SolarSystemSimulation } from "../features/simulations/SolarSystemSimulation";
 import { AnimalCellSimulation } from "../features/simulations/AnimalCellSimulation";
+import { ElectricCircuitSimulation } from "../features/simulations/ElectricCircuitSimulation";
 import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
@@ -709,6 +710,8 @@ export function Practice() {
               <SolarSystemSimulation />
             ) : simulation.id === "celula-animal" ? (
               <AnimalCellSimulation />
+            ) : simulation.id === "circuito-eletrico" ? (
+              <ElectricCircuitSimulation />
             ) : (
               <Notice>
                 Esta dinâmica está planejada para o Lote{" "}
