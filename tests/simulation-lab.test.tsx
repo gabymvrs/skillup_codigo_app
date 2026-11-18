@@ -92,6 +92,24 @@ describe("Simulation laboratory architecture", () => {
     expect(screen.getByRole("button", { name: "Reiniciar" })).toBeVisible();
   });
 
+  it("opens the available animal-cell simulation", async () => {
+    const user = userEvent.setup();
+    laboratory();
+    const cellCard = screen
+      .getByRole("heading", { name: "Célula animal" })
+      .closest("section");
+    expect(cellCard).not.toBeNull();
+    await user.click(
+      within(cellCard as HTMLElement).getByRole("link", {
+        name: "Abrir dinâmica",
+      }),
+    );
+    expect(
+      screen.getByRole("heading", { name: "Explore a célula animal" }),
+    ).toBeVisible();
+    expect(screen.getByRole("button", { name: "Reiniciar" })).toBeVisible();
+  });
+
   it("handles an unknown simulation without breaking navigation", () => {
     laboratory("/app/aprenda/dinamica/desconhecida");
     expect(
