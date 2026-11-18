@@ -11,6 +11,7 @@ import {
 import { findSimulation, simulationCatalog } from "./catalog";
 import { LogicGatesSimulation } from "./LogicGatesSimulation";
 import { SolarSystemSimulation } from "./SolarSystemSimulation";
+import { AnimalCellSimulation } from "./AnimalCellSimulation";
 
 export function SimulationCatalogPage() {
   return (
@@ -74,6 +75,8 @@ export function SimulationPage() {
         <LogicGatesSimulation />
       ) : simulation.id === "sistema-solar" ? (
         <SolarSystemSimulation />
+      ) : simulation.id === "celula-animal" ? (
+        <AnimalCellSimulation />
       ) : (
         <Notice>
           A experiência interativa será implementada no Lote{" "}
