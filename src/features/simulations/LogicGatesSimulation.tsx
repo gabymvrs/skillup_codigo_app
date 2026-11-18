@@ -187,7 +187,7 @@ export function LogicGatesSimulation() {
       <div className="logic-simulation-workspace">
         <fieldset className="logic-inputs">
           <legend>Entradas</legend>
-          <label>
+          <div className="logic-input">
             <span>Entrada A</span>
             <button
               type="button"
@@ -199,9 +199,9 @@ export function LogicGatesSimulation() {
               <Bit value={a} />
               {a ? "Ligada" : "Desligada"}
             </button>
-          </label>
+          </div>
           {gate !== "not" && (
-            <label>
+            <div className="logic-input">
               <span>Entrada B</span>
               <button
                 type="button"
@@ -213,7 +213,7 @@ export function LogicGatesSimulation() {
                 <Bit value={b} />
                 {b ? "Ligada" : "Desligada"}
               </button>
-            </label>
+            </div>
           )}
         </fieldset>
 
