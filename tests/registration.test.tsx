@@ -37,7 +37,7 @@ describe("Reference registration screens", () => {
     const user = userEvent.setup();
     show("instituicao");
     await user.type(
-      await screen.findByLabelText("Razão Social:"),
+      await screen.findByLabelText("Razão social:"),
       "Escola de teste",
     );
     await user.type(screen.getByLabelText("CNPJ:"), "60.311.238/0001-98");
@@ -61,7 +61,7 @@ describe("Reference registration screens", () => {
     await user.click(
       screen.getByRole("button", { name: "Voltar à etapa anterior" }),
     );
-    expect(screen.getByLabelText("Razão Social:")).toHaveValue(
+    expect(screen.getByLabelText("Razão social:")).toHaveValue(
       "Escola de teste",
     );
     expect(screen.getByText("documento.pdf")).toBeInTheDocument();
@@ -96,7 +96,7 @@ describe("Reference registration screens", () => {
     const user = userEvent.setup();
     show("recrutador");
     await user.type(
-      await screen.findByLabelText("CNPJ/ CPF:"),
+      await screen.findByLabelText("CNPJ/CPF:"),
       "60.311.238/0001-98",
     );
     for (const label of ["Declaração Institucional", "Contrato social"])
@@ -105,7 +105,7 @@ describe("Reference registration screens", () => {
     expect(mocks.save).not.toHaveBeenCalled();
     await user.click(
       screen.getByRole("button", {
-        name: "Ler Declaração de responsabilidades",
+        name: "Ler declaração de responsabilidades",
       }),
     );
     expect(await screen.findByRole("dialog")).toHaveTextContent(
@@ -135,7 +135,7 @@ describe("Reference registration screens", () => {
       pdf(),
     );
     await user.click(
-      screen.getByRole("button", { name: "Completar Cadastro" }),
+      screen.getByRole("button", { name: "Completar cadastro" }),
     );
     expect(await screen.findByRole("alert")).toHaveTextContent(
       "Falha de armazenamento",
