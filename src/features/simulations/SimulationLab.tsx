@@ -19,7 +19,7 @@ export function SimulationCatalogPage() {
     <div className="stack simulation-lab">
       <Heading
         title="Dinâmicas"
-        description="Escolha um tema para consultar o objetivo da atividade. As experiências interativas serão liberadas nos próximos lotes."
+        description="Escolha um tema, use os controles da atividade e acompanhe o resultado na tela."
       />
       <ul className="simulation-catalog" aria-label="Simulações educativas">
         {simulationCatalog.map((simulation) => (
