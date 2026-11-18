@@ -31,7 +31,10 @@ export function readDemo(): Dataset {
     }
     d.experiences ??= [];
     for (const profile of d.profiles || []) {
-      if (!profile.avatar_demo || profile.avatar_demo === "/assets/story-4.svg")
+      if (
+        profile.avatar_demo === undefined ||
+        profile.avatar_demo === "/assets/story-4.svg"
+      )
         profile.avatar_demo = demoPortraits[profile.id];
     }
     for (const [table, additions] of Object.entries({
@@ -42,17 +45,17 @@ export function readDemo(): Dataset {
       questions,
     })) {
       d[table] ??= [];
-      const existingRows = new Map<string, { id: string; question_id?: string | null; body?: string }>(
-        d[table].map((row: { id: string }) => [row.id, row]),
-      );
+      const existingRows = new Map<
+        string,
+        { id: string; question_id?: string | null; body?: string }
+      >(d[table].map((row: { id: string }) => [row.id, row]));
       for (const row of additions) {
         const existing = existingRows.get(row.id);
         if (!existing) {
           const added = structuredClone(row);
           d[table].push(added);
           existingRows.set(row.id, added);
-        }
-        else if (
+        } else if (
           table === "modules" &&
           "question_id" in row &&
           !existing.question_id &&
@@ -67,7 +70,9 @@ export function readDemo(): Dataset {
     for (const q of d.questions)
       q.activity_type ??= canonicalQuestions.get(q.id)?.activity_type;
     for (const update of curriculum.question_updates || []) {
-      const stored = d.questions.find((q: { id: string }) => q.id === update.id);
+      const stored = d.questions.find(
+        (q: { id: string }) => q.id === update.id,
+      );
       if (stored) Object.assign(stored, update);
     }
     hydrateDemoLearning(d);
