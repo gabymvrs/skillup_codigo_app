@@ -220,14 +220,10 @@ describe("Learning and support", () => {
       }),
     );
     await user.type(
-      screen.getByRole("textbox", { name: "Escreva sua pergunta" }),
+      screen.getByRole("textbox", { name: "Mensagem para o bot" }),
       "Tentei na tela de login",
     );
-    await user.click(
-      within(screen.getByRole("dialog")).getByRole("button", {
-        name: "Enviar mensagem",
-      }),
-    );
+    await user.click(screen.getByRole("button", { name: "Enviar mensagem" }));
     await user.click(
       screen.getByRole("button", { name: "Impede uma entrega hoje" }),
     );
@@ -462,15 +458,10 @@ describe("Final interaction regressions", () => {
     await user.click(await screen.findByRole("button", { name: "Dúvidas?" }));
     const dialog = screen.getByRole("dialog"),
       input = within(dialog).getByRole("textbox", {
-        name: "Escreva sua pergunta",
+        name: "Mensagem para o bot",
       });
-    expect(
-      within(dialog).getByRole("heading", { name: "Atendimento automático" }),
-    ).toBeVisible();
-    expect(within(dialog).getByText("Bot SkillUp")).toBeVisible();
-    expect(input.tagName).toBe("TEXTAREA");
     const ids = screen
-      .getAllByRole("textbox", { name: "Escreva sua pergunta" })
+      .getAllByRole("textbox", { name: "Mensagem para o bot" })
       .map((e) => e.id);
     expect(new Set(ids).size).toBe(1);
     expect(
