@@ -110,6 +110,26 @@ describe("Simulation laboratory architecture", () => {
     expect(screen.getByRole("button", { name: "Reiniciar" })).toBeVisible();
   });
 
+  it("opens the available electric-circuit simulation", async () => {
+    const user = userEvent.setup();
+    laboratory();
+    const circuitCard = screen
+      .getByRole("heading", { name: "Circuito elétrico" })
+      .closest("section");
+    expect(circuitCard).not.toBeNull();
+    await user.click(
+      within(circuitCard as HTMLElement).getByRole("link", {
+        name: "Abrir dinâmica",
+      }),
+    );
+    expect(
+      screen.getByRole("heading", { name: "Monte um circuito básico" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("button", { name: "Fechar chave do circuito" }),
+    ).toBeVisible();
+  });
+
   it("handles an unknown simulation without breaking navigation", () => {
     laboratory("/app/aprenda/dinamica/desconhecida");
     expect(
