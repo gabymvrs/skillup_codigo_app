@@ -24,6 +24,7 @@ function worker() {
       self: {
         location: { origin: "https://skillup.test" },
         clients: { claim: vi.fn() },
+        skipWaiting: vi.fn().mockResolvedValue(undefined),
         addEventListener: (name: string, fn: any) => (handlers[name] = fn),
       },
       caches,
