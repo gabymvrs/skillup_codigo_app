@@ -10,6 +10,7 @@ import {
 } from "../../components/ui";
 import { findSimulation, simulationCatalog } from "./catalog";
 import { LogicGatesSimulation } from "./LogicGatesSimulation";
+import { SolarSystemSimulation } from "./SolarSystemSimulation";
 
 export function SimulationCatalogPage() {
   return (
@@ -71,6 +72,8 @@ export function SimulationPage() {
       <Heading title={simulation.title} description={simulation.description} />
       {simulation.id === "portas-logicas" ? (
         <LogicGatesSimulation />
+      ) : simulation.id === "sistema-solar" ? (
+        <SolarSystemSimulation />
       ) : (
         <Notice>
           A experiência interativa será implementada no Lote{" "}
