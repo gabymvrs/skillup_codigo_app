@@ -854,6 +854,175 @@ a svg {
   margin: 0;
   padding-left: 24px;
 }
+.simulation-dialog {
+  width: min(920px, calc(100% - 32px));
+}
+.logic-simulation {
+  padding-top: 8px;
+}
+.logic-simulation-heading {
+  align-items: flex-start;
+}
+.logic-simulation-heading h3,
+.logic-simulation-heading p {
+  margin: 0;
+}
+.logic-simulation-heading p {
+  margin-top: 4px;
+  color: var(--muted);
+}
+.logic-gate-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.logic-gate-picker .button[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+.logic-simulation-workspace {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.65fr) minmax(0, 1.35fr);
+  gap: 20px;
+  align-items: stretch;
+}
+.logic-inputs {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--neutral-100);
+}
+.logic-inputs legend {
+  padding-inline: 6px;
+  color: var(--secondary);
+  font-weight: 600;
+}
+.logic-inputs label {
+  display: grid;
+  gap: 6px;
+  color: var(--secondary);
+  font-size: var(--label);
+  font-weight: 600;
+}
+.logic-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1px solid var(--neutral-300);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  text-align: left;
+}
+.logic-toggle.on {
+  border-color: var(--primary);
+  background: var(--tertiary-100);
+  color: var(--primary);
+}
+.logic-bit {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--neutral-200);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.logic-bit.on {
+  background: var(--primary);
+  color: white;
+}
+.logic-visual {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  padding: 12px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.logic-gate-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+}
+.logic-gate-diagram text {
+  fill: var(--secondary);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+}
+.logic-gate-shape {
+  fill: var(--tertiary-100);
+  stroke: var(--secondary);
+  stroke-width: 6;
+  stroke-linejoin: round;
+}
+.logic-gate-diagram .logic-gate-symbol {
+  font-size: 30px;
+  text-anchor: middle;
+}
+.logic-signal-on,
+.logic-signal-off {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke 160ms ease;
+}
+.logic-signal-on {
+  stroke: var(--primary);
+}
+.logic-signal-off {
+  stroke: var(--neutral-300);
+}
+.logic-output-lamp {
+  stroke: var(--secondary);
+  stroke-width: 5;
+  transition: fill 160ms ease;
+}
+.logic-output-lamp.on {
+  fill: #ffd34e;
+}
+.logic-output-lamp.off {
+  fill: var(--neutral-200);
+}
+.logic-gate-diagram .logic-output-label {
+  font-size: 15px;
+  text-anchor: middle;
+}
+.logic-result {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+.logic-result.on {
+  background: var(--tertiary-200);
+  color: var(--primary);
+}
+.logic-result.off {
+  background: var(--neutral-100);
+  color: var(--muted);
+}
+.logic-truth-table table {
+  min-width: 320px;
+}
+.logic-truth-table tr[aria-current="true"] {
+  background: var(--tertiary-200);
+  color: var(--secondary);
+  font-weight: 700;
+}
 .help-fab {
   position: fixed;
   bottom: calc(var(--tabbar-height) + 16px + env(safe-area-inset-bottom));
@@ -2291,6 +2460,16 @@ html[data-large-text="true"] {
   }
   .support-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .logic-simulation-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .logic-gate-picker {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .logic-simulation-heading {
+    align-items: stretch;
+    flex-direction: column;
   }
   .academic-assistant .chat-compose {
     grid-template-columns: minmax(0, 1fr) auto;
