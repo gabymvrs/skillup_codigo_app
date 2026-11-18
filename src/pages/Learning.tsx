@@ -586,13 +586,13 @@ export function Practice() {
               Altere os filtros para encontrar outros blocos de questões.
             </Empty>
           )}
-          {type === "Prática guiada" && (
+          {type === "Exercício" && (
             <>
               <SectionTitle>Questões avulsas para reforçar</SectionTitle>
               {data.questions
                 .filter(
                   (q) =>
-                    q.category === type &&
+                    q.category === "Prática guiada" &&
                     difficulty !== "advanced" &&
                     (!status ||
                       (status === "done"
