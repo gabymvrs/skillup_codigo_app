@@ -85,3 +85,31 @@ O modelo informa que tamanhos, distâncias e velocidades foram simplificados. A 
 - Testes da dinâmica, integração com Prática e catálogo: 7 aprovados.
 - Checagem de TypeScript: aprovada.
 - Build de produção: aprovado.
+
+## Lote 4 — célula animal interativa
+
+A dinâmica está disponível em **Aprenda → Prática → Dinâmica → Célula animal**.
+
+### Interações implementadas
+
+- Modelo 2D com núcleo, mitocôndria, complexo golgiense, retículo endoplasmático, lisossomo, ribossomo e membrana plasmática.
+- Seleção de cada estrutura diretamente no desenho.
+- Painel com função e localização aproximada da organela selecionada.
+- Controle para mostrar ou ocultar os nomes.
+- Desafio de identificação com feedback para acerto e tentativa incorreta.
+- Botão **Reiniciar**, que encerra o desafio, restaura os nomes e seleciona o núcleo.
+
+O modelo informa que tamanhos e posições foram simplificados. A dinâmica funciona somente no navegador, sem IA, serviço pago, biblioteca 3D ou backend.
+
+### Arquivos do lote
+
+- `src/features/simulations/AnimalCellSimulation.tsx`: modelo, organelas, informações e desafio.
+- `src/features/simulations/catalog.ts`: marca Célula animal como disponível.
+- `src/pages/Learning.tsx`: abre a dinâmica pelo catálogo integrado à Prática.
+- `tests/animal-cell-simulation.test.tsx`: cobre seleção, explicações, nomes, desafio e reinício.
+
+### Validação do lote
+
+- Testes da dinâmica, integração com Prática e catálogo: 8 aprovados.
+- Checagem de TypeScript: aprovada.
+- Build de produção: aprovado.
