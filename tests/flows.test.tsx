@@ -460,6 +460,11 @@ describe("Final interaction regressions", () => {
       input = within(dialog).getByRole("textbox", {
         name: "Mensagem para o bot",
       });
+    expect(
+      within(dialog).getByRole("heading", { name: "Atendimento automático" }),
+    ).toBeVisible();
+    expect(within(dialog).getByText("Bot SkillUp")).toBeVisible();
+    expect(input.tagName).toBe("TEXTAREA");
     const ids = screen
       .getAllByRole("textbox", { name: "Mensagem para o bot" })
       .map((e) => e.id);
