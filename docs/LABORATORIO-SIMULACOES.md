@@ -143,3 +143,31 @@ O modelo explica que os valores e o brilho foram simplificados. A dinâmica func
 - Testes da dinâmica, integração com Prática e catálogo: 9 aprovados.
 - Checagem de TypeScript: aprovada.
 - Build de produção: aprovado.
+
+## Lote 6 — testes, acessibilidade e refinamentos
+
+As quatro dinâmicas foram revisadas em conjunto, sem adicionar uma nova simulação.
+
+### Refinamentos realizados
+
+- Testes de operação por teclado para portas lógicas, Sistema Solar, célula animal e circuito elétrico.
+- Verificação dos nomes acessíveis, estados pressionados e mensagens anunciadas após as interações.
+- Correção da estrutura das entradas das portas lógicas: os botões deixaram de ficar dentro de elementos `label`.
+- Confirmação do suporte global a movimento reduzido, que desativa animações e transições quando essa preferência está ativa.
+- Revisão dos layouts responsivos já usados pelos controles e painéis das quatro dinâmicas.
+- Atualização do texto do catálogo para informar que as atividades estão disponíveis.
+
+### Arquivos do lote
+
+- `src/features/simulations/LogicGatesSimulation.tsx`: estrutura semântica das entradas.
+- `src/features/simulations/SimulationLab.tsx`: descrição atualizada do catálogo.
+- `src/styles/global.css`: compatibilidade visual da estrutura corrigida.
+- `tests/simulation-accessibility.test.tsx`: operação por teclado e feedback acessível nas quatro dinâmicas.
+- `tests/simulation-lab.test.tsx`: confirma que todas as dinâmicas estão disponíveis.
+
+### Validação do lote
+
+- Testes das simulações, acessibilidade, catálogo e integração com Prática: 19 aprovados.
+- Checagem de TypeScript: aprovada.
+- Build de produção: aprovado.
+- Suíte completa: 207 testes aprovados e 17 falhas anteriores, fora dos arquivos do laboratório, em fluxos de cadastro, atividades, suporte, navegação e service worker.
