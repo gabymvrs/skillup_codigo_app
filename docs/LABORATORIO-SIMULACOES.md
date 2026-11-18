@@ -57,3 +57,31 @@ A dinâmica funciona somente no navegador. Não usa IA, serviço pago, bibliotec
 - Testes da dinâmica, integração com Prática e catálogo: 7 aprovados.
 - Checagem de TypeScript: aprovada.
 - Build de produção: aprovado.
+
+## Lote 3 — Sistema Solar 2D
+
+A dinâmica está disponível em **Aprenda → Prática → Dinâmica → Sistema Solar**.
+
+### Interações implementadas
+
+- Oito planetas na ordem correta a partir do Sol.
+- Órbitas 2D que podem ser iniciadas e pausadas.
+- Controle de velocidade entre 0,5× e 2×.
+- Seleção de cada planeta para consultar posição, período orbital e uma explicação curta.
+- Controle para mostrar ou ocultar os nomes no modelo.
+- Botão **Reiniciar**, que pausa o movimento, restaura a velocidade e seleciona a Terra.
+
+O modelo informa que tamanhos, distâncias e velocidades foram simplificados. A dinâmica funciona somente no navegador, sem IA, serviço pago, biblioteca 3D ou backend.
+
+### Arquivos do lote
+
+- `src/features/simulations/SolarSystemSimulation.tsx`: planetas, controles, órbitas e painel educativo.
+- `src/features/simulations/catalog.ts`: marca Sistema Solar como disponível.
+- `src/pages/Learning.tsx`: abre a dinâmica pelo catálogo integrado à Prática.
+- `tests/solar-system-simulation.test.tsx`: cobre movimento, pausa, velocidade, seleção, nomes e reinício.
+
+### Validação do lote
+
+- Testes da dinâmica, integração com Prática e catálogo: 7 aprovados.
+- Checagem de TypeScript: aprovada.
+- Build de produção: aprovado.
