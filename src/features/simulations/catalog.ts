@@ -53,7 +53,7 @@ export const simulationCatalog: readonly SimulationCatalogItem[] = [
     ],
     icon: "leaf",
     implementationBatch: 4,
-    status: "planned",
+    status: "available",
   },
   {
     id: "circuito-eletrico",
