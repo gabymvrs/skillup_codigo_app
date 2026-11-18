@@ -1202,6 +1202,182 @@ a svg {
   color: var(--secondary);
   font-weight: 600;
 }
+.cell-simulation-heading {
+  align-items: flex-start;
+}
+.cell-simulation-heading h3,
+.cell-simulation-heading p {
+  margin: 0;
+}
+.cell-simulation-heading p {
+  margin-top: 4px;
+  color: var(--muted);
+}
+.cell-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 14px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--neutral-100);
+}
+.cell-controls .check-label {
+  margin: 0;
+}
+.cell-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.55fr);
+  gap: 20px;
+  align-items: start;
+}
+.cell-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  aspect-ratio: 4 / 3;
+  justify-self: center;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: #eff9f4;
+}
+.cell-body {
+  position: absolute;
+  inset: 7% 5%;
+  border: 7px solid #267f76;
+  border-radius: 48% 52% 45% 55% / 55% 46% 54% 45%;
+  background:
+    radial-gradient(circle at 22% 24%, #ffffff99 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 75%, #ffffff99 0 2px, transparent 3px),
+    #bde6d6;
+  box-shadow: inset 0 0 32px #267f7622;
+}
+.cell-organelle {
+  --organelle-x: 50%;
+  --organelle-y: 50%;
+  --organelle-width: 12%;
+  --organelle-height: 12%;
+  --organelle-color: #7655b7;
+  position: absolute;
+  z-index: 2;
+  top: var(--organelle-y);
+  left: var(--organelle-x);
+  display: grid;
+  justify-items: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 4px;
+  border: 0;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  color: var(--secondary);
+  font-size: 10px;
+  font-weight: 700;
+}
+.cell-organelle-shape {
+  display: block;
+  width: clamp(20px, var(--organelle-width), 130px);
+  height: clamp(18px, var(--organelle-height), 120px);
+  border: 3px solid color-mix(in srgb, var(--organelle-color) 75%, #18304f);
+  border-radius: 50%;
+  background: var(--organelle-color);
+  box-shadow: inset -5px -4px 8px #00000022;
+}
+.cell-organelle.bean .cell-organelle-shape {
+  border-radius: 60% 40% 58% 42%;
+  transform: rotate(-18deg);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--organelle-color) 0 7px,
+    color-mix(in srgb, var(--organelle-color) 68%, white) 8px 11px
+  );
+}
+.cell-organelle.stack .cell-organelle-shape {
+  border: 0;
+  border-radius: 12px 50% 50% 12px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 4px,
+    var(--organelle-color) 5px 9px
+  );
+  box-shadow: none;
+}
+.cell-organelle.network .cell-organelle-shape {
+  border: 0;
+  border-radius: 35%;
+  background: repeating-radial-gradient(
+    ellipse at center,
+    transparent 0 7px,
+    var(--organelle-color) 8px 11px,
+    transparent 12px 15px
+  );
+  box-shadow: none;
+}
+.cell-organelle.dot .cell-organelle-shape {
+  border-width: 2px;
+}
+.cell-organelle.edge .cell-organelle-shape {
+  border-radius: 45%;
+  background: var(--organelle-color);
+}
+.cell-organelle:hover,
+.cell-organelle:focus-visible,
+.cell-organelle.selected {
+  z-index: 4;
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 10px;
+  background: #ffffffdd;
+}
+.cell-organelle-name {
+  margin-top: 3px;
+  padding: 2px 5px;
+  border-radius: 8px;
+  background: #ffffffdd;
+  white-space: nowrap;
+}
+.cell-details {
+  min-width: 0;
+  padding: 20px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.cell-details-kicker {
+  color: var(--primary);
+  font-size: var(--label);
+  font-weight: 700;
+}
+.cell-details h4 {
+  margin: 8px 0;
+  color: var(--secondary);
+  font-size: var(--subtitle);
+}
+.cell-details dl {
+  margin: 20px 0 0;
+  padding-top: 14px;
+  border-top: var(--border);
+}
+.cell-details dt {
+  color: var(--muted);
+  font-size: var(--label);
+}
+.cell-details dd {
+  margin: 4px 0 0;
+  color: var(--secondary);
+  font-weight: 600;
+}
+.cell-feedback {
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--tertiary-100);
+  color: var(--secondary);
+  font-weight: 600;
+}
 .help-fab {
   position: fixed;
   bottom: calc(var(--tabbar-height) + 16px + env(safe-area-inset-bottom));
@@ -2660,6 +2836,17 @@ html[data-large-text="true"] {
   }
   .solar-label-control {
     white-space: normal;
+  }
+  .cell-simulation-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .cell-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cell-diagram {
+    min-height: 360px;
+    aspect-ratio: 1 / 1;
   }
   .academic-assistant .chat-compose {
     grid-template-columns: minmax(0, 1fr) auto;
