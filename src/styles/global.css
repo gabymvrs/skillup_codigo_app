@@ -1059,7 +1059,23 @@ a svg {
   display: flex;
   gap: 8px;
   align-items: flex-end;
-  padding-top: 4px;
+  flex: none;
+  padding: 12px;
+  border: var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 -4px 16px rgb(12 28 93 / 6%);
+}
+.chat-compose-field {
+  display: grid;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+}
+.chat-compose-field label {
+  color: var(--secondary);
+  font-size: var(--label);
+  font-weight: 600;
 }
 .chat-compose input,
 .chat-compose textarea {
@@ -1092,7 +1108,8 @@ a svg {
   display: flex;
   flex: 1;
   gap: 12px;
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .support-conversation-header {
   display: flex;
