@@ -9,7 +9,7 @@ export type SimulationCatalogItem = {
   learningGoals: readonly string[];
   icon: string;
   implementationBatch: 2 | 3 | 4 | 5;
-  status: "planned";
+  status: "available" | "planned";
 };
 
 export const simulationCatalog: readonly SimulationCatalogItem[] = [
@@ -25,7 +25,7 @@ export const simulationCatalog: readonly SimulationCatalogItem[] = [
     ],
     icon: "cpu",
     implementationBatch: 2,
-    status: "planned",
+    status: "available",
   },
   {
     id: "sistema-solar",
