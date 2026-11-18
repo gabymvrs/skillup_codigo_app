@@ -255,11 +255,11 @@ export function SupportContent({
         ))}
       </div>
       {tab === "faq" ? (
-        <div role="tabpanel">
+        <div className="support-panel" role="tabpanel">
           <FAQ />
         </div>
       ) : tab === "teachers" ? (
-        <div className="stack support-teachers" role="tabpanel">
+        <div className="stack support-panel support-teachers" role="tabpanel">
           <div>
             <h3>Conversar com professores</h3>
             <p className="small muted">
@@ -300,14 +300,20 @@ export function SupportContent({
           )}
         </div>
       ) : (
-        <div className="stack" role="tabpanel">
+        <div
+          className="stack support-panel support-conversation"
+          role="tabpanel"
+        >
           {useAutomaticTutor ? (
             <>
-              <div className="row-between">
-                <span className="small muted">
-                  Tutor automático
-                  {academicContext ? ` · ${academicContext}` : ""}
-                </span>
+              <div className="support-conversation-header">
+                <div>
+                  <h3>Conversa com o tutor</h3>
+                  <p className="small muted">
+                    Tutor automático
+                    {academicContext ? ` · ${academicContext}` : ""}
+                  </p>
+                </div>
                 <Button
                   variant="ghost"
                   disabled={tutorBusy || tutorHistoryLoading}
@@ -343,12 +349,18 @@ export function SupportContent({
               >
                 {tutorHistoryLoading ? (
                   <div className="chat-message bot" role="status">
+                    <span className="chat-message-author" aria-hidden="true">
+                      Tutor
+                    </span>
                     Carregando conversa salva…
                   </div>
                 ) : (
                   !tutorMessages.length && (
                     <div className="chat-message bot">
                       <span className="sr-only">Tutor:</span>
+                      <span className="chat-message-author" aria-hidden="true">
+                        Tutor
+                      </span>
                       Olá! Qual conteúdo escolar você gostaria de entender?
                     </div>
                   )
@@ -361,11 +373,17 @@ export function SupportContent({
                     <span className="sr-only">
                       {item.role === "model" ? "Tutor:" : "Você:"}
                     </span>
+                    <span className="chat-message-author" aria-hidden="true">
+                      {item.role === "model" ? "Tutor" : "Você"}
+                    </span>
                     {item.text}
                   </div>
                 ))}
                 {tutorBusy && (
                   <div className="chat-message bot" role="status">
+                    <span className="chat-message-author" aria-hidden="true">
+                      Tutor
+                    </span>
                     Preparando uma explicação…
                   </div>
                 )}
@@ -380,8 +398,9 @@ export function SupportContent({
                 <label className="sr-only" htmlFor={messageId}>
                   Mensagem para o tutor
                 </label>
-                <input
+                <textarea
                   id={messageId}
+                  rows={2}
                   placeholder="Digite sua dúvida…"
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
@@ -406,10 +425,11 @@ export function SupportContent({
             </>
           ) : (
             <>
-              <div className="row-between">
-                <span className="small muted">
-                  Automático · sem atendente conectado
-                </span>
+              <div className="support-conversation-header">
+                <div>
+                  <h3>Atendimento automático</h3>
+                  <p className="small muted">Sem atendente conectado</p>
+                </div>
                 <Button
                   variant="ghost"
                   onClick={() => {
@@ -433,6 +453,9 @@ export function SupportContent({
                   <div key={i} className={`chat-message ${m.who}`}>
                     <span className="sr-only">
                       {m.who === "bot" ? "Bot:" : "Você:"}
+                    </span>
+                    <span className="chat-message-author" aria-hidden="true">
+                      {m.who === "bot" ? "Bot SkillUp" : "Você"}
                     </span>
                     {m.text}
                   </div>
@@ -470,8 +493,9 @@ export function SupportContent({
                     <label className="sr-only" htmlFor={messageId}>
                       Mensagem para o bot
                     </label>
-                    <input
+                    <textarea
                       id={messageId}
+                      rows={2}
                       placeholder="Digite sua dúvida…"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
