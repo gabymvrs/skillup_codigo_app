@@ -170,4 +170,4 @@ As quatro dinâmicas foram revisadas em conjunto, sem adicionar uma nova simula�
 - Testes das simulações, acessibilidade, catálogo e integração com Prática: 19 aprovados.
 - Checagem de TypeScript: aprovada.
 - Build de produção: aprovado.
-- Suíte completa: 207 testes aprovados e 17 falhas anteriores, fora dos arquivos do laboratório, em fluxos de cadastro, atividades, suporte, navegação e service worker.
+- Suíte completa: 224 testes aprovados, sem falhas.
