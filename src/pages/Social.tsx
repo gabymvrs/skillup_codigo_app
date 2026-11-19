@@ -71,7 +71,9 @@ export function SocialPage({
           (category === "Todas" || p.category === category) &&
           matches(query, p.title, p.body, p.author_name),
       )
-      .sort((a, b) => b.created_at.localeCompare(a.created_at));
+      .sort((a, b) => b.created_at.localeCompare(a.created_at)),
+    discussionCount = data.posts.filter((p) => p.kind === "forum").length,
+    openProjectCount = data.projects.filter((p) => p.status === "open").length;
   return (
     <div className="stack">
       <Heading
@@ -108,8 +110,47 @@ export function SocialPage({
           </ActionLink>
         </Card>
       )}
-      {section === "inicio" && auth.role === "estudante" && (
-        <ProjectRecommendations />
+      {section === "inicio" && (
+        <section
+          className="social-overview"
+          aria-labelledby="social-overview-title"
+        >
+          <div className="social-overview-copy">
+            <h2 id="social-overview-title">Atividade da comunidade</h2>
+            <p>Consulte as conversas e os projetos disponíveis agora.</p>
+          </div>
+          <dl className="social-overview-stats">
+            <div>
+              <dt>Publicações</dt>
+              <dd>{posts.length}</dd>
+            </div>
+            <div>
+              <dt>Discussões</dt>
+              <dd>{discussionCount}</dd>
+            </div>
+            <div>
+              <dt>Projetos abertos</dt>
+              <dd>{openProjectCount}</dd>
+            </div>
+          </dl>
+          <nav
+            className="social-overview-actions"
+            aria-label="Atalhos da comunidade"
+          >
+            <ActionLink to="/app/social/foruns" variant="outline">
+              Ver fóruns
+            </ActionLink>
+            <ActionLink to="/app/social/projetos" variant="outline">
+              Explorar projetos
+            </ActionLink>
+            <ActionLink to="/app/social/feed" variant="ghost">
+              Abrir feed
+            </ActionLink>
+          </nav>
+        </section>
+      )}
+      {section === "inicio" && (
+        <h2 className="social-stream-title">Publicações recentes</h2>
       )}
       <SearchField
         value={query}
@@ -136,7 +177,16 @@ export function SocialPage({
         </div>
         {section === "inicio" && (
           <aside className="stack">
-            <Leaderboard />
+            <Card className="social-forum-callout">
+              <h3>Fóruns temáticos</h3>
+              <p>
+                Faça perguntas e acompanhe conversas sobre programação,
+                hardware, carreira e design.
+              </p>
+              <ActionLink to="/app/social/foruns" variant="outline">
+                Ver discussões
+              </ActionLink>
+            </Card>
             <Card>
               <SectionTitle
                 action={<Link to="/app/social/projetos">Ver todos</Link>}
@@ -164,16 +214,13 @@ export function SocialPage({
                   </Link>
                 ))}
             </Card>
-            <Card>
-              <h3>Fóruns temáticos</h3>
-              <p>Converse sobre programação, hardware, carreira e design.</p>
-              <ActionLink to="/app/social/foruns" variant="outline">
-                Ver fóruns
-              </ActionLink>
-            </Card>
+            <Leaderboard />
           </aside>
         )}
       </div>
+      {section === "inicio" && auth.role === "estudante" && (
+        <ProjectRecommendations />
+      )}
       {creating && (
         <PostEditor
           kind={auth.role === "instituicao" ? "announcement" : kind}
