@@ -1758,6 +1758,50 @@ details summary {
   gap: 24px;
   grid-template-columns: minmax(0, 1fr);
 }
+.social-overview {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  border: var(--border);
+  border-left: 4px solid var(--primary-400);
+  border-radius: var(--radius-md);
+  background: var(--tertiary-200);
+}
+.social-overview h2,
+.social-overview p { margin: 0; }
+.social-overview-copy p {
+  max-width: 48ch;
+  margin-top: 6px;
+  color: var(--muted);
+}
+.social-overview-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+.social-overview-stats > div {
+  min-width: 0;
+  padding-inline: 16px;
+  border-left: 1px solid var(--primary-100);
+}
+.social-overview-stats dt { color: var(--muted); font-size: var(--label); }
+.social-overview-stats dd {
+  margin: 2px 0 0;
+  color: var(--secondary);
+  font-size: var(--headline-m);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.social-overview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.social-stream-title { margin: 8px 0 -8px; font-size: var(--headline-m); }
+.social-forum-callout { background: var(--tertiary-100); }
+.social-forum-callout h3,
+.social-forum-callout p { margin-top: 0; }
 .module-card {
   display: flex;
   align-items: center;
@@ -2522,6 +2566,10 @@ details summary {
   .social-grid {
     grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
   }
+  .social-overview {
+    grid-template-columns: minmax(200px, 0.8fr) minmax(300px, 1fr) auto;
+    align-items: center;
+  }
   .settings-grid {
     grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
   }
@@ -2887,6 +2935,21 @@ html[data-large-text="true"] {
   margin-top: 8px;
 }
 @media (max-width: 767px) {
+  .social-overview-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .social-overview-stats > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 12px;
+    border-left: 0;
+    border-bottom: var(--border);
+  }
+  .social-overview-stats > div:last-child { padding-bottom: 0; border-bottom: 0; }
+  .social-overview-actions .button { flex: 1 1 140px; }
   .practice-dashboard-header {
     align-items: flex-start;
     flex-direction: column;
