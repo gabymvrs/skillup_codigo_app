@@ -214,7 +214,7 @@ export interface Project {
     source: string;
   }>;
   id: string;
-  owner_id: string;
+  owner_id: string | null;
   title: string;
   description: string;
   category: string;
