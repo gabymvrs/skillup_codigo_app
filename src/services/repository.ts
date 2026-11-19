@@ -8,7 +8,7 @@ import {
 } from "../data/catalog";
 import type { Dataset, TableMap, TableName } from "../lib/types";
 import { emptyDataset, tableNames } from "../lib/types";
-import { createDemo, demoPortraits } from "../data/demo";
+import { createDemo, demoPortraits, demoProjects } from "../data/demo";
 import { requireSupabase } from "./supabase";
 import curriculum from "../data/beginner-curriculum.json";
 export const DEMO_KEY = "skillup.demo.v2";
@@ -30,6 +30,15 @@ export function readDemo(): Dataset {
         row.image = imageMigrations[row.image];
     }
     d.experiences ??= [];
+    d.projects ??= [];
+    for (const project of demoProjects) {
+      const stored = d.projects.find(
+        (row: { id: string }) => row.id === project.id,
+      );
+      if (!stored) d.projects.push(structuredClone(project));
+      else if (!stored.resources?.length)
+        stored.resources = structuredClone(project.resources);
+    }
     for (const profile of d.profiles || []) {
       if (
         profile.avatar_demo === undefined ||

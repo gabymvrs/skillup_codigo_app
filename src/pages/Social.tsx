@@ -588,9 +588,16 @@ export function Projects() {
                 <Badge key={s}>{s}</Badge>
               ))}
             </div>
+            {!!p.resources?.length && (
+              <p className="project-resource-count">
+                <Icon name="book" size={18} />
+                {p.resources.length} materiais para começar
+              </p>
+            )}
             <p className="small muted">
               {data.project_members.filter((m) => m.project_id === p.id).length}{" "}
-              {data.project_members.filter((m) => m.project_id === p.id).length === 1
+              {data.project_members.filter((m) => m.project_id === p.id)
+                .length === 1
                 ? "participante"
                 : "participantes"}
             </p>
@@ -618,8 +625,11 @@ export function ProjectDetail() {
     action = useAction(),
     [leaving, setLeaving] = useState(false);
   const membership = repo.data.project_members.find(
-    (p) => p.project_id === projectId && p.user_id === auth.id,
-  );
+      (p) => p.project_id === projectId && p.user_id === auth.id,
+    ),
+    resources = (project?.resources || []).filter((resource) =>
+      safeUrl(resource.url),
+    );
   if (!project) return <Empty title="Projeto não encontrado" />;
   return (
     <div className="stack narrow">
@@ -667,7 +677,8 @@ export function ProjectDetail() {
             repo.data.project_members.filter((p) => p.project_id === projectId)
               .length
           }{" "}
-          {repo.data.project_members.filter((p) => p.project_id === projectId).length === 1
+          {repo.data.project_members.filter((p) => p.project_id === projectId)
+            .length === 1
             ? "participante"
             : "participantes"}
         </p>
@@ -729,6 +740,47 @@ export function ProjectDetail() {
         )}
         <ActionFeedback action={action} />
       </Card>
+      {!!resources.length && (
+        <section
+          className="card stack project-resources"
+          aria-labelledby="project-resources-title"
+        >
+          <div>
+            <h2 id="project-resources-title">Materiais para começar</h2>
+            <p>
+              Consulte os recursos externos antes de dividir as tarefas do
+              projeto.
+            </p>
+          </div>
+          <ul>
+            {resources.map((resource) => (
+              <li key={resource.url}>
+                <a
+                  href={safeUrl(resource.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="project-resource-icon">
+                    <Icon name={resource.type === "video" ? "play" : "book"} />
+                  </span>
+                  <span>
+                    <strong>{resource.title}</strong>
+                    <small>
+                      {resource.type === "video" ? "Vídeo" : "Artigo"} ·{" "}
+                      {resource.source}
+                    </small>
+                  </span>
+                  <Icon name="external" size={18} />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="small muted">
+            Os links abrem sites externos. O SkillUp não controla alterações
+            feitas nesses conteúdos.
+          </p>
+        </section>
+      )}
       <SectionTitle>Publicações e comentários sobre este projeto</SectionTitle>
       {repo.data.posts
         .filter((p) => p.project_id === project.id)

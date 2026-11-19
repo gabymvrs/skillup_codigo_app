@@ -207,6 +207,12 @@ export interface Project {
   knowledge_level?: string;
   cover_path?: string | null;
   external_url?: string;
+  resources?: Array<{
+    title: string;
+    url: string;
+    type: "video" | "article";
+    source: string;
+  }>;
   id: string;
   owner_id: string;
   title: string;

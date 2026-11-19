@@ -306,11 +306,27 @@ describe("Social, career and assessment interactions", () => {
   it("filters projects and joins a project", async () => {
     const user = userEvent.setup();
     app("/app/social/projetos");
+    expect(
+      await screen.findByRole("heading", {
+        name: "Painel de controle de estoque",
+      }),
+    ).toBeVisible();
     await user.click(await screen.findByRole("button", { name: "Design" }));
     expect(
       screen.queryByText("Portal de Sustentabilidade"),
     ).not.toBeInTheDocument();
     await user.click(screen.getByRole("link", { name: "Ver detalhes" }));
+    expect(
+      screen.getByRole("heading", { name: "Materiais para começar" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: /Vídeos sobre acessibilidade digital/ }),
+    ).toHaveAttribute("target", "_blank");
+    expect(
+      screen.getByRole("link", {
+        name: /Tutoriais de acessibilidade para interfaces/,
+      }),
+    ).toHaveAttribute("href", "https://www.w3.org/WAI/tutorials/");
     await user.click(
       screen.getByRole("button", { name: "Participar do projeto" }),
     );
