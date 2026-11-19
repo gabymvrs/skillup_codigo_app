@@ -244,6 +244,35 @@ describe("Learning and support", () => {
   });
 });
 describe("Social, career and assessment interactions", () => {
+  it("organizes the community home around activity, conversations and projects", async () => {
+    app("/app/social/inicio");
+
+    expect(
+      await screen.findByRole("heading", { name: "Sua comunidade" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Atividade da comunidade" }),
+    ).toBeVisible();
+    const shortcuts = screen.getByRole("navigation", {
+      name: "Atalhos da comunidade",
+    });
+    expect(
+      within(shortcuts).getByRole("link", { name: "Ver fóruns" }),
+    ).toHaveAttribute("href", "/app/social/foruns");
+    expect(
+      within(shortcuts).getByRole("link", { name: "Explorar projetos" }),
+    ).toHaveAttribute("href", "/app/social/projetos");
+    expect(
+      screen.getByRole("heading", { name: "Publicações recentes" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Fóruns temáticos" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Ranking semanal" }),
+    ).toBeVisible();
+  });
+
   it("publishes a forum discussion and persists comments", async () => {
     const user = userEvent.setup();
     app("/app/social/foruns");
