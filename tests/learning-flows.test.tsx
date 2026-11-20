@@ -171,7 +171,11 @@ describe("Interactive exercise formats", () => {
       const user = userEvent.setup();
       app("/app/aprenda/pratica");
       await user.click(
+<<<<<<< Updated upstream
         await screen.findByRole("button", { name: "Exercício" }),
+=======
+        await screen.findByRole("button", { name: "Prática guiada" }),
+>>>>>>> Stashed changes
       );
       await user.selectOptions(
         await screen.findByLabelText("Disciplina"),
@@ -263,8 +267,13 @@ describe("Interactive exercise formats", () => {
       await screen.findByRole("button", { name: "Começar trilha" }),
     );
     await screen.findByText(/Trilha iniciada/);
+    const trail = screen.getByRole("group", { name: "Etapas da trilha" });
+    const firstStage = within(trail).getByRole("button", {
+      name: /Como uma página funciona/,
+    });
+    expect(firstStage).toHaveAttribute("aria-current", "step");
     await user.click(
-      screen.getByRole("button", { name: /Como uma página funciona/ }),
+      screen.getByRole("button", { name: "Abrir próxima etapa" }),
     );
     await user.click(
       await screen.findByRole("button", {
@@ -278,6 +287,9 @@ describe("Interactive exercise formats", () => {
     await user.click(
       screen.getByRole("button", { name: "Continuar para a prática" }),
     );
+    expect(
+      screen.getByRole("progressbar", { name: "0 de 5 questões resolvidas" }),
+    ).toHaveValue(0);
     for (const [i, answer] of [
       "Interpretar e apresentar páginas",
       "Marcar a estrutura e a função do conteúdo",
@@ -307,6 +319,8 @@ describe("Interactive exercise formats", () => {
     );
     await screen.findByText("Atividade concluída!");
     await user.click(screen.getByRole("button", { name: "Continuar trilha" }));
+    expect(firstStage).toHaveTextContent("Concluída · Revisar");
+    expect(firstStage).not.toHaveAttribute("aria-current");
     await user.click(screen.getByRole("link", { name: "Todas as trilhas" }));
     const heading = await screen.findByRole("heading", {
         name: "UI/UX Design",

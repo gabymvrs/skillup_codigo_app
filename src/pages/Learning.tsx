@@ -149,6 +149,23 @@ export function TrackDetail() {
     track?.owner_id === auth.id &&
     ["docente", "instituicao"].includes(auth.role!);
   if (!track) return <Empty title="Trilha não encontrada" />;
+  const student = auth.role === "estudante";
+  const locked = (id: string, prerequisite: string | null) =>
+    student && !done(id) && Boolean(prerequisite && !done(prerequisite));
+  const next = student
+    ? modules.find((m) => !done(m.id) && !locked(m.id, m.prerequisite_id))
+    : undefined;
+
+  function openStage(id: string) {
+    if (student && demoPlans.some((plan) => plan.module_id === id)) {
+      setPreview(id);
+    } else {
+      setOpen(id);
+    }
+    action.setSuccess("");
+    action.setError("");
+  }
+
   return (
     <div className="stack">
       <Link className="back-link" to="/app/aprenda/trilhas">
@@ -174,14 +191,12 @@ export function TrackDetail() {
         student={auth.role === "estudante"}
         busy={action.busy}
         onBegin={async () => {
-          {
-            await repo.startTrack(track.id);
-            action.setSuccess(
-              "Trilha iniciada. Você pode estudar outras áreas em paralelo.",
-            );
-          }
+          await repo.startTrack(track.id);
+          action.setSuccess(
+            "Trilha iniciada. Você pode estudar outras áreas em paralelo.",
+          );
           document
-            .querySelector(".trail-path")
+            .querySelector(next ? ".trail-next" : ".trail-path")
             ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
         }}
       />
@@ -209,42 +224,55 @@ export function TrackDetail() {
           label={`${count} de ${modules.length} etapas concluídas`}
         />
       </Card>
-      <div className="trail-path">
+      {next && (
+        <Card className="trail-next">
+          <h2>Próxima etapa</h2>
+          <p>
+            <strong>{next.title}</strong> · {next.xp} XP ao concluir
+          </p>
+          <Button icon="play" onClick={() => openStage(next.id)}>
+            Abrir próxima etapa
+          </Button>
+        </Card>
+      )}
+      {student && modules.length > 0 && count === modules.length && (
+        <Notice tone="success">
+          Trilha concluída. Abra uma etapa do mapa para revisar.
+        </Notice>
+      )}
+      <div className="trail-path" role="group" aria-label="Etapas da trilha">
         {modules.map((m, i) => {
-          const locked =
-            auth.role === "estudante" &&
-            !done(m.id) &&
-            Boolean(m.prerequisite_id && !done(m.prerequisite_id));
+          const complete = done(m.id);
+          const blocked = locked(m.id, m.prerequisite_id);
+          const prerequisite = repo.data.modules.find(
+            (item) => item.id === m.prerequisite_id,
+          );
           return (
             <button
               key={m.id}
-              className={`trail-node ${done(m.id) ? "complete" : ""} ${locked ? "locked" : ""}`}
-              disabled={locked}
-              onClick={() => {
-                if (
-                  auth.role === "estudante" &&
-                  demoPlans.some((p) => p.module_id === m.id)
-                )
-                  setPreview(m.id);
-                else setOpen(m.id);
-                action.setSuccess("");
-                action.setError("");
-              }}
+              className={`trail-node ${complete ? "complete" : ""} ${blocked ? "locked" : ""}`}
+              aria-current={next?.id === m.id ? "step" : undefined}
+              aria-labelledby={`trail-title-${m.id}`}
+              aria-describedby={`trail-status-${m.id}`}
+              disabled={blocked}
+              onClick={() => openStage(m.id)}
             >
               <span className="trail-icon">
                 <Icon
-                  name={done(m.id) ? "check" : locked ? "lock" : "play"}
+                  name={complete ? "check" : blocked ? "lock" : "play"}
                   size={24}
                 />
               </span>
               <span>
-                <strong>{m.title}</strong>
-                <small>
-                  {done(m.id)
-                    ? "Concluído"
-                    : locked
-                      ? "Conclua a etapa anterior"
-                      : `${i + 1}ª etapa · ${m.xp} XP${demoPlans.some((p) => p.module_id === m.id) ? " · Teoria + prática + dinâmica" : ""}`}
+                <strong id={`trail-title-${m.id}`}>{m.title}</strong>
+                <small id={`trail-status-${m.id}`}>
+                  {complete
+                    ? (student ? "Concluída · Revisar" : "Concluída")
+                    : blocked
+                      ? (prerequisite
+                          ? `Conclua “${prerequisite.title}”`
+                          : "Conclua a etapa exigida")
+                      : `${i + 1}ª etapa · ${m.xp} XP`}
                 </small>
               </span>
             </button>
@@ -258,7 +286,7 @@ export function TrackDetail() {
       )}
       <Card>
         <Icon name="award" />
-        <h3>Tesouro do módulo</h3>
+        <h3>Conquistas da trilha</h3>
         <p>
           Conclua as etapas para acompanhar suas conquistas. Certificados
           oficiais dependem da instituição emissora.
@@ -417,6 +445,7 @@ export function Practice() {
           <SectionTitle>Ações rápidas</SectionTitle>
           <div className="practice-grid">
             {[
+              ["Prática guiada", "play"],
               ["Exames", "file"],
               ["Exercício", "clipboard"],
               ["Dinâmica", "zap"],

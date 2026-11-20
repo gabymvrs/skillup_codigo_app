@@ -40,10 +40,14 @@ export function readDemo(): Dataset {
         stored.resources = structuredClone(project.resources);
     }
     for (const profile of d.profiles || []) {
+<<<<<<< Updated upstream
       if (
         profile.avatar_demo === undefined ||
         profile.avatar_demo === "/assets/story-4.svg"
       )
+=======
+      if (profile.avatar_demo === undefined || profile.avatar_demo === "/assets/story-4.svg")
+>>>>>>> Stashed changes
         profile.avatar_demo = demoPortraits[profile.id];
     }
     for (const [table, additions] of Object.entries({

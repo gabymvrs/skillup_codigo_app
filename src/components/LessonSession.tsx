@@ -9,6 +9,7 @@ import {
 } from "../lib/guidedLearning";
 import { LessonFeedback } from "./LessonFeedback";
 import { useEffect, useRef, useState } from "react";
+import { percent } from "../lib/utils";
 import type { Module, ExerciseAnswer } from "../lib/types";
 import type { LessonPlan, LessonState } from "../lib/lessonTypes";
 import {
@@ -65,9 +66,11 @@ export function LessonSession({
   const draftKey = `skillup.lesson.draft.${auth.demo ? "demo" : "real"}.${auth.id}.${module.id}`;
   const stage = state?.session.stage;
   const currentView = view || stage;
-  const practiceReady =
-    !!state &&
-    state.plan.question_ids.every((id) => state.session.results[id]?.correct);
+  const practiceTotal = state?.plan.question_ids.length ?? 0;
+  const practiceDone =
+    state?.plan.question_ids.filter((id) => state.session.results[id]?.correct)
+      .length ?? 0;
+  const practiceReady = !!state && practiceDone === practiceTotal;
   useEffect(() => {
     let active = true;
     void action
@@ -358,6 +361,10 @@ export function LessonSession({
                     2/3 · Pratique · Questão {index + 1} de{" "}
                     {state.plan.question_ids.length}
                   </h3>
+                  <ProgressBar
+                    value={percent(practiceDone, practiceTotal)}
+                    label={`${practiceDone} de ${practiceTotal} questões resolvidas`}
+                  />
                   {q ? (
                     <>
                       <h4>{q.title}</h4>
@@ -378,14 +385,16 @@ export function LessonSession({
                       {result && (
                         <Notice tone={result.correct ? "success" : "warning"}>
                           {result.correct
-                            ? "Resposta correta."
-                            : "Vamos revisar e tentar novamente."}{" "}
+                            ? result.objective === false
+                              ? "Resposta registrada."
+                              : "Resposta correta."
+                            : "Revise a resposta e tente de novo."}{" "}
                           {result.explanation}
                         </Notice>
                       )}
-                      {result && !result.correct && result.tries >= 2 && (
+                      {result && !result.correct && (
                         <Notice>
-                          Você pode revisar o conceito antes de tentar de novo.
+                          Você pode consultar a teoria e voltar a esta questão.
                           Nenhum XP é descontado.
                           <Button
                             variant="outline"

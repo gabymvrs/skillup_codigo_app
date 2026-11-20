@@ -6,3 +6,14 @@ dist/
 *.tsbuildinfo
 coverage/
 .openai/
+
+# Craft Anything
+capture/
+checks/
+inbox/
+investigation.cany/
+reference/
+craft.json
+feed.json
+usage.json
+build-activity.log

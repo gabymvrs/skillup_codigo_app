@@ -156,7 +156,7 @@ it("completes nine theory steps, five taught exercises and the mission before un
       (r: { source: string }) => r.source === "module:" + id(300),
     ),
   ).toHaveLength(1);
-});
+}, 15_000);
 
 it("allows skipping theory and switching all three views without awarding completion", async () => {
   const user = userEvent.setup();

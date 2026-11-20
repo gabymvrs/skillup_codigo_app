@@ -11,6 +11,7 @@ import { ActivityRenderer } from "../src/components/ActivityRenderer";
 import { initialAnswer } from "../src/components/ExerciseFields";
 import { createDemo } from "../src/data/demo";
 import { DEMO_KEY } from "../src/services/repository";
+import { guidedTheories } from "../src/lib/guidedLearning";
 import { demoPlans } from "../src/services/lessonJourney";
 function app(path: string) {
   sessionStorage.setItem("skillup.demo.role", "estudante");
@@ -145,21 +146,34 @@ describe("Activities selected by pedagogical type", () => {
         name: /^(Começar|Continuar atividade|Ver resultado)$/,
       }),
     );
+    for (const step of guidedTheories[id(4011)].steps.slice(1)) {
+      await user.click(
+        await screen.findByRole("button", { name: "Continuar teoria" }),
+      );
+      await screen.findByRole("heading", { name: step.title });
+    }
     await user.click(
       await screen.findByRole("button", {
         name: "Pular teoria e ir para prática",
       }),
     );
+<<<<<<< Updated upstream
     await user.click(screen.getByRole("radio", { name: "Nunca" }));
     await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
     await screen.findByText(/Vamos revisar e tentar novamente/);
+=======
+>>>>>>> Stashed changes
     for (const answer of [
       "Sim, até a saída física",
       "65 unidades",
       "30 unidades",
       "Para não descontar a mesma unidade duas vezes",
     ]) {
+<<<<<<< Updated upstream
       await user.click(screen.getByRole("radio", { name: answer }));
+=======
+      await user.click(await screen.findByRole("radio", { name: answer }));
+>>>>>>> Stashed changes
       await user.click(
         screen.getByRole("button", { name: "Conferir resposta" }),
       );
@@ -172,7 +186,7 @@ describe("Activities selected by pedagogical type", () => {
       "31",
     );
     await user.click(screen.getByRole("button", { name: "Conferir resposta" }));
-    await screen.findByText(/Vamos revisar e tentar novamente/);
+    await screen.findByText(/Revise a resposta e tente de novo/);
     await user.clear(
       screen.getByRole("textbox", { name: "Resultado (unidades)" }),
     );
@@ -218,9 +232,13 @@ describe("Activities selected by pedagogical type", () => {
   it("presents dynamics as a practice card instead of a separate section", async () => {
     const user = userEvent.setup();
     app("/app/aprenda/pratica");
+<<<<<<< Updated upstream
     const dynamics = await screen.findByRole("button", { name: "Dinâmica" });
     await user.click(dynamics);
     expect(screen.getByRole("heading", { name: "Dinâmica" })).toBeVisible();
+=======
+    await screen.findByRole("heading", { name: "Ações rápidas" });
+>>>>>>> Stashed changes
     expect(
       screen.getByRole("heading", { name: "Dinâmicas interativas" }),
     ).toBeVisible();

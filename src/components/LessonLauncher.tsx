@@ -1,5 +1,6 @@
 import { guidedTheories } from "../lib/guidedLearning";
 import { useEffect, useState } from "react";
+import type { LessonPlan } from "../lib/lessonTypes";
 import type { Module } from "../lib/types";
 import { useAuth } from "../state/AuthContext";
 import { lessonAction } from "../services/lessonJourney";
@@ -15,18 +16,21 @@ export function LessonLauncher({
 }) {
   const auth = useAuth(),
     [stage, setStage] = useState(""),
+    [plan, setPlan] = useState<LessonPlan | null>(null),
     [error, setError] = useState("");
   useEffect(() => {
     let active = true;
     lessonAction(auth.demo, auth.id!, module.id, "get")
       .then((r) => {
-        if (active)
+        if (active) {
+          setPlan(r.plan);
           setStage(
             r.session.stage === "theory" &&
               (r.session.draft?.theoryStep || 0) > 0
               ? "theory_started"
               : r.session.stage,
           );
+        }
       })
       .catch((e) => {
         if (active)
@@ -39,17 +43,18 @@ export function LessonLauncher({
   return (
     <Modal title={module.title} onClose={onClose}>
       <div className="stack">
-        <p>
-          Uma atividade completa com três partes: teoria, prática e dinâmica.
-        </p>
         {guidedTheories[module.id] && (
-          <p>
-            <strong>Objetivo:</strong> {guidedTheories[module.id].objective}
-          </p>
+          <p>{guidedTheories[module.id].objective}</p>
+        )}
+        {plan && (
+          <section className="stack lesson-context">
+            <h3>{plan.dynamic.title}</h3>
+            <p className="pre-wrap">{plan.dynamic.prompt}</p>
+          </section>
         )}
         <p>
-          Você pode navegar entre as partes. Conclua teoria, prática e dinâmica
-          para registrar a atividade e receber XP.
+          Conclua a teoria, a prática e a dinâmica para registrar a etapa e
+          receber {module.xp} XP na primeira conclusão.
         </p>
         {error ? (
           <Notice tone="warning">{error}</Notice>
@@ -61,7 +66,7 @@ export function LessonLauncher({
               {stage === "completed"
                 ? "Atividade já concluída. Consulte o resultado."
                 : stage === "theory"
-                  ? "Escolha por onde começar. Você pode pular a teoria."
+                  ? "Você pode começar pela prática e voltar à teoria quando precisar."
                   : "Seu progresso está salvo. Continue de onde parou."}
             </p>
             <Button onClick={onStart}>
