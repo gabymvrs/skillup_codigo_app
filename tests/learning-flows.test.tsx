@@ -171,11 +171,7 @@ describe("Interactive exercise formats", () => {
       const user = userEvent.setup();
       app("/app/aprenda/pratica");
       await user.click(
-<<<<<<< Updated upstream
-        await screen.findByRole("button", { name: "Exercício" }),
-=======
         await screen.findByRole("button", { name: "Prática guiada" }),
->>>>>>> Stashed changes
       );
       await user.selectOptions(
         await screen.findByLabelText("Disciplina"),
