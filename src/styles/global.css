@@ -231,7 +231,60 @@ a svg {
 .cookie-banner .button {
   flex: none;
 }
+.site-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px clamp(16px, 4vw, 48px);
+  border-top: var(--border);
+  background: var(--surface);
+  color: var(--muted);
+}
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+.legal-page {
+  max-width: 880px;
+}
+.legal-page header {
+  margin-block: 28px;
+}
+.legal-page header p:last-child {
+  color: var(--muted);
+}
+.legal-draft {
+  padding: 18px;
+  border: 1px solid var(--warning);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--warning) 12%, white);
+}
+.legal-draft strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.legal-content {
+  display: grid;
+  gap: 28px;
+  margin-top: 32px;
+}
+.legal-content section {
+  max-width: 76ch;
+}
+.legal-content h2 {
+  margin-bottom: 8px;
+  color: var(--secondary);
+  font-size: var(--title);
+}
 @media (max-width: 640px) {
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
   .cookie-banner {
     right: 8px;
     bottom: 8px;

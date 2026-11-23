@@ -52,6 +52,8 @@ import {
 import { Messages, Notifications } from "./pages/Messages";
 import { Empty, Notice } from "./components/ui";
 import { CookieBanner } from "./components/CookieBanner";
+import { SiteFooter } from "./components/SiteFooter";
+import { LegalPage } from "./pages/Legal";
 function ConnectedLayout() {
   const auth = useAuth();
   return (
@@ -98,6 +100,9 @@ export function AppRoutes() {
       <Route path="/recuperar-senha" element={<Recover />} />
       <Route path="/redefinir-senha" element={<ResetPassword />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route path="/privacidade" element={<LegalPage document="privacidade" />} />
+      <Route path="/termos" element={<LegalPage document="termos" />} />
+      <Route path="/cookies" element={<LegalPage document="cookies" />} />
       <Route
         path="/ajuda"
         element={
@@ -229,6 +234,7 @@ export default function App() {
       <BrowserRouter>
         <AuthProvider>
           <AppRoutes />
+          <SiteFooter />
           <CookieBanner />
         </AuthProvider>
       </BrowserRouter>

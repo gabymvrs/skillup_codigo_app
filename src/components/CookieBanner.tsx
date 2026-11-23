@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const COOKIE_NOTICE_KEY = "skillup.cookie-notice.v1";
 
@@ -38,6 +39,7 @@ export function CookieBanner() {
             sessão, salvar preferências e oferecer conteúdo offline. Não usamos
             cookies de publicidade.
           </p>
+          <Link to="/cookies">Ver detalhes sobre o armazenamento</Link>
         </div>
         <button className="button primary" type="button" onClick={accept}>
           Entendi

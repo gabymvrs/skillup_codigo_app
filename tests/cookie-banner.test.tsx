@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
+import { MemoryRouter } from "react-router-dom";
 import {
   COOKIE_NOTICE_KEY,
   CookieBanner,
@@ -9,7 +10,11 @@ import {
 describe("Cookie banner", () => {
   it("explains essential storage and remembers the acknowledgement", async () => {
     const user = userEvent.setup();
-    const { unmount } = render(<CookieBanner />);
+    const { unmount } = render(
+      <MemoryRouter>
+        <CookieBanner />
+      </MemoryRouter>,
+    );
 
     expect(
       screen.getByRole("region", { name: "Aviso sobre cookies" }),
@@ -26,7 +31,11 @@ describe("Cookie banner", () => {
     ).not.toBeInTheDocument();
 
     unmount();
-    render(<CookieBanner />);
+    render(
+      <MemoryRouter>
+        <CookieBanner />
+      </MemoryRouter>,
+    );
     expect(
       screen.queryByRole("region", { name: "Aviso sobre cookies" }),
     ).not.toBeInTheDocument();
