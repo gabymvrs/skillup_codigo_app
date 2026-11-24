@@ -115,7 +115,7 @@ export function PracticeSession({
           ) : (
             <>
               <p>
-                {exam ? "Exame avançado" : "Prática guiada"} ·{" "}
+                {exam ? "Exame avançado" : "Prática"} ·{" "}
                 {questions.length} questões.{" "}
                 {exam
                   ? "A correção aparece somente depois de finalizar."

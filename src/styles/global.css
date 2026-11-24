@@ -3076,6 +3076,9 @@ html[data-large-text="true"] {
   color: white;
   padding: 24px;
 }
+.academic-assistant > h2 {
+  color: white;
+}
 .academic-assistant p {
   color: var(--tertiary-400);
 }
@@ -3109,12 +3112,14 @@ html[data-large-text="true"] {
   color: var(--primary);
 }
 .academic-log {
-  height: 320px;
-  min-height: 320px;
+  height: 180px;
+  min-height: 180px;
   overflow-y: auto;
   margin-bottom: 16px;
-  padding-right: 8px;
-  border-block: 1px solid var(--secondary-200);
+  padding: 0 12px;
+  border: 1px solid var(--secondary-200);
+  border-radius: var(--radius-sm);
+  background: rgb(255 255 255 / 4%);
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
 }

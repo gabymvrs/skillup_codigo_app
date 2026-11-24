@@ -395,17 +395,7 @@ export function Practice() {
     [open, setOpen] = useState<string | null>(null),
     [session, setSession] = useState<PracticeSet | null>(null),
     [simulation, setSimulation] = useState<SimulationCatalogItem | null>(null);
-  const sets: PracticeSet[] =
-    type === "Prática guiada"
-      ? data.subjects.map((s) => ({
-          id: s.id,
-          title: `Prática de ${s.name}`,
-          category: type,
-          questionIds: data.questions
-            .filter((q) => q.category === type && q.subject_id === s.id)
-            .map((q) => q.id),
-        }))
-      : practiceSets.filter((s) => s.category === type);
+  const sets: PracticeSet[] = practiceSets.filter((s) => s.category === type);
   const visibleSets = sets.filter((s) => {
     const done = completion.rows.some((r) => r.set_id === s.id);
     return (
@@ -445,7 +435,6 @@ export function Practice() {
           <SectionTitle>Ações rápidas</SectionTitle>
           <div className="practice-grid">
             {[
-              ["Prática guiada", "play"],
               ["Exames", "file"],
               ["Exercício", "clipboard"],
               ["Dinâmica", "zap"],
@@ -512,7 +501,7 @@ export function Practice() {
                 value={subject}
                 onChange={(e) => {
                   setSubject(e.target.value);
-                  setType((t) => t || "Prática guiada");
+                  setType((t) => t || "Exercício");
                 }}
               >
                 <option value="">Todas as matérias</option>
@@ -529,7 +518,7 @@ export function Practice() {
                 value={format}
                 onChange={(e) => {
                   setFormat(e.target.value);
-                  setType((t) => t || "Prática guiada");
+                  setType((t) => t || "Exercício");
                 }}
               >
                 <option value="">Todos os formatos</option>
@@ -553,7 +542,7 @@ export function Practice() {
                 value={difficulty}
                 onChange={(e) => {
                   setDifficulty(e.target.value);
-                  setType((t) => t || "Prática guiada");
+                  setType((t) => t || "Exercício");
                 }}
               >
                 <option value="">Todas</option>
@@ -567,7 +556,7 @@ export function Practice() {
                 value={status}
                 onChange={(e) => {
                   setStatus(e.target.value);
-                  setType((t) => t || "Prática guiada");
+                  setType((t) => t || "Exercício");
                 }}
               >
                 <option value="">Todos</option>
