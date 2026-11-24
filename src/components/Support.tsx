@@ -563,6 +563,7 @@ export function GlobalSupport() {
       <button
         className="help-fab"
         onClick={() => setOpen(true)}
+        aria-label="Dúvidas?"
         aria-haspopup="dialog"
         aria-expanded={open}
       >
