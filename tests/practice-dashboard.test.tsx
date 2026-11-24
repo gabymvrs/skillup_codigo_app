@@ -192,7 +192,7 @@ it("opens a focused practice view and restores filters", async () => {
   ).not.toBeInTheDocument();
 
   const historyToggle = screen.getByRole("button", {
-    name: "Recolher histórico de prática",
+    name: "Ver menos histórico de prática",
   });
   const historyHeading = screen.getByRole("heading", {
     name: "Histórico de prática",
@@ -210,7 +210,7 @@ it("opens a focused practice view and restores filters", async () => {
 
   app();
   const savedToggle = await screen.findByRole("button", {
-    name: "Expandir histórico de prática",
+    name: "Ver mais histórico de prática",
   });
   expect(savedToggle).toHaveAttribute("aria-expanded", "false");
   await user.click(savedToggle);

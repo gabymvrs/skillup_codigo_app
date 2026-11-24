@@ -645,8 +645,8 @@ export function Practice() {
             <h2>Histórico de prática</h2>
             <button
               type="button"
-              className={`icon-button practice-history-toggle ${historyExpanded ? "expanded" : ""}`}
-              aria-label={`${historyExpanded ? "Recolher" : "Expandir"} histórico de prática`}
+              className="text-link practice-history-toggle"
+              aria-label={`${historyExpanded ? "Ver menos" : "Ver mais"} histórico de prática`}
               aria-expanded={historyExpanded}
               aria-controls="practice-history"
               onClick={() =>
@@ -664,7 +664,7 @@ export function Practice() {
                 })
               }
             >
-              <Icon name="chevron" size={18} />
+              {historyExpanded ? "Ver menos" : "Ver mais"}
             </button>
           </div>
           <div id="practice-history" hidden={!historyExpanded}>

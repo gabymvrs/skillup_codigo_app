@@ -2323,14 +2323,15 @@ details summary {
   border-color: var(--primary);
 }
 .practice-history-heading {
-  justify-content: flex-start;
-  gap: 2px;
+  justify-content: space-between;
+  width: 100%;
 }
-.practice-history-toggle svg {
-  transition: transform 160ms ease;
-}
-.practice-history-toggle.expanded svg {
-  transform: rotate(90deg);
+.practice-history-toggle {
+  flex: none;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .answer-option {
   display: flex;
