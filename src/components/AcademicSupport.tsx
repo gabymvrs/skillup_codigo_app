@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { normalize, uid } from "../lib/utils";
@@ -31,6 +31,7 @@ function academicAnswer(input: string) {
   return "Posso orientar sobre estudo, matrícula, acesso e feedback. Conte qual desses assuntos está envolvido. Para uma resposta específica ao conteúdo da aula, envie sua dúvida ao docente vinculado à turma.";
 }
 export function AcademicSupport() {
+  const logRef = useRef<HTMLDivElement>(null);
   const auth = useAuth(),
     repo = useData(),
     action = useAction(),
@@ -59,10 +60,14 @@ export function AcademicSupport() {
     .sort((a, b) => b.created_at.localeCompare(a.created_at));
   const feedback = feedbacks.find((s) => s.id === feedbackId),
     teacher = teachers.find((p) => p.id === teacherId);
+  useEffect(() => {
+    const log = logRef.current;
+    if (log) log.scrollTop = log.scrollHeight;
+  }, [conversation.length]);
   function ask(text: string) {
     if (!text.trim()) return;
     setConversation((old) => [
-      ...old.slice(-5),
+      ...old,
       { question: text.trim(), answer: academicAnswer(text) },
     ]);
     setQuestion("");
@@ -110,10 +115,12 @@ export function AcademicSupport() {
           </div>
           {!!conversation.length && (
             <div
+              ref={logRef}
               className="academic-log"
               role="log"
               aria-label="Orientações acadêmicas"
               aria-live="polite"
+              tabIndex={0}
             >
               {conversation.map((m, i) => (
                 <div key={i}>
