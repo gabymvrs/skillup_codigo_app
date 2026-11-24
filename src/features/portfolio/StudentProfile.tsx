@@ -39,6 +39,20 @@ export function StudentProfile() {
       feature.data.student_portfolios.find((p) => p.id === id) ||
       defaultPortfolio(id),
     earned = feature.data.student_achievements.filter((a) => a.user_id === id),
+    earnedById = new Map(earned.map((a) => [a.achievement_id, a])),
+    orderedAchievements = feature.data.achievement_definitions
+      .map((definition, index) => ({
+        definition,
+        earned: earnedById.get(definition.id),
+        index,
+      }))
+      .sort((left, right) => {
+        if (left.earned && right.earned)
+          return left.earned.earned_at.localeCompare(right.earned.earned_at);
+        if (left.earned) return -1;
+        if (right.earned) return 1;
+        return left.index - right.index;
+      }),
     projects = repo.data.projects.filter(
       (p) =>
         p.owner_id === id &&
@@ -78,22 +92,6 @@ export function StudentProfile() {
                 {[org?.name, portfolio.study_area].filter(Boolean).join(" · ")}
               </p>
             )}
-            <div className="chips">
-              {earned
-                .filter((a) =>
-                  portfolio.featured_badges.includes(a.achievement_id),
-                )
-                .map((a) => (
-                  <Badge key={a.id}>
-                    <Icon name="award" />
-                    {
-                      feature.data.achievement_definitions.find(
-                        (d) => d.id === a.achievement_id,
-                      )?.name
-                    }
-                  </Badge>
-                ))}
-            </div>
           </div>
         </div>
         {profile.bio && <p>{profile.bio}</p>}
@@ -162,13 +160,11 @@ export function StudentProfile() {
           <details className="card">
             <summary>Conquistas</summary>
             <p className="small muted">
-              Desbloqueios calculados a partir de atividades registradas.
-              Destaque até três conquistas.
+              Desbloqueios calculados a partir de atividades registradas,
+              apresentados na ordem em que foram conquistados.
             </p>
             <div className="achievement-grid">
-              {feature.data.achievement_definitions.map((d) => {
-                const a = earned.find((a) => a.achievement_id === d.id),
-                  featured = portfolio.featured_badges.includes(d.id);
+              {orderedAchievements.map(({ definition: d, earned: a }) => {
                 return (
                   <div
                     className={`achievement ${a ? "earned" : "locked"}`}
@@ -182,29 +178,6 @@ export function StudentProfile() {
                         ? `Conquistado em ${dateLabel(a.earned_at)}`
                         : "Bloqueado"}
                     </small>
-                    {own && a && (
-                      <Button
-                        variant="ghost"
-                        disabled={
-                          action.busy ||
-                          (!featured && portfolio.featured_badges.length >= 3)
-                        }
-                        onClick={() =>
-                          action.run(() =>
-                            savePortfolioRow(auth.demo, "student_portfolios", {
-                              ...portfolio,
-                              featured_badges: featured
-                                ? portfolio.featured_badges.filter(
-                                    (x) => x !== d.id,
-                                  )
-                                : [...portfolio.featured_badges, d.id],
-                            }),
-                          )
-                        }
-                      >
-                        {featured ? "Retirar do topo" : "Destacar no topo"}
-                      </Button>
-                    )}
                   </div>
                 );
               })}

@@ -161,15 +161,13 @@ function StudentContent({ profile: p }: { profile: PublicStudent }) {
       )}
       <Card>
         <h2>Conquistas</h2>
-        {p.achievements.map((a) => (
-          <p key={a.name}>
-            <strong>
-              {a.name}
-              {a.featured ? " · Destaque" : ""}
-            </strong>{" "}
-            — {a.description}
-          </p>
-        ))}
+        {[...p.achievements]
+          .sort((a, b) => a.earned_at.localeCompare(b.earned_at))
+          .map((a) => (
+            <p key={a.name}>
+              <strong>{a.name}</strong> — {a.description}
+            </p>
+          ))}
       </Card>
       <h2>Projetos públicos</h2>
       {p.projects.map((project) => (
