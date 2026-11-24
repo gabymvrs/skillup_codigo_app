@@ -2409,15 +2409,73 @@ details summary {
   font-size: var(--label);
   margin-top: 8px;
 }
-.project-card > img {
+.project-card-media {
+  position: relative;
+}
+.project-card-media.no-image {
+  min-height: 44px;
+}
+.project-card-media.no-image .project-card-actions {
+  top: 0;
+}
+.project-card-media > img {
   aspect-ratio: 16/9;
   width: 100%;
   object-fit: cover;
   border-radius: 8px;
 }
+.project-card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+.project-action-button.button,
+.project-action-button {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 94%);
+  color: var(--secondary);
+  box-shadow: 0 4px 14px rgb(17 25 71 / 18%);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.project-action-button.button:hover,
+.project-action-button:hover,
+.project-action-button.button:focus-visible,
+.project-action-button:focus-visible {
+  background: #fff;
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+.project-action-button.is-active {
+  background: var(--tertiary-200);
+  color: var(--primary);
+}
 .project-card h2 {
   font-size: var(--title);
   font-weight: 500;
+}
+.project-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 18px;
+  gap: 12px;
+}
+.project-card > p:not(.project-resource-count) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 .project-resource-count {
   display: flex;
@@ -3955,4 +4013,15 @@ html[data-large-text="true"] {
   border: 1px solid #bac8e5;
   border-radius: 8px;
   background: #fff;
+}
+
+/* Project cards stay compact even on wide community pages. */
+.project-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 380px));
+  justify-content: start;
+}
+@media (max-width: 479px) {
+  .project-grid .project-action-button.button {
+    width: 44px;
+  }
 }

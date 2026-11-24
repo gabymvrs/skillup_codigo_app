@@ -2,6 +2,7 @@ import { CommentReport } from "../features/portfolio/Comments";
 import {
   ProjectShare,
   ProjectSave,
+  ProjectFavorite,
   ProjectViewed,
   ProjectRecommendations,
   PortfolioImage,
@@ -562,17 +563,27 @@ export function Projects() {
       <div className="project-grid">
         {projects.map((p) => (
           <Card key={p.id} className="project-card">
-            {p.image && (
-              <img
-                src={p.image}
-                alt={`Imagem do projeto ${p.title}`}
-                loading="lazy"
-                decoding="async"
-                width={1600}
-                height={900}
-                sizes="(max-width: 720px) 100vw, 360px"
-              />
-            )}
+            <div className={`project-card-media ${p.image ? "" : "no-image"}`}>
+              {p.image && (
+                <img
+                  src={p.image}
+                  alt={`Imagem do projeto ${p.title}`}
+                  loading="lazy"
+                  decoding="async"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 720px) 100vw, 360px"
+                />
+              )}
+              <div
+                className="project-card-actions"
+                aria-label={`Ações do projeto ${p.title}`}
+              >
+                <ProjectShare project={p} compact />
+                <ProjectFavorite project={p} />
+                <ProjectSave project={p} compact />
+              </div>
+            </div>
             <Badge>
               {p.category} ·{" "}
               {p.status === "review"
@@ -607,8 +618,6 @@ export function Projects() {
             <ActionLink to={`/app/social/projetos/${p.id}`}>
               Ver detalhes
             </ActionLink>
-            <ProjectShare project={p} />
-            <ProjectSave project={p} />
           </Card>
         ))}
       </div>

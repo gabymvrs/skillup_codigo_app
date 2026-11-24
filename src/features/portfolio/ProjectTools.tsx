@@ -10,6 +10,7 @@ import {
   Button,
   Card,
   Empty,
+  Icon,
   Modal,
   Notice,
   SectionTitle,
@@ -60,7 +61,13 @@ export function PortfolioImage({
     </div>
   );
 }
-export function ProjectShare({ project }: { project: Project }) {
+export function ProjectShare({
+  project,
+  compact = false,
+}: {
+  project: Project;
+  compact?: boolean;
+}) {
   const auth = useAuth(),
     repo = useData(),
     action = useAction();
@@ -78,8 +85,15 @@ export function ProjectShare({ project }: { project: Project }) {
   }
   return (
     <>
-      <Button variant="outline" onClick={() => setOpen(true)}>
-        Compartilhar projeto
+      <Button
+        variant="outline"
+        className={compact ? "project-action-button" : ""}
+        aria-label={compact ? `Compartilhar ${project.title}` : undefined}
+        title={compact ? "Compartilhar projeto" : undefined}
+        onClick={() => setOpen(true)}
+      >
+        {compact && <Icon name="share" />}
+        <span className={compact ? "sr-only" : ""}>Compartilhar projeto</span>
       </Button>
       {open && (
         <Modal title="Compartilhar projeto" onClose={() => setOpen(false)}>
@@ -186,7 +200,13 @@ export function ProjectShare({ project }: { project: Project }) {
     </>
   );
 }
-export function ProjectSave({ project }: { project: Project }) {
+export function ProjectSave({
+  project,
+  compact = false,
+}: {
+  project: Project;
+  compact?: boolean;
+}) {
   const auth = useAuth(),
     feature = usePortfolio(),
     action = useAction();
@@ -198,8 +218,23 @@ export function ProjectSave({ project }: { project: Project }) {
     <>
       <Button
         variant="ghost"
+        className={`${compact ? "project-action-button" : ""} ${signal?.saved ? "is-active" : ""}`}
         disabled={action.busy || Boolean(feature.error)}
         aria-pressed={Boolean(signal?.saved)}
+        aria-label={
+          compact
+            ? signal?.saved
+              ? `Remover ${project.title} dos salvos`
+              : `Salvar ${project.title}`
+            : undefined
+        }
+        title={
+          compact
+            ? signal?.saved
+              ? "Remover dos salvos"
+              : "Salvar projeto"
+            : undefined
+        }
         onClick={() =>
           action.run(
             () =>
@@ -214,10 +249,51 @@ export function ProjectSave({ project }: { project: Project }) {
           )
         }
       >
-        {signal?.saved ? "Remover dos salvos" : "Salvar projeto"}
+        {compact && <Icon name="bookmark" />}
+        <span className={compact ? "sr-only" : ""}>
+          {signal?.saved ? "Remover dos salvos" : "Salvar projeto"}
+        </span>
       </Button>
-      <ActionFeedback action={action} />
+      {!compact && <ActionFeedback action={action} />}
     </>
+  );
+}
+
+export function ProjectFavorite({ project }: { project: Project }) {
+  const key = `skillup.project-favorite.${project.id}`;
+  const [favorite, setFavorite] = useState(() => {
+    try {
+      return localStorage.getItem(key) === "true";
+    } catch {
+      return false;
+    }
+  });
+
+  function toggle() {
+    const next = !favorite;
+    setFavorite(next);
+    try {
+      localStorage.setItem(key, String(next));
+    } catch {
+      // The control remains usable when browser storage is unavailable.
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      className={`project-action-button ${favorite ? "is-active" : ""}`}
+      aria-label={
+        favorite
+          ? `Desfavoritar ${project.title}`
+          : `Favoritar ${project.title}`
+      }
+      aria-pressed={favorite}
+      title={favorite ? "Remover dos favoritos" : "Favoritar projeto"}
+      onClick={toggle}
+    >
+      <Icon name="heart" />
+    </button>
   );
 }
 export function ProjectViewed({ project }: { project: Project }) {

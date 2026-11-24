@@ -55,6 +55,8 @@ import {
   Filter,
   Folder,
   LoaderCircle,
+  Share2,
+  Bookmark,
 } from "lucide-react";
 import { errorMessage } from "../lib/utils";
 const icons = {
@@ -77,6 +79,8 @@ const icons = {
   flame: Flame,
   graduation: GraduationCap,
   heart: Heart,
+  share: Share2,
+  bookmark: Bookmark,
   home: Home,
   leaf: Leaf,
   lock: Lock,
