@@ -311,6 +311,29 @@ describe("Social, career and assessment interactions", () => {
         name: "Painel de controle de estoque",
       }),
     ).toBeVisible();
+    const favorite = screen.getByRole("button", {
+      name: "Favoritar Portal de Sustentabilidade",
+    });
+    const save = screen.getByRole("button", {
+      name: "Salvar Portal de Sustentabilidade",
+    });
+    expect(favorite).toHaveAttribute("aria-pressed", "false");
+    expect(save).toHaveAttribute("aria-pressed", "false");
+    await user.click(favorite);
+    expect(
+      screen.getByRole("button", {
+        name: "Desfavoritar Portal de Sustentabilidade",
+      }),
+    ).toHaveClass("is-active");
+    expect(
+      localStorage.getItem(`skillup.project-favorite.${id(700)}`),
+    ).toBe("true");
+    await user.click(save);
+    expect(
+      await screen.findByRole("button", {
+        name: "Remover Portal de Sustentabilidade dos salvos",
+      }),
+    ).toHaveClass("is-active");
     await user.click(await screen.findByRole("button", { name: "Design" }));
     expect(
       screen.queryByText("Portal de Sustentabilidade"),

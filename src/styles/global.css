@@ -2481,8 +2481,12 @@ details summary {
   transform: translateY(-1px);
 }
 .project-action-button.is-active {
-  background: var(--tertiary-200);
-  color: var(--primary);
+  background: #fff;
+  color: var(--secondary);
+}
+.project-action-button.is-active svg {
+  fill: currentColor;
+  stroke-width: 2.2;
 }
 .project-card h2 {
   font-size: var(--title);
