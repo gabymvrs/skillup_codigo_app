@@ -2330,8 +2330,11 @@ details summary {
   flex: none;
   color: var(--primary);
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
+}
+.practice-history-toggle > span {
+  border-bottom: 1px solid currentColor;
+  line-height: 1.25;
 }
 .answer-option {
   display: flex;

@@ -664,7 +664,7 @@ export function Practice() {
                 })
               }
             >
-              {historyExpanded ? "Ver menos" : "Ver mais"}
+              <span>{historyExpanded ? "Ver menos" : "Ver mais"}</span>
             </button>
           </div>
           <div id="practice-history" hidden={!historyExpanded}>
