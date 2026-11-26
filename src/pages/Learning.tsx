@@ -24,6 +24,7 @@ import { LogicGatesSimulation } from "../features/simulations/LogicGatesSimulati
 import { SolarSystemSimulation } from "../features/simulations/SolarSystemSimulation";
 import { AnimalCellSimulation } from "../features/simulations/AnimalCellSimulation";
 import { ElectricCircuitSimulation } from "../features/simulations/ElectricCircuitSimulation";
+import { Steps } from "../components/ui/steps";
 import { initialAnswer, answerReady } from "../components/ExerciseFields";
 import type { ExerciseAnswer } from "../lib/types";
 import { useState } from "react";
@@ -93,19 +94,14 @@ function SimulationJourney({
   const steps = ["Introdução", "Prática experimental", "Fixação"];
   return (
     <div className="simulation-journey">
-      <nav className="simulation-steps" aria-label="Etapas da dinâmica">
-        {steps.map((label, index) => (
-          <button
-            key={label}
-            type="button"
-            aria-current={step === index ? "step" : undefined}
-            onClick={() => setStep(index)}
-          >
-            <span>{index + 1}</span>
-            {label}
-          </button>
-        ))}
-      </nav>
+      <Steps
+        className="simulation-steps"
+        aria-label="Etapas da dinâmica"
+        items={steps.map((title) => ({ title }))}
+        current={step}
+        clickable
+        onStepChange={setStep}
+      />
       <section
         className="simulation-stage"
         aria-labelledby={`simulation-step-${step}`}
