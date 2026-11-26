@@ -1043,12 +1043,16 @@ a svg {
 .simulation-progress-region {
   position: relative;
   z-index: 2;
-  width: 100%;
+  display: grid;
+  justify-items: center;
+  width: min(900px, 100%);
+  margin-inline: auto;
   padding: 4px 0 10px;
   background: var(--surface);
 }
 .simulation-steps {
-  margin: 0 auto;
+  justify-self: center;
+  margin: 0;
   width: min(760px, 100%);
 }
 .may-steps { --may-step-size: 36px; position: relative; display: flex; margin: 0; padding: 8px 0; list-style: none; }
