@@ -251,13 +251,13 @@ describe("Activities selected by pedagogical type", () => {
     expect(screen.getByRole("dialog")).toHaveTextContent(
       "Distinguir as regras das portas AND, OR e NOT",
     );
-    await user.click(screen.getByRole("button", { name: "Continuar" }));
+    await user.click(screen.getByRole("button", { name: "Continuar →" }));
     expect(
       within(screen.getByRole("dialog")).getByRole("heading", {
         name: "Prática experimental",
       }),
     ).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Continuar" }));
+    await user.click(screen.getByRole("button", { name: "Continuar →" }));
     expect(
       screen.getByRole("heading", {
         name: "Qual porta só liga a saída quando as duas entradas estão ligadas?",

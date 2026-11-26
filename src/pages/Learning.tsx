@@ -89,7 +89,8 @@ function SimulationJourney({
 }) {
   const [step, setStep] = useState(0),
     [answer, setAnswer] = useState<number | null>(null),
-    [checked, setChecked] = useState(false);
+    [checked, setChecked] = useState(false),
+    [submitted, setSubmitted] = useState(false);
   const quiz = simulationQuizzes[simulation.id];
   const steps = ["Introdução", "Prática experimental", "Fixação"];
   return (
@@ -97,11 +98,21 @@ function SimulationJourney({
       <Steps
         className="simulation-steps"
         aria-label="Etapas da dinâmica"
-        items={steps.map((title) => ({ title }))}
+        items={steps.map((title, index) => ({
+          title,
+          status: submitted && index === 2 ? ("complete" as const) : undefined,
+        }))}
         current={step}
         clickable
         onStepChange={setStep}
       />
+      <p className="simulation-required">
+        <Icon name={submitted ? "check" : "lock"} size={18} />
+        <strong>
+          {submitted ? "Atividade entregue" : "Entrega obrigatória"}
+        </strong>
+        {!submitted && <span>Complete as três etapas e acerte a fixação.</span>}
+      </p>
       <section
         className="simulation-stage"
         aria-labelledby={`simulation-step-${step}`}
@@ -156,16 +167,17 @@ function SimulationJourney({
                     onChange={() => {
                       setAnswer(index);
                       setChecked(false);
+                      setSubmitted(false);
                     }}
                   />
                   <span>{option}</span>
                 </label>
               ))}
             </fieldset>
-            {checked && answer !== null && (
-              <Notice tone={answer === quiz.correct ? "success" : "error"}>
+            {(checked || submitted) && answer !== null && (
+              <Notice tone={submitted ? "success" : "error"}>
                 <strong>
-                  {answer === quiz.correct ? "Correto!" : "Quase lá."}
+                  {submitted ? "Atividade entregue!" : "Quase lá."}
                 </strong>{" "}
                 {quiz.explanation}
               </Notice>
@@ -179,13 +191,19 @@ function SimulationJourney({
           disabled={step === 0}
           onClick={() => setStep(step - 1)}
         >
-          Voltar
+          ← Voltar
         </Button>
         {step < 2 ? (
-          <Button onClick={() => setStep(step + 1)}>Continuar</Button>
+          <Button onClick={() => setStep(step + 1)}>Continuar →</Button>
         ) : (
-          <Button disabled={answer === null} onClick={() => setChecked(true)}>
-            Ver resposta
+          <Button
+            disabled={answer === null || submitted}
+            onClick={() => {
+              setChecked(true);
+              if (answer === quiz.correct) setSubmitted(true);
+            }}
+          >
+            {submitted ? "Entregue ✓" : "Conferir e entregar →"}
           </Button>
         )}
       </footer>

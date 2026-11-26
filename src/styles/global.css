@@ -1036,6 +1036,18 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
   width: min(1100px, 100%);
   margin: 0 auto;
 }
+.simulation-required {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: -8px 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.simulation-required strong {
+  color: var(--text);
+}
 .simulation-introduction,
 .simulation-quiz {
   max-width: 720px;
@@ -1086,6 +1098,15 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
   .may-steps__connector { top: calc(var(--may-step-size) + 2px); left: calc(var(--may-step-size) / 2 - 2px); width: 4px; height: calc(100% - var(--may-step-size) + 14px); transform: none; }
   .simulation-journey-actions .button {
     flex: 1;
+  }
+  .simulation-required {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .simulation-required span {
+    flex-basis: 100%;
+    padding-left: 26px;
   }
 }
 .logic-simulation {
