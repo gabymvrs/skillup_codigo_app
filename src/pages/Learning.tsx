@@ -130,17 +130,20 @@ function SimulationJourney({
       >
         <Icon name="info" size={24} />
       </button>
-      <Steps
-        className="simulation-steps"
-        aria-label="Etapas da dinâmica"
-        items={steps.map((title, index) => ({
-          title,
-          status: submitted && index === 2 ? ("complete" as const) : undefined,
-        }))}
-        current={step}
-        clickable
-        onStepChange={setStep}
-      />
+      <div className="simulation-progress-region">
+        <Steps
+          className="simulation-steps"
+          aria-label="Etapas da dinâmica"
+          items={steps.map((title, index) => ({
+            title,
+            status:
+              submitted && index === 2 ? ("complete" as const) : undefined,
+          }))}
+          current={step}
+          clickable
+          onStepChange={setStep}
+        />
+      </div>
       <p className="simulation-required">
         <Icon name={submitted ? "check" : "lock"} size={18} />
         <strong>
