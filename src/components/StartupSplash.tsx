@@ -2,11 +2,23 @@ import { useEffect, useState, type ReactNode } from "react";
 import Loader from "./ui/loader-15";
 
 type SplashPhase = "visible" | "leaving" | "hidden";
+const SPLASH_SHOWN_KEY = "skillup.startup-splash-shown";
+
+function initialPhase(): SplashPhase {
+  try {
+    if (sessionStorage.getItem(SPLASH_SHOWN_KEY)) return "hidden";
+    sessionStorage.setItem(SPLASH_SHOWN_KEY, "true");
+  } catch {
+    // The animation still works when browser storage is unavailable.
+  }
+  return "visible";
+}
 
 export function StartupSplash({ children }: { children: ReactNode }) {
-  const [phase, setPhase] = useState<SplashPhase>("visible");
+  const [phase, setPhase] = useState<SplashPhase>(initialPhase);
 
   useEffect(() => {
+    if (phase === "hidden") return;
     const reducedMotion = window.matchMedia?.(
       "(prefers-reduced-motion: reduce)",
     ).matches;

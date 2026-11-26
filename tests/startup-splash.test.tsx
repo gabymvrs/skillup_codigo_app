@@ -1,8 +1,9 @@
 import { act, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { StartupSplash } from "../src/components/StartupSplash";
 
 describe("StartupSplash", () => {
+  beforeEach(() => sessionStorage.clear());
   afterEach(() => vi.useRealTimers());
 
   it("shows the SkillUp introduction before revealing the application", () => {
@@ -31,6 +32,27 @@ describe("StartupSplash", () => {
     act(() => window.dispatchEvent(new Event("skillup:session-started")));
 
     expect(screen.getByText("Aplicativo pronto")).toBeInTheDocument();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  });
+
+  it("does not replay when the same tab loads the application again", () => {
+    vi.useFakeTimers();
+    const first = render(
+      <StartupSplash>
+        <main>Primeira abertura</main>
+      </StartupSplash>,
+    );
+
+    expect(screen.getByRole("status")).toBeInTheDocument();
+    first.unmount();
+
+    render(
+      <StartupSplash>
+        <main>Aba já aberta</main>
+      </StartupSplash>,
+    );
+
+    expect(screen.getByText("Aba já aberta")).toBeInTheDocument();
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
   });
 });
