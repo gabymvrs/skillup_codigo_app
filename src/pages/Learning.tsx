@@ -167,6 +167,14 @@ function SimulationJourney({
           >
             Tirar dúvida com o agente IA
           </ActionLink>
+          <button
+            type="button"
+            className="simulation-information-close"
+            aria-label="Fechar informações"
+            onClick={() => setInfoOpen(false)}
+          >
+            <Icon name="x" size={20} />
+          </button>
         </aside>
       )}
       <div className="simulation-journey-actions">

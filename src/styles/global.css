@@ -1086,6 +1086,7 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
   font-size: 0.875rem;
 }
 .simulation-information {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1096,6 +1097,20 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
   border: var(--border);
   border-radius: var(--radius-md);
   background: var(--neutral-100);
+}
+.simulation-information-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--primary);
+}
+.simulation-information-close:hover {
+  background: var(--tertiary-200);
 }
 .simulation-information p {
   margin: 4px 0 0;
