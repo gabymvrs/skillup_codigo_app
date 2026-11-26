@@ -47,6 +47,155 @@ import {
   SectionTitle,
   useAction,
 } from "../components/ui";
+
+const simulationQuizzes = {
+  "portas-logicas": {
+    question:
+      "Qual porta só liga a saída quando as duas entradas estão ligadas?",
+    options: ["AND", "OR", "NOT"],
+    correct: 0,
+    explanation: "A porta AND exige que as entradas A e B estejam ligadas.",
+  },
+  "sistema-solar": {
+    question: "Qual planeta está mais próximo do Sol?",
+    options: ["Terra", "Mercúrio", "Marte"],
+    correct: 1,
+    explanation: "Mercúrio é o primeiro planeta a partir do Sol.",
+  },
+  "celula-animal": {
+    question: "Qual organela armazena o DNA e coordena atividades da célula?",
+    options: ["Núcleo", "Lisossomo", "Ribossomo"],
+    correct: 0,
+    explanation:
+      "O núcleo guarda o DNA e coordena muitas atividades celulares.",
+  },
+  "circuito-eletrico": {
+    question: "O que acontece quando a chave deixa o circuito aberto?",
+    options: [
+      "A corrente aumenta",
+      "A corrente é interrompida",
+      "A tensão desaparece da fonte",
+    ],
+    correct: 1,
+    explanation: "Com o caminho aberto, a corrente não consegue circular.",
+  },
+} as const;
+
+function SimulationJourney({
+  simulation,
+}: {
+  simulation: SimulationCatalogItem;
+}) {
+  const [step, setStep] = useState(0),
+    [answer, setAnswer] = useState<number | null>(null),
+    [checked, setChecked] = useState(false);
+  const quiz = simulationQuizzes[simulation.id];
+  const steps = ["Introdução", "Prática experimental", "Fixação"];
+  return (
+    <div className="simulation-journey">
+      <nav className="simulation-steps" aria-label="Etapas da dinâmica">
+        {steps.map((label, index) => (
+          <button
+            key={label}
+            type="button"
+            aria-current={step === index ? "step" : undefined}
+            onClick={() => setStep(index)}
+          >
+            <span>{index + 1}</span>
+            {label}
+          </button>
+        ))}
+      </nav>
+      <section
+        className="simulation-stage"
+        aria-labelledby={`simulation-step-${step}`}
+      >
+        {step === 0 && (
+          <div className="simulation-introduction stack">
+            <Badge>{simulation.subject}</Badge>
+            <div>
+              <h3 id="simulation-step-0">Objetivo</h3>
+              <p>{simulation.description}</p>
+            </div>
+            <div>
+              <h3>O que você vai aprender</h3>
+              <ul className="simulation-goals">
+                {simulation.learningGoals.map((goal) => (
+                  <li key={goal}>{goal}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+        {step === 1 && (
+          <div className="simulation-experiment">
+            <h3 id="simulation-step-1" className="sr-only">
+              Prática experimental
+            </h3>
+            {simulation.id === "portas-logicas" ? (
+              <LogicGatesSimulation />
+            ) : simulation.id === "sistema-solar" ? (
+              <SolarSystemSimulation />
+            ) : simulation.id === "celula-animal" ? (
+              <AnimalCellSimulation />
+            ) : (
+              <ElectricCircuitSimulation />
+            )}
+          </div>
+        )}
+        {step === 2 && (
+          <div className="simulation-quiz stack">
+            <div>
+              <Badge>Mini-exercício</Badge>
+              <h3 id="simulation-step-2">{quiz.question}</h3>
+            </div>
+            <fieldset>
+              <legend className="sr-only">Escolha uma resposta</legend>
+              {quiz.options.map((option, index) => (
+                <label className="answer-option" key={option}>
+                  <input
+                    type="radio"
+                    name={`simulation-quiz-${simulation.id}`}
+                    checked={answer === index}
+                    onChange={() => {
+                      setAnswer(index);
+                      setChecked(false);
+                    }}
+                  />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </fieldset>
+            {checked && answer !== null && (
+              <Notice tone={answer === quiz.correct ? "success" : "error"}>
+                <strong>
+                  {answer === quiz.correct ? "Correto!" : "Quase lá."}
+                </strong>{" "}
+                {quiz.explanation}
+              </Notice>
+            )}
+          </div>
+        )}
+      </section>
+      <footer className="simulation-journey-actions">
+        <Button
+          variant="outline"
+          disabled={step === 0}
+          onClick={() => setStep(step - 1)}
+        >
+          Voltar
+        </Button>
+        {step < 2 ? (
+          <Button onClick={() => setStep(step + 1)}>Continuar</Button>
+        ) : (
+          <Button disabled={answer === null} onClick={() => setChecked(true)}>
+            Ver resposta
+          </Button>
+        )}
+      </footer>
+    </div>
+  );
+}
 export function Tracks({ embedded = false }: { embedded?: boolean }) {
   const auth = useAuth(),
     { data } = useData(),
@@ -267,11 +416,13 @@ export function TrackDetail() {
                 <strong id={`trail-title-${m.id}`}>{m.title}</strong>
                 <small id={`trail-status-${m.id}`}>
                   {complete
-                    ? (student ? "Concluída · Revisar" : "Concluída")
+                    ? student
+                      ? "Concluída · Revisar"
+                      : "Concluída"
                     : blocked
-                      ? (prerequisite
-                          ? `Conclua “${prerequisite.title}”`
-                          : "Conclua a etapa exigida")
+                      ? prerequisite
+                        ? `Conclua “${prerequisite.title}”`
+                        : "Conclua a etapa exigida"
                       : `${i + 1}ª etapa · ${m.xp} XP`}
                 </small>
               </span>
@@ -714,30 +865,14 @@ export function Practice() {
           fullScreen={simulation.status === "available"}
           onClose={() => setSimulation(null)}
         >
-          <div className="stack">
-            <Badge>{simulation.subject}</Badge>
-            <p>{simulation.description}</p>
-            <h3>O que você vai aprender</h3>
-            <ul className="simulation-goals">
-              {simulation.learningGoals.map((goal) => (
-                <li key={goal}>{goal}</li>
-              ))}
-            </ul>
-            {simulation.id === "portas-logicas" ? (
-              <LogicGatesSimulation />
-            ) : simulation.id === "sistema-solar" ? (
-              <SolarSystemSimulation />
-            ) : simulation.id === "celula-animal" ? (
-              <AnimalCellSimulation />
-            ) : simulation.id === "circuito-eletrico" ? (
-              <ElectricCircuitSimulation />
-            ) : (
-              <Notice>
-                Esta dinâmica está planejada para o Lote{" "}
-                {simulation.implementationBatch}.
-              </Notice>
-            )}
-          </div>
+          {simulation.status === "available" ? (
+            <SimulationJourney simulation={simulation} />
+          ) : (
+            <Notice>
+              Esta dinâmica está planejada para o Lote{" "}
+              {simulation.implementationBatch}.
+            </Notice>
+          )}
         </Modal>
       )}
       {open && (
