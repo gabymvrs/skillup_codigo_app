@@ -6,23 +6,36 @@ export function StartupSplash({ children }: { children: ReactNode }) {
   const [phase, setPhase] = useState<SplashPhase>("visible");
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia?.(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const revealDelay = reducedMotion ? 150 : 1450;
-    const leaveDuration = reducedMotion ? 0 : 400;
-    const revealTimer = window.setTimeout(
-      () => setPhase("leaving"),
-      revealDelay,
-    );
-    const finishTimer = window.setTimeout(
-      () => setPhase("hidden"),
-      revealDelay + leaveDuration,
-    );
+    let revealTimer = 0;
+    let finishTimer = 0;
+
+    const play = () => {
+      window.clearTimeout(revealTimer);
+      window.clearTimeout(finishTimer);
+      setPhase("visible");
+
+      const reducedMotion = window.matchMedia?.(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const revealDelay = reducedMotion ? 150 : 1450;
+      const leaveDuration = reducedMotion ? 0 : 400;
+      revealTimer = window.setTimeout(
+        () => setPhase("leaving"),
+        revealDelay,
+      );
+      finishTimer = window.setTimeout(
+        () => setPhase("hidden"),
+        revealDelay + leaveDuration,
+      );
+    };
+
+    play();
+    window.addEventListener("skillup:session-started", play);
 
     return () => {
       window.clearTimeout(revealTimer);
       window.clearTimeout(finishTimer);
+      window.removeEventListener("skillup:session-started", play);
     };
   }, []);
 

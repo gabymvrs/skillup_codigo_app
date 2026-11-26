@@ -85,6 +85,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         sessionStorage.removeItem("skillup.demo.role");
         setDemoRole(null);
       }
+      if (event === "SIGNED_IN") {
+        window.dispatchEvent(new Event("skillup:session-started"));
+      }
       if (event === "PASSWORD_RECOVERY") setRecovery(true);
       if (event === "SIGNED_OUT") {
         setMembership(null);

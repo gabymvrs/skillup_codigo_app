@@ -22,5 +22,15 @@ describe("StartupSplash", () => {
 
     expect(screen.getByText("Aplicativo pronto")).toBeInTheDocument();
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
+
+    act(() => window.dispatchEvent(new Event("skillup:session-started")));
+
+    expect(
+      screen.getByRole("status", { name: "Preparando o SkillUp" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Aplicativo pronto")).not.toBeInTheDocument();
+
+    act(() => vi.advanceTimersByTime(1850));
+    expect(screen.getByText("Aplicativo pronto")).toBeInTheDocument();
   });
 });

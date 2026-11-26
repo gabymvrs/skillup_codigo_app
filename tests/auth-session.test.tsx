@@ -109,6 +109,16 @@ beforeEach(() => {
   });
 });
 describe("Session lifecycle (mocked Auth API)", () => {
+  it("announces a newly signed-in session to the startup animation", async () => {
+    const onSessionStarted = vi.fn();
+    window.addEventListener("skillup:session-started", onSessionStarted);
+    show();
+
+    await emit("SIGNED_IN", session());
+
+    expect(onSessionStarted).toHaveBeenCalledOnce();
+    window.removeEventListener("skillup:session-started", onSessionStarted);
+  });
   it("keeps initial session restoration pending until the SDK answers", async () => {
     const pending = deferred<unknown>();
     mocks.getSession.mockReturnValue(pending.promise);
