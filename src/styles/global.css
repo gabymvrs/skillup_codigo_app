@@ -1064,18 +1064,8 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
     .solar-simulation-heading,
     .cell-simulation-heading,
     .circuit-simulation-heading
-  )
-  > div {
-  display: none;
-}
-.simulation-experiment
-  :is(
-    .logic-simulation-heading,
-    .solar-simulation-heading,
-    .cell-simulation-heading,
-    .circuit-simulation-heading
   ) {
-  justify-content: flex-end;
+  display: none;
 }
 .simulation-quiz fieldset {
   display: grid;
