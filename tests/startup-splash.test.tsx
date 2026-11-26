@@ -16,7 +16,7 @@ describe("StartupSplash", () => {
     expect(
       screen.getByRole("status", { name: "Preparando o SkillUp" }),
     ).toBeInTheDocument();
-    expect(container.querySelector(".snurra")).toBeInTheDocument();
+    expect(container.querySelector(".snurra")).toHaveAttribute("width", "240");
     expect(container.querySelector(".startup-logo-frame img")).toHaveAttribute(
       "src",
       "/assets/skillup-logo.png",
