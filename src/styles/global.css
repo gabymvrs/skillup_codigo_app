@@ -1045,6 +1045,37 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
   color: var(--muted);
   font-size: 0.875rem;
 }
+.simulation-info-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(760px, 100%);
+  margin: -8px auto 0;
+}
+.simulation-info-toolbar .simulation-required {
+  justify-content: flex-start;
+  margin: 0;
+}
+.simulation-information {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(760px, 100%);
+  margin: -8px auto 0;
+  padding: 16px;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  background: var(--neutral-100);
+}
+.simulation-information p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.simulation-information .button {
+  flex: none;
+}
 .simulation-required strong {
   color: var(--text);
 }
@@ -1095,6 +1126,15 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+  .simulation-info-toolbar,
+  .simulation-information {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .simulation-info-toolbar .button,
+  .simulation-information .button {
+    width: 100%;
   }
   .simulation-required span {
     flex-basis: 100%;

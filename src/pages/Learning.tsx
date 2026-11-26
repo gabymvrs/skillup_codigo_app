@@ -90,7 +90,8 @@ function SimulationJourney({
   const [step, setStep] = useState(0),
     [answer, setAnswer] = useState<number | null>(null),
     [checked, setChecked] = useState(false),
-    [submitted, setSubmitted] = useState(false);
+    [submitted, setSubmitted] = useState(false),
+    [infoOpen, setInfoOpen] = useState(false);
   const quiz = simulationQuizzes[simulation.id];
   const steps = ["Introdução", "Prática experimental", "Fixação"];
   return (
@@ -106,13 +107,44 @@ function SimulationJourney({
         clickable
         onStepChange={setStep}
       />
-      <p className="simulation-required">
-        <Icon name={submitted ? "check" : "lock"} size={18} />
-        <strong>
-          {submitted ? "Atividade entregue" : "Entrega obrigatória"}
-        </strong>
-        {!submitted && <span>Complete as três etapas e acerte a fixação.</span>}
-      </p>
+      <div className="simulation-info-toolbar">
+        <p className="simulation-required">
+          <Icon name={submitted ? "check" : "lock"} size={18} />
+          <strong>
+            {submitted ? "Atividade entregue" : "Entrega obrigatória"}
+          </strong>
+          {!submitted && (
+            <span>Complete as três etapas e acerte a fixação.</span>
+          )}
+        </p>
+        <Button
+          variant="outline"
+          icon="alert"
+          aria-expanded={infoOpen}
+          aria-controls="simulation-information"
+          onClick={() => setInfoOpen((open) => !open)}
+        >
+          Informações
+        </Button>
+      </div>
+      {infoOpen && (
+        <aside id="simulation-information" className="simulation-information">
+          <div>
+            <strong>Como funciona</strong>
+            <p>
+              Veja a introdução, faça a experiência e acerte a questão de
+              fixação para entregar a atividade.
+            </p>
+          </div>
+          <ActionLink
+            to="/app/aprenda/suporte"
+            icon="message"
+            variant="secondary"
+          >
+            Tirar dúvida com o agente IA
+          </ActionLink>
+        </aside>
+      )}
       <div className="simulation-journey-actions">
         <Button
           variant="outline"
