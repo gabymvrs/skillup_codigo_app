@@ -1018,6 +1018,46 @@ a svg {
 .simulation-card .button {
   margin-top: auto;
 }
+.simulation-catalog-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.simulation-catalog-tools .search-field {
+  flex: 1;
+  max-width: 420px;
+  min-height: 42px;
+  border-radius: 999px;
+  box-shadow: none;
+}
+.simulation-subject-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px;
+}
+.simulation-subject-filters button {
+  flex: none;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+}
+.simulation-subject-filters button.selected {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+@media (max-width: 760px) {
+  .simulation-catalog-tools {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .simulation-catalog-tools .search-field {
+    max-width: none;
+  }
+}
 .simulation-goals {
   display: grid;
   gap: 10px;

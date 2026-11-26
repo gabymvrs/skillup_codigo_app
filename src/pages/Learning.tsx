@@ -630,6 +630,8 @@ export function Practice() {
     [format, setFormat] = useState(""),
     [difficulty, setDifficulty] = useState(""),
     [status, setStatus] = useState(""),
+    [simulationQuery, setSimulationQuery] = useState(""),
+    [simulationSubject, setSimulationSubject] = useState(""),
     [historyExpanded, setHistoryExpanded] = useState(() => {
       try {
         return localStorage.getItem(historyPreferenceKey) !== "collapsed";
@@ -641,6 +643,17 @@ export function Practice() {
     [session, setSession] = useState<PracticeSet | null>(null),
     [simulation, setSimulation] = useState<SimulationCatalogItem | null>(null);
   const sets: PracticeSet[] = practiceSets.filter((s) => s.category === type);
+  const visibleSimulations = simulationCatalog.filter(
+    (item) =>
+      (!simulationSubject || item.subject === simulationSubject) &&
+      matches(
+        simulationQuery,
+        item.title,
+        item.subject,
+        item.description,
+        item.learningGoals.join(" "),
+      ),
+  );
   const visibleSets = sets.filter((s) => {
     const done = completion.rows.some((r) => r.set_id === s.id);
     return (
@@ -714,9 +727,48 @@ export function Practice() {
       )}
       {type === "Dinâmica" && (
         <section className="stack" aria-labelledby="dynamic-catalog-title">
-          <h2 id="dynamic-catalog-title">Dinâmicas interativas</h2>
+          <SectionTitle
+            action={
+              <Button variant="ghost" onClick={() => setType("")}>
+                Voltar
+              </Button>
+            }
+          >
+            Dinâmicas interativas
+          </SectionTitle>
+          <h2 id="dynamic-catalog-title" className="sr-only">
+            Catálogo de dinâmicas
+          </h2>
+          <div className="simulation-catalog-tools">
+            <SearchField
+              value={simulationQuery}
+              onChange={setSimulationQuery}
+              label="Buscar dinâmica"
+              placeholder="Buscar dinâmica…"
+            />
+            <div
+              className="simulation-subject-filters"
+              role="group"
+              aria-label="Filtrar dinâmicas por área"
+            >
+              {[
+                "",
+                ...new Set(simulationCatalog.map((item) => item.subject)),
+              ].map((item) => (
+                <button
+                  key={item || "all"}
+                  type="button"
+                  className={simulationSubject === item ? "selected" : ""}
+                  aria-pressed={simulationSubject === item}
+                  onClick={() => setSimulationSubject(item)}
+                >
+                  {item || "Todas"}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="two-columns">
-            {simulationCatalog.map((item) => (
+            {visibleSimulations.map((item) => (
               <Card key={item.id} className="simulation-card">
                 <div className="simulation-card-heading">
                   <span className="simulation-icon" aria-hidden="true">
@@ -734,9 +786,14 @@ export function Practice() {
               </Card>
             ))}
           </div>
+          {!visibleSimulations.length && (
+            <Empty title="Nenhuma dinâmica encontrada">
+              Tente outro termo ou selecione uma área diferente.
+            </Empty>
+          )}
         </section>
       )}
-      {type && (
+      {type && type !== "Dinâmica" && (
         <section className="stack" aria-label="Filtros da prática">
           <h2>Filtros da prática</h2>
           <div className="practice-filters">
