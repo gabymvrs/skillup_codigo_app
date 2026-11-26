@@ -82,6 +82,29 @@ const simulationQuizzes = {
   },
 } as const;
 
+const simulationHighlights = {
+  "portas-logicas": [
+    { symbol: "A · B", label: "AND" },
+    { symbol: "A + B", label: "OR" },
+    { symbol: "¬ A", label: "NOT" },
+  ],
+  "sistema-solar": [
+    { symbol: "SOL", label: "Estrela" },
+    { symbol: "1—8", label: "Planetas" },
+    { symbol: "360°", label: "Órbitas" },
+  ],
+  "celula-animal": [
+    { symbol: "DNA", label: "Núcleo" },
+    { symbol: "ATP", label: "Energia" },
+    { symbol: "RNA", label: "Proteínas" },
+  ],
+  "circuito-eletrico": [
+    { symbol: "V", label: "Tensão" },
+    { symbol: "Ω", label: "Resistência" },
+    { symbol: "A", label: "Corrente" },
+  ],
+} as const;
+
 function SimulationJourney({
   simulation,
 }: {
@@ -93,9 +116,20 @@ function SimulationJourney({
     [submitted, setSubmitted] = useState(false),
     [infoOpen, setInfoOpen] = useState(false);
   const quiz = simulationQuizzes[simulation.id];
+  const highlights = simulationHighlights[simulation.id];
   const steps = ["Introdução", "Prática experimental", "Fixação"];
   return (
     <div className="simulation-journey">
+      <button
+        type="button"
+        className="simulation-info-button"
+        aria-label="Informações da dinâmica"
+        aria-expanded={infoOpen}
+        aria-controls="simulation-information"
+        onClick={() => setInfoOpen((open) => !open)}
+      >
+        <Icon name="info" size={24} />
+      </button>
       <Steps
         className="simulation-steps"
         aria-label="Etapas da dinâmica"
@@ -107,26 +141,13 @@ function SimulationJourney({
         clickable
         onStepChange={setStep}
       />
-      <div className="simulation-info-toolbar">
-        <p className="simulation-required">
-          <Icon name={submitted ? "check" : "lock"} size={18} />
-          <strong>
-            {submitted ? "Atividade entregue" : "Entrega obrigatória"}
-          </strong>
-          {!submitted && (
-            <span>Complete as três etapas e acerte a fixação.</span>
-          )}
-        </p>
-        <Button
-          variant="outline"
-          icon="alert"
-          aria-expanded={infoOpen}
-          aria-controls="simulation-information"
-          onClick={() => setInfoOpen((open) => !open)}
-        >
-          Informações
-        </Button>
-      </div>
+      <p className="simulation-required">
+        <Icon name={submitted ? "check" : "lock"} size={18} />
+        <strong>
+          {submitted ? "Atividade entregue" : "Entrega obrigatória"}
+        </strong>
+        {!submitted && <span>Complete as três etapas e acerte a fixação.</span>}
+      </p>
       {infoOpen && (
         <aside id="simulation-information" className="simulation-information">
           <div>
@@ -172,19 +193,35 @@ function SimulationJourney({
         aria-labelledby={`simulation-step-${step}`}
       >
         {step === 0 && (
-          <div className="simulation-introduction stack">
-            <Badge>{simulation.subject}</Badge>
-            <div>
-              <h3 id="simulation-step-0">Objetivo</h3>
-              <p>{simulation.description}</p>
+          <div className="simulation-introduction">
+            <Badge>
+              <Icon name={simulation.icon} size={18} /> {simulation.subject}
+            </Badge>
+            <h3 id="simulation-step-0">{simulation.title}</h3>
+            <p className="simulation-introduction-lead">
+              {simulation.description}
+            </p>
+            <div
+              className="simulation-highlights"
+              aria-label="Conceitos principais"
+            >
+              {highlights.map((item) => (
+                <div className="simulation-highlight" key={item.label}>
+                  <strong>{item.symbol}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
             </div>
-            <div>
-              <h3>O que você vai aprender</h3>
-              <ul className="simulation-goals">
-                {simulation.learningGoals.map((goal) => (
-                  <li key={goal}>{goal}</li>
-                ))}
-              </ul>
+            <div className="simulation-objective">
+              <Icon name="award" size={40} />
+              <div>
+                <h4>Objetivo</h4>
+                <ul className="simulation-goals">
+                  {simulation.learningGoals.map((goal) => (
+                    <li key={goal}>{goal}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         )}
