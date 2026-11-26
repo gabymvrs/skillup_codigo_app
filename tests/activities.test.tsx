@@ -247,6 +247,7 @@ describe("Activities selected by pedagogical type", () => {
         name: "Abrir dinâmica",
       }),
     );
+    expect(screen.getByRole("dialog")).toHaveClass("modal-fullscreen");
     expect(screen.getByRole("dialog")).toHaveTextContent(
       "Distinguir as regras das portas AND, OR e NOT",
     );

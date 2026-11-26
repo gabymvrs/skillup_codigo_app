@@ -711,6 +711,7 @@ export function Practice() {
           className={
             simulation.status === "available" ? "simulation-dialog" : ""
           }
+          fullScreen={simulation.status === "available"}
           onClose={() => setSimulation(null)}
         >
           <div className="stack">
