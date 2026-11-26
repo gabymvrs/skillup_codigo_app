@@ -701,7 +701,7 @@ export function Practice() {
           </div>
         </>
       )}
-      {type && (
+      {type && type !== "Dinâmica" && (
         <SectionTitle
           action={
             <Button variant="ghost" onClick={() => setType("")}>
@@ -823,7 +823,7 @@ export function Practice() {
             Escolher uma trilha
           </ActionLink>
         </Card>
-      ) : (
+      ) : type !== "Dinâmica" ? (
         <>
           <div className="two-columns">
             {visibleSets.map((set) => (
@@ -883,7 +883,7 @@ export function Practice() {
             </>
           )}
         </>
-      )}
+      ) : null}
       {!type && (
         <>
           <div className="section-heading practice-history-heading">

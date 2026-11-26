@@ -264,8 +264,8 @@ describe("Activities selected by pedagogical type", () => {
       }),
     ).toBeVisible();
     expect(
-      screen.getByRole("region", { name: "Filtros da prática" }),
-    ).toBeVisible();
+      screen.queryByRole("region", { name: "Filtros da prática" }),
+    ).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Dinâmica" })).toBeNull();
     expect(
       screen.queryByRole("link", { name: "Laboratório" }),
