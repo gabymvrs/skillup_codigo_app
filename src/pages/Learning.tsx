@@ -113,6 +113,28 @@ function SimulationJourney({
         </strong>
         {!submitted && <span>Complete as três etapas e acerte a fixação.</span>}
       </p>
+      <div className="simulation-journey-actions">
+        <Button
+          variant="outline"
+          disabled={step === 0}
+          onClick={() => setStep(step - 1)}
+        >
+          ← Voltar
+        </Button>
+        {step < 2 ? (
+          <Button onClick={() => setStep(step + 1)}>Continuar →</Button>
+        ) : (
+          <Button
+            disabled={answer === null || submitted}
+            onClick={() => {
+              setChecked(true);
+              if (answer === quiz.correct) setSubmitted(true);
+            }}
+          >
+            {submitted ? "Entregue ✓" : "Conferir e entregar →"}
+          </Button>
+        )}
+      </div>
       <section
         className="simulation-stage"
         aria-labelledby={`simulation-step-${step}`}
@@ -185,28 +207,6 @@ function SimulationJourney({
           </div>
         )}
       </section>
-      <footer className="simulation-journey-actions">
-        <Button
-          variant="outline"
-          disabled={step === 0}
-          onClick={() => setStep(step - 1)}
-        >
-          ← Voltar
-        </Button>
-        {step < 2 ? (
-          <Button onClick={() => setStep(step + 1)}>Continuar →</Button>
-        ) : (
-          <Button
-            disabled={answer === null || submitted}
-            onClick={() => {
-              setChecked(true);
-              if (answer === quiz.correct) setSubmitted(true);
-            }}
-          >
-            {submitted ? "Entregue ✓" : "Conferir e entregar →"}
-          </Button>
-        )}
-      </footer>
     </div>
   );
 }

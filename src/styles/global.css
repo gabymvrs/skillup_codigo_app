@@ -1088,8 +1088,10 @@ button.may-steps__body:disabled { cursor: default; opacity: 1; }
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding-top: 20px;
-  border-top: var(--border);
+  width: min(760px, 100%);
+  margin: -8px auto 0;
+  padding-bottom: 20px;
+  border-bottom: var(--border);
 }
 @media (max-width: 640px) {
   .may-steps { flex-direction: column; gap: 14px; width: 100%; }
