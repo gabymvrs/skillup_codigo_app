@@ -7,7 +7,7 @@ describe("StartupSplash", () => {
 
   it("shows the SkillUp introduction before revealing the application", () => {
     vi.useFakeTimers();
-    render(
+    const { container } = render(
       <StartupSplash>
         <main>Aplicativo pronto</main>
       </StartupSplash>,
@@ -16,6 +16,11 @@ describe("StartupSplash", () => {
     expect(
       screen.getByRole("status", { name: "Preparando o SkillUp" }),
     ).toBeInTheDocument();
+    expect(container.querySelector(".snurra")).toBeInTheDocument();
+    expect(container.querySelector(".startup-logo-frame img")).toHaveAttribute(
+      "src",
+      "/assets/skillup-logo.png",
+    );
     expect(screen.queryByText("Aplicativo pronto")).not.toBeInTheDocument();
 
     act(() => vi.advanceTimersByTime(1850));

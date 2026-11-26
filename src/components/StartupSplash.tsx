@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import Loader from "./ui/loader-15";
 
 type SplashPhase = "visible" | "leaving" | "hidden";
 
@@ -19,10 +20,7 @@ export function StartupSplash({ children }: { children: ReactNode }) {
       ).matches;
       const revealDelay = reducedMotion ? 150 : 1450;
       const leaveDuration = reducedMotion ? 0 : 400;
-      revealTimer = window.setTimeout(
-        () => setPhase("leaving"),
-        revealDelay,
-      );
+      revealTimer = window.setTimeout(() => setPhase("leaving"), revealDelay);
       finishTimer = window.setTimeout(
         () => setPhase("hidden"),
         revealDelay + leaveDuration,
@@ -47,13 +45,11 @@ export function StartupSplash({ children }: { children: ReactNode }) {
       role="status"
       aria-label="Preparando o SkillUp"
     >
-      <div className="startup-path" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="startup-logo-frame">
-        <img src="/assets/skillup-logo.png" alt="" />
+      <div className="startup-logo-stage">
+        <Loader />
+        <div className="startup-logo-frame">
+          <img src="/assets/skillup-logo.png" alt="" />
+        </div>
       </div>
       <p className="startup-name">SkillUp</p>
       <p className="startup-message">Preparando seu espaço de aprendizagem…</p>
