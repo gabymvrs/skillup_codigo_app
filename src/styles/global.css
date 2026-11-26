@@ -14,6 +14,28 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+.app-error {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-height: 100dvh;
+  padding: 32px;
+  background: var(--surface);
+  text-align: center;
+}
+.app-error img {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+}
+.app-error h1 {
+  margin: 24px 0 8px;
+  color: var(--primary);
+}
+.app-error p {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
 .startup-splash {
   position: fixed;
   inset: 0;

@@ -6,11 +6,14 @@ import "./styles/global.css";
 import "./styles/auth.css";
 import App from "./App";
 import { StartupSplash } from "./components/StartupSplash";
+import { AppErrorBoundary } from "./components/AppErrorBoundary";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <StartupSplash>
-      <App />
-    </StartupSplash>
+    <AppErrorBoundary>
+      <StartupSplash>
+        <App />
+      </StartupSplash>
+    </AppErrorBoundary>
   </StrictMode>,
 );
 if (import.meta.env.PROD && "serviceWorker" in navigator) {
