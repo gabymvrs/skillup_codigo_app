@@ -39,7 +39,9 @@ describe("Academic support", () => {
     expect(JSON.parse(localStorage.getItem(DEMO_KEY)!).messages).toHaveLength(
       1,
     );
-    expect(screen.queryByRole("log")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("log", { name: "Orientações acadêmicas" }),
+    ).toBeVisible();
   });
   it("answers academic questions without opening the floating FAQ and records tickets without claiming delivery", async () => {
     const user = userEvent.setup();

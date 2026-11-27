@@ -6,7 +6,8 @@
       "commit": "e74a11ccdb38b98d15c9f9545787c907dd15f0ab",
       "sourceType": "github",
       "skillPath": "skills/caveman/SKILL.md",
-      "computedHash": "b51af74aacdadbc3c2d6bb79f05db58dc521854b87f7ffabd48faf286a81ed31"
+      "computedHash": "b51af74aacdadbc3c2d6bb79f05db58dc521854b87f7ffabd48faf286a81ed31",
+      "installMode": "copy"
     },
     "frontend-design": {
       "source": "anthropics/skills",

@@ -3566,7 +3566,6 @@ html[data-large-text="true"] {
     color: #000;
   }
 }
-
 /* Learning expansion: same tokens and responsive navigation as the original app. */
 .profile-avatar {
   flex: 0 0 auto;
@@ -3667,74 +3666,39 @@ html[data-large-text="true"] {
   align-items: start;
 }
 .academic-assistant {
-  display: flex;
-  flex-direction: column;
   width: min(560px, 100%);
-  height: 680px;
-  max-height: calc(100dvh - 180px);
-  overflow: hidden;
-  background: var(--secondary-500);
-  color: white;
-  padding: 24px;
-}
-.academic-assistant > h2 {
-  color: white;
-}
-.academic-assistant p {
-  color: var(--tertiary-400);
-}
-.quick-questions {
-  display: grid;
-  gap: 12px;
-  margin: 20px 0;
-}
-.academic-assistant .outline {
-  border-color: var(--secondary-200);
-  color: white;
-  background: transparent;
-  border-radius: 24px;
-  justify-content: center;
-  text-align: center;
-}
-.academic-assistant .outline:hover {
-  background: var(--secondary-400);
+  min-height: 430px;
 }
 .academic-assistant .chat-compose {
-  align-items: stretch;
-  flex: none;
   margin-top: auto;
 }
-.academic-assistant .chat-compose textarea {
-  min-width: 0;
-  width: 100%;
-  height: 84px;
-  resize: none;
-  color: var(--text);
-  background: var(--surface);
-}
-.academic-assistant .chat-compose .button {
-  background: white;
-  color: var(--primary);
-}
 .academic-log {
-  flex: 1;
-  min-height: 120px;
-  overflow-y: auto;
-  margin-bottom: 16px;
-  padding: 0 12px;
-  border: 1px solid var(--secondary-200);
-  border-radius: var(--radius-sm);
-  background: rgb(255 255 255 / 4%);
+  flex: none;
+  height: 148px;
+  padding: 4px;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
 }
 .academic-log:focus-visible {
-  outline: 2px solid white;
+  outline: 2px solid var(--primary);
   outline-offset: 3px;
 }
-.academic-log > div {
-  padding-block: 12px;
-  border-bottom: 1px solid var(--secondary-200);
+.academic-suggestions {
+  flex-wrap: nowrap;
+  align-content: start;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.academic-suggestions::-webkit-scrollbar {
+  display: none;
+}
+.academic-suggestions .button {
+  flex: none;
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: var(--label);
+  white-space: nowrap;
 }
 .teacher-heading {
   display: flex;

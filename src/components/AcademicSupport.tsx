@@ -94,12 +94,34 @@ export function AcademicSupport() {
       <div className="support-grid">
         <Card className="academic-assistant">
           <h2>Assistente de IA</h2>
-          <p>Tire dúvidas sobre o aplicativo e a organização dos estudos.</p>
           <p className="small">
             Versão demonstrativa com respostas locais por assunto. IA generativa
             e atendimento humano não estão conectados a este assistente.
           </p>
-          <div className="quick-questions">
+          <div
+            ref={logRef}
+            className="chat-log academic-log"
+            role="log"
+            aria-label="Orientações acadêmicas"
+            aria-live="polite"
+            tabIndex={0}
+          >
+            <div className="chat-message bot">
+              <span className="sr-only">Assistente:</span>
+              Tire dúvidas sobre o aplicativo e a organização dos estudos.
+            </div>
+            {conversation.flatMap((message, index) => [
+              <div key={`${index}-question`} className="chat-message user">
+                <span className="sr-only">Você:</span>
+                {message.question}
+              </div>,
+              <div key={`${index}-answer`} className="chat-message bot">
+                <span className="sr-only">Assistente:</span>
+                {message.answer}
+              </div>,
+            ])}
+          </div>
+          <div className="chips academic-suggestions" aria-label="Sugestões">
             {[
               "Como trocar de curso?",
               "Esqueci minha senha",
@@ -113,23 +135,6 @@ export function AcademicSupport() {
               Perguntas frequentes
             </Button>
           </div>
-          {!!conversation.length && (
-            <div
-              ref={logRef}
-              className="academic-log"
-              role="log"
-              aria-label="Orientações acadêmicas"
-              aria-live="polite"
-              tabIndex={0}
-            >
-              {conversation.map((m, i) => (
-                <div key={i}>
-                  <strong>{m.question}</strong>
-                  <p>{m.answer}</p>
-                </div>
-              ))}
-            </div>
-          )}
           <form
             className="chat-compose"
             onSubmit={(e) => {
@@ -140,7 +145,7 @@ export function AcademicSupport() {
             <label className="sr-only" htmlFor="academic-question">
               Dúvida acadêmica
             </label>
-            <textarea
+            <input
               id="academic-question"
               placeholder="Digite sua dúvida aqui…"
               value={question}
@@ -148,7 +153,12 @@ export function AcademicSupport() {
               maxLength={1000}
               required
             />
-            <Button type="submit" icon="send" disabled={!question.trim()}>
+            <Button
+              type="submit"
+              icon="send"
+              aria-label="Enviar dúvida acadêmica"
+              disabled={!question.trim()}
+            >
               Enviar
             </Button>
           </form>
