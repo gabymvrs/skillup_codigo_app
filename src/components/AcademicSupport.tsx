@@ -2,6 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../state/AuthContext";
 import { useData } from "../state/DataContext";
 import { normalize, uid } from "../lib/utils";
+import {
+  aiTutorEnabled,
+  askTutor,
+  type TutorMessage,
+} from "../services/aiTutor";
 import { Avatar } from "./Avatar";
 import { FAQ } from "./Support";
 import { SupportHistory, SupportQueue } from "./SupportHistory";
@@ -39,6 +44,7 @@ export function AcademicSupport() {
     [conversation, setConversation] = useState<
       { question: string; answer: string }[]
     >([]),
+    [tutorBusy, setTutorBusy] = useState(false),
     [teacherId, setTeacherId] = useState(""),
     [feedbackId, setFeedbackId] = useState(""),
     [panel, setPanel] = useState<"" | "faq" | "ticket">("");
@@ -59,18 +65,57 @@ export function AcademicSupport() {
     .filter((s) => s.student_id === auth.id && s.status === "reviewed")
     .sort((a, b) => b.created_at.localeCompare(a.created_at));
   const feedback = feedbacks.find((s) => s.id === feedbackId),
-    teacher = teachers.find((p) => p.id === teacherId);
+    teacher = teachers.find((p) => p.id === teacherId),
+    useAutomaticTutor = aiTutorEnabled && !auth.demo;
   useEffect(() => {
     const log = logRef.current;
     if (log) log.scrollTop = log.scrollHeight;
   }, [conversation.length]);
-  function ask(text: string) {
-    if (!text.trim()) return;
-    setConversation((old) => [
-      ...old,
-      { question: text.trim(), answer: academicAnswer(text) },
-    ]);
+  async function ask(text: string) {
+    const prompt = text.trim();
+    if (!prompt || tutorBusy) return;
     setQuestion("");
+    if (!useAutomaticTutor) {
+      setConversation((old) => [
+        ...old,
+        { question: prompt, answer: academicAnswer(prompt) },
+      ]);
+      return;
+    }
+    const index = conversation.length;
+    const history: TutorMessage[] = conversation.flatMap((message) => [
+      { role: "user" as const, text: message.question },
+      { role: "model" as const, text: message.answer },
+    ]);
+    setConversation((old) => [...old, { question: prompt, answer: "" }]);
+    setTutorBusy(true);
+    try {
+      const result = await askTutor(
+        [...history, { role: "user", text: prompt }],
+        "Suporte acadêmico",
+      );
+      setConversation((old) =>
+        old.map((message, itemIndex) =>
+          itemIndex === index ? { ...message, answer: result.answer } : message,
+        ),
+      );
+    } catch (error) {
+      setConversation((old) =>
+        old.map((message, itemIndex) =>
+          itemIndex === index
+            ? {
+                ...message,
+                answer:
+                  error instanceof Error
+                    ? error.message
+                    : "O tutor está temporariamente indisponível.",
+              }
+            : message,
+        ),
+      );
+    } finally {
+      setTutorBusy(false);
+    }
   }
   if (auth.role !== "estudante")
     return (
@@ -95,8 +140,9 @@ export function AcademicSupport() {
         <Card className="academic-assistant">
           <h2>Assistente de IA</h2>
           <p className="small">
-            Versão demonstrativa com respostas locais por assunto. IA generativa
-            e atendimento humano não estão conectados a este assistente.
+            {useAutomaticTutor
+              ? "Tutor automático para orientar seus estudos. Não informe dados pessoais."
+              : "Versão demonstrativa com respostas locais por assunto. IA generativa e atendimento humano não estão conectados a este assistente."}
           </p>
           <div
             ref={logRef}
@@ -115,10 +161,17 @@ export function AcademicSupport() {
                 <span className="sr-only">Você:</span>
                 {message.question}
               </div>,
-              <div key={`${index}-answer`} className="chat-message bot">
-                <span className="sr-only">Assistente:</span>
-                {message.answer}
-              </div>,
+              message.answer ? (
+                <div key={`${index}-answer`} className="chat-message bot">
+                  <span className="sr-only">Assistente:</span>
+                  {message.answer}
+                </div>
+              ) : (
+                <div key={`${index}-pending`} className="chat-message bot">
+                  <span className="sr-only">Assistente:</span>
+                  Preparando resposta…
+                </div>
+              ),
             ])}
           </div>
           <div className="chips academic-suggestions" aria-label="Sugestões">
@@ -127,7 +180,12 @@ export function AcademicSupport() {
               "Esqueci minha senha",
               "Como organizar meus estudos?",
             ].map((q) => (
-              <Button variant="outline" key={q} onClick={() => ask(q)}>
+              <Button
+                variant="outline"
+                key={q}
+                disabled={tutorBusy}
+                onClick={() => void ask(q)}
+              >
                 {q}
               </Button>
             ))}
@@ -139,7 +197,7 @@ export function AcademicSupport() {
             className="chat-compose"
             onSubmit={(e) => {
               e.preventDefault();
-              ask(question);
+              void ask(question);
             }}
           >
             <label className="sr-only" htmlFor="academic-question">
@@ -157,7 +215,7 @@ export function AcademicSupport() {
               type="submit"
               icon="send"
               aria-label="Enviar dúvida acadêmica"
-              disabled={!question.trim()}
+              disabled={!question.trim() || tutorBusy}
             >
               Enviar
             </Button>
