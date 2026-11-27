@@ -5,7 +5,9 @@ import { normalize, uid } from "../lib/utils";
 import {
   aiTutorEnabled,
   askTutor,
+  loadTutorUsage,
   type TutorMessage,
+  type TutorUsage,
 } from "../services/aiTutor";
 import { Avatar } from "./Avatar";
 import { FAQ } from "./Support";
@@ -45,6 +47,12 @@ export function AcademicSupport() {
       { question: string; answer: string }[]
     >([]),
     [tutorBusy, setTutorBusy] = useState(false),
+    [tutorUsage, setTutorUsage] = useState<TutorUsage>({
+      minuteUsed: 0,
+      minuteLimit: 10,
+      dailyUsed: 0,
+      dailyLimit: 100,
+    }),
     [teacherId, setTeacherId] = useState(""),
     [feedbackId, setFeedbackId] = useState(""),
     [panel, setPanel] = useState<"" | "faq" | "ticket">("");
@@ -71,6 +79,12 @@ export function AcademicSupport() {
     const log = logRef.current;
     if (log) log.scrollTop = log.scrollHeight;
   }, [conversation.length]);
+  useEffect(() => {
+    if (!useAutomaticTutor) return;
+    void loadTutorUsage()
+      .then(setTutorUsage)
+      .catch(() => undefined);
+  }, [useAutomaticTutor]);
   async function ask(text: string) {
     const prompt = text.trim();
     if (!prompt || tutorBusy) return;
@@ -94,6 +108,7 @@ export function AcademicSupport() {
         [...history, { role: "user", text: prompt }],
         "Suporte acadêmico",
       );
+      setTutorUsage(result.usage);
       setConversation((old) =>
         old.map((message, itemIndex) =>
           itemIndex === index ? { ...message, answer: result.answer } : message,
@@ -144,6 +159,15 @@ export function AcademicSupport() {
               ? "Tutor automático para orientar seus estudos. Não informe dados pessoais."
               : "Versão demonstrativa com respostas locais por assunto. IA generativa e atendimento humano não estão conectados a este assistente."}
           </p>
+          {useAutomaticTutor && (
+            <div className="small muted" aria-live="polite">
+              Hoje: {tutorUsage.dailyUsed}/{tutorUsage.dailyLimit} perguntas ·
+              Minuto: {tutorUsage.minuteUsed}/{tutorUsage.minuteLimit}
+              {tutorUsage.totalTokens !== undefined
+                ? ` · Última resposta: ${tutorUsage.totalTokens} tokens`
+                : ""}
+            </div>
+          )}
           <div
             ref={logRef}
             className="chat-log academic-log"
