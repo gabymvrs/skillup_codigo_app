@@ -163,9 +163,6 @@ export function AcademicSupport() {
             <div className="small muted" aria-live="polite">
               Hoje: {tutorUsage.dailyUsed}/{tutorUsage.dailyLimit} perguntas ·
               Minuto: {tutorUsage.minuteUsed}/{tutorUsage.minuteLimit}
-              {tutorUsage.totalTokens !== undefined
-                ? ` · Última resposta: ${tutorUsage.totalTokens} tokens`
-                : ""}
             </div>
           )}
           <div
